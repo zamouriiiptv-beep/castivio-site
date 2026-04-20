@@ -1,0 +1,105 @@
+# ===============================
+# OLD GUIDE FILES → NEW FOLDERS
+# (SEO CRITICAL - MUST BE ON TOP)
+# ===============================
+
+Redirect 301 /iptv-guide-ar.html /guide/
+Redirect 301 /iptv-guide-en.html /en/guide/
+Redirect 301 /iptv-guide-fr.html /fr/guide/
+
+# ===============================
+# CLEAN URLs & LANG FIX (FINAL)
+# ===============================
+
+RewriteEngine On
+
+# -------------------------------
+# 1) ROOT
+# -------------------------------
+
+# /index.html → /
+RewriteRule ^index\.html$ / [R=301,L]
+
+# /index أو /index/ → /
+RewriteRule ^index/?$ / [R=301,L]
+
+# -------------------------------
+# 2) LANG INDEX FILES → CLEAN URL
+# -------------------------------
+
+# /en/index.html → /en/
+RewriteRule ^en/index\.html$ /en/ [R=301,L]
+
+# /fr/index.html → /fr/
+RewriteRule ^fr/index\.html$ /fr/ [R=301,L]
+
+# -------------------------------
+# 2.5) GUIDE CLEAN URL FIX
+# -------------------------------
+
+# index.html → clean guide URL
+RewriteRule ^guide/index\.html$ /guide/ [R=301,L]
+RewriteRule ^en/guide/index\.html$ /en/guide/ [R=301,L]
+RewriteRule ^fr/guide/index\.html$ /fr/guide/ [R=301,L]
+
+# force trailing slash
+RewriteRule ^guide$ /guide/ [R=301,L]
+RewriteRule ^en/guide$ /en/guide/ [R=301,L]
+RewriteRule ^fr/guide$ /fr/guide/ [R=301,L]
+
+# -------------------------------
+# 3) FORCE TRAILING SLASH (LANG)
+# -------------------------------
+
+RewriteRule ^(en|fr)$ /$1/ [R=301,L]
+
+# -------------------------------
+# 4) DEFAULT FILES
+# -------------------------------
+DirectoryIndex index.html index.php
+
+# -------------------------------
+# 5) PHP HANDLER
+# -------------------------------
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+
+# -------------------------------
+# 6) CACHING
+# -------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 6 months"
+  ExpiresByType font/woff "access plus 6 months"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header unset ETag
+  FileETag None
+</IfModule>
+
+# -------------------------------
+# 7) GZIP & BROTLI
+# -------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE html txt xml css js json woff woff2 svg
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php81” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

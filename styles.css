@@ -1,0 +1,2093 @@
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 🌍 الأنماط العامة (Global Reset)
+   – أساس الصفحة ومنع أي انزلاق أو تعارض */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+html { scroll-behavior: smooth; }
+
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية الأنماط العامة ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* ✍️ الخطوط والطباعة (Typography System)
+   – توحيد شكل العناوين، النصوص، والأزرار
+   – ضمان قراءة مريحة ومتناسقة على جميع الأجهزة */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* ✅ العنوان الرئيسي (بحال الهيرو) */
+.hero-title,
+.main-title,
+h1 {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+/* ✅ عناوين الأقسام (بحال FAQ) */
+.section-title,
+#faq h2,
+h2 {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+/* ✅ عناوين البطاقات */
+#faq h3,
+.card h3,
+.plan-card h3 {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ✅ النصوص العادية (الوصف) */
+p,
+#faq p,
+.card p,
+.plan-card p {
+  font-family: 'Tajawal', sans-serif !important;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.1px;
+}
+
+/* ✅ النص الصغير تحت العناوين */
+.subtitle,
+.small-text,
+#faq .sub-text {
+  font-size: 15px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* ✅ أزرار الموقع */
+button,
+.btn,
+a.button {
+  font-family: 'Tajawal', sans-serif !important;
+  font-weight: 600;
+}
+/* ================================
+   📱 Responsive Typography — أحجام العناوين
+================================ */
+@media (max-width: 768px) {
+  .section-title,
+  #faq h2,
+  h2 {
+    font-size: 26px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .section-title,
+  #faq h2,
+  h2 {
+    font-size: 34px !important;
+  }
+}
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية نظام الخطوط والطباعة ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 🎨 الألوان والمتغيرات (Design System)
+   – توحيد ألوان Prime IPTV
+   – تسهيل التعديل والصيانة مستقبلاً */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+:root {
+
+  /* 🎯 الألوان الأساسية */
+  --prime-purple: #5B16A3;
+  --prime-purple-light: #7A3CEB;
+  --prime-purple-soft: #9C77FF;
+  --prime-blue: #2563EB;
+
+  /* 🎨 التدرج الرسمي */
+  --gradient-prime: linear-gradient(
+    135deg,
+    var(--prime-purple),
+    var(--prime-purple-light),
+    var(--prime-blue)
+  );
+
+  /* 🖤 ألوان النص */
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --text-light: #F9FAFB;
+
+  /* 🌫️ الخلفيات */
+  --bg-white: #ffffff;
+  --bg-light: #F9FAFB;
+  --bg-dark: #0F172A;
+
+  /* ✨ الزوايا */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* 🌑 الظلال */
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-strong: 0 10px 30px rgba(0,0,0,0.18);
+}
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية قسم الألوان والمتغيرات ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 🧭 الهيدر وشريط اللغة (Header & Language Bar)
+   – شريط اللغة والأعلام أعلى الصفحة
+   – زر اختيار اللغة والقائمة المنسدلة
+   – الهيدر الثابت أسفل شريط اللغة مباشرة
+   – أساس التنقل والهوية البصرية للموقع */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* ===================================================
+   📌 الهيدر الرئيسي
+=================================================== */
+#header {
+  position: fixed;
+  top: 32px !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 40 !important;
+}
+
+/* ===================================================
+   🌍 شريط اللغة (الحاوية الرئيسية)
+=================================================== */
+#language-bar {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #dbeafe, #bfdbfe);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  backdrop-filter: blur(4px);
+  padding: 0 10px;
+  margin: 0 !important;
+}
+
+/* ===================================================
+   🎯 تباعد محتوى الهيدر
+=================================================== */
+#header .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+@media (min-width: 768px) {
+  #header .container {
+    padding-top: 8px !important; /* تقليل الارتفاع بشكل جميل */
+  }
+}
+/* ===================================================
+   🌐 شريط الأعلام
+=================================================== */
+
+#flags-container {
+  flex:1;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  margin-right:10px;
+  height:28px;
+}
+
+#flags-scroll {
+  display:flex;
+  gap:6px;
+  white-space:nowrap;
+  will-change:transform;
+}
+
+#flags-scroll img.flag-img {
+  width:24px !important;
+  height:16px !important;
+  margin-left:6px;
+  border-radius:4px;
+  transition:0.2s;
+  box-shadow:0 2px 4px rgba(0,0,0,0.15);
+}
+
+#flags-scroll img.flag-img:hover {
+  transform:scale(1.12);
+}
+/* ===================================================
+   🌍 زر اختيار اللغة
+=================================================== */
+.lang-wrapper {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  position: relative;
+}
+
+/* أيقونة العلم */
+.flag-icon {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+#current-lang {
+  margin-top: 6px;
+}
+/* ===================================================
+   🌐 القائمة المنسدلة للغات
+=================================================== */
+.lang-dropdown {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  background: #fff;
+  width: 160px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 6px 0;
+  z-index: 2000;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.25s ease;
+}
+
+.lang-dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lang-dropdown.hidden {
+  display: none;
+}
+
+.lang-option {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.lang-option:hover {
+  background: #f2f2f2;
+}
+/* ===================================================
+   💻 تكبير شريط اللغة في الشاشات الكبيرة
+=================================================== */
+@media (min-width: 768px) {
+
+  #language-bar {
+    height: 60px !important;
+    padding: 0 20px;
+  }
+
+  #flags-container {
+    height: 50px;
+    margin-right: 12px;
+  }
+
+  #flags-scroll img.flag-img {
+    width: 36px !important;
+    height: 24px !important;
+  }
+
+  .lang-wrapper {
+    height: 50px;
+    padding: 0 20px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  #current-lang {
+    font-size: 18px;
+    margin-top: 2px;
+  }
+
+  .flag-icon {
+    width: 28px;
+    height: 20px;
+  }
+}
+/* ===================================================
+   📱 القائمة الجانبية (Mobile Menu)
+=================================================== */
+.side-menu {
+  position:fixed;
+  top:50%;
+  left:-230px;
+  width:200px;
+  height:50vh;
+  padding:22px 18px;
+  border-radius:0 24px 24px 0;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.40);
+  box-shadow:0 10px 30px rgba(0,0,0,0.18);
+  opacity:0;
+  transform:translate(-20px, -40%) scale(0.92);
+  transition:0.35s ease;
+  overflow-y:auto;
+  z-index:9999;
+}
+
+.side-menu.open {
+  left:0;
+  opacity:1;
+  transform:translate(0, -40%) scale(1);
+}
+
+.menu-links {
+  list-style:none;
+  padding:0;
+  margin-top:55px;
+}
+
+.menu-links li {
+  margin:15px 0;
+}
+
+.menu-links a {
+  font-size:17px;
+  text-decoration:none;
+  color:#1a1a1a;
+  display:block;
+  padding:6px 5px;
+  border-radius:8px;
+  transition:0.25s;
+}
+
+.menu-links a:hover {
+  background:rgba(255,255,255,0.5);
+  color:#6B21A8;
+}
+/* ===================================================
+🌫️ التراكب (Overlay)
+=================================================== */
+.overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.05);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s;
+  z-index:9998;
+}
+
+.overlay.active {
+  opacity:1;
+  pointer-events:all;
+}
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية قسم الهيدر وشريط اللغة ⭐⭐ */
+/* 🟦??🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 💰 قسم الخطط والاشتراكات (Plans Section)
+   – بطاقات الخطط، الأسعار، الميزات، وأزرار الاشتراك */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+
+/* =================================================== */
+/* 1️⃣ الهيكل العام لقسم الخطط */
+/* =================================================== */
+
+.plan-card {
+  position: relative;
+}
+
+#pricing .grid {
+  align-items: start !important;
+}
+
+/* =================================================== */
+/* 2️⃣ الإطار الفاخر + Hover */
+/* =================================================== */
+
+.luxury-card-wrapper {
+  padding: 2px !important;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f5d68f, #b15cff, #7a2ff6);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.luxury-card-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+/* =================================================== */
+/* 3️⃣ الخلفية الداخلية للبطاقة */
+/* =================================================== */
+
+.luxury-card-inner {
+  border-radius: 20px;
+  padding: 28px;
+  transition: background 0.3s ease;
+}
+
+/* =================================================== */
+/* 4️⃣ ألوان كل خطة */
+/* =================================================== */
+
+.plan-basic-card .luxury-card-inner {
+  background: linear-gradient(135deg,#0f1a3a,#1b2750);
+  color:#e8eeff;
+}
+
+.plan-premium-card .luxury-card-inner {
+  background: linear-gradient(135deg,#3f2d0f,#6b521a);
+  color:#fff5d8;
+}
+
+.plan-pro-card .luxury-card-inner {
+  background: linear-gradient(135deg,#2c124d,#46206f);
+  color:#f4e8ff;
+}
+
+/* =================================================== */
+/* 5️⃣ النصوص داخل بطاقة الخطة */
+/* =================================================== */
+
+/* العنوان */
+.plan-card h3 {
+  color:#ffffff !important;
+  font-weight:900;
+}
+
+/* الوصف */
+.plan-card p {
+  color:#e0e0e0 !important;
+}
+
+/* السعر */
+.plan-card div.text-3xl {
+  color:#ffffff !important;
+  font-weight:900 !important;
+}
+
+/* =================================================== */
+/* 6️⃣ زر عرض الميزات + الميزات */
+/* =================================================== */
+
+.toggle-features-btn span {
+  color:#f1f1f1 !important;
+}
+
+.plan-features li {
+  color:#f3f3f3 !important;
+  line-height:1.65;
+}
+
+/* =================================================== */
+/* 7️⃣ زر الاشتراك */
+/* =================================================== */
+
+.plan-card a {
+  background: linear-gradient(135deg,#9333ea,#7c3aed);
+  color:#fff !important;
+  border-radius:12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plan-card a:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(147,51,234,0.45);
+}
+
+/* =================================================== */
+/* 8️⃣ الشارات (Badges) */
+/* =================================================== */
+
+.plan-card {
+  position: relative;
+}
+
+.plan-card h3 {
+  margin-top: 18px !important;
+}
+
+.plan-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-14px, 14px);
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 800;
+  border-radius: 999px;
+  color: #fff;
+  z-index: 5;
+  white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.badge-economy {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.badge-best {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+}
+
+/* =================================================== */
+/* 9️⃣ أيقونة اسم الخطة */
+/* =================================================== */
+
+.plan-card h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px !important;
+}
+
+.plan-basic-card h3::after {
+  content: "💰";
+  font-size: 22px;
+  line-height: 1;
+}
+
+.plan-premium-card h3::after {
+  content: "⭐";
+  font-size: 22px;
+  line-height: 1;
+}
+
+.plan-pro-card h3::after {
+  content: "👑";
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* =================================================== */
+/* 🔧 إصلاحات — سلوك البطاقة */
+/* =================================================== */
+
+.plan-card {
+  position: relative;
+  overflow: visible;
+}
+
+.luxury-card-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  box-sizing: border-box;
+}
+
+.luxury-card-inner::before {
+  content: "";
+  display: block;
+  height: 18px;
+}
+
+.luxury-card-inner .subscribe-btn,
+.luxury-card-inner a {
+  margin-top: auto;
+}
+
+/* =================================================== */
+/* 📱 التجاوب مع الشاشات */
+/* =================================================== */
+
+@media (max-width: 640px) {
+  .plan-card h3 {
+    margin-top: 22px !important;
+  }
+
+  .plan-badge {
+    font-size: 12px;
+    padding: 5px 12px;
+    transform: translate(-12px, 12px);
+  }
+
+  .plan-card h3::after {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-card-inner {
+    min-height: auto;
+  }
+}
+
+/* =================================================== */
+/* 📌 واتساب العائم */
+/* =================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  width: 65px;
+  height: 65px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية قسم الخطط والاشتراكات ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 📦 الأقسام الرئيسية (Sections)
+   – Hero, Why Us, Plans, FAQ… */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+🚀🎬 قسم الهيرو (Hero Section)
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+/* صورة الهيرو */
+.hero-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+/* 🖥️ ضبط الهيدر على الكمبيوتر لتقليل الارتفاع */
+@media (min-width: 768px) {
+  #header .container {
+    height: 4.25rem !important; /* ↓ كان 5rem، الآن تقريبًا 68px */
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+    align-items: center !important;
+  }
+
+  #logo-img {
+    height: 64px !important;
+    width: 64px !important;
+  }
+
+  #logo-name span {
+    font-size: 1.4rem !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+  }
+}
+
+
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+🌟🚀 قسم المميّزات (لماذا نحن)
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+#why-us .bg-white.p-6.rounded-xl.shadow-lg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* الحد العلوي */
+#why-us .bg-white.p-6.rounded-xl.shadow-lg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 5;
+}
+
+/* الحد الأيسر */
+#why-us .bg-white.p-6.rounded-xl.shadow-lg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 5;
+}
+
+/* ===============================
+🧩 عنوان لماذا نحن
+=============================== */
+
+.why-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.3;
+
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  max-width: 95%;
+  margin: 0 auto 22px auto;   /* ✅ تم تقليلها لتطابق FAQ */
+}
+
+/* السطر الثاني */
+.why-title .forced-line {
+  display: block;
+  margin-top: 6px;
+}
+
+/* إزالة أي مسافة زائدة من الشبكة */
+#why-us .grid {
+  margin-top: 0 !important;
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+  .why-title {
+    font-size: 30px;
+    margin-bottom: 20px;   /* ✅ مطابقة لمسافة FAQ على الهاتف */
+  }
+}
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+💬⭐ قسم آراء المستخدمين (Testimonials)
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+.bg-white.p-6.rounded-lg.shadow {
+  position: relative;
+  overflow: hidden;
+}
+
+/* الحد العلوي */
+.bg-white.p-6.rounded-lg.shadow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 5;
+}
+
+/* الحد الأيمن */
+.bg-white.p-6.rounded-lg.shadow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 5;
+}
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+❓💬 قسم الأسئلة الشائعة (FAQ)
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+#faq {
+  background: transparent !important;
+}
+
+/* تقليل المسافة بين العنوان وأول بطاقة */
+#faq .section-title-unified {
+  margin-bottom: 12px !important;
+}
+
+/* مسافة بين البطاقات */
+#faq .grid {
+  gap: 8px !important;
+}
+
+/* البطاقات */
+#faq .grid > div {
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB) !important;
+  padding: 12px 14px !important;
+  border-radius: 0 !important;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 10px rgba(91, 22, 163, 0.25);
+}
+
+/* Hover */
+#faq .grid > div:hover {
+  box-shadow: 0 8px 18px rgba(91, 22, 163, 0.35);
+  transform: translateY(-1px);
+}
+
+/* شريط علوي */
+#faq .grid > div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5B16A3, #7A3CEB, #2563EB);
+  pointer-events: none;
+}
+
+/* 🔥 عنوان السؤال (Span وليس h3) */
+#faq .faq-btn span {
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+/* زر السؤال */
+#faq .faq-btn {
+  cursor: pointer;
+  position: relative;
+  padding-left: 42px;
+  padding-right: 6px;
+}
+
+/* إخفاء الأيقونة الأصلية */
+#faq .faq-icon {
+  display: none !important;
+}
+
+/* علامة + */
+#faq .faq-btn::after {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  font-weight: 900;
+  color: #FFFFFF;
+  transition: 0.25s ease;
+}
+
+/* تحويل + إلى × */
+#faq .faq-item-active .faq-btn::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* 🔥 الجواب */
+#faq .faq-content {
+  display: none;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #EDE9FF !important;
+}
+
+/* عند الفتح */
+#faq .faq-item-active .faq-content {
+  display: block !important;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  #faq .grid {
+    gap: 6px !important;
+  }
+
+  #faq .grid > div {
+    padding: 10px 12px !important;
+  }
+
+  #faq .faq-btn span {
+    font-size: 14.5px !important;
+  }
+
+  #faq .faq-content {
+    font-size: 13.5px !important;
+  }
+}
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+🌐✨ قسم السيو والمحتوى التعريفي ✨📘
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+.seo-light-section {
+  background: transparent !important;
+  padding: 0 !important;        /* ✅ نترك التحكم لـ section-spacing */
+  font-family: 'Tajawal', sans-serif;
+}
+
+
+/* ===============================
+🔎 عنوان السيو
+=============================== */
+
+#seo-text .section-title-unified {
+  margin-bottom: 16px !important;
+}
+
+/* نص المقدمة */
+.seo-intro {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  font-weight: 700;
+  background: linear-gradient(to right, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance; /* Micro SEO */
+}
+
+/* ===============================
+🧩 الشبكة (Grid)
+=============================== */
+
+.seo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ===============================
+🗂️ البطاقة (إطار علوي + أيسر)
+=============================== */
+.netflix-card-light {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff !important;
+  border-radius: 22px;
+  padding: 22px 22px 56px;
+
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: none !important;
+
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* 🔥 الإطار العلوي */
+.netflix-card-light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 2;
+}
+
+/* 🔥 الإطار اليسار */
+.netflix-card-light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  z-index: 2;
+}
+
+/* Hover احترافي */
+@media (hover: hover) {
+  .netflix-card-light:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(91,22,163,.18);
+  }
+
+  .netflix-card-light:hover::before,
+  .netflix-card-light:hover::after {
+    opacity: 1;
+  }
+}
+
+/* عنوان البطاقة */
+.netflix-card-light h3 {
+  font-size: 19px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #1f2937;
+  min-height: 48px;
+}
+
+/* نص البطاقة */
+.netflix-card-light p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4b5563;
+  max-width: 95%;
+  margin-bottom: 0;
+}
+
+/* البطاقة الكبيرة */
+.seo-big-card {
+  grid-column: span 2;
+}
+
+/* ===============================
+🎯 الأيقونة
+=============================== */
+
+.card-icon {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  width: 36px;
+  height: 36px;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(124,58,237,0.5));
+}
+
+/* ===============================
+📱 الهاتف (الموبايل)
+=============================== */
+
+@media (max-width: 768px) {
+
+  .seo-light-section {
+    padding: 70px 0;
+  }
+
+  .seo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .seo-big-card {
+    grid-column: span 1;
+  }
+
+  .seo-intro {
+    font-size: 16px;
+  }
+
+  .netflix-card-light {
+    min-height: 200px;
+    padding: 20px 18px 52px;
+    border-radius: 18px;
+  }
+
+  .netflix-card-light h3 {
+    font-size: 17px;
+  }
+
+  .netflix-card-light p {
+    font-size: 14.5px;
+  }
+
+  .card-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+/* 🎯 موازنة الإيقاع البصري لقسم SEO */
+#seo-text .seo-intro {
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  #seo-text .seo-intro {
+    margin-bottom: 32px;
+  }
+}
+
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+💳✨ قسم طرق الدفع — Payment Methods ✨💳
+⭐ Carousel أفقي + أسهم تنقّل
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+/* إخفاء السكروول */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* الحاوية الرئيسية */
+.payment-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* الصف */
+.payment-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1.2rem;
+  padding: 0 1rem;
+}
+.payment-list { scroll-snap-type: x mandatory; }
+.payment-list > div { scroll-snap-align: center; }
+
+/* البطاقة */
+.card {
+  flex-shrink: 0;
+  width: 90px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp .6s forwards;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* الأسهم */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  transition: .2s ease;
+  z-index: 20;
+  user-select: none;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.arrow:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.arrow-left { left: 0.5rem; }
+.arrow-right { right: 0.5rem; }
+
+/* Fade Animation */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+/* ===============================
+⚙️✨ قسم التذييل (FOOTER)
+🎨 أنماط مخصّصة فقط — نسخة نهائية
+=============================== */
+/* 🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷 */
+
+
+/* ===============================
+   تثبيت الاتجاه العربي (RTL)
+=============================== */
+
+footer {
+  direction: rtl;
+}
+
+footer h3,
+footer h4,
+footer p,
+footer ul,
+footer li {
+  text-align: right;
+}
+
+
+/* ===============================
+   لوغو الفوتر — الوضع الافتراضي
+=============================== */
+
+.footer-logo {
+  max-width: 144px;
+}
+
+
+/* ===============================
+   زر واتساب داخل الفوتر
+=============================== */
+
+footer a[href*="wa.me"] {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+
+/* ===============================
+   أيقونات التواصل الاجتماعي
+=============================== */
+
+footer .fab {
+  opacity: 0.8;
+  transition: all 0.25s ease;
+}
+
+footer a:hover .fab {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+
+/* ===============================
+   خط حقوق النشر
+=============================== */
+
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ===============================
+   واتساب العائم
+=============================== */
+
+.whatsapp-float img {
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
+
+/* =================================================
+   📱 FOOTER — Mobile Compact (FINAL & REAL FIX)
+   ✔ Media Query واحدة فقط
+   ✔ تقليص حقيقي
+   ✔ بدون تخريب الكمبيوتر
+================================================= */
+
+@media (max-width: 640px) {
+
+  /* الحشو العام */
+  footer {
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+  }
+
+  /* الشبكة */
+  footer .grid {
+    gap: 1.2rem !important;
+  }
+
+  /* 🔥 إخفاء الوصف الطويل (السر الحقيقي) */
+  footer p:first-of-type {
+    display: none !important;
+  }
+
+  /* العناوين */
+  footer h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  footer h4 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* القوائم */
+  footer ul li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  /* لوغو Prime */
+  .footer-logo {
+    max-width: 90px !important;
+    margin-top: 0.6rem !important;
+  }
+
+  /* زر واتساب داخل الفوتر */
+  footer a[href*="wa.me"] {
+    padding: 0.5rem 0.9rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* أيقونات السوشيال */
+  footer .fab {
+    font-size: 1.1rem !important;
+  }
+
+  /* مسافة السوشيال */
+  footer .flex.justify-center.mt-10 {
+    margin-top: 1rem !important;
+  }
+
+  /* حقوق النشر */
+  footer h6 {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية الأقسام الرئيسية ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* 🎞️ السلايدرز والوسائط (Sliders & Media)
+   – Sliders, Carousels, Images, Video */
+/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+/* ===============================
+🎞️ السلايدر (Swiper)
+=============================== */
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.mySwiperMovies .swiper-slide,
+.mySwiperSports .swiper-slide {
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mySwiperMovies img,
+.mySwiperSports img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+/* ===============================
+   ⭐ عنوان قسم الأفلام (Movies Section)
+================================ */
+
+.section-title-unified {
+  display: grid;
+  grid-template-rows: auto auto; /* 🔒 سطرين فقط */
+  row-gap: 6px;
+
+  text-align: center;
+  padding: 0 16px;
+  margin: 0 auto 24px;
+
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900;
+  direction: rtl;
+}
+
+/* 🔒 السطر الأول — مقفول على سطر واحد */
+.section-title-unified .title-line-1 {
+  font-size: clamp(22px, 5.5vw, 36px);
+  white-space: nowrap;              /* ← القفل */
+  overflow: hidden;
+  text-overflow: ellipsis;          /* أمان */
+
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 🔒 السطر الثاني — IPTV + أيقونة */
+.section-title-unified .title-line-2 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  white-space: nowrap;              /* ← القفل */
+  font-size: clamp(24px, 6.5vw, 42px);
+
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* الأيقونة */
+.section-title-unified .title-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+/* 📱 حل قاطع للهاتف فقط */
+@media (max-width: 480px) {
+
+  /* السطر الأول – نص طويل */
+  .section-title-unified .title-line-1 {
+    font-size: 20px !important;   /* ⬅️ التصغير الذكي */
+    line-height: 1.35;
+  }
+
+  /* السطر الثاني */
+  .section-title-unified .title-line-2 {
+    font-size: 26px !important;
+    white-space: nowrap;
+  }
+}
+
+/* ===============================
+   🏆 سلايدر الرياضة
+================================ */
+/* الحاوية */
+.section-title-unified {
+  text-align: center;
+  margin: 0 auto 38px auto;
+  padding: 0 18px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+/* السطر الأول */
+.section-title-unified .title-line-1 {
+  display: block;
+  width: 100%;
+  font-size: clamp(21px, 5.4vw, 36px);
+
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* السطر الثاني – IPTV + الأيقونة */
+.section-title-unified .title-line-2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  margin-top: 6px;
+  font-size: clamp(26px, 7vw, 43px);
+
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* أيقونة الرياضة */
+.section-title-unified .title-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ===============================
+🛠️ إصلاح نهائي لارتفاع السلايدر
+=============================== */
+
+.swiper-slide {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* 📱📱 موبايل صغير جداً – 200px */
+@media (max-width: 420px) {
+
+  .swiper-slide {
+    height: 200px !important;
+  }
+
+  .swiper-slide img {
+    height: 200px !important;
+  }
+}
+
+/* 📱 موبايل عادي – 230px */
+@media (min-width: 421px) and (max-width: 768px) {
+
+  .swiper-slide {
+    height: 230px !important;
+  }
+
+  .swiper-slide img {
+    height: 230px !important;
+  }
+}
+
+/* 🖥️ كمبيوتر – 360px */
+@media (min-width: 769px) {
+
+  .swiper-slide {
+    height: 360px !important;
+  }
+
+  .swiper-slide img {
+    height: 360px !important;
+  }
+}
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* ⭐⭐ نهاية قسم السلايدرز والوسائط ⭐⭐ */
+/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
+/* 🛠️ الإصلاحات والتجاوزات النهائية
+   – حلول سريعة، تصحيحات، وكسر التعارضات */
+/* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🛠️ الإصلاحات والتجاوزات النهائية
+   – توحيد العرض ومنع التعارضات */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+
+/* ✅ القاعدة العامة للكمبيوتر */
+.container,
+section .container,
+#faq .container,
+#testimonials .container,
+#seo-text .container,
+#why-us .container,
+#plans .container {
+  width: 100% !important;
+  max-width: 1200px !important; /* ✅ هذا هو السر */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* ✅ منع أي اختلاف خفي في العرض */
+section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ✅ إصلاح أي بطاقة داخليًا */
+#testimonials .bg-white,
+#faq .bg-white,
+#seo-text .bg-white,
+#why-us .bg-white {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ✅ ضبط الهاتف بدون تصغير */
+@media (max-width: 768px) {
+
+  .container,
+  section .container,
+  #faq .container,
+  #testimonials .container,
+  #seo-text .container,
+  #why-us .container,
+  #plans .container {
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧??🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية قسم الإصلاحات والتجاوزات ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧??🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* بداية كود إزالة الفراغ بين الهيدر و شريط الأعلام */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+body {
+  padding-top: 0 !important; /* إزالة حشو الأعلى من جسم الصفحة */
+  margin: 0 !important;      /* تأكد من عدم وجود هوامش غير مرغوبة */
+}
+
+#language-bar {
+  position: fixed;
+  top: 0 !important;      /* تثبيت الشريط أعلى الصفحة */
+  margin: 0 !important;   /* إزالة هوامش */
+  padding-bottom: 0 !important;
+  height: 32px;           /* ارتفاع شريط اللغة */
+  line-height: 32px;      /* لمحاذاة النص عمودياً */
+}
+
+#header {
+  position: fixed;        /* لتثبيت الهيدر */
+  top: 32px !important;   /* يبدأ مباشرة أسفل شريط اللغة */
+  margin: 0 !important;   /* إزالة هوامش */
+  padding: 0 !important;  /* إزالة حشوات */
+  width: 100%;            /* عرض كامل */
+  z-index: 40 !important;
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* نهاية كود إزالة الفراغ بين الهيدر و شريط الأعلام */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* ⭐ نظام موحّد لعناوين الأقسام
+   – تثبيت الألوان ومنع الرجوع للأسود */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+
+.section-title-unified {
+  text-align: center !important;
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 900;
+  line-height: 1.3;
+
+  max-width: 95%;
+  margin: 0 auto 28px auto;
+
+  /* نلغي أي لون موروث */
+  color: transparent !important;
+}
+
+/* 🎨 الـ Gradient يُطبَّق على السطرين مباشرة */
+.section-title-unified .title-line-1,
+.section-title-unified .title-line-2 {
+  background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+
+  text-align: center !important;
+}
+
+/* -------------------------------
+   السطر الأول
+-------------------------------- */
+.section-title-unified .title-line-1 {
+  display: block;
+  width: 100%;
+  font-size: clamp(22px, 5.5vw, 36px);
+}
+
+/* -------------------------------
+   السطر الثاني (IPTV + أيقونة)
+-------------------------------- */
+.section-title-unified .title-line-2 {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+
+  width: 100% !important;
+  margin-top: 6px;
+  font-size: clamp(26px, 7vw, 42px);
+
+  /* IPTV ثم الأيقونة */
+  flex-direction: row !important;
+
+  /* منع أي RTL أو Tailwind */
+  float: none !important;
+}
+
+/* -------------------------------
+   الأيقونة
+-------------------------------- */
+.section-title-unified .title-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+
+  /* ✨ Glow Prime */
+  filter: drop-shadow(0 0 6px rgba(124,58,237,0.6));
+}
+
+/* -------------------------------
+   📱 موبايل
+-------------------------------- */
+@media (max-width: 768px) {
+  .section-title-unified {
+    margin-bottom: 22px;
+  }
+
+  .section-title-unified .title-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية نظام عناوين الأقسام ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🎯 نظام موحّد للمسافات — Prime IPTV
+   – توحيد المسافات بين الأقسام والعناوين
+   – حل اختلاف الهاتف والكمبيوتر */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* ===============================
+📱 الهاتف — مسافات مضغوطة
+=============================== */
+
+/* المسافة بين الأقسام */
+.section-spacing {
+  padding-block: 32px;   /* 🔥 حل جذري للمسافة الكبيرة */
+}
+
+/* حاوية العنوان */
+.section-header {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+/* العنوان الرئيسي */
+.section-header h2 {
+  margin-bottom: 12px;
+}
+
+/* الوصف تحت العنوان */
+.section-header p {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 6px;
+}
+
+/* محتوى القسم (بطاقات / سلايدر / Grid) */
+.section-content,
+.section-slider,
+.section-grid {
+  margin-top: 18px;
+}
+
+/* ===============================
+💻 الكمبيوتر — مسافات مريحة
+=============================== */
+
+@media (min-width: 768px) {
+
+  /* المسافة بين الأقسام */
+  .section-spacing {
+    padding-block: clamp(70px, 8vw, 110px);
+  }
+
+  /* حاوية العنوان */
+  .section-header {
+    margin-bottom: clamp(30px, 4vw, 48px);
+  }
+
+  /* محتوى القسم */
+  .section-content {
+    margin-top: clamp(26px, 4vw, 44px);
+  }
+
+  .section-slider {
+    margin-top: clamp(30px, 5vw, 60px);
+  }
+
+  .section-grid {
+    margin-top: clamp(24px, 4vw, 40px);
+  }
+}
+/* ===================================================
+   🔧 FIX: منع تضخيم المسافة بسبب العناوين
+=================================================== */
+
+/* العنوان داخل الأقسام فقط (ليس الهيرو) */
+.section-spacing .section-title-unified {
+  margin-bottom: 16px !important;
+}
+
+/* كمبيوتر */
+@media (min-width: 768px) {
+  .section-spacing .section-title-unified {
+    margin-bottom: 24px !important;
+  }
+}
+
+/* ===================================================
+   🔒 GLOBAL FIX: منع أي مسافات خارج نظام الأقسام
+=================================================== */
+
+section {
+  margin: 0 !important;
+}
+
+section > *:first-child {
+  margin-top: 0 !important;
+}
+
+section > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* عناوين الأقسام فقط */
+.section-spacing h1,
+.section-spacing h2,
+.section-spacing h3,
+.section-spacing p {
+  margin-top: 0 !important;
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية نظام توحيد المسافات ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🔥 التحكم في حجم ومسافات قسم الهيرو
+   – منع تلاصق العنوان مع الهيدر
+   – ضبط المسافات للهاتف والكمبيوتر */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+
+.hero-section {
+  padding-top: 96px;     /* ⬅️ كان 80px → نزلنا العنوان قليلاً في الهاتف */
+  padding-bottom: 36px;  /* مسافة خفيفة قبل القسم التالي */
+}
+
+/* 💻 كمبيوتر */
+@media (min-width: 768px) {
+  .hero-section {
+    padding-top: 120px;  /* نفس القيمة – لا نلمس الكمبيوتر */
+    padding-bottom: 60px;
+  }
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية كود التحكم في حجم ومسافات الهيرو ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 📱💻 إصلاح تمركز الهيدر (الهاتف + الكمبيوتر)
+   – توسيط الشعار واسم الموقع
+   – إنزال خفيف لسطر الهيدر في الكمبيوتر
+   – منع انزلاق النص واللوغو وزر القائمة */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* ===================================================
+   📱 FIX: تمركز الهيدر على الهاتف
+   – توسيط الشعار واسم الموقع
+   – منع انزلاق النص وزر القائمة
+=================================================== */
+@media (max-width: 767px) {
+
+  #header {
+    height: auto;
+  }
+
+  #logo-name {
+    display: flex;
+    align-items: center;
+  }
+
+  #logo-img {
+    height: 44px !important;
+    width: 44px !important;
+    display: block;
+  }
+
+  #logo-name span {
+    line-height: 1 !important;
+    display: flex;
+    align-items: center;
+    margin-top: 0 !important;
+  }
+
+  #menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* ===================================================
+   💻 FIX: إنزال سطر الهيدر في الكمبيوتر
+   – لوغو + اسم الموقع + القائمة
+   – نزول خفيف ومتوازن داخل الهيدر
+=================================================== */
+@media (min-width: 768px) {
+
+  /* السطر الرئيسي داخل الهيدر */
+  #header > .container,
+  #header .header-inner {
+    transform: translateY(17px); /* 👈 النزول الحقيقي */
+  }
+
+  /* تأكيد عدم وجود تعارض */
+  #logo-name,
+  nav,
+  #nav-menu {
+    margin-top: 0 !important;
+    align-items: center !important;
+  }
+
+  /* اللوغو */
+  #logo-img {
+    margin: 0 !important;
+  }
+
+  /* اسم الموقع */
+  #logo-name span {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية كود إصلاح تمركز الهيدر ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🔥 إصلاح قاطع لمشكل اختفاء نص قسم SEO (Android + Desktop)
+   – إلغاء وراثة gradient و text-fill-color
+   – فرض ألوان صريحة لنصوص بطاقات السيو
+   – السماح بالـ Gradient فقط في مقدمة السيو
+   – متوافق مع section-spacing و unified typography */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+
+/* 1️⃣ مسح أي تأثير موروث داخل قسم SEO */
+#seo-text,
+#seo-text * {
+  -webkit-text-fill-color: unset !important;
+  opacity: 1 !important;
+}
+
+/* 2️⃣ إعادة فرض الألوان داخل بطاقات السيو */
+#seo-text .netflix-card-light h3 {
+  color: #1f2937 !important;
+  -webkit-text-fill-color: #1f2937 !important;
+}
+
+#seo-text .netflix-card-light p {
+  color: #4b5563 !important;
+  -webkit-text-fill-color: #4b5563 !important;
+}
+
+/* 3️⃣ السماح بالـ Gradient فقط هنا (مقدمة السيو) */
+#seo-text .seo-intro {
+  background: linear-gradient(to right, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+}
+/* 1️⃣ نلغي أي gradient أو fill موروث */
+#seo-text,
+#seo-text * {
+  -webkit-text-fill-color: unset !important;
+  color: inherit;
+}
+
+/* 2️⃣ نعيد تعريف الألوان يدوياً للبطاقات */
+#seo-text .netflix-card-light h3 {
+  color: #1f2937 !important;
+  -webkit-text-fill-color: #1f2937 !important;
+  opacity: 1 !important;
+}
+
+#seo-text .netflix-card-light p {
+  color: #4b5563 !important;
+  -webkit-text-fill-color: #4b5563 !important;
+  opacity: 1 !important;
+}
+
+/* 3️⃣ نسمح بالـ gradient فقط هنا */
+#seo-text .seo-intro {
+  background: linear-gradient(to right, #7A3CEB, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية كود إصلاح نص قسم SEO ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 📝 وصف الأقسام (Section Descriptions)
+   – تنسيق موحّد لجميع أوصاف الأقسام
+   – حجم خط واضح ومقروء على الهاتف والكمبيوتر
+   – تدرّج لوني متناسق مع هوية Prime IPTV
+   – مسافات متوازنة بين العنوان والمحتوى */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+
+.section-description {
+  text-align: center;
+  max-width: 760px;
+  margin: 12px auto 0;
+
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(16px, 2.8vw, 20px);
+  line-height: 1.9;
+  font-weight: 600;
+
+  /* 🎨 Gradient مثل المثال */
+  background: linear-gradient(
+    to right,
+    #ec4899,   /* pink-500 */
+    #d946ef,   /* fuchsia-500 */
+    #a855f7    /* purple-500 */
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* ===============================
+   🔧 FIX: مسافة بين الوصف والكروت
+=============================== */
+
+.section-description {
+  margin-bottom: 40px !important;
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية كود وصف الأقسام ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🌍 تثبيت الهيدر وشريط اللغة
+   – إبقاء الهيدر ثابتًا في جميع اللغات
+   – إجبار اتجاه RTL دائمًا للنسخة العربية والفرنسية والإنجليزية
+   – منع أي تغيّر في المحاذاة أو التموضع عند تبديل اللغة */
+/* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
+/* 🧊 تثبيت اتجاه الهيدر وشريط اللغة في جميع اللغات */
+#header, #language-bar {
+  direction: rtl !important;
+  text-align: right !important;
+}
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+/* ⭐ نهاية كود تثبيت الهيدر ⭐ */
+/* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+
+
+/* 🟨 توحيد الفراغ العلوي لعناوين بطاقات الخطط */
+.plan-premium-card .luxury-card-inner,
+.plan-pro-card .luxury-card-inner,
+.plan-basic-card .luxury-card-inner {
+  padding-top: 36px !important;  /* نفس ارتفاع البطاقة الاحترافية */
+}
+
+/* 🔧 إلغاء أي هامش سابق للعناوين داخل البطاقات */
+.plan-premium-card h3,
+.plan-pro-card h3,
+.plan-basic-card h3 {
+  margin-top: 0 !important;
+  transform: none !important;
+}
+/* ===============================
+   ✅ تعريف زر cta-btn المفقود
+================================ */
+.cta-btn {
+  display: inline-block;
+  background: #2563eb;        /* نفس الأزرق */
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.cta-btn:hover {
+  background: #1d4ed8;
+}
