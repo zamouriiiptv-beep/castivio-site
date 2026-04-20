@@ -322,31 +322,37 @@ document.querySelectorAll(".lang-option").forEach(option => {
     const path = window.location.pathname;
 
     const langMap = {
-      // الإنجليزية
-      "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
-      "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-      "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+  // الإنجليزية
+  "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
+  "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+  "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
-      // الفرنسية
-      "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
-      "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-      "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+  // الفرنسية
+  "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
+  "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+  "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
-      // العربية
-      "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
-      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
+  // الإسبانية
+  "es/espana":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
+  "es/mexico":   { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/mexico/" },
+  "es/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
-      // الأدلة
-      "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-      "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-      "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+  // العربية
+  "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
+  "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
+  "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
 
-      // الرئيسية
-      "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-    };
+  // الأدلة
+  "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+  "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+  "es/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+  "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+
+  // الرئيسية
+  "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+  "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+  "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+};
 
     let target = null;
 
