@@ -555,5 +555,30 @@ document.querySelectorAll(".faq-btn").forEach((btn) => {
   /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 
+function updateBasicPlan(value) {
+    const priceDisplay = document.getElementById('price-val-basic');
+    const periodDisplay = document.getElementById('period-text-basic');
+    const waLink = document.getElementById('whatsapp-link-basic');
+    
+    // مصفوفة البيانات (سعر، نص المدة، النص للواتساب)
+    const pricingData = [
+        { price: 5, period: "/ شهر", text: "شهر واحد" },
+        { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+        { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+        { price: 30, period: "/ السنة", text: "سنة كاملة" },
+        { price: 50, period: "/ سنتين", text: "سنتين" }
+    ];
+
+    const selected = pricingData[value];
+
+    // تحديث الواجهة
+    priceDisplay.innerText = selected.price;
+    periodDisplay.innerText = selected.period;
+    
+    // تحديث رابط الواتساب ليشمل المدة المختارة تلقائياً
+    const baseUrl = "https://wa.me/212666686732?text=";
+    const message = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة الأساسية لمدة (${selected.text})`);
+    waLink.href = baseUrl + message;
+}
 
 }); // END DOMContentLoaded
