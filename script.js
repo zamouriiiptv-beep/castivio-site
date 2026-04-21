@@ -548,6 +548,118 @@ document.querySelectorAll(".faq-btn").forEach((btn) => {
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
   /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+  /* ========================================================= */
+/* ============ نظام سلايدر الأسعار التفاعلي الذكي ============= */
+/* ========================================================= */
+
+// 1. دالة تحريك السلايدر (المقبض الأزرق) عند الضغط على الكلمات مباشرة
+window.moveSlider = function(value, planType) {
+    const slider = document.getElementById(`${planType}-plan-slider`);
+    if (slider) {
+        slider.value = value; // تحريك المقبض برمجياً
+        updatePlanData(value, planType); // تحديث الأسعار والرسائل واللون
+    }
+};
+
+// 2. الدالة الأساسية لتحديث الأسعار والكلمات البارزة
+window.updatePlanData = function(value, planType) {
+    // مصفوفة البيانات (يمكنك تعديل الأسعار من هنا بسهولة)
+    const pricingConfig = {
+        basic: [
+            { price: 5,  period: "/ شهر",   text: "شهر واحد" },
+            { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+            { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+            { price: 30, period: "/ السنة",  text: "سنة كاملة" },
+            { price: 50, period: "/ سنتين",  text: "سنتين" }
+        ],
+        // إذا أضفت باقات أخرى مستقبلاً أضف بياناتها هنا بنفس الطريقة
+    };
+
+    const selected = pricingConfig[planType][value];
+
+    // تحديث رقم السعر في الواجهة
+    const priceElem = document.getElementById(`price-val-${planType}`);
+    const periodElem = document.getElementById(`period-text-${planType}`);
+    if (priceElem) priceElem.innerText = selected.price;
+    if (periodElem) periodElem.innerText = selected.period;
+
+    // تحديث رابط الواتساب والرسالة تلقائياً
+    const waLink = document.getElementById(`whatsapp-link-${planType}`);
+    if (waLink) {
+        const planName = planType === 'basic' ? 'الأساسية' : 'المميزة';
+        const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
+        waLink.href = `https://wa.me/212666686732?text=${msg}`;
+    }
+
+    // --- إبراز الكلمة المختارة وجعلها مثيرة للانتباه ---
+    // نبحث عن الكلمات داخل قسم السلايدر الخاص بهذه الخطة فقط
+    const container = document.getElementById(`${planType}-plan-slider`).parentElement;
+    const steps = container.querySelectorAll('.duration-step');
+    
+    steps.forEach((step, index) => {
+        if (index == value) {
+            step.classList.add('active-duration'); // الكلمة المختارة تصبح بارزة
+        } else {
+            step.classList.remove('active-duration'); // إزالة التمييز عن الباقي
+        }
+    });
+};
+
+/* ========================================================= */
+/* =================== إدارة أحداث الصفحة ===================== */
+/* ========================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- تفعيل الأكورديون (عرض الميزات) بدون حذف أي ميزة --- */
+    document.querySelectorAll(".toggle-features-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const card = button.closest(".plan-card");
+            const featuresList = card.querySelector(".plan-features");
+            const label = button.querySelector("span:not(.plan-arrow)");
+            const arrow = button.querySelector(".plan-arrow");
+
+            if (featuresList.classList.contains("hidden")) {
+                featuresList.classList.remove("hidden");
+                label.textContent = "إخفاء الميزات";
+                arrow.textContent = "🔼";
+            } else {
+                featuresList.classList.add("hidden");
+                label.textContent = "عرض الميزات";
+                arrow.textContent = "🔽";
+            }
+        });
+    });
+
+    /* --- تهيئة السلايدر عند تحميل الصفحة (ليبدأ من خيار "سنة") --- */
+    const basicSlider = document.getElementById('basic-plan-slider');
+    if (basicSlider) {
+        updatePlanData(basicSlider.value, 'basic');
+    }
+
+    /* ========================================================= */
+    /* كود شريط الأعلام (Flags Animation) كما كان لديك سابقاً */
+    /* ========================================================= */
+    const flagsScroll = document.getElementById('flags-scroll');
+    if (flagsScroll) {
+        let scrollPos = 0;
+        let paused = false;
+        function animateFlags() {
+            if (!paused) {
+                scrollPos += 0.6;
+                if (scrollPos >= flagsScroll.scrollWidth / 2) scrollPos = 0;
+                flagsScroll.style.transform = `translateX(${scrollPos}px)`;
+            }
+            requestAnimationFrame(animateFlags);
+        }
+        requestAnimationFrame(animateFlags);
+        
+        flagsScroll.addEventListener('mouseenter', () => paused = true);
+        flagsScroll.addEventListener('mouseleave', () => paused = false);
+    }
+
+}); // نهاية DOMContentLoaded
+
 
 
 }); // END DOMContentLoaded
