@@ -548,71 +548,127 @@ document.querySelectorAll(".faq-btn").forEach((btn) => {
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
   /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
-    /* ========================================================= */
-  /* ============ نظام سلايدر الأسعار الديناميكي ============= */
-  /* ========================================================= */
+/* ========================================================= */
+/* ============ نظام سلايدر الأسعار التفاعلي ============= */
+/* ========================================================= */
 
-  // دالة تحديث بيانات الخطة بناءً على قيمة السلايدر
-  window.updatePlanData = function(value, planType) {
-    // مصفوفات الأسعار لكل خطة (يمكنك تعديل المبالغ هنا)
-    const pricingConfig = {
-      basic: [
-        { price: 5,  period: "/ شهر",   text: "شهر واحد" },
-        { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
-        { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
-        { price: 30, period: "/ السنة",  text: "سنة كاملة" },
-        { price: 50, period: "/ سنتين",  text: "سنتين" }
-      ],
-      premium: [
-        { price: 7,  period: "/ شهر",   text: "شهر واحد" },
-        { price: 15, period: "/ 3 أشهر", text: "3 أشهر" },
-        { price: 25, period: "/ 6 أشهر", text: "6 أشهر" },
-        { price: 40, period: "/ السنة",  text: "سنة كاملة" },
-        { price: 70, period: "/ سنتين",  text: "سنتين" }
-      ],
-      pro: [
-        { price: 10, period: "/ شهر",   text: "شهر واحد" },
-        { price: 20, period: "/ 3 أشهر", text: "3 أشهر" },
-        { price: 30, period: "/ 6 أشهر", text: "6 أشهر" },
-        { price: 50, period: "/ السنة",  text: "سنة كاملة" },
-        { price: 90, period: "/ سنتين",  text: "سنتين" }
-      ]
-    };
+// دالة تحريك المقبض عند الضغط على الكلمات (شهر، سنة...)
+window.moveSlider = function(value, planType) {
+  const slider = document.getElementById(`${planType}-plan-slider`);
+  if (slider) {
+    slider.value = value;
+    window.updatePlanData(value, planType);
+  }
+};
 
-    const selected = pricingConfig[planType][value];
-    
-    // 1. تحديث رقم السعر
-    const priceElem = document.getElementById(`price-val-${planType}`);
-    if (priceElem) priceElem.innerText = selected.price;
-
-    // 2. تحديث نص المدة (مثلاً: / السنة)
-    const periodElem = document.getElementById(`period-text-${planType}`);
-    if (periodElem) periodElem.innerText = selected.period;
-
-    // 3. تحديث رابط الواتساب والرسالة تلقائياً
-    const waLink = document.getElementById(`whatsapp-link-${planType}`);
-    if (waLink) {
-      const planName = planType === 'basic' ? 'الأساسية' : planType === 'premium' ? 'المميزة' : 'الاحترافية';
-      const message = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
-      waLink.href = `https://wa.me/212666686732?text=${message}`;
-    }
+// دالة تحديث السعر والرسالة والمدة
+window.updatePlanData = function(value, planType) {
+  // مصفوفة الأسعار (يمكنك تعديلها هنا)
+  const pricingConfig = {
+    basic: [
+      { price: 5,  period: "/ شهر",   text: "شهر واحد" },
+      { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+      { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+      { price: 30, period: "/ السنة",  text: "سنة كاملة" },
+      { price: 50, period: "/ سنتين",  text: "سنتين" }
+    ]
   };
 
-  // تأكد من إضافة مستمعي الأحداث للسلايدر عند تحميل الصفحة
-  const basicSlider = document.getElementById('basic-plan-slider');
-  if (basicSlider) {
-    basicSlider.addEventListener('input', function() {
-      updatePlanData(this.value, 'basic');
-    });
+  const selected = pricingConfig[planType][value];
+  const priceElem = document.getElementById(`price-val-${planType}`);
+  const periodElem = document.getElementById(`period-text-${planType}`);
+  const waLink = document.getElementById(`whatsapp-link-${planType}`);
+
+  if (priceElem) priceElem.innerText = selected.price;
+  if (periodElem) periodElem.innerText = selected.period;
+
+  if (waLink) {
+    const planName = planType === 'basic' ? 'الأساسية' : 'المميزة';
+    const message = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
+    waLink.href = `https://wa.me/212666686732?text=${message}`;
   }
-  
-  // كرر الأمر للخطط الأخرى إذا أضفت لها سلايدر
-  const premiumSlider = document.getElementById('premium-plan-slider');
-  if (premiumSlider) {
-    premiumSlider.addEventListener('input', function() {
-      updatePlanData(this.value, 'premium');
-    });
+};
+
+/* ========================================================= */
+/* منع المتصفح من استرجاع آخر صفحة (Session Restore Fix) */
+/* ========================================================= */
+
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    window.location.reload();
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ========================================================= */
+  /* ====================== شريط الأعلام ===================== */
+  /* ========================================================= */
+  const flagsScroll = document.getElementById('flags-scroll');
+  const flagsContainer = document.getElementById('flags-container');
+  const totalFlags = 20;
+  const basePath = '/images/A3lame/';
+  let flagsHTML = '';
+
+  for (let i = 1; i <= totalFlags; i++) {
+    flagsHTML += `<img loading="lazy" src="${basePath}flag${i}.webp" alt="flag ${i}" class="flag-img" onerror="this.style.display='none'">`;
+  }
+
+  function fillFlags() {
+    if (!flagsScroll || !flagsContainer) return;
+    flagsScroll.innerHTML = '';
+    while (flagsScroll.scrollWidth < flagsContainer.clientWidth * 2) {
+      flagsScroll.innerHTML += flagsHTML;
+    }
+  }
+  fillFlags();
+
+  if (flagsScroll) {
+    let scrollPos = 0;
+    let paused = false;
+    function getSpeed() { return window.innerWidth < 480 ? 0.3 : 1.0; }
+    let speed = getSpeed();
+
+    function animateFlags() {
+      if (!paused) {
+        scrollPos += speed;
+        if (scrollPos >= flagsScroll.scrollWidth / 2) scrollPos -= flagsScroll.scrollWidth / 2;
+        flagsScroll.style.transform = `translateX(${scrollPos}px)`;
+      }
+      requestAnimationFrame(animateFlags);
+    }
+    requestAnimationFrame(animateFlags);
+  }
+
+  /* ========================================================= */
+  /* =================== أكورديون الخطط ===================== */
+  /* ========================================================= */
+  // الكود الخاص بك لتفتيح الميزات وإغلاقها (بدون حذف المميزات)
+  document.querySelectorAll(".toggle-features-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".plan-card");
+      const featuresList = card.querySelector(".plan-features");
+      const label = button.querySelector("span:not(.plan-arrow)");
+      const arrow = button.querySelector(".plan-arrow");
+
+      if (featuresList.classList.contains("hidden")) {
+        featuresList.classList.remove("hidden");
+        label.textContent = "إخفاء الميزات";
+        arrow.textContent = "🔼";
+      } else {
+        featuresList.classList.add("hidden");
+        label.textContent = "عرض الميزات";
+        arrow.textContent = "🔽";
+      }
+    });
+  });
+
+  // ... باقي أكواد السلايدرز والقائمة الجانبية التي أرسلتها سابقاً ...
+});
 
 
 
