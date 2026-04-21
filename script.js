@@ -548,6 +548,72 @@ document.querySelectorAll(".faq-btn").forEach((btn) => {
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
   /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+    /* ========================================================= */
+  /* ============ نظام سلايدر الأسعار الديناميكي ============= */
+  /* ========================================================= */
+
+  // دالة تحديث بيانات الخطة بناءً على قيمة السلايدر
+  window.updatePlanData = function(value, planType) {
+    // مصفوفات الأسعار لكل خطة (يمكنك تعديل المبالغ هنا)
+    const pricingConfig = {
+      basic: [
+        { price: 5,  period: "/ شهر",   text: "شهر واحد" },
+        { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+        { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+        { price: 30, period: "/ السنة",  text: "سنة كاملة" },
+        { price: 50, period: "/ سنتين",  text: "سنتين" }
+      ],
+      premium: [
+        { price: 7,  period: "/ شهر",   text: "شهر واحد" },
+        { price: 15, period: "/ 3 أشهر", text: "3 أشهر" },
+        { price: 25, period: "/ 6 أشهر", text: "6 أشهر" },
+        { price: 40, period: "/ السنة",  text: "سنة كاملة" },
+        { price: 70, period: "/ سنتين",  text: "سنتين" }
+      ],
+      pro: [
+        { price: 10, period: "/ شهر",   text: "شهر واحد" },
+        { price: 20, period: "/ 3 أشهر", text: "3 أشهر" },
+        { price: 30, period: "/ 6 أشهر", text: "6 أشهر" },
+        { price: 50, period: "/ السنة",  text: "سنة كاملة" },
+        { price: 90, period: "/ سنتين",  text: "سنتين" }
+      ]
+    };
+
+    const selected = pricingConfig[planType][value];
+    
+    // 1. تحديث رقم السعر
+    const priceElem = document.getElementById(`price-val-${planType}`);
+    if (priceElem) priceElem.innerText = selected.price;
+
+    // 2. تحديث نص المدة (مثلاً: / السنة)
+    const periodElem = document.getElementById(`period-text-${planType}`);
+    if (periodElem) periodElem.innerText = selected.period;
+
+    // 3. تحديث رابط الواتساب والرسالة تلقائياً
+    const waLink = document.getElementById(`whatsapp-link-${planType}`);
+    if (waLink) {
+      const planName = planType === 'basic' ? 'الأساسية' : planType === 'premium' ? 'المميزة' : 'الاحترافية';
+      const message = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
+      waLink.href = `https://wa.me/212666686732?text=${message}`;
+    }
+  };
+
+  // تأكد من إضافة مستمعي الأحداث للسلايدر عند تحميل الصفحة
+  const basicSlider = document.getElementById('basic-plan-slider');
+  if (basicSlider) {
+    basicSlider.addEventListener('input', function() {
+      updatePlanData(this.value, 'basic');
+    });
+  }
+  
+  // كرر الأمر للخطط الأخرى إذا أضفت لها سلايدر
+  const premiumSlider = document.getElementById('premium-plan-slider');
+  if (premiumSlider) {
+    premiumSlider.addEventListener('input', function() {
+      updatePlanData(this.value, 'premium');
+    });
+  }
+
 
 
 }); // END DOMContentLoaded
