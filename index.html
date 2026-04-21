@@ -850,47 +850,54 @@
 
       <!-- 🟦 الخطة الأساسية -->
       <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
-  <div style="height:20px"></div>
-  <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
 
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
-    <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
+<div style="height:20px"></div>
 
-    <div class="duration-slider-wrapper mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider" id="basic-plan-slider" oninput="updateBasicPlan(this.value)">
-      <div class="slider-labels flex justify-between px-2 text-xs font-bold text-gray-500 mt-2">
-        <span>شهر</span>
-        <span>3أشهر</span>
-        <span>6أشهر</span>
-        <span>سنة</span>
-        <span>سنتين</span>
-      </div>
-    </div>
+        <!-- BADGE -->
+        <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
 
-    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-      <span id="price-val-basic">30</span>
-      <span class="text-xl font-bold text-gray-500">يورو</span>
-      <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
-    </div>
+        <div class="relative z-10 text-center">
+          <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
+          <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
 
-    <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" id="features-basic-btn">
-      <span class="font-bold text-blue-600">عرض الميزات</span>
-      <span class="plan-arrow">🔽</span>
-    </button>
-
-    <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2 text-gray-700">
-      <li>أزيد من 21,000 قناة متنوعة</li>
-      <li>أزيد من 30,000 مسلسل</li>
-      <li>أزيد من 158,000 فيلم</li>
-      </ul>
-
-    <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=أريد الاشتراك في الخطة الأساسية لمدة سنة"
-       target="_blank" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg transition-all duration-300 text-sm">
-      اشترك الآن
-    </a>
-  </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+    <span>30</span>
+    <span class="text-xl font-bold text-gray-500">يورو</span>
+    <span class="text-lg font-medium text-gray-400">/ السنة</span>
 </div>
+
+
+          <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
+            <span class="font-bold text-blue-600">عرض الميزات</span>
+            <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
+          </button>
+
+          <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
+            <li>أزيد من 21,000 قناة متنوعة</li>
+            <li>أزيد من 30,000 مسلسل</li>
+            <li>أزيد من 158,000 فيلم</li>
+            <li>فيديو حسب الطلب (VOD)</li>
+            <li>مشاهدة سلسة بدون تقطعات</li>
+            <li>يعمل على جميع الأجهزة</li>
+            <li>جودة SD / HD / UHD / 4K / 8K</li>
+            <li>نسبة تشغيل 99٪+</li>
+            <li>تحديثات يومية للسرفر</li>
+            <li>دعم فني دائم</li>
+            <li>ضمان الاسترجاع 10 أيام</li>
+            <li>محتوى حصري متجدد باستمرار</li>
+          </ul>
+
+          <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20-%20Prime%20IPTV"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full 
+          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
+   aria-label="اشتراك الخطة الأساسية واتساب">
+  اشترك الآن
+</a>
+
+        </div>
+      </div>
 
       <!-- 🟨 الخطة المميزة -->
       <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
