@@ -2091,33 +2091,3 @@ section > *:last-child {
 .cta-btn:hover {
   background: #1d4ed8;
 }
-
-
-
-/* تنسيق السلايدر */
-.custom-slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 10px;
-  outline: none;
-  cursor: pointer;
-}
-
-.custom-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  background: #3b82f6; /* لون أزرق مثل زر الاشتراك */
-  border: 4px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.custom-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  background: #7c3aed; /* يتحول للبنفسجي عند اللمس */
-}
