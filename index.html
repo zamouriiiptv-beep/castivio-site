@@ -843,100 +843,75 @@
     <p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
           text-transparent bg-clip-text bg-gradient-to-r 
           from-pink-500 via-fuchsia-500 to-purple-500">
-      اختر خطتك المثالية للاستمتاع بمشاهدة بلا حدود
-    </p>
-
-    <!-- قسم السلايدر -->
-    <section id="subscription-slider" class="my-8 max-w-md mx-auto p-4 border rounded-lg bg-white shadow-md">
-      <label for="plan-duration" class="block mb-2 font-semibold text-center text-gray-700">
-        اختر مدة الاشتراك:
-      </label>
-      <input type="range" id="plan-duration" name="plan-duration" min="1" max="5" step="1" list="durations-list" value="4" style="width: 100%;">
-
-      <datalist id="durations-list" style="display: flex; justify-content: space-between; padding: 0 6px; margin-top: 8px;">
-        <option value="1" label="شهر"></option>
-        <option value="2" label="3 أشهر"></option>
-        <option value="3" label="6 أشهر"></option>
-        <option value="4" label="سنة"></option>
-        <option value="5" label="سنتين"></option>
-      </datalist>
-
-      <div id="selected-duration" class="mt-4 text-center font-bold text-purple-700" style="font-family:'Cairo',sans-serif;">
-        سنة
-      </div>
-    </section>
+  اختر خطتك المثالية للاستمتاع بمشاهدة بلا حدود
+</p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- 🟦 الخطة الأساسية -->
       <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
+  <div style="height:20px"></div>
+  <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
 
-        <div style="height:20px"></div>
+  <div class="relative z-10 text-center">
+    <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
+    <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
 
-        <!-- BADGE -->
-        <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
-
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
-          <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
-
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-            <span>30</span>
-            <span class="text-xl font-bold text-gray-500">يورو</span>
-            <span class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
-
-          <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
-            <span class="font-bold text-blue-600">عرض الميزات</span>
-            <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
-          </button>
-
-          <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
-            <li>أزيد من 21,000 قناة متنوعة</li>
-            <li>أزيد من 30,000 مسلسل</li>
-            <li>أزيد من 158,000 فيلم</li>
-            <li>فيديو حسب الطلب (VOD)</li>
-            <li>مشاهدة سلسة بدون تقطعات</li>
-            <li>يعمل على جميع الأجهزة</li>
-            <li>جودة SD / HD / UHD / 4K / 8K</li>
-            <li>نسبة تشغيل 99٪+</li>
-            <li>تحديثات يومية للسرفر</li>
-            <li>دعم فني دائم</li>
-            <li>ضمان الاسترجاع 10 أيام</li>
-            <li>محتوى حصري متجدد باستمرار</li>
-          </ul>
-
-          <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20-%20Prime%20IPTV"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-            aria-label="اشتراك الخطة الأساسية واتساب">
-            اشترك الآن
-          </a>
-
-        </div>
+    <div class="duration-slider-wrapper mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider" id="basic-plan-slider" oninput="updateBasicPlan(this.value)">
+      <div class="slider-labels flex justify-between px-2 text-xs font-bold text-gray-500 mt-2">
+        <span>شهر</span>
+        <span>3أشهر</span>
+        <span>6أشهر</span>
+        <span>سنة</span>
+        <span>سنتين</span>
       </div>
+    </div>
+
+    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+      <span id="price-val-basic">30</span>
+      <span class="text-xl font-bold text-gray-500">يورو</span>
+      <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
+    </div>
+
+    <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" id="features-basic-btn">
+      <span class="font-bold text-blue-600">عرض الميزات</span>
+      <span class="plan-arrow">🔽</span>
+    </button>
+
+    <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2 text-gray-700">
+      <li>أزيد من 21,000 قناة متنوعة</li>
+      <li>أزيد من 30,000 مسلسل</li>
+      <li>أزيد من 158,000 فيلم</li>
+      </ul>
+
+    <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=أريد الاشتراك في الخطة الأساسية لمدة سنة"
+       target="_blank" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg transition-all duration-300 text-sm">
+      اشترك الآن
+    </a>
+  </div>
+</div>
+
 
       <!-- 🟨 الخطة المميزة -->
       <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
 
-        <div style="height:20px"></div>
+<div style="height:20px"></div>
 
         <!-- BADGE -->
         <div class="plan-badge badge-best">الأكثر مبيعًا</div>
 
         <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-yellow-500 mb-2">
-            الخطة المميزة
-          </h3>
+         <h3 class="text-2xl font-bold text-yellow-500 mb-2">
+  الخطة المميزة
+</h3>
           <p class="text-gray-600 mb-4">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
 
           <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-            <span>40</span>
-            <span class="text-xl font-bold text-gray-500">يورو</span>
-            <span class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
+    <span>40</span>
+    <span class="text-xl font-bold text-gray-500">يورو</span>
+    <span class="text-lg font-medium text-gray-400">/ السنة</span>
+</div>
 
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
             <span class="font-bold text-yellow-500">عرض الميزات</span>
@@ -944,14 +919,14 @@
           </button>
 
           <ul id="features-premium" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
-            <li>أزيد من 15,000 قناة متنوعة</li>
+           <li>أزيد من 15,000 قناة متنوعة</li>
             <li>أزيد من 14,000 مسلسل</li>
             <li>أزيد من 63,000 فيلم</li>
             <li>فيديو حسب الطلب (VOD)</li>
             <li>مشاهدة بدون تقطعات</li>
             <li>يدعم كل الأجهزة</li>
             <li>جودة SD / HD / 4K / 8K</li>
-            <li>نسبة تشغيل 99٪+</li>
+             <li>نسبة تشغيل 99٪+</li>
             <li>تحديثات يومية</li>
             <li>دعم فني</li>
             <li>ضمان 10 أيام</li>
@@ -959,13 +934,13 @@
           </ul>
 
           <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20-%20Prime%20IPTV"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
+   target="_blank"
+   rel="noopener noreferrer"
+   class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
           hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-            aria-label="اشتراك الخطة المميزة واتساب">
-            اشترك الآن
-          </a>
+   aria-label="اشتراك الخطة المميزة واتساب">
+  اشترك الآن
+</a>
 
         </div>
       </div>
@@ -973,7 +948,7 @@
       <!-- 🟪 الخطة الاحترافية -->
       <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card">
 
-        <div style="height:20px"></div>
+<div style="height:20px"></div>
 
         <!-- BADGE -->
         <div class="plan-badge badge-gold">الخطة الذهبية</div>
@@ -983,8 +958,8 @@
           <p class="text-gray-600 mb-4">للمستخدمين الذين يريدون الأفضل فقط</p>
 
           <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-            50 <span class="text-xl font-bold text-gray-500">يورو</span> <span class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
+    50 <span class="text-xl font-bold text-gray-500">يورو</span> <span class="text-lg font-medium text-gray-400">/ السنة</span>
+</div>
 
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
             <span class="font-bold text-purple-600">عرض الميزات</span>
@@ -1008,13 +983,13 @@
           </ul>
 
           <a
-            href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20-%20Prime%20IPTV"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-            aria-label="اشتراك الخطة الاحترافية واتساب">
-            اشترك الآن
-          </a>
+  href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20-%20Prime%20IPTV"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
+  aria-label="اشتراك الخطة الاحترافية واتساب">
+  اشترك الآن
+</a>
 
         </div>
       </div>
@@ -1022,7 +997,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- 🚨🚨 نهاية قسم الخطط العالمية 💎 🚨🚨 -->
 
