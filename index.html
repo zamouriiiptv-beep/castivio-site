@@ -849,52 +849,59 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- 🟦 الخطة الأساسية -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
-  <div style="height:20px"></div>
-  <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
+      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
+  <div class="luxury-card-inner">
+    <div style="height:20px"></div>
+    <div class="plan-badge badge-economy">الخيار الاقتصادي</div>
 
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
-    <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
+    <div class="relative z-10 text-center">
+      <h3 class="text-2xl font-bold text-blue-500 mb-2">الخطة الأساسية</h3>
+      <p class="text-gray-600 mb-4">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
 
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
-      <div class="flex justify-between text-[10px] font-bold text-gray-400 mt-2 px-1">
-        <span>شهر</span><span>3أشهر</span><span>6أشهر</span><span>سنة</span><span>سنتين</span>
+      <div class="duration-slider-container mb-6">
+        <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+        
+        <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">شهر</span>
+          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3أشهر</span>
+          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6أشهر</span>
+          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">سنة</span>
+          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">سنتين</span>
+        </div>
       </div>
+
+      <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+        <span id="price-val-basic">30</span>
+        <span class="text-xl font-bold text-gray-500">يورو</span>
+        <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
+      </div>
+
+      <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" id="features-basic-btn">
+        <span class="font-bold text-blue-600">عرض الميزات</span>
+        <span class="plan-arrow text-lg">🔽</span>
+      </button>
+
+      <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2 text-gray-700">
+        <li>أزيد من 21,000 قناة متنوعة</li>
+        <li>أزيد من 30,000 مسلسل</li>
+        <li>أزيد من 158,000 فيلم</li>
+        <li>فيديو حسب الطلب (VOD)</li>
+        <li>مشاهدة سلسة بدون تقطعات</li>
+        <li>يعمل على جميع الأجهزة</li>
+        <li>جودة SD / HD / UHD / 4K / 8K</li>
+        <li>نسبة تشغيل 99٪+</li>
+        <li>تحديثات يومية للسرفر</li>
+        <li>دعم فني دائم</li>
+        <li>ضمان الاسترجاع 10 أيام</li>
+        <li>محتوى حصري متجدد باستمرار</li>
+      </ul>
+
+      <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=مرحباً، أريد الاشتراك في الخطة الأساسية لمدة سنة"
+         target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg transition-all duration-300 text-sm">
+        اشترك الآن
+      </a>
     </div>
-
-    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-      <span id="price-val-basic">30</span>
-      <span class="text-xl font-bold text-gray-500">يورو</span>
-      <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
-    </div>
-
-    <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" id="features-basic-btn">
-      <span class="font-bold text-blue-600">عرض الميزات</span>
-      <span class="plan-arrow text-lg">🔽</span>
-    </button>
-
-    <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2 text-gray-700">
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>أزيد من 21,000 قناة متنوعة</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>أزيد من 30,000 مسلسل</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>أزيد من 158,000 فيلم</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>فيديو حسب الطلب (VOD)</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>مشاهدة سلسة بدون تقطعات</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>يعمل على جميع الأجهزة</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>جودة SD / HD / UHD / 4K / 8K</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>نسبة تشغيل 99٪+</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>تحديثات يومية للسرفر</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>دعم فني دائم</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>ضمان الاسترجاع 10 أيام</li>
-      <li><i class="fas fa-check-circle text-blue-500 ml-2"></i>محتوى حصري متجدد باستمرار</li>
-    </ul>
-
-    <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=مرحباً، أريد الاشتراك في الخطة الأساسية لمدة سنة"
-       target="_blank" rel="noopener noreferrer"
-       class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-      اشترك الآن
-    </a>
   </div>
 </div>
 
