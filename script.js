@@ -322,37 +322,31 @@ document.querySelectorAll(".lang-option").forEach(option => {
     const path = window.location.pathname;
 
     const langMap = {
-  // الإنجليزية
-  "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
-  "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-  "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+      // الإنجليزية
+      "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
+      "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+      "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
-  // الفرنسية
-  "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
-  "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-  "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+      // الفرنسية
+      "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
+      "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+      "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
-  // الإسبانية
-  "es/espana":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
-  "es/mexico":   { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/mexico/" },
-  "es/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+      // العربية
+      "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
+      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
 
-  // العربية
-  "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
-  "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
-  "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
+      // الأدلة
+      "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+      "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+      "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
 
-  // الأدلة
-  "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-  "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-  "es/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-  "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-
-  // الرئيسية
-  "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-  "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-  "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-};
+      // الرئيسية
+      "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+    };
 
     let target = null;
 
@@ -555,30 +549,5 @@ document.querySelectorAll(".faq-btn").forEach((btn) => {
   /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
   /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 
-function updateBasicPlan(value) {
-    const priceDisplay = document.getElementById('price-val-basic');
-    const periodDisplay = document.getElementById('period-text-basic');
-    const waLink = document.getElementById('whatsapp-link-basic');
-    
-    // مصفوفة البيانات (سعر، نص المدة، النص للواتساب)
-    const pricingData = [
-        { price: 5, period: "/ شهر", text: "شهر واحد" },
-        { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
-        { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
-        { price: 30, period: "/ السنة", text: "سنة كاملة" },
-        { price: 50, period: "/ سنتين", text: "سنتين" }
-    ];
-
-    const selected = pricingData[value];
-
-    // تحديث الواجهة
-    priceDisplay.innerText = selected.price;
-    periodDisplay.innerText = selected.period;
-    
-    // تحديث رابط الواتساب ليشمل المدة المختارة تلقائياً
-    const baseUrl = "https://wa.me/212666686732?text=";
-    const message = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة الأساسية لمدة (${selected.text})`);
-    waLink.href = baseUrl + message;
-}
 
 }); // END DOMContentLoaded
