@@ -2091,3 +2091,151 @@ section > *:last-child {
 .cta-btn:hover {
   background: #1d4ed8;
 }
+
+
+/* ========================================================= */
+/* ============= تنسيق قسم الخطط (Luxury Card) ============== */
+/* ========================================================= */
+
+.plan-basic-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.badge-economy {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: #3b82f6;
+    color: white;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 20;
+}
+
+/* ========================================================= */
+/* ============ تنسيق السلايدر والكلمات البارزة ============= */
+/* ========================================================= */
+
+.duration-slider-container {
+    padding: 10px 0;
+    position: relative;
+}
+
+/* شكل شريط السحب */
+.custom-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* شكل المقبض الأزرق */
+.custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: #3b82f6;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transition: 0.3s ease;
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+    background: #2563eb;
+    transform: scale(1.2);
+}
+
+/* تنسيق الكلمات (شهر، 3 أشهر...) */
+.duration-step {
+    cursor: pointer;
+    font-weight: 900; /* خط سميك جداً */
+    color: #94a3b8;   /* لون رمادي باهت للخيارات غير النشطة */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    user-select: none;
+}
+
+.duration-step:hover {
+    color: #3b82f6;
+}
+
+/* ⭐ الكلمة النشطة (المختارة) - مثيرة للانتباه جداً ⭐ */
+.active-duration {
+    color: #ffffff !important;      /* خط أبيض */
+    background-color: #ef4444;    /* خلفية حمراء صارخة للتنبيه */
+    transform: scale(1.25);       /* تكبير الكلمة بشكل واضح */
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4);
+    z-index: 10;
+}
+
+/* ========================================================= */
+/* ============ تنسيق المميزات (الأكورديون) ============== */
+/* ========================================================= */
+
+.plan-features {
+    transition: all 0.5s ease;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+/* إضافة أيقونة صح قبل كل ميزة */
+.plan-features li::after {
+    content: "✓";
+    margin-left: 10px;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ========================================================= */
+/* =================== تنسيق الأزرار ====================== */
+/* ========================================================= */
+
+.toggle-features-btn:hover .plan-arrow {
+    transform: translateY(3px);
+}
+
+.plan-arrow {
+    transition: transform 0.3s ease;
+}
+
+#whatsapp-link-basic {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+#whatsapp-link-basic:hover {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
