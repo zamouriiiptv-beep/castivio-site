@@ -1,1581 +1,666 @@
-<!DOCTYPE html>
-<html lang="fr" dir="ltr">
-<head>
 
-  <!-- ============================
-       1) وسوم الصفحة الأساسية
-       ============================ -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Le meilleur abonnement IPTV pour regarder des chaînes, des matchs et des films en HD, 4K et 8K avec un streaming rapide et stable fonctionnant sur tous les appareils sans interruption.">
-  <meta name="author" content="Équipe Prime IPTV">
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-  <meta name="theme-color" content="#6B46C1">
+/* ========================================================= */
+/* منع المتصفح من استرجاع آخر صفحة (Session Restore Fix) */
+/* ========================================================= */
 
-<link rel="preload" as="image" href="/images/new-header.webp">
-
-  <title>Prime IPTV | Meilleur abonnement IPTV HD, 4K & 8K</title>
-
-<!-- ============================
-     2) الرابط الرئيسي Canonical
-     ============================ -->
-<link rel="canonical" href="https://primeiptvplus.com/fr/">
-
-<!-- ============================
-     3) الروابط الدولية (hreflang)
-     ============================ -->
-<link rel="alternate" hreflang="ar" href="https://primeiptvplus.com/">
-<link rel="alternate" hreflang="en" href="https://primeiptvplus.com/en/">
-<link rel="alternate" hreflang="fr" href="https://primeiptvplus.com/fr/">
-<link rel="alternate" hreflang="es" href="https://primeiptvplus.com/es/">
-<link rel="alternate" hreflang="x-default" href="https://primeiptvplus.com/">
-
-<!-- ============================
-     4) الهوية البصرية للموقع
-     ============================ -->
-
-<!-- Theme & Microsoft Tiles -->
-<meta name="msapplication-TileColor" content="#6B46C1">
-<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
-
-<!-- Favicons -->
-<link rel="icon" href="/images/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-
-<!-- PWA Manifest -->
-<link rel="manifest" href="/site.webmanifest">
-
-<!-- ============================
-     تحسينات الأداء وتسريع التحميل
-     ============================ -->
-
-<!-- الاتصال المسبق بالمصادر الخارجية -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-
-<!-- تهيئة DNS للمصادر الخارجية -->
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-  <!-- ============================
-       5) تحسين السرعة (Speed)
-       ============================ -->
-  <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/styles.css"></noscript>
-
-  <script src="/script.js" defer></script>
-
-  <!-- ============================
-       ✅ 6) خطوط الموقع (Cairo + Tajawal)
-       ============================ -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- ============================
-       7) ملفات CSS و JS الخارجية
-       ============================ -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
-
-  <!-- ============================
-       ✅ 8) تفعيل الخطوط في الموقع
-       ============================ -->
-  <style>
-    body {
-      font-family: 'Tajawal', sans-serif !important;
-    }
-
-    h1, h2, h3, h4, h5, h6,
-    .section-title,
-    .title,
-    .heading {
-      font-family: 'Cairo', sans-serif !important;
-      font-weight: 800;
-    }
-
-    /* ستايل شريط اللغة */
-    #language-bar {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .lang-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      background: white;
-      padding: 8px 12px;
-      border-radius: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: all 0.2s;
-    }
-
-    .lang-wrapper:hover {
-      background: #f3e8ff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .lang-dropdown {
-      position: absolute;
-      top: 55px;
-      right: 0;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 8px 0;
-      min-width: 180px;
-      z-index: 10000;
-      display: none;
-    }
-
-    .lang-dropdown.show,
-    .lang-dropdown:not(.hidden) {
-      display: block;
-    }
-
-    .lang-option {
-      padding: 10px 16px;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-
-    .lang-option:hover {
-      background: #f3e8ff;
-    }
-
-    .lang-option a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .flag-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-      object-fit: cover;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    #flags-container {
-      overflow: hidden;
-      width: 300px;
-    }
-
-    #flags-scroll {
-      display: flex;
-      gap: 12px;
-      white-space: nowrap;
-      will-change: transform;
-    }
-
-    .flag-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-  </style>
-
-  <!-- ============================
-       9) البيانات المنظمة (Schema)
-       ============================ -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "Organization",
-      "@id": "https://primeiptvplus.com/#organization",
-      "name": "Prime IPTV",
-      "url": "https://primeiptvplus.com/",
-      "logo": { "@id": "https://primeiptvplus.com/#logo" },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+212666686732",
-        "contactType": "customer service",
-        "availableLanguage": ["fr", "es", "ar", "en"]
-      }
-    },
-
-    {
-      "@type": "ImageObject",
-      "@id": "https://primeiptvplus.com/#logo",
-      "url": "https://primeiptvplus.com/images/logo.webp",
-      "width": 300,
-      "height": 300
-    },
-
-    {
-  "@type": "WebPage",
-  "@id": "https://primeiptvplus.com/fr/#webpage",
-  "url": "https://primeiptvplus.com/fr/",
-  "name": "Prime IPTV – Abonnement IPTV pour chaînes, sports et films en haute qualité",
-  "description": "Prime IPTV FR propose un abonnement IPTV fiable pour regarder chaînes TV, sports, films et séries en HD, 4K et 8K avec un streaming stable.",
-  "inLanguage": "fr",
-  "about": { "@id": "https://primeiptvplus.com/#organization" },
-  "primaryImageOfPage": { "@id": "https://primeiptvplus.com/#logo" },
-  "mainEntityOfPage": {
-  "@id": "https://primeiptvplus.com/fr/"
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
 }
 
-},
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});
 
-    {
-      "@type": "Product",
-      "@id": "https://primeiptvplus.com/fr/#product",
-      "name": "Abonnement Prime IPTV (FR)",
-      "image": "https://primeiptvplus.com/images/logo.webp",
-      "description": "Abonnement IPTV fiable pour les utilisateurs francophones avec chaînes internationales, sports et VOD en haute qualité.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Prime IPTV"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": "25",
-        "highPrice": "40",
-        "offerCount": "3",
-        "url": "https://primeiptvplus.com/fr/#pricing",
-        "availability": "https://schema.org/InStock"
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ========================================================= */
+  /* ====================== شريط الأعلام ===================== */
+  /* ========================================================= */
+
+  const flagsScroll = document.getElementById('flags-scroll');
+  const flagsContainer = document.getElementById('flags-container');
+
+  const totalFlags = 20;
+  const basePath = '/images/A3lame/';
+  let flagsHTML = '';
+
+  for (let i = 1; i <= totalFlags; i++) {
+    flagsHTML += `
+      <img loading="lazy" src="${basePath}flag${i}.webp" 
+           alt="flag ${i}" class="flag-img"
+           onerror="this.style.display='none'">
+    `;
+  }
+
+  function fillFlags() {
+    if (!flagsScroll || !flagsContainer) return;
+    flagsScroll.innerHTML = '';
+    while (flagsScroll.scrollWidth < flagsContainer.clientWidth * 2) {
+      flagsScroll.innerHTML += flagsHTML;
+    }
+  }
+
+  fillFlags();
+
+  if (flagsScroll) {
+    const images = flagsScroll.querySelectorAll('img.flag-img');
+    images.forEach(img => {
+      img.addEventListener('touchstart', () => { img.style.transform = 'scale(1.15)'; }, { passive: true });
+      img.addEventListener('touchend', () => { img.style.transform = ''; }, { passive: true });
+    });
+
+    let scrollPos = 0;
+    let paused = false;
+
+    function getSpeed() {
+      if (window.innerWidth < 480) return 0.3;
+      if (window.innerWidth < 900) return 0.6;
+      return 1.0;
+    }
+
+    let speed = getSpeed();
+
+    function animateFlags() {
+      if (!paused) {
+        scrollPos += speed;
+        const halfWidth = flagsScroll.scrollWidth / 2;
+        if (scrollPos >= halfWidth) scrollPos -= halfWidth;
+        flagsScroll.style.transform = `translateX(${scrollPos}px)`;
       }
-    },
+      requestAnimationFrame(animateFlags);
+    }
 
-    {
-      "@type": "FAQPage",
-      "@id": "https://primeiptvplus.com/fr/#faq",
-      "inLanguage": "fr",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Puis-je utiliser le service sur plusieurs appareils ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, un seul compte peut être utilisé sur plusieurs appareils selon le plan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Le service prend-il en charge la qualité 4K ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, tous les plans prennent en charge la diffusion jusqu'à 8K selon la disponibilité du contenu."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Y a-t-il un support technique disponible 24/7 ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, le support technique est disponible 24/7 via WhatsApp."
-          }
+    requestAnimationFrame(animateFlags);
+
+    flagsScroll.addEventListener('mouseenter', () => paused = true);
+    flagsScroll.addEventListener('mouseleave', () => paused = false);
+    flagsScroll.addEventListener('touchstart', () => paused = true, { passive: true });
+    flagsScroll.addEventListener('touchend', () => paused = false, { passive: true });
+
+    window.addEventListener('resize', () => {
+      scrollPos = 0;
+      speed = getSpeed();
+      fillFlags();
+    });
+  }
+
+
+
+
+
+  /* ========================================================= */
+  /* ==================== القائمة الجانبية =================== */
+  /* ========================================================= */
+
+  const menuBtn = document.getElementById("menu-btn");
+  const sideMenu = document.getElementById("side-menu");
+  const overlay = document.getElementById("overlay");
+  const closeMenu = document.getElementById("close-menu");
+
+  if (menuBtn && sideMenu && overlay && closeMenu) {
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.add("open");
+      overlay.classList.add("active");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("active");
+    });
+
+    document.querySelectorAll('#side-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        sideMenu.classList.remove("open");
+        overlay.classList.remove("active");
+      });
+    });
+  }
+
+
+
+
+
+/* ========================================================= */
+/* ====================== سلايدر الأفلام =================== */
+/* ========================================================= */
+
+let swiperMoviesInstance = null;
+
+const movieImages = [
+  "/images/Aflame/poster1.webp",
+  "/images/Aflame/poster2.webp",
+  "/images/Aflame/poster3.webp",
+  "/images/Aflame/poster4.webp",
+  "/images/Aflame/poster5.webp"
+];
+
+function updateMoviesSlider() {
+  const moviesWrapper = document.querySelector(".mySwiperMovies .swiper-wrapper");
+  if (!moviesWrapper) return;
+
+  moviesWrapper.innerHTML = movieImages.map(src =>
+    `<div class="swiper-slide">
+       <img loading="lazy" src="${src}" alt="Movie Poster">
+     </div>`
+  ).join('');
+
+  if (swiperMoviesInstance) {
+    swiperMoviesInstance.destroy(true, true);
+  }
+
+  swiperMoviesInstance = new Swiper(".mySwiperMovies", {
+    loop: true,
+    spaceBetween: 12,
+    autoplay: { delay: 1500, disableOnInteraction: false },
+    pagination: { el: ".mySwiperMovies .swiper-pagination", clickable: true },
+    navigation: {
+      nextEl: ".mySwiperMovies .swiper-button-next",
+      prevEl: ".mySwiperMovies .swiper-button-prev"
+    },
+    breakpoints: {
+      0:   { slidesPerView: 3 },
+      640: { slidesPerView: 4 },
+      1024:{ slidesPerView: 4 },
+      1280:{ slidesPerView: 4 }
+    }
+  });
+}
+
+updateMoviesSlider();
+
+/* ========================================================= */
+/* ====================== سلايدر الرياضة =================== */
+/* ========================================================= */
+
+let swiperSportsInstance = null;
+
+const sportsImages = [
+  "/images/Sport/sport1.webp",
+  "/images/Sport/sport2.webp",
+  "/images/Sport/sport3.webp",
+  "/images/Sport/sport4.webp",
+  "/images/Sport/sport5.webp"
+];
+
+function updateSportsSlider() {
+  const sportsWrapper = document.querySelector(".mySwiperSports .swiper-wrapper");
+  if (!sportsWrapper) return;
+
+  sportsWrapper.innerHTML = sportsImages.map(src =>
+    `<div class="swiper-slide">
+       <img loading="lazy" src="${src}" alt="Sport Poster">
+     </div>`
+  ).join('');
+
+  if (swiperSportsInstance) {
+    swiperSportsInstance.destroy(true, true);
+  }
+
+  swiperSportsInstance = new Swiper(".mySwiperSports", {
+    loop: true,
+    spaceBetween: 12,
+    autoplay: { delay: 1500, disableOnInteraction: false },
+    pagination: { el: ".mySwiperSports .swiper-pagination", clickable: true },
+    navigation: {
+      nextEl: ".mySwiperSports .swiper-button-next",
+      prevEl: ".mySwiperSports .swiper-button-prev"
+    },
+    breakpoints: {
+      0:   { slidesPerView: 3 },
+      640: { slidesPerView: 4 },
+      1024:{ slidesPerView: 4 },
+      1280:{ slidesPerView: 4 }
+    }
+  });
+}
+
+updateSportsSlider();
+
+/* ========================================================= */
+/* ==================== إجبار RTL على السلايدرز ============= */
+/* ========================================================= */
+
+function forceRTLSwiper(selector, instanceVar) {
+  const el = document.querySelector(selector);
+  if (!el) return;
+
+  el.setAttribute("dir", "rtl");
+
+  const instance = window[instanceVar];
+  if (instance) {
+    instance.destroy(true, true);
+  }
+
+  window[instanceVar] = new Swiper(selector, {
+    loop: true,
+    spaceBetween: 12,
+    rtl: true,
+    autoplay: { delay: 1500, disableOnInteraction: false },
+    pagination: { el: `${selector} .swiper-pagination`, clickable: true },
+    navigation: {
+      nextEl: `${selector} .swiper-button-next`,
+      prevEl: `${selector} .swiper-button-prev`
+    },
+    breakpoints: {
+      0:   { slidesPerView: 3 },
+      640: { slidesPerView: 4 },
+      1024:{ slidesPerView: 4 },
+      1280:{ slidesPerView: 4 }
+    }
+  });
+}
+
+// تطبيق RTL على السلايدرَين
+forceRTLSwiper(".mySwiperMovies", "swiperMoviesInstance");
+forceRTLSwiper(".mySwiperSports", "swiperSportsInstance");
+
+// توحيد المرجع العالمي للرياضة لتجنّب التعارض مستقبلًا
+window.swiperSportsInstance = swiperSportsInstance;
+
+/* ========================================================= */
+/* ========== نظام اختيار اللغة (نسخة نهائية صحيحة) ========= */
+/* ========================================================= */
+
+const langBtn = document.getElementById("lang-btn");
+const langDropdown = document.getElementById("lang-dropdown");
+const currentLang = document.getElementById("current-lang");
+const currentFlag = document.getElementById("current-flag");
+
+/* ===================== */
+/* تحديد اللغة من URL فقط */
+/* ===================== */
+(() => {
+  const path = window.location.pathname;
+  let lang = "ar";
+
+  if (path.startsWith("/en/")) lang = "en";
+  else if (path.startsWith("/fr/")) lang = "fr";
+  else if (path.startsWith("/es/")) lang = "es";
+  else lang = "ar";
+
+  document.documentElement.lang = lang;
+  localStorage.setItem("site_lang", lang);
+
+  const option = document.querySelector(`.lang-option[data-lang="${lang}"]`);
+  if (!option) return;
+
+  if (currentLang) currentLang.textContent = lang.toUpperCase();
+  if (currentFlag && option.dataset.flag) {
+    currentFlag.src = option.dataset.flag;
+    currentFlag.alt = lang + " flag";
+  }
+})();
+
+/* ===================== */
+/* فتح / إغلاق القائمة */
+/* ===================== */
+if (langBtn && langDropdown) {
+  langBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle("hidden");
+    langDropdown.classList.toggle("show");
+  });
+}
+
+/* ===================== */
+/* اختيار لغة يدويًا */
+/* ===================== */
+document.querySelectorAll(".lang-option").forEach(option => {
+  option.addEventListener("click", () => {
+    const selectedLang = option.dataset.lang;
+    if (!selectedLang) return;
+
+    localStorage.setItem("site_lang", selectedLang);
+
+    const path = window.location.pathname;
+
+    const langMap = {
+      // الإنجليزية
+      "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
+      "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+      "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+
+      // الفرنسية
+      "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
+      "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
+      "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+
+      // العربية
+      "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
+      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
+
+      // الأدلة
+      "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+      "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+      "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+
+      // الرئيسية
+      "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+    };
+
+    let target = null;
+
+    for (const key in langMap) {
+      if (path.includes("/" + key + "/") || path.endsWith("/" + key + "/")) {
+        target = langMap[key][selectedLang];
+        break;
+      }
+    }
+
+    if (!target) {
+      if (selectedLang === "ar") target = "/";
+      else if (selectedLang === "en") target = "/en/";
+      else if (selectedLang === "fr") target = "/fr/";
+      else if (selectedLang === "es") target = "/es/";
+    }
+
+    location.href = target;
+  });
+});
+
+/* ===================== */
+/* إغلاق القائمة عند الضغط خارجها */
+/* ===================== */
+document.addEventListener("click", () => {
+  if (!langDropdown) return;
+  langDropdown.classList.add("hidden");
+  langDropdown.classList.remove("show");
+});
+
+  /* ========================================================= */
+  /* ========== تفعيل ستايل البطاقات LUXURY ============ */
+  /* ========================================================= */
+
+  document.querySelectorAll(".plan-card").forEach(card => {
+
+    card.classList.add("luxury-card-wrapper");
+
+    const inner = document.createElement("div");
+    inner.classList.add("luxury-card-inner");
+
+    while (card.firstChild) {
+      inner.appendChild(card.firstChild);
+    }
+
+    card.appendChild(inner);
+  });
+
+
+
+
+
+  /* ========================================================= */
+  /* =================== أكورديون الخطط ===================== */
+  /* ========================================================= */
+
+  document.querySelectorAll(".toggle-features-btn").forEach(button => {
+    button.addEventListener("click", () => {
+
+      const card = button.closest(".plan-card");
+      const featuresList = card.querySelector(".plan-features");
+
+      const label = button.querySelector("span:not(.plan-arrow)");
+      const arrow = button.querySelector(".plan-arrow");
+
+      document.querySelectorAll(".plan-card").forEach(otherCard => {
+        if (otherCard !== card) {
+
+          const otherList = otherCard.querySelector(".plan-features");
+          const otherBtn  = otherCard.querySelector(".toggle-features-btn");
+
+          const otherLabel = otherBtn.querySelector("span:not(.plan-arrow)");
+          const otherArrow = otherBtn.querySelector(".plan-arrow");
+
+          otherList.classList.add("hidden");
+          otherList.classList.remove("open");
+
+          otherLabel.textContent = "عرض الميزات";
+          otherArrow.textContent = "🔽";
         }
-      ]
+      });
+
+      if (featuresList.classList.contains("hidden")) {
+        featuresList.classList.remove("hidden");
+        featuresList.classList.add("open");
+        label.textContent = "إخفاء الميزات";
+        arrow.textContent = "🔼";
+      } else {
+        featuresList.classList.remove("open");
+        featuresList.classList.add("hidden");
+        label.textContent = "عرض الميزات";
+        arrow.textContent = "🔽";
+      }
+
+    });
+  });
+
+
+
+
+
+/* ========================================================= */
+/* =========================== FAQ ========================= */
+/* =================== + و × Netflix Style ================= */
+
+document.querySelectorAll(".faq-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+
+    const card = btn.closest("#faq .grid > div");
+    const content = card.querySelector(".faq-content");
+    const icon = btn.querySelector(".faq-icon");
+
+    document.querySelectorAll("#faq .grid > div").forEach((item) => {
+      if (item !== card) {
+        item.classList.remove("faq-item-active");
+
+        const c = item.querySelector(".faq-content");
+        const i = item.querySelector(".faq-icon");
+
+        if (c) c.classList.add("hidden");
+        if (i) i.textContent = "+";
+      }
+    });
+
+    card.classList.toggle("faq-item-active");
+    content.classList.toggle("hidden");
+
+    if (card.classList.contains("faq-item-active")) {
+      icon.textContent = "×";
+    } else {
+      icon.textContent = "+";
     }
 
-  ]
-}
-</script>
+  });
+});
 
-  <!-- ============================
-       10) وسوم أوبن غراف
-       ============================ -->
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:type" content="webpage">
-  <meta property="og:title" content="Prime IPTV – Meilleur abonnement IPTV pour regarder chaînes et matchs en haute qualité">
-  <meta property="og:description" content="Le meilleur abonnement IPTV pour regarder des chaînes, des matchs et des films en HD, 4K et 8K avec un streaming rapide et stable fonctionnant sur tous les appareils sans interruption.">
-  <meta property="og:url" content="https://primeiptvplus.com/fr/">
-  <meta property="og:image" content="https://primeiptvplus.com/images/og-image.jpg">
+  /* ========================================================= */
+  /* ============================ SEO ======================== */
+  /* ========================================================= */
 
-  <!-- ============================
-       11) بطاقات تويتر (Twitter Cards)
-       ============================ -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Prime IPTV – Meilleur service IPTV pour matchs et chaînes">
-  <meta name="twitter:description" content="Haute vitesse + chaînes sportives + films et séries en 4K.">
-  <meta name="twitter:image" content="https://primeiptvplus.com/images/og-image.jpg">
+  document.querySelectorAll('.seo-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
 
-</head>
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.seo-icon');
 
-<body class="bg-gray-50 relative">
+      document.querySelectorAll('.seo-content').forEach(c => {
+        if (c !== content) c.classList.add('hidden');
+      });
 
-<!-- 🚨🚨 بداية شريط اللغة مع الأعلام ⚑ 🚨🚨 -->
-<div id="language-bar">
+      document.querySelectorAll('.seo-icon').forEach(i => {
+        if (i !== icon) i.classList.remove('rotate-180');
+      });
 
-  <!-- حاوية الأعلام المتحركة -->
-  <div id="flags-container">
-    <div id="flags-scroll"></div>
-  </div>
+      content.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    });
+  });
 
-  <!-- زر اللغة + القائمة داخله -->
-  <div class="lang-wrapper" id="lang-btn">
-    <img
-      src="/images/A3lame/flag2.webp"
-      class="flag-icon"
-      id="current-flag"
-      alt="Drapeau français"
-      width="32"
-      height="32"
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    >
-    <span id="current-lang">FR</span>
-  </div>
 
-  <!-- 🚨 القائمة المنسدلة داخل زر اللغة (مع إضافة الإسبانية) 🚨 -->
-  <div id="lang-dropdown" class="lang-dropdown hidden">
+
+
+  /* ========================================================= */
+  /* =========== ⭐ Scroll Reveal لبطاقات الخطط ⭐ =========== */
+  /* ========================================================= */
+
+  function revealPricingCards() {
+    const cards = document.querySelectorAll(".plan-card");
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        card.classList.add("reveal");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealPricingCards, { passive: true });
+  window.addEventListener("resize", revealPricingCards);
+  revealPricingCards();
+
+
+  /* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+  /* 💳 سكريبت قسم طرق الدفع (Payment Methods Carousel) */
+  /* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
+
+  const box = document.getElementById("cardsContainer");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (box && prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      box.scrollBy({ left: -160, behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      box.scrollBy({ left: 160, behavior: "smooth" });
+    });
+  }
+  /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+  /* ⭐ نهاية سكريبت قسم طرق الدفع ⭐ */
+  /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
+  /* ========================================================= */
+/* ============ نظام سلايدر الأسعار التفاعلي الذكي ============= */
+/* ========================================================= */
+
+// 1. دالة تحريك السلايدر (المقبض الأزرق) عند الضغط على الكلمات مباشرة
+window.moveSlider = function(value, planType) {
+    const slider = document.getElementById(`${planType}-plan-slider`);
+    if (slider) {
+        slider.value = value; // تحريك المقبض برمجياً
+        updatePlanData(value, planType); // تحديث الأسعار والرسائل واللون
+    }
+};
+
+// 2. الدالة الأساسية لتحديث الأسعار والكلمات البارزة
+window.updatePlanData = function(value, planType) {
+    // مصفوفة البيانات (يمكنك تعديل الأسعار من هنا بسهولة)
+    const pricingConfig = {
+        basic: [
+            { price: 5,  period: "/ شهر",   text: "شهر واحد" },
+            { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+            { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+            { price: 30, period: "/ السنة",  text: "سنة كاملة" },
+            { price: 50, period: "/ سنتين",  text: "سنتين" }
+        ],
+        // إذا أضفت باقات أخرى مستقبلاً أضف بياناتها هنا بنفس الطريقة
+    };
+
+    const selected = pricingConfig[planType][value];
+
+    // تحديث رقم السعر في الواجهة
+    const priceElem = document.getElementById(`price-val-${planType}`);
+    const periodElem = document.getElementById(`period-text-${planType}`);
+    if (priceElem) priceElem.innerText = selected.price;
+    if (periodElem) periodElem.innerText = selected.period;
+
+    // تحديث رابط الواتساب والرسالة تلقائياً
+    const waLink = document.getElementById(`whatsapp-link-${planType}`);
+    if (waLink) {
+        const planName = planType === 'basic' ? 'الأساسية' : 'المميزة';
+        const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
+        waLink.href = `https://wa.me/212666686732?text=${msg}`;
+    }
+
+    // --- إبراز الكلمة المختارة وجعلها مثيرة للانتباه ---
+    // نبحث عن الكلمات داخل قسم السلايدر الخاص بهذه الخطة فقط
+    const container = document.getElementById(`${planType}-plan-slider`).parentElement;
+    const steps = container.querySelectorAll('.duration-step');
     
-    <!-- العربية -->
-    <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
-      <a href="/" style="display: flex; align-items: center; gap: 10px; width: 100%; text-decoration: none; color: inherit;">
-        <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="علم العربية" width="24" height="24" loading="lazy" decoding="async">
-        <span>العربية (AR)</span>
-      </a>
-    </div>
-
-    <!-- English -->
-    <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
-      <a href="/en/" style="display: flex; align-items: center; gap: 10px; width: 100%; text-decoration: none; color: inherit;">
-        <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English flag" width="24" height="24" loading="lazy" decoding="async">
-        <span>English (EN)</span>
-      </a>
-    </div>
-
-    <!-- Français -->
-    <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
-      <a href="/fr/" style="display: flex; align-items: center; gap: 10px; width: 100%; text-decoration: none; color: inherit;">
-        <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Drapeau français" width="24" height="24" loading="lazy" decoding="async">
-        <span>Français (FR)</span>
-      </a>
-    </div>
-
-    <!-- ✅ Español (جديد) -->
-    <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag_es.webp">
-      <a href="/es/" style="display: flex; align-items: center; gap: 10px; width: 100%; text-decoration: none; color: inherit;">
-        <img src="/images/A3lame/flag_es.webp" class="flag-icon" alt="Bandera española" width="24" height="24" loading="lazy" decoding="async" onerror="this.src='/images/A3lame/flag3.webp'">
-        <span>Español (ES)</span>
-      </a>
-    </div>
-
-  </div>
-</div>
-<!-- 🚨🚨 نهاية شريط اللغة ⚑ 🚨🚨 -->
-
-<!-- 🚨🚨 نهاية شريط اللغة ⚑ 🚨🚨 -->
-<!-- 🚨🚨 بداية قسم الهيدر 🚨🚨 -->
-<header id="header"
-  class="fixed w-full bg-gradient-to-r from-blue-50 to-purple-50 shadow-md z-50">
-
-  <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
-
-    <!-- الشعار -->
-    <div id="logo-name" class="flex items-center space-x-4">
-      <img id="logo-img" src="/images/logo.webp" alt="Logo Prime IPTV"
-           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="lazy" decoding="async" width="80" height="80" fetchpriority="high">
-      <span class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">
-        Prime IPTV
-      </span>
-    </div>
-
-    <!-- قائمة سطح المكتب -->
-    <nav id="nav-links" class="hidden md:flex space-x-6 items-center" aria-label="Liens de navigation principaux">
-  <a href="/fr/#home" class="nav-link text-gray-700 hover:text-purple-700">Accueil</a>
-  <a href="/fr/#why-us" class="nav-link text-gray-700 hover:text-purple-700">Avantages</a>
-  <a href="/fr/#pricing" class="nav-link text-gray-700 hover:text-purple-700">Forfaits</a>
-  <a href="/fr/#testimonials" class="nav-link text-gray-700 hover:text-purple-700">Avis clients</a>
-  <a href="/fr/#faq" class="nav-link text-gray-700 hover:text-purple-700">FAQ</a>
-  <a href="/fr/#payment-methods" class="nav-link text-gray-700 hover:text-purple-700">Moyens de paiement</a>
-</nav>
-
-    <!-- زر الموبايل -->
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Bouton menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-
-  </div>
-
-</header>
-
-<!-- الخلفية -->
-<div id="overlay" class="overlay" aria-hidden="true"></div>
-
-<!-- القائمة الجانبية الفاخرة -->
-<div id="side-menu" class="side-menu glass-card" aria-hidden="true">
-    <button id="close-menu" class="close-btn" aria-label="Fermer le menu">×</button>
-
-    <ul class="menu-links" role="menu">
-    <li><a href="/fr/#home" role="menuitem">Accueil</a></li>
-    <li><a href="/fr/#why-us" role="menuitem">Avantages</a></li>
-    <li><a href="/fr/#pricing" role="menuitem">Forfaits</a></li>
-    <li><a href="/fr/#testimonials" role="menuitem">Avis clients</a></li>
-    <li><a href="/fr/#faq" role="menuitem">FAQ</a></li>
-    <li><a href="/fr/#payment-methods" role="menuitem">Moyens de paiement</a></li>
-</ul>
-
-</div>
-<!-- 🚨🚨 نهاية قسم الهيدر 🚨🚨 -->
-<main>
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<section id="home"
-  class="relative hero-section flex items-center justify-center overflow-hidden">
-
-  <!-- ✨ خلفية بتدرج Prime IPTV -->
-  <div class="absolute inset-0"
-    style="background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);"
-    aria-hidden="true">
-  </div>
-
-  <!-- ✨ هالات ضوء محسنة (أصغر) -->
-  <div class="absolute top-[-160px] left-[-160px] w-[420px] h-[420px] bg-white/20 opacity-20 blur-[140px] rounded-full" aria-hidden="true"></div>
-  <div class="absolute bottom-[-180px] right-[-180px] w-[480px] h-[480px] bg-white/10 opacity-20 blur-[150px] rounded-full" aria-hidden="true"></div>
-
-  <!-- طبقة زجاجية -->
-  <div class="absolute inset-0 bg-white/5 backdrop-blur-[2px]" aria-hidden="true"></div>
-
-  <!-- المحتوى -->
-  <div class="container relative z-20 mx-auto px-6 max-w-4xl">
-    <div class="text-white space-y-5 flex flex-col items-center">
-
-      <!-- العنوان -->
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_8px_40px_rgba(0,0,0,0.8)] text-center">
-        <span class="text-purple-200">Expérience IPTV</span>
-        exceptionnelle en
-        <span class="text-indigo-200">qualité mondiale</span>
-      </h1>
-
-      <!-- الوصف -->
-      <p class="text-base md:text-2xl text-gray-100 leading-relaxed max-w-xl text-center">
-        Profitez des meilleures chaînes, matchs, films et séries
-        en <span class="font-bold text-white">4K et 8K</span>
-        avec un streaming stable et rapide sans interruption.
-      </p>
-
-      <!-- الصورة بعد الإصلاح -->
-      <div class="relative w-full max-w-[640px]">
-        <div class="absolute inset-0 bg-white/20 blur-[60px] rounded-3xl -z-10" aria-hidden="true"></div>
-
-        <img
-  src="/images/new-header.webp"
-  alt="Interface de streaming Prime IPTV haute qualité"
-  class="w-full max-h-[240px] md:max-h-[360px] object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-  width="640"
-  height="360"
-  fetchpriority="high"
-  loading="eager"
-  decoding="async">
-
-      </div>
-
-      <!-- الأزرار -->
-      <div class="w-full flex justify-center items-center gap-4 pt-2">
-  <a href="#pricing"
-     class="px-6 py-3 text-base font-bold rounded-2xl bg-gradient-to-r from-purple-200 to-white text-indigo-900 shadow-lg hover:scale-105 transition-transform">
-    S'abonner maintenant
-  </a>
-
-  <a href="#channels"
-     class="px-6 py-3 text-base font-bold rounded-2xl bg-white text-purple-700 border-2 border-purple-300 shadow-lg hover:scale-105 transition-transform">
-    Voir les chaînes
-  </a>
-</div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 🚨🚨 نهاية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-
-<!-- 🚨🚨 بداية شريط بوسترات الأفلام 🍿 (UPDATED) 🚨🚨 -->
-<section id="movies" class="section-spacing section-bg-light" aria-label="Bande de posters de films">
-  <div class="container mx-auto px-4">
-
-
-<h2 class="section-title-unified">
-  <span class="title-line-1">
-    Regardez les derniers films et séries
-  </span>
-
-  <span class="title-line-2">
-    via IPTV
-    <img src="/images/Slayder/Aflame.webp"
-         class="title-icon"
-         alt="Icône films" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-
-    <div class="swiper mySwiperMovies">
-      <div class="swiper-wrapper">
-
-        <!-- كل الصور الآن تستخدم Lazy Loading الحقيقي -->
-        <!-- ملاحظة: Swiper سيتولى إضافة spinner تلقائيًا -->
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster1.webp"
-               data-src="/images/Aflame/poster1.webp"
-               class="swiper-lazy" alt="Affiche d'un nouveau film via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster2.webp"
-               data-src="/images/Aflame/poster2.webp"
-               class="swiper-lazy" alt="Affiche d'une série télévisée haute qualité" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster3.webp"
-               data-src="/images/Aflame/poster3.webp"
-               class="swiper-lazy" alt="Affiche d'un film d'action via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster4.webp"
-               data-src="/images/Aflame/poster4.webp"
-               class="swiper-lazy" alt="Affiche d'un film romantique et dramatique via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster5.webp"
-               data-src="/images/Aflame/poster5.webp"
-               class="swiper-lazy" alt="Affiche des nouveaux films à la demande" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster6.webp"
-               data-src="/images/Aflame/poster6.webp"
-               class="swiper-lazy" alt="Affiche de contenu Netflix via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster7.webp"
-               data-src="/images/Aflame/poster7.webp"
-               class="swiper-lazy" alt="Affiche films dessin animé et anime" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster8.webp"
-               data-src="/images/Aflame/poster8.webp"
-               class="swiper-lazy" alt="Affiche films et séries arabes IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster9.webp"
-               data-src="/images/Aflame/poster9.webp"
-               class="swiper-lazy" alt="Affiche des séries télévisées populaires" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster10.webp"
-               data-src="/images/Aflame/poster10.webp"
-               class="swiper-lazy" alt="Affiche streaming direct des films sans interruption" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-      </div>
-
-      <div class="swiper-button-prev swiper-nav-color"></div>
-      <div class="swiper-button-next swiper-nav-color"></div>
-      <div class="swiper-pagination mt-4"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ✅ نهاية قسم الأفلام بعد التحسين ✅ -->
-
-<!-- 🚨🚨 بداية قسم المميزات ⭐ (UPDATED) 🚨🚨 -->
-<section id="why-us" class="section-spacing bg-gray-50" aria-label="Section des avantages">
-  <div class="container mx-auto px-4">
-
-<h2 class="section-title-unified">
-  <span class="title-line-1">Pourquoi les gens préfèrent</span>
-  <span class="title-line-2">
-    l’IPTV
-    <img src="/images/Logo/icon6.webp" alt="Icône IPTV" class="title-icon" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-<p class="section-description">
-Haute qualité, chaînes internationales et streaming en direct sans interruption
-</p>
-
-    <!-- قائمة المميزات -->
-    <div class="grid md:grid-cols-4 gap-8">
-
-      <!-- ميزة 1 : التنوع -->
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-indigo-600 mb-4 text-4xl">
-          <i class="fas fa-tv" aria-hidden="true"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">
-          Des milliers de chaînes en direct
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          IPTV offre une vaste bibliothèque de
-          <strong>Live Channels</strong> incluant des chaînes arabes, étrangères, sportives et de divertissement
-          couvrant tous les intérêts.
-        </p>
-      </div>
-
-      <!-- ميزة 2 : الجودة -->
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-indigo-600 mb-4 text-4xl">
-          <i class="fas fa-bolt" aria-hidden="true"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">
-          Streaming haute qualité sans interruption
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Profitez d'une expérience de streaming fluide
-          avec des serveurs puissants supportant
-          <strong>HD – 4K – 8K</strong> avec un minimum de coupures.
-        </p>
-      </div>
-
-      <!-- ميزة 3 : الأجهزة -->
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-indigo-600 mb-4 text-4xl">
-          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">
-          Fonctionne sur tous les appareils
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          IPTV fonctionne sur Smart TV,
-          téléphone, ordinateur, Android Box et Fire Stick
-          sans configurations compliquées.
-        </p>
-      </div>
-
-      <!-- ميزة 4 : المحتوى -->
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-indigo-600 mb-4 text-4xl">
-          <i class="fas fa-film" aria-hidden="true"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2">
-          Une énorme bibliothèque de films et séries
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Accès à des milliers de
-          <strong>Derniers films et séries TV</strong>
-          régulièrement mis à jour en plusieurs langues et catégories.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ✅ نهاية قسم المميزات بعد التحسين ✅ -->
-
-<!-- 🚀 Section Guides IPTV par région -->
-<section class="container mx-auto px-4 mt-12 mb-12">
-
-  <div class="text-center mb-6">
-    <h2 class="text-2xl md:text-3xl font-black text-purple-800 mb-2" style="font-family:'Montserrat',sans-serif;">
-      📍 Guides IPTV par région
-    </h2>
-    <p class="text-gray-600 text-sm md:text-base">Choisissez votre guide local</p>
-  </div>
-
-  <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-3xl mx-auto">
-
-    <!-- France -->
-    <a href="/fr/france/" class="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
-      <div class="bg-gradient-to-br from-blue-700 via-white to-red-600 p-3 md:p-4 text-center">
-        <div class="text-3xl md:text-4xl mb-1">🇫🇷</div>
-        <h3 class="text-xs md:text-sm font-black text-white" style="font-family:'Montserrat',sans-serif;text-shadow:0 2px 4px rgba(0,0,0,0.5);">France</h3>
-      </div>
-      <div class="p-2 md:p-3 text-center">
-        <span class="text-xs md:text-sm font-bold text-blue-600 group-hover:text-blue-700">
-          Lire <i class="fas fa-arrow-right ml-1 text-xs"></i>
-        </span>
-      </div>
-    </a>
-
-    <!-- Canada -->
-    <a href="/fr/canada/" class="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
-      <div class="bg-gradient-to-br from-red-600 via-red-500 to-red-700 p-3 md:p-4 text-center">
-        <div class="text-3xl md:text-4xl mb-1">🇨🇦</div>
-        <h3 class="text-xs md:text-sm font-black text-white" style="font-family:'Montserrat',sans-serif;">Canada</h3>
-      </div>
-      <div class="p-2 md:p-3 text-center">
-        <span class="text-xs md:text-sm font-bold text-red-600 group-hover:text-red-700">
-          Lire <i class="fas fa-arrow-right ml-1 text-xs"></i>
-        </span>
-      </div>
-    </a>
-
-    <!-- Belgique -->
-    <a href="/fr/belgique/" class="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
-      <div class="bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600 p-3 md:p-4 text-center">
-        <div class="text-3xl md:text-4xl mb-1">🇧🇪</div>
-        <h3 class="text-xs md:text-sm font-black text-white" style="font-family:'Montserrat',sans-serif;">Belgique</h3>
-      </div>
-      <div class="p-2 md:p-3 text-center">
-        <span class="text-xs md:text-sm font-bold text-orange-600 group-hover:text-orange-700">
-          Lire <i class="fas fa-arrow-right ml-1 text-xs"></i>
-        </span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Bouton Guide Complet -->
-  <div class="flex justify-center mt-6">
-    <a href="/fr/guide/"
-       class="inline-flex items-center gap-2 px-6 py-3 text-sm md:text-base font-bold rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all"
-       role="button"
-       aria-label="Lire le guide IPTV complet">
-      <i class="fas fa-book-open"></i>
-      <span>📖 Lire le guide IPTV complet</span>
-    </a>
-  </div>
-
-</section>
-<!-- ✅ Fin section guides -->
-
-<!-- 🚨🚨 قسم البطولات والرياضة (UPDATED) 🏆🚨🚨 -->
-<section id="sports" class="section-spacing section-bg-light" aria-label="Compétitions et sports">
-
-  <div class="container mx-auto px-4">
-
-    <h2 class="section-title-unified">
-
-  <span class="title-line-1 mobile-only">toutes les compétitions mondiales</span>
-
-  <span class="title-line-2">
-    via IPTV
-    <img src="/images/Slayder/Sport.webp" class="title-icon" alt="Icône sportive" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-
-
-
-    <div class="swiper mySwiperSports">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport1.webp"
-               data-src="/images/Sport/sport1.webp" 
-               class="swiper-lazy"
-               alt="Diffusion en direct de la Premier League anglaise via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport2.webp"
-               data-src="/images/Sport/sport2.webp"
-               class="swiper-lazy"
-               alt="Regarder les matchs de La Liga en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport3.webp"
-               data-src="/images/Sport/sport3.webp"
-               class="swiper-lazy"
-               alt="Diffusion de la Ligue des Champions via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport4.webp"
-               data-src="/images/Sport/sport4.webp"
-               class="swiper-lazy"
-               alt="Regarder la Formule 1 en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport5.webp"
-               data-src="/images/Sport/sport5.webp"
-               class="swiper-lazy"
-               alt="Matchs NBA en direct via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport6.webp"
-               data-src="/images/Sport/sport6.webp"
-               class="swiper-lazy"
-               alt="Regarder UFC et boxe via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport7.webp"
-               data-src="/images/Sport/sport7.webp"
-               class="swiper-lazy"
-               alt="Compétition africaine des clubs en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport8.webp"
-               data-src="/images/Sport/sport8.webp"
-               class="swiper-lazy"
-               alt="Diffusion de la Ligue des Champions d'Asie IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport9.webp"
-               data-src="/images/Sport/sport9.webp"
-               class="swiper-lazy"
-               alt="Regarder la Coupe du Monde en ligne via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport10.webp"
-               data-src="/images/Sport/sport10.webp"
-               class="swiper-lazy"
-               alt="Chaînes sportives en direct via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-      </div>
-
-      <div class="swiper-button-prev swiper-nav-color"></div>
-      <div class="swiper-button-next swiper-nav-color"></div>
-      <div class="swiper-pagination mt-4"></div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ✅ نهاية قسم البطولات بعد التحسين ✅ -->
-
-<!-- 🚨🚨 قسم الخطط العالمية (نسخة LUXURY 🔥) 🚨🚨 -->
-<section id="pricing" class="section-spacing bg-gray-50" aria-label="Plans d'abonnement">
-
-  <div class="container mx-auto px-6">
-
-    <!-- عنوان -->
-    <h2 class="section-title-unified">
-  <span class="title-line-1">Choisissez votre plan d’abonnement</span>
-  <span class="title-line-2">
-    IPTV
-    <img src="/images/Logo/icon7.webp" alt="Icône abonnement IPTV" class="title-icon" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-    <p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
-          text-transparent bg-clip-text bg-gradient-to-r 
-          from-pink-500 via-fuchsia-500 to-purple-500">
-  Choisissez votre plan idéal pour profiter du streaming sans limites
-</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- 🟦 الخطة الأساسية -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
-
-<div style="height:20px"></div>
-
-        <!-- BADGE -->
-        <div class="plan-badge badge-economy">Option économique</div>
-
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-blue-500 mb-2">Plan de base</h3>
-          <p class="text-gray-600 mb-4">Le meilleur début pour une expérience IPTV mondiale</p>
-
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-    30 <span class="text-xl font-bold text-gray-500">EUR</span> <span class="text-lg font-medium text-gray-400">/ an</span>
-</div>
-
-          <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
-            <span class="font-bold text-blue-600">Voir les fonctionnalités</span>
-            <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
-          </button>
-
-          <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
-            <li>Plus de 21 000 chaînes variées</li>
-            <li>Plus de 30 000 séries</li>
-            <li>Plus de 158 000 films</li>
-            <li>Vidéo à la demande (VOD)</li>
-            <li>Streaming fluide sans interruption</li>
-            <li>Compatible tous appareils</li>
-            <li>Qualité SD / HD / UHD / 4K / 8K</li>
-            <li>Taux de disponibilité 99%+</li>
-            <li>Mises à jour quotidiennes du serveur</li>
-            <li>Support technique 24/7</li>
-            <li>Garantie de remboursement 10 jours</li>
-            <li>Contenu exclusif et régulièrement renouvelé</li>
-          </ul>
-
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20souhaite%20m%E2%80%99abonner%20%C3%A0%20l%E2%80%99offre%20de%20base%20%E2%80%93%20Prime%20IPTV%2C%20merci."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-   aria-label="Abonnez-vous offre de base WhatsApp">
-  Abonnez-vous maintenant
-</a>
-
-        </div>
-      </div>
-
-      <!-- 🟨 الخطة المميزة -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
-
-<div style="height:20px"></div>
-
-        <!-- BADGE -->
-        <div class="plan-badge badge-best">Meilleure vente</div>
-
-        <div class="relative z-10 text-center">
-         <h3 class="text-2xl font-bold text-yellow-500 mb-2">
-  Plan Premium
-</h3>
-          <p class="text-gray-600 mb-4">Le meilleur choix pour les utilisateurs les plus actifs</p>
-
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-    40 <span class="text-xl font-bold text-gray-500">EUR</span> <span class="text-lg font-medium text-gray-400">/ an</span>
-</div>
-
-          <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
-            <span class="font-bold text-yellow-500">Voir les fonctionnalités</span>
-            <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
-          </button>
-
-          <ul id="features-premium" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
-           <li>Plus de 15 000 chaînes variées</li>
-            <li>Plus de 14 000 séries</li>
-            <li>Plus de 63 000 films</li>
-            <li>Vidéo à la demande (VOD)</li>
-            <li>Streaming sans interruption</li>
-            <li>Compatible tous appareils</li>
-            <li>Qualité SD / HD / 4K / 8K</li>
-             <li>Taux de disponibilité 99%+</li>
-            <li>Mises à jour quotidiennes</li>
-            <li>Support technique</li>
-            <li>Garantie 10 jours</li>
-            <li>Contenu exclusif et régulièrement renouvelé</li>
-          </ul>
-
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20souhaite%20m%E2%80%99abonner%20%C3%A0%20l%E2%80%99offre%20premium%20%E2%80%93%20Prime%20IPTV%2C%20merci."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-   aria-label="Abonnez-vous offre premium WhatsApp">
-  Abonnez-vous maintenant
-</a>
-
-        </div>
-      </div>
-
-      <!-- 🟪 الخطة الاحترافية -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card">
-
-<div style="height:20px"></div>
-
-        <!-- BADGE -->
-        <div class="plan-badge badge-gold">Plan doré</div>
-
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-purple-600 mb-2">Plan professionnel</h3>
-          <p class="text-gray-600 mb-4">Pour les utilisateurs qui veulent seulement le meilleur</p>
-
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-    50 <span class="text-xl font-bold text-gray-500">EUR</span> <span class="text-lg font-medium text-gray-400">/ an</span>
-</div>
-
-          <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
-            <span class="font-bold text-purple-600">Voir les fonctionnalités</span>
-            <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
-          </button>
-
-          <ul id="features-pro" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
-            <li>Plus de 50 000 chaînes</li>
-            <li>Plus de 40 000 séries</li>
-            <li>Plus de 190 000 films</li>
-            <li>Vidéo à la demande (VOD)</li>
-            <li>Streaming fluide sans interruption</li>
-            <li>Qualité SD / HD / UHD / 4K / 8K</li>
-            <li>Streaming stable</li>
-            <li>Taux de disponibilité 99%+</li>
-            <li>Compatible tous appareils</li>
-            <li>Mises à jour quotidiennes</li>
-            <li>Support technique 24/7</li>
-            <li>Garantie 10 jours</li>
-            <li>Contenu exclusif et régulièrement renouvelé</li>
-          </ul>
-
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20souhaite%20m%E2%80%99abonner%20%C3%A0%20l%E2%80%99offre%20professionnelle%20%E2%80%93%20Prime%20IPTV%2C%20merci."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-   aria-label="Abonnez-vous offre professionnelle WhatsApp">
-  Abonnez-vous maintenant
-</a>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 🚨🚨 نهاية قسم الخطط العالمية 💎 🚨🚨 -->
-
-<!-- 🚨🚨 قسم آراء العملاء 🗣️ 🚨🚨 -->
-<section id="testimonials" class="section-spacing bg-gray-50" aria-label="Avis des clients">
-
-  <div class="container mx-auto px-4">
-
-    <h2 class="section-title-unified">
-  <span class="title-line-1">Ce que disent nos clients</span>
-  <span class="title-line-2">
-    Prime IPTV
-    <img src="/images/Logo/icon8.webp" class="title-icon" alt="Icône des avis clients" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-<p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
-          text-transparent bg-clip-text bg-gradient-to-r 
-          from-pink-500 via-fuchsia-500 to-purple-500">
-Avis réels confirmant la qualité du service et la satisfaction de nos clients
-</p>
-
-
-    <div class="grid md:grid-cols-5 gap-8">
-
-      <!-- رأي العميل 1 -->
-<div class="bg-white p-6 rounded-lg shadow">
-  <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-         alt="Sarah Johnson utilisatrice IPTV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
-    <div>
-      <h3 class="font-semibold">Sarah Johnson</h3>
-      <p class="text-gray-600">Du Canada</p>
-    </div>
-  </div>
-  <p class="text-gray-700 leading-relaxed">
-    J'ai commencé à utiliser cet <strong>abonnement IPTV</strong> pour regarder films et séries,
-    et ce que j'ai le plus aimé est la clarté de l'image et l'accès facile au contenu à tout moment sans publicité gênante.
-  </p>
-</div>
-
-<!-- رأي العميل 2 -->
-<div class="bg-white p-6 rounded-lg shadow">
-  <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-         alt="Michael Chen fan de sport regardant IPTV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
-    <div>
-      <h3 class="font-semibold">Michael Chen</h3>
-      <p class="text-gray-600">Supporter sportif</p>
-    </div>
-  </div>
-  <p class="text-gray-700 leading-relaxed">
-    Pour moi, le meilleur avec <strong>regarder matchs via IPTV</strong> est la stabilité aux heures de pointe.
-    Je suis les compétitions sans interruptions même avec une connexion Internet moyenne.
-  </p>
-</div>
-
-<!-- رأي العميل 3 -->
-<div class="bg-white p-6 rounded-lg shadow">
-  <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80"
-         alt="Emma Wilson utilise IPTV sur Smart TV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
-    <div>
-      <h3 class="font-semibold">Emma Wilson</h3>
-      <p class="text-gray-600">Utilisatrice sur Smart TV</p>
-    </div>
-  </div>
-  <p class="text-gray-700 leading-relaxed">
-    Configurer <strong>le service IPTV sur Smart TV et téléphone</strong> était très facile.
-    J'aime la rapidité du changement de chaînes et la qualité d'affichage constante.
-  </p>
-</div>
-
-<!-- رأي العميل 4 -->
-<div class="bg-white p-6 rounded-lg shadow">
-  <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
-         alt="Leila Imran utilise IPTV en famille"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
-    <div>
-      <h3 class="font-semibold">Leila Imran</h3>
-      <p class="text-gray-600">Maman de deux enfants</p>
-    </div>
-  </div>
-  <p class="text-gray-700 leading-relaxed">
-    À la maison, nous utilisons <strong>IPTV</strong> pour regarder des programmes pour enfants et films familiaux,
-    tout fonctionne parfaitement avec un grand choix de chaînes adaptées à tous les âges.
-  </p>
-</div>
-
-<!-- رأي العميل 5 -->
-<div class="bg-white p-6 rounded-lg shadow">
-  <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
-         alt="Daniel Roche utilise IPTV en Europe"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
-    <div>
-      <h3 class="font-semibold">Daniel Roche</h3>
-      <p class="text-gray-600">Réside en Europe</p>
-    </div>
-  </div>
-  <p class="text-gray-700 leading-relaxed">
-    Utiliser <strong>IPTV hors de mon pays</strong> m'a permis de suivre mes chaînes préférées où que je sois.
-    L'expérience est stable et fluide même en voyage.
-  </p>
-</div>
-
-    </div>
-  </div>
-</section>
-<!-- ✅ نهاية قسم آراء العملاء بعد التحسين النهائي ✅ -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<!-- ❓❓ بداية قسم الأسئلة الشائعة (FAQ) — Prime IPTV
-     – عنوان موحّد مع أيقونة
-     – Grid من عمودين (كمبيوتر) وعمود واحد (موبايل)
-     – Accordion (فتح/إغلاق الأسئلة)
-     – خاضع لنظام section-spacing لتوحيد المسافات -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<section id="faq" class="section-spacing bg-white" aria-label="Foire aux questions (FAQ)">
-
-  <!-- ⭐ عنوان القسم (موحّد) -->
-  <h2 class="section-title-unified">
-  <span class="title-line-1">Questions fréquentes sur</span>
-  <span class="title-line-2">
-    IPTV
-    <img src="/images/Logo/icon9.webp" class="title-icon" alt="Icône FAQ IPTV" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-  <!-- محتوى FAQ -->
-  <div class="grid md:grid-cols-2 gap-8">
-
-    <!-- FAQ 1 -->
-<div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-  <button class="faq-btn w-full flex justify-between items-center" type="button"
-    aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
-
-    <span class="font-bold faq-title" id="faq1-label">
-      Qu'est-ce que l'abonnement IPTV et vaut-il la peine ?
-    </span>
-
-    <span class="faq-icon" aria-hidden="true">+</span>
-  </button>
-
-  <div id="faq1-content" class="faq-content hidden mt-4"
-    role="region" aria-labelledby="faq1-label">
-    L'abonnement IPTV est un service qui vous permet de regarder des chaînes et films sur Internet.
-  </div>
-</div>
-
-    <!-- FAQ 2 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
-        <span class="font-bold text-purple-700" id="faq2-label">Comment choisir le meilleur fournisseur IPTV ?</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq2-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq2-label">
-        Le choix dépend de la stabilité des serveurs, du nombre de chaînes, du support technique et des avis clients.
-      </div>
-    </div>
-
-    <!-- FAQ 3 -->
-    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
-        <span class="font-bold text-blue-700" id="faq3-label">Comment utiliser la playlist M3U et quelle différence avec l'API ?</span>
-        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq3-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq3-label">
-        M3U est un lien direct vers les chaînes, tandis que l'API est un système d'accès professionnel avec plus de fonctionnalités.
-      </div>
-    </div>
-
-    <!-- FAQ 4 -->
-    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq4-content" id="faq4-btn">
-        <span class="font-bold text-pink-700" id="faq4-label">Comment améliorer la stabilité du serveur IPTV et réduire les interruptions ?</span>
-        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq4-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq4-label">
-        Cela se fait en utilisant un fournisseur fiable et une connexion internet stable et rapide.
-      </div>
-    </div>
-
-    <!-- FAQ 5 -->
-    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq5-content" id="faq5-btn">
-        <span class="font-bold text-indigo-700" id="faq5-label">Comment résoudre le problème de buffering IPTV ?</span>
-        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq5-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq5-label">
-        En renforçant votre connexion internet, réduisant la charge et en choisissant la qualité de streaming appropriée.
-      </div>
-    </div>
-
-    <!-- FAQ 6 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq6-content" id="faq6-btn">
-        <span class="font-bold text-purple-700" id="faq6-label">IPTV fonctionne-t-il sur Android et Firestick ?</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq6-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq6-label">
-        Oui, il fonctionne avec des applications comme IPTV Smarters et TiviMate.
-      </div>
-    </div>
-
-    <!-- FAQ 7 -->
-    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq7-content" id="faq7-btn">
-        <span class="font-bold text-blue-700" id="faq7-label">Quels sont les avantages IPTV VOD ?</span>
-        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq7-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq7-label">
-        Il offre une énorme bibliothèque de films et séries en plus du streaming en direct.
-      </div>
-    </div>
-
-    <!-- FAQ 8 -->
-    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq8-content" id="faq8-btn">
-        <span class="font-bold text-pink-700" id="faq8-label">Combien de chaînes y a-t-il généralement dans un abonnement IPTV ?</span>
-        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq8-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq8-label">
-        Cela varie selon le plan, souvent plus de 10 000 chaînes.
-      </div>
-    </div>
-
-    <!-- FAQ 9 -->
-    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq9-content" id="faq9-btn">
-        <span class="font-bold text-indigo-700" id="faq9-label">Comment configurer IPTV sur Smart TV ou téléphone ?</span>
-        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq9-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq9-label">
-        En installant une application IPTV et en entrant le lien M3U ou les données API.
-      </div>
-    </div>
-
-    <!-- FAQ 10 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq10-content" id="faq10-btn">
-        <span class="font-bold text-purple-700" id="faq10-label">Support technique disponible en cas de perte de chaînes ?</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-              <div id="faq10-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq10-label">
-        Oui, la plupart des fournisseurs offrent un support via WhatsApp ou email.
-      </div>
-    </div>
-
-  </div> <!-- نهاية grid -->
-</section>
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- ⭐ نهاية قسم الأسئلة الشائعة (FAQ) ⭐ -->
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<!-- 🔎 بداية قسم السيو (SEO Content) — Prime IPTV
-     – محتوى نصي مخصص لمحركات البحث (SEO)
-     – عناوين + فقرات داعمة للكلمات المفتاحية
-     – بطاقات بمظهر خفيف (Light Cards)
-     – خاضع لنظام section-spacing لتوحيد المسافات
-     – لا يؤثر على التصميم البصري الرئيسي -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<section id="seo-text" class="section-spacing seo-light-section" aria-label="Contenu SEO">
-
-  <div class="container mx-auto px-4 max-w-6xl">
-
-    <h2 class="section-title-unified">
-  <span class="title-line-1">Regarder sur tous vos appareils</span>
-  <span class="title-line-2">
-    Prime IPTV
-    <img src="/images/Logo/icon10.webp" class="title-icon" alt="Icône Prime IPTV" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-    <div class="seo-grid">
-
-      <!-- بطاقة 1 -->
-      <div class="netflix-card-light">
-        <h3>Comment IPTV rend la télévision plus flexible ?</h3>
-        <p>Visionnez les chaînes via <strong>IPTV</strong> en haute qualité et sans interruptions.</p>
-        <p>Des milliers de chaînes, films et séries à la demande.</p>
-        <p>Une solution intelligente et rapide remplaçant la télévision traditionnelle.</p>
-
-        <div class="card-icon">
-          <img src="/images/Logo/icon1.webp" alt="Icône télévision IPTV" class="title-icon" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- بطاقة 2 -->
-      <div class="netflix-card-light">
-        <h3>Pourquoi les gens cherchent un abonnement IPTV quotidiennement ?</h3>
-        <p>L'abonnement IPTV offre des milliers de chaînes en haute qualité.</p>
-        <p>Au lieu de plusieurs abonnements, un seul suffit.</p>
-        <p>Regardez les chaînes de votre pays depuis n'importe où dans le monde.</p>
-
-        <div class="card-icon">
-         <img src="/images/Logo/icon2.webp" alt="Icône des chaînes mondiales IPTV" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- بطاقة 3 -->
-      <div class="netflix-card-light">
-        <h3>Le meilleur choix pour les amateurs de foot et films</h3>
-        <p>Streaming en direct des chaînes beIN, Sky et DAZN.</p>
-        <p>Bibliothèque mondiale de films et séries mise à jour.</p>
-        <p>Compatible avec tous les appareils sans restrictions.</p>
-
-        <div class="card-icon">
-         <img src="/images/Logo/icon3.webp" alt="Icône films et sports IPTV" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- بطاقة 4 -->
-      <div class="netflix-card-light">
-        <h3>Appareils et plates-formes supportant IPTV</h3>
-        <p>Smart TV, Android, iPhone et PC.</p>
-        <p>Activation via M3U, code ou QR.</p>
-        <p>Liberté totale d'utilisation sans complications.</p>
-
-        <div class="card-icon">
-          <img src="/images/Logo/icon4.webp" alt="Icône appareils IPTV" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- البطاقة الكبيرة -->
-      <div class="netflix-card-light seo-big-card">
-        <h3 class="big-title">Pourquoi Prime IPTV est le choix intelligent ?</h3>
-        <p>Serveurs puissants avec technologies <strong>Anti-Freeze</strong> pour un streaming stable.</p>
-        <p>Plus de 30 000 chaînes et milliers de films exclusifs.</p>
-        <p>Expérience de visionnage idéale pour toute la famille.</p>
-
-        <div class="card-icon">
-          <img src="/images/Logo/icon5.webp" alt="Icône de protection IPTV" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- ⭐ نهاية قسم السيو (SEO Content) ⭐ -->
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<!-- 💳 قسم طرق الدفع — Payment Methods -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-
-<section id="payment-methods" class="py-8 mt-12" aria-label="Moyens de paiement pris en charge">
-
-  <h2 class="section-title-unified">
-  <span class="title-line-1">Paiement pris en charge sur</span>
-  <span class="title-line-2">
-    Prime IPTV
-    <img src="/images/Logo/icon11.webp" class="title-icon" alt="Icône paiement IPTV" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-  <div class="payment-carousel">
-
-    <div class="arrow arrow-left" id="prevBtn" role="button" aria-label="Précédent">❮</div>
-
-    <div id="cardsContainer" class="payment-list no-scrollbar" tabindex="0" aria-live="polite" aria-atomic="true">
-      <div class="card"><img src="/images/Bitakate/Bitaka1.webp" alt="Carte de paiement 1" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka2.webp" alt="Carte de paiement 2" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka3.webp" alt="Carte de paiement 3" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka4.webp" alt="Carte de paiement 4" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka5.webp" alt="Carte de paiement 5" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka6.webp" alt="Carte de paiement 6" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka7.webp" alt="Carte de paiement 7" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka8.webp" alt="Carte de paiement 8" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka9.webp" alt="Carte de paiement 9" loading="lazy" decoding="async"></div>
-      <div class="card"><img src="/images/Bitakate/Bitaka10.webp" alt="Carte de paiement 10" loading="lazy" decoding="async"></div>
-    </div>
-
-    <div class="arrow arrow-right" id="nextBtn" role="button" aria-label="Suivant">❯</div>
-
-  </div>
-
-</section>
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- ⭐ نهاية قسم طرق الدفع (Payment Methods) ⭐ -->
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<!-- ⚙️ قسم التذييل (FOOTER) — Prime IPTV -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-
-<footer class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative">
-  <div class="container mx-auto px-4">
-
-    <!-- شبكة الفوتر: 3 أعمدة -->
-    <div class="grid md:grid-cols-3 gap-10 items-start">
-
-      <!-- معلومات عامة -->
-      <div class="flex flex-col items-start">
-        <div class="flex items-center mb-4">
-          <img src="/images/logo.webp" alt="Logo Prime IPTV" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async" fetchpriority="high">
-          <h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>
-        </div>
-
-        <p class="text-gray-200">
-          Prime IPTV est un <strong>abonnement IPTV mondial</strong> offrant la diffusion
-          de chaînes, matchs, films et séries en haute qualité sur tous les appareils.
-        </p>
-      </div>
-
-      <!-- روابط + اللوغو موازٍ على اليسار -->
-      <div class="flex justify-between items-start w-full">
-
-        <!-- الروابط على اليمين -->
-        <div>
-    <h4 class="font-semibold mb-4 text-lg">Liens importants</h4>
-    <ul class="space-y-3 text-gray-200">
-        <li><a href="/fr/#home" class="hover:text-white">Page d'accueil</a></li>
-        <li><a href="/fr/#why-us" class="hover:text-white">Pourquoi choisir IPTV ?</a></li>
-        <li><a href="/fr/#sports" class="hover:text-white">Compétitions sportives</a></li>
-        <li><a href="/fr/#movies" class="hover:text-white">Films et séries</a></li>
-        <li><a href="/fr/#pricing" class="hover:text-white">Plans d'abonnement</a></li>
-        <li><a href="/fr/#faq" class="hover:text-white">FAQ</a></li>
-    </ul>
-</div>
-
-        <!-- اللوغو على اليسار — أكبر + هابط -->
-        <div class="flex justify-start items-start">
-          <img 
-            src="/images/Prime-Player.webp" 
-            alt="Logo Prime Player" 
-            class="footer-logo mt-24 w-36" loading="lazy" decoding="async">
-        </div>
-
-      </div>
-
-      <!-- تواصل -->
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">Contactez-nous</h4>
-
-        <p class="text-gray-200 mb-3">
-          Pour les questions et le support technique :
-        </p>
-
-        <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20souhaite%20m%E2%80%99abonner%20%C3%A0%20Prime%20IPTV%2C%20merci%20de%20m%E2%80%99envoyer%20les%20d%C3%A9tails."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105"
-   aria-label="Support WhatsApp 24h">
-  <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i>
-  WhatsApp – Support 24/7
-</a>
-
-      </div>
-
-    </div>
- 
-    <!-- سوشيال ميديا -->
-    <div class="flex justify-center mt-10">
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-    </div>
-
-    <!-- حقوق -->
-    <div class="border-t border-gray-400 mt-10 pt-6 text-center text-gray-300">
-      <p class="text-xs">© Tous droits réservés – Prime IPTV</p>
-    </div>
-
-  </div>
-</footer>
-
-<!-- واتساب عائم -->
-<a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20souhaite%20m%E2%80%99abonner%20%C3%A0%20Prime%20IPTV%2C%20merci%20de%20m%E2%80%99envoyer%20les%20d%C3%A9tails."
-   class="whatsapp-float fixed bottom-6 left-6 z-50"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Support WhatsApp">
-  <img src="/images/whatsapp.webp"
-       alt="Icône WhatsApp"
-       class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition"
-       loading="lazy"
-       decoding="async">
-</a>
-
-<!-- CSS -->
-<link rel="stylesheet" href="/css/footer.css">
-
-<!-- JavaScript -->
-<script src="/js/footer.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- ⭐ نهاية قسم التذييل (FOOTER) — Prime IPTV ⭐ -->
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-
-</main>
-
-</body>
-</html>
+    steps.forEach((step, index) => {
+        if (index == value) {
+            step.classList.add('active-duration'); // الكلمة المختارة تصبح بارزة
+        } else {
+            step.classList.remove('active-duration'); // إزالة التمييز عن الباقي
+        }
+    });
+};
+
+/* ========================================================= */
+/* =================== إدارة أحداث الصفحة ===================== */
+/* ========================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- تفعيل الأكورديون (عرض الميزات) بدون حذف أي ميزة --- */
+    document.querySelectorAll(".toggle-features-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const card = button.closest(".plan-card");
+            const featuresList = card.querySelector(".plan-features");
+            const label = button.querySelector("span:not(.plan-arrow)");
+            const arrow = button.querySelector(".plan-arrow");
+
+            if (featuresList.classList.contains("hidden")) {
+                featuresList.classList.remove("hidden");
+                label.textContent = "إخفاء الميزات";
+                arrow.textContent = "🔼";
+            } else {
+                featuresList.classList.add("hidden");
+                label.textContent = "عرض الميزات";
+                arrow.textContent = "🔽";
+            }
+        });
+    });
+
+    /* --- تهيئة السلايدر عند تحميل الصفحة (ليبدأ من خيار "سنة") --- */
+    const basicSlider = document.getElementById('basic-plan-slider');
+    if (basicSlider) {
+        updatePlanData(basicSlider.value, 'basic');
+    }
+
+    /* ========================================================= */
+    /* كود شريط الأعلام (Flags Animation) كما كان لديك سابقاً */
+    /* ========================================================= */
+    const flagsScroll = document.getElementById('flags-scroll');
+    if (flagsScroll) {
+        let scrollPos = 0;
+        let paused = false;
+        function animateFlags() {
+            if (!paused) {
+                scrollPos += 0.6;
+                if (scrollPos >= flagsScroll.scrollWidth / 2) scrollPos = 0;
+                flagsScroll.style.transform = `translateX(${scrollPos}px)`;
+            }
+            requestAnimationFrame(animateFlags);
+        }
+        requestAnimationFrame(animateFlags);
+        
+        flagsScroll.addEventListener('mouseenter', () => paused = true);
+        flagsScroll.addEventListener('mouseleave', () => paused = false);
+    }
+
+}); // نهاية DOMContentLoaded
+
+
+
+}); // END DOMContentLoaded
