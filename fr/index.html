@@ -238,46 +238,59 @@
   </div>
 
   <!-- زر اللغة + القائمة داخله -->
-<div class="lang-wrapper" id="lang-btn">
-  <img
-    src="/images/A3lame/flag2.webp"
-    class="flag-icon"
-    id="current-flag"
-    alt="Drapeau français"
-    width="32"
-    height="32"
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  >
-  <span id="current-lang">FR</span>
+  <div class="lang-wrapper" id="lang-btn">
+    <img
+      src="/images/A3lame/flag2.webp"
+      class="flag-icon"
+      id="current-flag"
+      alt="Drapeau français"
+      width="32"
+      height="32"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    >
+    <span id="current-lang">FR</span>
+  </div>
+
+  <!-- 🚨 القائمة المنسدلة داخل زر اللغة 🚨 -->
+  <div id="lang-dropdown" class="lang-dropdown hidden">
+    
+    <!-- العربية -->
+    <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
+      <a href="/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px;">
+        <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="علم العربية" width="24" height="24" loading="lazy" decoding="async">
+        <span>العربية (AR)</span>
+      </a>
+    </div>
+
+    <!-- English -->
+    <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
+      <a href="/en/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px;">
+        <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English flag" width="24" height="24" loading="lazy" decoding="async">
+        <span>English (EN)</span>
+      </a>
+    </div>
+
+    <!-- Français -->
+    <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
+      <a href="/fr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px;">
+        <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Drapeau français" width="24" height="24" loading="lazy" decoding="async">
+        <span>Français (FR)</span>
+      </a>
+    </div>
+
+    <!-- ✅ Español (جديد) -->
+    <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag_es.webp">
+      <a href="/es/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px;">
+        <img src="/images/A3lame/flag_es.webp" class="flag-icon" alt="Bandera española" width="24" height="24" loading="lazy" decoding="async" onerror="this.src='/images/A3lame/flag3.webp'">
+        <span>Español (ES)</span>
+      </a>
+    </div>
+
+  </div>
 </div>
-
-    <!-- 🚨 القائمة المنسدلة داخل زر اللغة 🚨 -->
-<div id="lang-dropdown" class="lang-dropdown hidden">
-  
-  <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
-    <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="Drapeau arabe" loading="lazy" decoding="async">
-    العربية (AR)
-  </div>
-
-  <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
-    <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="Drapeau anglais" loading="lazy" decoding="async">
-    English (EN)
-  </div>
-
-  <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
-    <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Drapeau français" loading="lazy" decoding="async">
-    Français (FR)
-  </div>
-
-  <!-- ✅ أضف هذا الخيار الجديد للإسبانية -->
-  <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag_es.webp">
-    <img src="/images/A3lame/flag_es.webp" class="flag-icon" alt="Drapeau espagnol" loading="lazy" decoding="async">
-    Español (ES)
-  </div>
-
-</div>
+<!-- 🚨🚨 نهاية شريط اللغة ⚑ 🚨🚨 -->
 
 <!-- 🚨🚨 نهاية شريط اللغة ⚑ 🚨🚨 -->
 <!-- 🚨🚨 بداية قسم الهيدر 🚨🚨 -->
