@@ -55,8 +55,8 @@
   .check { color:#00b050; font-weight:700; }
   .cross { color:#e63946; font-weight:700; }
   /* إصلاح تداخل الـ header الثابت مع الـ hero */
-  .hero-section { padding-top: 120px !important; padding-bottom: 40px !important; min-height: auto !important; }
-  @media (min-width: 768px) { .hero-section { padding-top: 140px !important; } }
+  .hero-section { padding-top: 96px !important; padding-bottom: 36px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 120px !important; padding-bottom: 60px !important; } }
   main { padding-top: 0 !important; }
 </style>
 
@@ -101,8 +101,8 @@
 
 <header id="header" class="fixed w-full bg-gradient-to-l from-blue-50 to-purple-50 shadow-md z-50">
   <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
-    <div class="flex items-center gap-4">
-      <img src="/images/logo.webp" alt="Prime IPTV" class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="lazy" width="80" height="80" fetchpriority="high">
+    <div id="logo-name" class="flex items-center gap-4">
+      <img id="logo-img" src="/images/logo.webp" alt="Prime IPTV" class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="lazy" width="80" height="80" fetchpriority="high">
       <span class="text-2xl md:text-3xl font-bold text-purple-700">Prime IPTV</span>
     </div>
     <nav class="hidden md:flex gap-6 items-center">
