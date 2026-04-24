@@ -2091,3 +2091,42 @@ section > *:last-child {
 .cta-btn:hover {
   background: #1d4ed8;
 }
+
+/* ===============================
+   🎨 ألوان السلايدر والأسعار
+================================ */
+
+/* ألوان نصوص الفترات (شهر، 3أشهر…) — يستهدف الـ div والـ spans داخله */
+#basic-plan-slider   + div,
+#basic-plan-slider   + div span { color: #2563eb !important; }
+#premium-plan-slider + div,
+#premium-plan-slider + div span { color: #d97706 !important; }
+#pro-plan-slider     + div,
+#pro-plan-slider     + div span { color: #7e22ce !important; }
+
+/* خلفية ملوّنة لعرض السعر مع نص أبيض */
+div:has(> #price-val-basic) {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+div:has(> #price-val-premium) {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+div:has(> #price-val-pro) {
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+
+/* يورو و /السنة و رقم السعر — كلها بيضاء بدون رمادي */
+div:has(> #price-val-basic)   span,
+div:has(> #price-val-premium) span,
+div:has(> #price-val-pro)     span {
+  color: #ffffff !important;
+}
