@@ -861,12 +861,12 @@
       <div class="duration-slider-container mb-6">
         <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
         
-        <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
-          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">شهر</span>
-          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3أشهر</span>
-          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6أشهر</span>
-          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">سنة</span>
-          <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">سنتين</span>
+        <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+          <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'basic')">شهر</span>
+          <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'basic')">3أشهر</span>
+          <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'basic')">6أشهر</span>
+          <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'basic')">سنة</span>
+          <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'basic')">سنتين</span>
         </div>
       </div>
 

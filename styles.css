@@ -4,6 +4,25 @@
 /* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
 html { scroll-behavior: smooth; }
 
+/* ===================== */
+/* سلايدر مدة الاشتراك   */
+/* ===================== */
+.duration-slider-container .flex span {
+  color: #93C5FD;
+  transition: color 0.2s, font-size 0.2s, text-shadow 0.2s;
+}
+
+.duration-slider-container .flex span:hover {
+  color: #60A5FA;
+}
+
+.duration-slider-container .flex span.active-duration {
+  color: #FFD700 !important;
+  font-size: 13px !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  font-weight: 900 !important;
+}
+
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 /* ⭐⭐ نهاية الأنماط العامة ⭐⭐ */
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
