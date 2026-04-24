@@ -919,10 +919,21 @@
 </h3>
           <p class="text-gray-600 mb-4">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
 
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+              <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'premium')">شهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'premium')">3أشهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'premium')">6أشهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'premium')">سنة</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'premium')">سنتين</span>
+            </div>
+          </div>
+
           <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-    <span>40</span>
+    <span id="price-val-premium">40</span>
     <span class="text-xl font-bold" style="color:#FFD700;">يورو</span>
-    <span class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ السنة</span>
+    <span id="period-text-premium" class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ السنة</span>
 </div>
 
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
@@ -969,8 +980,21 @@
           <h3 class="text-2xl font-bold text-purple-600 mb-2">الخطة الاحترافية</h3>
           <p class="text-gray-600 mb-4">للمستخدمين الذين يريدون الأفضل فقط</p>
 
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-    50 <span class="text-xl font-bold" style="color:#FFD700;">يورو</span> <span class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ السنة</span>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+              <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'pro')">شهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'pro')">3أشهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'pro')">6أشهر</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'pro')">سنة</span>
+              <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'pro')">سنتين</span>
+            </div>
+          </div>
+
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+    <span id="price-val-pro">50</span>
+    <span class="text-xl font-bold" style="color:#FFD700;">يورو</span>
+    <span id="period-text-pro" class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ السنة</span>
 </div>
 
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
