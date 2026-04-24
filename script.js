@@ -565,7 +565,7 @@ window.moveSlider = function(value, planType) {
 // 2. الدالة الأساسية لتحديث الأسعار والكلمات البارزة
 window.updatePlanData = function(value, planType) {
     // مصفوفة البيانات (يمكنك تعديل الأسعار من هنا بسهولة)
-    const pricingConfig = {
+    const pricingConfig = window.customPricingConfig || {
         basic: [
             { price: 5,  period: "/ شهر",   text: "شهر واحد" },
             { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
@@ -600,8 +600,8 @@ window.updatePlanData = function(value, planType) {
     // تحديث رابط الواتساب والرسالة تلقائياً
     const waLink = document.getElementById(`whatsapp-link-${planType}`);
     if (waLink) {
-        const planNames = { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
-        const planName = planNames[planType] || 'الأساسية';
+        const planNames = window.customPlanNames || { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
+        const planName = planNames[planType] || planNames.basic;
         const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
         waLink.href = `https://wa.me/212666686732?text=${msg}`;
     }

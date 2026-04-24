@@ -98,7 +98,38 @@
       font-family: 'Cairo', sans-serif !important;
       font-weight: 800;
     }
+
+    #basic-plan-slider   { accent-color: #2563eb; }
+    #premium-plan-slider { accent-color: #d97706; }
+    #pro-plan-slider     { accent-color: #7e22ce; }
   </style>
+
+  <script>
+    window.customPricingConfig = {
+      basic: [
+        { price: 5,  period: "/ mo",    text: "1 Month" },
+        { price: 12, period: "/ 3 mo",  text: "3 Months" },
+        { price: 20, period: "/ 6 mo",  text: "6 Months" },
+        { price: 30, period: "/ year",  text: "1 Year" },
+        { price: 50, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      premium: [
+        { price: 7,  period: "/ mo",    text: "1 Month" },
+        { price: 17, period: "/ 3 mo",  text: "3 Months" },
+        { price: 27, period: "/ 6 mo",  text: "6 Months" },
+        { price: 40, period: "/ year",  text: "1 Year" },
+        { price: 70, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      pro: [
+        { price: 9,  period: "/ mo",    text: "1 Month" },
+        { price: 22, period: "/ 3 mo",  text: "3 Months" },
+        { price: 35, period: "/ 6 mo",  text: "6 Months" },
+        { price: 50, period: "/ year",  text: "1 Year" },
+        { price: 90, period: "/ 2 yrs", text: "2 Years" }
+      ]
+    };
+    window.customPlanNames = { basic: 'Basic', premium: 'Premium', pro: 'Professional' };
+  </script>
 
   <!-- ============================
        9) البيانات المنظمة (Schema)
@@ -823,8 +854,20 @@ High quality, international channels, and uninterrupted live streaming
     <h3 class="text-2xl font-bold text-blue-500 mb-2">Basic Plan</h3>
     <p class="text-gray-600 mb-4">The best start for a world-class experience without complications</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      30 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">1m</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3m</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6m</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">1y</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-basic">30</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-basic" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
@@ -847,11 +890,12 @@ High quality, international channels, and uninterrupted live streaming
       <li>Exclusive and regularly renewed content</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-basic"
+     href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
+            hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe now
 </a>
 
@@ -872,8 +916,20 @@ Premium Plan
 </h3>
     <p class="text-gray-600 mb-4">The best choice for the most active users</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      40 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">1m</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3m</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6m</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">1y</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-premium">40</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-premium" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
@@ -896,11 +952,12 @@ Premium Plan
       <li>Exclusive and regularly renewed content</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-premium"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe now
 </a>
 
@@ -920,8 +977,20 @@ Premium Plan
     <h3 class="text-2xl font-bold text-purple-600 mb-2">Professional Plan</h3>
     <p class="text-gray-600 mb-4">For users who want only the best streaming experience</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      50 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">1m</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3m</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6m</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">1y</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-pro">50</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-pro" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
@@ -945,11 +1014,12 @@ Premium Plan
       <li>Exclusive content constantly renewed</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-pro"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe Now
 </a>
 
