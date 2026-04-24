@@ -565,29 +565,103 @@ window.moveSlider = function(value, planType) {
 // 2. الدالة الأساسية لتحديث الأسعار والكلمات البارزة
 window.updatePlanData = function(value, planType) {
     // مصفوفة البيانات (يمكنك تعديل الأسعار من هنا بسهولة)
-    const pricingConfig = {
-        basic: [
-            { price: 5,  period: "/ شهر",    text: "شهر واحد" },
-            { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
-            { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
-            { price: 30, period: "/ السنة",   text: "سنة كاملة" },
-            { price: 50, period: "/ سنتين",   text: "سنتين" }
+    const lang = document.documentElement.lang || 'ar';
+
+    const allPricingConfigs = {
+      ar: {
+        basic:   [
+          { price: 5,  period: "/ شهر",    text: "شهر واحد" },
+          { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
+          { price: 20, period: "/ 6 أشهر", text: "6 أشهر" },
+          { price: 30, period: "/ السنة",   text: "سنة كاملة" },
+          { price: 50, period: "/ سنتين",   text: "سنتين" }
         ],
         premium: [
-            { price: 7,  period: "/ شهر",    text: "شهر واحد" },
-            { price: 17, period: "/ 3 أشهر", text: "3 أشهر" },
-            { price: 28, period: "/ 6 أشهر", text: "6 أشهر" },
-            { price: 40, period: "/ السنة",   text: "سنة كاملة" },
-            { price: 65, period: "/ سنتين",   text: "سنتين" }
+          { price: 7,  period: "/ شهر",    text: "شهر واحد" },
+          { price: 17, period: "/ 3 أشهر", text: "3 أشهر" },
+          { price: 28, period: "/ 6 أشهر", text: "6 أشهر" },
+          { price: 40, period: "/ السنة",   text: "سنة كاملة" },
+          { price: 65, period: "/ سنتين",   text: "سنتين" }
         ],
         pro: [
-            { price: 9,  period: "/ شهر",    text: "شهر واحد" },
-            { price: 22, period: "/ 3 أشهر", text: "3 أشهر" },
-            { price: 35, period: "/ 6 أشهر", text: "6 أشهر" },
-            { price: 50, period: "/ السنة",   text: "سنة كاملة" },
-            { price: 80, period: "/ سنتين",   text: "سنتين" }
+          { price: 9,  period: "/ شهر",    text: "شهر واحد" },
+          { price: 22, period: "/ 3 أشهر", text: "3 أشهر" },
+          { price: 35, period: "/ 6 أشهر", text: "6 أشهر" },
+          { price: 50, period: "/ السنة",   text: "سنة كاملة" },
+          { price: 80, period: "/ سنتين",   text: "سنتين" }
         ],
+      },
+      en: {
+        basic:   [
+          { price: 5,  period: "/ Month",    text: "1 Month" },
+          { price: 12, period: "/ 3 Months", text: "3 Months" },
+          { price: 20, period: "/ 6 Months", text: "6 Months" },
+          { price: 30, period: "/ Year",     text: "1 Year" },
+          { price: 50, period: "/ 2 Years",  text: "2 Years" }
+        ],
+        premium: [
+          { price: 7,  period: "/ Month",    text: "1 Month" },
+          { price: 17, period: "/ 3 Months", text: "3 Months" },
+          { price: 28, period: "/ 6 Months", text: "6 Months" },
+          { price: 40, period: "/ Year",     text: "1 Year" },
+          { price: 65, period: "/ 2 Years",  text: "2 Years" }
+        ],
+        pro: [
+          { price: 9,  period: "/ Month",    text: "1 Month" },
+          { price: 22, period: "/ 3 Months", text: "3 Months" },
+          { price: 35, period: "/ 6 Months", text: "6 Months" },
+          { price: 50, period: "/ Year",     text: "1 Year" },
+          { price: 80, period: "/ 2 Years",  text: "2 Years" }
+        ],
+      },
+      fr: {
+        basic:   [
+          { price: 5,  period: "/ Mois",    text: "1 Mois" },
+          { price: 12, period: "/ 3 Mois",  text: "3 Mois" },
+          { price: 20, period: "/ 6 Mois",  text: "6 Mois" },
+          { price: 30, period: "/ An",      text: "1 An" },
+          { price: 50, period: "/ 2 Ans",   text: "2 Ans" }
+        ],
+        premium: [
+          { price: 7,  period: "/ Mois",    text: "1 Mois" },
+          { price: 17, period: "/ 3 Mois",  text: "3 Mois" },
+          { price: 28, period: "/ 6 Mois",  text: "6 Mois" },
+          { price: 40, period: "/ An",      text: "1 An" },
+          { price: 65, period: "/ 2 Ans",   text: "2 Ans" }
+        ],
+        pro: [
+          { price: 9,  period: "/ Mois",    text: "1 Mois" },
+          { price: 22, period: "/ 3 Mois",  text: "3 Mois" },
+          { price: 35, period: "/ 6 Mois",  text: "6 Mois" },
+          { price: 50, period: "/ An",      text: "1 An" },
+          { price: 80, period: "/ 2 Ans",   text: "2 Ans" }
+        ],
+      },
+      es: {
+        basic:   [
+          { price: 5,  period: "/ Mes",     text: "1 Mes" },
+          { price: 12, period: "/ 3 Meses", text: "3 Meses" },
+          { price: 20, period: "/ 6 Meses", text: "6 Meses" },
+          { price: 30, period: "/ Año",     text: "1 Año" },
+          { price: 50, period: "/ 2 Años",  text: "2 Años" }
+        ],
+        premium: [
+          { price: 7,  period: "/ Mes",     text: "1 Mes" },
+          { price: 17, period: "/ 3 Meses", text: "3 Meses" },
+          { price: 28, period: "/ 6 Meses", text: "6 Meses" },
+          { price: 40, period: "/ Año",     text: "1 Año" },
+          { price: 65, period: "/ 2 Años",  text: "2 Años" }
+        ],
+        pro: [
+          { price: 9,  period: "/ Mes",     text: "1 Mes" },
+          { price: 22, period: "/ 3 Meses", text: "3 Meses" },
+          { price: 35, period: "/ 6 Meses", text: "6 Meses" },
+          { price: 50, period: "/ Año",     text: "1 Año" },
+          { price: 80, period: "/ 2 Años",  text: "2 Años" }
+        ],
+      },
     };
+    const pricingConfig = allPricingConfigs[lang] || allPricingConfigs['ar'];
 
     const selected = pricingConfig[planType][value];
 
@@ -600,9 +674,14 @@ window.updatePlanData = function(value, planType) {
     // تحديث رابط الواتساب والرسالة تلقائياً
     const waLink = document.getElementById(`whatsapp-link-${planType}`);
     if (waLink) {
-        const planNames = { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
-        const planName = planNames[planType] || planType;
-        const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
+        const planNamesMap = {
+          ar: { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' },
+          en: { basic: 'Basic',    premium: 'Premium',  pro: 'Professional' },
+          fr: { basic: 'de base',  premium: 'Premium',  pro: 'Professionnelle' },
+          es: { basic: 'Básico',   premium: 'Estándar', pro: 'Profesional' },
+        };
+        const planName = (planNamesMap[lang] || planNamesMap['ar'])[planType] || planType;
+        const msg = encodeURIComponent(`Hello / Bonjour / مرحباً — ${planType} plan (${selected.text}) - Prime IPTV`);
         waLink.href = `https://wa.me/212666686732?text=${msg}`;
     }
 

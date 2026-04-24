@@ -821,8 +821,20 @@ High quality, international channels, and uninterrupted live streaming
     <h3 class="text-2xl font-bold text-blue-500 mb-2">Basic Plan</h3>
     <p class="text-gray-600 mb-4">The best start for a world-class experience without complications</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      30 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'basic')">1M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'basic')">3M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'basic')">6M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'basic')">1Y</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'basic')">2Y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Montserrat',sans-serif;">
+      <span id="price-val-basic">30</span>
+      <span class="text-xl font-bold" style="color:#FFD700;">EUR</span>
+      <span id="period-text-basic" class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ Year</span>
     </div>
 
     <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
@@ -870,8 +882,20 @@ Premium Plan
 </h3>
     <p class="text-gray-600 mb-4">The best choice for the most active users</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      40 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'premium')">1M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'premium')">3M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'premium')">6M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'premium')">1Y</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'premium')">2Y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Montserrat',sans-serif;">
+      <span id="price-val-premium">40</span>
+      <span class="text-xl font-bold" style="color:#FFD700;">EUR</span>
+      <span id="period-text-premium" class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ Year</span>
     </div>
 
     <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
@@ -918,8 +942,20 @@ Premium Plan
     <h3 class="text-2xl font-bold text-purple-600 mb-2">Professional Plan</h3>
     <p class="text-gray-600 mb-4">For users who want only the best streaming experience</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      50 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="duration-step cursor-pointer" onclick="moveSlider(0, 'pro')">1M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(1, 'pro')">3M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(2, 'pro')">6M</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(3, 'pro')">1Y</span>
+        <span class="duration-step cursor-pointer" onclick="moveSlider(4, 'pro')">2Y</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Montserrat',sans-serif;">
+      <span id="price-val-pro">50</span>
+      <span class="text-xl font-bold" style="color:#FFD700;">EUR</span>
+      <span id="period-text-pro" class="text-lg font-medium" style="color:rgba(255,255,255,0.75);">/ Year</span>
     </div>
 
     <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
