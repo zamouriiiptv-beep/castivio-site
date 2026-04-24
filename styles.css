@@ -23,6 +23,59 @@ html { scroll-behavior: smooth; }
   font-weight: 900 !important;
 }
 
+/* ============================= */
+/* ألوان السلايدر حسب كل خطة    */
+/* ============================= */
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* الخطة الأساسية — أزرق */
+.plan-basic-card .custom-slider {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+.plan-basic-card .custom-slider::-webkit-slider-thumb { background: #3b82f6; }
+.plan-basic-card .custom-slider::-moz-range-thumb    { background: #3b82f6; }
+
+/* الخطة المميزة — برتقالي/ذهبي */
+.plan-premium-card .custom-slider {
+  background: linear-gradient(to right, #f59e0b, #d97706);
+}
+.plan-premium-card .custom-slider::-webkit-slider-thumb { background: #f59e0b; }
+.plan-premium-card .custom-slider::-moz-range-thumb    { background: #f59e0b; }
+
+/* الخطة الاحترافية — بنفسجي */
+.plan-pro-card .custom-slider {
+  background: linear-gradient(to right, #a855f7, #7e22ce);
+}
+.plan-pro-card .custom-slider::-webkit-slider-thumb { background: #a855f7; }
+.plan-pro-card .custom-slider::-moz-range-thumb    { background: #a855f7; }
+
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 /* ⭐⭐ نهاية الأنماط العامة ⭐⭐ */
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
