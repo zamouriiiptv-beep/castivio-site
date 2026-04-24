@@ -54,9 +54,6 @@
   .vs-table tr:nth-child(even) td { background:#f9f9f9; }
   .check { color:#00b050; font-weight:700; }
   .cross { color:#e63946; font-weight:700; }
-  .custom-slider { -webkit-appearance:none; height:6px; border-radius:3px; background:linear-gradient(to left,#7c3aed,#c4b5fd); outline:none; width:100%; }
-  .custom-slider::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:#7c3aed; cursor:pointer; box-shadow:0 2px 6px rgba(124,58,237,0.4); }
-  .active-duration { color:#7c3aed !important; font-weight:900 !important; transform:scale(1.2); display:inline-block; }
   /* إصلاح تداخل الـ header الثابت مع الـ hero */
   .hero-section { padding-top: 96px !important; padding-bottom: 36px !important; min-height: auto !important; }
   @media (min-width: 768px) { .hero-section { padding-top: 120px !important; padding-bottom: 60px !important; } }
@@ -271,14 +268,14 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-blue-500 mb-2">الباقة الأساسية</h3>
           <p class="text-gray-600 mb-4">مثالية للأفراد والعائلات</p>
-          <div class="duration-slider-container mb-4">
-            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
             <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
-              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(0,'basic')">شهر</span>
-              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(1,'basic')">3أشهر</span>
-              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(2,'basic')">6أشهر</span>
-              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(3,'basic')">سنة</span>
-              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(4,'basic')">سنتين</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">شهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3أشهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6أشهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">سنة</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">سنتين</span>
             </div>
           </div>
           <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
@@ -311,8 +308,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-yellow-500 mb-2">الباقة المميزة</h3>
           <p class="text-gray-600 mb-4">للمتابع الجاد للرياضة والمسلسلات</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">40€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 113 ريال سعودي / سنة</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">شهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">سنة</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-premium">40</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -325,7 +335,7 @@
             <li>✅ أولوية الوصول للسيرفر</li>
             <li>✅ +63,000 فيلم عند الطلب</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20المميزة%20من%20الخليج." target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 40€/سنة</a>
+          <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
 
@@ -336,8 +346,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-purple-600 mb-2">الباقة الاحترافية</h3>
           <p class="text-gray-600 mb-4">لمن يريد أفضل تجربة بث</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">50€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 150 ريال سعودي / سنة</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">شهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">سنة</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-pro">50</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -351,7 +374,7 @@
             <li>✅ مباريات PPV مشمولة</li>
             <li>✅ دعم VIP أولوية</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20الاحترافية%20من%20الخليج." target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 50€/سنة</a>
+          <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
     </div>
