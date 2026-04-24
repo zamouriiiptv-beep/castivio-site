@@ -49,6 +49,9 @@
   .trust-stat .label { font-size:.8rem; opacity:.85; }
   .check { color:#00b050; font-weight:700; }
   .cross { color:#e63946; font-weight:700; }
+  .custom-slider { -webkit-appearance:none; height:6px; border-radius:3px; background:linear-gradient(to left,#7c3aed,#c4b5fd); outline:none; width:100%; }
+  .custom-slider::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:#7c3aed; cursor:pointer; box-shadow:0 2px 6px rgba(124,58,237,0.4); }
+  .active-duration { color:#7c3aed !important; font-weight:900 !important; transform:scale(1.2); display:inline-block; }
   /* إصلاح تداخل الـ header الثابت مع الـ hero */
   .hero-section { padding-top: 96px !important; padding-bottom: 36px !important; min-height: auto !important; }
   @media (min-width: 768px) { .hero-section { padding-top: 120px !important; padding-bottom: 60px !important; } }
@@ -204,8 +207,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-blue-500 mb-2">الباقة الأساسية</h3>
           <p class="text-gray-600 mb-4">مثالية للأفراد والعائلات</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">30€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 900 جنيه مصري / سنة</div>
+          <div class="duration-slider-container mb-4">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(0,'basic')">شهر</span>
+              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(1,'basic')">3أشهر</span>
+              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(2,'basic')">6أشهر</span>
+              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(3,'basic')">سنة</span>
+              <span class="duration-step cursor-pointer hover:text-purple-600" onclick="moveSlider(4,'basic')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-basic">30</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -219,7 +235,7 @@
             <li>✅ دعم واتساب عربي 24/7</li>
             <li>✅ ضمان استرداد 10 أيام</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20الأساسية%20من%20مصر." target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 30€/سنة</a>
+          <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
 
