@@ -250,6 +250,7 @@ a.button {
   position: absolute;
   top: 32px;
   left: 0;
+  direction: ltr;
   background: #fff;
   width: 160px;
   border-radius: 8px;
