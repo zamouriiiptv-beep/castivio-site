@@ -415,16 +415,12 @@
     <li><a href="#internet-speed">Internet Speed Requirements</a></li>
     <li><a href="#setup-firestick">How to Set Up IPTV on Firestick</a></li>
     <li><a href="#setup-smart-tv">How to Set Up IPTV on Smart TV</a></li>
-    <li><a href="#setup-phone">How to Set Up IPTV on iPhone & Android</a></li>
-    <li><a href="#epg">What is EPG (Electronic Program Guide)?</a></li>
-    <li><a href="#no-buffering">How to Fix Buffering Issues</a></li>
-    <li><a href="#faq">Frequently Asked Questions</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#setup-phone">How to Set Up IPTV on iPhone & Android</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#epg">What is EPG (Electronic Program Guide)?</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#no-buffering">How to Fix Buffering Issues</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#faq">Frequently Asked Questions</a></li>
   </ol>
-  <button class="toc-toggle" onclick="
-    var items=this.closest('.guide-toc').querySelectorAll('li');
-    var isHidden=this.closest('.guide-toc').querySelectorAll('li.toc-hidden').length>0;
-    items.forEach(function(li,i){if(i>=6){li.classList.toggle('toc-hidden',!isHidden);}});
-    this.textContent=isHidden?'▲ Show less':'▼ Show more';">▼ Show more</button>
+  <button class="toc-toggle" onclick="var h=this.closest('.guide-toc').querySelectorAll('.toc-hidden'),s=this.closest('.guide-toc').querySelectorAll('li[style*=none]');if(s.length){s.forEach(function(l){l.style.display='';});this.textContent='▲ Show less'}else{h.forEach(function(l){l.style.display='none';});this.textContent='▼ Show more'}">▼ Show more</button>
   <script>(function(){var items=document.querySelectorAll('.guide-toc ol li');items.forEach(function(li,i){if(i>=6)li.classList.add('toc-hidden');});}());<\/script>
 </div>
 

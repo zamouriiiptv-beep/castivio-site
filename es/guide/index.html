@@ -432,17 +432,13 @@
     <li><a href="#velocidad-internet">Velocidad de Internet Necesaria</a></li>
     <li><a href="#lista-m3u">¿Qué es una Lista M3U en IPTV?</a></li>
     <li><a href="#configurar-firestick">Cómo Configurar IPTV en Firestick</a></li>
-    <li><a href="#configurar-smart-tv">Cómo Configurar IPTV en Smart TV</a></li>
-    <li><a href="#configurar-movil">Cómo Configurar IPTV en iPhone y Android</a></li>
-    <li><a href="#epg">¿Qué es la EPG (Guía Electrónica de Programas)?</a></li>
-    <li><a href="#sin-cortes">Cómo Solucionar el Buffering en IPTV</a></li>
-    <li><a href="#faq">Preguntas Frecuentes</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#configurar-smart-tv">Cómo Configurar IPTV en Smart TV</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#configurar-movil">Cómo Configurar IPTV en iPhone y Android</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#epg">¿Qué es la EPG (Guía Electrónica de Programas)?</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#sin-cortes">Cómo Solucionar el Buffering en IPTV</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#faq">Preguntas Frecuentes</a></li>
   </ol>
-  <button class="toc-toggle" onclick="
-    var items=this.closest('.guide-toc').querySelectorAll('li');
-    var isHidden=this.closest('.guide-toc').querySelectorAll('li.toc-hidden').length>0;
-    items.forEach(function(li,i){if(i>=6){li.classList.toggle('toc-hidden',!isHidden);}});
-    this.textContent=isHidden?'▲ Ver menos':'▼ Ver más';">▼ Ver más</button>
+  <button class="toc-toggle" onclick="var h=this.closest('.guide-toc').querySelectorAll('.toc-hidden'),s=this.closest('.guide-toc').querySelectorAll('li[style*=none]');if(s.length){s.forEach(function(l){l.style.display='';});this.textContent='▲ Ver menos'}else{h.forEach(function(l){l.style.display='none';});this.textContent='▼ Ver más'}">▼ Ver más</button>
   <script>(function(){var items=document.querySelectorAll('.guide-toc ol li');items.forEach(function(li,i){if(i>=6)li.classList.add('toc-hidden');});}());<\/script>
 </div>
 
