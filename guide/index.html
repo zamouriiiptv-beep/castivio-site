@@ -1,765 +1,108 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- =============================================
+     🚀 HERO SECTION — GUIDE PAGE (محدّث)
+     يطابق أسلوب index.html
+     - اشترك على اليمين | واتساب على اليسار
+     - نص وصفي بدل الصورة + keywords مناسبة
+============================================= -->
+<section id="home"
+  class="relative hero-section flex items-center justify-center overflow-hidden pt-28 pb-12">
 
-<title>الدليل الشامل لـ IPTV 2026 للمبتدئين – كل ما تحتاج معرفته | Prime IPTV</title>
-
-<meta name="description" content="الدليل الأشمل والأكمل لـ IPTV بالعربية 2026. تعرّف على ما هو IPTV، كيف يعمل، كيف تثبّته على Firestick وSmart TV وأي جهاز، وكيف تحصل على أفضل تجربة بث 4K بدون تقطيع في أي مكان بالعالم.">
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://primeiptvplus.com/guide/">
-
-<link rel="alternate" hreflang="ar" href="https://primeiptvplus.com/guide/">
-<link rel="alternate" hreflang="en" href="https://primeiptvplus.com/en/guide/">
-<link rel="alternate" hreflang="fr" href="https://primeiptvplus.com/fr/guide/">
-<link rel="alternate" hreflang="x-default" href="https://primeiptvplus.com/en/guide/">
-
-<meta property="og:locale" content="ar_AR">
-<meta property="og:locale:alternate" content="en_US">
-<meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:title" content="الدليل الشامل لـ IPTV 2026 للمبتدئين | Prime IPTV">
-<meta property="og:description" content="الدليل الأشمل لـ IPTV بالعربية. تعرّف على ما هو IPTV وكيف تحصل على أفضل تجربة بث 4K بدون تقطيع.">
-<meta property="og:url" content="https://primeiptvplus.com/guide/">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://primeiptvplus.com/images/og-image.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="الدليل الشامل لـ IPTV 2026 للمبتدئين | Prime IPTV">
-<meta name="twitter:description" content="كل ما تحتاج معرفته عن IPTV — التثبيت، الأجهزة، القنوات، EPG، وأفضل تجربة بث 4K بدون تقطيع.">
-<meta name="twitter:image" content="https://primeiptvplus.com/images/og-image.jpg">
-
-<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="/css/tailwind.min.css">
-<link rel="stylesheet" href="/styles.css">
-<script src="/script.js" defer></script>
-
-<style>
-  body { font-family: 'Tajawal', sans-serif !important; }
-  h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
-
-  main article h2 {
-    margin-top: 2em !important;
-    margin-bottom: 0.7em !important;
-    color: #6B21A8;
-    font-size: 1.5rem;
-    border-right: 4px solid #7c3aed;
-    padding-right: 12px;
-  }
-  main article h3 {
-    margin-top: 1.5em !important;
-    margin-bottom: 0.5em !important;
-    color: #1E40AF;
-    font-size: 1.15rem;
-  }
-  main article p {
-    margin-bottom: 1em !important;
-    line-height: 1.9 !important;
-    color: #374151;
-  }
-
-  a.cta-btn {
-    display: inline-block;
-    background: linear-gradient(to left, #7c3aed, #3b82f6);
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgb(124 58 237 / 0.4);
-    transition: transform 0.3s ease;
-  }
-  a.cta-btn:hover { transform: scale(1.05); }
-
-  .guide-toc {
-    background: linear-gradient(135deg, #f5f3ff, #eff6ff);
-    border: 1px solid #e0d7ff;
-    border-radius: 16px;
-    padding: 24px 28px;
-    margin: 32px 0;
-  }
-  .guide-toc h3 { color: #6B21A8 !important; margin-top: 0 !important; margin-bottom: 12px !important; }
-  .guide-toc ol { margin: 0; padding-right: 20px; }
-  .guide-toc li { margin-bottom: 6px; display: list-item !important; }
-  .guide-toc a { color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-  .guide-toc a:hover { text-decoration: underline; }
-
-  .info-box {
-    background: #f0fdf4;
-    border: 1px solid #86efac;
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin: 20px 0;
-  }
-  .info-box.tip { background: #eff6ff; border-color: #93c5fd; }
-
-  .speed-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    margin: 20px 0;
-  }
-  .speed-table th {
-    background: linear-gradient(135deg, #7c3aed, #3b82f6);
-    color: #fff;
-    padding: 12px 16px;
-    text-align: right;
-  }
-  .speed-table td {
-    padding: 10px 16px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 0.9rem;
-    text-align: right;
-  }
-  .speed-table tr:nth-child(even) td { background: #f9f7ff; }
-
-  .device-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin: 20px 0;
-  }
-  @media(min-width: 600px) { .device-grid { grid-template-columns: repeat(3, 1fr); } }
-  .device-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-  .device-card .icon { font-size: 2rem; margin-bottom: 8px; }
-  .device-card .name { font-weight: 700; font-size: 0.9rem; color: #374151; }
-  .device-card .desc { font-size: 0.75rem; color: #6b7280; margin-top: 4px; }
-
-  .faq-item {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-  .faq-item summary {
-    cursor: pointer;
-    font-weight: 700;
-    padding: 16px 20px;
-    background: #f9f7ff;
-    color: #6B21A8;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Cairo', sans-serif;
-  }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item[open] summary { background: #ede9fe; }
-  .faq-item p { padding: 16px 20px; margin: 0 !important; background: #fff; color: #374151; }
-
-  ul.check-list { list-style: none; padding: 0; margin: 12px 0; }
-  ul.check-list li {
-    display: flex !important;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 8px;
-    color: #374151;
-    flex-direction: row-reverse;
-  }
-  ul.check-list li::before { content: "✅"; flex-shrink: 0; }
-</style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "@id": "https://primeiptvplus.com/guide/#article",
-      "headline": "الدليل الشامل لـ IPTV 2026 للمبتدئين",
-      "description": "الدليل الأشمل والأكمل لـ IPTV بالعربية 2026 لجميع الناطقين بالعربية حول العالم.",
-      "url": "https://primeiptvplus.com/guide/",
-      "inLanguage": "ar",
-      "publisher": { "@type": "Organization", "name": "Prime IPTV", "url": "https://primeiptvplus.com/" }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "ما هو IPTV وكيف يعمل؟", "acceptedAnswer": { "@type": "Answer", "text": "IPTV اختصار لـ Internet Protocol Television، وهو تقنية تبث القنوات التلفزيونية عبر الإنترنت بدلاً من الأقمار الصناعية أو الكابل التقليدي. يعمل عن طريق تطبيق على جهازك يتصل بسيرفر يبث القنوات مباشرة بجودة HD و4K." } },
-        { "@type": "Question", "name": "ما هي سرعة الإنترنت المطلوبة لـ IPTV؟", "acceptedAnswer": { "@type": "Answer", "text": "للجودة العادية تحتاج 5 ميجا، للـ HD تحتاج 10 ميجا، وللـ 4K تحتاج 25 ميجا أو أكثر. يُفضل استخدام اتصال سلكي للحصول على أفضل تجربة." } },
-        { "@type": "Question", "name": "كيف أثبّت IPTV على Firestick؟", "acceptedAnswer": { "@type": "Answer", "text": "ثبّت تطبيق مشغل IPTV مثل TiviMate أو IPTV Smarters من متجر Amazon، ثم أدخل رابط M3U أو بيانات Xtream Codes التي يرسلها لك مزوّد الخدمة. ستحمّل القنوات تلقائياً." } },
-        { "@type": "Question", "name": "ما هو أفضل مشغل IPTV؟", "acceptedAnswer": { "@type": "Answer", "text": "TiviMate هو الأفضل لـ Firestick وAndroid. IPTV Smarters Pro وGSE Smart IPTV ممتازان لـ iPhone وiPad. وللـ Smart TV يعمل SS IPTV وSmart IPTV بشكل جيد." } },
-        { "@type": "Question", "name": "كيف أتخلص من التقطيع في IPTV؟", "acceptedAnswer": { "@type": "Answer", "text": "تحقق من سرعة الإنترنت (10 ميجا للـ HD على الأقل)، استخدم اتصالاً سلكياً بدل الواي فاي، اختر مزوداً موثوقاً مثل Prime IPTV، استخدم مشغلاً جيداً مثل TiviMate، وتجنب VPN بطيء." } },
-        { "@type": "Question", "name": "ما هو EPG في IPTV؟", "acceptedAnswer": { "@type": "Answer", "text": "EPG اختصار لـ Electronic Program Guide، وهو دليل البرامج الإلكتروني المدمج في تطبيق IPTV. يعرض البرامج الحالية والقادمة على كل قناة، مما يسهّل التصفح والتخطيط لمشاهداتك." } }
-      ]
-    }
-  ]
-}
-</script>
-
-</head>
-
-<body class="bg-gray-50 relative">
-
-<!-- Header -->
-<header id="header" class="fixed w-full bg-gradient-to-r from-blue-50 to-purple-50 shadow-md z-50">
-  <div class="container mx-auto px-4 flex items-center justify-between">
-    <div id="logo-name" class="flex items-center gap-4">
-      <img id="logo-img" src="/images/logo.webp" alt="Prime IPTV Logo"
-           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover"
-           loading="lazy" width="80" height="80" fetchpriority="high">
-      <h2 class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">Prime IPTV</h2>
-    </div>
-    <nav id="nav-links" class="hidden md:flex gap-6 items-center">
-      <a href="/" class="nav-link text-gray-700 hover:text-purple-700">الرئيسية</a>
-      <a href="/#why-us" class="nav-link text-gray-700 hover:text-purple-700">المزايا</a>
-      <a href="/#pricing" class="nav-link text-gray-700 hover:text-purple-700">الباقات</a>
-      <a href="/#faq" class="nav-link text-gray-700 hover:text-purple-700">الأسئلة الشائعة</a>
-      <a href="/#payment-methods" class="nav-link text-gray-700 hover:text-purple-700">طرق الدفع</a>
-    </nav>
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="القائمة">
-      <svg class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
+  <!-- ✨ خلفية بتدرج Prime IPTV — مطابقة لـ index -->
+  <div class="absolute inset-0"
+    style="background: linear-gradient(135deg, #5B16A3, #7A3CEB, #2563EB);"
+    aria-hidden="true">
   </div>
-</header>
 
-<!-- Language Bar -->
-<div id="language-bar" dir="rtl">
-  <div id="flags-container"><div id="flags-scroll"></div></div>
-  <div class="lang-wrapper" id="lang-btn">
-    <img id="current-flag" class="flag-icon" src="/images/A3lame/flag1.webp" alt="علم اللغة العربية">
-    <span id="current-lang">AR</span>
-    <div id="lang-dropdown" class="lang-dropdown hidden">
-      <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
-        <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="عربي"> العربية
+  <!-- ✨ هالات ضوء -->
+  <div class="absolute top-[-160px] left-[-160px] w-[420px] h-[420px] bg-white/20 opacity-20 blur-[140px] rounded-full" aria-hidden="true"></div>
+  <div class="absolute bottom-[-180px] right-[-180px] w-[480px] h-[480px] bg-white/10 opacity-20 blur-[150px] rounded-full" aria-hidden="true"></div>
+
+  <!-- طبقة زجاجية -->
+  <div class="absolute inset-0 bg-white/5 backdrop-blur-[2px]" aria-hidden="true"></div>
+
+  <!-- المحتوى -->
+  <div class="container relative z-20 mx-auto px-6 max-w-4xl">
+    <div class="text-white space-y-5 flex flex-col items-center">
+
+      <!-- شارة -->
+      <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">
+        📖 دليل شامل &nbsp;•&nbsp; محدّث 2026 &nbsp;•&nbsp; للمبتدئين في كل مكان
       </div>
-      <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
-        <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English"> English
-      </div>
-      <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
-        <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Français"> Français
-      </div>
-    </div>
-  </div>
-</div>
 
-<div id="overlay" class="overlay" aria-hidden="true"></div>
-
-<div id="side-menu" class="side-menu glass-card" aria-hidden="true">
-  <button id="close-menu" class="close-btn" aria-label="إغلاق القائمة">×</button>
-  <ul class="menu-links" role="menu">
-    <li><a href="/" role="menuitem">الرئيسية</a></li>
-    <li><a href="/#why-us" role="menuitem">المزايا</a></li>
-    <li><a href="/#pricing" role="menuitem">الباقات</a></li>
-    <li><a href="/#testimonials" role="menuitem">آراء العملاء</a></li>
-    <li><a href="/#faq" role="menuitem">الأسئلة الشائعة</a></li>
-    <li><a href="/#payment-methods" role="menuitem">طرق الدفع</a></li>
-  </ul>
-</div>
-
-<!-- Hero -->
-<section class="bg-gradient-to-l from-indigo-700 via-purple-700 to-blue-600 pt-28 pb-12 text-white">
-  <div class="container mx-auto px-6 max-w-4xl text-center">
-
-    <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-      📖 دليل شامل • محدّث 2026 • للمبتدئين في كل مكان
-    </div>
-
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight" style="color:#fff !important;">
-      الدليل الشامل لـ IPTV 2026 للمبتدئين
-    </h1>
-
-    <p class="text-gray-200 max-w-3xl mx-auto mb-8 text-lg leading-relaxed">
-      كل ما تحتاج معرفته عن IPTV — ما هو، كيف يعمل، كيف تثبّته على أي جهاز، وكيف تحصل على أفضل تجربة بث 4K بدون تقطيع في أي مكان من العالم.
-    </p>
-
-    <div class="flex justify-center gap-4 flex-wrap">
-      <a href="/#pricing" class="cta-btn">🚀 اشترك في Prime IPTV الآن</a>
-      <a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20معرفة%20المزيد%20عن%20Prime%20IPTV."
-         target="_blank" rel="noopener noreferrer"
-         style="display:inline-block;background:#25D366;color:#fff;padding:0.75rem 2rem;border-radius:9999px;font-weight:700;text-decoration:none;">
-        💬 تواصل معنا عبر واتساب
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Main Content -->
-<main class="container mx-auto px-6 max-w-4xl mt-10 mb-16">
-<article class="prose mx-auto prose-indigo prose-lg">
-
-<!-- فهرس المحتويات -->
-<div class="guide-toc">
-  <h3>📋 فهرس المحتويات</h3>
-  <ol>
-    <li><a href="#what-is-iptv">ما هو IPTV وكيف يعمل؟</a></li>
-    <li><a href="#iptv-vs-cable">IPTV مقابل التلفاز التقليدي والبث العادي</a></li>
-    <li><a href="#devices">الأجهزة المتوافقة</a></li>
-    <li><a href="#internet-speed">سرعة الإنترنت المطلوبة</a></li>
-    <li><a href="#setup-firestick">كيف أثبّت IPTV على Firestick؟</a></li>
-    <li><a href="#setup-smart-tv">كيف أثبّت IPTV على Smart TV؟</a></li>
-    <li><a href="#setup-phone">كيف أثبّت IPTV على الجوال؟</a></li>
-    <li><a href="#epg">ما هو دليل البرامج EPG؟</a></li>
-    <li><a href="#no-buffering">كيف أتخلص من التقطيع؟</a></li>
-    <li><a href="#faq">الأسئلة الشائعة</a></li>
-  </ol>
-</div>
-
-<!-- القسم 1 -->
-<h2 id="what-is-iptv">1. ما هو IPTV وكيف يعمل؟</h2>
-
-<p>
-  <strong>IPTV</strong> اختصار لـ <strong>Internet Protocol Television</strong>، وبالعربية: البث التلفزيوني عبر بروتوكول الإنترنت. بدلاً من استقبال القنوات عبر الهوائي أو الطبق اللاقط أو الكابل، يصلك IPTV مباشرة عبر اتصالك بالإنترنت.
-</p>
-
-<p>
-  فكّر فيه مثل YouTube أو Netflix — لكن للتلفاز المباشر. تفتح تطبيق IPTV على جهازك، يتصل بسيرفر يبث لك القنوات في الوقت الفعلي بجودة عالية. النتيجة: تجربة تلفزيونية مرنة على أي شاشة تمتلكها.
-</p>
-
-<div class="info-box">
-  <strong>🔑 الفرق الجوهري:</strong> التلفاز التقليدي يرسل إشارة واحدة للجميع. IPTV يرسل لك فقط القناة التي تشاهدها، مباشرة على جهازك — مما يجعله أكثر كفاءة ومرونة.
-</div>
-
-<p>
-  يعمل IPTV عبر اشتراك. بعد الاشتراك، تحصل على رابط M3U أو بيانات Xtream Codes تدخلها في تطبيق مشغل IPTV. يحمّل التطبيق جميع قنواتك ويمكنك البدء فوراً.
-</p>
-
-<!-- القسم 2 -->
-<h2 id="iptv-vs-cable">2. IPTV مقابل التلفاز التقليدي والبث العادي</h2>
-
-<p>مقارنة واضحة تساعدك على فهم الفروق:</p>
-
-<table class="speed-table">
-  <thead>
-    <tr>
-      <th>الميزة</th>
-      <th>IPTV</th>
-      <th>تلفاز كابل/قمر صناعي</th>
-      <th>Netflix / شاهد</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>رياضة مباشرة</td>
-      <td>✅ نعم</td>
-      <td>✅ نعم</td>
-      <td>❌ محدود</td>
-    </tr>
-    <tr>
-      <td>أخبار مباشرة</td>
-      <td>✅ نعم</td>
-      <td>✅ نعم</td>
-      <td>❌ لا</td>
-    </tr>
-    <tr>
-      <td>أفلام ومسلسلات</td>
-      <td>✅ +190,000 عنوان</td>
-      <td>⚠️ محدود</td>
-      <td>✅ نعم</td>
-    </tr>
-    <tr>
-      <td>عدد القنوات</td>
-      <td>✅ +30,000 قناة</td>
-      <td>⚠️ 200–500</td>
-      <td>❌ بدون قنوات مباشرة</td>
-    </tr>
-    <tr>
-      <td>جودة 4K</td>
-      <td>✅ جميع الباقات</td>
-      <td>⚠️ تكلفة إضافية</td>
-      <td>✅ باقات مدفوعة</td>
-    </tr>
-    <tr>
-      <td>التكلفة السنوية</td>
-      <td>✅ من 25$ فقط/سنة</td>
-      <td>❌ 600–1800$/سنة</td>
-      <td>⚠️ 100–200$/سنة</td>
-    </tr>
-    <tr>
-      <td>بدون عقد</td>
-      <td>✅ نعم</td>
-      <td>❌ عقد 12–24 شهر</td>
-      <td>✅ شهري</td>
-    </tr>
-    <tr>
-      <td>يعمل على كل الأجهزة</td>
-      <td>✅ نعم</td>
-      <td>❌ يحتاج رسيفر</td>
-      <td>✅ نعم</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- القسم 3 -->
-<h2 id="devices">3. الأجهزة المتوافقة</h2>
-
-<p>من أكبر مزايا IPTV أنه يعمل على تقريباً كل شاشة تمتلكها. لا تحتاج أي جهاز خاص.</p>
-
-<div class="device-grid">
-  <div class="device-card"><div class="icon">🔥</div><div class="name">Amazon Firestick</div><div class="desc">Fire TV Stick, Fire TV 4K, Fire TV Cube</div></div>
-  <div class="device-card"><div class="icon">📺</div><div class="name">Smart TV</div><div class="desc">سامسونج، LG، سوني، هايسنس</div></div>
-  <div class="device-card"><div class="icon">📱</div><div class="name">iPhone وiPad</div><div class="desc">iOS 12 وما فوق</div></div>
-  <div class="device-card"><div class="icon">🤖</div><div class="name">هاتف وتابلت Android</div><div class="desc">Android 5.0 وما فوق</div></div>
-  <div class="device-card"><div class="icon">💻</div><div class="name">كمبيوتر وماك</div><div class="desc">عبر المتصفح أو VLC</div></div>
-  <div class="device-card"><div class="icon">📦</div><div class="name">Android Box</div><div class="desc">Nvidia Shield, Mi Box وغيرها</div></div>
-</div>
-
-<div class="info-box tip">
-  <strong>💡 أفضل جهاز لـ IPTV:</strong> Amazon Firestick هو الخيار الأكثر شعبية عالمياً — سعره معقول، سهل الإعداد، ويعمل مثالياً مع جميع تطبيقات IPTV.
-</div>
-
-<!-- القسم 4 -->
-<h2 id="internet-speed">4. سرعة الإنترنت المطلوبة</h2>
-
-<p>سرعة الإنترنت هي العامل الأهم للحصول على تجربة IPTV سلسة:</p>
-
-<table class="speed-table">
-  <thead>
-    <tr>
-      <th>جودة الفيديو</th>
-      <th>الحد الأدنى</th>
-      <th>السرعة الموصى بها</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>SD (جودة عادية)</td><td>3 ميجا</td><td>5 ميجا</td></tr>
-    <tr><td>HD (720p / 1080p)</td><td>8 ميجا</td><td>15 ميجا</td></tr>
-    <tr><td>4K Ultra HD</td><td>20 ميجا</td><td>30 ميجا</td></tr>
-    <tr><td>8K</td><td>50 ميجا</td><td>80 ميجا</td></tr>
-  </tbody>
-</table>
-
-<div class="info-box tip">
-  <strong>💡 نصيحة احترافية:</strong> استخدم كابل إيثرنت (اتصال سلكي) بدلاً من الواي فاي كلما أمكن. الاتصال المباشر يقلل التقطيع بشكل كبير ويمنحك بثاً أكثر استقراراً.
-</div>
-
-<!-- القسم 5 -->
-<h2 id="setup-firestick">5. كيف أثبّت IPTV على Firestick؟</h2>
-
-<p>إعداد IPTV على Amazon Firestick لا يستغرق أكثر من 5 دقائق. إليك الخطوات بالتفصيل:</p>
-
-<ul class="check-list">
-  <li>شغّل Firestick واذهب إلى <strong>الإعدادات ← My Fire TV ← خيارات المطور</strong> وفعّل "تطبيقات من مصادر غير معروفة"</li>
-  <li>ارجع للشاشة الرئيسية واضغط أيقونة البحث وابحث عن <strong>"Downloader"</strong></li>
-  <li>ثبّت تطبيق Downloader وافتحه</li>
-  <li>أدخل رابط تطبيق مشغل IPTV (مثل TiviMate أو IPTV Smarters Pro APK)</li>
-  <li>ثبّت التطبيق وافتحه</li>
-  <li>أدخل بيانات اشتراكك (رابط M3U أو بيانات Xtream Codes)</li>
-  <li>انتظر تحميل القنوات — أنت جاهز للمشاهدة!</li>
-</ul>
-
-<div class="info-box">
-  <strong>📱 أفضل تطبيقات IPTV لـ Firestick:</strong> TiviMate (الأفضل عموماً)، IPTV Smarters Pro، GSE Smart IPTV، وPerfect Player.
-</div>
-
-<!-- القسم 6 -->
-<h2 id="setup-smart-tv">6. كيف أثبّت IPTV على Smart TV؟</h2>
-
-<h3>تلفاز سامسونج Samsung</h3>
-<ul class="check-list">
-  <li>افتح متجر تطبيقات سامسونج</li>
-  <li>ابحث عن تطبيق IPTV (مثل Smart IPTV أو SS IPTV)</li>
-  <li>ثبّت وافتح التطبيق</li>
-  <li>أدخل رابط قائمة M3U أو بيانات اشتراكك</li>
-</ul>
-
-<h3>تلفاز LG</h3>
-<ul class="check-list">
-  <li>افتح LG Content Store</li>
-  <li>ابحث عن "SS IPTV" أو "Smart IPTV"</li>
-  <li>ثبّت وأدخل بيانات اشتراكك</li>
-</ul>
-
-<h3>Android TV</h3>
-<ul class="check-list">
-  <li>افتح Google Play Store</li>
-  <li>ابحث عن "TiviMate" أو "IPTV Smarters"</li>
-  <li>ثبّت وسجّل الدخول باشتراكك</li>
-</ul>
-
-<!-- القسم 7 -->
-<h2 id="setup-phone">7. كيف أثبّت IPTV على الجوال؟</h2>
-
-<h3>iPhone وiPad (iOS)</h3>
-<ul class="check-list">
-  <li>افتح App Store وابحث عن <strong>"IPTV Smarters Pro"</strong> أو <strong>"GSE Smart IPTV"</strong></li>
-  <li>ثبّت التطبيق وافتحه</li>
-  <li>اختر "إضافة مستخدم" وأدخل رابط M3U أو Xtream Codes</li>
-  <li>تحمّل القنوات تلقائياً — اضغط أي قناة وابدأ المشاهدة</li>
-</ul>
-
-<h3>هاتف وتابلت Android</h3>
-<ul class="check-list">
-  <li>افتح Google Play Store وابحث عن <strong>"TiviMate"</strong> أو <strong>"IPTV Smarters Pro"</strong></li>
-  <li>ثبّت التطبيق وافتحه</li>
-  <li>أدخل بيانات اشتراكك التي يرسلها لك مزوّد الخدمة</li>
-  <li>استمتع بجميع قنواتك أينما كنت</li>
-</ul>
-
-<div class="info-box tip">
-  <strong>💡 شاهد في أي مكان:</strong> IPTV على الجوال يعني إمكانية مشاهدة الرياضة والأخبار والمسلسلات أثناء التنقل أو السفر أو في أي مكان يوجد فيه اتصال بالإنترنت.
-</div>
-
-<!-- القسم 8 -->
-<h2 id="epg">8. ما هو دليل البرامج EPG؟</h2>
-
-<p>
-  <strong>EPG</strong> اختصار لـ Electronic Program Guide، وهو دليل البرامج الإلكتروني المدمج في تطبيق IPTV. تماماً مثل دليل القنوات في التلفاز التقليدي، يعرض EPG ما يُبث الآن على كل قناة وما سيأتي — مما يسهّل التصفح والتخطيط لمشاهداتك.
-</p>
-
-<p>أبرز مزايا EPG:</p>
-
-<ul class="check-list">
-  <li>رؤية البرامج الحالية والقادمة على كل قناة</li>
-  <li>تصفح جداول البرامج لساعات أو أيام قادمة</li>
-  <li>بحث سريع عن برامج أو مباريات محددة</li>
-  <li>ضبط تذكيرات لبرامجك المفضلة</li>
-  <li>Catch-up TV — إعادة مشاهدة ما فاتك (في القنوات المدعومة)</li>
-</ul>
-
-<p>
-  معظم مشغلات IPTV الجيدة مثل TiviMate تدعم EPG بشكل ممتاز. مزوّد IPTV الخاص بك عادةً يوفر بيانات EPG تلقائياً مع اشتراكك.
-</p>
-
-<!-- القسم 9 -->
-<h2 id="no-buffering">9. كيف أتخلص من التقطيع في IPTV؟</h2>
-
-<p>التقطيع هو أكثر مشكلة شائعة لدى مستخدمي IPTV. إليك الحلول:</p>
-
-<h3>تحقق من سرعة الإنترنت</h3>
-<p>أجرِ اختبار سرعة على fast.com أو speedtest.net. للبث بجودة HD تحتاج 10 ميجا على الأقل. للـ 4K، استهدف 25 ميجا أو أكثر.</p>
-
-<h3>استخدم اتصالاً سلكياً</h3>
-<p>وصّل Firestick أو جهازك مباشرة بالراوتر بكابل إيثرنت. إشارات الواي فاي قد تكون غير مستقرة في البيوت الكبيرة أو المزدحمة بالأجهزة.</p>
-
-<h3>اختر مزوّد IPTV موثوقاً</h3>
-<p>السبب الأكبر للتقطيع هو مزوّد IPTV ضعيف بسيرفرات مثقلة. اختر مزوّداً مثل Prime IPTV الذي يستخدم تقنية Anti-Freeze وسيرفرات عالية الأداء.</p>
-
-<h3>استخدم مشغل IPTV جيد</h3>
-<p>TiviMate يُعتبر الأفضل لـ Firestick وAndroid. يتميز بإدارة ممتازة للـ buffering وتشغيل سلس.</p>
-
-<h3>تجنّب VPN البطيء</h3>
-<p>يمكن للـ VPN أن يبطئ اتصالك بشكل كبير. إذا كنت تستخدمه للخصوصية، اختر سيرفراً سريعاً قريباً منك، أو عطّله مؤقتاً لاختبار ما إذا كان هو السبب.</p>
-
-<h3>امسح كاش التطبيق</h3>
-<p>على Firestick: الإعدادات ← التطبيقات ← إدارة التطبيقات المثبتة ← تطبيق IPTV الخاص بك ← مسح الكاش.</p>
-
-<div class="info-box">
-  <strong>⚡ حل سريع:</strong> 90% من مشاكل التقطيع تحلّ بالتحول من الواي فاي إلى اتصال سلكي واختيار مزوّد IPTV موثوق بسيرفرات قوية.
-</div>
-
-<!-- القسم 10 - الأسئلة الشائعة -->
-<h2 id="faq">10. الأسئلة الشائعة</h2>
-
-<details class="faq-item">
-  <summary>ما هو IPTV؟ <span>+</span></summary>
-  <p>IPTV (بروتوكول الإنترنت للتلفاز) تقنية تبث القنوات التلفزيونية والرياضة المباشرة والأفلام والمسلسلات عبر الإنترنت بدلاً من الإشارات التقليدية للقمر الصناعي أو الكابل. يعمل على أي جهاز متصل بالإنترنت: Smart TV، Firestick، هاتف، وكمبيوتر.</p>
-</details>
-
-<details class="faq-item">
-  <summary>هل IPTV قانوني؟ <span>+</span></summary>
-  <p>تقنية IPTV نفسها قانونية تماماً. غير أن القانونية تعتمد على المحتوى المبث. مزودو IPTV المرخّصون الذين يمتلكون حقوق البث لمحتواهم قانونيون في الاستخدام. تحقق دائماً من لوائح بلدك واختر مزودين ذوي سمعة حسنة.</p>
-</details>
-
-<details class="faq-item">
-  <summary>كم جهازاً يمكنني استخدامه باشتراك IPTV واحد؟ <span>+</span></summary>
-  <p>يعتمد هذا على باقتك. الباقات الأساسية تتيح عادةً اتصالاً واحداً، بينما تتيح باقات Premium والاحترافية 2–3 اتصالات متزامنة على Smart TV والهاتف والتابلت والكمبيوتر.</p>
-</details>
-
-<details class="faq-item">
-  <summary>ما هي سرعة الإنترنت المطلوبة لـ IPTV؟ <span>+</span></summary>
-  <p>للبث بجودة HD تحتاج 10 ميجا على الأقل. للـ 4K Ultra HD، استهدف 25–30 ميجا. الاتصال السلكي المستقر دائماً أفضل من الواي فاي لـ IPTV.</p>
-</details>
-
-<details class="faq-item">
-  <summary>ما هو أفضل تطبيق مشغل IPTV؟ <span>+</span></summary>
-  <p>TiviMate يُعتبر الأفضل لـ Firestick وAndroid. لـ iOS (iPhone/iPad)، IPTV Smarters Pro وGSE Smart IPTV خيارات ممتازة. للـ Smart TV، SS IPTV وSmart IPTV يعملان بشكل جيد.</p>
-</details>
-
-<details class="faq-item">
-  <summary>هل يمكنني مشاهدة IPTV بدون طبق لاقط؟ <span>+</span></summary>
-  <p>نعم! هذه من أكبر مزايا IPTV. لا تحتاج طبقاً لاقطاً، ولا كابلاً، ولا رسيفر خاصاً. فقط جهاز متصل بالإنترنت وتطبيق IPTV.</p>
-</details>
-
-<details class="faq-item">
-  <summary>كيف أضيف قنوات لتطبيق IPTV؟ <span>+</span></summary>
-  <p>تُضاف القنوات بإدخال رابط قائمة M3U أو بيانات Xtream Codes في تطبيق مشغل IPTV. مزوّدك يرسل لك هذه البيانات بعد الاشتراك. يحمّل التطبيق بعدها جميع القنوات تلقائياً.</p>
-</details>
-
-<details class="faq-item">
-  <summary>كيف أحصل على تجربة مجانية لـ IPTV؟ <span>+</span></summary>
-  <p>تواصل مع Prime IPTV عبر واتساب لطلب تجربة مجانية. جميع الباقات المدفوعة مشمولة بضمان استرداد المبلغ لمدة 10 أيام — جرّب بدون أي مخاطرة.</p>
-</details>
-
-<!-- CTA -->
-<div class="text-center my-12" style="background:linear-gradient(135deg,#f5f3ff,#eff6ff);border-radius:20px;padding:40px 24px;">
-  <h2 style="color:#6B21A8 !important;margin-top:0 !important;">هل أنت جاهز لتبدأ؟ 🚀</h2>
-  <p style="color:#374151;margin-bottom:24px;">انضم لآلاف المشتركين السعداء حول العالم — ابدأ مع Prime IPTV من 25$ فقط في السنة</p>
-  <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-    <a href="/#pricing" class="cta-btn">عرض الباقات والأسعار</a>
-    <a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20تجربة%20Prime%20IPTV%20مجاناً."
-       target="_blank" rel="noopener noreferrer"
-       style="display:inline-block;background:#25D366;color:#fff;padding:0.75rem 2rem;border-radius:9999px;font-weight:700;text-decoration:none;">
-      💬 تجربة مجانية عبر واتساب
-    </a>
-  </div>
-  <p style="margin-top:16px;font-size:0.85rem;color:#6b7280;">✅ ضمان استرداد 10 أيام &nbsp;•&nbsp; ✅ بدون عقد &nbsp;•&nbsp; ✅ يعمل في كل مكان بالعالم</p>
-</div>
-
-</article>
-</main>
-
-<!-- ══════════════════════════════════════════ -->
-<!--  Regional Guides — Cards Section           -->
-<!-- ══════════════════════════════════════════ -->
-<section class="bg-gradient-to-b from-gray-50 to-white py-16 px-4">
-  <div class="container mx-auto max-w-6xl">
-
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-black text-purple-800 mb-4" style="font-family:'Cairo',sans-serif;">
-        📍 اختر دليلك حسب المنطقة
-      </h2>
-      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-        دليل IPTV مخصّص لكل منطقة عربية مع القنوات المحلية والأسعار المناسبة لبلدك
+      <!-- العنوان الرئيسي -->
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_8px_40px_rgba(0,0,0,0.8)] text-center"
+          style="color:#fff !important;">
+        <span class="text-purple-200">الدليل الشامل</span>
+        لـ IPTV 2026
+        <span class="text-indigo-200">للمبتدئين</span>
+      </h1>
+
+      <!-- الوصف -->
+      <p class="text-base md:text-2xl text-gray-100 leading-relaxed max-w-xl text-center">
+        كل ما تحتاج معرفته عن <span class="font-bold text-white">IPTV</span> — ما هو، كيف يعمل، وكيف تثبّته على أي جهاز
       </p>
+
+      <!-- ✅ نص وصفي SEO بدلاً من الصورة -->
+      <div class="relative w-full max-w-[640px]">
+
+        <!-- توهج خلفي -->
+        <div class="absolute inset-0 bg-white/10 blur-[40px] rounded-3xl -z-10" aria-hidden="true"></div>
+
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl px-6 py-7 text-white text-center shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+
+          <!-- عنوان داخلي -->
+          <p class="text-lg md:text-xl font-extrabold mb-4 text-purple-100"
+             style="font-family:'Cairo',sans-serif;">
+            🌍 خدمة IPTV عالمية — بث مباشر بجودة 4K بدون تقطيع
+          </p>
+
+          <!-- Keywords منسّقة كـ badges -->
+          <div class="flex flex-wrap justify-center gap-2 mb-5">
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">📺 +30,000 قناة مباشرة</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">🎬 +190,000 فيلم ومسلسل</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">⚡ بث HD / 4K / 8K</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">📱 يعمل على جميع الأجهزة</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">🔴 Firestick &amp; Smart TV</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">🌐 M3U &amp; Xtream Codes</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">🏆 beIN Sports &amp; MBC</span>
+            <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">✅ بدون تقطيع</span>
+          </div>
+
+          <!-- وصف نصي SEO -->
+          <p class="text-sm md:text-base text-gray-200 leading-relaxed">
+            اشتراك <strong class="text-white">IPTV</strong> يمنحك أفضل تجربة مشاهدة عالمية —
+            قنوات رياضية، أخبار مباشرة، أفلام ومسلسلات حسب الطلب (VOD)
+            بجودة <strong class="text-white">4K Ultra HD</strong>
+            على <strong class="text-white">Smart TV، Firestick، iPhone وAndroid</strong>.
+          </p>
+
+        </div>
+      </div>
+
+      <!-- ✅ الأزرار: اشترك على اليمين | واتساب على اليسار -->
+      <div class="w-full flex justify-center items-center gap-4 pt-2 flex-wrap"
+           dir="rtl">
+
+        <!-- اشترك الآن — اليمين -->
+        <a href="/#pricing"
+           class="px-6 py-3 text-base font-bold rounded-2xl bg-gradient-to-r from-purple-200 to-white text-indigo-900 shadow-lg hover:scale-105 transition-transform">
+          🚀 اشترك الآن
+        </a>
+
+        <!-- واتساب — اليسار -->
+        <a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20معرفة%20المزيد%20عن%20Prime%20IPTV."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="px-6 py-3 text-base font-bold rounded-2xl text-white border-2 border-white/40 shadow-lg hover:scale-105 transition-transform"
+           style="background:#25D366;">
+          💬 تواصل عبر واتساب
+        </a>
+
+      </div>
+
     </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- الخليج -->
-      <a href="/guide/khalij/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-green-600 via-emerald-500 to-yellow-500 p-8 text-center">
-          <div class="text-6xl mb-3">🕌</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">دول الخليج</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇸🇦 🇦🇪 🇰🇼 🇶🇦 🇧🇭 🇴🇲</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل IPTV للسعودية، الإمارات، الكويت، قطر، البحرين وعُمان. beIN Sports، MBC، روتانا وأكثر من 30,000 قناة.
-          </p>
-          <div class="flex items-center text-green-600 font-bold group-hover:text-green-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-      <!-- المغرب العربي -->
-      <a href="/guide/maghreb/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 p-8 text-center">
-          <div class="text-6xl mb-3">🌍</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المغرب العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇲🇦 🇩🇿 🇹🇳 🇱🇾 🇲🇷</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا. القنوات المحلية، beIN، الرياضية، والأفلام الأوروبية.
-          </p>
-          <div class="flex items-center text-red-600 font-bold group-hover:text-red-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-      <!-- المشرق العربي -->
-      <a href="/guide/mashriq/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-600 p-8 text-center">
-          <div class="text-6xl mb-3">🌅</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المشرق العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇪🇬 🇸🇾 🇱🇧 🇯🇴 🇵🇸 🇮🇶</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق. المسلسلات العربية، القنوات الإخبارية والرياضية.
-          </p>
-          <div class="flex items-center text-blue-600 font-bold group-hover:text-blue-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
   </div>
 </section>
-
-<!-- Footer -->
-<footer class="bg-gradient-to-l from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative mt-8">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-3 gap-10 items-start">
-
-      <div class="flex flex-col items-start">
-        <div class="flex items-center mb-4 gap-3">
-          <img src="/images/logo.webp" alt="Prime IPTV" class="h-14 w-14 rounded-full shadow-lg" loading="lazy">
-          <h3 class="text-2xl font-bold">Prime IPTV</h3>
-        </div>
-        <p class="text-gray-200">
-          Prime IPTV خدمة <strong>IPTV عالمية</strong> توفر +30,000 قناة و+190,000 فيلم ومسلسل بجودة 4K على جميع الأجهزة في كل مكان بالعالم.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">روابط سريعة</h4>
-        <ul class="space-y-3 text-gray-200" style="list-style:none;padding:0;">
-          <li style="display:block!important"><a href="/" class="hover:text-white">الرئيسية العربية</a></li>
-          <li style="display:block!important"><a href="/#pricing" class="hover:text-white">الباقات والأسعار</a></li>
-          <li style="display:block!important"><a href="/en/guide/" class="hover:text-white">الدليل بالإنجليزية 🇬🇧</a></li>
-          <li style="display:block!important"><a href="/fr/guide/" class="hover:text-white">الدليل بالفرنسية 🇫🇷</a></li>
-          <li style="display:block!important"><a href="/en/usa/" class="hover:text-white">IPTV USA 🇺🇸</a></li>
-          <li style="display:block!important"><a href="/en/uk/" class="hover:text-white">IPTV UK 🇬🇧</a></li>
-          <li style="display:block!important"><a href="/en/canada/" class="hover:text-white">IPTV Canada 🇨🇦</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">تواصل معنا</h4>
-        <p class="text-gray-200 mb-4">متاحون 24/7 عبر واتساب:</p>
-        <a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20الاشتراك%20في%20Prime%20IPTV."
-           target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition hover:scale-105 gap-2">
-          <i class="fab fa-whatsapp"></i>
-          دعم واتساب 24/7
-        </a>
-        <div class="mt-4 space-y-2 text-gray-200 text-sm">
-          <p>🌍 متاح في +150 دولة حول العالم</p>
-          <p>⚡ تفعيل فوري</p>
-          <p>💰 ضمان استرداد 10 أيام</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="flex justify-center mt-10">
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    </div>
-
-    <div class="border-t border-gray-400 mt-10 pt-6 text-center text-gray-300">
-      <p class="text-xs">© 2026 Prime IPTV – جميع الحقوق محفوظة | الدليل الشامل لـ IPTV بالعربية</p>
-    </div>
-  </div>
-</footer>
-
-<!-- واتساب عائم -->
-<a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20معرفة%20المزيد%20عن%20Prime%20IPTV."
-   class="whatsapp-float fixed bottom-6 right-6 z-50"
-   target="_blank" rel="noopener noreferrer" aria-label="واتساب">
-  <img src="/images/whatsapp.webp" alt="واتساب" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy">
-</a>
-
-<link rel="stylesheet" href="/css/footer.css">
-<script src="/js/footer.js" defer></script>
-</body>
-</html>
+<!-- =============================================
+     نهاية HERO SECTION — GUIDE PAGE
+============================================= -->
