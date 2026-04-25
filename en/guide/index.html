@@ -97,8 +97,7 @@
     margin-top: 0 !important;
     margin-bottom: 12px !important;
   }
-  .guide-toc ol { margin: 0; padding-right: 20px; max-height: 174px; overflow: hidden; transition: max-height 0.35s ease; }
-  .guide-toc ol.expanded { max-height: 600px; }
+  .guide-toc ol { margin: 0; padding-right: 20px; }
   .guide-toc li { margin-bottom: 6px; display: list-item !important; }
   .toc-toggle { margin-top: 10px; background: none; border: none; color: #4f46e5; font-weight: 700; font-size: 0.88rem; cursor: pointer; padding: 0; }
   .toc-toggle:hover { text-decoration: underline; }
@@ -417,7 +416,12 @@
     <li><a href="#no-buffering">How to Fix Buffering Issues</a></li>
     <li><a href="#faq">Frequently Asked Questions</a></li>
   </ol>
-  <button class="toc-toggle" onclick="this.previousElementSibling.classList.toggle('expanded');this.textContent=this.previousElementSibling.classList.contains('expanded')?'▲ Show less':'▼ Show more'">▼ Show more</button>
+  <button class="toc-toggle" onclick="
+    var items=this.closest('.guide-toc').querySelectorAll('li');
+    var isHidden=this.closest('.guide-toc').querySelectorAll('li.toc-hidden').length>0;
+    items.forEach(function(li,i){if(i>=6){li.classList.toggle('toc-hidden',!isHidden);}});
+    this.textContent=isHidden?'▲ Show less':'▼ Show more';">▼ Show more</button>
+  <script>(function(){var items=document.querySelectorAll('.guide-toc ol li');items.forEach(function(li,i){if(i>=6)li.classList.add('toc-hidden');});}());<\/script>
 </div>
 
 <!-- Section 1 -->
