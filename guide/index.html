@@ -85,8 +85,11 @@
     margin: 32px 0;
   }
   .guide-toc h3 { color: #6B21A8 !important; margin-top: 0 !important; margin-bottom: 12px !important; }
-  .guide-toc ol { margin: 0; padding-right: 20px; }
+  .guide-toc ol { margin: 0; padding-right: 20px; max-height: 174px; overflow: hidden; transition: max-height 0.35s ease; }
+  .guide-toc ol.expanded { max-height: 600px; }
   .guide-toc li { margin-bottom: 6px; display: list-item !important; }
+  .toc-toggle { margin-top: 10px; background: none; border: none; color: #4f46e5; font-weight: 700; font-size: 0.88rem; cursor: pointer; padding: 0; }
+  .toc-toggle:hover { text-decoration: underline; }
   .guide-toc a { color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
   .guide-toc a:hover { text-decoration: underline; }
 
@@ -333,6 +336,7 @@
     <li><a href="#no-buffering">كيف أتخلص من التقطيع؟</a></li>
     <li><a href="#faq">الأسئلة الشائعة</a></li>
   </ol>
+  <button class="toc-toggle" onclick="this.previousElementSibling.classList.toggle('expanded');this.textContent=this.previousElementSibling.classList.contains('expanded')?'▲ عرض أقل':'▼ عرض المزيد'">▼ عرض المزيد</button>
 </div>
 
 <!-- القسم 1 -->
