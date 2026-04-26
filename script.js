@@ -564,7 +564,7 @@ window.moveSlider = function(value, planType) {
 // 2. الدالة الأساسية لتحديث الأسعار والكلمات البارزة
 window.updatePlanData = function(value, planType) {
     // مصفوفة البيانات (يمكنك تعديل الأسعار من هنا بسهولة)
-    const pricingConfig = {
+    const pricingConfig = window.customPricingConfig || {
         basic: [
             { price: 5,  period: "/ شهر",   text: "شهر واحد" },
             { price: 12, period: "/ 3 أشهر", text: "3 أشهر" },
@@ -572,7 +572,20 @@ window.updatePlanData = function(value, planType) {
             { price: 30, period: "/ السنة",  text: "سنة كاملة" },
             { price: 50, period: "/ سنتين",  text: "سنتين" }
         ],
-        // إذا أضفت باقات أخرى مستقبلاً أضف بياناتها هنا بنفس الطريقة
+        premium: [
+            { price: 7,  period: "/ شهر",   text: "شهر واحد" },
+            { price: 17, period: "/ 3 أشهر", text: "3 أشهر" },
+            { price: 27, period: "/ 6 أشهر", text: "6 أشهر" },
+            { price: 40, period: "/ السنة",  text: "سنة كاملة" },
+            { price: 70, period: "/ سنتين",  text: "سنتين" }
+        ],
+        pro: [
+            { price: 9,  period: "/ شهر",   text: "شهر واحد" },
+            { price: 22, period: "/ 3 أشهر", text: "3 أشهر" },
+            { price: 35, period: "/ 6 أشهر", text: "6 أشهر" },
+            { price: 50, period: "/ السنة",  text: "سنة كاملة" },
+            { price: 90, period: "/ سنتين",  text: "سنتين" }
+        ],
     };
 
     const selected = pricingConfig[planType][value];
@@ -586,7 +599,8 @@ window.updatePlanData = function(value, planType) {
     // تحديث رابط الواتساب والرسالة تلقائياً
     const waLink = document.getElementById(`whatsapp-link-${planType}`);
     if (waLink) {
-        const planName = planType === 'basic' ? 'الأساسية' : 'المميزة';
+        const planNames = window.customPlanNames || { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
+        const planName = planNames[planType] || planNames.basic;
         const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
         waLink.href = `https://wa.me/212666686732?text=${msg}`;
     }
@@ -632,10 +646,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* --- تهيئة السلايدر عند تحميل الصفحة (ليبدأ من خيار "سنة") --- */
-    const basicSlider = document.getElementById('basic-plan-slider');
-    if (basicSlider) {
-        updatePlanData(basicSlider.value, 'basic');
-    }
+    ['basic', 'premium', 'pro'].forEach(type => {
+        const slider = document.getElementById(`${type}-plan-slider`);
+        if (slider) updatePlanData(slider.value, type);
+    });
 
     /* ========================================================= */
     /* كود شريط الأعلام (Flags Animation) كما كان لديك سابقاً */

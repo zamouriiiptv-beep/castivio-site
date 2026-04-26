@@ -250,6 +250,7 @@ a.button {
   position: absolute;
   top: 32px;
   left: 0;
+  direction: ltr;
   background: #fff;
   width: 160px;
   border-radius: 8px;
@@ -279,6 +280,7 @@ a.button {
   gap: 10px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
   transition: 0.2s;
 }
 
@@ -2090,4 +2092,43 @@ section > *:last-child {
 
 .cta-btn:hover {
   background: #1d4ed8;
+}
+
+/* ===============================
+   🎨 ألوان السلايدر والأسعار
+================================ */
+
+/* ألوان نصوص الفترات (شهر، 3أشهر…) — ألوان فاتحة تظهر على الخلفيات الداكنة */
+#basic-plan-slider   + div,
+#basic-plan-slider   + div span { color: #60a5fa !important; }
+#premium-plan-slider + div,
+#premium-plan-slider + div span { color: #fbbf24 !important; }
+#pro-plan-slider     + div,
+#pro-plan-slider     + div span { color: #c084fc !important; }
+
+/* خلفية ملوّنة لعرض السعر مع نص أبيض */
+div:has(> #price-val-basic) {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+div:has(> #price-val-premium) {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+div:has(> #price-val-pro) {
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+
+/* يورو و /السنة و رقم السعر — كلها بيضاء بدون رمادي */
+div:has(> #price-val-basic)   span,
+div:has(> #price-val-premium) span,
+div:has(> #price-val-pro)     span {
+  color: #ffffff !important;
 }

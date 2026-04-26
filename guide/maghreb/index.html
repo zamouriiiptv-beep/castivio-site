@@ -54,6 +54,9 @@
   .vs-table tr:nth-child(even) td { background:#f9f9f9; }
   .check { color:#00b050; font-weight:700; }
   .cross { color:#e63946; font-weight:700; }
+  #basic-plan-slider   { accent-color: #2563eb; }
+  #premium-plan-slider { accent-color: #d97706; }
+  #pro-plan-slider     { accent-color: #7e22ce; }
   /* إصلاح تداخل الـ header الثابت مع الـ hero */
   .hero-section { padding-top: 96px !important; padding-bottom: 36px !important; min-height: auto !important; }
   @media (min-width: 768px) { .hero-section { padding-top: 120px !important; padding-bottom: 60px !important; } }
@@ -92,9 +95,30 @@
     <img src="/images/A3lame/flag1.webp" class="flag-icon" id="current-flag" alt="علم عربي" loading="lazy">
     <span id="current-lang">AR</span>
     <div id="lang-dropdown" class="lang-dropdown hidden">
-      <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp"><img src="/images/A3lame/flag1.webp" class="flag-icon" alt="عربي" loading="lazy"> العربية</div>
-      <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp"><img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English" loading="lazy"> English</div>
-      <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp"><img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Français" loading="lazy"> Français</div>
+      <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
+        <a href="/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="العربية" loading="lazy" decoding="async">
+          <span style="margin-right: 8px;">العربية (AR)</span>
+        </a>
+      </div>
+      <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
+        <a href="/en/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English" loading="lazy" decoding="async">
+          <span style="margin-right: 8px;">English (EN)</span>
+        </a>
+      </div>
+      <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
+        <a href="/fr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Français" loading="lazy" decoding="async">
+          <span style="margin-right: 8px;">Français (FR)</span>
+        </a>
+      </div>
+      <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag3.webp">
+        <a href="/es/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag3.webp" class="flag-icon" alt="Español" loading="lazy" decoding="async">
+          <span style="margin-right: 8px;">Español (ES)</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -149,11 +173,11 @@
         شاهد <strong class="text-white">2M، الجزيرة، beIN Sports، Nessma</strong> وأكثر من <strong class="text-yellow-300">30,000 قناة</strong> بجودة <strong class="text-yellow-300">4K</strong> — بدون تقطيع وبدون انقطاع.
       </p>
       <div class="relative w-full max-w-[640px]">
-        <img src="/images/new-header.webp" alt="Prime IPTV المغرب العربي 4K" class="w-full max-h-[240px] md:max-h-[360px] object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]" width="640" height="360" fetchpriority="high" loading="eager">
+        <img src="/images/new-header.webp" alt="Prime IPTV المغرب العربي 4K" class="w-full max-h-[150px] md:max-h-[200px] object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]" width="640" height="360" fetchpriority="high" loading="eager">
       </div>
-      <div class="flex justify-center gap-4 flex-wrap pt-2">
-        <a href="#pricing" class="px-6 py-3 text-base font-bold rounded-2xl bg-gradient-to-l from-yellow-300 to-white text-red-900 shadow-lg hover:scale-105 transition-transform">🚀 اشترك من 30€/سنة</a>
-        <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20Prime%20IPTV%20من%20المغرب." target="_blank" rel="noopener noreferrer" class="px-6 py-3 text-base font-bold rounded-2xl bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">💬 تجربة مجانية</a>
+      <div class="flex justify-center gap-3 flex-nowrap pt-2">
+        <a href="#pricing" class="px-4 py-2 text-sm font-bold rounded-2xl bg-gradient-to-l from-yellow-300 to-white text-red-900 shadow-lg hover:scale-105 transition-transform">🚀 اشترك من 30 يورو/سنة</a>
+        <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20Prime%20IPTV%20من%20المغرب." target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-bold rounded-2xl bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">💬 تجربة مجانية</a>
       </div>
     </div>
   </div>
@@ -215,8 +239,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-blue-500 mb-2">الباقة الأساسية</h3>
           <p class="text-gray-600 mb-4">مثالية للأفراد والعائلات</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">30€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 300 درهم مغربي / سنة</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">شهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3أشهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6أشهر</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">سنة</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-basic">30</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -230,7 +267,7 @@
             <li>✅ دعم واتساب عربي 24/7</li>
             <li>✅ ضمان استرداد 10 أيام</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20الأساسية%20من%20المغرب." target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 30€/سنة</a>
+          <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
 
@@ -240,8 +277,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-yellow-500 mb-2">الباقة المميزة</h3>
           <p class="text-gray-600 mb-4">للمتابع الجاد للرياضة والأفلام</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">40€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 300 درهم مغربي / سنة</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">شهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">سنة</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-premium">40</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -253,7 +303,7 @@
             <li>✅ قنوات رياضة 4K Ultra HD</li>
             <li>✅ +63,000 فيلم عند الطلب</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20المميزة%20من%20المغرب." target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 40€/سنة</a>
+          <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
 
@@ -263,8 +313,21 @@
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-purple-600 mb-2">الباقة الاحترافية</h3>
           <p class="text-gray-600 mb-4">لأفضل تجربة بث ممكنة</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">50€ / سنة</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 400 درهم مغربي / سنة</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">شهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">سنة</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">سنتين</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-pro">50</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
             <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -278,7 +341,7 @@
             <li>✅ مباريات PPV مشمولة</li>
             <li>✅ دعم VIP أولوية</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20الاشتراك%20في%20الباقة%20الاحترافية%20من%20المغرب." target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن – 50€/سنة</a>
+          <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
         </div>
       </div>
     </div>

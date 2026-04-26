@@ -98,7 +98,38 @@
       font-family: 'Cairo', sans-serif !important;
       font-weight: 800;
     }
+
+    #basic-plan-slider   { accent-color: #2563eb; }
+    #premium-plan-slider { accent-color: #d97706; }
+    #pro-plan-slider     { accent-color: #7e22ce; }
   </style>
+
+  <script>
+    window.customPricingConfig = {
+      basic: [
+        { price: 5,  period: "/ mo",    text: "1 Month" },
+        { price: 12, period: "/ 3 mo",  text: "3 Months" },
+        { price: 20, period: "/ 6 mo",  text: "6 Months" },
+        { price: 30, period: "/ year",  text: "1 Year" },
+        { price: 50, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      premium: [
+        { price: 7,  period: "/ mo",    text: "1 Month" },
+        { price: 17, period: "/ 3 mo",  text: "3 Months" },
+        { price: 27, period: "/ 6 mo",  text: "6 Months" },
+        { price: 40, period: "/ year",  text: "1 Year" },
+        { price: 70, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      pro: [
+        { price: 9,  period: "/ mo",    text: "1 Month" },
+        { price: 22, period: "/ 3 mo",  text: "3 Months" },
+        { price: 35, period: "/ 6 mo",  text: "6 Months" },
+        { price: 50, period: "/ year",  text: "1 Year" },
+        { price: 90, period: "/ 2 yrs", text: "2 Years" }
+      ]
+    };
+    window.customPlanNames = { basic: 'Basic', premium: 'Premium', pro: 'Professional' };
+  </script>
 
   <!-- ============================
        9) البيانات المنظمة (Schema)
@@ -248,23 +279,31 @@
     <div id="lang-dropdown" class="lang-dropdown hidden">
       
       <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
-        <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="Arabic Flag" loading="lazy" decoding="async" fetchpriority="high">
-        العربية (AR)
+        <a href="/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="Arabic Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">العربية (AR)</span>
+        </a>
       </div>
 
       <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
-        <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English Flag" loading="lazy" decoding="async" fetchpriority="high">
-        English (EN)
+        <a href="/en/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">English (EN)</span>
+        </a>
       </div>
 
       <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
-        <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="French Flag" loading="lazy" decoding="async" fetchpriority="high">
-        Français (FR)
+        <a href="/fr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="French Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Français (FR)</span>
+        </a>
       </div>
 
       <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag3.webp">
-        <img src="/images/A3lame/flag3.webp" class="flag-icon" alt="Spanish Flag" loading="lazy" decoding="async" fetchpriority="high">
-        Español (ES)
+        <a href="/es/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag3.webp" class="flag-icon" alt="Spanish Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Español (ES)</span>
+        </a>
       </div>
 
     </div>
@@ -351,19 +390,17 @@
 
       <!-- العنوان -->
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_8px_40px_rgba(0,0,0,0.8)] text-center">
-        <span class="text-purple-200">Exceptional IPTV</span>
-        experience worldwide
-        <span class="text-indigo-200">quality</span>
+        <span class="text-purple-200">Prime IPTV</span>
+        exceptional streaming
+        <span class="text-indigo-200">worldwide</span>
       </h1>
 
       <!-- الوصف -->
       <p class="text-base md:text-2xl text-gray-100 leading-relaxed max-w-xl text-center">
-        Enjoy the best channels, matches, movies, and series
+        Best channels, sports, movies & series
         in <span class="font-bold text-white">4K and 8K</span>
-        with stable and fast streaming without interruption.
+        with fast stable streaming.
       </p>
-
-<link rel="preload" as="image" href="images/new-header.webp">
 
       <!-- الصورة بعد الإصلاح -->
       <div class="relative w-full max-w-[640px]">
@@ -384,13 +421,15 @@
       <!-- الأزرار -->
       <div class="w-full flex justify-center items-center gap-4 pt-2">
   <a href="#pricing"
-     class="px-6 py-3 text-base font-bold rounded-2xl bg-gradient-to-r from-purple-200 to-white text-indigo-900 shadow-lg hover:scale-105 transition-transform">
+     class="px-6 py-3 text-base font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-purple-200 to-white text-indigo-900 shadow-lg hover:scale-105 transition-transform">
     Subscribe now
   </a>
 
-  <a href="#channels"
-     class="px-6 py-3 text-base font-bold rounded-2xl bg-white text-purple-700 border-2 border-purple-300 shadow-lg hover:scale-105 transition-transform">
-    View channels
+  <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20a%20free%20trial%20for%20Prime%20IPTV"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="inline-flex items-center gap-2 px-6 py-3 text-base font-bold rounded-2xl whitespace-nowrap bg-green-500 hover:bg-green-400 text-white shadow-lg hover:scale-105 transition-transform animate-pulse">
+    🎁 Free Trial 24h
   </a>
 </div>
 
@@ -823,8 +862,20 @@ High quality, international channels, and uninterrupted live streaming
     <h3 class="text-2xl font-bold text-blue-500 mb-2">Basic Plan</h3>
     <p class="text-gray-600 mb-4">The best start for a world-class experience without complications</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      30 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">month</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3mo</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6mo</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">year</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-basic">30</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-basic" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
@@ -847,11 +898,12 @@ High quality, international channels, and uninterrupted live streaming
       <li>Exclusive and regularly renewed content</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-basic"
+     href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
+            hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe now
 </a>
 
@@ -872,8 +924,20 @@ Premium Plan
 </h3>
     <p class="text-gray-600 mb-4">The best choice for the most active users</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      40 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">month</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3mo</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6mo</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">year</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-premium">40</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-premium" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
@@ -896,11 +960,12 @@ Premium Plan
       <li>Exclusive and regularly renewed content</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-premium"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe now
 </a>
 
@@ -920,8 +985,20 @@ Premium Plan
     <h3 class="text-2xl font-bold text-purple-600 mb-2">Professional Plan</h3>
     <p class="text-gray-600 mb-4">For users who want only the best streaming experience</p>
 
-    <div class="text-3xl font-extrabold text-gray-800 mb-6">
-      50 EUR / year
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">month</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3mo</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6mo</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">year</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-pro">50</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-pro" class="text-lg font-medium">/ year</span>
     </div>
 
     <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
@@ -945,11 +1022,12 @@ Premium Plan
       <li>Exclusive content constantly renewed</li>
     </ul>
 
-    <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+    <a id="whatsapp-link-pro"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
   Subscribe Now
 </a>
 
@@ -1367,7 +1445,7 @@ Real reviews confirming the quality of service and satisfaction of our customers
           <h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>
         </div>
 
-        <p class="text-gray-200">
+        <p class="text-gray-200 text-lg">
           Prime IPTV is a <strong>global IPTV subscription</strong> offering streaming
           of channels, matches, movies, and series in high quality on all devices.
         </p>
@@ -1378,8 +1456,8 @@ Real reviews confirming the quality of service and satisfaction of our customers
 
         <!-- الروابط على اليمين -->
         <div>
-  <h4 class="font-semibold mb-4 text-lg">Important links</h4>
-  <ul class="space-y-3 text-gray-200">
+  <h4 class="font-semibold mb-4 text-xl">Important links</h4>
+  <ul class="space-y-3 text-gray-200 text-lg">
     <li><a href="/en/#home" class="hover:text-white">Home page</a></li>
     <li><a href="/en/#why-us" class="hover:text-white">Why choose IPTV?</a></li>
     <li><a href="/en/#sports" class="hover:text-white">Sports competitions</a></li>
@@ -1401,16 +1479,16 @@ Real reviews confirming the quality of service and satisfaction of our customers
 
       <!-- تواصل -->
       <div>
-        <h4 class="font-semibold mb-4 text-lg">Contact us</h4>
+        <h4 class="font-semibold mb-4 text-xl">Contact us</h4>
 
-        <p class="text-gray-200 mb-3">
+        <p class="text-gray-200 mb-3 text-lg">
           For questions and technical support:
         </p>
 
         <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20Prime%20IPTV.%20Please%20send%20me%20the%20details."
    target="_blank"
    rel="noopener noreferrer"
-   class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105"
+   class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105 text-lg"
    aria-label="WhatsApp support 24h">
   <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i>
   WhatsApp – Support 24/7
@@ -1420,17 +1498,16 @@ Real reviews confirming the quality of service and satisfaction of our customers
 
     </div>
  
-    <!-- سوشيال ميديا -->
-    <div class="flex justify-center mt-10">
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+    <!-- Legal links -->
+    <div class="flex justify-center gap-6 mt-10">
+      <a href="/en/privacy-policy/" class="text-gray-300 hover:text-white text-lg transition">Privacy Policy</a>
+      <span class="text-gray-500">|</span>
+      <a href="/en/terms-of-service/" class="text-gray-300 hover:text-white text-lg transition">Terms of Service</a>
     </div>
 
     <!-- حقوق -->
     <div class="border-t border-gray-400 mt-10 pt-6 text-center text-gray-300">
-      <p class="text-xs">© All rights reserved – Prime IPTV</p>
+      <p class="text-base">© All rights reserved – Prime IPTV</p>
     </div>
 
   </div>
@@ -1463,6 +1540,28 @@ Real reviews confirming the quality of service and satisfaction of our customers
 <!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
 
 </main>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1e1b4b; border-top:1px solid #4f46e5; padding:16px 24px;">
+  <div style="max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <p style="margin:0; color:#d1d5db; font-size:14px; flex:1; min-width:200px;">
+      We use cookies to improve your experience.
+      <a href="/en/privacy-policy/" style="color:#a5b4fc; text-decoration:underline;">Privacy Policy</a>
+    </p>
+    <button onclick="acceptCookies()" style="background:#4f46e5; color:#fff; border:none; border-radius:12px; padding:10px 24px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+      Accept
+    </button>
+  </div>
+</div>
+<script>
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', '1');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+</script>
 
 </body>
 </html>

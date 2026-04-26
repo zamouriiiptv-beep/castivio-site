@@ -99,6 +99,10 @@
       font-family: 'Cairo', sans-serif !important;
       font-weight: 800;
     }
+
+    #basic-plan-slider   { accent-color: #2563eb; }
+    #premium-plan-slider { accent-color: #d97706; }
+    #pro-plan-slider     { accent-color: #7e22ce; }
   </style>
 
   <!-- ============================
@@ -393,9 +397,11 @@
           اشترك الآن
         </a>
 
-        <a href="#channels"
-           class="px-6 py-3 text-base font-bold rounded-2xl bg-white text-purple-700 border-2 border-purple-300 shadow-lg hover:scale-105 transition-transform">
-          شاهد القنوات
+        <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D9%80%20Prime%20IPTV"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-6 py-3 text-base font-bold rounded-2xl bg-green-500 hover:bg-green-400 text-white shadow-lg hover:scale-105 transition-transform animate-pulse">
+          🎁 جرب مجاناً 24 ساعة
         </a>
       </div>
 
@@ -919,11 +925,22 @@
 </h3>
           <p class="text-gray-600 mb-4">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
 
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">شهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6أشهر</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">سنة</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">سنتين</span>
+            </div>
+          </div>
+
           <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-    <span>40</span>
-    <span class="text-xl font-bold text-gray-500">يورو</span>
-    <span class="text-lg font-medium text-gray-400">/ السنة</span>
-</div>
+            <span id="price-val-premium">40</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
 
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
             <span class="font-bold text-yellow-500">عرض الميزات</span>
@@ -945,14 +962,13 @@
             <li>محتوى حصري متجدد باستمرار</li>
           </ul>
 
-          <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20-%20Prime%20IPTV"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full 
-          hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-   aria-label="اشتراك الخطة المميزة واتساب">
-  اشترك الآن
-</a>
+          <a id="whatsapp-link-premium"
+             href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
+             aria-label="اشتراك الخطة المميزة واتساب">
+            اشترك الآن
+          </a>
 
         </div>
       </div>
@@ -969,9 +985,22 @@
           <h3 class="text-2xl font-bold text-purple-600 mb-2">الخطة الاحترافية</h3>
           <p class="text-gray-600 mb-4">للمستخدمين الذين يريدون الأفضل فقط</p>
 
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6" style="font-family:'Cairo',sans-serif;">
-    50 <span class="text-xl font-bold text-gray-500">يورو</span> <span class="text-lg font-medium text-gray-400">/ السنة</span>
-</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">شهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6أشهر</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">سنة</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">سنتين</span>
+            </div>
+          </div>
+
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
+            <span id="price-val-pro">50</span>
+            <span class="text-xl font-bold text-gray-500">يورو</span>
+            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ السنة</span>
+          </div>
 
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
             <span class="font-bold text-purple-600">عرض الميزات</span>
@@ -994,14 +1023,13 @@
             <li>محتوى حصري متجدد باستمرار</li>
           </ul>
 
-          <a
-  href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20-%20Prime%20IPTV"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
-  aria-label="اشتراك الخطة الاحترافية واتساب">
-  اشترك الآن
-</a>
+          <a id="whatsapp-link-pro"
+             href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm"
+             aria-label="اشتراك الخطة الاحترافية واتساب">
+            اشترك الآن
+          </a>
 
         </div>
       </div>
@@ -1481,12 +1509,11 @@
 
     </div>
  
-    <!-- سوشيال ميديا -->
-    <div class="flex justify-center mt-10">
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      <a href="#" class="mx-3 text-gray-200 hover:text-white text-2xl hover:scale-125 transition" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+    <!-- روابط قانونية -->
+    <div class="flex justify-center gap-6 mt-10">
+      <a href="/privacy-policy" class="text-gray-300 hover:text-white text-sm transition">سياسة الخصوصية</a>
+      <span class="text-gray-500">|</span>
+      <a href="/terms-of-service" class="text-gray-300 hover:text-white text-sm transition">شروط الاستخدام</a>
     </div>
 
     <!-- حقوق -->
@@ -1528,6 +1555,28 @@
 </main>
 
 <script src="script.js?v=1.0" defer></script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1e1b4b; border-top:1px solid #4f46e5; padding:16px 24px;">
+  <div style="max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <p style="margin:0; color:#d1d5db; font-size:14px; flex:1; min-width:200px;">
+      نستخدم ملفات تعريف الارتباط لتحسين تجربتك.
+      <a href="/privacy-policy" style="color:#a5b4fc; text-decoration:underline;">سياسة الخصوصية</a>
+    </p>
+    <button onclick="acceptCookies()" style="background:#4f46e5; color:#fff; border:none; border-radius:12px; padding:10px 24px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;">
+      موافق
+    </button>
+  </div>
+</div>
+<script>
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', '1');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+</script>
 
 </body>
 </html>

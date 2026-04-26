@@ -1,0 +1,143 @@
+/* ===============================
+   FOOTER — Prime IPTV
+   Shared across all pages
+=============================== */
+
+footer {
+  direction: rtl;
+}
+
+footer h3,
+footer h4,
+footer p,
+footer ul,
+footer li {
+  text-align: right;
+}
+
+/* LTR override for EN / FR / ES pages */
+[dir="ltr"] footer,
+html[lang="en"] footer,
+html[lang="fr"] footer,
+html[lang="es"] footer {
+  direction: ltr;
+}
+
+[dir="ltr"] footer h3,
+[dir="ltr"] footer h4,
+[dir="ltr"] footer p,
+[dir="ltr"] footer ul,
+[dir="ltr"] footer li,
+html[lang="en"] footer h3,
+html[lang="en"] footer h4,
+html[lang="en"] footer p,
+html[lang="en"] footer ul,
+html[lang="en"] footer li,
+html[lang="fr"] footer h3,
+html[lang="fr"] footer h4,
+html[lang="fr"] footer p,
+html[lang="fr"] footer ul,
+html[lang="fr"] footer li,
+html[lang="es"] footer h3,
+html[lang="es"] footer h4,
+html[lang="es"] footer p,
+html[lang="es"] footer ul,
+html[lang="es"] footer li {
+  text-align: left;
+}
+
+/* ===============================
+   Footer logo
+=============================== */
+
+.footer-logo {
+  max-width: 144px;
+}
+
+/* ===============================
+   WhatsApp button inside footer
+=============================== */
+
+footer a[href*="wa.me"] {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* ===============================
+   Social icons
+=============================== */
+
+footer .fab {
+  opacity: 0.8;
+  transition: all 0.25s ease;
+}
+
+footer a:hover .fab {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ===============================
+   Copyright border
+=============================== */
+
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ===============================
+   Mobile compact footer
+=============================== */
+
+@media (max-width: 640px) {
+
+  footer {
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+  }
+
+  footer .grid {
+    gap: 1.2rem !important;
+  }
+
+  footer p:first-of-type {
+    display: none !important;
+  }
+
+  footer h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  footer h4 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  footer ul li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  .footer-logo {
+    max-width: 90px !important;
+    margin-top: 0.6rem !important;
+  }
+
+  footer a[href*="wa.me"] {
+    padding: 0.5rem 0.9rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  footer .fab {
+    font-size: 1.1rem !important;
+  }
+
+  footer .flex.justify-center.mt-10 {
+    margin-top: 1rem !important;
+  }
+
+  footer h6 {
+    font-size: 0.65rem !important;
+  }
+}
