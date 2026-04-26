@@ -130,6 +130,26 @@
     };
     window.customPlanNames = { basic: 'Basic', premium: 'Premium', pro: 'Professional' };
     window.customWhatsAppMessage = (plan, duration) => `Hello, I'd like to subscribe to the ${plan} plan for ${duration} - Prime IPTV`;
+    window.addEventListener('load', function() {
+      function patchWA() {
+        var cfg = window.customPricingConfig, names = window.customPlanNames, msgFn = window.customWhatsAppMessage;
+        ['basic','premium','pro'].forEach(function(t){
+          var slider = document.getElementById(t+'-plan-slider');
+          var wa = document.getElementById('whatsapp-link-'+t);
+          if(!slider||!wa||!cfg||!names||!msgFn) return;
+          var sel = cfg[t][parseInt(slider.value)];
+          if(sel) wa.href = 'https://wa.me/212666686732?text='+encodeURIComponent(msgFn(names[t],sel.text));
+          slider.addEventListener('input', function(){ var s=cfg[t][parseInt(this.value)]; if(s) wa.href='https://wa.me/212666686732?text='+encodeURIComponent(msgFn(names[t],s.text)); });
+        });
+        document.querySelectorAll('[onclick*="moveSlider"]').forEach(function(el){
+          var m = el.getAttribute('onclick').match(/moveSlider\((\d+),\s*'(\w+)'\)/);
+          if(!m) return;
+          var idx=parseInt(m[1]),planType=m[2];
+          el.addEventListener('click',function(){var s=cfg[planType][idx];var wa=document.getElementById('whatsapp-link-'+planType);if(s&&wa) wa.href='https://wa.me/212666686732?text='+encodeURIComponent(msgFn(names[planType],s.text));});
+        });
+      }
+      patchWA();
+    });
   </script>
 
   <!-- ============================
