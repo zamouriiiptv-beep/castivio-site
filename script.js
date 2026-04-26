@@ -601,8 +601,9 @@ window.updatePlanData = function(value, planType) {
     if (waLink) {
         const planNames = window.customPlanNames || { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
         const planName = planNames[planType] || planNames.basic;
-        const msg = encodeURIComponent(`مرحباً، أريد الاشتراك في الخطة ${planName} لمدة (${selected.text}) - Prime IPTV`);
-        waLink.href = `https://wa.me/212666686732?text=${msg}`;
+        const buildMsg = window.customWhatsAppMessage ||
+            ((n, d) => `مرحباً، أريد الاشتراك في الخطة ${n} لمدة (${d}) - Prime IPTV`);
+        waLink.href = `https://wa.me/212666686732?text=${encodeURIComponent(buildMsg(planName, selected.text))}`;
     }
 
     // --- إبراز الكلمة المختارة وجعلها مثيرة للانتباه ---

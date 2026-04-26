@@ -1608,5 +1608,15 @@ Opiniones reales que confirman la calidad del servicio y la satisfacción de nue
   }
 </script>
 
+<script>
+window.customPlanNames = { basic: 'Básico', premium: 'Premium', pro: 'Profesional' };
+window.customPricingConfig = {
+  basic:   [ {price:5,period:'/mes',text:'1 mes'},{price:12,period:'/3 meses',text:'3 meses'},{price:20,period:'/6 meses',text:'6 meses'},{price:30,period:'/año',text:'1 año'},{price:50,period:'/2 años',text:'2 años'} ],
+  premium: [ {price:7,period:'/mes',text:'1 mes'},{price:17,period:'/3 meses',text:'3 meses'},{price:27,period:'/6 meses',text:'6 meses'},{price:40,period:'/año',text:'1 año'},{price:70,period:'/2 años',text:'2 años'} ],
+  pro:     [ {price:9,period:'/mes',text:'1 mes'},{price:22,period:'/3 meses',text:'3 meses'},{price:35,period:'/6 meses',text:'6 meses'},{price:50,period:'/año',text:'1 año'},{price:90,period:'/2 años',text:'2 años'} ]
+};
+window.customWhatsAppMessage = (plan, duration) => `Hola, me gustaría suscribirme al plan ${plan} por ${duration} - Prime IPTV`;
+</script>
+
 </body>
 </html>
