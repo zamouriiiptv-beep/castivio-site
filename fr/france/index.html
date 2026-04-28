@@ -120,6 +120,13 @@
 <meta property="og:description" content="Regardez Ligue 1, Champions League, Canal+, beIN Sports et +30 000 chaînes en 4K. Meilleur IPTV France dès 30€/an.">
 <meta property="og:url" content="https://primeiptvplus.com/fr/france/">
 <meta property="og:image" content="https://primeiptvplus.com/images/og-image.jpg">
+  <script>
+    window.customPricingConfig = {
+      basic:   [{price:5,period:"/ mois",text:"1 mois"},{price:12,period:"/ 3 mois",text:"3 mois"},{price:20,period:"/ 6 mois",text:"6 mois"},{price:30,period:"/ an",text:"1 an"},{price:50,period:"/ 2 ans",text:"2 ans"}],
+      premium: [{price:7,period:"/ mois",text:"1 mois"},{price:17,period:"/ 3 mois",text:"3 mois"},{price:27,period:"/ 6 mois",text:"6 mois"},{price:40,period:"/ an",text:"1 an"},{price:70,period:"/ 2 ans",text:"2 ans"}],
+      pro:     [{price:9,period:"/ mois",text:"1 mois"},{price:22,period:"/ 3 mois",text:"3 mois"},{price:35,period:"/ 6 mois",text:"6 mois"},{price:50,period:"/ an",text:"1 an"},{price:90,period:"/ 2 ans",text:"2 ans"}]
+    };
+  </script>
 </head>
 
 <body class="bg-gray-50 relative">
@@ -314,14 +321,28 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- Basic -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-economy">Meilleur rapport qualité/prix</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-blue-500 mb-2">Forfait Basic</h3>
           <p class="text-gray-600 mb-4">Idéal pour les particuliers et familles</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">30 EUR / an</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 30€/an</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">mois</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3mois</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6mois</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">1an</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">2ans</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-basic">30</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ an</span>
+          </div>
           <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
             <span>Voir les fonctionnalités</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -336,19 +357,34 @@
             <li>✅ Support WhatsApp 24/7</li>
             <li>✅ Garantie remboursement 10 jours</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Basic%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 30€/an</a>
+          <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Basic%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 30€/an</a>
         </div>
       </div>
+</div>
 
       <!-- Premium -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-best">Plus populaire</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-yellow-500 mb-2">Forfait Premium</h3>
           <p class="text-gray-600 mb-4">Idéal pour les fans de sport & séries</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">40 EUR / an</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 40€/an</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">mois</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3mois</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6mois</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">1an</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">2ans</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-premium">40</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ an</span>
+          </div>
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
             <span>Voir les fonctionnalités</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -361,19 +397,34 @@
             <li>✅ Accès serveur prioritaire</li>
             <li>✅ +63 000 films à la demande</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Premium%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 40€/an</a>
+          <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Premium%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 40€/an</a>
         </div>
       </div>
+</div>
 
       <!-- Pro -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-gold">Forfait Gold</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-purple-600 mb-2">Forfait Professionnel</h3>
           <p class="text-gray-600 mb-4">L'expérience streaming ultime</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">50 EUR / an</div>
-          <div class="text-sm text-gray-500 mb-6">≈ 50€/an</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">mois</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3mois</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6mois</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">1an</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">2ans</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-pro">50</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ an</span>
+          </div>
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
             <span>Voir les fonctionnalités</span><span class="plan-arrow text-lg">🔽</span>
           </button>
@@ -387,9 +438,10 @@
             <li>✅ Événements PPV inclus</li>
             <li>✅ Support VIP prioritaire</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Professionnel%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 50€/an</a>
+          <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Bonjour%2C%20je%20suis%20en%20France%20et%20je%20voudrais%20souscrire%20au%20forfait%20Professionnel%20Prime%20IPTV." target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">S'abonner – 50€/an</a>
         </div>
       </div>
+</div>
 
     </div>
   </div>

@@ -241,6 +241,13 @@
   <meta name="twitter:description" content="Ve Liga MX, Selección Mexicana y +30.000 canales en 4K. Mejor IPTV México desde €30/año.">
   <meta name="twitter:image" content="https://primeiptvplus.com/images/og-image.jpg">
 
+  <script>
+    window.customPricingConfig = {
+      basic:   [{price:5,period:"/ mes",text:"1 mes"},{price:12,period:"/ 3 meses",text:"3 meses"},{price:20,period:"/ 6 meses",text:"6 meses"},{price:30,period:"/ año",text:"1 año"},{price:50,period:"/ 2 años",text:"2 años"}],
+      premium: [{price:7,period:"/ mes",text:"1 mes"},{price:17,period:"/ 3 meses",text:"3 meses"},{price:27,period:"/ 6 meses",text:"6 meses"},{price:40,period:"/ año",text:"1 año"},{price:70,period:"/ 2 años",text:"2 años"}],
+      pro:     [{price:9,period:"/ mes",text:"1 mes"},{price:22,period:"/ 3 meses",text:"3 meses"},{price:35,period:"/ 6 meses",text:"6 meses"},{price:50,period:"/ año",text:"1 año"},{price:90,period:"/ 2 años",text:"2 años"}]
+    };
+  </script>
 </head>
 
 <body class="bg-gray-50 relative">
@@ -589,14 +596,28 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- Plan Básico -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-economy">Mejor Precio</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-blue-500 mb-2">Plan Básico</h3>
           <p class="text-gray-600 mb-4">Perfecto para particulares y familias</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">€30 / año</div>
-          <div class="text-sm text-gray-500 mb-6">≈ Solo $600 MXN/año</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">mes</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3mes</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6mes</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">año</span>
+              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">2años</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-basic">30</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ año</span>
+          </div>
           <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basico-mx" id="features-basico-mx-btn">
             <span class="font-bold text-blue-600">Ver Características</span>
             <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
@@ -612,23 +633,38 @@
             <li>✅ Soporte WhatsApp 24/7 en español</li>
             <li>✅ Garantía de devolución 10 días</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20B%C3%A1sico%20%E2%80%93%20Prime%20IPTV."
+          <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20B%C3%A1sico%20%E2%80%93%20Prime%20IPTV."
              target="_blank" rel="noopener noreferrer"
              class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
             Suscribirse – €30/año
           </a>
         </div>
       </div>
+</div>
 
       <!-- Plan Premium -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-best">Más Popular</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-yellow-500 mb-2">Plan Premium</h3>
           <p class="text-gray-600 mb-4">Ideal para fanáticos del fútbol y deportes</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">€40 / año</div>
-          <div class="text-sm text-gray-500 mb-6">≈ Solo $800 MXN/año</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">mes</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3mes</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6mes</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">año</span>
+              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">2años</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-premium">40</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ año</span>
+          </div>
           <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium-mx" id="features-premium-mx-btn">
             <span class="font-bold text-yellow-500">Ver Características</span>
             <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
@@ -642,23 +678,38 @@
             <li>✅ Acceso prioritario a servidores</li>
             <li>✅ 63.000+ películas bajo demanda</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20Premium%20%E2%80%93%20Prime%20IPTV."
+          <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20Premium%20%E2%80%93%20Prime%20IPTV."
              target="_blank" rel="noopener noreferrer"
              class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
             Suscribirse – €40/año
           </a>
         </div>
       </div>
+</div>
 
       <!-- Plan Pro -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card">
+      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
+<div class="luxury-card-inner">
         <div style="height:20px"></div>
         <div class="plan-badge badge-gold">Plan Gold</div>
         <div class="relative z-10 text-center">
           <h3 class="text-2xl font-bold text-purple-600 mb-2">Plan Profesional</h3>
           <p class="text-gray-600 mb-4">La experiencia de streaming definitiva</p>
-          <div class="text-3xl font-extrabold text-gray-800 mb-1">€50 / año</div>
-          <div class="text-sm text-gray-500 mb-6">≈ Solo $1.000 MXN/año</div>
+          <div class="duration-slider-container mb-6">
+            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">mes</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3mes</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6mes</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">año</span>
+              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">2años</span>
+            </div>
+          </div>
+          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1">
+            <span id="price-val-pro">50</span>
+            <span class="text-xl font-bold text-gray-500">EUR</span>
+            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ año</span>
+          </div>
           <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro-mx" id="features-pro-mx-btn">
             <span class="font-bold text-purple-600">Ver Características</span>
             <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
@@ -673,13 +724,14 @@
             <li>✅ Eventos PPV incluidos</li>
             <li>✅ Soporte VIP en español 24/7</li>
           </ul>
-          <a href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20Profesional%20%E2%80%93%20Prime%20IPTV."
+          <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Hola%2C%20soy%20de%20M%C3%A9xico%20y%20quiero%20suscribirme%20al%20Plan%20Profesional%20%E2%80%93%20Prime%20IPTV."
              target="_blank" rel="noopener noreferrer"
              class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
             Suscribirse – €50/año
           </a>
         </div>
       </div>
+</div>
 
     </div>
   </div>
