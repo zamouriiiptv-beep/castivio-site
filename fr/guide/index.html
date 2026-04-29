@@ -205,6 +205,10 @@
     content: "✅";
     flex-shrink: 0;
   }
+
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
+  main { padding-top: 0 !important; }
 </style>
 
 <script type="application/ld+json">
@@ -359,18 +363,18 @@
 </div>
 
 <!-- Hero -->
-<section class="bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600 pt-28 pb-12 text-white">
+<section class="hero-section bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600 text-white">
   <div class="container mx-auto px-6 max-w-4xl text-center">
 
-    <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+    <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-3">
       📖 Guide Complet • Pour Débutants Francophones
     </div>
 
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight" style="color:#fff !important;">
+    <h1 class="text-3xl md:text-5xl font-extrabold mb-3 leading-tight" style="color:#fff !important;">
       Le Guide Complet de l'IPTV 2026 pour Débutants
     </h1>
 
-    <p class="text-gray-200 max-w-3xl mx-auto mb-6 text-lg leading-relaxed">
+    <p class="text-gray-200 max-w-3xl mx-auto mb-3 text-sm md:text-lg leading-relaxed">
       Tout ce que vous devez savoir sur l'IPTV — ce que c'est, comment ça marche, comment l'installer sur n'importe quel appareil et comment profiter du meilleur streaming 4K au monde sans coupure.
     </p>
 
@@ -386,14 +390,17 @@
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ Offres Mensuelles & Annuelles</span>
     </div>
 
-        <div class="flex justify-center gap-4 flex-wrap">
-      <a href="/fr/#pricing" class="cta-btn">🚀 Découvrir Prime IPTV</a>
-      <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20en%20savoir%20plus%20sur%20Prime%20IPTV."
-         target="_blank" rel="noopener noreferrer"
-         style="display:inline-block;background:#25D366;color:#fff;padding:0.75rem 2rem;border-radius:9999px;font-weight:700;text-decoration:none;">
-        💬 WhatsApp
-      </a>
-    </div>
+        <div class="flex justify-center items-center gap-3 pt-2">
+        <a href="/fr/france/#pricing"
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
+          🚀 Commencer – Dès 30€/an
+        </a>
+        <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20un%20essai%20gratuit%20de%20Prime%20IPTV."
+           target="_blank" rel="noopener noreferrer"
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">
+          💬 Essai Gratuit
+        </a>
+      </div>
 
   </div>
 </section>

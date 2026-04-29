@@ -175,6 +175,10 @@
     flex-direction: row-reverse;
   }
   ul.check-list li::before { content: "✅"; flex-shrink: 0; }
+
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
+  main { padding-top: 0 !important; }
 </style>
 
 <script type="application/ld+json">
@@ -283,7 +287,7 @@
 </div>
 
 <!-- Hero -->
-<section class="bg-gradient-to-l from-indigo-700 via-purple-700 to-blue-600 pt-28 pb-12 text-white">
+<section class="hero-section bg-gradient-to-l from-indigo-700 via-purple-700 to-blue-600 text-white">
   <div class="container mx-auto px-6 max-w-4xl text-center">
 
     <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-4">
@@ -309,14 +313,17 @@
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ باقات شهرية وسنوية</span>
     </div>
 
-    <div style="display:flex;justify-content:center;gap:1rem;max-width:480px;margin:0 auto;direction:rtl;">
-      <a href="/#pricing" class="cta-btn" style="flex:1;text-align:center;">🚀 اشترك الآن</a>
-      <a href="https://wa.me/212666686732?text=مرحباً%2C%20أريد%20معرفة%20المزيد%20عن%20Prime%20IPTV."
-         target="_blank" rel="noopener noreferrer"
-         style="flex:1;text-align:center;display:inline-block;background:#25D366;color:#fff;padding:0.75rem 1rem;border-radius:9999px;font-weight:700;text-decoration:none;">
-        💬 واتساب
-      </a>
-    </div>
+      <div class="flex justify-center items-center gap-3 pt-2">
+        <a href="/#pricing"
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-gradient-to-l from-yellow-300 to-white text-purple-900 shadow-lg hover:scale-105 transition-transform">
+          🚀 اشترك من 30 يورو/سنة
+        </a>
+        <a href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%85%D9%86%20Prime%20IPTV."
+           target="_blank" rel="noopener noreferrer"
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">
+          💬 تجربة مجانية
+        </a>
+      </div>
 
   </div>
 </section>
