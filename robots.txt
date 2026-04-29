@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://primeiptvplus.com/sitemap_index.xml
+Sitemap: https://primeiptvplus.com/sitemap.xml
