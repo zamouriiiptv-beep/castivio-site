@@ -1,0 +1,32 @@
+workflows:
+
+  prime-player-android:
+    name: Prime Player – Android APK
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+
+    environment:
+      flutter: 3.22.0
+      java: 17
+
+    working_directory: prime-player
+
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+
+      - name: Build APK (release)
+        script: |
+          flutter build apk --release --split-per-abi \
+            --dart-define=FLUTTER_WEB_USE_SKIA=true
+
+    artifacts:
+      - prime-player/build/app/outputs/flutter-apk/*.apk
+
+    publishing:
+      email:
+        recipients:
+          - your@email.com        # ← ضع إيميلك هنا
+        notify:
+          success: true
+          failure: true
