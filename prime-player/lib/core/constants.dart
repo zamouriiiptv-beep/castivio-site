@@ -23,36 +23,3 @@ class AppStrings {
   static const String website     = 'primeiptvplus.com';
 }
 
-/// MPV / libmpv tuning for minimum channel-open latency
-class PlayerConfig {
-  /// Initial buffer in bytes — small = faster first frame
-  static const int bufferSize = 16 * 1024 * 1024; // 16 MB
-
-  /// libmpv property map applied at player init
-  static const Map<String, String> mpvOptions = {
-    // Hardware decoding — GPU path, fastest decode
-    'hwdec': 'auto-safe',
-    // Network
-    'network-timeout': '3',          // fail fast, 3 s
-    'stream-buffer-size': '4096',    // 4 KB read-ahead (low latency start)
-    // Cache — just enough for smooth play without delaying start
-    'cache': 'yes',
-    'cache-secs': '8',
-    'demuxer-max-bytes': '8MiB',
-    'demuxer-readahead-secs': '2',
-    // Decoder threads
-    'vd-lavc-threads': '0',          // 0 = auto (use all CPU cores)
-    // Sync
-    'video-sync': 'audio',
-    // Disable unused features that add latency
-    'interpolation': 'no',
-    'deband': 'no',
-    'dither-depth': 'no',
-  };
-
-  /// How many ms to wait before showing loading spinner (avoid flicker)
-  static const int spinnerDelayMs = 400;
-
-  /// DNS pre-resolve + TCP pre-connect timeout
-  static const int preConnectTimeoutMs = 2000;
-}

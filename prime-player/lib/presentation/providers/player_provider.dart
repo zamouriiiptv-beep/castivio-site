@@ -1,153 +1,178 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:media_kit/media_kit.dart';
+import 'package:video_player/video_player.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 
-// ── Singleton player so it persists across screen navigations ────────────────
-final playerInstanceProvider = Provider<Player>((ref) {
-  final player = Player(
-    configuration: const PlayerConfiguration(
-      bufferSize: PlayerConfig.bufferSize,
-      logLevel:   MPVLogLevel.error,
-    ),
-  );
-
-  // Apply all performance tuning options
-  PlayerConfig.mpvOptions.forEach((key, value) {
-    player.setProperty(key, value);
-  });
-
-  ref.onDispose(player.dispose);
-  return player;
-});
-
-// ── Player state ──────────────────────────────────────────────────────────────
 class PlayerState {
-  final Channel?    channel;
-  final bool        isPlaying;
-  final bool        isBuffering;
-  final bool        hasError;
-  final String?     errorMessage;
-  final Duration    position;
-  final Duration    duration;
-  final bool        isFullscreen;
+  final Channel?               channel;
+  final VideoPlayerController? controller;
+  final bool                   isPlaying;
+  final bool                   isBuffering;
+  final bool                   hasError;
+  final String?                errorMessage;
+  final Duration               position;
+  final Duration               duration;
 
   const PlayerState({
     this.channel,
+    this.controller,
     this.isPlaying   = false,
     this.isBuffering = false,
     this.hasError    = false,
     this.errorMessage,
     this.position    = Duration.zero,
     this.duration    = Duration.zero,
-    this.isFullscreen = false,
   });
 
   PlayerState copyWith({
-    Channel?  channel,
-    bool?     isPlaying,
-    bool?     isBuffering,
-    bool?     hasError,
-    String?   errorMessage,
-    Duration? position,
-    Duration? duration,
-    bool?     isFullscreen,
+    Channel?               channel,
+    VideoPlayerController? controller,
+    bool?                  isPlaying,
+    bool?                  isBuffering,
+    bool?                  hasError,
+    String?                errorMessage,
+    Duration?              position,
+    Duration?              duration,
   }) => PlayerState(
     channel:      channel      ?? this.channel,
+    controller:   controller   ?? this.controller,
     isPlaying:    isPlaying    ?? this.isPlaying,
     isBuffering:  isBuffering  ?? this.isBuffering,
     hasError:     hasError     ?? this.hasError,
     errorMessage: errorMessage ?? this.errorMessage,
     position:     position     ?? this.position,
     duration:     duration     ?? this.duration,
-    isFullscreen: isFullscreen ?? this.isFullscreen,
   );
 }
 
-// ── Provider ──────────────────────────────────────────────────────────────────
 class PlayerNotifier extends Notifier<PlayerState> {
-  late final Player _player;
-
-  // Stores the next channel URL while current channel plays —
-  // so TCP connection is already open when user switches
-  String? _preConnectedUrl;
-  Timer?  _controlsTimer;
+  VideoPlayerController? _current;
+  VideoPlayerController? _prewarmed; // pre-warmed for next channel
+  Timer? _posTimer;
 
   @override
-  PlayerState build() {
-    _player = ref.watch(playerInstanceProvider);
-    _attachListeners();
-    return const PlayerState();
-  }
+  PlayerState build() => const PlayerState();
 
-  void _attachListeners() {
-    _player.stream.playing.listen((playing) {
-      state = state.copyWith(isPlaying: playing);
-      if (playing) WakelockPlus.enable();
-    });
-
-    _player.stream.buffering.listen((buffering) {
-      state = state.copyWith(isBuffering: buffering);
-    });
-
-    _player.stream.position.listen((pos) {
-      state = state.copyWith(position: pos);
-    });
-
-    _player.stream.duration.listen((dur) {
-      state = state.copyWith(duration: dur);
-    });
-
-    _player.stream.error.listen((err) {
-      if (err.isNotEmpty) {
-        state = state.copyWith(hasError: true, errorMessage: err);
-      }
-    });
-  }
-
-  /// Opens a channel — the core of "lightning speed".
-  /// Strategy:
-  ///  1. If this URL was pre-connected, it opens almost instantly.
-  ///  2. Sets MPV options BEFORE open() so HW decoding is ready.
-  ///  3. Calls play() without waiting — streams start before metadata arrives.
   Future<void> openChannel(Channel channel) async {
+    // Dispose previous
+    _posTimer?.cancel();
+    final old = _current;
+    _current = null;
+
     state = state.copyWith(
       channel:      channel,
+      controller:   null,
       isBuffering:  true,
       hasError:     false,
       errorMessage: null,
+      isPlaying:    false,
+      position:     Duration.zero,
+      duration:     Duration.zero,
     );
 
-    await _player.open(
-      Media(channel.streamUrl),
-      play: true,           // ← start playing immediately, don't wait
-    );
+    old?.removeListener(_onUpdate);
+    old?.dispose();
+
+    try {
+      VideoPlayerController ctrl;
+
+      // Use pre-warmed controller if URL matches
+      if (_prewarmed != null &&
+          _prewarmed!.dataSource == channel.streamUrl &&
+          _prewarmed!.value.isInitialized) {
+        ctrl = _prewarmed!;
+        _prewarmed = null;
+      } else {
+        _prewarmed?.dispose();
+        _prewarmed = null;
+        ctrl = _makeController(channel.streamUrl);
+        await ctrl.initialize();
+      }
+
+      ctrl.addListener(_onUpdate);
+      _current = ctrl;
+
+      await ctrl.play();
+      WakelockPlus.enable();
+
+      state = state.copyWith(
+        controller:  ctrl,
+        isBuffering: false,
+        isPlaying:   true,
+        duration:    ctrl.value.duration,
+      );
+
+      _posTimer = Timer.periodic(const Duration(milliseconds: 500), (_) {
+        if (_current != null && _current!.value.isInitialized) {
+          state = state.copyWith(position: _current!.value.position);
+        }
+      });
+    } catch (e) {
+      state = state.copyWith(
+        hasError:     true,
+        errorMessage: e.toString(),
+        isBuffering:  false,
+      );
+    }
   }
 
-  /// Pre-warms the next channel's connection.
-  /// Call this when the user hovers over or highlights a channel in the list.
+  void _onUpdate() {
+    final ctrl = _current;
+    if (ctrl == null) return;
+    final v = ctrl.value;
+    state = state.copyWith(
+      isPlaying:    v.isPlaying,
+      isBuffering:  v.isBuffering,
+      hasError:     v.hasError,
+      errorMessage: v.hasError ? v.errorDescription : null,
+      duration:     v.duration,
+    );
+    if (v.isPlaying) WakelockPlus.enable();
+  }
+
+  /// Pre-warm TCP connection for next channel on pointer-down.
   Future<void> preConnect(String streamUrl) async {
-    _preConnectedUrl = streamUrl;
-    // Tell libmpv to pre-resolve DNS and open a TCP connection silently
-    await _player.setProperty('prefetch-playlist', 'yes');
+    if (_prewarmed?.dataSource == streamUrl) return;
+    _prewarmed?.dispose();
+    _prewarmed = _makeController(streamUrl);
+    try {
+      await _prewarmed!.initialize();
+    } catch (_) {
+      _prewarmed = null;
+    }
   }
 
-  void togglePlay() => _player.playOrPause();
+  VideoPlayerController _makeController(String url) =>
+      VideoPlayerController.networkUrl(
+        Uri.parse(url),
+        httpHeaders: const {'Connection': 'keep-alive'},
+        videoPlayerOptions: VideoPlayerOptions(allowBackgroundPlayback: false),
+      );
 
-  void seek(Duration position) => _player.seek(position);
+  void togglePlay() {
+    final ctrl = _current;
+    if (ctrl == null) return;
+    if (ctrl.value.isPlaying) {
+      ctrl.pause();
+      WakelockPlus.disable();
+    } else {
+      ctrl.play();
+      WakelockPlus.enable();
+    }
+  }
 
-  void setVolume(double vol) => _player.setVolume(vol * 100);
+  void seek(Duration position) => _current?.seekTo(position);
 
   void stop() {
-    _player.stop();
+    _posTimer?.cancel();
+    _current?.removeListener(_onUpdate);
+    _current?.dispose();
+    _current = null;
+    _prewarmed?.dispose();
+    _prewarmed = null;
     WakelockPlus.disable();
     state = const PlayerState();
-  }
-
-  void toggleFullscreen() {
-    state = state.copyWith(isFullscreen: !state.isFullscreen);
   }
 }
 

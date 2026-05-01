@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:media_kit_video/media_kit_video.dart';
+import 'package:video_player/video_player.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../providers/player_provider.dart';
@@ -16,17 +16,13 @@ class PlayerScreen extends ConsumerStatefulWidget {
 }
 
 class _PlayerScreenState extends ConsumerState<PlayerScreen> {
-  late final VideoController _videoCtrl;
   bool _showControls = true;
   Timer? _hideTimer;
 
   @override
   void initState() {
     super.initState();
-    final player = ref.read(playerInstanceProvider);
-    _videoCtrl   = VideoController(player);
     _resetHideTimer();
-    // Force landscape for TV-like experience
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
@@ -62,6 +58,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
   @override
   Widget build(BuildContext context) {
     final playerState = ref.watch(playerProvider);
+    final ctrl = playerState.controller;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -73,26 +70,32 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
           children: [
             // ── Video surface ────────────────────────────────────────────
             Positioned.fill(
-              child: Video(
-                controller: _videoCtrl,
-                fill:        Colors.black,
-                controls:    NoVideoControls, // custom controls only
-              ),
+              child: ctrl != null && ctrl.value.isInitialized
+                  ? FittedBox(
+                      fit: BoxFit.contain,
+                      child: SizedBox(
+                        width:  ctrl.value.size.width,
+                        height: ctrl.value.size.height,
+                        child:  VideoPlayer(ctrl),
+                      ),
+                    )
+                  : const SizedBox(),
             ),
 
             // ── Buffering spinner ────────────────────────────────────────
             if (playerState.isBuffering)
               const Center(child: _BufferingIndicator()),
 
-            // ── Error overlay ─────────────────────────────────────────────
+            // ── Error overlay ────────────────────────────────────────────
             if (playerState.hasError)
               _ErrorOverlay(
                 message: playerState.errorMessage,
-                onRetry: () => playerState.channel != null
-                    ? ref
-                        .read(playerProvider.notifier)
-                        .openChannel(playerState.channel!)
-                    : null,
+                onRetry: () {
+                  if (playerState.channel != null) {
+                    ref.read(playerProvider.notifier)
+                        .openChannel(playerState.channel!);
+                  }
+                },
               ),
 
             // ── Controls overlay (auto-hides) ────────────────────────────
@@ -107,15 +110,20 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
                   position:    playerState.position,
                   duration:    playerState.duration,
                   onBack:      () => Navigator.pop(context),
-                  onPlayPause: () => ref.read(playerProvider.notifier).togglePlay(),
-                  onSeek:      (v) => ref
-                      .read(playerProvider.notifier)
-                      .seek(Duration(
-                          seconds: (v * playerState.duration.inSeconds).round())),
+                  onPlayPause: () =>
+                      ref.read(playerProvider.notifier).togglePlay(),
+                  onSeek: (v) => ref.read(playerProvider.notifier).seek(
+                    Duration(
+                      seconds:
+                          (v * playerState.duration.inSeconds).round(),
+                    ),
+                  ),
                   onFavorite: () {
                     final ch = playerState.channel;
                     if (ch != null) {
-                      ref.read(playlistRepositoryProvider).toggleFavorite(ch);
+                      ref
+                          .read(playlistRepositoryProvider)
+                          .toggleFavorite(ch);
                     }
                   },
                 ),
@@ -130,15 +138,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
   void _handleDoubleTap(TapDownDetails d, BuildContext context) {
     final half = MediaQuery.of(context).size.width / 2;
     final pos  = ref.read(playerProvider).position;
-    if (d.globalPosition.dx < half) {
-      // Double tap left → rewind 10s
-      ref.read(playerProvider.notifier)
-          .seek(pos - const Duration(seconds: 10));
-    } else {
-      // Double tap right → skip 10s
-      ref.read(playerProvider.notifier)
-          .seek(pos + const Duration(seconds: 10));
-    }
+    ref.read(playerProvider.notifier).seek(
+      d.globalPosition.dx < half
+          ? pos - const Duration(seconds: 10)
+          : pos + const Duration(seconds: 10),
+    );
     _resetHideTimer();
   }
 }
@@ -161,8 +165,7 @@ class _BufferingIndicator extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         const Text('Loading…',
-            style: TextStyle(
-              color: Colors.white70, fontSize: 13)),
+            style: TextStyle(color: Colors.white70, fontSize: 13)),
       ],
     );
   }
@@ -170,7 +173,7 @@ class _BufferingIndicator extends StatelessWidget {
 
 // ── Error overlay ─────────────────────────────────────────────────────────────
 class _ErrorOverlay extends StatelessWidget {
-  final String? message;
+  final String?   message;
   final VoidCallback? onRetry;
   const _ErrorOverlay({this.message, this.onRetry});
 
@@ -242,7 +245,6 @@ class _ControlsOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Gradient scrim top + bottom
         Positioned(
           top: 0, left: 0, right: 0,
           child: Container(
@@ -268,12 +270,11 @@ class _ControlsOverlay extends StatelessWidget {
           ),
         ),
 
-        // ── Top bar: back + channel name ──────────────────────────────
+        // Top bar
         Positioned(
           top: 0, left: 0, right: 0,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
               children: [
                 IconButton(
@@ -305,7 +306,7 @@ class _ControlsOverlay extends StatelessWidget {
           ),
         ),
 
-        // ── Center play/pause ─────────────────────────────────────────
+        // Center play/pause
         Center(
           child: GestureDetector(
             onTap: onPlayPause,
@@ -317,9 +318,7 @@ class _ControlsOverlay extends StatelessWidget {
                 border: Border.all(color: Colors.white30, width: 1.5),
               ),
               child: Icon(
-                isPlaying
-                    ? Icons.pause_rounded
-                    : Icons.play_arrow_rounded,
+                isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
                 color: Colors.white,
                 size:  36,
               ),
@@ -327,7 +326,7 @@ class _ControlsOverlay extends StatelessWidget {
           ),
         ),
 
-        // ── Bottom seek bar ────────────────────────────────────────────
+        // Bottom seek bar (only for VOD streams with known duration)
         if (duration > Duration.zero)
           Positioned(
             bottom: 12, left: 16, right: 16,
@@ -371,9 +370,9 @@ class _ControlsOverlay extends StatelessWidget {
   }
 
   String _fmt(Duration d) {
-    final h  = d.inHours;
-    final m  = d.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final s  = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    final h = d.inHours;
+    final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
     return h > 0 ? '$h:$m:$s' : '$m:$s';
   }
 }

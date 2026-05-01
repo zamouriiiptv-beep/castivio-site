@@ -11,10 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # ─── Video Engine ────────────────────────────────────────────────────────────
-  media_kit: ^1.1.10
-  media_kit_video: ^1.2.4
-  media_kit_libs_android_video: ^1.0.4   # Android native libs (libmpv)
+  # ─── Video (official Google plugin – guaranteed v2 compatible) ────────────────
+  video_player: ^2.8.6
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1
