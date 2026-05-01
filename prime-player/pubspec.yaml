@@ -11,44 +11,32 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # ─── Video Engine (fastest: libmpv + HW decoding) ───────────────────────────
-  media_kit: ^1.1.11
+  # ─── Video Engine ────────────────────────────────────────────────────────────
+  media_kit: ^1.1.10
   media_kit_video: ^1.2.4
-  media_kit_libs_video: ^1.0.5          # libmpv native libs (all platforms)
+  media_kit_libs_android_video: ^1.0.4   # Android native libs (libmpv)
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1
-  riverpod_annotation: ^2.3.5
 
   # ─── Storage ─────────────────────────────────────────────────────────────────
   hive_flutter: ^1.1.0
-  shared_preferences: ^2.2.3
 
   # ─── Networking ──────────────────────────────────────────────────────────────
-  dio: ^5.4.3                           # HTTP with connection pooling
-  http: ^1.2.1
+  dio: ^5.4.3
 
-  # ─── Parsing & Utils ─────────────────────────────────────────────────────────
-  xml: ^6.5.0
+  # ─── Utils ───────────────────────────────────────────────────────────────────
   uuid: ^4.4.0
-  path_provider: ^2.1.3
-  connectivity_plus: ^6.0.3
 
   # ─── UI ──────────────────────────────────────────────────────────────────────
   cached_network_image: ^3.3.1
-  flutter_svg: ^2.0.10+1
-  shimmer: ^3.0.0
-  google_fonts: ^6.2.1
-  font_awesome_flutter: ^10.7.0
-  animations: ^2.0.11
-  wakelock_plus: ^1.2.5               # Keep screen on while playing
+  wakelock_plus: ^1.2.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   build_runner: ^2.4.9
-  riverpod_generator: ^2.4.0
   hive_generator: ^2.0.1
 
 flutter:

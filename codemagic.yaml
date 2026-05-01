@@ -6,7 +6,7 @@ workflows:
     instance_type: mac_mini_m1
 
     environment:
-      flutter: 3.22.0
+      flutter: stable
       java: 17
 
     working_directory: prime-player
