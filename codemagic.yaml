@@ -26,7 +26,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - your@email.com        # ← ضع إيميلك هنا
+          - zamnouriiiptv@email.com
         notify:
           success: true
           failure: true
