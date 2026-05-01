@@ -22,6 +22,11 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true">
 
+        <!-- Declare v2 embedding explicitly — Flutter defaults to v1 if absent -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
