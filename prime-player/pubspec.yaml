@@ -14,8 +14,7 @@ dependencies:
   # ─── Video Engine (fastest: libmpv + HW decoding) ───────────────────────────
   media_kit: ^1.1.11
   media_kit_video: ^1.2.4
-  media_kit_libs_video: ^1.0.5          # libmpv native libs (Android/iOS/Desktop)
-  media_kit_libs_android_video: ^1.0.4  # ExoPlayer for Android
+  media_kit_libs_video: ^1.0.5          # libmpv native libs (all platforms)
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1
