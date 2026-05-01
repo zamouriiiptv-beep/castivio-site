@@ -6,6 +6,7 @@ import '../../data/models/channel.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import 'player_screen.dart';
+import 'settings_screen.dart';
 
 class ChannelListScreen extends ConsumerStatefulWidget {
   const ChannelListScreen({super.key});
@@ -138,11 +139,23 @@ class _TopBar extends StatelessWidget {
             onPressed: onSearchToggle,
           ),
           Consumer(builder: (context, ref, _) {
-            return IconButton(
-              icon: const Icon(Icons.playlist_play_rounded,
-                  color: AppColors.textSecondary),
-              onPressed: () => Navigator.pop(context),
-              tooltip: 'Switch playlist',
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.playlist_play_rounded,
+                      color: AppColors.textSecondary),
+                  onPressed: () => Navigator.pop(context),
+                  tooltip: 'Switch playlist',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings_rounded,
+                      color: AppColors.textSecondary),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const SettingsScreen())),
+                  tooltip: 'Settings',
+                ),
+              ],
             );
           }),
         ],
