@@ -32,6 +32,11 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
+            <!-- v2 embedding marker — must be INSIDE <activity> -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
             <!-- Main launcher (phone/tablet) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -44,9 +49,5 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="io.flutter.embedding.android.NormalTheme"
-            android:resource="@style/NormalTheme"/>
     </application>
 </manifest>
