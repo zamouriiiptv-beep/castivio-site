@@ -15,10 +15,18 @@ workflows:
       - name: Get Flutter packages
         script: flutter pub get
 
+      - name: Diagnostics
+        script: |
+          echo "=== Flutter version ==="
+          flutter --version
+          echo "=== Plugins ==="
+          cat .flutter-plugins 2>/dev/null || echo "(no .flutter-plugins)"
+          echo "=== Plugin dependencies ==="
+          cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
+
       - name: Build APK (release)
         script: |
-          flutter build apk --release --split-per-abi \
-            --dart-define=FLUTTER_WEB_USE_SKIA=true
+          flutter build apk --release --split-per-abi --verbose 2>&1
 
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/*.apk
