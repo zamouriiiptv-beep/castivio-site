@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'data/services/storage_service.dart';
+import 'presentation/providers/playlist_provider.dart';
 import 'presentation/screens/splash_screen.dart';
 import 'core/theme.dart';
 
