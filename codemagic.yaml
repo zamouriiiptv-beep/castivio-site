@@ -24,9 +24,12 @@ workflows:
           echo "=== Plugin dependencies ==="
           cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
 
+      - name: Analyze
+        script: flutter analyze --no-fatal-infos
+
       - name: Build APK (release)
         script: |
-          flutter build apk --release --split-per-abi --verbose 2>&1
+          flutter build apk --release --verbose
 
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/*.apk
