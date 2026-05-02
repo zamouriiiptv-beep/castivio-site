@@ -1,4 +1,3 @@
-import 'dart:isolate';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
