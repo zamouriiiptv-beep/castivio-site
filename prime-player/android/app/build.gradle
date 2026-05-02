@@ -7,7 +7,6 @@ plugins {
 android {
     namespace       "com.primeiptv.primeplayer"
     compileSdk      flutter.compileSdkVersion
-    ndkVersion      flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -27,13 +26,9 @@ android {
 
     buildTypes {
         release {
-            // Enables hardware-accelerated rendering in release
-            debuggable false
-            shrinkResources true
-            minifyEnabled   true
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"),
-                          "proguard-rules.pro"
             signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
