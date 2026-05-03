@@ -2,7 +2,7 @@ workflows:
 
   prime-player-android:
     name: Prime Player – Android APK
-    max_build_duration: 60
+    max_build_duration: 120
     instance_type: mac_mini_m1
 
     environment:
@@ -15,10 +15,35 @@ workflows:
       - name: Get Flutter packages
         script: flutter pub get
 
+      - name: Diagnostics
+        script: |
+          echo "=== Flutter version ==="
+          flutter --version
+          echo "=== Plugins ==="
+          cat .flutter-plugins 2>/dev/null || echo "(no .flutter-plugins)"
+          echo "=== Plugin dependencies ==="
+          cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
+
+      - name: Analyze
+        script: flutter analyze --no-fatal-infos --no-fatal-warnings
+
       - name: Build APK (release)
         script: |
-          flutter build apk --release --split-per-abi \
-            --dart-define=FLUTTER_WEB_USE_SKIA=true
+          flutter build apk --release
+
+      - name: Share APK download link
+        script: |
+          APK=$(find build -name "app-release.apk" | head -1)
+          echo "APK path: $APK"
+          if [ -f "$APK" ]; then
+            echo "APK size: $(du -h "$APK" | cut -f1)"
+            LINK=$(curl -s --upload-file "$APK" "https://transfer.sh/Prime-Player.apk")
+            echo "================================"
+            echo "APK DOWNLOAD LINK: $LINK"
+            echo "================================"
+          else
+            echo "APK file not found"
+          fi
 
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/*.apk
@@ -26,7 +51,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - zamnouriiiptv@email.com
+          - zamouriiiptv@gmail.com
         notify:
           success: true
           failure: true
