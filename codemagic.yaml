@@ -37,7 +37,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - zamnouriiiptv@email.com
+          - zamouriiiptv@gmail.com
         notify:
           success: true
           failure: true
