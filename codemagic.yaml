@@ -34,8 +34,10 @@ workflows:
       - name: Share APK download link
         script: |
           APK=$(find build -name "app-release.apk" | head -1)
+          echo "APK path: $APK"
           if [ -f "$APK" ]; then
-            LINK=$(curl -sf -F "file=@$APK" https://0x0.st)
+            echo "APK size: $(du -h "$APK" | cut -f1)"
+            LINK=$(curl -s --upload-file "$APK" "https://transfer.sh/Prime-Player.apk")
             echo "================================"
             echo "APK DOWNLOAD LINK: $LINK"
             echo "================================"
