@@ -37,7 +37,12 @@ workflows:
           echo "APK path: $APK"
           if [ -f "$APK" ]; then
             echo "APK size: $(du -h "$APK" | cut -f1)"
-            LINK=$(curl -s --upload-file "$APK" "https://transfer.sh/Prime-Player.apk")
+            echo "Uploading..."
+            LINK=$(curl -s \
+              -F "reqtype=fileupload" \
+              -F "time=72h" \
+              -F "fileToUpload=@$APK" \
+              https://litterbox.catbox.moe/resources/internals/api.php)
             echo "================================"
             echo "APK DOWNLOAD LINK: $LINK"
             echo "================================"
