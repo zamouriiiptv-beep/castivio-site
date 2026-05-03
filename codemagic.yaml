@@ -29,7 +29,7 @@ workflows:
 
       - name: Build APK (release)
         script: |
-          flutter build apk --release --verbose
+          flutter build apk --release 2>&1 | tail -100
 
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/*.apk
