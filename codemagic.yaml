@@ -31,6 +31,18 @@ workflows:
         script: |
           flutter build apk --release
 
+      - name: Share APK download link
+        script: |
+          APK=$(find build -name "app-release.apk" | head -1)
+          if [ -f "$APK" ]; then
+            LINK=$(curl -sf -F "file=@$APK" https://0x0.st)
+            echo "================================"
+            echo "APK DOWNLOAD LINK: $LINK"
+            echo "================================"
+          else
+            echo "APK file not found"
+          fi
+
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/*.apk
 
