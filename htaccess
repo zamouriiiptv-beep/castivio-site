@@ -6,6 +6,8 @@
 Redirect 301 /iptv-guide-ar.html /guide/
 Redirect 301 /iptv-guide-en.html /en/guide/
 Redirect 301 /iptv-guide-fr.html /fr/guide/
+Redirect 301 /best-iptv-usa-guide.html /en/guide/
+Redirect 301 /es/esp/ana /es/espana/
 
 # ===============================
 # CLEAN URLs & LANG FIX (FINAL)
