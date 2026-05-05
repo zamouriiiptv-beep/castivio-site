@@ -1,0 +1,25 @@
+workflows:
+  android-release:
+    name: Prime Player – Android APK
+    max_build_duration: 60
+    environment:
+      flutter: 3.29.3
+      java: 17
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          cd prime-player
+          flutter pub get
+      - name: Build release APK
+        script: |
+          cd prime-player
+          flutter build apk --release --no-tree-shake-icons
+    artifacts:
+      - prime-player/build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - zamouriiiptv@gmail.com
+        notify:
+          success: true
+          failure: true
