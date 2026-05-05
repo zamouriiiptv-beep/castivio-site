@@ -453,10 +453,17 @@ class _BottomBar extends ConsumerWidget {
           _ToolBtn(
             icon:  Icons.help_outline_rounded,
             label: 'About',
-            onTap: () => showDialog(
-              context: context,
-              builder: (_) => _InfoDialog(playlist: playlist),
-            ),
+            onTap: () {
+              final storage = ref.read(storageServiceProvider);
+              showDialog(
+                context: context,
+                builder: (_) => _InfoDialog(
+                  playlist:   playlist,
+                  macAddress: storage.macAddress,
+                  deviceKey:  storage.deviceKey,
+                ),
+              );
+            },
           ),
           const Spacer(),
           Column(
@@ -1263,5 +1270,4 @@ class _Step extends StatelessWidget {
       ]),
     );
   }
-}
 }
