@@ -278,9 +278,10 @@ class _TopBar extends ConsumerWidget {
   }
 
   void _showInfoDialog(BuildContext context, WidgetRef ref) {
+    final mac = ref.read(storageServiceProvider).macAddress;
     showDialog(
       context: context,
-      builder: (_) => _InfoDialog(playlist: playlist),
+      builder: (_) => _InfoDialog(playlist: playlist, macAddress: mac),
     );
   }
 }
@@ -638,7 +639,8 @@ class _PlaylistPickerDialog extends ConsumerWidget {
 // ── Info dialog ───────────────────────────────────────────────────────────────
 class _InfoDialog extends StatelessWidget {
   final Playlist? playlist;
-  const _InfoDialog({this.playlist});
+  final String    macAddress;
+  const _InfoDialog({this.playlist, required this.macAddress});
 
   @override
   Widget build(BuildContext context) {
@@ -668,7 +670,55 @@ class _InfoDialog extends StatelessWidget {
                     color: AppColors.textMuted, size: 20),
               ),
             ]),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
+
+            // MAC Address banner
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF1E1040), Color(0xFF0F1E40)],
+                ),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.primary.withOpacity(0.4)),
+              ),
+              child: Row(children: [
+                const Icon(Icons.router_rounded,
+                    color: AppColors.primaryLight, size: 18),
+                const SizedBox(width: 10),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  const Text('MAC Address',
+                      style: TextStyle(
+                          color: AppColors.textSecondary, fontSize: 10)),
+                  Text(macAddress,
+                      style: const TextStyle(
+                        color: AppColors.primaryLight,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 2,
+                        fontFamily: 'monospace',
+                      )),
+                ]),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: macAddress));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('MAC Address copied!'),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: AppColors.surface,
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.copy_rounded,
+                      color: AppColors.primaryLight, size: 18),
+                ),
+              ]),
+            ),
+
+            const SizedBox(height: 16),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

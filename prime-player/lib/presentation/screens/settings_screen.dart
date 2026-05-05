@@ -22,7 +22,9 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lang       = ref.watch(_appLanguageProvider);
     final pinEnabled = ref.watch(_pinEnabledProvider);
-    final deviceId   = ref.read(storageServiceProvider).deviceId;
+    final storage    = ref.read(storageServiceProvider);
+    final deviceId   = storage.deviceId;
+    final macAddress = storage.macAddress;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -79,6 +81,59 @@ class SettingsScreen extends ConsumerWidget {
 
           // ── Device section ───────────────────────────────────────────────
           _SectionHeader('Device'),
+
+          // MAC address — highlighted for IPTV portal registration
+          Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFF1E1040), Color(0xFF0F1E40)],
+              ),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: AppColors.primary.withOpacity(0.4)),
+            ),
+            child: ListTile(
+              leading: Container(
+                width: 36, height: 36,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: const LinearGradient(
+                    colors: [AppColors.primary, AppColors.secondary],
+                  ),
+                ),
+                child: const Icon(Icons.router_rounded,
+                    color: Colors.white, size: 18),
+              ),
+              title: const Text('MAC Address',
+                  style: TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                  )),
+              subtitle: Text(macAddress,
+                  style: const TextStyle(
+                    color: AppColors.primaryLight,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.5,
+                    fontFamily: 'monospace',
+                  )),
+              trailing: IconButton(
+                icon: const Icon(Icons.copy_rounded,
+                    color: AppColors.primaryLight, size: 20),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: macAddress));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('MAC Address copied!'),
+                      duration: Duration(seconds: 2),
+                      backgroundColor: AppColors.surface,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
 
           _SettingsTile(
             icon:      Icons.fingerprint_rounded,

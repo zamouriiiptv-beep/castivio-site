@@ -90,4 +90,12 @@ class StorageService {
     }
     return id;
   }
+
+  // ── MAC Address (derived from deviceId, stable per install) ───────────────
+
+  String get macAddress {
+    final hex = deviceId.replaceAll('-', '').substring(0, 12).toUpperCase();
+    return '${hex.substring(0,2)}:${hex.substring(2,4)}:${hex.substring(4,6)}'
+        ':${hex.substring(6,8)}:${hex.substring(8,10)}:${hex.substring(10,12)}';
+  }
 }
