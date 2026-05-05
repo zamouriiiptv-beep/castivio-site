@@ -122,6 +122,52 @@ final filteredLiveChannelsProvider = Provider<List<Channel>>((ref) {
   return result;
 });
 
+// ── Per-type categories & filtered channels ───────────────────────────────────
+final movieCategoriesProvider = Provider<List<String>>((ref) {
+  final cats = ref.watch(movieChannelsProvider)
+      .map((c) => c.groupTitle ?? 'Uncategorized').toSet().toList()..sort();
+  return ['All', ...cats];
+});
+
+final filteredMovieChannelsProvider = Provider<List<Channel>>((ref) {
+  var result = ref.watch(movieChannelsProvider);
+  final cat  = ref.watch(activeCategoryProvider);
+  final q    = ref.watch(searchQueryProvider).toLowerCase();
+  if (cat != null && cat != 'All') result = result.where((c) => c.groupTitle == cat).toList();
+  if (q.isNotEmpty) result = result.where((c) => c.name.toLowerCase().contains(q)).toList();
+  return result;
+});
+
+final seriesCategoriesProvider = Provider<List<String>>((ref) {
+  final cats = ref.watch(seriesChannelsProvider)
+      .map((c) => c.groupTitle ?? 'Uncategorized').toSet().toList()..sort();
+  return ['All', ...cats];
+});
+
+final filteredSeriesChannelsProvider = Provider<List<Channel>>((ref) {
+  var result = ref.watch(seriesChannelsProvider);
+  final cat  = ref.watch(activeCategoryProvider);
+  final q    = ref.watch(searchQueryProvider).toLowerCase();
+  if (cat != null && cat != 'All') result = result.where((c) => c.groupTitle == cat).toList();
+  if (q.isNotEmpty) result = result.where((c) => c.name.toLowerCase().contains(q)).toList();
+  return result;
+});
+
+final radioCategoriesProvider = Provider<List<String>>((ref) {
+  final cats = ref.watch(radioChannelsProvider)
+      .map((c) => c.groupTitle ?? 'Uncategorized').toSet().toList()..sort();
+  return ['All', ...cats];
+});
+
+final filteredRadioChannelsProvider = Provider<List<Channel>>((ref) {
+  var result = ref.watch(radioChannelsProvider);
+  final cat  = ref.watch(activeCategoryProvider);
+  final q    = ref.watch(searchQueryProvider).toLowerCase();
+  if (cat != null && cat != 'All') result = result.where((c) => c.groupTitle == cat).toList();
+  if (q.isNotEmpty) result = result.where((c) => c.name.toLowerCase().contains(q)).toList();
+  return result;
+});
+
 // ── Favorites ─────────────────────────────────────────────────────────────────
 final favoritesProvider = Provider<List<Channel>>((ref) {
   return ref.watch(playlistRepositoryProvider).getFavorites();
