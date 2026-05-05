@@ -981,84 +981,287 @@ class _LanguageDialogState extends State<_LanguageDialog> {
 }
 
 // ── Empty state ───────────────────────────────────────────────────────────────
-class _EmptyState extends StatelessWidget {
+class _EmptyState extends ConsumerWidget {
   final VoidCallback onAdd;
   const _EmptyState({required this.onAdd});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            'assets/images/logo.png',
-            width: 88, height: 88,
-            errorBuilder: (_, __, ___) => Container(
-              width: 88, height: 88,
-              decoration: BoxDecoration(
-                gradient: kPrimeGradient,
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: const Icon(Icons.play_arrow_rounded,
-                  color: Colors.white, size: 50),
-            ),
-          ),
-          const SizedBox(height: 16),
-          ShaderMask(
-            shaderCallback: (b) => kPrimeGradient.createShader(b),
-            child: const Text('Prime',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w900,
-                )),
-          ),
-          const Text('Player',
-              style: TextStyle(
-                color: AppColors.textSecondary,
-                fontSize: 24,
-                fontWeight: FontWeight.w300,
-              )),
-          const SizedBox(height: 6),
-          const Text(
-            'Add your M3U link or Xtream Codes to start watching',
-            style: TextStyle(color: AppColors.textMuted, fontSize: 13),
-          ),
-          const SizedBox(height: 28),
-          GestureDetector(
-            onTap: onAdd,
-            child: Container(
-              height: 48,
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              decoration: BoxDecoration(
-                gradient: kPrimeGradient,
-                borderRadius: BorderRadius.circular(14),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primary.withOpacity(0.4),
-                    blurRadius: 16,
-                    offset: const Offset(0, 6),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final storage   = ref.read(storageServiceProvider);
+    final mac       = storage.macAddress;
+    final deviceKey = storage.deviceKey;
+
+    return Row(
+      children: [
+        // ── Left: branding + add playlist ─────────────────────────────────
+        Expanded(
+          child: Container(
+            color: AppColors.background,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 80, height: 80,
+                  errorBuilder: (_, __, ___) => Container(
+                    width: 80, height: 80,
+                    decoration: BoxDecoration(
+                      gradient: kPrimeGradient,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Icon(Icons.play_arrow_rounded,
+                        color: Colors.white, size: 46),
                   ),
-                ],
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.add_rounded, color: Colors.white, size: 20),
-                  SizedBox(width: 8),
-                  Text('Add Playlist',
+                ),
+                const SizedBox(height: 14),
+                ShaderMask(
+                  shaderCallback: (b) => kPrimeGradient.createShader(b),
+                  child: const Text('Prime Player',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 0.5,
                       )),
-                ],
-              ),
+                ),
+                const SizedBox(height: 6),
+                const Text(
+                  'IPTV · Movies · Series · Radio',
+                  style: TextStyle(
+                      color: AppColors.textMuted, fontSize: 12),
+                ),
+                const SizedBox(height: 32),
+                // Add Playlist button
+                GestureDetector(
+                  onTap: onAdd,
+                  child: Container(
+                    height: 46,
+                    padding: const EdgeInsets.symmetric(horizontal: 28),
+                    decoration: BoxDecoration(
+                      gradient: kPrimeGradient,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.4),
+                          blurRadius: 14,
+                          offset: const Offset(0, 5),
+                        ),
+                      ],
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.add_rounded, color: Colors.white, size: 18),
+                        SizedBox(width: 8),
+                        Text('Add Playlist',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  'Add M3U URL or Xtream Codes to start watching',
+                  style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+
+        // Divider
+        Container(width: 1, color: AppColors.border),
+
+        // ── Right: device info panel ───────────────────────────────────────
+        Container(
+          width: 340,
+          color: AppColors.surface,
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Title
+              Row(children: [
+                Container(
+                  width: 32, height: 32,
+                  decoration: BoxDecoration(
+                    gradient: kPrimeGradient,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.devices_rounded,
+                      color: Colors.white, size: 17),
+                ),
+                const SizedBox(width: 10),
+                const Text('Device Info',
+                    style: TextStyle(
+                      color: AppColors.textPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                    )),
+              ]),
+              const SizedBox(height: 6),
+              const Text(
+                'Use these details on our website\nto add your playlist',
+                style: TextStyle(
+                    color: AppColors.textMuted, fontSize: 12, height: 1.5),
+              ),
+              const SizedBox(height: 20),
+
+              // MAC Address
+              _DeviceInfoBox(
+                label:  'MAC Address',
+                value:  mac,
+                icon:   Icons.router_rounded,
+                color:  AppColors.primary,
+                onCopy: () => _copy(context, mac, 'MAC Address'),
+              ),
+              const SizedBox(height: 10),
+
+              // Device Key
+              _DeviceInfoBox(
+                label:  'Device Key',
+                value:  deviceKey,
+                icon:   Icons.vpn_key_rounded,
+                color:  AppColors.warning,
+                onCopy: () => _copy(context, deviceKey, 'Device Key'),
+              ),
+              const SizedBox(height: 20),
+
+              // Open Website button
+              GestureDetector(
+                onTap: () => _copy(context, 'primeiptvplus.com', ''),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: BoxDecoration(
+                    gradient: kPrimeGradient,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.open_in_browser_rounded,
+                          color: Colors.white, size: 16),
+                      SizedBox(width: 8),
+                      Text('primeiptvplus.com',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // Steps
+              _Step(number: '1', text: 'Visit primeiptvplus.com'),
+              _Step(number: '2', text: 'Enter your MAC Address & Device Key'),
+              _Step(number: '3', text: 'Add your playlist from the portal'),
+              _Step(number: '4', text: 'Tap "Add Playlist" and enjoy!'),
+            ],
+          ),
+        ),
+      ],
     );
   }
+
+  void _copy(BuildContext context, String text, String label) {
+    Clipboard.setData(ClipboardData(text: text));
+    if (label.isNotEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('$label copied!'),
+        duration: const Duration(seconds: 2),
+        backgroundColor: AppColors.surface,
+      ));
+    }
+  }
+}
+
+class _DeviceInfoBox extends StatelessWidget {
+  final String     label;
+  final String     value;
+  final IconData   icon;
+  final Color      color;
+  final VoidCallback onCopy;
+  const _DeviceInfoBox({
+    required this.label, required this.value,
+    required this.icon,  required this.color, required this.onCopy,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      child: Row(children: [
+        Icon(icon, color: color, size: 16),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(label,
+                style: const TextStyle(
+                    color: AppColors.textMuted, fontSize: 10)),
+            Text(value,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 1.5,
+                  fontFamily: 'monospace',
+                )),
+          ]),
+        ),
+        GestureDetector(
+          onTap: onCopy,
+          child: Icon(Icons.copy_rounded, color: color, size: 16),
+        ),
+      ]),
+    );
+  }
+}
+
+class _Step extends StatelessWidget {
+  final String number;
+  final String text;
+  const _Step({required this.number, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(children: [
+        Container(
+          width: 20, height: 20,
+          decoration: BoxDecoration(
+            gradient: kPrimeGradient,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(number,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                )),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Text(text,
+            style: const TextStyle(
+                color: AppColors.textSecondary, fontSize: 12)),
+      ]),
+    );
+  }
+}
 }
