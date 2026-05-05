@@ -9,9 +9,10 @@ class M3uParser {
   static final Dio _dio = Dio(BaseOptions(
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(minutes: 3),
-    // Follow redirects, needed for many IPTV providers
     followRedirects: true,
     maxRedirects: 5,
+    // Accept any status code — many IPTV servers return non-standard codes (e.g. 885)
+    validateStatus: (_) => true,
   ));
 
   /// Downloads and parses an M3U URL. Returns channels sorted by group.

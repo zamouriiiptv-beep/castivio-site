@@ -20,6 +20,7 @@ class XtreamService {
       baseUrl: host.endsWith('/') ? host : '$host/',
       connectTimeout: const Duration(seconds: 8),
       receiveTimeout: const Duration(minutes: 2),
+      validateStatus: (_) => true,
     ));
   }
 
