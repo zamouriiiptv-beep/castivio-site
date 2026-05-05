@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
 import '../models/playlist.dart';
 
@@ -6,6 +7,8 @@ class StorageService {
   static const String _playlistBox = 'playlists';
   static const String _channelBox  = 'channels';
   static const String _prefsBox    = 'prefs';
+
+  static const _uuid = Uuid();
 
   late Box<Playlist> _playlists;
   late Box<Channel>  _channels;
@@ -29,7 +32,6 @@ class StorageService {
 
   Future<void> deletePlaylist(String id) async {
     await _playlists.delete(id);
-    // Remove channels that belong to this playlist
     final keys = _channels.keys.where((k) => k.toString().startsWith('$id|'));
     await _channels.deleteAll(keys);
   }
@@ -67,4 +69,25 @@ class StorageService {
       (_prefs.get('language') as String?) ?? 'en';
   Future<void> setAppLanguage(String lang) =>
       _prefs.put('language', lang);
+
+  bool get pinEnabled =>
+      (_prefs.get('pinEnabled') as bool?) ?? false;
+  Future<void> setPinEnabled(bool v) =>
+      _prefs.put('pinEnabled', v);
+
+  String get pinCode =>
+      (_prefs.get('pinCode') as String?) ?? '';
+  Future<void> setPinCode(String code) =>
+      _prefs.put('pinCode', code);
+
+  // ── Device ID ──────────────────────────────────────────────────────────────
+
+  String get deviceId {
+    var id = _prefs.get('deviceId') as String?;
+    if (id == null) {
+      id = _uuid.v4();
+      _prefs.put('deviceId', id);
+    }
+    return id;
+  }
 }

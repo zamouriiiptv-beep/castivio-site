@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../providers/playlist_provider.dart';
 import 'home_screen.dart';
-import 'channel_list_screen.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -37,19 +36,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     if (!mounted) return;
 
     final playlists = ref.read(playlistRepositoryProvider).getSavedPlaylists();
-    if (playlists.isEmpty) {
-      Navigator.pushReplacement(
-        context, _fade(const HomeScreen()),
-      );
-    } else {
+    if (playlists.isNotEmpty) {
       // Auto-load last used playlist
       final storage  = ref.read(storageServiceProvider);
       final activeId = storage.activePlaylistId ?? playlists.first.id;
       ref.read(activePlaylistIdProvider.notifier).state = activeId;
-      Navigator.pushReplacement(
-        context, _fade(const ChannelListScreen()),
-      );
     }
+    Navigator.pushReplacement(
+      context, _fade(const HomeScreen()),
+    );
   }
 
   PageRoute _fade(Widget page) => PageRouteBuilder(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../providers/playlist_provider.dart';
-import 'channel_list_screen.dart';
+import 'home_screen.dart';
 
 class AddPlaylistScreen extends ConsumerStatefulWidget {
   const AddPlaylistScreen({super.key});
@@ -86,10 +86,12 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
     if (playlists.isNotEmpty) {
       final last = playlists.last;
       ref.read(activePlaylistIdProvider.notifier).state = last.id;
+      ref.read(storageServiceProvider).setActivePlaylistId(last.id);
     }
+    ref.read(playlistRefreshProvider.notifier).state++;
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (_) => const ChannelListScreen()),
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
       (route) => false,
     );
   }
