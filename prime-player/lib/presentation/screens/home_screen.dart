@@ -278,10 +278,14 @@ class _TopBar extends ConsumerWidget {
   }
 
   void _showInfoDialog(BuildContext context, WidgetRef ref) {
-    final mac = ref.read(storageServiceProvider).macAddress;
+    final storage = ref.read(storageServiceProvider);
     showDialog(
       context: context,
-      builder: (_) => _InfoDialog(playlist: playlist, macAddress: mac),
+      builder: (_) => _InfoDialog(
+        playlist:   playlist,
+        macAddress: storage.macAddress,
+        deviceKey:  storage.deviceKey,
+      ),
     );
   }
 }
@@ -640,7 +644,8 @@ class _PlaylistPickerDialog extends ConsumerWidget {
 class _InfoDialog extends StatelessWidget {
   final Playlist? playlist;
   final String    macAddress;
-  const _InfoDialog({this.playlist, required this.macAddress});
+  final String    deviceKey;
+  const _InfoDialog({this.playlist, required this.macAddress, required this.deviceKey});
 
   @override
   Widget build(BuildContext context) {
@@ -716,6 +721,87 @@ class _InfoDialog extends StatelessWidget {
                       color: AppColors.primaryLight, size: 18),
                 ),
               ]),
+            ),
+            const SizedBox(height: 8),
+
+            // Device Key row
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              decoration: BoxDecoration(
+                color: AppColors.surfaceLight,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.border),
+              ),
+              child: Row(children: [
+                const Icon(Icons.vpn_key_rounded,
+                    color: AppColors.textSecondary, size: 16),
+                const SizedBox(width: 10),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  const Text('Device Key',
+                      style: TextStyle(
+                          color: AppColors.textSecondary, fontSize: 10)),
+                  Text(deviceKey,
+                      style: const TextStyle(
+                        color: AppColors.textPrimary,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 3,
+                      )),
+                ]),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: deviceKey));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Device Key copied!'),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: AppColors.surface,
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.copy_rounded,
+                      color: AppColors.textMuted, size: 16),
+                ),
+              ]),
+            ),
+            const SizedBox(height: 10),
+
+            // Open website button
+            GestureDetector(
+              onTap: () {
+                // Open website — requires url_launcher or just show URL
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('primeiptvplus.com'),
+                    duration: Duration(seconds: 3),
+                    backgroundColor: AppColors.surface,
+                  ),
+                );
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  gradient: kPrimeGradient,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.open_in_browser_rounded,
+                        color: Colors.white, size: 16),
+                    SizedBox(width: 8),
+                    Text('primeiptvplus.com',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        )),
+                  ],
+                ),
+              ),
             ),
 
             const SizedBox(height: 16),

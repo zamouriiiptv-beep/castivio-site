@@ -98,4 +98,15 @@ class StorageService {
     return '${hex.substring(0,2)}:${hex.substring(2,4)}:${hex.substring(4,6)}'
         ':${hex.substring(6,8)}:${hex.substring(8,10)}:${hex.substring(10,12)}';
   }
+
+  // ── Device Key — short 6-digit numeric code ────────────────────────────────
+
+  String get deviceKey {
+    final id = deviceId.replaceAll('-', '');
+    int hash = 0;
+    for (final c in id.codeUnits) {
+      hash = (hash * 31 + c) & 0x7FFFFFFF;
+    }
+    return (hash % 900000 + 100000).toString();
+  }
 }

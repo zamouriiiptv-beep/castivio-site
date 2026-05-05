@@ -25,6 +25,7 @@ class SettingsScreen extends ConsumerWidget {
     final storage    = ref.read(storageServiceProvider);
     final deviceId   = storage.deviceId;
     final macAddress = storage.macAddress;
+    final deviceKey  = storage.deviceKey;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -132,6 +133,27 @@ class SettingsScreen extends ConsumerWidget {
                   );
                 },
               ),
+            ),
+          ),
+
+          _SettingsTile(
+            icon:      Icons.vpn_key_rounded,
+            iconColor: AppColors.warning,
+            title:     'Device Key',
+            subtitle:  deviceKey,
+            trailing:  IconButton(
+              icon: const Icon(Icons.copy_rounded,
+                  color: AppColors.textMuted, size: 18),
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: deviceKey));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Device Key copied'),
+                    duration: Duration(seconds: 2),
+                    backgroundColor: AppColors.surface,
+                  ),
+                );
+              },
             ),
           ),
 
