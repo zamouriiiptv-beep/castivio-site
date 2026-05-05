@@ -45,6 +45,7 @@ const kPrimeGradientH = LinearGradient(
 class AppStrings {
   static const String appName    = 'Prime Player';
   static const String appVersion = '1.0.0';
+  static const String appTagline = 'IPTV · MOVIES · SERIES';
   static const String website    = 'primeiptvplus.com';
   static const String whatsApp   = '+212666686732';
 }

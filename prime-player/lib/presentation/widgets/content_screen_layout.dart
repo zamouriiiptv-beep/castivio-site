@@ -535,7 +535,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10, vertical: 6),
-                  color: Colors.black60,
+                  color: Colors.black54,
                   child: Row(children: [
                     Expanded(child: Text(channel.name,
                         style: const TextStyle(
