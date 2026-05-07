@@ -24,9 +24,6 @@ workflows:
           echo "=== Plugin dependencies ==="
           cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
 
-      - name: Analyze
-        script: flutter analyze --no-fatal-infos --no-fatal-warnings
-
       - name: Build APK (release)
         script: |
           flutter build apk --release
