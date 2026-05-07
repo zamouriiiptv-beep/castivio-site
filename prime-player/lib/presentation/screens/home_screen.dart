@@ -411,7 +411,16 @@ class _BottomBar extends ConsumerWidget {
           _ToolBtn(
             icon:  Icons.refresh_rounded,
             label: 'Refresh',
-            onTap: () => ref.read(playlistRefreshProvider.notifier).state++,
+            onTap: () async {
+              if (playlist != null) {
+                ref.read(playlistLoadingProvider.notifier).state = true;
+                try {
+                  await ref.read(playlistRepositoryProvider).refreshPlaylist(playlist!);
+                } catch (_) {}
+                ref.read(playlistLoadingProvider.notifier).state = false;
+              }
+              ref.read(playlistRefreshProvider.notifier).state++;
+            },
           ),
           _vDivider(),
           _ToolBtn(
