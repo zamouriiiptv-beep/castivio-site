@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
@@ -20,12 +21,18 @@ class M3uParser {
 
   /// Downloads and parses an M3U URL. Returns channels sorted by group.
   static Future<List<Channel>> fromUrl(String url) async {
-    final response = await _dio.get<String>(
+    final response = await _dio.get<List<int>>(
       url,
-      options: Options(responseType: ResponseType.plain),
+      options: Options(responseType: ResponseType.bytes),
     );
-    final content = response.data ?? '';
-    if (content.isEmpty) throw Exception('Empty response from server');
+    final bytes = response.data;
+    if (bytes == null || bytes.isEmpty) {
+      throw Exception('Empty response from server (status: ${response.statusCode})');
+    }
+    final content = utf8.decode(bytes, allowMalformed: true);
+    if (!content.contains('#EXTM3U') && !content.contains('#EXTINF')) {
+      throw Exception('Invalid M3U format. Server response:\n${content.substring(0, content.length.clamp(0, 200))}');
+    }
     return compute(_parseM3u, content);
   }
 
