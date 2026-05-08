@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
+import '../../data/services/m3u_parser.dart';
 import '../providers/playlist_provider.dart';
 import 'home_screen.dart';
 
@@ -16,6 +17,8 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
   late TabController _tab;
   bool _loading = false;
   String? _error;
+  bool _showDiag = false;   // show/hide diagnostic panel
+  bool _isXtreamUrl = false; // detected Xtream Codes URL in M3U field
 
   // M3U
   final _nameM3u = TextEditingController();
@@ -32,6 +35,7 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
   void initState() {
     super.initState();
     _tab = TabController(length: 2, vsync: this);
+    _urlM3u.addListener(_onUrlChanged);
   }
 
   @override
@@ -43,20 +47,43 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
     super.dispose();
   }
 
+  void _onUrlChanged() {
+    final creds = M3uParser.extractXtreamCredentials(_urlM3u.text);
+    setState(() => _isXtreamUrl = creds != null);
+  }
+
+  /// Auto-fill Xtream Codes tab from the M3U URL and switch to it.
+  void _switchToXtream() {
+    final creds = M3uParser.extractXtreamCredentials(_urlM3u.text);
+    if (creds == null) return;
+    _hostXt.text = creds['host']!;
+    _userXt.text = creds['username']!;
+    _passXt.text = creds['password']!;
+    if (_nameXt.text.isEmpty && _nameM3u.text.isNotEmpty) {
+      _nameXt.text = _nameM3u.text;
+    }
+    setState(() { _error = null; _showDiag = false; });
+    _tab.animateTo(1);
+  }
+
   Future<void> _addM3u() async {
-    if (_urlM3u.text.trim().isEmpty) {
+    final url = _urlM3u.text.trim();
+    if (url.isEmpty) {
       setState(() => _error = 'Please enter the M3U URL');
       return;
     }
-    setState(() { _loading = true; _error = null; });
+    setState(() { _loading = true; _error = null; _showDiag = false; });
     try {
       await ref.read(playlistRepositoryProvider).addM3uPlaylist(
         name: _nameM3u.text.trim().isEmpty ? 'My Playlist' : _nameM3u.text.trim(),
-        url:  _urlM3u.text.trim(),
+        url:  url,
       );
       _goToChannels();
     } catch (e) {
-      setState(() { _loading = false; _error = e.toString(); });
+      setState(() {
+        _loading  = false;
+        _error    = e.toString().replaceFirst('Exception: ', '');
+      });
     }
   }
 
@@ -67,7 +94,7 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
       setState(() => _error = 'Please fill in all Xtream Codes fields');
       return;
     }
-    setState(() { _loading = true; _error = null; });
+    setState(() { _loading = true; _error = null; _showDiag = false; });
     try {
       await ref.read(playlistRepositoryProvider).addXtreamPlaylist(
         name:     _nameXt.text.trim().isEmpty ? 'My Xtream' : _nameXt.text.trim(),
@@ -77,7 +104,10 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
       );
       _goToChannels();
     } catch (e) {
-      setState(() { _loading = false; _error = e.toString(); });
+      setState(() {
+        _loading = false;
+        _error   = e.toString().replaceFirst('Exception: ', '');
+      });
     }
   }
 
@@ -126,10 +156,16 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
               controller: _tab,
               children: [
                 _M3uTab(
-                  nameCtrl: _nameM3u,
-                  urlCtrl:  _urlM3u,
-                  error:    _error,
-                  onAdd:    _addM3u,
+                  nameCtrl:    _nameM3u,
+                  urlCtrl:     _urlM3u,
+                  error:       _error,
+                  isXtreamUrl: _isXtreamUrl,
+                  showDiag:    _showDiag,
+                  onAdd:       _addM3u,
+                  onSwitchToXtream: _isXtreamUrl ? _switchToXtream : null,
+                  onToggleDiag: M3uParser.lastDiagnostics.isNotEmpty
+                      ? () => setState(() => _showDiag = !_showDiag)
+                      : null,
                 ),
                 _XtreamTab(
                   nameCtrl:    _nameXt,
@@ -147,6 +183,7 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 class _LoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -173,16 +210,25 @@ class _LoadingView extends StatelessWidget {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 class _M3uTab extends StatelessWidget {
   final TextEditingController nameCtrl, urlCtrl;
   final String? error;
+  final bool isXtreamUrl;
+  final bool showDiag;
   final VoidCallback onAdd;
+  final VoidCallback? onSwitchToXtream;
+  final VoidCallback? onToggleDiag;
 
   const _M3uTab({
     required this.nameCtrl,
     required this.urlCtrl,
     required this.error,
+    required this.isXtreamUrl,
+    required this.showDiag,
     required this.onAdd,
+    this.onSwitchToXtream,
+    this.onToggleDiag,
   });
 
   @override
@@ -195,20 +241,68 @@ class _M3uTab extends StatelessWidget {
           const SizedBox(height: 8),
           _field(nameCtrl, 'Playlist Name', 'My Playlist', Icons.label_outline),
           const SizedBox(height: 16),
-          _field(urlCtrl, 'M3U URL', 'http://example.com/list.m3u',
+          _field(urlCtrl, 'M3U URL', 'http://server:port/get.php?username=…',
               Icons.link_rounded, keyboard: TextInputType.url),
+
+          // Xtream Codes detection banner
+          if (isXtreamUrl) ...[
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: AppColors.primary.withOpacity(0.08),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.primary.withOpacity(0.35)),
+              ),
+              child: Row(children: [
+                const Icon(Icons.info_outline_rounded,
+                    color: AppColors.primary, size: 16),
+                const SizedBox(width: 8),
+                const Expanded(
+                  child: Text(
+                    'Xtream Codes URL detected.\n'
+                    'If M3U fails, try the Xtream Codes tab for better reliability.',
+                    style: TextStyle(color: AppColors.primary, fontSize: 12),
+                  ),
+                ),
+              ]),
+            ),
+          ],
+
           if (error != null) ...[
             const SizedBox(height: 12),
-            _ErrorBanner(error!),
+            _ErrorBanner(
+              message: error!,
+              onSwitchToXtream: onSwitchToXtream,
+              onToggleDiag: onToggleDiag,
+              showDiag: showDiag,
+            ),
           ],
+
+          // Diagnostic panel
+          if (showDiag && M3uParser.lastDiagnostics.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            _DiagPanel(diagnostics: M3uParser.lastDiagnostics),
+          ],
+
           const SizedBox(height: 28),
           _PrimaryButton(label: 'Load Playlist', onTap: onAdd),
+
+          if (onSwitchToXtream != null) ...[
+            const SizedBox(height: 12),
+            _SecondaryButton(
+              label: 'Try Xtream Codes Instead',
+              icon: Icons.swap_horiz_rounded,
+              onTap: onSwitchToXtream!,
+            ),
+          ],
         ],
       ),
     );
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 class _XtreamTab extends StatelessWidget {
   final TextEditingController nameCtrl, hostCtrl, userCtrl, passCtrl;
   final bool passVisible;
@@ -260,7 +354,7 @@ class _XtreamTab extends StatelessWidget {
           ),
           if (error != null) ...[
             const SizedBox(height: 12),
-            _ErrorBanner(error!),
+            _ErrorBanner(message: error!),
           ],
           const SizedBox(height: 28),
           _PrimaryButton(label: 'Connect', onTap: onAdd),
@@ -270,6 +364,7 @@ class _XtreamTab extends StatelessWidget {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 Widget _field(
   TextEditingController ctrl,
   String label,
@@ -289,9 +384,19 @@ Widget _field(
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
 class _ErrorBanner extends StatelessWidget {
   final String message;
-  const _ErrorBanner(this.message);
+  final VoidCallback? onSwitchToXtream;
+  final VoidCallback? onToggleDiag;
+  final bool showDiag;
+
+  const _ErrorBanner({
+    required this.message,
+    this.onSwitchToXtream,
+    this.onToggleDiag,
+    this.showDiag = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -302,22 +407,186 @@ class _ErrorBanner extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.error.withOpacity(0.4)),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.error_outline_rounded,
-              color: AppColors.error, size: 18),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(message,
-                style: const TextStyle(
-                  color: AppColors.error, fontSize: 13)),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(Icons.error_outline_rounded,
+                  color: AppColors.error, size: 18),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(message,
+                    style: const TextStyle(
+                      color: AppColors.error, fontSize: 13)),
+              ),
+            ],
           ),
+          if (onSwitchToXtream != null || onToggleDiag != null) ...[
+            const SizedBox(height: 10),
+            Row(children: [
+              if (onSwitchToXtream != null)
+                GestureDetector(
+                  onTap: onSwitchToXtream,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: AppColors.primary.withOpacity(0.4)),
+                    ),
+                    child: const Text('Try Xtream Codes',
+                        style: TextStyle(
+                          color: AppColors.primaryLight,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                        )),
+                  ),
+                ),
+              if (onToggleDiag != null) ...[
+                const SizedBox(width: 8),
+                GestureDetector(
+                  onTap: onToggleDiag,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: Colors.white24),
+                    ),
+                    child: Text(
+                      showDiag ? 'Hide Diagnostics' : 'Show Diagnostics',
+                      style: const TextStyle(
+                        color: Colors.white54, fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ]),
+          ],
         ],
       ),
     );
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+class _DiagPanel extends StatelessWidget {
+  final List<M3uDiagnostic> diagnostics;
+  const _DiagPanel({required this.diagnostics});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0D0D0D),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.white12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Network Diagnostics',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+              )),
+          const SizedBox(height: 8),
+          ...diagnostics.asMap().entries.map((e) {
+            final i = e.key;
+            final d = e.value;
+            final ok = d.error == null;
+            return Container(
+              margin: const EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: ok
+                    ? Colors.green.withOpacity(0.08)
+                    : Colors.red.withOpacity(0.06),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: ok ? Colors.green.withOpacity(0.3) : Colors.red.withOpacity(0.25),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(children: [
+                    Icon(ok ? Icons.check_circle_rounded : Icons.cancel_rounded,
+                        color: ok ? Colors.green : Colors.red, size: 14),
+                    const SizedBox(width: 6),
+                    Text('Attempt ${i + 1}',
+                        style: const TextStyle(
+                          color: Colors.white70, fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    if (d.statusCode != null) ...[
+                      const SizedBox(width: 8),
+                      _badge('HTTP ${d.statusCode}',
+                          d.statusCode == 200 ? Colors.green : Colors.orange),
+                    ],
+                    if (d.bodyBytes > 0) ...[
+                      const SizedBox(width: 4),
+                      _badge('${d.bodyBytes}B', Colors.blue),
+                    ],
+                  ]),
+                  const SizedBox(height: 4),
+                  _diagRow('UA', d.userAgent.split('/').first),
+                  if (d.contentLength != null)
+                    _diagRow('Content-Length', '${d.contentLength}'),
+                  if (d.contentType != null)
+                    _diagRow('Content-Type', d.contentType!),
+                  if (d.error != null)
+                    _diagRow('Error', d.error!, color: Colors.redAccent),
+                ],
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  Widget _badge(String text, Color color) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.15),
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(color: color.withOpacity(0.4)),
+        ),
+        child: Text(text,
+            style: TextStyle(color: color, fontSize: 9, fontWeight: FontWeight.w700)),
+      );
+
+  Widget _diagRow(String key, String value, {Color? color}) => Padding(
+        padding: const EdgeInsets.only(top: 3),
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            width: 90,
+            child: Text('$key:',
+                style: const TextStyle(color: Colors.white38, fontSize: 10)),
+          ),
+          Expanded(
+            child: Text(value,
+                style: TextStyle(
+                  color: color ?? Colors.white54,
+                  fontSize: 10,
+                  fontFamily: 'monospace',
+                ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis),
+          ),
+        ]),
+      );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 class _PrimaryButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
@@ -337,22 +606,48 @@ class _PrimaryButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.primary.withOpacity(0.4),
-              blurRadius: 16,
-              offset: const Offset(0, 6),
+              blurRadius: 16, offset: const Offset(0, 6),
             ),
           ],
         ),
         child: Center(
-          child: Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.5,
-            ),
-          ),
+          child: Text(label,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 16,
+                fontWeight: FontWeight.w800, letterSpacing: 0.5,
+              )),
         ),
+      ),
+    );
+  }
+}
+
+class _SecondaryButton extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+  const _SecondaryButton({required this.label, required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 46,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          color: AppColors.surfaceLight,
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(icon, color: AppColors.primaryLight, size: 18),
+          const SizedBox(width: 8),
+          Text(label,
+              style: const TextStyle(
+                color: AppColors.primaryLight, fontSize: 14,
+                fontWeight: FontWeight.w700,
+              )),
+        ]),
       ),
     );
   }
