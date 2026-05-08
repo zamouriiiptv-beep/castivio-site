@@ -1,5 +1,5 @@
-import 'dart:isolate';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
 
@@ -7,12 +7,15 @@ import '../models/channel.dart';
 /// even with 30,000+ channels.
 class M3uParser {
   static final Dio _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 10),
-    receiveTimeout: const Duration(minutes: 3),
+    connectTimeout: const Duration(seconds: 15),
+    receiveTimeout: const Duration(minutes: 5),
     followRedirects: true,
     maxRedirects: 5,
-    // Accept any status code — many IPTV servers return non-standard codes (e.g. 885)
     validateStatus: (_) => true,
+    headers: {
+      'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+      'Accept': '*/*',
+    },
   ));
 
   /// Downloads and parses an M3U URL. Returns channels sorted by group.
@@ -22,8 +25,8 @@ class M3uParser {
       options: Options(responseType: ResponseType.plain),
     );
     final content = response.data ?? '';
-    // Offload to background isolate — keeps UI at 60fps
-    return Isolate.run(() => _parseM3u(content));
+    if (content.isEmpty) throw Exception('Empty response from server');
+    return compute(_parseM3u, content);
   }
 
   /// Parses raw M3U text. Runs in a background isolate.
