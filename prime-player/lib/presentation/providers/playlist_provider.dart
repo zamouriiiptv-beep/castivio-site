@@ -26,6 +26,7 @@ final playlistsProvider = Provider<List<Playlist>>((ref) {
 
 // ── Channel list ──────────────────────────────────────────────────────────────
 final channelsProvider = Provider<List<Channel>>((ref) {
+  ref.watch(playlistRefreshProvider);
   final id = ref.watch(activePlaylistIdProvider);
   if (id == null) return [];
   return ref.watch(playlistRepositoryProvider).getChannels(id);

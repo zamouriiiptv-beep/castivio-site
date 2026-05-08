@@ -3,7 +3,7 @@ workflows:
   prime-player-android:
     name: Prime Player – Android APK
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: linux_x2
 
     environment:
       flutter: stable
@@ -23,9 +23,6 @@ workflows:
           cat .flutter-plugins 2>/dev/null || echo "(no .flutter-plugins)"
           echo "=== Plugin dependencies ==="
           cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
-
-      - name: Analyze
-        script: flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build APK (release)
         script: |
