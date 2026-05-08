@@ -8,30 +8,68 @@ import '../models/channel.dart';
 /// Parses M3U playlists in a background Isolate so the UI never freezes,
 /// even with 30,000+ channels.
 class M3uParser {
-  /// Downloads and parses an M3U URL. Returns channels sorted by group.
+  static const _userAgents = [
+    'VLC/3.0.18 LibVLC/3.0.18',
+    'Kodi/19.0 (Linux; Android)',
+    'Mozilla/5.0 (Linux; Android)',
+  ];
+
+  /// Downloads and parses an M3U URL. Retries up to 3 times with different
+  /// User-Agents in case the server blocks a specific client.
   static Future<List<Channel>> fromUrl(String url) async {
+    Exception? lastError;
+
+    for (int attempt = 0; attempt < _userAgents.length; attempt++) {
+      if (attempt > 0) {
+        await Future.delayed(const Duration(seconds: 2));
+      }
+      try {
+        final channels = await _tryFetch(url, _userAgents[attempt]);
+        return channels;
+      } on Exception catch (e) {
+        lastError = e;
+        // Stop retrying on unrecoverable errors
+        final msg = e.toString();
+        if (msg.contains('Cannot find server') ||
+            msg.contains('SSL error') ||
+            msg.contains('Not a valid M3U')) {
+          break;
+        }
+      }
+    }
+
+    throw lastError ?? Exception('Failed to load playlist after 3 attempts.');
+  }
+
+  static Future<List<Channel>> _tryFetch(String url, String userAgent) async {
     final client = HttpClient();
     client.connectionTimeout = const Duration(seconds: 30);
     client.badCertificateCallback = (_, __, ___) => true;
 
     try {
       final request = await client.getUrl(Uri.parse(url));
-      request.headers.set('User-Agent', 'VLC/3.0.18 LibVLC/3.0.18');
+      request.headers.set('User-Agent', userAgent);
       request.headers.set('Accept', '*/*');
+      request.headers.set('Connection', 'close');
 
       final response = await request.close()
           .timeout(const Duration(seconds: 30));
 
-      // Use BytesBuilder for efficient memory use with large playlists
       final builder = BytesBuilder();
       await response.forEach((chunk) => builder.add(chunk))
           .timeout(const Duration(minutes: 5));
       final bytes = builder.takeBytes();
 
       if (bytes.isEmpty) {
+        final status = response.statusCode;
+        if (status == 885 || status == 403 || status == 429) {
+          throw Exception(
+              'Server busy or max connections reached (HTTP $status).\n'
+              'Close other IPTV apps, wait a moment, then try again.');
+        }
         throw Exception(
-            'Server returned empty response (HTTP ${response.statusCode}).\n'
-            'Make sure the URL is correct and the server is running.');
+            'Server returned empty response (HTTP $status).\n'
+            'Check the URL and try again.');
       }
 
       final content = utf8.decode(bytes, allowMalformed: true);
