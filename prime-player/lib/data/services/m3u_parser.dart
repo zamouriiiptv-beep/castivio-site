@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
@@ -7,33 +7,39 @@ import '../models/channel.dart';
 /// Parses M3U playlists in a background Isolate so the UI never freezes,
 /// even with 30,000+ channels.
 class M3uParser {
-  static final Dio _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 15),
-    receiveTimeout: const Duration(minutes: 5),
-    followRedirects: true,
-    maxRedirects: 5,
-    validateStatus: (_) => true,
-    headers: {
-      'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
-      'Accept': '*/*',
-    },
-  ));
-
   /// Downloads and parses an M3U URL. Returns channels sorted by group.
   static Future<List<Channel>> fromUrl(String url) async {
-    final response = await _dio.get<List<int>>(
-      url,
-      options: Options(responseType: ResponseType.bytes),
-    );
-    final bytes = response.data;
-    if (bytes == null || bytes.isEmpty) {
-      throw Exception('Empty response from server (status: ${response.statusCode})');
+    final client = HttpClient();
+    client.connectionTimeout = const Duration(seconds: 15);
+    client.badCertificateCallback = (_, __, ___) => true;
+
+    try {
+      final request = await client.getUrl(Uri.parse(url));
+      request.headers.set('User-Agent', 'VLC/3.0.18 LibVLC/3.0.18');
+      request.headers.set('Accept', '*/*');
+
+      final response = await request.close()
+          .timeout(const Duration(minutes: 5));
+
+      final bytes = <int>[];
+      await for (final chunk in response) {
+        bytes.addAll(chunk);
+      }
+
+      if (bytes.isEmpty) {
+        throw Exception('Empty response from server (status: ${response.statusCode})');
+      }
+
+      final content = utf8.decode(bytes, allowMalformed: true);
+
+      if (!content.contains('#EXTM3U') && !content.contains('#EXTINF')) {
+        throw Exception('Invalid M3U format:\n${content.substring(0, content.length.clamp(0, 300))}');
+      }
+
+      return compute(_parseM3u, content);
+    } finally {
+      client.close();
     }
-    final content = utf8.decode(bytes, allowMalformed: true);
-    if (!content.contains('#EXTM3U') && !content.contains('#EXTINF')) {
-      throw Exception('Invalid M3U format. Server response:\n${content.substring(0, content.length.clamp(0, 200))}');
-    }
-    return compute(_parseM3u, content);
   }
 
   /// Parses raw M3U text. Runs in a background isolate.
