@@ -6,20 +6,25 @@ ContentType detectContentType(String? groupTitle, String streamUrl) {
   final u = streamUrl.toLowerCase();
 
   // Radio
-  if (_containsAny(g, ['radio', 'music', 'راديو', 'إذاعة', 'muzik', 'musique'])) {
+  if (_containsAny(g, [
+        'radio', 'music', 'راديو', 'إذاعة', 'اذاعة', 'muzik', 'musique',
+      ])) {
     return ContentType.radio;
   }
 
   // Series
-  if (_containsAny(g, ['series', 'show', 'episode', 'مسلسل', 'serie', 'séries']) ||
+  if (_containsAny(g, [
+        'series', 'show', 'episode', 'مسلسل', 'مسلسلات', 'serie', 'séries',
+        'anime', 'أنمي', 'انمي', 'كرتون', 'cartoon',
+      ]) ||
       u.contains('/series/')) {
     return ContentType.series;
   }
 
-  // Movies / VOD
+  // Movies / VOD — include both أفلام (with hamza) and افلام (without)
   if (_containsAny(g, [
-        'movie', 'film', 'vod', 'cinema', 'افلام', 'فيلم', 'سينما',
-        'movies', 'films', 'pelicul',
+        'movie', 'film', 'vod', 'cinema', 'افلام', 'أفلام', 'فيلم', 'سينما',
+        'movies', 'films', 'pelicul', 'أكشن', 'رعب', 'كوميدي', 'دراما',
       ]) ||
       u.contains('/movie/') ||
       u.contains('/vod/')) {

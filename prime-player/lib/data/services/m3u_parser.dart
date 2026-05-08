@@ -1,29 +1,65 @@
-import 'dart:isolate';
-import 'package:dio/dio.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
 
 /// Parses M3U playlists in a background Isolate so the UI never freezes,
 /// even with 30,000+ channels.
 class M3uParser {
-  static final Dio _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 10),
-    receiveTimeout: const Duration(minutes: 3),
-    followRedirects: true,
-    maxRedirects: 5,
-    // Accept any status code — many IPTV servers return non-standard codes (e.g. 885)
-    validateStatus: (_) => true,
-  ));
-
   /// Downloads and parses an M3U URL. Returns channels sorted by group.
   static Future<List<Channel>> fromUrl(String url) async {
-    final response = await _dio.get<String>(
-      url,
-      options: Options(responseType: ResponseType.plain),
-    );
-    final content = response.data ?? '';
-    // Offload to background isolate — keeps UI at 60fps
-    return Isolate.run(() => _parseM3u(content));
+    final client = HttpClient();
+    client.connectionTimeout = const Duration(seconds: 30);
+    client.badCertificateCallback = (_, __, ___) => true;
+
+    try {
+      final request = await client.getUrl(Uri.parse(url));
+      request.headers.set('User-Agent', 'VLC/3.0.18 LibVLC/3.0.18');
+      request.headers.set('Accept', '*/*');
+
+      final response = await request.close()
+          .timeout(const Duration(seconds: 30));
+
+      // Use BytesBuilder for efficient memory use with large playlists
+      final builder = BytesBuilder();
+      await response.forEach((chunk) => builder.add(chunk))
+          .timeout(const Duration(minutes: 5));
+      final bytes = builder.takeBytes();
+
+      if (bytes.isEmpty) {
+        throw Exception(
+            'Server returned empty response (HTTP ${response.statusCode}).\n'
+            'Make sure the URL is correct and the server is running.');
+      }
+
+      final content = utf8.decode(bytes, allowMalformed: true);
+
+      if (!content.contains('#EXTM3U') && !content.contains('#EXTINF')) {
+        throw Exception(
+            'Not a valid M3U playlist.\n'
+            'Server replied:\n${content.substring(0, content.length.clamp(0, 300))}');
+      }
+
+      return compute(_parseM3u, content);
+    } on SocketException catch (e) {
+      if (e.message.contains('host lookup') || e.message.contains('No address')) {
+        throw Exception(
+            'Cannot find server.\n'
+            'Check the URL or your internet connection.');
+      }
+      throw Exception('Network error: ${e.message}');
+    } on TimeoutException {
+      throw Exception(
+          'Connection timed out.\n'
+          'The server took too long to respond. Try again later.');
+    } on HandshakeException {
+      throw Exception(
+          'SSL error — try using http:// instead of https://');
+    } finally {
+      client.close();
+    }
   }
 
   /// Parses raw M3U text. Runs in a background isolate.
@@ -53,7 +89,7 @@ class M3uParser {
       } else if (!line.startsWith('#') && line.isNotEmpty && name != null) {
         channels.add(Channel(
           id:         uuid.v4(),
-          name:       name,
+          name:       name.isEmpty ? (tvgName ?? 'Channel') : name,
           streamUrl:  line,
           logoUrl:    logoUrl,
           groupTitle: groupTitle ?? 'Uncategorized',
@@ -69,11 +105,18 @@ class M3uParser {
     return channels;
   }
 
+  /// Matches both double-quoted and single-quoted attribute values.
   static String? _attr(String line, String key) {
-    // Matches:  key="value"  or  key='value'
-    final regExp = RegExp('$key="([^"]*)"');
-    final match  = regExp.firstMatch(line);
-    final val    = match?.group(1)?.trim();
-    return (val == null || val.isEmpty) ? null : val;
+    // Try double quotes first: key="value"
+    final rDouble = RegExp('$key="([^"]*)"');
+    final mDouble = rDouble.firstMatch(line);
+    final vDouble = mDouble?.group(1)?.trim();
+    if (vDouble != null && vDouble.isNotEmpty) return vDouble;
+
+    // Fall back to single quotes: key='value'
+    final rSingle = RegExp("$key='([^']*)'");
+    final mSingle = rSingle.firstMatch(line);
+    final vSingle = mSingle?.group(1)?.trim();
+    return (vSingle == null || vSingle.isEmpty) ? null : vSingle;
   }
 }
