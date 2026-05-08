@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
@@ -10,7 +11,7 @@ class M3uParser {
   /// Downloads and parses an M3U URL. Returns channels sorted by group.
   static Future<List<Channel>> fromUrl(String url) async {
     final client = HttpClient();
-    client.connectionTimeout = const Duration(seconds: 15);
+    client.connectionTimeout = const Duration(seconds: 30);
     client.badCertificateCallback = (_, __, ___) => true;
 
     try {
@@ -19,24 +20,43 @@ class M3uParser {
       request.headers.set('Accept', '*/*');
 
       final response = await request.close()
-          .timeout(const Duration(minutes: 5));
+          .timeout(const Duration(seconds: 30));
 
-      final bytes = <int>[];
-      await for (final chunk in response) {
-        bytes.addAll(chunk);
-      }
+      // Use BytesBuilder for efficient memory use with large playlists
+      final builder = BytesBuilder();
+      await response.forEach((chunk) => builder.add(chunk))
+          .timeout(const Duration(minutes: 5));
+      final bytes = builder.takeBytes();
 
       if (bytes.isEmpty) {
-        throw Exception('Empty response from server (status: ${response.statusCode})');
+        throw Exception(
+            'Server returned empty response (HTTP ${response.statusCode}).\n'
+            'Make sure the URL is correct and the server is running.');
       }
 
       final content = utf8.decode(bytes, allowMalformed: true);
 
       if (!content.contains('#EXTM3U') && !content.contains('#EXTINF')) {
-        throw Exception('Invalid M3U format:\n${content.substring(0, content.length.clamp(0, 300))}');
+        throw Exception(
+            'Not a valid M3U playlist.\n'
+            'Server replied:\n${content.substring(0, content.length.clamp(0, 300))}');
       }
 
       return compute(_parseM3u, content);
+    } on SocketException catch (e) {
+      if (e.message.contains('host lookup') || e.message.contains('No address')) {
+        throw Exception(
+            'Cannot find server.\n'
+            'Check the URL or your internet connection.');
+      }
+      throw Exception('Network error: ${e.message}');
+    } on TimeoutException {
+      throw Exception(
+          'Connection timed out.\n'
+          'The server took too long to respond. Try again later.');
+    } on HandshakeException {
+      throw Exception(
+          'SSL error — try using http:// instead of https://');
     } finally {
       client.close();
     }
@@ -69,7 +89,7 @@ class M3uParser {
       } else if (!line.startsWith('#') && line.isNotEmpty && name != null) {
         channels.add(Channel(
           id:         uuid.v4(),
-          name:       name,
+          name:       name.isEmpty ? (tvgName ?? 'Channel') : name,
           streamUrl:  line,
           logoUrl:    logoUrl,
           groupTitle: groupTitle ?? 'Uncategorized',
@@ -85,11 +105,18 @@ class M3uParser {
     return channels;
   }
 
+  /// Matches both double-quoted and single-quoted attribute values.
   static String? _attr(String line, String key) {
-    // Matches:  key="value"  or  key='value'
-    final regExp = RegExp('$key="([^"]*)"');
-    final match  = regExp.firstMatch(line);
-    final val    = match?.group(1)?.trim();
-    return (val == null || val.isEmpty) ? null : val;
+    // Try double quotes first: key="value"
+    final rDouble = RegExp('$key="([^"]*)"');
+    final mDouble = rDouble.firstMatch(line);
+    final vDouble = mDouble?.group(1)?.trim();
+    if (vDouble != null && vDouble.isNotEmpty) return vDouble;
+
+    // Fall back to single quotes: key='value'
+    final rSingle = RegExp("$key='([^']*)'");
+    final mSingle = rSingle.firstMatch(line);
+    final vSingle = mSingle?.group(1)?.trim();
+    return (vSingle == null || vSingle.isEmpty) ? null : vSingle;
   }
 }
