@@ -14,8 +14,10 @@ class PlaylistRepository {
     required String name,
     required String url,
   }) async {
-    // Parse in background — does NOT block the UI thread
     final channels = await M3uParser.fromUrl(url);
+    if (channels.isEmpty) {
+      throw Exception('No channels found. Check the URL or credentials.');
+    }
 
     final playlist = Playlist(
       id:           DateTime.now().millisecondsSinceEpoch.toString(),
