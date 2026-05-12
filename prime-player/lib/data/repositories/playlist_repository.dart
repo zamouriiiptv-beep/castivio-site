@@ -36,7 +36,7 @@ class PlaylistRepository {
       }
 
       debugPrint('[Repo] Detected Xtream URL — trying API fallback...');
-      debugPrint('[Repo] Host: ${creds[\'host\']}  User: ${creds[\'username\']}');
+      debugPrint('[Repo] Host: ${creds["host"]}  User: ${creds["username"]}');
 
       final svc = XtreamService(
         host:     creds['host']!,
