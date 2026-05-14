@@ -194,40 +194,53 @@ class _LoadingView extends StatefulWidget {
 
 class _LoadingViewState extends State<_LoadingView> {
   static const _steps = [
-    ('Connecting to server…',       Icons.wifi_rounded),
-    ('Authenticating…',             Icons.lock_open_rounded),
-    ('Loading live channels…',      Icons.live_tv_rounded),
-    ('Loading movies…',             Icons.movie_rounded),
-    ('Loading series…',             Icons.video_library_rounded),
-    ('Saving to device…',           Icons.save_rounded),
-    ('Almost done…',                Icons.check_circle_outline_rounded),
+    ('Connecting to server',    Icons.wifi_rounded),
+    ('Authenticating',          Icons.lock_open_rounded),
+    ('Loading live channels',   Icons.live_tv_rounded),
+    ('Loading movies',          Icons.movie_rounded),
+    ('Loading series',          Icons.video_library_rounded),
+    ('Saving to device',        Icons.save_rounded),
+    ('Please wait',             Icons.hourglass_top_rounded),
   ];
 
-  int    _step  = 0;
-  int    _dots  = 0;
-  Timer? _timer;
+  int    _step    = 0;
+  int    _dots    = 0;
+  int    _elapsed = 0;
+  Timer? _stepTimer;
+  Timer? _clockTimer;
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(milliseconds: 1800), (_) {
+    // Advance steps once — never cycle back
+    _stepTimer = Timer.periodic(const Duration(seconds: 3), (_) {
       setState(() {
-        _dots = (_dots + 1) % 4;
-        if (_dots == 0) _step = (_step + 1) % _steps.length;
+        _dots = (_dots + 1) % 3;
+        if (_step < _steps.length - 1) _step++;
       });
+    });
+    // Elapsed seconds counter
+    _clockTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      setState(() => _elapsed++);
     });
   }
 
   @override
   void dispose() {
-    _timer?.cancel();
+    _stepTimer?.cancel();
+    _clockTimer?.cancel();
     super.dispose();
+  }
+
+  String get _elapsedStr {
+    if (_elapsed < 60) return '${_elapsed}s';
+    return '${_elapsed ~/ 60}m ${_elapsed % 60}s';
   }
 
   @override
   Widget build(BuildContext context) {
     final (label, icon) = _steps[_step];
-    final dotStr = '.' * (_dots + 1);
+    final dot = '.' * (_dots + 1);
 
     return Center(
       child: Padding(
@@ -239,8 +252,7 @@ class _LoadingViewState extends State<_LoadingView> {
               width: 64, height: 64,
               child: Stack(alignment: Alignment.center, children: [
                 const CircularProgressIndicator(
-                  strokeWidth: 3, color: AppColors.primary,
-                ),
+                    strokeWidth: 3, color: AppColors.primary),
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
                   child: Icon(icon,
@@ -251,10 +263,10 @@ class _LoadingViewState extends State<_LoadingView> {
             ),
             const SizedBox(height: 24),
             AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 350),
               child: Text(
-                '$label$dotStr',
-                key: ValueKey('$_step-$_dots'),
+                '$label$dot',
+                key: ValueKey(_step),
                 style: const TextStyle(
                   color: AppColors.textPrimary,
                   fontSize: 16,
@@ -263,11 +275,13 @@ class _LoadingViewState extends State<_LoadingView> {
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Text(
-              'Large playlists may take up to a minute',
+              _elapsed < 5
+                  ? 'Large playlists may take a minute'
+                  : 'Elapsed: $_elapsedStr — still working…',
               style: TextStyle(
-                color: AppColors.textSecondary.withOpacity(0.6),
+                color: AppColors.textSecondary.withOpacity(0.55),
                 fontSize: 12,
               ),
               textAlign: TextAlign.center,

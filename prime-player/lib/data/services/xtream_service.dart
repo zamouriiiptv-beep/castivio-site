@@ -84,10 +84,9 @@ class XtreamService {
     return results.expand((c) => c).toList();
   }
 
-  /// Fetches ALL live channels in 2 parallel requests (bulk endpoint — no per-category loop).
+  /// Fetches ALL live channels — bulk first, falls back to per-category if bulk fails.
   Future<List<Channel>> getLiveChannels() async {
     try {
-      // Fetch all streams + all categories at the same time
       final responses = await Future.wait([
         _dio.get<dynamic>('$_base&action=get_live_streams'),
         _dio.get<dynamic>('$_base&action=get_live_categories'),
@@ -95,21 +94,37 @@ class XtreamService {
 
       final streams    = _asList(responses[0].data);
       final categories = _asList(responses[1].data);
-      final catMap     = _buildCatMap(categories);
 
+      if (streams.isEmpty) {
+        debugPrint('[Xtream] bulk live_streams returned 0 — trying per-category');
+        return _getLivePerCategory(categories);
+      }
+
+      final catMap = _buildCatMap(categories);
       debugPrint('[Xtream] live streams: ${streams.length}');
-
-      return streams.map((s) {
-        final catId = s['category_id']?.toString();
-        return _mapStream(s, catMap[catId] ?? 'Live TV');
-      }).toList();
+      return streams.map((s) => _mapStream(s, catMap[s['category_id']?.toString()] ?? 'Live TV')).toList();
     } catch (e) {
-      debugPrint('[Xtream] getLiveChannels error: $e');
+      debugPrint('[Xtream] getLiveChannels bulk error: $e');
       return [];
     }
   }
 
-  /// Fetches ALL VOD movies in 2 parallel requests.
+  Future<List<Channel>> _getLivePerCategory(List<Map<String, dynamic>> categories) async {
+    final chunks = _chunked(categories, 10);
+    final result = <Channel>[];
+    for (final chunk in chunks) {
+      final lists = await Future.wait(chunk.map((cat) async {
+        try {
+          final res = await _dio.get<dynamic>('$_base&action=get_live_streams&category_id=${cat['category_id']}');
+          return _asList(res.data).map((s) => _mapStream(s, cat['category_name'] as String? ?? 'Live TV')).toList();
+        } catch (_) { return <Channel>[]; }
+      }));
+      result.addAll(lists.expand((c) => c));
+    }
+    return result;
+  }
+
+  /// Fetches ALL VOD movies — bulk first, falls back to per-category.
   Future<List<Channel>> getVodChannels() async {
     try {
       final responses = await Future.wait([
@@ -119,21 +134,37 @@ class XtreamService {
 
       final streams    = _asList(responses[0].data);
       final categories = _asList(responses[1].data);
-      final catMap     = _buildCatMap(categories);
 
+      if (streams.isEmpty) {
+        debugPrint('[Xtream] bulk vod_streams returned 0 — trying per-category');
+        return _getVodPerCategory(categories);
+      }
+
+      final catMap = _buildCatMap(categories);
       debugPrint('[Xtream] VOD streams: ${streams.length}');
-
-      return streams.map((s) {
-        final catId = s['category_id']?.toString();
-        return _mapVod(s, catMap[catId] ?? 'Movies');
-      }).toList();
+      return streams.map((s) => _mapVod(s, catMap[s['category_id']?.toString()] ?? 'Movies')).toList();
     } catch (e) {
-      debugPrint('[Xtream] getVodChannels error: $e');
+      debugPrint('[Xtream] getVodChannels bulk error: $e');
       return [];
     }
   }
 
-  /// Fetches ALL series in 2 parallel requests.
+  Future<List<Channel>> _getVodPerCategory(List<Map<String, dynamic>> categories) async {
+    final chunks = _chunked(categories, 10);
+    final result = <Channel>[];
+    for (final chunk in chunks) {
+      final lists = await Future.wait(chunk.map((cat) async {
+        try {
+          final res = await _dio.get<dynamic>('$_base&action=get_vod_streams&category_id=${cat['category_id']}');
+          return _asList(res.data).map((s) => _mapVod(s, cat['category_name'] as String? ?? 'Movies')).toList();
+        } catch (_) { return <Channel>[]; }
+      }));
+      result.addAll(lists.expand((c) => c));
+    }
+    return result;
+  }
+
+  /// Fetches ALL series — bulk first, falls back to per-category.
   Future<List<Channel>> getSeriesChannels() async {
     try {
       final responses = await Future.wait([
@@ -143,18 +174,43 @@ class XtreamService {
 
       final streams    = _asList(responses[0].data);
       final categories = _asList(responses[1].data);
-      final catMap     = _buildCatMap(categories);
 
+      if (streams.isEmpty) {
+        debugPrint('[Xtream] bulk series returned 0 — trying per-category');
+        return _getSeriesPerCategory(categories);
+      }
+
+      final catMap = _buildCatMap(categories);
       debugPrint('[Xtream] series: ${streams.length}');
-
-      return streams.map((s) {
-        final catId = s['category_id']?.toString();
-        return _mapSeries(s, catMap[catId] ?? 'Series');
-      }).toList();
+      return streams.map((s) => _mapSeries(s, catMap[s['category_id']?.toString()] ?? 'Series')).toList();
     } catch (e) {
-      debugPrint('[Xtream] getSeriesChannels error: $e');
+      debugPrint('[Xtream] getSeriesChannels bulk error: $e');
       return [];
     }
+  }
+
+  Future<List<Channel>> _getSeriesPerCategory(List<Map<String, dynamic>> categories) async {
+    final chunks = _chunked(categories, 10);
+    final result = <Channel>[];
+    for (final chunk in chunks) {
+      final lists = await Future.wait(chunk.map((cat) async {
+        try {
+          final res = await _dio.get<dynamic>('$_base&action=get_series&category_id=${cat['category_id']}');
+          return _asList(res.data).map((s) => _mapSeries(s, cat['category_name'] as String? ?? 'Series')).toList();
+        } catch (_) { return <Channel>[]; }
+      }));
+      result.addAll(lists.expand((c) => c));
+    }
+    return result;
+  }
+
+  /// Splits a list into chunks of [size].
+  List<List<T>> _chunked<T>(List<T> list, int size) {
+    final chunks = <List<T>>[];
+    for (var i = 0; i < list.length; i += size) {
+      chunks.add(list.sublist(i, (i + size).clamp(0, list.length)));
+    }
+    return chunks;
   }
 
   /// Builds a category_id → category_name lookup map.
