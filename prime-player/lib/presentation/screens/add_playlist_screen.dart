@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
@@ -151,7 +152,7 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
         ),
       ),
       body: _loading
-          ? _LoadingView()
+          ? const _LoadingView()
           : TabBarView(
               controller: _tab,
               children: [
@@ -184,27 +185,95 @@ class _AddPlaylistScreenState extends ConsumerState<AddPlaylistScreen>
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-class _LoadingView extends StatelessWidget {
+class _LoadingView extends StatefulWidget {
+  const _LoadingView();
+
+  @override
+  State<_LoadingView> createState() => _LoadingViewState();
+}
+
+class _LoadingViewState extends State<_LoadingView> {
+  static const _steps = [
+    ('Connecting to server…',       Icons.wifi_rounded),
+    ('Authenticating…',             Icons.lock_open_rounded),
+    ('Loading live channels…',      Icons.live_tv_rounded),
+    ('Loading movies…',             Icons.movie_rounded),
+    ('Loading series…',             Icons.video_library_rounded),
+    ('Saving to device…',           Icons.save_rounded),
+    ('Almost done…',                Icons.check_circle_outline_rounded),
+  ];
+
+  int    _step  = 0;
+  int    _dots  = 0;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(milliseconds: 1800), (_) {
+      setState(() {
+        _dots = (_dots + 1) % 4;
+        if (_dots == 0) _step = (_step + 1) % _steps.length;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final (label, icon) = _steps[_step];
+    final dotStr = '.' * (_dots + 1);
+
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            width: 52, height: 52,
-            child: CircularProgressIndicator(
-              strokeWidth: 3, color: AppColors.primary,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 64, height: 64,
+              child: Stack(alignment: Alignment.center, children: [
+                const CircularProgressIndicator(
+                  strokeWidth: 3, color: AppColors.primary,
+                ),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: Icon(icon,
+                      key: ValueKey(_step),
+                      color: AppColors.primary, size: 26),
+                ),
+              ]),
             ),
-          ),
-          const SizedBox(height: 20),
-          const Text('Loading channels…',
-              style: TextStyle(color: AppColors.textPrimary, fontSize: 16)),
-          const SizedBox(height: 8),
-          Text('Parsing your playlist in the background',
+            const SizedBox(height: 24),
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: Text(
+                '$label$dotStr',
+                key: ValueKey('$_step-$_dots'),
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Large playlists may take up to a minute',
               style: TextStyle(
-                color: AppColors.textSecondary.withOpacity(0.7), fontSize: 13)),
-        ],
+                color: AppColors.textSecondary.withOpacity(0.6),
+                fontSize: 12,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
