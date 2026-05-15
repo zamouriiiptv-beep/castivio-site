@@ -8,7 +8,6 @@ import '../../data/models/playlist.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
-import 'live_tv_screen.dart' show _SectionLoader, _SectionError;
 import 'player_screen.dart';
 
 class SeriesScreen extends ConsumerStatefulWidget {
@@ -154,6 +153,22 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
       ),
     );
   }
+
+  Widget _buildLoading(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: Column(children: [
+          ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
+          const Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
+        ])),
+      );
+
+  Widget _buildError(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: Column(children: [
+          ContentTopBar(section: 'SERIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
+          Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
+        ])),
+      );
 }
 
 // ── Search bar ────────────────────────────────────────────────────────────────
@@ -291,7 +306,7 @@ class _PosterFallback extends StatelessWidget {
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: _SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
+          const Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
         ])),
       );
 
@@ -299,7 +314,7 @@ class _PosterFallback extends StatelessWidget {
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'SERIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
-          Expanded(child: _SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
+          Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
 }

@@ -132,7 +132,7 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'LIVE TV', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          Expanded(child: _SectionLoader(icon: Icons.live_tv_rounded, label: 'Loading live channels…')),
+          const Expanded(child: SectionLoader(icon: Icons.live_tv_rounded, label: 'Loading live channels…')),
         ])),
       );
 
@@ -140,68 +140,7 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'LIVE TV', subSection: 'Error', onBack: () => Navigator.pop(context)),
-          Expanded(child: _SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
+          Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
-      );
-}
-
-// ── Shared loading / error widgets ────────────────────────────────────────────
-
-class _SectionLoader extends StatelessWidget {
-  final IconData icon;
-  final String   label;
-  const _SectionLoader({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          SizedBox(
-            width: 56, height: 56,
-            child: Stack(alignment: Alignment.center, children: [
-              const CircularProgressIndicator(color: AppColors.primary, strokeWidth: 3),
-              Icon(icon, color: AppColors.primary, size: 24),
-            ]),
-          ),
-          const SizedBox(height: 18),
-          Text(label,
-              style: const TextStyle(
-                color: AppColors.textPrimary, fontSize: 15, fontWeight: FontWeight.w600)),
-          const SizedBox(height: 6),
-          Text('This may take a moment for large servers',
-              style: TextStyle(color: AppColors.textSecondary.withOpacity(0.6), fontSize: 12)),
-        ]),
-      );
-}
-
-class _SectionError extends StatelessWidget {
-  final String        error;
-  final VoidCallback  onRetry;
-  const _SectionError({required this.error, required this.onRetry});
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            const Icon(Icons.error_outline_rounded, color: AppColors.error, size: 48),
-            const SizedBox(height: 14),
-            Text(error,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: AppColors.error, fontSize: 13)),
-            const SizedBox(height: 18),
-            GestureDetector(
-              onTap: onRetry,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-                decoration: BoxDecoration(
-                  gradient: kPrimeGradient,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Text('Retry',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
-              ),
-            ),
-          ]),
-        ),
       );
 }
