@@ -57,7 +57,8 @@ class PlaylistRepository {
 
   // ── Xtream ─────────────────────────────────────────────────────────────────
 
-  /// Adds an Xtream playlist. Only authenticates — channels load lazily.
+  /// Adds an Xtream playlist. Only authenticates — then pre-fetches all
+  /// content types in the background so sections open instantly.
   Future<void> addXtreamPlaylist({
     required String name,
     required String host,

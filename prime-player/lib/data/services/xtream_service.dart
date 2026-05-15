@@ -102,6 +102,7 @@ class XtreamService {
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(minutes: 5),
       validateStatus: (_) => true,
+      headers: const {'Accept-Encoding': 'gzip, deflate'},
     ));
   }
 

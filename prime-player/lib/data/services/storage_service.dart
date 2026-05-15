@@ -58,12 +58,10 @@ class StorageService {
         .toList();
     if (oldKeys.isNotEmpty) await _channels.deleteAll(oldKeys);
 
-    const chunkSize = 500;
-    for (var i = 0; i < channels.length; i += chunkSize) {
-      final chunk = channels.sublist(i, (i + chunkSize).clamp(0, channels.length));
-      final map   = { for (final c in chunk) '$playlistId|${c.id}': c };
-      await _channels.putAll(map);
-    }
+    if (channels.isEmpty) return;
+    // Single putAll — one disk write is much faster than 20 chunked writes
+    final map = { for (final c in channels) '$playlistId|${c.id}': c };
+    await _channels.putAll(map);
   }
 
   // ── Type-loaded tracking ────────────────────────────────────────────────────

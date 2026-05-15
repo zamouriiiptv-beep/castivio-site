@@ -196,8 +196,8 @@ class _LoadingViewState extends State<_LoadingView> {
   static const _steps = [
     ('Connecting to server',    Icons.wifi_rounded),
     ('Authenticating',          Icons.lock_open_rounded),
-    ('Verifying account',       Icons.verified_user_rounded),
-    ('Please wait',             Icons.hourglass_top_rounded),
+    ('Loading in background…',  Icons.cloud_download_rounded),
+    ('Almost done',             Icons.check_circle_outline_rounded),
   ];
 
   int    _step    = 0;

@@ -70,32 +70,80 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 }
 
 // ── Main layout ───────────────────────────────────────────────────────────────
-class _HomeLayout extends ConsumerWidget {
+class _HomeLayout extends ConsumerStatefulWidget {
   final Playlist?      playlist;
   final List<Playlist> playlists;
   const _HomeLayout({required this.playlist, required this.playlists});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_HomeLayout> createState() => _HomeLayoutState();
+}
+
+class _HomeLayoutState extends ConsumerState<_HomeLayout> {
+  bool _prefetching = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _startPrefetchIfNeeded());
+  }
+
+  @override
+  void didUpdateWidget(_HomeLayout old) {
+    super.didUpdateWidget(old);
+    if (old.playlist?.id != widget.playlist?.id) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _startPrefetchIfNeeded());
+    }
+  }
+
+  Future<void> _startPrefetchIfNeeded() async {
+    final p = widget.playlist;
+    if (p == null || p.playlistType != PlaylistType.xtream) return;
+    final storage = ref.read(storageServiceProvider);
+    final id = p.id;
+    final noneLoaded = !storage.isTypeLoaded(id, 'live') &&
+        !storage.isTypeLoaded(id, 'vod') &&
+        !storage.isTypeLoaded(id, 'series');
+    if (!noneLoaded || _prefetching) return;
+
+    if (!mounted) return;
+    setState(() => _prefetching = true);
+    try {
+      await Future.wait([
+        ref.read(playlistRepositoryProvider).loadXtreamLive(p).catchError((_) {}),
+        ref.read(playlistRepositoryProvider).loadXtreamVod(p).catchError((_) {}),
+        ref.read(playlistRepositoryProvider).loadXtreamSeries(p).catchError((_) {}),
+      ]);
+      if (mounted) ref.read(playlistRefreshProvider.notifier).state++;
+    } finally {
+      if (mounted) setState(() => _prefetching = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final liveCount   = ref.watch(liveChannelsProvider).length;
     final movieCount  = ref.watch(movieChannelsProvider).length;
     final seriesCount = ref.watch(seriesChannelsProvider).length;
     final radioCount  = ref.watch(radioChannelsProvider).length;
+
+    final playlist = widget.playlist;
+    final playlists = widget.playlists;
 
     final isXtream = playlist?.playlistType == PlaylistType.xtream;
     final storage  = ref.read(storageServiceProvider);
     final id       = playlist?.id ?? '';
 
     String liveSub   = isXtream && !storage.isTypeLoaded(id, 'live')
-        ? 'Tap to load' : '$liveCount channels';
+        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$liveCount channels';
     String movieSub  = isXtream && !storage.isTypeLoaded(id, 'vod')
-        ? 'Tap to load' : '$movieCount films';
+        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$movieCount films';
     String seriesSub = isXtream && !storage.isTypeLoaded(id, 'series')
-        ? 'Tap to load' : '$seriesCount shows';
+        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$seriesCount shows';
 
     return Column(
       children: [
-        _TopBar(playlist: playlist, playlists: playlists),
+        _TopBar(playlist: widget.playlist, playlists: widget.playlists),
         Expanded(
           child: Center(
             child: Padding(
@@ -158,7 +206,7 @@ class _HomeLayout extends ConsumerWidget {
             ),
           ),
         ),
-        _BottomBar(playlist: playlist, playlists: playlists),
+        _BottomBar(playlist: widget.playlist, playlists: widget.playlists),
       ],
     );
   }
