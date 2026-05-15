@@ -302,23 +302,6 @@ class _PosterFallback extends StatelessWidget {
       );
 }
 
-  Widget _buildLoading(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.background,
-        body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'MOVIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: 'Loading movies…')),
-        ])),
-      );
-
-  Widget _buildError(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.background,
-        body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'MOVIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
-        ])),
-      );
-}
-
 class _EmptyView extends StatelessWidget {
   final IconData icon;
   const _EmptyView({required this.icon});

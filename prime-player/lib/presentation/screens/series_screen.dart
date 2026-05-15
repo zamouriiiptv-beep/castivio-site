@@ -302,23 +302,6 @@ class _PosterFallback extends StatelessWidget {
       );
 }
 
-  Widget _buildLoading(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.background,
-        body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
-        ])),
-      );
-
-  Widget _buildError(BuildContext context) => Scaffold(
-        backgroundColor: AppColors.background,
-        body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'SERIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
-        ])),
-      );
-}
-
 class _EmptyView extends StatelessWidget {
   const _EmptyView();
 
