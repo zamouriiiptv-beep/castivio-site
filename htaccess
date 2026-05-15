@@ -1,6 +1,16 @@
 # ===============================
+# 0) HTTPS + NON-WWW (MUST BE FIRST)
+# ===============================
+
+RewriteEngine On
+
+# Force https://primeiptvplus.com (no www, always https)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://primeiptvplus.com%{REQUEST_URI} [R=301,L]
+
+# ===============================
 # OLD GUIDE FILES → NEW FOLDERS
-# (SEO CRITICAL - MUST BE ON TOP)
 # ===============================
 
 Redirect 301 /iptv-guide-ar.html /guide/
@@ -8,52 +18,68 @@ Redirect 301 /iptv-guide-en.html /en/guide/
 Redirect 301 /iptv-guide-fr.html /fr/guide/
 Redirect 301 /best-iptv-usa-guide.html /en/guide/
 Redirect 301 /es/esp/ana /es/espana/
+Redirect 301 /en.html /en/
 
 # ===============================
-# CLEAN URLs & LANG FIX (FINAL)
+# CLEAN URLs & LANG FIX
 # ===============================
-
-RewriteEngine On
 
 # -------------------------------
 # 1) ROOT
 # -------------------------------
 
-# /index.html → /
 RewriteRule ^index\.html$ / [R=301,L]
-
-# /index أو /index/ → /
 RewriteRule ^index/?$ / [R=301,L]
 
 # -------------------------------
 # 2) LANG INDEX FILES → CLEAN URL
 # -------------------------------
 
-# /en/index.html → /en/
 RewriteRule ^en/index\.html$ /en/ [R=301,L]
-
-# /fr/index.html → /fr/
 RewriteRule ^fr/index\.html$ /fr/ [R=301,L]
+RewriteRule ^es/index\.html$ /es/ [R=301,L]
 
 # -------------------------------
-# 2.5) GUIDE CLEAN URL FIX
+# 3) GUIDE CLEAN URL FIX
 # -------------------------------
 
-# index.html → clean guide URL
 RewriteRule ^guide/index\.html$ /guide/ [R=301,L]
 RewriteRule ^en/guide/index\.html$ /en/guide/ [R=301,L]
 RewriteRule ^fr/guide/index\.html$ /fr/guide/ [R=301,L]
+RewriteRule ^es/guide/index\.html$ /es/guide/ [R=301,L]
 
-# force trailing slash
+# -------------------------------
+# 4) FORCE TRAILING SLASH
+# -------------------------------
+
+# Language roots
+RewriteRule ^(en|fr|es)$ /$1/ [R=301,L]
+
+# Guide pages
 RewriteRule ^guide$ /guide/ [R=301,L]
 RewriteRule ^en/guide$ /en/guide/ [R=301,L]
 RewriteRule ^fr/guide$ /fr/guide/ [R=301,L]
+RewriteRule ^es/guide$ /es/guide/ [R=301,L]
 
-# -------------------------------
-# 3) FORCE TRAILING SLASH (LANG)
-# -------------------------------
+# Country pages — EN
+RewriteRule ^en/uk$ /en/uk/ [R=301,L]
+RewriteRule ^en/usa$ /en/usa/ [R=301,L]
+RewriteRule ^en/canada$ /en/canada/ [R=301,L]
 
-RewriteRule ^(en|fr)$ /$1/ [R=301,L]
+# Country pages — ES
+RewriteRule ^es/espana$ /es/espana/ [R=301,L]
+RewriteRule ^es/mexico$ /es/mexico/ [R=301,L]
+RewriteRule ^es/argentina$ /es/argentina/ [R=301,L]
+
+# Country pages — FR
+RewriteRule ^fr/france$ /fr/france/ [R=301,L]
+RewriteRule ^fr/belgique$ /fr/belgique/ [R=301,L]
+RewriteRule ^fr/canada$ /fr/canada/ [R=301,L]
+
+# Guide sub-pages — AR
+RewriteRule ^guide/maghreb$ /guide/maghreb/ [R=301,L]
+RewriteRule ^guide/mashriq$ /guide/mashriq/ [R=301,L]
+RewriteRule ^guide/khalij$ /guide/khalij/ [R=301,L]
 
 # -------------------------------
 # 4) DEFAULT FILES
