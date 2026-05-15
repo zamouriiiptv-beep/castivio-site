@@ -43,8 +43,19 @@ class StorageService {
       .toList();
 
   Future<void> saveChannels(String playlistId, List<Channel> channels) async {
-    final map = { for (final c in channels) '$playlistId|${c.id}': c };
-    await _channels.putAll(map);
+    // Delete old channels for this playlist first
+    final oldKeys = _channels.keys
+        .where((k) => k.toString().startsWith('$playlistId|'))
+        .toList();
+    if (oldKeys.isNotEmpty) await _channels.deleteAll(oldKeys);
+
+    // Write in chunks of 500 to avoid blocking the main thread too long
+    const chunkSize = 500;
+    for (var i = 0; i < channels.length; i += chunkSize) {
+      final chunk = channels.sublist(i, (i + chunkSize).clamp(0, channels.length));
+      final map   = { for (final c in chunk) '$playlistId|${c.id}': c };
+      await _channels.putAll(map);
+    }
   }
 
   List<Channel> getFavorites() =>
