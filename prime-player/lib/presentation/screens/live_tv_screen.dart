@@ -132,7 +132,11 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'LIVE TV', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: SectionLoader(icon: Icons.live_tv_rounded, label: 'Loading live channels…')),
+          Expanded(child: SectionLoader(
+            icon: Icons.live_tv_rounded,
+            label: 'Loading live channels…',
+            onCancel: () => Navigator.pop(context),
+          )),
         ])),
       );
 

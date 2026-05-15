@@ -102,8 +102,8 @@ class XtreamService {
   }) {
     _dio = Dio(BaseOptions(
       baseUrl:        host.endsWith('/') ? host : '$host/',
-      connectTimeout: const Duration(seconds: 20),
-      receiveTimeout: const Duration(minutes: 5),
+      connectTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 30), // per-category responses are small — 30s is plenty
       validateStatus: (_) => true,
       headers: const {'Accept-Encoding': 'gzip, deflate'},
     ));

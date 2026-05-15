@@ -158,7 +158,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
+          Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…', onCancel: () => Navigator.pop(context))),
         ])),
       );
 

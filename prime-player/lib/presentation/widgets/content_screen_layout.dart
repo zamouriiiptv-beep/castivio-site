@@ -645,9 +645,10 @@ class _Controls extends StatelessWidget {
 // ── Lazy-load shared widgets ──────────────────────────────────────────────────
 
 class SectionLoader extends StatelessWidget {
-  final IconData icon;
-  final String   label;
-  const SectionLoader({super.key, required this.icon, required this.label});
+  final IconData     icon;
+  final String       label;
+  final VoidCallback? onCancel;
+  const SectionLoader({super.key, required this.icon, required this.label, this.onCancel});
 
   @override
   Widget build(BuildContext context) => Center(
@@ -667,6 +668,21 @@ class SectionLoader extends StatelessWidget {
           Text('This may take a moment for large servers',
               style: TextStyle(
                   color: AppColors.textSecondary.withOpacity(0.6), fontSize: 12)),
+          if (onCancel != null) ...[
+            const SizedBox(height: 24),
+            GestureDetector(
+              onTap: onCancel,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.border),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text('Cancel',
+                    style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+              ),
+            ),
+          ],
         ]),
       );
 }

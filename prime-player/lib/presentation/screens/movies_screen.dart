@@ -158,7 +158,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: 'MOVIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          const Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: 'Loading movies…')),
+          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: 'Loading movies…', onCancel: () => Navigator.pop(context))),
         ])),
       );
 
