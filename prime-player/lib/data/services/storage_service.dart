@@ -42,20 +42,42 @@ class StorageService {
       .where((c) => c.key?.toString().startsWith('$playlistId|') ?? false)
       .toList();
 
-  Future<void> saveChannels(String playlistId, List<Channel> channels) async {
-    // Delete old channels for this playlist first
+  /// Saves [channels] for [playlistId].
+  /// Pass [typePrefix] (e.g. `'live_'`) to replace only that content type,
+  /// leaving other types untouched. Omit to replace all channels.
+  Future<void> saveChannels(
+    String playlistId,
+    List<Channel> channels, {
+    String? typePrefix,
+  }) async {
+    final prefix = typePrefix != null
+        ? '$playlistId|$typePrefix'
+        : '$playlistId|';
     final oldKeys = _channels.keys
-        .where((k) => k.toString().startsWith('$playlistId|'))
+        .where((k) => k.toString().startsWith(prefix))
         .toList();
     if (oldKeys.isNotEmpty) await _channels.deleteAll(oldKeys);
 
-    // Write in chunks of 500 to avoid blocking the main thread too long
     const chunkSize = 500;
     for (var i = 0; i < channels.length; i += chunkSize) {
       final chunk = channels.sublist(i, (i + chunkSize).clamp(0, channels.length));
       final map   = { for (final c in chunk) '$playlistId|${c.id}': c };
       await _channels.putAll(map);
     }
+  }
+
+  // ── Type-loaded tracking ────────────────────────────────────────────────────
+
+  bool isTypeLoaded(String playlistId, String type) =>
+      _prefs.get('loaded_${playlistId}_$type') as bool? ?? false;
+
+  Future<void> markTypeLoaded(String playlistId, String type) =>
+      _prefs.put('loaded_${playlistId}_$type', true);
+
+  Future<void> clearLoadedTypes(String playlistId) async {
+    await _prefs.delete('loaded_${playlistId}_live');
+    await _prefs.delete('loaded_${playlistId}_vod');
+    await _prefs.delete('loaded_${playlistId}_series');
   }
 
   List<Channel> getFavorites() =>

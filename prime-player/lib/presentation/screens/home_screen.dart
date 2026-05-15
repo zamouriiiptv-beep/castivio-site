@@ -82,6 +82,17 @@ class _HomeLayout extends ConsumerWidget {
     final seriesCount = ref.watch(seriesChannelsProvider).length;
     final radioCount  = ref.watch(radioChannelsProvider).length;
 
+    final isXtream = playlist?.playlistType == PlaylistType.xtream;
+    final storage  = ref.read(storageServiceProvider);
+    final id       = playlist?.id ?? '';
+
+    String liveSub   = isXtream && !storage.isTypeLoaded(id, 'live')
+        ? 'Tap to load' : '$liveCount channels';
+    String movieSub  = isXtream && !storage.isTypeLoaded(id, 'vod')
+        ? 'Tap to load' : '$movieCount films';
+    String seriesSub = isXtream && !storage.isTypeLoaded(id, 'series')
+        ? 'Tap to load' : '$seriesCount shows';
+
     return Column(
       children: [
         _TopBar(playlist: playlist, playlists: playlists),
@@ -94,7 +105,7 @@ class _HomeLayout extends ConsumerWidget {
                   _ContentTile(
                     icon:     Icons.live_tv_rounded,
                     label:    'Live TV',
-                    subtitle: '$liveCount channels',
+                    subtitle: liveSub,
                     colors:   const [Color(0xFF7C3AED), Color(0xFF2563EB)],
                     onTap: () {
                       ref.read(activeCategoryProvider.notifier).state = null;
@@ -107,7 +118,7 @@ class _HomeLayout extends ConsumerWidget {
                   _ContentTile(
                     icon:     Icons.movie_creation_rounded,
                     label:    'Movies',
-                    subtitle: '$movieCount films',
+                    subtitle: movieSub,
                     colors:   const [Color(0xFFDB2777), Color(0xFFEF4444)],
                     onTap: () {
                       ref.read(activeCategoryProvider.notifier).state = null;
@@ -120,7 +131,7 @@ class _HomeLayout extends ConsumerWidget {
                   _ContentTile(
                     icon:     Icons.video_library_rounded,
                     label:    'Series',
-                    subtitle: '$seriesCount shows',
+                    subtitle: seriesSub,
                     colors:   const [Color(0xFF059669), Color(0xFF0891B2)],
                     onTap: () {
                       ref.read(activeCategoryProvider.notifier).state = null;

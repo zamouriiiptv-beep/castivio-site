@@ -11,33 +11,26 @@ class PlaylistRepository {
 
   List<Playlist> getSavedPlaylists() => _storage.getPlaylists();
 
-  /// Adds a playlist from an M3U URL.
-  /// If the URL is an Xtream Codes URL and M3U fails, automatically falls back
-  /// to the Xtream Codes API (which handles 884/885 errors more gracefully).
+  // ── M3U ────────────────────────────────────────────────────────────────────
+
+  /// Adds an M3U playlist. If the URL is an Xtream Codes URL and M3U fails,
+  /// saves as Xtream playlist so channels load lazily per section.
   Future<void> addM3uPlaylist({
     required String name,
     required String url,
   }) async {
-    // Try M3U first
     try {
       final channels = await M3uParser.fromUrl(url);
-      if (channels.isEmpty) {
-        throw Exception('No channels found in M3U playlist.');
-      }
+      if (channels.isEmpty) throw Exception('No channels found in M3U playlist.');
       await _saveM3uPlaylist(name: name, url: url, channels: channels);
       return;
     } catch (m3uError) {
       debugPrint('[Repo] M3U failed: $m3uError');
 
-      // Auto-fallback: try Xtream Codes API if URL has credentials
       final creds = M3uParser.extractXtreamCredentials(url);
-      if (creds == null) {
-        rethrow; // Not an Xtream URL — no fallback available
-      }
+      if (creds == null) rethrow;
 
       debugPrint('[Repo] Detected Xtream URL — trying API fallback...');
-      debugPrint('[Repo] Host: ${creds["host"]}  User: ${creds["username"]}');
-
       final svc = XtreamService(
         host:     creds['host']!,
         username: creds['username']!,
@@ -53,17 +46,7 @@ class PlaylistRepository {
             '$authError');
       }
 
-      debugPrint('[Repo] Xtream auth OK — fetching all channels...');
-      final channels = await svc.getAllChannels();
-
-      if (channels.isEmpty) {
-        throw Exception(
-            'Connected to server but found 0 channels.\n'
-            'The account may have no active streams.');
-      }
-
-      debugPrint('[Repo] Xtream API returned ${channels.length} channels');
-
+      // Save as Xtream playlist — channels load lazily per section
       final playlist = Playlist(
         id:             DateTime.now().millisecondsSinceEpoch.toString(),
         name:           name,
@@ -72,10 +55,9 @@ class PlaylistRepository {
         xtreamUsername: creds['username']!,
         xtreamPassword: creds['password']!,
         lastUpdated:    DateTime.now(),
-        channelCount:   channels.length,
+        channelCount:   0,
       );
       await _storage.savePlaylist(playlist);
-      await _storage.saveChannels(playlist.id, channels);
     }
   }
 
@@ -96,23 +78,18 @@ class PlaylistRepository {
     await _storage.saveChannels(playlist.id, channels);
   }
 
+  // ── Xtream ─────────────────────────────────────────────────────────────────
+
+  /// Adds an Xtream playlist. Only authenticates — channels load lazily.
   Future<void> addXtreamPlaylist({
     required String name,
     required String host,
     required String username,
     required String password,
   }) async {
-    final svc = XtreamService(
-      host: host, username: username, password: password,
-    );
-
+    final svc = XtreamService(host: host, username: username, password: password);
     final authError = await svc.authenticate();
     if (authError != null) throw Exception(authError);
-
-    final channels = await svc.getAllChannels();
-    if (channels.isEmpty) {
-      throw Exception('Connected but found 0 channels.');
-    }
 
     final playlist = Playlist(
       id:             DateTime.now().millisecondsSinceEpoch.toString(),
@@ -122,34 +99,59 @@ class PlaylistRepository {
       xtreamUsername: username,
       xtreamPassword: password,
       lastUpdated:    DateTime.now(),
-      channelCount:   channels.length,
+      channelCount:   0,
     );
     await _storage.savePlaylist(playlist);
-    await _storage.saveChannels(playlist.id, channels);
   }
 
-  /// Refreshes a playlist by re-downloading its channels.
-  Future<void> refreshPlaylist(Playlist playlist) async {
-    List<Channel> channels;
+  /// Lazily loads live channels for an Xtream playlist.
+  Future<void> loadXtreamLive(Playlist playlist) async {
+    final channels = await _svcFor(playlist).getLiveChannels();
+    await _storage.saveChannels(playlist.id, channels, typePrefix: 'live_');
+    await _storage.markTypeLoaded(playlist.id, 'live');
+    await _refreshCount(playlist);
+  }
 
+  /// Lazily loads VOD (movies) channels for an Xtream playlist.
+  Future<void> loadXtreamVod(Playlist playlist) async {
+    final channels = await _svcFor(playlist).getVodChannels();
+    await _storage.saveChannels(playlist.id, channels, typePrefix: 'vod_');
+    await _storage.markTypeLoaded(playlist.id, 'vod');
+    await _refreshCount(playlist);
+  }
+
+  /// Lazily loads series channels for an Xtream playlist.
+  Future<void> loadXtreamSeries(Playlist playlist) async {
+    final channels = await _svcFor(playlist).getSeriesChannels();
+    await _storage.saveChannels(playlist.id, channels, typePrefix: 'series_');
+    await _storage.markTypeLoaded(playlist.id, 'series');
+    await _refreshCount(playlist);
+  }
+
+  // ── Refresh ────────────────────────────────────────────────────────────────
+
+  Future<void> refreshPlaylist(Playlist playlist) async {
     if (playlist.playlistType == PlaylistType.m3u) {
-      channels = await M3uParser.fromUrl(playlist.m3uUrl!);
-    } else {
-      final svc = XtreamService(
-        host:     playlist.xtreamHost!,
-        username: playlist.xtreamUsername!,
-        password: playlist.xtreamPassword!,
-      );
-      channels = await svc.getAllChannels();
+      final channels = await M3uParser.fromUrl(playlist.m3uUrl!);
+      if (channels.isEmpty) return;
+      await _storage.saveChannels(playlist.id, channels);
+      playlist.lastUpdated  = DateTime.now();
+      playlist.channelCount = channels.length;
+      await _storage.savePlaylist(playlist);
+      return;
     }
 
-    if (channels.isEmpty) return;
-
-    playlist.lastUpdated  = DateTime.now();
-    playlist.channelCount = channels.length;
+    // Xtream: refresh only what has been loaded already
+    final futures = <Future>[];
+    if (_storage.isTypeLoaded(playlist.id, 'live'))   futures.add(loadXtreamLive(playlist));
+    if (_storage.isTypeLoaded(playlist.id, 'vod'))    futures.add(loadXtreamVod(playlist));
+    if (_storage.isTypeLoaded(playlist.id, 'series')) futures.add(loadXtreamSeries(playlist));
+    if (futures.isNotEmpty) await Future.wait(futures);
+    playlist.lastUpdated = DateTime.now();
     await _storage.savePlaylist(playlist);
-    await _storage.saveChannels(playlist.id, channels);
   }
+
+  // ── Misc ───────────────────────────────────────────────────────────────────
 
   List<Channel> getChannels(String playlistId) =>
       _storage.getChannels(playlistId);
@@ -158,5 +160,19 @@ class PlaylistRepository {
 
   Future<void> toggleFavorite(Channel c) => _storage.toggleFavorite(c);
 
-  Future<void> deletePlaylist(String id) => _storage.deletePlaylist(id);
+  Future<void> deletePlaylist(String id) async {
+    await _storage.clearLoadedTypes(id);
+    await _storage.deletePlaylist(id);
+  }
+
+  XtreamService _svcFor(Playlist p) => XtreamService(
+        host:     p.xtreamHost!,
+        username: p.xtreamUsername!,
+        password: p.xtreamPassword!,
+      );
+
+  Future<void> _refreshCount(Playlist playlist) async {
+    playlist.channelCount = _storage.getChannels(playlist.id).length;
+    await _storage.savePlaylist(playlist);
+  }
 }

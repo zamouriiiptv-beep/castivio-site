@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
+import '../../data/models/playlist.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
+import 'live_tv_screen.dart' show _SectionLoader, _SectionError;
 import 'player_screen.dart';
 
 class SeriesScreen extends ConsumerStatefulWidget {
@@ -18,7 +20,9 @@ class SeriesScreen extends ConsumerStatefulWidget {
 
 class _SeriesScreenState extends ConsumerState<SeriesScreen> {
   final _searchCtrl = TextEditingController();
-  bool  _searching  = false;
+  bool    _searching   = false;
+  bool    _lazyLoading = false;
+  String? _lazyError;
 
   @override
   void initState() {
@@ -27,6 +31,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadIfNeeded());
   }
 
   @override
@@ -40,8 +45,34 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     super.dispose();
   }
 
+  Future<void> _loadIfNeeded() async {
+    final id = ref.read(activePlaylistIdProvider);
+    if (id == null) return;
+    final storage = ref.read(storageServiceProvider);
+    if (storage.isTypeLoaded(id, 'series')) return;
+
+    final playlist = ref.read(playlistRepositoryProvider)
+        .getSavedPlaylists()
+        .cast<Playlist?>()
+        .firstWhere((p) => p?.id == id, orElse: () => null);
+    if (playlist == null || playlist.playlistType != PlaylistType.xtream) return;
+
+    setState(() { _lazyLoading = true; _lazyError = null; });
+    try {
+      await ref.read(playlistRepositoryProvider).loadXtreamSeries(playlist);
+      if (mounted) ref.read(playlistRefreshProvider.notifier).state++;
+    } catch (e) {
+      if (mounted) setState(() => _lazyError = e.toString().replaceFirst('Exception: ', ''));
+    } finally {
+      if (mounted) setState(() => _lazyLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_lazyLoading) return _buildLoading(context);
+    if (_lazyError != null) return _buildError(context);
+
     final categories     = ref.watch(seriesCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
     final series         = ref.watch(filteredSeriesChannelsProvider);
@@ -253,6 +284,23 @@ class _PosterFallback extends StatelessWidget {
                 overflow: TextOverflow.ellipsis),
           ),
         ]),
+      );
+}
+
+  Widget _buildLoading(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: Column(children: [
+          ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
+          const Expanded(child: _SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…')),
+        ])),
+      );
+
+  Widget _buildError(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: Column(children: [
+          ContentTopBar(section: 'SERIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
+          Expanded(child: _SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
+        ])),
       );
 }
 
