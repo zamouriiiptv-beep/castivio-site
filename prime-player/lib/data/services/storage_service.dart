@@ -61,8 +61,13 @@ class StorageService {
   /// Omit for M3U playlists (reads from the m3u box).
   List<Channel> getChannels(String playlistId, {String? typePrefix}) {
     final prefix = '$playlistId|';
-    return _boxFor(typePrefix).values
-        .where((c) => c.key?.toString().startsWith(prefix) ?? false)
+    final box = _boxFor(typePrefix);
+    // Use box.keys instead of c.key — HiveObject.key is only set at write time,
+    // not when objects are deserialized from disk on restart.
+    return box.keys
+        .where((k) => k.toString().startsWith(prefix))
+        .map((k) => box.get(k))
+        .whereType<Channel>()
         .toList();
   }
 

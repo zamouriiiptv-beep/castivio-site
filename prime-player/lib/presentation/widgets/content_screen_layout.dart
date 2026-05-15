@@ -475,7 +475,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
             else if (ctrl != null)
               Positioned.fill(child: Video(
                   controller: ctrl, fit: BoxFit.contain,
-                  controls: NoVideoControls)),
+                  controls: (_) => const SizedBox.shrink())),
 
             // Buffering
             if (ps.isBuffering)

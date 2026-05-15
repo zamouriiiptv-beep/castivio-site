@@ -72,7 +72,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
             Positioned.fill(
               child: ctrl != null
                   ? Video(controller: ctrl, fit: BoxFit.contain,
-                      controls: NoVideoControls)
+                      controls: (_) => const SizedBox.shrink())
                   : const SizedBox(),
             ),
 
