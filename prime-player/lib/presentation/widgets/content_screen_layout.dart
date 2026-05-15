@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:video_player/video_player.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../providers/player_provider.dart';
@@ -469,16 +469,13 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Video surface
-            if (ctrl != null && ctrl.value.isInitialized)
-              Center(child: AspectRatio(
-                  aspectRatio: ctrl.value.aspectRatio,
-                  child: VideoPlayer(ctrl)))
-            else if (channel == null)
+            // Video surface — always render Video widget; libmpv shows black when idle
+            if (channel == null)
               _Idle(icon: widget.idleIcon, label: widget.idleLabel)
-            else
-              const Center(child: CircularProgressIndicator(
-                  color: AppColors.primary, strokeWidth: 2)),
+            else if (ctrl != null)
+              Positioned.fill(child: Video(
+                  controller: ctrl, fit: BoxFit.contain,
+                  controls: NoVideoControls)),
 
             // Buffering
             if (ps.isBuffering)

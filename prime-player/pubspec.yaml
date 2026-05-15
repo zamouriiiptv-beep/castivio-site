@@ -11,8 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # ─── Video (official Google plugin – guaranteed v2 compatible) ────────────────
-  video_player: ^2.8.6
+  # ─── Video (libmpv — instant channel switching, no initialize() wait) ────────
+  media_kit: ^1.1.11
+  media_kit_video: ^1.1.6
+  media_kit_libs_video: ^1.0.4
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1

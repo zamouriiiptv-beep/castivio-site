@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:video_player/video_player.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../providers/player_provider.dart';
@@ -68,17 +68,11 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
         behavior:        HitTestBehavior.opaque,
         child: Stack(
           children: [
-            // ── Video surface ────────────────────────────────────────────
+            // ── Video surface — libmpv renders instantly, no initialize() wait ──
             Positioned.fill(
-              child: ctrl != null && ctrl.value.isInitialized
-                  ? FittedBox(
-                      fit: BoxFit.contain,
-                      child: SizedBox(
-                        width:  ctrl.value.size.width,
-                        height: ctrl.value.size.height,
-                        child:  VideoPlayer(ctrl),
-                      ),
-                    )
+              child: ctrl != null
+                  ? Video(controller: ctrl, fit: BoxFit.contain,
+                      controls: NoVideoControls)
                   : const SizedBox(),
             ),
 
