@@ -89,8 +89,12 @@ class StorageService {
     final oldKeys = box.keys.where((k) => k.toString().startsWith(prefix)).toList();
     if (oldKeys.isNotEmpty) await box.deleteAll(oldKeys);
     if (channels.isEmpty) return;
-    final map = { for (final c in channels) '$playlistId|${c.id}': c };
-    await box.putAll(map);
+    // Write in chunks of 500 — keeps the event loop responsive for large lists
+    const chunkSize = 500;
+    for (int i = 0; i < channels.length; i += chunkSize) {
+      final chunk = channels.skip(i).take(chunkSize);
+      await box.putAll({ for (final c in chunk) '$playlistId|${c.id}': c });
+    }
   }
 
   // ── Type-loaded tracking ────────────────────────────────────────────────────

@@ -90,8 +90,8 @@ class XtreamService {
   final String username;
   final String password;
 
-  // Concurrency: 4 simultaneous per-category requests — fast without overwhelming servers
-  static const _concurrency = 4;
+  // Fallback per-category concurrency (16 parallel — only used if bulk API returns nothing)
+  static const _concurrency = 16;
 
   late final Dio _dio;
 
@@ -144,22 +144,42 @@ class XtreamService {
 
   // ── Live ──────────────────────────────────────────────────────────────────
 
-  /// Fetches ALL live channels by querying every category individually.
-  /// Guaranteed to retrieve every channel regardless of server bulk-API limits.
+  /// Fetches live channels. Tries bulk API first (2 parallel requests).
+  /// Falls back to per-category only if bulk returns nothing.
   Future<List<Channel>> getLiveChannels() async {
     try {
-      final catRes = await _dio.get<dynamic>('$_base&action=get_live_categories');
-      final categories = _asList(catRes.data);
+      final results = await Future.wait([
+        _dio.get<dynamic>('$_base&action=get_live_categories'),
+        _dio.get<String>('$_base&action=get_live_streams',
+            options: Options(
+              responseType:   ResponseType.plain,
+              receiveTimeout: const Duration(minutes: 3),
+            )),
+      ]);
+
+      final categories = _asList(results[0].data as dynamic);
+      final catMap     = _buildCatMap(categories);
+      final json       = ((results[1] as Response<String>).data ?? '').trim();
+
+      if (json.isNotEmpty && json != '[]' && json != 'null') {
+        final channels = await compute(_parseLiveJson, _ParseInput(
+          json: json, catMap: catMap,
+          host: host, username: username, password: password,
+        ));
+        if (channels.isNotEmpty) {
+          debugPrint('[Xtream] live bulk: ${channels.length} channels (2 requests)');
+          return channels;
+        }
+      }
+
       if (categories.isEmpty) return [];
-      debugPrint('[Xtream] live: ${categories.length} categories — fetching per category');
-      final channels = await _fetchAllCategories(
-        categories: categories,
-        actionFn: (catId) => '$_base&action=get_live_streams&category_id=$catId',
-        parseFn:  _parseLiveJson,
+      debugPrint('[Xtream] live bulk empty — per-category fallback');
+      return _fetchAllCategories(
+        categories:   categories,
+        actionFn:     (id) => '$_base&action=get_live_streams&category_id=$id',
+        parseFn:      _parseLiveJson,
         defaultGroup: 'Live TV',
       );
-      debugPrint('[Xtream] live: ${channels.length} channels total');
-      return channels;
     } catch (e) {
       debugPrint('[Xtream] getLiveChannels error: $e');
       return [];
@@ -170,18 +190,38 @@ class XtreamService {
 
   Future<List<Channel>> getVodChannels() async {
     try {
-      final catRes = await _dio.get<dynamic>('$_base&action=get_vod_categories');
-      final categories = _asList(catRes.data);
+      final results = await Future.wait([
+        _dio.get<dynamic>('$_base&action=get_vod_categories'),
+        _dio.get<String>('$_base&action=get_vod_streams',
+            options: Options(
+              responseType:   ResponseType.plain,
+              receiveTimeout: const Duration(minutes: 3),
+            )),
+      ]);
+
+      final categories = _asList(results[0].data as dynamic);
+      final catMap     = _buildCatMap(categories);
+      final json       = ((results[1] as Response<String>).data ?? '').trim();
+
+      if (json.isNotEmpty && json != '[]' && json != 'null') {
+        final channels = await compute(_parseVodJson, _ParseInput(
+          json: json, catMap: catMap,
+          host: host, username: username, password: password,
+        ));
+        if (channels.isNotEmpty) {
+          debugPrint('[Xtream] VOD bulk: ${channels.length} films (2 requests)');
+          return channels;
+        }
+      }
+
       if (categories.isEmpty) return [];
-      debugPrint('[Xtream] VOD: ${categories.length} categories — fetching per category');
-      final channels = await _fetchAllCategories(
-        categories: categories,
-        actionFn: (catId) => '$_base&action=get_vod_streams&category_id=$catId',
-        parseFn:  _parseVodJson,
+      debugPrint('[Xtream] VOD bulk empty — per-category fallback');
+      return _fetchAllCategories(
+        categories:   categories,
+        actionFn:     (id) => '$_base&action=get_vod_streams&category_id=$id',
+        parseFn:      _parseVodJson,
         defaultGroup: 'Movies',
       );
-      debugPrint('[Xtream] VOD: ${channels.length} films total');
-      return channels;
     } catch (e) {
       debugPrint('[Xtream] getVodChannels error: $e');
       return [];
@@ -192,29 +232,46 @@ class XtreamService {
 
   Future<List<Channel>> getSeriesChannels() async {
     try {
-      final catRes = await _dio.get<dynamic>('$_base&action=get_series_categories');
-      final categories = _asList(catRes.data);
+      final results = await Future.wait([
+        _dio.get<dynamic>('$_base&action=get_series_categories'),
+        _dio.get<String>('$_base&action=get_series',
+            options: Options(
+              responseType:   ResponseType.plain,
+              receiveTimeout: const Duration(minutes: 3),
+            )),
+      ]);
+
+      final categories = _asList(results[0].data as dynamic);
+      final catMap     = _buildCatMap(categories);
+      final json       = ((results[1] as Response<String>).data ?? '').trim();
+
+      if (json.isNotEmpty && json != '[]' && json != 'null') {
+        final channels = await compute(_parseSeriesJson, _ParseInput(
+          json: json, catMap: catMap,
+          host: host, username: username, password: password,
+        ));
+        if (channels.isNotEmpty) {
+          debugPrint('[Xtream] series bulk: ${channels.length} shows (2 requests)');
+          return channels;
+        }
+      }
+
       if (categories.isEmpty) return [];
-      debugPrint('[Xtream] series: ${categories.length} categories — fetching per category');
-      final channels = await _fetchAllCategories(
-        categories: categories,
-        actionFn: (catId) => '$_base&action=get_series&category_id=$catId',
-        parseFn:  _parseSeriesJson,
+      debugPrint('[Xtream] series bulk empty — per-category fallback');
+      return _fetchAllCategories(
+        categories:   categories,
+        actionFn:     (id) => '$_base&action=get_series&category_id=$id',
+        parseFn:      _parseSeriesJson,
         defaultGroup: 'Series',
       );
-      debugPrint('[Xtream] series: ${channels.length} shows total');
-      return channels;
     } catch (e) {
       debugPrint('[Xtream] getSeriesChannels error: $e');
       return [];
     }
   }
 
-  // ── Core: fetch every category with controlled concurrency ────────────────
+  // ── Core: per-category fallback with high concurrency ─────────────────────
 
-  /// Fetches all categories using [_concurrency] parallel requests.
-  /// Deduplicates by channel ID so no item appears twice.
-  /// Retries each failed request once before skipping.
   Future<List<Channel>> _fetchAllCategories({
     required List<Map<String, dynamic>> categories,
     required String Function(String catId) actionFn,
