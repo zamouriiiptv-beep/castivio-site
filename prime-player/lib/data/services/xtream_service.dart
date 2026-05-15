@@ -154,26 +154,24 @@ class XtreamService {
 
   Future<List<Channel>> getLiveChannels() async {
     try {
-      // Fetch streams (plain text — skip Dio JSON parsing) + categories in parallel
-      final responses = await Future.wait([
-        _dio.get<String>('$_base&action=get_live_streams',
-            options: Options(responseType: ResponseType.plain)),
-        _dio.get<dynamic>('$_base&action=get_live_categories'),
-      ]);
+      // Fetch categories first (fast ~1s), then streams (slow) — not in parallel
+      // Parallel fetching with VOD/Series causes connection-limit failures on cheap servers
+      final catRes = await _dio.get<dynamic>('$_base&action=get_live_categories');
+      final categories = _asList(catRes.data);
+      final catMap = _buildCatMap(categories);
 
-      final streamsJson = responses[0].data ?? '[]';
-      final categories  = _asList(responses[1].data);
+      final streamsRes = await _dio.get<String>('$_base&action=get_live_streams',
+          options: Options(responseType: ResponseType.plain));
+      final streamsJson = streamsRes.data ?? '[]';
 
       if (streamsJson.trim() == '[]' || streamsJson.trim() == 'null' || streamsJson.isEmpty) {
         debugPrint('[Xtream] bulk live empty — falling back to per-category');
         return _livePerCategory(categories);
       }
 
-      final catMap = _buildCatMap(categories);
-      // Parse + build Channel objects in background isolate
       final channels = await compute(_parseLiveJson,
           _ParseInput(json: streamsJson, catMap: catMap, host: host, username: username, password: password));
-      debugPrint('[Xtream] live: ${channels.length}');
+      debugPrint('[Xtream] live: ${channels.length} in ${catMap.length} categories');
       return channels;
     } catch (e) {
       debugPrint('[Xtream] getLiveChannels error: $e');
@@ -205,24 +203,22 @@ class XtreamService {
 
   Future<List<Channel>> getVodChannels() async {
     try {
-      final responses = await Future.wait([
-        _dio.get<String>('$_base&action=get_vod_streams',
-            options: Options(responseType: ResponseType.plain)),
-        _dio.get<dynamic>('$_base&action=get_vod_categories'),
-      ]);
+      final catRes = await _dio.get<dynamic>('$_base&action=get_vod_categories');
+      final categories = _asList(catRes.data);
+      final catMap = _buildCatMap(categories);
 
-      final streamsJson = responses[0].data ?? '[]';
-      final categories  = _asList(responses[1].data);
+      final streamsRes = await _dio.get<String>('$_base&action=get_vod_streams',
+          options: Options(responseType: ResponseType.plain));
+      final streamsJson = streamsRes.data ?? '[]';
 
       if (streamsJson.trim() == '[]' || streamsJson.trim() == 'null' || streamsJson.isEmpty) {
         debugPrint('[Xtream] bulk VOD empty — falling back to per-category');
         return _vodPerCategory(categories);
       }
 
-      final catMap = _buildCatMap(categories);
       final channels = await compute(_parseVodJson,
           _ParseInput(json: streamsJson, catMap: catMap, host: host, username: username, password: password));
-      debugPrint('[Xtream] VOD: ${channels.length}');
+      debugPrint('[Xtream] VOD: ${channels.length} in ${catMap.length} categories');
       return channels;
     } catch (e) {
       debugPrint('[Xtream] getVodChannels error: $e');
@@ -254,24 +250,22 @@ class XtreamService {
 
   Future<List<Channel>> getSeriesChannels() async {
     try {
-      final responses = await Future.wait([
-        _dio.get<String>('$_base&action=get_series',
-            options: Options(responseType: ResponseType.plain)),
-        _dio.get<dynamic>('$_base&action=get_series_categories'),
-      ]);
+      final catRes = await _dio.get<dynamic>('$_base&action=get_series_categories');
+      final categories = _asList(catRes.data);
+      final catMap = _buildCatMap(categories);
 
-      final streamsJson = responses[0].data ?? '[]';
-      final categories  = _asList(responses[1].data);
+      final streamsRes = await _dio.get<String>('$_base&action=get_series',
+          options: Options(responseType: ResponseType.plain));
+      final streamsJson = streamsRes.data ?? '[]';
 
       if (streamsJson.trim() == '[]' || streamsJson.trim() == 'null' || streamsJson.isEmpty) {
         debugPrint('[Xtream] bulk series empty — falling back to per-category');
         return _seriesPerCategory(categories);
       }
 
-      final catMap = _buildCatMap(categories);
       final channels = await compute(_parseSeriesJson,
           _ParseInput(json: streamsJson, catMap: catMap, host: host, username: username, password: password));
-      debugPrint('[Xtream] series: ${channels.length}');
+      debugPrint('[Xtream] series: ${channels.length} in ${catMap.length} categories');
       return channels;
     } catch (e) {
       debugPrint('[Xtream] getSeriesChannels error: $e');

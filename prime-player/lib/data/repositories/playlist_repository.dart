@@ -119,12 +119,13 @@ class PlaylistRepository {
       return;
     }
 
-    // Xtream: refresh only what has been loaded already
-    final futures = <Future>[];
-    if (_storage.isTypeLoaded(playlist.id, 'live'))   futures.add(loadXtreamLive(playlist));
-    if (_storage.isTypeLoaded(playlist.id, 'vod'))    futures.add(loadXtreamVod(playlist));
-    if (_storage.isTypeLoaded(playlist.id, 'series')) futures.add(loadXtreamSeries(playlist));
-    if (futures.isNotEmpty) await Future.wait(futures);
+    // Xtream: clear loaded flags so data is re-fetched fresh (fixes stale categories)
+    await _storage.clearLoadedTypes(playlist.id);
+    await Future.wait([
+      loadXtreamLive(playlist),
+      loadXtreamVod(playlist),
+      loadXtreamSeries(playlist),
+    ]);
     playlist.lastUpdated = DateTime.now();
     await _storage.savePlaylist(playlist);
   }
