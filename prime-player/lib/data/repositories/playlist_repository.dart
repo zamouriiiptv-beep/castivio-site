@@ -13,52 +13,29 @@ class PlaylistRepository {
 
   // ── M3U ────────────────────────────────────────────────────────────────────
 
-  /// Adds an M3U playlist. If the URL is an Xtream Codes URL and M3U fails,
-  /// saves as Xtream playlist so channels load lazily per section.
+  /// Adds an M3U playlist. If the URL looks like an Xtream Codes URL,
+  /// skips the M3U download entirely and saves lazily via the API.
   Future<void> addM3uPlaylist({
     required String name,
     required String url,
   }) async {
-    try {
-      final channels = await M3uParser.fromUrl(url);
-      if (channels.isEmpty) throw Exception('No channels found in M3U playlist.');
-      await _saveM3uPlaylist(name: name, url: url, channels: channels);
-      return;
-    } catch (m3uError) {
-      debugPrint('[Repo] M3U failed: $m3uError');
-
-      final creds = M3uParser.extractXtreamCredentials(url);
-      if (creds == null) rethrow;
-
-      debugPrint('[Repo] Detected Xtream URL — trying API fallback...');
-      final svc = XtreamService(
+    // Detect Xtream URL up-front — skip M3U download, go straight to API
+    final creds = M3uParser.extractXtreamCredentials(url);
+    if (creds != null) {
+      debugPrint('[Repo] Xtream URL detected — skipping M3U download');
+      await addXtreamPlaylist(
+        name:     name.isEmpty ? 'My Playlist' : name,
         host:     creds['host']!,
         username: creds['username']!,
         password: creds['password']!,
       );
-
-      final authError = await svc.authenticate();
-      if (authError != null) {
-        throw Exception(
-            'M3U URL failed:\n'
-            '${m3uError.toString().replaceFirst("Exception: ", "")}\n\n'
-            'Xtream Codes API also failed:\n'
-            '$authError');
-      }
-
-      // Save as Xtream playlist — channels load lazily per section
-      final playlist = Playlist(
-        id:             DateTime.now().millisecondsSinceEpoch.toString(),
-        name:           name,
-        type:           'xtream',
-        xtreamHost:     creds['host']!,
-        xtreamUsername: creds['username']!,
-        xtreamPassword: creds['password']!,
-        lastUpdated:    DateTime.now(),
-        channelCount:   0,
-      );
-      await _storage.savePlaylist(playlist);
+      return;
     }
+
+    // Plain M3U — download and parse as usual
+    final channels = await M3uParser.fromUrl(url);
+    if (channels.isEmpty) throw Exception('No channels found in M3U playlist.');
+    await _saveM3uPlaylist(name: name, url: url, channels: channels);
   }
 
   Future<void> _saveM3uPlaylist({

@@ -196,10 +196,7 @@ class _LoadingViewState extends State<_LoadingView> {
   static const _steps = [
     ('Connecting to server',    Icons.wifi_rounded),
     ('Authenticating',          Icons.lock_open_rounded),
-    ('Loading live channels',   Icons.live_tv_rounded),
-    ('Loading movies',          Icons.movie_rounded),
-    ('Loading series',          Icons.video_library_rounded),
-    ('Saving to device',        Icons.save_rounded),
+    ('Verifying account',       Icons.verified_user_rounded),
     ('Please wait',             Icons.hourglass_top_rounded),
   ];
 
