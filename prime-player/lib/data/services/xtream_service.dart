@@ -188,14 +188,14 @@ class XtreamService {
           final res = await _dio.get<String>(
               '$_base&action=get_live_streams&category_id=${cat['category_id']}',
               options: Options(responseType: ResponseType.plain));
-          final name = cat['category_name'] as String? ?? 'Live TV';
+          final name  = cat['category_name'] as String? ?? 'Live TV';
           final catId = cat['category_id']?.toString() ?? '';
-          return compute(_parseLiveJson, _ParseInput(
+          return await compute(_parseLiveJson, _ParseInput(
               json: res.data ?? '[]', catMap: {catId: name},
               host: host, username: username, password: password));
         } catch (_) { return <Channel>[]; }
       }));
-      result.addAll((await Future.wait(lists)).expand((c) => c));
+      result.addAll(lists.expand((c) => c));
     }
     return result;
   }
@@ -237,14 +237,14 @@ class XtreamService {
           final res = await _dio.get<String>(
               '$_base&action=get_vod_streams&category_id=${cat['category_id']}',
               options: Options(responseType: ResponseType.plain));
-          final name = cat['category_name'] as String? ?? 'Movies';
+          final name  = cat['category_name'] as String? ?? 'Movies';
           final catId = cat['category_id']?.toString() ?? '';
-          return compute(_parseVodJson, _ParseInput(
+          return await compute(_parseVodJson, _ParseInput(
               json: res.data ?? '[]', catMap: {catId: name},
               host: host, username: username, password: password));
         } catch (_) { return <Channel>[]; }
       }));
-      result.addAll((await Future.wait(lists)).expand((c) => c));
+      result.addAll(lists.expand((c) => c));
     }
     return result;
   }
@@ -286,14 +286,14 @@ class XtreamService {
           final res = await _dio.get<String>(
               '$_base&action=get_series&category_id=${cat['category_id']}',
               options: Options(responseType: ResponseType.plain));
-          final name = cat['category_name'] as String? ?? 'Series';
+          final name  = cat['category_name'] as String? ?? 'Series';
           final catId = cat['category_id']?.toString() ?? '';
-          return compute(_parseSeriesJson, _ParseInput(
+          return await compute(_parseSeriesJson, _ParseInput(
               json: res.data ?? '[]', catMap: {catId: name},
               host: host, username: username, password: password));
         } catch (_) { return <Channel>[]; }
       }));
-      result.addAll((await Future.wait(lists)).expand((c) => c));
+      result.addAll(lists.expand((c) => c));
     }
     return result;
   }
