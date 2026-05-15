@@ -4,14 +4,21 @@ import '../models/channel.dart';
 import '../models/playlist.dart';
 
 class StorageService {
-  static const String _playlistBox = 'playlists';
-  static const String _channelBox  = 'channels';
-  static const String _prefsBox    = 'prefs';
+  static const _playlistBox = 'playlists';
+  // One box per content type — avoids scanning all 460k channels on every read
+  static const _liveBox     = 'channels_live';
+  static const _vodBox      = 'channels_vod';
+  static const _seriesBox   = 'channels_series';
+  static const _m3uBox      = 'channels_m3u';
+  static const _prefsBox    = 'prefs';
 
   static const _uuid = Uuid();
 
   late Box<Playlist> _playlists;
-  late Box<Channel>  _channels;
+  late Box<Channel>  _live;
+  late Box<Channel>  _vod;
+  late Box<Channel>  _series;
+  late Box<Channel>  _m3u;
   late Box<dynamic>  _prefs;
 
   Future<void> init() async {
@@ -20,48 +27,65 @@ class StorageService {
     Hive.registerAdapter(ChannelAdapter());
 
     _playlists = await Hive.openBox<Playlist>(_playlistBox);
-    _channels  = await Hive.openBox<Channel>(_channelBox);
+    _live      = await Hive.openBox<Channel>(_liveBox);
+    _vod       = await Hive.openBox<Channel>(_vodBox);
+    _series    = await Hive.openBox<Channel>(_seriesBox);
+    _m3u       = await Hive.openBox<Channel>(_m3uBox);
     _prefs     = await Hive.openBox<dynamic>(_prefsBox);
   }
 
   // ── Playlists ──────────────────────────────────────────────────────────────
 
   List<Playlist> getPlaylists() => _playlists.values.toList();
-
   Future<void> savePlaylist(Playlist p) => _playlists.put(p.id, p);
 
   Future<void> deletePlaylist(String id) async {
     await _playlists.delete(id);
-    final keys = _channels.keys.where((k) => k.toString().startsWith('$id|'));
-    await _channels.deleteAll(keys);
+    for (final box in [_live, _vod, _series, _m3u]) {
+      final keys = box.keys.where((k) => k.toString().startsWith('$id|')).toList();
+      if (keys.isNotEmpty) await box.deleteAll(keys);
+    }
   }
 
   // ── Channels ───────────────────────────────────────────────────────────────
 
-  List<Channel> getChannels(String playlistId) => _channels.values
-      .where((c) => c.key?.toString().startsWith('$playlistId|') ?? false)
-      .toList();
+  Box<Channel> _boxFor(String? typePrefix) {
+    if (typePrefix == 'live_')   return _live;
+    if (typePrefix == 'vod_')    return _vod;
+    if (typePrefix == 'series_') return _series;
+    return _m3u;
+  }
 
-  /// Saves [channels] for [playlistId].
-  /// Pass [typePrefix] (e.g. `'live_'`) to replace only that content type,
-  /// leaving other types untouched. Omit to replace all channels.
+  /// Returns channels from the type-specific box.
+  /// Pass [typePrefix] ('live_', 'vod_', 'series_') for Xtream.
+  /// Omit for M3U playlists (reads from the m3u box).
+  List<Channel> getChannels(String playlistId, {String? typePrefix}) {
+    final prefix = '$playlistId|';
+    return _boxFor(typePrefix).values
+        .where((c) => c.key?.toString().startsWith(prefix) ?? false)
+        .toList();
+  }
+
+  /// Fast channel count using key-only iteration (no object deserialization).
+  int countChannels(String playlistId, {String? typePrefix}) {
+    final prefix = '$playlistId|';
+    return _boxFor(typePrefix).keys
+        .where((k) => k.toString().startsWith(prefix))
+        .length;
+  }
+
   Future<void> saveChannels(
     String playlistId,
     List<Channel> channels, {
     String? typePrefix,
   }) async {
-    final prefix = typePrefix != null
-        ? '$playlistId|$typePrefix'
-        : '$playlistId|';
-    final oldKeys = _channels.keys
-        .where((k) => k.toString().startsWith(prefix))
-        .toList();
-    if (oldKeys.isNotEmpty) await _channels.deleteAll(oldKeys);
-
+    final box    = _boxFor(typePrefix);
+    final prefix = '$playlistId|';
+    final oldKeys = box.keys.where((k) => k.toString().startsWith(prefix)).toList();
+    if (oldKeys.isNotEmpty) await box.deleteAll(oldKeys);
     if (channels.isEmpty) return;
-    // Single putAll — one disk write is much faster than 20 chunked writes
     final map = { for (final c in channels) '$playlistId|${c.id}': c };
-    await _channels.putAll(map);
+    await box.putAll(map);
   }
 
   // ── Type-loaded tracking ────────────────────────────────────────────────────
@@ -78,8 +102,12 @@ class StorageService {
     await _prefs.delete('loaded_${playlistId}_series');
   }
 
-  List<Channel> getFavorites() =>
-      _channels.values.where((c) => c.isFavorite).toList();
+  List<Channel> getFavorites() => [
+    ..._live.values,
+    ..._vod.values,
+    ..._series.values,
+    ..._m3u.values,
+  ].where((c) => c.isFavorite).toList();
 
   Future<void> toggleFavorite(Channel c) async {
     c.isFavorite = !c.isFavorite;
@@ -122,15 +150,11 @@ class StorageService {
     return id;
   }
 
-  // ── MAC Address (derived from deviceId, stable per install) ───────────────
-
   String get macAddress {
     final hex = deviceId.replaceAll('-', '').substring(0, 12).toUpperCase();
     return '${hex.substring(0,2)}:${hex.substring(2,4)}:${hex.substring(4,6)}'
         ':${hex.substring(6,8)}:${hex.substring(8,10)}:${hex.substring(10,12)}';
   }
-
-  // ── Device Key — short 6-digit numeric code ────────────────────────────────
 
   String get deviceKey {
     final id = deviceId.replaceAll('-', '');

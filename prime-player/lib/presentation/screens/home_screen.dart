@@ -101,6 +101,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
     if (p == null || p.playlistType != PlaylistType.xtream) return;
     final storage = ref.read(storageServiceProvider);
     final id = p.id;
+    // Only pre-fetch if nothing is loaded yet
     final noneLoaded = !storage.isTypeLoaded(id, 'live') &&
         !storage.isTypeLoaded(id, 'vod') &&
         !storage.isTypeLoaded(id, 'series');
@@ -108,12 +109,14 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
 
     if (!mounted) return;
     setState(() => _prefetching = true);
+    final repo = ref.read(playlistRepositoryProvider);
     try {
-      await Future.wait([
-        ref.read(playlistRepositoryProvider).loadXtreamLive(p).catchError((_) {}),
-        ref.read(playlistRepositoryProvider).loadXtreamVod(p).catchError((_) {}),
-        ref.read(playlistRepositoryProvider).loadXtreamSeries(p).catchError((_) {}),
-      ]);
+      // Sequential — avoids exhausting server connection limits (parallel = 6+ concurrent requests)
+      await repo.loadXtreamLive(p).catchError((_) {});
+      if (!mounted) return;
+      await repo.loadXtreamVod(p).catchError((_) {});
+      if (!mounted) return;
+      await repo.loadXtreamSeries(p).catchError((_) {});
       if (mounted) ref.read(playlistRefreshProvider.notifier).state++;
     } finally {
       if (mounted) setState(() => _prefetching = false);
@@ -122,10 +125,10 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final liveCount   = ref.watch(liveChannelsProvider).length;
-    final movieCount  = ref.watch(movieChannelsProvider).length;
-    final seriesCount = ref.watch(seriesChannelsProvider).length;
-    final radioCount  = ref.watch(radioChannelsProvider).length;
+    // Use fast count providers (key-only scan, no full object deserialization)
+    final liveCount   = ref.watch(liveCountProvider);
+    final movieCount  = ref.watch(movieCountProvider);
+    final seriesCount = ref.watch(seriesCountProvider);
 
     final playlist = widget.playlist;
     final playlists = widget.playlists;
@@ -192,7 +195,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
                   _ContentTile(
                     icon:     Icons.radio_rounded,
                     label:    'Radios',
-                    subtitle: '$radioCount stations',
+                    subtitle: 'Radio stations',
                     colors:   const [Color(0xFFF59E0B), Color(0xFFEA580C)],
                     onTap: () {
                       ref.read(activeCategoryProvider.notifier).state = null;

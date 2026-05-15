@@ -83,24 +83,30 @@ class PlaylistRepository {
   }
 
   /// Lazily loads live channels for an Xtream playlist.
+  /// Does NOT mark as loaded if the server returned 0 channels (avoids silent failures).
   Future<void> loadXtreamLive(Playlist playlist) async {
     final channels = await _svcFor(playlist).getLiveChannels();
+    if (channels.isEmpty) return;
     await _storage.saveChannels(playlist.id, channels, typePrefix: 'live_');
     await _storage.markTypeLoaded(playlist.id, 'live');
     await _refreshCount(playlist);
   }
 
   /// Lazily loads VOD (movies) channels for an Xtream playlist.
+  /// Does NOT mark as loaded if the server returned 0 channels (avoids silent failures).
   Future<void> loadXtreamVod(Playlist playlist) async {
     final channels = await _svcFor(playlist).getVodChannels();
+    if (channels.isEmpty) return;
     await _storage.saveChannels(playlist.id, channels, typePrefix: 'vod_');
     await _storage.markTypeLoaded(playlist.id, 'vod');
     await _refreshCount(playlist);
   }
 
   /// Lazily loads series channels for an Xtream playlist.
+  /// Does NOT mark as loaded if the server returned 0 channels (avoids silent failures).
   Future<void> loadXtreamSeries(Playlist playlist) async {
     final channels = await _svcFor(playlist).getSeriesChannels();
+    if (channels.isEmpty) return;
     await _storage.saveChannels(playlist.id, channels, typePrefix: 'series_');
     await _storage.markTypeLoaded(playlist.id, 'series');
     await _refreshCount(playlist);
@@ -130,8 +136,8 @@ class PlaylistRepository {
 
   // ── Misc ───────────────────────────────────────────────────────────────────
 
-  List<Channel> getChannels(String playlistId) =>
-      _storage.getChannels(playlistId);
+  List<Channel> getChannels(String playlistId, {String? typePrefix}) =>
+      _storage.getChannels(playlistId, typePrefix: typePrefix);
 
   List<Channel> getFavorites() => _storage.getFavorites();
 
@@ -149,7 +155,12 @@ class PlaylistRepository {
       );
 
   Future<void> _refreshCount(Playlist playlist) async {
-    playlist.channelCount = _storage.getChannels(playlist.id).length;
+    // Use fast key-count — no need to deserialize all channel objects
+    playlist.channelCount =
+        _storage.countChannels(playlist.id, typePrefix: 'live_') +
+        _storage.countChannels(playlist.id, typePrefix: 'vod_') +
+        _storage.countChannels(playlist.id, typePrefix: 'series_') +
+        _storage.countChannels(playlist.id);
     await _storage.savePlaylist(playlist);
   }
 }
