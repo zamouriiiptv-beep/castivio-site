@@ -119,13 +119,11 @@ class PlaylistRepository {
       return;
     }
 
-    // Xtream: clear loaded flags so data is re-fetched fresh (fixes stale categories)
+    // Xtream: sequential refresh so categories requests don't compete for connections
     await _storage.clearLoadedTypes(playlist.id);
-    await Future.wait([
-      loadXtreamLive(playlist),
-      loadXtreamVod(playlist),
-      loadXtreamSeries(playlist),
-    ]);
+    await loadXtreamLive(playlist);
+    await loadXtreamVod(playlist);
+    await loadXtreamSeries(playlist);
     playlist.lastUpdated = DateTime.now();
     await _storage.savePlaylist(playlist);
   }

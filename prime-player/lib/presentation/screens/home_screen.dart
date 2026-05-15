@@ -458,6 +458,7 @@ class _BottomBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = ref.watch(playlistLoadingProvider);
     return Container(
       height: 44,
       decoration: const BoxDecoration(
@@ -467,6 +468,23 @@ class _BottomBar extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
+          if (isLoading)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                SizedBox(
+                  width: 13, height: 13,
+                  child: CircularProgressIndicator(
+                      strokeWidth: 2, color: AppColors.primary),
+                ),
+                SizedBox(width: 6),
+                Text('Refreshing…',
+                    style: TextStyle(
+                      color: AppColors.primary, fontSize: 11,
+                      fontWeight: FontWeight.w600)),
+              ]),
+            )
+          else
           _ToolBtn(
             icon:  Icons.refresh_rounded,
             label: 'Refresh',
