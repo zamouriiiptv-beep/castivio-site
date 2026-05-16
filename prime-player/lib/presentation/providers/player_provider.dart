@@ -47,24 +47,17 @@ class PlayerState {
 }
 
 class PlayerNotifier extends Notifier<PlayerState> {
-  late final Player          _player;
-  late final VideoController _controller;
+  PlayerNotifier(this._player, this._controller);
+
+  final Player          _player;
+  final VideoController _controller;
   final List<StreamSubscription<dynamic>> _subs = [];
 
   @override
   PlayerState build() {
-    _player = Player(
-      configuration: PlayerConfiguration(
-        bufferSize: 32 * 1024 * 1024, // 32 MB — smoother live TV
-        logLevel:   MPVLogLevel.error,
-      ),
-    );
-    _controller = VideoController(_player);
-
     _subs.addAll([
       _player.stream.playing.listen((v) {
         state = state.copyWith(isPlaying: v);
-        // screen kept on via android:keepScreenOn in manifest
       }),
       _player.stream.buffering.listen((v) {
         state = state.copyWith(isBuffering: v);
@@ -88,15 +81,12 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
     ref.onDispose(() {
       for (final s in _subs) { s.cancel(); }
-      _player.dispose();
     });
 
     return PlayerState(controller: _controller);
   }
 
-  /// Opens a channel. libmpv starts playing almost instantly — no initialize() wait.
   Future<void> openChannel(Channel channel) async {
-    // Reset state immediately — UI shows spinner right away
     state = PlayerState(
       channel:     channel,
       controller:  _controller,
@@ -130,4 +120,6 @@ class PlayerNotifier extends Notifier<PlayerState> {
 }
 
 final playerProvider =
-    NotifierProvider<PlayerNotifier, PlayerState>(PlayerNotifier.new);
+    NotifierProvider<PlayerNotifier, PlayerState>(
+  () => throw UnimplementedError('playerProvider must be overridden in main()'),
+);
