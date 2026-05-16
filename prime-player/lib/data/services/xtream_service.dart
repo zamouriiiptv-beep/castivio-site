@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
 import '../models/channel.dart';
+import '../models/series_info.dart';
 
 // ─── Isolate-safe input ───────────────────────────────────────────────────────
 
@@ -267,6 +268,87 @@ class XtreamService {
     } catch (e) {
       debugPrint('[Xtream] getSeriesChannels error: $e');
       return [];
+    }
+  }
+
+  // ── Series info (seasons + episodes for one series) ──────────────────────
+
+  Future<SeriesInfo?> getSeriesInfo(String seriesId) async {
+    try {
+      final res = await _dio.get<dynamic>(
+        '$_base&action=get_series_info&series_id=$seriesId',
+        options: Options(receiveTimeout: const Duration(seconds: 30)),
+      );
+      final data = res.data;
+      if (data is! Map<String, dynamic>) return null;
+
+      final info       = data['info']     as Map<String, dynamic>?      ?? const {};
+      final seasonList = data['seasons']  as List<dynamic>?             ?? const [];
+      final epsMap     = data['episodes'] as Map<String, dynamic>?      ?? const {};
+
+      final seasons = <Season>[];
+      for (final s in seasonList.cast<Map<String, dynamic>>()) {
+        final num = (s['season_number'] is int)
+            ? s['season_number'] as int
+            : int.tryParse(s['season_number']?.toString() ?? '') ?? 0;
+        seasons.add(Season(
+          number:   num,
+          name:    (s['name'] as String?)?.trim() ?? 'Season $num',
+          cover:    s['cover']    as String?,
+          overview: s['overview'] as String?,
+        ));
+      }
+
+      final episodes = <Episode>[];
+      for (final entry in epsMap.entries) {
+        final seasonNum = int.tryParse(entry.key) ?? 0;
+        final list = (entry.value as List<dynamic>?) ?? const [];
+        for (final e in list.cast<Map<String, dynamic>>()) {
+          final id = e['id']?.toString() ?? '';
+          if (id.isEmpty) continue;
+          final epNum = (e['episode_num'] is int)
+              ? e['episode_num'] as int
+              : int.tryParse(e['episode_num']?.toString() ?? '') ?? 0;
+          final inf = e['info'] as Map<String, dynamic>? ?? const {};
+          episodes.add(Episode(
+            id:                 id,
+            seasonNumber:       seasonNum,
+            episodeNumber:      epNum,
+            title:             (e['title'] as String?)?.trim() ?? 'Episode $epNum',
+            containerExtension: (e['container_extension'] as String?) ?? 'mkv',
+            plot:               inf['plot']     as String?,
+            cover:              inf['movie_image'] as String? ?? inf['cover_big'] as String?,
+            durationSeconds:    inf['duration_secs'] is int
+                                ? inf['duration_secs'] as int
+                                : int.tryParse(inf['duration_secs']?.toString() ?? ''),
+          ));
+        }
+      }
+
+      // If seasons list is empty but we have episodes, derive seasons from episodes
+      if (seasons.isEmpty && episodes.isNotEmpty) {
+        final nums = episodes.map((e) => e.seasonNumber).toSet().toList()..sort();
+        for (final n in nums) {
+          seasons.add(Season(number: n, name: 'Season $n'));
+        }
+      }
+
+      return SeriesInfo(
+        seriesId:    seriesId,
+        name:       (info['name'] as String?)?.trim() ?? '',
+        cover:       info['cover']       as String?,
+        plot:        info['plot']        as String?,
+        cast:        info['cast']        as String?,
+        director:    info['director']    as String?,
+        genre:       info['genre']       as String?,
+        releaseDate: info['releaseDate'] as String? ?? info['release_date'] as String?,
+        rating:      info['rating']?.toString(),
+        seasons:     seasons,
+        episodes:    episodes,
+      );
+    } catch (e) {
+      debugPrint('[Xtream] getSeriesInfo error: $e');
+      return null;
     }
   }
 

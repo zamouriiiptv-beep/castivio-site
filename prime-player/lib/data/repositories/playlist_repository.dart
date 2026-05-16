@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import '../models/channel.dart';
 import '../models/playlist.dart';
+import '../models/series_info.dart';
 import '../services/m3u_parser.dart';
 import '../services/storage_service.dart';
 import '../services/xtream_service.dart';
@@ -111,6 +112,15 @@ class PlaylistRepository {
     await _storage.markTypeLoaded(playlist.id, 'series');
     await _refreshCount(playlist);
   }
+
+  Future<SeriesInfo?> getSeriesInfo(Playlist playlist, String seriesId) =>
+      _svcFor(playlist).getSeriesInfo(seriesId);
+
+  String buildEpisodeUrl(Playlist playlist, Episode episode) => episode.streamUrl(
+        host:     playlist.xtreamHost!,
+        username: playlist.xtreamUsername!,
+        password: playlist.xtreamPassword!,
+      );
 
   // ── Refresh ────────────────────────────────────────────────────────────────
 

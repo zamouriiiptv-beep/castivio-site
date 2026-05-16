@@ -5,10 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../../data/models/playlist.dart';
-import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
-import 'player_screen.dart';
+import 'series_detail_screen.dart';
 
 class SeriesScreen extends ConsumerStatefulWidget {
   const SeriesScreen({super.key});
@@ -127,12 +126,11 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                               : _PosterGrid(
                                   items: series,
                                   onTap: (ch) {
-                                    ref.read(playerProvider.notifier).openChannel(ch);
                                     Navigator.push(
                                       context,
                                       PageRouteBuilder(
                                         pageBuilder: (_, a, __) =>
-                                            const PlayerScreen(),
+                                            SeriesDetailScreen(series: ch),
                                         transitionsBuilder: (_, a, __, child) =>
                                             FadeTransition(opacity: a, child: child),
                                         transitionDuration:
