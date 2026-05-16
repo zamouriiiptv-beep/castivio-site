@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
 import '../models/channel.dart';
 import '../models/series_info.dart';
+import 'doh_interceptor.dart';
 
 // ─── Isolate-safe input ───────────────────────────────────────────────────────
 
@@ -104,10 +105,11 @@ class XtreamService {
     _dio = Dio(BaseOptions(
       baseUrl:        host.endsWith('/') ? host : '$host/',
       connectTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 30), // per-category responses are small — 30s is plenty
+      receiveTimeout: const Duration(seconds: 30),
       validateStatus: (_) => true,
       headers: const {'Accept-Encoding': 'gzip, deflate'},
-    ));
+    ))
+      ..interceptors.add(DohInterceptor());
   }
 
   String get _base => 'player_api.php?username=$username&password=$password';
