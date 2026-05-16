@@ -222,79 +222,142 @@ class _PosterGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(8),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount:   5,
-        crossAxisSpacing: 8,
-        mainAxisSpacing:  8,
-        childAspectRatio: 0.67,
+        crossAxisCount:   7,
+        crossAxisSpacing: 6,
+        mainAxisSpacing:  6,
+        childAspectRatio: 0.68,
       ),
       itemCount:              items.length,
       addAutomaticKeepAlives: false,
       itemBuilder: (_, i) {
         final item = items[i];
-        return GestureDetector(
-          onTap: () => onTap(item),
-          child: Container(
-            decoration: BoxDecoration(
-              color:        AppColors.surface,
-              borderRadius: BorderRadius.circular(10),
-              border:       Border.all(color: AppColors.border),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: item.logoUrl != null && item.logoUrl!.isNotEmpty
-                      ? CachedNetworkImage(
-                          imageUrl:       item.logoUrl!,
-                          fit:            BoxFit.cover,
-                          fadeInDuration: const Duration(milliseconds: 200),
-                          errorWidget: (_, __, ___) =>
-                              _PosterFallback(item.name, Icons.movie_rounded),
-                          placeholder: (_, __) =>
-                              Container(color: AppColors.surfaceLight),
-                        )
-                      : _PosterFallback(item.name, Icons.movie_rounded),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(5, 5, 5, 6),
-                  child: Text(item.name,
-                      style: const TextStyle(
-                        color:      AppColors.textPrimary,
-                        fontSize:   10,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis),
-                ),
-              ],
-            ),
-          ),
-        );
+        return _PosterCard(item: item, onTap: () => onTap(item));
       },
     );
   }
 }
 
-class _PosterFallback extends StatelessWidget {
+class _PosterCard extends StatefulWidget {
+  final Channel      item;
+  final VoidCallback onTap;
+  const _PosterCard({required this.item, required this.onTap});
+
+  @override
+  State<_PosterCard> createState() => _PosterCardState();
+}
+
+class _PosterCardState extends State<_PosterCard> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit:  (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: _hovered ? AppColors.primary : AppColors.border,
+              width: _hovered ? 1.5 : 1,
+            ),
+            boxShadow: _hovered
+                ? [BoxShadow(color: AppColors.primary.withOpacity(0.3),
+                    blurRadius: 8, offset: const Offset(0, 3))]
+                : [],
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // Poster image
+              widget.item.logoUrl != null && widget.item.logoUrl!.isNotEmpty
+                  ? CachedNetworkImage(
+                      imageUrl:       widget.item.logoUrl!,
+                      fit:            BoxFit.cover,
+                      fadeInDuration: const Duration(milliseconds: 150),
+                      errorWidget:    (_, __, ___) => _NoImageFallback(widget.item.name, Icons.movie_rounded),
+                      placeholder:    (_, __) => Container(color: AppColors.surfaceLight),
+                    )
+                  : _NoImageFallback(widget.item.name, Icons.movie_rounded),
+
+              // Bottom gradient + title
+              Positioned(
+                bottom: 0, left: 0, right: 0,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end:   Alignment.topCenter,
+                      colors: [Color(0xDD0A0E1A), Color(0x000A0E1A)],
+                    ),
+                  ),
+                  child: Text(
+                    widget.item.name,
+                    style: const TextStyle(
+                      color:      Colors.white,
+                      fontSize:   9,
+                      fontWeight: FontWeight.w600,
+                      shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+
+              // Play icon on hover
+              if (_hovered)
+                Center(
+                  child: Container(
+                    width: 32, height: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: kPrimeGradient,
+                      boxShadow: [BoxShadow(
+                          color: Colors.black.withOpacity(0.5), blurRadius: 8)],
+                    ),
+                    child: const Icon(Icons.play_arrow_rounded,
+                        color: Colors.white, size: 18),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NoImageFallback extends StatelessWidget {
   final String   name;
   final IconData icon;
-  const _PosterFallback(this.name, this.icon);
+  const _NoImageFallback(this.name, this.icon);
 
   @override
   Widget build(BuildContext context) => Container(
-        color: AppColors.surfaceLight,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end:   Alignment.bottomCenter,
+            colors: [AppColors.surface, AppColors.surfaceLight],
+          ),
+        ),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(icon, color: AppColors.textMuted, size: 28),
-          const SizedBox(height: 5),
+          Icon(icon, color: AppColors.textMuted.withOpacity(0.5), size: 22),
+          const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Text(name,
                 style: const TextStyle(
-                    color: AppColors.textMuted, fontSize: 9),
-                maxLines: 2,
+                    color: AppColors.textSecondary, fontSize: 8),
+                maxLines: 3,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis),
           ),
