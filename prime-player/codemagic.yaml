@@ -1,7 +1,7 @@
 workflows:
   android-release:
     name: Prime Player – Android APK
-    max_build_duration: 60
+    max_build_duration: 75
     environment:
       flutter: 3.29.3
       java: 17
@@ -15,7 +15,7 @@ workflows:
       - name: Get Flutter packages
         script: |
           cd prime-player
-          flutter pub get
+          timeout 900 flutter pub get
       - name: Resolve Gradle dependencies
         script: |
           cd prime-player/android
