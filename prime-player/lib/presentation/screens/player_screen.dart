@@ -91,6 +91,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
                         .openChannel(playerState.channel!);
                   }
                 },
+                onBack: () => Navigator.pop(context),
               ),
 
             // ── Controls overlay (auto-hides) ────────────────────────────
@@ -168,9 +169,10 @@ class _BufferingIndicator extends StatelessWidget {
 
 // ── Error overlay ─────────────────────────────────────────────────────────────
 class _ErrorOverlay extends StatelessWidget {
-  final String?   message;
+  final String?       message;
   final VoidCallback? onRetry;
-  const _ErrorOverlay({this.message, this.onRetry});
+  final VoidCallback? onBack;
+  const _ErrorOverlay({this.message, this.onRetry, this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -200,16 +202,33 @@ class _ErrorOverlay extends StatelessWidget {
               ),
             ],
             const SizedBox(height: 20),
-            if (onRetry != null)
-              ElevatedButton.icon(
-                onPressed: onRetry,
-                icon:  const Icon(Icons.refresh_rounded),
-                label: const Text('Retry'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                ),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (onBack != null)
+                  OutlinedButton.icon(
+                    onPressed: onBack,
+                    icon:  const Icon(Icons.arrow_back_rounded),
+                    label: const Text('Back'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.white38),
+                    ),
+                  ),
+                if (onBack != null && onRetry != null)
+                  const SizedBox(width: 12),
+                if (onRetry != null)
+                  ElevatedButton.icon(
+                    onPressed: onRetry,
+                    icon:  const Icon(Icons.refresh_rounded),
+                    label: const Text('Retry'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+              ],
+            ),
           ],
         ),
       ),
