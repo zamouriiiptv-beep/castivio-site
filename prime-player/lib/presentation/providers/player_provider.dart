@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
-import 'package:wakelock_plus/wakelock_plus.dart';
 import '../../data/models/channel.dart';
 
 class PlayerState {
@@ -65,7 +64,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
     _subs.addAll([
       _player.stream.playing.listen((v) {
         state = state.copyWith(isPlaying: v);
-        if (v) WakelockPlus.enable();
+        // screen kept on via android:keepScreenOn in manifest
       }),
       _player.stream.buffering.listen((v) {
         state = state.copyWith(isBuffering: v);
@@ -111,7 +110,6 @@ class PlayerNotifier extends Notifier<PlayerState> {
           httpHeaders: const {'Connection': 'keep-alive'},
         ),
       );
-      WakelockPlus.enable();
     } catch (e) {
       state = state.copyWith(
         hasError:     true,
@@ -127,7 +125,6 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
   void stop() {
     _player.stop();
-    WakelockPlus.disable();
     state = PlayerState(controller: _controller);
   }
 }
