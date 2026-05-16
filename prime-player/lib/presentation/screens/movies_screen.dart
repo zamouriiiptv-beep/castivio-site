@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../../data/models/playlist.dart';
+import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
@@ -65,6 +67,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     final categories     = ref.watch(movieCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
     final movies         = ref.watch(filteredMovieChannelsProvider);
+    final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -72,8 +75,8 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    'MOVIES',
-              subSection: '${movies.length} films',
+              section:    tr.movies.toUpperCase(),
+              subSection: '${movies.length} ${tr.films}',
               onBack:     () => Navigator.pop(context),
             ),
             Expanded(
@@ -107,13 +110,13 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                         if (_searching)
                           _SearchBar(
                             ctrl: _searchCtrl,
-                            hint: 'Search movies…',
+                            hint: tr.searchMovies,
                             onChanged: (q) =>
                                 ref.read(searchQueryProvider.notifier).state = q,
                           ),
                         Expanded(
                           child: movies.isEmpty
-                              ? _EmptyView(icon: Icons.movie_rounded)
+                              ? _EmptyView(icon: Icons.movie_rounded, label: tr.noContent)
                               : _PosterGrid(
                                   items: movies,
                                   onTap: (ch) {
@@ -144,21 +147,27 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     );
   }
 
-  Widget _buildLoading(BuildContext context) => Scaffold(
+  Widget _buildLoading(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'MOVIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: 'Loading movies…', onCancel: () => Navigator.pop(context))),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
+          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: tr.loadingMovies, onCancel: () => Navigator.pop(context))),
         ])),
       );
+  }
 
-  Widget _buildError(BuildContext context) => Scaffold(
+  Widget _buildError(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'MOVIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
+  }
 }
 
 // ── Shared search bar ─────────────────────────────────────────────────────────
@@ -357,7 +366,8 @@ class _NoImageFallback extends StatelessWidget {
 
 class _EmptyView extends StatelessWidget {
   final IconData icon;
-  const _EmptyView({required this.icon});
+  final String   label;
+  const _EmptyView({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) => Center(
@@ -367,8 +377,8 @@ class _EmptyView extends StatelessWidget {
             child: Icon(icon, color: Colors.white, size: 52),
           ),
           const SizedBox(height: 12),
-          const Text('No content found',
-              style: TextStyle(color: AppColors.textMuted, fontSize: 14)),
+          Text(label,
+              style: const TextStyle(color: AppColors.textMuted, fontSize: 14)),
         ]),
       );
 }

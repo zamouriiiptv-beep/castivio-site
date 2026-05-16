@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/playlist.dart';
+import '../providers/locale_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
 
@@ -61,6 +63,7 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
     final categories     = ref.watch(liveCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
     final channels       = ref.watch(filteredLiveChannelsProvider);
+    final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -68,8 +71,8 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    'LIVE TV',
-              subSection: '${channels.length} channels',
+              section:    tr.liveTV.toUpperCase(),
+              subSection: '${channels.length} ${tr.channels}',
               onBack:     () => Navigator.pop(context),
             ),
             Expanded(
@@ -118,23 +121,29 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
     );
   }
 
-  Widget _buildLoading(BuildContext context) => Scaffold(
+  Widget _buildLoading(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'LIVE TV', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
           Expanded(child: SectionLoader(
             icon: Icons.live_tv_rounded,
-            label: 'Loading live channels…',
+            label: tr.loadingLive,
             onCancel: () => Navigator.pop(context),
           )),
         ])),
       );
+  }
 
-  Widget _buildError(BuildContext context) => Scaffold(
+  Widget _buildError(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'LIVE TV', subSection: 'Error', onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
+  }
 }

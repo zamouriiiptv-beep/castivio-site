@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
 
   # ─── Video (libmpv — instant channel switching, no initialize() wait) ────────
   media_kit: ^1.1.11

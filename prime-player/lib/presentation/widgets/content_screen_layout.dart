@@ -7,8 +7,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:media_kit_video/media_kit_video.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
+import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../screens/player_screen.dart';
@@ -33,6 +35,7 @@ class ContentTopBar extends ConsumerWidget {
     final playlist   = playlists.isEmpty ? null
         : playlists.firstWhere((p) => p.id == activeId,
             orElse: () => playlists.first);
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
 
     return Container(
       height: 46,
@@ -106,8 +109,8 @@ class ContentTopBar extends ConsumerWidget {
             const Icon(Icons.playlist_play_rounded,
                 color: AppColors.textMuted, size: 14),
             const SizedBox(width: 4),
-            const Text('Playlist: ',
-                style: TextStyle(color: AppColors.textMuted, fontSize: 11)),
+            Text('${tr.playlist}: ',
+                style: const TextStyle(color: AppColors.textMuted, fontSize: 11)),
             Text(playlist.name,
                 style: const TextStyle(
                   color: AppColors.primaryLight,
@@ -123,10 +126,10 @@ class ContentTopBar extends ConsumerWidget {
               color: Colors.red.shade800,
               borderRadius: BorderRadius.circular(5),
             ),
-            child: const Row(mainAxisSize: MainAxisSize.min, children: [
-              Icon(Icons.info_rounded, color: Colors.white, size: 12),
-              SizedBox(width: 3),
-              Text('Info', style: TextStyle(
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              const Icon(Icons.info_rounded, color: Colors.white, size: 12),
+              const SizedBox(width: 3),
+              Text(tr.info, style: const TextStyle(
                   color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
             ]),
           ),
@@ -137,7 +140,7 @@ class ContentTopBar extends ConsumerWidget {
 }
 
 // ── Left icon sidebar ─────────────────────────────────────────────────────────
-class IconSidebar extends StatelessWidget {
+class IconSidebar extends ConsumerWidget {
   final VoidCallback onBack;
   final VoidCallback onSearch;
   final bool isSearching;
@@ -150,24 +153,25 @@ class IconSidebar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
     return Container(
       width: 50,
       color: AppColors.sidebar,
       child: Column(
         children: [
           const SizedBox(height: 4),
-          _SideIcon(icon: Icons.home_rounded,    onTap: onBack,     tip: 'Home'),
-          _SideIcon(icon: Icons.favorite_border_rounded, onTap: () {}, tip: 'Favorites'),
+          _SideIcon(icon: Icons.home_rounded,    onTap: onBack,     tip: tr.home),
+          _SideIcon(icon: Icons.favorite_border_rounded, onTap: () {}, tip: tr.favorites),
           _SideIcon(
             icon: isSearching ? Icons.search_off_rounded : Icons.search_rounded,
             onTap: onSearch,
-            tip: 'Search',
+            tip: tr.search,
             active: isSearching,
           ),
           const Spacer(),
-          _SideIcon(icon: Icons.refresh_rounded,            onTap: () {}, tip: 'Refresh'),
-          _SideIcon(icon: Icons.power_settings_new_rounded, onTap: onBack, tip: 'Exit'),
+          _SideIcon(icon: Icons.refresh_rounded,            onTap: () {}, tip: tr.refresh),
+          _SideIcon(icon: Icons.power_settings_new_rounded, onTap: onBack, tip: tr.exit),
           const SizedBox(height: 6),
         ],
       ),
@@ -203,7 +207,7 @@ class _SideIcon extends StatelessWidget {
 }
 
 // ── Categories panel ──────────────────────────────────────────────────────────
-class CategoriesPanel extends StatelessWidget {
+class CategoriesPanel extends ConsumerWidget {
   final List<String> categories;
   final String activeCategory;
   final ValueChanged<String> onSelect;
@@ -216,7 +220,8 @@ class CategoriesPanel extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
     return Container(
       width: 200,
       color: AppColors.surface,
@@ -227,12 +232,12 @@ class CategoriesPanel extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
             color: AppColors.surfaceLight,
-            child: const Row(children: [
-              Text('Favorites',
-                  style: TextStyle(color: AppColors.textSecondary,
+            child: Row(children: [
+              Text(tr.favorites,
+                  style: const TextStyle(color: AppColors.textSecondary,
                       fontSize: 12, fontWeight: FontWeight.w600)),
-              Spacer(),
-              Icon(Icons.favorite_border_rounded,
+              const Spacer(),
+              const Icon(Icons.favorite_border_rounded,
                   color: AppColors.textMuted, size: 14),
             ]),
           ),
@@ -289,6 +294,7 @@ class ChannelsListPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final activeChannel = ref.watch(playerProvider).channel;
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
 
     return Container(
       width: 290,
@@ -311,12 +317,12 @@ class ChannelsListPanel extends ConsumerWidget {
                     onChanged: onSearch,
                     style: const TextStyle(
                         color: AppColors.textPrimary, fontSize: 13),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       isDense: true,
                       contentPadding: EdgeInsets.zero,
-                      hintText: 'Search…',
-                      hintStyle: TextStyle(color: AppColors.textMuted),
+                      hintText: tr.searchHint,
+                      hintStyle: const TextStyle(color: AppColors.textMuted),
                     ),
                   ),
                 ),
@@ -324,8 +330,8 @@ class ChannelsListPanel extends ConsumerWidget {
             ),
           Expanded(
             child: channels.isEmpty
-                ? const Center(child: Text('No channels',
-                    style: TextStyle(color: AppColors.textMuted)))
+                ? Center(child: Text(tr.noChannels,
+                    style: const TextStyle(color: AppColors.textMuted)))
                 : ListView.builder(
                     itemCount: channels.length,
                     addAutomaticKeepAlives: false,
@@ -462,6 +468,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
     final ps      = ref.watch(playerProvider);
     final ctrl    = ps.controller;
     final channel = ps.channel;
+    final tr      = AppLocalizations.of(ref.watch(localeProvider));
 
     return Expanded(
       child: GestureDetector(
@@ -488,8 +495,8 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
                 const Icon(Icons.error_outline_rounded,
                     color: AppColors.error, size: 36),
                 const SizedBox(height: 8),
-                const Text('Stream error',
-                    style: TextStyle(color: Colors.white60, fontSize: 12)),
+                Text(tr.streamError,
+                    style: const TextStyle(color: Colors.white60, fontSize: 12)),
                 const SizedBox(height: 8),
                 GestureDetector(
                   onTap: () {
@@ -502,8 +509,8 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
                     decoration: BoxDecoration(
                         gradient: kPrimeGradient,
                         borderRadius: BorderRadius.circular(8)),
-                    child: const Text('Retry',
-                        style: TextStyle(color: Colors.white, fontSize: 12)),
+                    child: Text(tr.retry,
+                        style: const TextStyle(color: Colors.white, fontSize: 12)),
                   ),
                 ),
               ])),
@@ -563,11 +570,11 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
                   Icon(Icons.calendar_today_rounded,
                       color: Colors.white.withOpacity(0.15), size: 28),
                   const SizedBox(height: 4),
-                  Text('TV Programs',
+                  Text(tr.tvPrograms,
                       style: TextStyle(
                           color: Colors.white.withOpacity(0.25), fontSize: 12,
                           fontWeight: FontWeight.w600)),
-                  Text('Select a channel',
+                  Text(tr.selectChannel,
                       style: TextStyle(
                           color: Colors.white.withOpacity(0.15), fontSize: 10)),
                 ]),
@@ -644,14 +651,16 @@ class _Controls extends StatelessWidget {
 
 // ── Lazy-load shared widgets ──────────────────────────────────────────────────
 
-class SectionLoader extends StatelessWidget {
+class SectionLoader extends ConsumerWidget {
   final IconData     icon;
   final String       label;
   final VoidCallback? onCancel;
   const SectionLoader({super.key, required this.icon, required this.label, this.onCancel});
 
   @override
-  Widget build(BuildContext context) => Center(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
+    return Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(
             width: 56, height: 56,
@@ -665,7 +674,7 @@ class SectionLoader extends StatelessWidget {
               style: const TextStyle(
                 color: AppColors.textPrimary, fontSize: 15, fontWeight: FontWeight.w600)),
           const SizedBox(height: 6),
-          Text('This may take a moment for large servers',
+          Text(tr.loadingMoment,
               style: TextStyle(
                   color: AppColors.textSecondary.withOpacity(0.6), fontSize: 12)),
           if (onCancel != null) ...[
@@ -678,22 +687,25 @@ class SectionLoader extends StatelessWidget {
                   border: Border.all(color: AppColors.border),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text('Cancel',
-                    style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+                child: Text(tr.cancel,
+                    style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
               ),
             ),
           ],
         ]),
       );
+  }
 }
 
-class SectionError extends StatelessWidget {
+class SectionError extends ConsumerWidget {
   final String       error;
   final VoidCallback onRetry;
   const SectionError({super.key, required this.error, required this.onRetry});
 
   @override
-  Widget build(BuildContext context) => Center(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
+    return Center(
         child: Padding(
           padding: const EdgeInsets.all(32),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -711,11 +723,12 @@ class SectionError extends StatelessWidget {
                   gradient: kPrimeGradient,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text('Retry',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+                child: Text(tr.retry,
+                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
               ),
             ),
           ]),
         ),
       );
+  }
 }

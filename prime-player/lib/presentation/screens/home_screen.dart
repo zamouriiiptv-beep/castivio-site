@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/playlist.dart';
+import '../providers/locale_provider.dart';
 import '../providers/playlist_provider.dart';
 import 'add_playlist_screen.dart';
 import 'live_tv_screen.dart';
@@ -114,6 +116,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
     final liveCount   = ref.watch(liveCountProvider);
     final movieCount  = ref.watch(movieCountProvider);
     final seriesCount = ref.watch(seriesCountProvider);
+    final tr          = AppLocalizations.of(ref.watch(localeProvider));
 
     final playlist = widget.playlist;
     final playlists = widget.playlists;
@@ -123,11 +126,11 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
     final id       = playlist?.id ?? '';
 
     String liveSub   = isXtream && !storage.isTypeLoaded(id, 'live')
-        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$liveCount channels';
+        ? (_prefetching ? tr.loading : tr.tapToLoad) : '$liveCount ${tr.channels}';
     String movieSub  = isXtream && !storage.isTypeLoaded(id, 'vod')
-        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$movieCount films';
+        ? (_prefetching ? tr.loading : tr.tapToLoad) : '$movieCount ${tr.films}';
     String seriesSub = isXtream && !storage.isTypeLoaded(id, 'series')
-        ? (_prefetching ? 'Loading…' : 'Tap to load') : '$seriesCount shows';
+        ? (_prefetching ? tr.loading : tr.tapToLoad) : '$seriesCount ${tr.shows}';
 
     return Column(
       children: [
@@ -140,7 +143,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
                 children: [
                   _ContentTile(
                     icon:     Icons.live_tv_rounded,
-                    label:    'Live TV',
+                    label:    tr.liveTV,
                     subtitle: liveSub,
                     colors:   const [Color(0xFF7C3AED), Color(0xFF2563EB)],
                     onTap: () {
@@ -153,7 +156,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
                   const SizedBox(width: 14),
                   _ContentTile(
                     icon:     Icons.movie_creation_rounded,
-                    label:    'Movies',
+                    label:    tr.movies,
                     subtitle: movieSub,
                     colors:   const [Color(0xFFDB2777), Color(0xFFEF4444)],
                     onTap: () {
@@ -166,7 +169,7 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
                   const SizedBox(width: 14),
                   _ContentTile(
                     icon:     Icons.video_library_rounded,
-                    label:    'Series',
+                    label:    tr.series,
                     subtitle: seriesSub,
                     colors:   const [Color(0xFF059669), Color(0xFF0891B2)],
                     onTap: () {
@@ -179,8 +182,8 @@ class _HomeLayoutState extends ConsumerState<_HomeLayout> {
                   const SizedBox(width: 14),
                   _ContentTile(
                     icon:     Icons.radio_rounded,
-                    label:    'Radios',
-                    subtitle: 'Radio stations',
+                    label:    tr.radios,
+                    subtitle: tr.radioStations,
                     colors:   const [Color(0xFFF59E0B), Color(0xFFEA580C)],
                     onTap: () {
                       ref.read(activeCategoryProvider.notifier).state = null;
@@ -208,6 +211,7 @@ class _TopBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
     return Container(
       height: 50,
       decoration: const BoxDecoration(
@@ -300,11 +304,11 @@ class _TopBar extends ConsumerWidget {
                 color: const Color(0xFFC0392B),
                 borderRadius: BorderRadius.circular(5),
               ),
-              child: const Row(mainAxisSize: MainAxisSize.min, children: [
-                Icon(Icons.perm_device_info_rounded, color: Colors.white, size: 13),
-                SizedBox(width: 5),
-                Text('Device Info',
-                    style: TextStyle(
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                const Icon(Icons.perm_device_info_rounded, color: Colors.white, size: 13),
+                const SizedBox(width: 5),
+                Text(tr.deviceInfo,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
@@ -447,6 +451,7 @@ class _BottomBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = ref.watch(playlistLoadingProvider);
+    final tr = AppLocalizations.of(ref.watch(localeProvider));
     return Container(
       height: 44,
       decoration: const BoxDecoration(
@@ -457,17 +462,17 @@ class _BottomBar extends ConsumerWidget {
       child: Row(
         children: [
           if (isLoading)
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
-                SizedBox(
+                const SizedBox(
                   width: 13, height: 13,
                   child: CircularProgressIndicator(
                       strokeWidth: 2, color: AppColors.primary),
                 ),
-                SizedBox(width: 6),
-                Text('Refreshing…',
-                    style: TextStyle(
+                const SizedBox(width: 6),
+                Text('${tr.refresh}…',
+                    style: const TextStyle(
                       color: AppColors.primary, fontSize: 11,
                       fontWeight: FontWeight.w600)),
               ]),
@@ -475,7 +480,7 @@ class _BottomBar extends ConsumerWidget {
           else
           _ToolBtn(
             icon:  Icons.refresh_rounded,
-            label: 'Refresh',
+            label: tr.refresh,
             onTap: () async {
               if (playlist != null) {
                 ref.read(playlistLoadingProvider.notifier).state = true;
@@ -490,7 +495,7 @@ class _BottomBar extends ConsumerWidget {
           _vDivider(),
           _ToolBtn(
             icon:  Icons.swap_horiz_rounded,
-            label: 'Change',
+            label: tr.change,
             onTap: () => showDialog(
               context: context,
               builder: (_) => _PlaylistPickerDialog(playlists: playlists),
@@ -499,7 +504,7 @@ class _BottomBar extends ConsumerWidget {
           _vDivider(),
           _ToolBtn(
             icon:  Icons.language_rounded,
-            label: 'Language',
+            label: tr.language,
             onTap: () => showDialog(
               context: context,
               builder: (_) => const _LanguageDialog(),
@@ -508,7 +513,7 @@ class _BottomBar extends ConsumerWidget {
           _vDivider(),
           _ToolBtn(
             icon:     Icons.add_circle_rounded,
-            label:    'Add Playlist',
+            label:    tr.addPlaylist,
             gradient: true,
             onTap: () async {
               await Navigator.push(context,
@@ -519,14 +524,14 @@ class _BottomBar extends ConsumerWidget {
           _vDivider(),
           _ToolBtn(
             icon:  Icons.settings_rounded,
-            label: 'Settings',
+            label: tr.settings,
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (_) => const SettingsScreen())),
           ),
           _vDivider(),
           _ToolBtn(
             icon:  Icons.help_outline_rounded,
-            label: 'About',
+            label: tr.about,
             onTap: () {
               final storage = ref.read(storageServiceProvider);
               showDialog(
@@ -976,25 +981,58 @@ class _InfoColumn extends StatelessWidget {
 }
 
 // ── Language dialog ───────────────────────────────────────────────────────────
-class _LanguageDialog extends StatefulWidget {
+class _LanguageDialog extends ConsumerWidget {
   const _LanguageDialog();
 
+  static const _languages = <(String, String)>[
+    ('en', 'English'),
+    ('ar', 'Arabic (العربية)'),
+    ('fr', 'French (Français)'),
+    ('es', 'Spanish (Español)'),
+    ('de', 'German (Deutsch)'),
+    ('tr', 'Turkish (Türkçe)'),
+    ('it', 'Italian (Italiano)'),
+    ('nl', 'Dutch (Nederlands)'),
+    ('pt', 'Portuguese (Português)'),
+    ('ru', 'Russian (Русский)'),
+    ('zh', 'Chinese (中文)'),
+    ('ja', 'Japanese (日本語)'),
+    ('ko', 'Korean (한국어)'),
+    ('fa', 'Persian (فارسی)'),
+    ('pl', 'Polish (Polski)'),
+    ('ro', 'Romanian (Română)'),
+    ('el', 'Greek (Ελληνικά)'),
+    ('uk', 'Ukrainian (Українська)'),
+    ('sv', 'Swedish (Svenska)'),
+    ('no', 'Norwegian (Norsk)'),
+    ('da', 'Danish (Dansk)'),
+    ('fi', 'Finnish (Suomi)'),
+    ('cs', 'Czech (Čeština)'),
+    ('hu', 'Hungarian (Magyar)'),
+    ('hr', 'Croatian (Hrvatski)'),
+    ('bg', 'Bulgarian (Български)'),
+    ('sr', 'Serbian (Srpski)'),
+    ('ms', 'Malay (Bahasa Melayu)'),
+    ('id', 'Indonesian (Bahasa Indonesia)'),
+    ('vi', 'Vietnamese (Tiếng Việt)'),
+    ('hi', 'Hindi (हिन्दी)'),
+    ('he', 'Hebrew (עברית)'),
+    ('ur', 'Urdu (اردو)'),
+    ('th', 'Thai (ภาษาไทย)'),
+    ('sk', 'Slovak (Slovenčina)'),
+  ];
+
   @override
-  State<_LanguageDialog> createState() => _LanguageDialogState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentCode = ref.watch(localeProvider);
+    final tr = AppLocalizations.of(currentCode);
 
-class _LanguageDialogState extends State<_LanguageDialog> {
-  String _selected = 'English';
-
-  static const _langs = ['English', 'العربية', 'Français', 'Español'];
-
-  @override
-  Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: AppColors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        width: 260,
+        width: 320,
+        constraints: const BoxConstraints(maxHeight: 520),
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -1006,8 +1044,8 @@ class _LanguageDialogState extends State<_LanguageDialog> {
                     color: Colors.white, size: 20),
               ),
               const SizedBox(width: 8),
-              const Text('Language',
-                  style: TextStyle(
+              Text(tr.language,
+                  style: const TextStyle(
                     color: AppColors.textPrimary,
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -1020,40 +1058,56 @@ class _LanguageDialogState extends State<_LanguageDialog> {
               ),
             ]),
             const SizedBox(height: 16),
-            ..._langs.map((lang) {
-              final isActive = lang == _selected;
-              return GestureDetector(
-                onTap: () => setState(() => _selected = lang),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 150),
-                  margin: const EdgeInsets.only(bottom: 6),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 14, vertical: 10),
-                  decoration: BoxDecoration(
-                    gradient: isActive ? kPrimeGradient : null,
-                    color: isActive ? null : AppColors.surfaceLight,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: isActive ? Colors.transparent : AppColors.border,
-                    ),
-                  ),
-                  child: Row(children: [
-                    Text(lang,
-                        style: TextStyle(
-                          color: isActive ? Colors.white : AppColors.textPrimary,
-                          fontSize: 14,
-                          fontWeight: isActive
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        )),
-                    const Spacer(),
-                    if (isActive)
-                      const Icon(Icons.check_rounded,
-                          color: Colors.white, size: 18),
-                  ]),
+            Flexible(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: _languages.map((entry) {
+                    final code     = entry.$1;
+                    final label    = entry.$2;
+                    final isActive = code == currentCode;
+                    return GestureDetector(
+                      onTap: () {
+                        ref.read(localeProvider.notifier).setLocale(code);
+                        Navigator.pop(context);
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 150),
+                        margin: const EdgeInsets.only(bottom: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 14, vertical: 10),
+                        decoration: BoxDecoration(
+                          gradient: isActive ? kPrimeGradient : null,
+                          color: isActive ? null : AppColors.surfaceLight,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isActive
+                                ? Colors.transparent
+                                : AppColors.border,
+                          ),
+                        ),
+                        child: Row(children: [
+                          Text(label,
+                              style: TextStyle(
+                                color: isActive
+                                    ? Colors.white
+                                    : AppColors.textPrimary,
+                                fontSize: 13,
+                                fontWeight: isActive
+                                    ? FontWeight.w700
+                                    : FontWeight.w400,
+                              )),
+                          const Spacer(),
+                          if (isActive)
+                            const Icon(Icons.check_rounded,
+                                color: Colors.white, size: 18),
+                        ]),
+                      ),
+                    );
+                  }).toList(),
                 ),
-              );
-            }),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../../data/models/playlist.dart';
+import '../providers/locale_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
 import 'series_detail_screen.dart';
@@ -64,6 +66,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     final categories     = ref.watch(seriesCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
     final series         = ref.watch(filteredSeriesChannelsProvider);
+    final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -71,8 +74,8 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    'SERIES',
-              subSection: '${series.length} shows',
+              section:    tr.series.toUpperCase(),
+              subSection: '${series.length} ${tr.shows}',
               onBack:     () => Navigator.pop(context),
             ),
             Expanded(
@@ -106,13 +109,13 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                         if (_searching)
                           _SearchBar(
                             ctrl: _searchCtrl,
-                            hint: 'Search series…',
+                            hint: tr.searchSeries,
                             onChanged: (q) =>
                                 ref.read(searchQueryProvider.notifier).state = q,
                           ),
                         Expanded(
                           child: series.isEmpty
-                              ? const _EmptyView()
+                              ? _EmptyView(label: tr.noSeries)
                               : _PosterGrid(
                                   items: series,
                                   onTap: (ch) {
@@ -142,21 +145,27 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     );
   }
 
-  Widget _buildLoading(BuildContext context) => Scaffold(
+  Widget _buildLoading(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'SERIES', subSection: 'Loading…', onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: 'Loading series…', onCancel: () => Navigator.pop(context))),
+          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
+          Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: tr.loadingSeries, onCancel: () => Navigator.pop(context))),
         ])),
       );
+  }
 
-  Widget _buildError(BuildContext context) => Scaffold(
+  Widget _buildError(BuildContext context) {
+    final tr = AppLocalizations.of(ref.read(localeProvider));
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: 'SERIES', subSection: 'Error', onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
+  }
 }
 
 // ── Search bar ────────────────────────────────────────────────────────────────
@@ -354,7 +363,8 @@ class _NoImageFallback extends StatelessWidget {
 }
 
 class _EmptyView extends StatelessWidget {
-  const _EmptyView();
+  final String label;
+  const _EmptyView({required this.label});
 
   @override
   Widget build(BuildContext context) => Center(
@@ -365,8 +375,8 @@ class _EmptyView extends StatelessWidget {
                 color: Colors.white, size: 52),
           ),
           const SizedBox(height: 12),
-          const Text('No series found',
-              style: TextStyle(color: AppColors.textMuted, fontSize: 14)),
+          Text(label,
+              style: const TextStyle(color: AppColors.textMuted, fontSize: 14)),
         ]),
       );
 }

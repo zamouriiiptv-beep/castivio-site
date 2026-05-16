@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
+import '../providers/locale_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
 
@@ -26,6 +28,7 @@ class _RadiosScreenState extends ConsumerState<RadiosScreen> {
     final categories     = ref.watch(radioCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
     final channels       = ref.watch(filteredRadioChannelsProvider);
+    final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -33,8 +36,8 @@ class _RadiosScreenState extends ConsumerState<RadiosScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    'RADIO',
-              subSection: '${channels.length} stations',
+              section:    tr.radios.toUpperCase(),
+              subSection: '${channels.length} ${tr.radioStations}',
               onBack:     () => Navigator.pop(context),
             ),
             Expanded(
