@@ -238,17 +238,23 @@ class _ChannelList extends ConsumerWidget {
         final ch = channels[i];
         return _ChannelTile(
           channel: ch,
-          onTap: () => _openPlayer(ctx, ref, ch),
-          // Pre-warm next channel connection on pointer-down
-          onPointerDown: () => ref.read(playerProvider.notifier).preConnect(
-              channels[i < channels.length - 1 ? i + 1 : i].streamUrl),
+          onTap: () => _openPlayer(ctx, ref, ch, channels, i),
+          // DNS pre-warm for the tapped channel on pointer-down (~100-300 ms
+          // head-start before the tap event fires).
+          onPointerDown: () =>
+              ref.read(playerProvider.notifier).preConnect(ch.streamUrl),
         );
       },
     );
   }
 
-  void _openPlayer(BuildContext ctx, WidgetRef ref, Channel ch) {
+  void _openPlayer(BuildContext ctx, WidgetRef ref, Channel ch,
+      List<Channel> channels, int i) {
     ref.read(playerProvider.notifier).openChannel(ch);
+    // Preload the next channel while the user watches the current one.
+    if (i + 1 < channels.length) {
+      ref.read(playerProvider.notifier).preloadChannel(channels[i + 1]);
+    }
     Navigator.push(
       ctx,
       PageRouteBuilder(

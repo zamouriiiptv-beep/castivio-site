@@ -1,17 +1,18 @@
+import 'dart:io';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/channel.dart';
 
 class PlayerState {
-  final Channel?               channel;
+  final Channel?                channel;
   final BetterPlayerController? controller;
-  final bool                   isPlaying;
-  final bool                   isBuffering;
-  final bool                   hasError;
-  final String?                errorMessage;
-  final Duration               position;
-  final Duration               duration;
+  final bool                    isPlaying;
+  final bool                    isBuffering;
+  final bool                    hasError;
+  final String?                 errorMessage;
+  final Duration                position;
+  final Duration                duration;
 
   const PlayerState({
     this.channel,
@@ -46,11 +47,13 @@ class PlayerState {
 }
 
 class PlayerNotifier extends Notifier<PlayerState> {
-  BetterPlayerController? _controller;
+  BetterPlayerController? _activeCtrl;
+  BetterPlayerController? _preloadCtrl;
+  Channel?                _preloadedChannel;
 
   @override
   PlayerState build() {
-    final controller = BetterPlayerController(
+    _activeCtrl = BetterPlayerController(
       BetterPlayerConfiguration(
         autoPlay:        true,
         fit:             BoxFit.contain,
@@ -59,21 +62,22 @@ class PlayerNotifier extends Notifier<PlayerState> {
         autoDispose:     false,
         expandToFill:    true,
         controlsConfiguration: const BetterPlayerControlsConfiguration(
-          showControls: false,
-        ),
+            showControls: false),
         errorBuilder: _hiddenErrorBuilder,
       ),
     );
-    controller.addEventsListener(_onEvent);
-    _controller = controller;
+    _activeCtrl!.addEventsListener(_onEvent);
 
     ref.onDispose(() {
-      controller.removeEventsListener(_onEvent);
-      controller.dispose();
-      _controller = null;
+      _activeCtrl?.removeEventsListener(_onEvent);
+      _activeCtrl?.dispose();
+      _preloadCtrl?.dispose();
+      _activeCtrl       = null;
+      _preloadCtrl      = null;
+      _preloadedChannel = null;
     });
 
-    return PlayerState(controller: controller);
+    return PlayerState(controller: _activeCtrl);
   }
 
   void _onEvent(BetterPlayerEvent event) {
@@ -114,21 +118,37 @@ class PlayerNotifier extends Notifier<PlayerState> {
     }
   }
 
-  /// Pre-warm a connection to the given URL (HEAD request) so the actual
-  /// open() call has a hot DNS cache + TCP handshake ready. Best-effort, never throws.
+  /// DNS pre-warm on pointer-down so ExoPlayer's OkHttp finds a cached
+  /// answer ~100–300 ms later when the actual tap fires.
   Future<void> preConnect(String url) async {
-    // ExoPlayer manages its own connections; the DoH interceptor + DNS cache
-    // already give us a warm path. This is a no-op kept for API compatibility.
+    try {
+      final host = Uri.parse(url).host;
+      if (host.isNotEmpty) await InternetAddress.lookup(host);
+    } catch (_) {}
   }
 
-  Future<void> openChannel(Channel channel) async {
-    final ctrl = _controller;
-    if (ctrl == null) return;
+  /// Load [channel] into a silent background ExoPlayer instance.
+  /// If the user later taps this channel, controllers are swapped in <100 ms
+  /// because the HLS manifest + first segments are already in memory.
+  Future<void> preloadChannel(Channel channel) async {
+    if (_preloadedChannel?.streamUrl == channel.streamUrl) return;
 
-    state = PlayerState(
-      channel:     channel,
-      controller:  ctrl,
-      isBuffering: true,
+    // Drop any previous preload for a different channel.
+    _preloadCtrl?.dispose();
+    _preloadCtrl      = null;
+    _preloadedChannel = null;
+
+    final ctrl = BetterPlayerController(
+      BetterPlayerConfiguration(
+        autoPlay:        false, // silent — no audio in background
+        fit:             BoxFit.contain,
+        handleLifecycle: false,
+        autoDispose:     false,
+        expandToFill:    true,
+        controlsConfiguration: const BetterPlayerControlsConfiguration(
+            showControls: false),
+        errorBuilder: _hiddenErrorBuilder,
+      ),
     );
 
     try {
@@ -139,10 +159,70 @@ class PlayerNotifier extends Notifier<PlayerState> {
           liveStream: _isLikelyLive(channel.streamUrl),
           headers:    const {'Connection': 'keep-alive'},
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
-            minBufferMs:                       1500,
-            maxBufferMs:                      15000,
-            bufferForPlaybackMs:                500,
-            bufferForPlaybackAfterRebufferMs:  2000,
+            minBufferMs:                      500,
+            maxBufferMs:                     4000,
+            bufferForPlaybackMs:              500,
+            bufferForPlaybackAfterRebufferMs: 1000,
+          ),
+        ),
+      );
+      _preloadCtrl      = ctrl;
+      _preloadedChannel = channel;
+    } catch (_) {
+      ctrl.dispose(); // silent failure — falls back to normal load
+    }
+  }
+
+  Future<void> openChannel(Channel channel) async {
+    // ── Fast path: preloaded controller is ready ──────────────────────────
+    if (_preloadedChannel?.streamUrl == channel.streamUrl &&
+        _preloadCtrl != null) {
+      final incoming = _preloadCtrl!;
+      final retiring  = _activeCtrl;
+
+      _preloadCtrl      = null;
+      _preloadedChannel = null;
+      _activeCtrl       = incoming;
+
+      retiring?.removeEventsListener(_onEvent);
+      incoming.addEventsListener(_onEvent);
+
+      state = PlayerState(
+        channel:     channel,
+        controller:  incoming,
+        isBuffering: false,
+        isPlaying:   true,
+      );
+      incoming.play();
+
+      // Retire old controller off the critical path.
+      Future.microtask(() => retiring?.dispose());
+      return;
+    }
+
+    // ── Normal path ───────────────────────────────────────────────────────
+    final ctrl = _activeCtrl;
+    if (ctrl == null) return;
+
+    // Cancel any in-flight preload for a different channel.
+    _preloadCtrl?.dispose();
+    _preloadCtrl      = null;
+    _preloadedChannel = null;
+
+    state = PlayerState(channel: channel, controller: ctrl, isBuffering: true);
+
+    try {
+      await ctrl.setupDataSource(
+        BetterPlayerDataSource(
+          BetterPlayerDataSourceType.network,
+          channel.streamUrl,
+          liveStream: _isLikelyLive(channel.streamUrl),
+          headers:    const {'Connection': 'keep-alive'},
+          bufferingConfiguration: const BetterPlayerBufferingConfiguration(
+            minBufferMs:                      1500,
+            maxBufferMs:                     15000,
+            bufferForPlaybackMs:              500,
+            bufferForPlaybackAfterRebufferMs: 2000,
           ),
         ),
       );
@@ -164,32 +244,23 @@ class PlayerNotifier extends Notifier<PlayerState> {
   }
 
   void togglePlay() {
-    final ctrl = _controller;
+    final ctrl = _activeCtrl;
     if (ctrl == null) return;
-    if (state.isPlaying) {
-      ctrl.pause();
-    } else {
-      ctrl.play();
-    }
+    if (state.isPlaying) ctrl.pause(); else ctrl.play();
   }
 
-  void seek(Duration position) {
-    _controller?.seekTo(position);
-  }
+  void seek(Duration position) => _activeCtrl?.seekTo(position);
 
   void stop() {
-    final ctrl = _controller;
+    final ctrl = _activeCtrl;
     if (ctrl == null) return;
-    try {
-      ctrl.pause();
-    } catch (_) {}
+    try { ctrl.pause(); } catch (_) {}
     state = PlayerState(controller: ctrl);
   }
 }
 
-Widget _hiddenErrorBuilder(BuildContext context, String? errorMessage) {
-  return const SizedBox.shrink();
-}
+Widget _hiddenErrorBuilder(BuildContext context, String? errorMessage) =>
+    const SizedBox.shrink();
 
 final playerProvider =
     NotifierProvider<PlayerNotifier, PlayerState>(PlayerNotifier.new);

@@ -340,8 +340,14 @@ class ChannelsListPanel extends ConsumerWidget {
                       final ch       = channels[i];
                       final isActive = ch.streamUrl == activeChannel?.streamUrl;
                       return GestureDetector(
-                        onTap: () =>
-                            ref.read(playerProvider.notifier).openChannel(ch),
+                        onTap: () {
+                          ref.read(playerProvider.notifier).openChannel(ch);
+                          // Preload next channel while current one plays.
+                          if (i + 1 < channels.length) {
+                            ref.read(playerProvider.notifier)
+                                .preloadChannel(channels[i + 1]);
+                          }
+                        },
                         child: Container(
                           color: isActive
                               ? AppColors.primary.withOpacity(0.12)
