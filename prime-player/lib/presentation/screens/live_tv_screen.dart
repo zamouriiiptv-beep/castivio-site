@@ -4,6 +4,7 @@ import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/playlist.dart';
 import '../providers/locale_provider.dart';
+import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
 
@@ -24,6 +25,11 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadIfNeeded());
+  }
+
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
   }
 
   @override
@@ -65,7 +71,10 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
     final channels       = ref.watch(filteredLiveChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
@@ -73,13 +82,13 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
             ContentTopBar(
               section:    tr.liveTV.toUpperCase(),
               subSection: '${channels.length} ${tr.channels}',
-              onBack:     () => Navigator.pop(context),
+              onBack:     _onBack,
             ),
             Expanded(
               child: Row(
                 children: [
                   IconSidebar(
-                    onBack: () => Navigator.pop(context),
+                    onBack: _onBack,
                     onSearch: () {
                       setState(() {
                         _searching = !_searching;
@@ -118,32 +127,40 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildLoading(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.loading, onBack: _onBack),
           Expanded(child: SectionLoader(
             icon: Icons.live_tv_rounded,
             label: tr.loadingLive,
-            onCancel: () => Navigator.pop(context),
+            onCancel: _onBack,
           )),
         ])),
-      );
+      ),
+    );
   }
 
   Widget _buildError(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.liveTV.toUpperCase(), subSection: tr.error, onBack: _onBack),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
-      );
+      ),
+    );
   }
 }
