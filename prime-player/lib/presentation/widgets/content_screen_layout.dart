@@ -502,11 +502,17 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Video surface — ExoPlayer renders directly via BetterPlayer
-            if (channel == null)
-              _Idle(icon: widget.idleIcon, label: widget.idleLabel)
-            else if (ctrl != null)
+            // Video surface — always in tree so ExoPlayer always has a Surface
+            // ready when setupDataSource() is called. Without this, the platform
+            // view doesn't exist yet and autoPlay fires into the void.
+            if (ctrl != null)
               Positioned.fill(child: BetterPlayer(controller: ctrl)),
+
+            // Idle overlay — covers the (black) video surface until a channel
+            // is selected.
+            if (channel == null)
+              Positioned.fill(
+                  child: _Idle(icon: widget.idleIcon, label: widget.idleLabel)),
 
             // Buffering
             if (ps.isBuffering)
