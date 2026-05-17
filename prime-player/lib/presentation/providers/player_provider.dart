@@ -118,8 +118,6 @@ class PlayerNotifier extends Notifier<PlayerState> {
     }
   }
 
-  /// DNS pre-warm on pointer-down so ExoPlayer's OkHttp finds a cached
-  /// answer ~100–300 ms later when the actual tap fires.
   Future<void> preConnect(String url) async {
     try {
       final host = Uri.parse(url).host;
@@ -127,20 +125,16 @@ class PlayerNotifier extends Notifier<PlayerState> {
     } catch (_) {}
   }
 
-  /// Load [channel] into a silent background ExoPlayer instance.
-  /// If the user later taps this channel, controllers are swapped in <100 ms
-  /// because the HLS manifest + first segments are already in memory.
   Future<void> preloadChannel(Channel channel) async {
     if (_preloadedChannel?.streamUrl == channel.streamUrl) return;
 
-    // Drop any previous preload for a different channel.
     _preloadCtrl?.dispose();
     _preloadCtrl      = null;
     _preloadedChannel = null;
 
     final ctrl = BetterPlayerController(
       BetterPlayerConfiguration(
-        autoPlay:        false, // silent — no audio in background
+        autoPlay:        false,
         fit:             BoxFit.contain,
         handleLifecycle: false,
         autoDispose:     false,
@@ -157,7 +151,10 @@ class PlayerNotifier extends Notifier<PlayerState> {
           BetterPlayerDataSourceType.network,
           channel.streamUrl,
           liveStream: _isLikelyLive(channel.streamUrl),
-          headers:    const {'Connection': 'keep-alive'},
+          headers: const {
+            'Connection': 'keep-alive',
+            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+          },
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
             minBufferMs:                      500,
             maxBufferMs:                     4000,
@@ -169,12 +166,11 @@ class PlayerNotifier extends Notifier<PlayerState> {
       _preloadCtrl      = ctrl;
       _preloadedChannel = channel;
     } catch (_) {
-      ctrl.dispose(); // silent failure — falls back to normal load
+      ctrl.dispose();
     }
   }
 
   Future<void> openChannel(Channel channel) async {
-    // ── Fast path: preloaded controller is ready ──────────────────────────
     if (_preloadedChannel?.streamUrl == channel.streamUrl &&
         _preloadCtrl != null) {
       final incoming = _preloadCtrl!;
@@ -195,16 +191,13 @@ class PlayerNotifier extends Notifier<PlayerState> {
       );
       incoming.play();
 
-      // Retire old controller off the critical path.
       Future.microtask(() => retiring?.dispose());
       return;
     }
 
-    // ── Normal path ───────────────────────────────────────────────────────
     final ctrl = _activeCtrl;
     if (ctrl == null) return;
 
-    // Cancel any in-flight preload for a different channel.
     _preloadCtrl?.dispose();
     _preloadCtrl      = null;
     _preloadedChannel = null;
@@ -217,7 +210,10 @@ class PlayerNotifier extends Notifier<PlayerState> {
           BetterPlayerDataSourceType.network,
           channel.streamUrl,
           liveStream: _isLikelyLive(channel.streamUrl),
-          headers:    const {'Connection': 'keep-alive'},
+          headers: const {
+            'Connection': 'keep-alive',
+            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+          },
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
             minBufferMs:                       800,
             maxBufferMs:                     10000,
