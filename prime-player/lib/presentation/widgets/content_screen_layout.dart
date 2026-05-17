@@ -461,7 +461,11 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
   }
 
   @override
-  void dispose() { _hideTimer?.cancel(); super.dispose(); }
+  void dispose() {
+    _hideTimer?.cancel();
+    ref.read(playerProvider.notifier).stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
