@@ -161,7 +161,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
             minBufferMs:                      500,
             maxBufferMs:                     4000,
-            bufferForPlaybackMs:              500,
+            bufferForPlaybackMs:              200,
             bufferForPlaybackAfterRebufferMs: 1000,
           ),
         ),
@@ -219,10 +219,10 @@ class PlayerNotifier extends Notifier<PlayerState> {
           liveStream: _isLikelyLive(channel.streamUrl),
           headers:    const {'Connection': 'keep-alive'},
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
-            minBufferMs:                      1500,
-            maxBufferMs:                     15000,
-            bufferForPlaybackMs:              500,
-            bufferForPlaybackAfterRebufferMs: 2000,
+            minBufferMs:                       800,
+            maxBufferMs:                     10000,
+            bufferForPlaybackMs:               200,
+            bufferForPlaybackAfterRebufferMs:  1000,
           ),
         ),
       );
