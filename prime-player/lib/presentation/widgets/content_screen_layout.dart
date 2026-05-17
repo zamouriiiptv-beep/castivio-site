@@ -3,10 +3,10 @@
 library;
 
 import 'dart:async';
+import 'package:better_player_plus/better_player_plus.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:media_kit_video/media_kit_video.dart';
 import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
@@ -496,13 +496,11 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Video surface — always render Video widget; libmpv shows black when idle
+            // Video surface — ExoPlayer renders directly via BetterPlayer
             if (channel == null)
               _Idle(icon: widget.idleIcon, label: widget.idleLabel)
             else if (ctrl != null)
-              Positioned.fill(child: Video(
-                  controller: ctrl, fit: BoxFit.contain,
-                  controls: (_) => const SizedBox.shrink())),
+              Positioned.fill(child: BetterPlayer(controller: ctrl)),
 
             // Buffering
             if (ps.isBuffering)
