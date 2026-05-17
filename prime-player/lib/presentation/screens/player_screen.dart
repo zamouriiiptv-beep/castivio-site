@@ -15,7 +15,8 @@ class PlayerScreen extends ConsumerStatefulWidget {
   ConsumerState<PlayerScreen> createState() => _PlayerScreenState();
 }
 
-class _PlayerScreenState extends ConsumerState<PlayerScreen> {
+class _PlayerScreenState extends ConsumerState<PlayerScreen>
+    with WidgetsBindingObserver {
   bool _showControls = true;
   Timer? _hideTimer;
 
@@ -24,10 +25,20 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen> {
     super.initState();
     _resetHideTimer();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.hidden) {
+      ref.read(playerProvider.notifier).stop();
+    }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _hideTimer?.cancel();
     ref.read(playerProvider.notifier).stop();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);

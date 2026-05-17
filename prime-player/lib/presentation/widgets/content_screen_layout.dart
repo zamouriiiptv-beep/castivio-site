@@ -445,9 +445,24 @@ class VideoPlayerPanel extends ConsumerStatefulWidget {
   ConsumerState<VideoPlayerPanel> createState() => _VideoPlayerPanelState();
 }
 
-class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
+class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
+    with WidgetsBindingObserver {
   bool   _showControls = false;
   Timer? _hideTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.hidden) {
+      ref.read(playerProvider.notifier).stop();
+    }
+  }
 
   void _tap() {
     if (_showControls) {
@@ -462,6 +477,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _hideTimer?.cancel();
     ref.read(playerProvider.notifier).stop();
     super.dispose();
