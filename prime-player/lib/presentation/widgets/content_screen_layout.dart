@@ -1,4 +1,5 @@
 /// Shared widgets for Live TV, Movies, Series, Radios screens.
+/// Layout concept inspired by Hot Player — design elevated for Prime.
 library;
 
 import 'dart:async';
@@ -45,6 +46,7 @@ class ContentTopBar extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
+          // Logo + name (tappable → go back)
           GestureDetector(
             onTap: onBack,
             child: Row(
@@ -79,6 +81,7 @@ class ContentTopBar extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 14),
+          // Section badge
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
             decoration: BoxDecoration(
@@ -116,6 +119,7 @@ class ContentTopBar extends ConsumerWidget {
                 )),
             const SizedBox(width: 12),
           ],
+          // Info badge
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
@@ -223,6 +227,7 @@ class CategoriesPanel extends ConsumerWidget {
       color: AppColors.surface,
       child: Column(
         children: [
+          // Favorites header row
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
@@ -337,6 +342,7 @@ class ChannelsListPanel extends ConsumerWidget {
                       return GestureDetector(
                         onTap: () {
                           ref.read(playerProvider.notifier).openChannel(ch);
+                          // Preload next channel while current one plays.
                           if (i + 1 < channels.length) {
                             ref.read(playerProvider.notifier)
                                 .preloadChannel(channels[i + 1]);
@@ -351,6 +357,7 @@ class ChannelsListPanel extends ConsumerWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 5),
                           child: Row(children: [
+                            // Logo
                             Container(
                               width: 30, height: 30,
                               decoration: BoxDecoration(
@@ -384,6 +391,7 @@ class ChannelsListPanel extends ConsumerWidget {
                                   ),
                                   maxLines: 1, overflow: TextOverflow.ellipsis),
                             ),
+                            // Number badge
                             Container(
                               width: 30, height: 18,
                               decoration: BoxDecoration(
@@ -494,19 +502,23 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Always in tree — ExoPlayer always has a Surface ready
+            // Video surface — always in tree so ExoPlayer always has a Surface
+            // ready when setupDataSource() is called. Without this, the platform
+            // view doesn't exist yet and autoPlay fires into the void.
             if (ctrl != null)
               Positioned.fill(child: BetterPlayer(controller: ctrl)),
 
-            // Idle overlay when no channel selected
+            // Idle overlay — covers the (black) video surface until a channel
+            // is selected.
             if (channel == null)
               Positioned.fill(
                   child: _Idle(icon: widget.idleIcon, label: widget.idleLabel)),
 
-            // Buffering spinner
+            // Buffering
             if (ps.isBuffering)
               const Center(child: CircularProgressIndicator(
                   color: AppColors.primary, strokeWidth: 2.5)),
+
 
             // Controls overlay
             if (_showControls && channel != null)
@@ -525,7 +537,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                 ),
               ),
 
-            // Bottom info bar — always shown when channel is selected
+            // Bottom info bar
             if (channel != null)
               Positioned(
                 bottom: 0, left: 0, right: 0,
