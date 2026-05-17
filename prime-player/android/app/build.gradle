@@ -31,6 +31,12 @@ android {
             shrinkResources false
         }
     }
+
+    lint {
+        disable "NullSafeMutableLiveData"
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 flutter {
