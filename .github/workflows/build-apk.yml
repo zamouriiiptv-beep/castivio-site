@@ -11,7 +11,7 @@ jobs:
   build:
     name: Flutter Build – Android arm64
     runs-on: ubuntu-22.04
-    timeout-minutes: 60
+    timeout-minutes: 90
 
     steps:
       - name: Checkout
@@ -23,29 +23,51 @@ jobs:
           distribution: zulu
           java-version: '17'
 
+      - name: Cache Flutter SDK
+        uses: actions/cache@v4
+        id: flutter-cache
+        with:
+          path: ${{ runner.tool_cache }}/flutter
+          key: flutter-3.29.3-linux
+
       - name: Install Flutter 3.29.3
+        if: steps.flutter-cache.outputs.cache-hit != 'true'
         run: |
-          FLUTTER_VERSION=3.29.3
-          wget -q "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" -O flutter.tar.xz
-          tar xf flutter.tar.xz -C $HOME
-          echo "$HOME/flutter/bin" >> $GITHUB_PATH
+          wget -q "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.29.3-stable.tar.xz" -O flutter.tar.xz
+          tar xf flutter.tar.xz -C ${{ runner.tool_cache }}
+          mv ${{ runner.tool_cache }}/flutter ${{ runner.tool_cache }}/flutter
+
+      - name: Add Flutter to PATH
+        run: echo "${{ runner.tool_cache }}/flutter/bin" >> $GITHUB_PATH
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: pub-${{ hashFiles('prime-player/pubspec.lock') }}
+          restore-keys: pub-
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('prime-player/android/**/*.gradle*', 'prime-player/android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: gradle-
 
       - name: Flutter doctor
         run: |
-          export PATH="$HOME/flutter/bin:$PATH"
           flutter --version
           flutter doctor --android-licenses || true
 
       - name: Get packages
         working-directory: prime-player
-        run: |
-          export PATH="$HOME/flutter/bin:$PATH"
-          flutter pub get
+        run: flutter pub get
 
       - name: Build release APK (arm64)
         working-directory: prime-player
         run: |
-          export PATH="$HOME/flutter/bin:$PATH"
           flutter build apk \
             --release \
             --no-tree-shake-icons \
