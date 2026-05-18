@@ -1,32 +1,144 @@
-Options -Indexes
+# ===============================
+# 0) HTTPS + NON-WWW (MUST BE FIRST)
+# ===============================
 
-# ── HTTPS ─────────────────────────────────────────────────────────────────────
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# ── www → non-www ─────────────────────────────────────────────────────────────
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+# Force https://primeiptvplus.com (no www, always https)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://primeiptvplus.com%{REQUEST_URI} [R=301,L]
 
-# ── صفحات قديمة → صفحات جديدة ────────────────────────────────────────────────
-Redirect 301 /best-iptv-usa-guide.html     https://primeiptvplus.com/en/usa/
-Redirect 301 /iptv-guide-en.html           https://primeiptvplus.com/en/guide/
-Redirect 301 /iptv-guide-ar.html           https://primeiptvplus.com/guide/
-Redirect 301 /iptv-guide-fr.html           https://primeiptvplus.com/fr/guide/
-Redirect 301 /en.html                      https://primeiptvplus.com/en/
-Redirect 301 /es/esp/ana                   https://primeiptvplus.com/es/espana/
+# ===============================
+# OLD GUIDE FILES → NEW FOLDERS
+# (RewriteRule instead of Redirect for mod_rewrite compatibility)
+# ===============================
 
-# ── index.html → مسار نظيف ───────────────────────────────────────────────────
-Redirect 301 /index.html                   https://primeiptvplus.com/
-Redirect 301 /en/index.html                https://primeiptvplus.com/en/
-Redirect 301 /fr/index.html                https://primeiptvplus.com/fr/
-Redirect 301 /es/index.html                https://primeiptvplus.com/es/
+RewriteRule ^iptv-guide-ar\.html$ /guide/ [R=301,L]
+RewriteRule ^iptv-guide-en\.html$ /en/guide/ [R=301,L]
+RewriteRule ^iptv-guide-fr\.html$ /fr/guide/ [R=301,L]
+RewriteRule ^best-iptv-usa-guide\.html$ /en/guide/ [R=301,L]
+RewriteRule ^es/esp/ana$ /es/espana/ [R=301,L]
+RewriteRule ^en\.html$ /en/ [R=301,L]
 
-# ── trailing slash (روابط بدون / في النهاية) ──────────────────────────────────
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule ^(.+[^/])$ /$1/ [L,R=301]
+# ===============================
+# CLEAN URLs & LANG FIX
+# ===============================
 
-# ── صفحة 404 مخصصة ───────────────────────────────────────────────────────────
-ErrorDocument 404 /404.html
+# -------------------------------
+# 1) ROOT
+# -------------------------------
+
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^index/?$ / [R=301,L]
+
+# -------------------------------
+# 2) LANG INDEX FILES → CLEAN URL
+# -------------------------------
+
+RewriteRule ^en/index\.html$ /en/ [R=301,L]
+RewriteRule ^fr/index\.html$ /fr/ [R=301,L]
+RewriteRule ^es/index\.html$ /es/ [R=301,L]
+
+# -------------------------------
+# 3) GUIDE CLEAN URL FIX
+# -------------------------------
+
+RewriteRule ^guide/index\.html$ /guide/ [R=301,L]
+RewriteRule ^en/guide/index\.html$ /en/guide/ [R=301,L]
+RewriteRule ^fr/guide/index\.html$ /fr/guide/ [R=301,L]
+RewriteRule ^es/guide/index\.html$ /es/guide/ [R=301,L]
+
+# -------------------------------
+# 4) FORCE TRAILING SLASH
+# -------------------------------
+
+# Language roots
+RewriteRule ^(en|fr|es)$ /$1/ [R=301,L]
+
+# Guide pages
+RewriteRule ^guide$ /guide/ [R=301,L]
+RewriteRule ^en/guide$ /en/guide/ [R=301,L]
+RewriteRule ^fr/guide$ /fr/guide/ [R=301,L]
+RewriteRule ^es/guide$ /es/guide/ [R=301,L]
+
+# Country pages — EN
+RewriteRule ^en/uk$ /en/uk/ [R=301,L]
+RewriteRule ^en/usa$ /en/usa/ [R=301,L]
+RewriteRule ^en/canada$ /en/canada/ [R=301,L]
+
+# Country pages — ES
+RewriteRule ^es/espana$ /es/espana/ [R=301,L]
+RewriteRule ^es/mexico$ /es/mexico/ [R=301,L]
+RewriteRule ^es/argentina$ /es/argentina/ [R=301,L]
+
+# Country pages — FR
+RewriteRule ^fr/france$ /fr/france/ [R=301,L]
+RewriteRule ^fr/belgique$ /fr/belgique/ [R=301,L]
+RewriteRule ^fr/canada$ /fr/canada/ [R=301,L]
+
+# Guide sub-pages — AR
+RewriteRule ^guide/maghreb$ /guide/maghreb/ [R=301,L]
+RewriteRule ^guide/mashriq$ /guide/mashriq/ [R=301,L]
+RewriteRule ^guide/khalij$ /guide/khalij/ [R=301,L]
+
+# Privacy & Terms (without trailing slash)
+RewriteRule ^privacy-policy$ /privacy-policy/ [R=301,L]
+RewriteRule ^terms-of-service$ /terms-of-service/ [R=301,L]
+RewriteRule ^en/privacy-policy$ /en/privacy-policy/ [R=301,L]
+RewriteRule ^en/terms-of-service$ /en/terms-of-service/ [R=301,L]
+RewriteRule ^fr/privacy-policy$ /fr/privacy-policy/ [R=301,L]
+RewriteRule ^fr/terms-of-service$ /fr/terms-of-service/ [R=301,L]
+RewriteRule ^es/privacy-policy$ /es/privacy-policy/ [R=301,L]
+RewriteRule ^es/terms-of-service$ /es/terms-of-service/ [R=301,L]
+
+# -------------------------------
+# 4) DEFAULT FILES
+# -------------------------------
+DirectoryIndex index.html index.php
+
+# -------------------------------
+# 5) PHP HANDLER
+# -------------------------------
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+
+# -------------------------------
+# 6) CACHING
+# -------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 6 months"
+  ExpiresByType font/woff "access plus 6 months"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header unset ETag
+  FileETag None
+</IfModule>
+
+# -------------------------------
+# 7) GZIP & BROTLI
+# -------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE html txt xml css js json woff woff2 svg
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the "ea-php81" package as the default "PHP" programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
