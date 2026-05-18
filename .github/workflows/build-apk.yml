@@ -11,7 +11,7 @@ jobs:
   build:
     name: Flutter Build – Android arm64
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -23,16 +23,22 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Flutter 3.29.3
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.3'
-          channel: stable
           cache: true
+
+      - name: Flutter version info
+        run: flutter --version
 
       - name: Get packages
         working-directory: prime-player
         run: flutter pub get
+
+      - name: Analyze (warnings only)
+        working-directory: prime-player
+        run: flutter analyze --no-fatal-infos || true
 
       - name: Build release APK (arm64)
         working-directory: prime-player
@@ -42,10 +48,19 @@ jobs:
             --no-tree-shake-icons \
             --target-platform android-arm64 \
             --no-pub
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx4g"
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: prime-player-arm64-${{ github.sha }}
+          name: prime-player-arm64-${{ github.run_number }}
           path: prime-player/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           retention-days: 30
+
+      - name: Show APK size
+        run: |
+          APK=prime-player/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          if [ -f "$APK" ]; then
+            echo "✅ APK size: $(du -sh $APK | cut -f1)"
+          fi
