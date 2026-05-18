@@ -3,10 +3,10 @@
 library;
 
 import 'dart:async';
+import 'package:better_player_plus/better_player_plus.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:media_kit_video/media_kit_video.dart';
 import '../../core/app_localizations.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
@@ -340,8 +340,14 @@ class ChannelsListPanel extends ConsumerWidget {
                       final ch       = channels[i];
                       final isActive = ch.streamUrl == activeChannel?.streamUrl;
                       return GestureDetector(
-                        onTap: () =>
-                            ref.read(playerProvider.notifier).openChannel(ch),
+                        onTap: () {
+                          ref.read(playerProvider.notifier).openChannel(ch);
+                          // Preload next channel while current one plays.
+                          if (i + 1 < channels.length) {
+                            ref.read(playerProvider.notifier)
+                                .preloadChannel(channels[i + 1]);
+                          }
+                        },
                         child: Container(
                           color: isActive
                               ? AppColors.primary.withOpacity(0.12)
@@ -496,44 +502,23 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Video surface — always render Video widget; libmpv shows black when idle
+            // Video surface — always in tree so ExoPlayer always has a Surface
+            // ready when setupDataSource() is called. Without this, the platform
+            // view doesn't exist yet and autoPlay fires into the void.
+            if (ctrl != null)
+              Positioned.fill(child: BetterPlayer(controller: ctrl)),
+
+            // Idle overlay — covers the (black) video surface until a channel
+            // is selected.
             if (channel == null)
-              _Idle(icon: widget.idleIcon, label: widget.idleLabel)
-            else if (ctrl != null)
-              Positioned.fill(child: Video(
-                  controller: ctrl, fit: BoxFit.contain,
-                  controls: (_) => const SizedBox.shrink())),
+              Positioned.fill(
+                  child: _Idle(icon: widget.idleIcon, label: widget.idleLabel)),
 
             // Buffering
             if (ps.isBuffering)
               const Center(child: CircularProgressIndicator(
                   color: AppColors.primary, strokeWidth: 2.5)),
 
-            // Error
-            if (ps.hasError)
-              Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-                const Icon(Icons.error_outline_rounded,
-                    color: AppColors.error, size: 36),
-                const SizedBox(height: 8),
-                Text(tr.streamError,
-                    style: const TextStyle(color: Colors.white60, fontSize: 12)),
-                const SizedBox(height: 8),
-                GestureDetector(
-                  onTap: () {
-                    if (channel != null)
-                      ref.read(playerProvider.notifier).openChannel(channel);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 6),
-                    decoration: BoxDecoration(
-                        gradient: kPrimeGradient,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Text(tr.retry,
-                        style: const TextStyle(color: Colors.white, fontSize: 12)),
-                  ),
-                ),
-              ])),
 
             // Controls overlay
             if (_showControls && channel != null)
@@ -553,7 +538,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
               ),
 
             // Bottom info bar
-            if (channel != null && !ps.hasError)
+            if (channel != null)
               Positioned(
                 bottom: 0, left: 0, right: 0,
                 child: Container(

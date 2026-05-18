@@ -1,18 +1,18 @@
-import 'dart:async';
+import 'dart:io';
+import 'package:better_player_plus/better_player_plus.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:media_kit/media_kit.dart';
-import 'package:media_kit_video/media_kit_video.dart';
 import '../../data/models/channel.dart';
 
 class PlayerState {
-  final Channel?         channel;
-  final VideoController? controller;
-  final bool             isPlaying;
-  final bool             isBuffering;
-  final bool             hasError;
-  final String?          errorMessage;
-  final Duration         position;
-  final Duration         duration;
+  final Channel?                channel;
+  final BetterPlayerController? controller;
+  final bool                    isPlaying;
+  final bool                    isBuffering;
+  final bool                    hasError;
+  final String?                 errorMessage;
+  final Duration                position;
+  final Duration                duration;
 
   const PlayerState({
     this.channel,
@@ -26,14 +26,14 @@ class PlayerState {
   });
 
   PlayerState copyWith({
-    Channel?         channel,
-    VideoController? controller,
-    bool?            isPlaying,
-    bool?            isBuffering,
-    bool?            hasError,
-    String?          errorMessage,
-    Duration?        position,
-    Duration?        duration,
+    Channel?                channel,
+    BetterPlayerController? controller,
+    bool?                   isPlaying,
+    bool?                   isBuffering,
+    bool?                   hasError,
+    String?                 errorMessage,
+    Duration?               position,
+    Duration?               duration,
   }) => PlayerState(
     channel:      channel      ?? this.channel,
     controller:   controller   ?? this.controller,
@@ -47,57 +47,189 @@ class PlayerState {
 }
 
 class PlayerNotifier extends Notifier<PlayerState> {
-  PlayerNotifier(this._player, this._controller);
-
-  final Player          _player;
-  final VideoController _controller;
-  final List<StreamSubscription<dynamic>> _subs = [];
+  BetterPlayerController? _activeCtrl;
+  BetterPlayerController? _preloadCtrl;
+  Channel?                _preloadedChannel;
 
   @override
   PlayerState build() {
-    _subs.addAll([
-      _player.stream.playing.listen((v) {
-        state = state.copyWith(isPlaying: v);
-      }),
-      _player.stream.buffering.listen((v) {
-        state = state.copyWith(isBuffering: v);
-      }),
-      _player.stream.position.listen((v) {
-        state = state.copyWith(position: v);
-      }),
-      _player.stream.duration.listen((v) {
-        state = state.copyWith(duration: v);
-      }),
-      _player.stream.error.listen((v) {
-        if (v.isNotEmpty) {
-          state = state.copyWith(
-            hasError:     true,
-            errorMessage: v,
-            isBuffering:  false,
-          );
-        }
-      }),
-    ]);
+    _activeCtrl = BetterPlayerController(
+      BetterPlayerConfiguration(
+        autoPlay:        true,
+        fit:             BoxFit.contain,
+        looping:         false,
+        handleLifecycle: false,
+        autoDispose:     false,
+        expandToFill:    true,
+        controlsConfiguration: const BetterPlayerControlsConfiguration(
+            showControls: false),
+        errorBuilder: _hiddenErrorBuilder,
+      ),
+    );
+    _activeCtrl!.addEventsListener(_onEvent);
 
     ref.onDispose(() {
-      for (final s in _subs) { s.cancel(); }
+      _activeCtrl?.removeEventsListener(_onEvent);
+      _activeCtrl?.dispose();
+      _preloadCtrl?.dispose();
+      _activeCtrl       = null;
+      _preloadCtrl      = null;
+      _preloadedChannel = null;
     });
 
-    return PlayerState(controller: _controller);
+    return PlayerState(controller: _activeCtrl);
   }
 
-  Future<void> openChannel(Channel channel) async {
-    state = PlayerState(
-      channel:     channel,
-      controller:  _controller,
-      isBuffering: true,
+  void _onEvent(BetterPlayerEvent event) {
+    switch (event.betterPlayerEventType) {
+      case BetterPlayerEventType.play:
+        state = state.copyWith(isPlaying: true, isBuffering: false);
+        break;
+      case BetterPlayerEventType.pause:
+        state = state.copyWith(isPlaying: false);
+        break;
+      case BetterPlayerEventType.bufferingStart:
+        state = state.copyWith(isBuffering: true);
+        break;
+      case BetterPlayerEventType.bufferingEnd:
+        state = state.copyWith(isBuffering: false);
+        break;
+      case BetterPlayerEventType.progress:
+        final pos = event.parameters?['progress'] as Duration?;
+        final dur = event.parameters?['duration'] as Duration?;
+        state = state.copyWith(
+          position: pos ?? state.position,
+          duration: dur ?? state.duration,
+        );
+        break;
+      case BetterPlayerEventType.initialized:
+        state = state.copyWith(isBuffering: false);
+        break;
+      case BetterPlayerEventType.exception:
+        final msg = event.parameters?['exception']?.toString();
+        state = state.copyWith(
+          hasError:     true,
+          errorMessage: msg,
+          isBuffering:  false,
+        );
+        break;
+      default:
+        break;
+    }
+  }
+
+  /// DNS pre-warm on pointer-down so ExoPlayer's OkHttp finds a cached
+  /// answer ~100–300 ms later when the actual tap fires.
+  Future<void> preConnect(String url) async {
+    try {
+      final host = Uri.parse(url).host;
+      if (host.isNotEmpty) await InternetAddress.lookup(host);
+    } catch (_) {}
+  }
+
+  /// Load [channel] into a silent background ExoPlayer instance.
+  /// If the user later taps this channel, controllers are swapped in <100 ms
+  /// because the HLS manifest + first segments are already in memory.
+  Future<void> preloadChannel(Channel channel) async {
+    if (_preloadedChannel?.streamUrl == channel.streamUrl) return;
+
+    // Drop any previous preload for a different channel.
+    _preloadCtrl?.dispose();
+    _preloadCtrl      = null;
+    _preloadedChannel = null;
+
+    final ctrl = BetterPlayerController(
+      BetterPlayerConfiguration(
+        autoPlay:        false, // silent — no audio in background
+        fit:             BoxFit.contain,
+        handleLifecycle: false,
+        autoDispose:     false,
+        expandToFill:    true,
+        controlsConfiguration: const BetterPlayerControlsConfiguration(
+            showControls: false),
+        errorBuilder: _hiddenErrorBuilder,
+      ),
     );
 
     try {
-      await _player.open(
-        Media(
+      await ctrl.setupDataSource(
+        BetterPlayerDataSource(
+          BetterPlayerDataSourceType.network,
           channel.streamUrl,
-          httpHeaders: const {'Connection': 'keep-alive'},
+          liveStream: _isLikelyLive(channel.streamUrl),
+          headers: const {
+            'Connection': 'keep-alive',
+            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+          },
+          bufferingConfiguration: const BetterPlayerBufferingConfiguration(
+            minBufferMs:                      500,
+            maxBufferMs:                     4000,
+            bufferForPlaybackMs:              500,
+            bufferForPlaybackAfterRebufferMs: 1000,
+          ),
+        ),
+      );
+      _preloadCtrl      = ctrl;
+      _preloadedChannel = channel;
+    } catch (_) {
+      ctrl.dispose(); // silent failure — falls back to normal load
+    }
+  }
+
+  Future<void> openChannel(Channel channel) async {
+    // ── Fast path: preloaded controller is ready ──────────────────────────
+    if (_preloadedChannel?.streamUrl == channel.streamUrl &&
+        _preloadCtrl != null) {
+      final incoming = _preloadCtrl!;
+      final retiring  = _activeCtrl;
+
+      _preloadCtrl      = null;
+      _preloadedChannel = null;
+      _activeCtrl       = incoming;
+
+      retiring?.removeEventsListener(_onEvent);
+      incoming.addEventsListener(_onEvent);
+
+      state = PlayerState(
+        channel:     channel,
+        controller:  incoming,
+        isBuffering: false,
+        isPlaying:   true,
+      );
+      incoming.play();
+
+      // Retire old controller off the critical path.
+      Future.microtask(() => retiring?.dispose());
+      return;
+    }
+
+    // ── Normal path ───────────────────────────────────────────────────────
+    final ctrl = _activeCtrl;
+    if (ctrl == null) return;
+
+    // Cancel any in-flight preload for a different channel.
+    _preloadCtrl?.dispose();
+    _preloadCtrl      = null;
+    _preloadedChannel = null;
+
+    state = PlayerState(channel: channel, controller: ctrl, isBuffering: true);
+
+    try {
+      await ctrl.setupDataSource(
+        BetterPlayerDataSource(
+          BetterPlayerDataSourceType.network,
+          channel.streamUrl,
+          liveStream: _isLikelyLive(channel.streamUrl),
+          headers: const {
+            'Connection': 'keep-alive',
+            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+          },
+          bufferingConfiguration: const BetterPlayerBufferingConfiguration(
+            minBufferMs:                      800,
+            maxBufferMs:                     10000,
+            bufferForPlaybackMs:              200,
+            bufferForPlaybackAfterRebufferMs: 1000,
+          ),
         ),
       );
     } catch (e) {
@@ -109,17 +241,32 @@ class PlayerNotifier extends Notifier<PlayerState> {
     }
   }
 
-  void togglePlay() => _player.playOrPause();
+  bool _isLikelyLive(String url) {
+    final lower = url.toLowerCase();
+    if (lower.contains('/movie/')  || lower.contains('/series/')) return false;
+    if (lower.endsWith('.mp4')     || lower.endsWith('.mkv') ||
+        lower.endsWith('.avi')     || lower.endsWith('.mov')) return false;
+    return true;
+  }
 
-  void seek(Duration position) => _player.seek(position);
+  void togglePlay() {
+    final ctrl = _activeCtrl;
+    if (ctrl == null) return;
+    if (state.isPlaying) ctrl.pause(); else ctrl.play();
+  }
+
+  void seek(Duration position) => _activeCtrl?.seekTo(position);
 
   void stop() {
-    _player.stop();
-    state = PlayerState(controller: _controller);
+    final ctrl = _activeCtrl;
+    if (ctrl == null) return;
+    try { ctrl.pause(); } catch (_) {}
+    state = PlayerState(controller: ctrl);
   }
 }
 
+Widget _hiddenErrorBuilder(BuildContext context, String? errorMessage) =>
+    const SizedBox.shrink();
+
 final playerProvider =
-    NotifierProvider<PlayerNotifier, PlayerState>(
-  () => throw UnimplementedError('playerProvider must be overridden in main()'),
-);
+    NotifierProvider<PlayerNotifier, PlayerState>(PlayerNotifier.new);

@@ -11,14 +11,15 @@ RewriteRule ^ https://primeiptvplus.com%{REQUEST_URI} [R=301,L]
 
 # ===============================
 # OLD GUIDE FILES → NEW FOLDERS
+# (RewriteRule instead of Redirect for mod_rewrite compatibility)
 # ===============================
 
-Redirect 301 /iptv-guide-ar.html /guide/
-Redirect 301 /iptv-guide-en.html /en/guide/
-Redirect 301 /iptv-guide-fr.html /fr/guide/
-Redirect 301 /best-iptv-usa-guide.html /en/guide/
-Redirect 301 /es/esp/ana /es/espana/
-Redirect 301 /en.html /en/
+RewriteRule ^iptv-guide-ar\.html$ /guide/ [R=301,L]
+RewriteRule ^iptv-guide-en\.html$ /en/guide/ [R=301,L]
+RewriteRule ^iptv-guide-fr\.html$ /fr/guide/ [R=301,L]
+RewriteRule ^best-iptv-usa-guide\.html$ /en/guide/ [R=301,L]
+RewriteRule ^es/esp/ana$ /es/espana/ [R=301,L]
+RewriteRule ^en\.html$ /en/ [R=301,L]
 
 # ===============================
 # CLEAN URLs & LANG FIX
@@ -81,6 +82,16 @@ RewriteRule ^guide/maghreb$ /guide/maghreb/ [R=301,L]
 RewriteRule ^guide/mashriq$ /guide/mashriq/ [R=301,L]
 RewriteRule ^guide/khalij$ /guide/khalij/ [R=301,L]
 
+# Privacy & Terms (without trailing slash)
+RewriteRule ^privacy-policy$ /privacy-policy/ [R=301,L]
+RewriteRule ^terms-of-service$ /terms-of-service/ [R=301,L]
+RewriteRule ^en/privacy-policy$ /en/privacy-policy/ [R=301,L]
+RewriteRule ^en/terms-of-service$ /en/terms-of-service/ [R=301,L]
+RewriteRule ^fr/privacy-policy$ /fr/privacy-policy/ [R=301,L]
+RewriteRule ^fr/terms-of-service$ /fr/terms-of-service/ [R=301,L]
+RewriteRule ^es/privacy-policy$ /es/privacy-policy/ [R=301,L]
+RewriteRule ^es/terms-of-service$ /es/terms-of-service/ [R=301,L]
+
 # -------------------------------
 # 4) DEFAULT FILES
 # -------------------------------
@@ -126,7 +137,7 @@ DirectoryIndex index.html index.php
 </IfModule>
 
 # php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php81” package as the default “PHP” programming language.
+# Set the "ea-php81" package as the default "PHP" programming language.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
 </IfModule>

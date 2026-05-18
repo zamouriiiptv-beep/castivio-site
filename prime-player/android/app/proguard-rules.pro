@@ -1,6 +1,7 @@
-# media_kit / libmpv
--keep class com.alexmercerind.** { *; }
--keep class media_kit_libs_android_video.** { *; }
+# ExoPlayer (better_player_plus)
+-keep class com.google.android.exoplayer2.** { *; }
+-keep class com.jhomlala.better_player.** { *; }
+-dontwarn com.google.android.exoplayer2.**
 
 # Hive
 -keep class * extends com.google.flatbuffers.Table { *; }

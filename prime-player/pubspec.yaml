@@ -14,10 +14,8 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
 
-  # ─── Video (libmpv — instant channel switching, no initialize() wait) ────────
-  media_kit: ^1.1.11
-  media_kit_video: ^1.1.6
-  media_kit_libs_android_video: ^1.0.4
+  # ─── Video (ExoPlayer — native Android, fast start, low memory) ─────────────
+  better_player_plus: ^1.0.8
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1
