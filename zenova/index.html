@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenova IPTV – اشتراك IPTV بجودة عالية</title>
+  <meta name="description" content="Zenova IPTV – أفضل اشتراك IPTV لمشاهدة آلاف القنوات والأفلام والمسلسلات بجودة HD و4K على جميع أجهزتك." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: 'Cairo', sans-serif; box-sizing: border-box; }
+    body { background: #fff; color: #1e293b; }
+    html { scroll-behavior: smooth; }
+
+    .z-logo {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #3b82f6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feat-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 28px 16px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(29,78,216,0.12);
+    }
+    .feat-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 14px;
+    }
+
+    .plan-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 36px 24px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .plan-card:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 20px 50px rgba(59,130,246,0.15);
+      transform: translateY(-4px);
+    }
+    .plan-featured {
+      border-color: #1d4ed8;
+      box-shadow: 0 20px 50px rgba(29,78,216,0.18);
+      transform: scale(1.03);
+    }
+    .plan-featured:hover { transform: scale(1.03) translateY(-4px); }
+    .plan-badge {
+      position: absolute;
+      top: -15px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 5px 22px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .custom-slider {
+      -webkit-appearance: none;
+      width: 100%; height: 6px;
+      border-radius: 3px;
+      background: #dbeafe;
+      outline: none;
+      cursor: pointer;
+    }
+    .custom-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #1d4ed8;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(29,78,216,0.4);
+    }
+
+    .plan-price-num {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #1d4ed8;
+      line-height: 1;
+    }
+    .plan-features { list-style: none; padding: 0; }
+    .plan-features li {
+      padding: 7px 0;
+      border-bottom: 1px solid #f1f5f9;
+      color: #475569;
+      font-size: 14px;
+    }
+    .plan-features li::before { content: "✓ "; color: #3b82f6; font-weight: 700; }
+
+    .device-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 12px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .device-card:hover { background: #eff6ff; border-color: #3b82f6; }
+
+    .testi-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-right: 4px solid #3b82f6;
+      border-radius: 0 16px 16px 0;
+      padding: 24px;
+    }
+    .testi-avatar {
+      width: 42px; height: 42px;
+      background: #dbeafe;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; color: #1d4ed8;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-btn {
+      width: 100%;
+      text-align: right;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      cursor: pointer;
+      font-weight: 700;
+      color: #1e3a8a;
+      border: none;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .faq-btn:hover { background: #eff6ff; }
+    .faq-content {
+      display: none;
+      padding: 0 20px 18px;
+      color: #64748b;
+      line-height: 1.9;
+      font-size: 14px;
+    }
+    .faq-icon { font-size: 22px; font-weight: 700; color: #3b82f6; flex-shrink: 0; }
+
+    .wa-btn {
+      background: #25d366;
+      color: white;
+      border-radius: 50px;
+      padding: 16px 36px;
+      font-size: 17px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+      font-family: 'Cairo', sans-serif;
+    }
+    .wa-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(37,211,102,0.45);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .stat-num { font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 900; color: white; line-height: 1; }
+    .stat-label { color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px; }
+
+    .sec-title { font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 900; color: #1e3a8a; text-align: center; }
+    .sec-sub { color: #64748b; text-align: center; margin-top: 8px; }
+    .title-line { width: 60px; height: 4px; background: linear-gradient(90deg,#1d4ed8,#3b82f6); border-radius: 2px; margin: 14px auto 0; }
+
+    @media (max-width: 768px) {
+      .plan-featured { transform: scale(1); }
+      .plan-featured:hover { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="z-logo">Z</div>
+      <div>
+        <div class="font-black text-blue-800 text-lg leading-tight">ZENOVA</div>
+        <div class="text-xs text-blue-500 font-semibold leading-tight tracking-widest">IPTV</div>
+      </div>
+    </div>
+    <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20Zenova%20IPTV"
+       target="_blank" rel="noopener"
+       class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-full text-sm transition-colors">
+      اشترك الآن
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg py-20 md:py-32 px-4">
+  <div class="hero-circle" style="width:420px;height:420px;top:-120px;right:-100px;"></div>
+  <div class="hero-circle" style="width:260px;height:260px;bottom:-70px;left:40px;"></div>
+
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <div class="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+      ⚡ بث مستقر 24/7 بدون انقطاع
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+      شاهد العالم كله<br>
+      <span style="color:#93c5fd;">من مكان واحد</span>
+    </h1>
+
+    <p class="text-blue-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+      مع <strong class="text-white">Zenova IPTV</strong> استمتع بأكثر من
+      <strong class="text-white">50,000 قناة</strong> وملايين الأفلام والمسلسلات
+      بجودة 4K و8K على أي جهاز.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20Zenova%20IPTV"
+         target="_blank" rel="noopener" class="wa-btn justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.856L.057 23.572a.5.5 0 0 0 .612.612l5.712-1.478A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.96 0-3.8-.56-5.352-1.528l-.385-.232-3.986 1.031 1.03-3.986-.232-.385A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        احصل على اشتراكك الآن
+      </a>
+      <a href="#pricing"
+         class="bg-white/15 hover:bg-white/25 text-white font-bold px-8 py-4 rounded-full transition-colors text-lg">
+        عرض الأسعار
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="max-w-5xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 px-4 relative z-10">
+    <div class="text-center"><div class="stat-num">50K+</div><div class="stat-label">قناة متنوعة</div></div>
+    <div class="text-center"><div class="stat-num">190K+</div><div class="stat-label">فيلم ومسلسل</div></div>
+    <div class="text-center"><div class="stat-num">99%</div><div class="stat-label">نسبة الاستقرار</div></div>
+    <div class="text-center"><div class="stat-num">24/7</div><div class="stat-label">دعم فني</div></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-20 px-4 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <p class="sec-title">لماذا Zenova IPTV؟</p>
+    <p class="sec-sub">خدمة احترافية بمميزات لا تجدها في أي مكان آخر</p>
+    <div class="title-line"></div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-12">
+      <div class="feat-card">
+        <div class="feat-icon">📺</div>
+        <h3 class="font-bold text-blue-900 mb-1">+50,000 قناة</h3>
+        <p class="text-gray-500 text-sm">قنوات عالمية وعربية</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎬</div>
+        <h3 class="font-bold text-blue-900 mb-1">190,000+ فيلم</h3>
+        <p class="text-gray-500 text-sm">مكتبة محدثة يومياً</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3 class="font-bold text-blue-900 mb-1">بث فائق السرعة</h3>
+        <p class="text-gray-500 text-sm">تشغيل فوري بدون تقطع</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌍</div>
+        <h3 class="font-bold text-blue-900 mb-1">جميع الأجهزة</h3>
+        <p class="text-gray-500 text-sm">TV، هاتف، تابلت، PC</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏆</div>
+        <h3 class="font-bold text-blue-900 mb-1">مباريات حصرية</h3>
+        <p class="text-gray-500 text-sm">beIN, Sky, DAZN وغيرها</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3 class="font-bold text-blue-900 mb-1">ضمان 10 أيام</h3>
+        <p class="text-gray-500 text-sm">استرجاع كامل بدون أسئلة</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <h3 class="font-bold text-blue-900 mb-1">جودة 4K و8K</h3>
+        <p class="text-gray-500 text-sm">صورة نقية تفوق التوقعات</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <h3 class="font-bold text-blue-900 mb-1">دعم واتساب</h3>
+        <p class="text-gray-500 text-sm">رد سريع في أي وقت</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <p class="sec-title">اختر باقتك</p>
+    <p class="sec-sub">أسعار شفافة بدون رسوم خفية</p>
+    <div class="title-line"></div>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-14 items-start">
+
+      <!-- Basic -->
+      <div class="plan-card">
+        <h3 class="text-xl font-black text-blue-800 text-center mb-1">الباقة الأساسية</h3>
+        <p class="text-gray-400 text-center text-sm mb-6">مثالية للبداية</p>
+
+        <div class="mb-6">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider"
+            id="sl-basic" oninput="updatePrice(this.value,'basic')">
+          <div class="flex justify-between text-xs font-bold text-gray-400 mt-2">
+            <span onclick="setSlider(0,'basic')" class="cursor-pointer hover:text-blue-600">شهر</span>
+            <span onclick="setSlider(1,'basic')" class="cursor-pointer hover:text-blue-600">3 أشهر</span>
+            <span onclick="setSlider(2,'basic')" class="cursor-pointer hover:text-blue-600">6 أشهر</span>
+            <span onclick="setSlider(3,'basic')" class="cursor-pointer hover:text-blue-600">سنة</span>
+            <span onclick="setSlider(4,'basic')" class="cursor-pointer hover:text-blue-600">سنتان</span>
+          </div>
+        </div>
+
+        <div class="text-center mb-6">
+          <span class="plan-price-num" id="price-basic">30</span>
+          <span class="text-gray-400 font-semibold text-lg"> يورو</span>
+          <div class="text-gray-400 text-sm" id="per-basic">/ السنة</div>
+        </div>
+
+        <ul class="plan-features mb-8">
+          <li>+21,000 قناة متنوعة</li>
+          <li>+30,000 مسلسل</li>
+          <li>+158,000 فيلم</li>
+          <li>فيديو حسب الطلب VOD</li>
+          <li>جودة HD / 4K / 8K</li>
+          <li>بث مستقر بدون تقطع</li>
+          <li>جميع الأجهزة</li>
+          <li>تحديثات يومية</li>
+          <li>دعم فني</li>
+          <li>ضمان 10 أيام</li>
+        </ul>
+
+        <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20الباقة%20الأساسية%20-%20Zenova%20IPTV"
+           target="_blank" rel="noopener"
+           class="block w-full text-center bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-3 rounded-xl transition-all duration-300">
+          اشترك الآن
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-card plan-featured">
+        <div class="plan-badge">⭐ الأكثر طلباً</div>
+        <h3 class="text-xl font-black text-blue-800 text-center mb-1 mt-4">الباقة المميزة</h3>
+        <p class="text-gray-400 text-center text-sm mb-6">الخيار الأمثل للعائلة</p>
+
+        <div class="mb-6">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider"
+            id="sl-premium" oninput="updatePrice(this.value,'premium')">
+          <div class="flex justify-between text-xs font-bold text-gray-400 mt-2">
+            <span onclick="setSlider(0,'premium')" class="cursor-pointer hover:text-blue-600">شهر</span>
+            <span onclick="setSlider(1,'premium')" class="cursor-pointer hover:text-blue-600">3 أشهر</span>
+            <span onclick="setSlider(2,'premium')" class="cursor-pointer hover:text-blue-600">6 أشهر</span>
+            <span onclick="setSlider(3,'premium')" class="cursor-pointer hover:text-blue-600">سنة</span>
+            <span onclick="setSlider(4,'premium')" class="cursor-pointer hover:text-blue-600">سنتان</span>
+          </div>
+        </div>
+
+        <div class="text-center mb-6">
+          <span class="plan-price-num" id="price-premium">40</span>
+          <span class="text-gray-400 font-semibold text-lg"> يورو</span>
+          <div class="text-gray-400 text-sm" id="per-premium">/ السنة</div>
+        </div>
+
+        <ul class="plan-features mb-8">
+          <li>+35,000 قناة متنوعة</li>
+          <li>+40,000 مسلسل</li>
+          <li>+180,000 فيلم</li>
+          <li>فيديو حسب الطلب VOD</li>
+          <li>جودة HD / 4K / 8K</li>
+          <li>بث فائق السرعة</li>
+          <li>جميع الأجهزة</li>
+          <li>تحديثات يومية</li>
+          <li>دعم فني مميز</li>
+          <li>ضمان 10 أيام</li>
+        </ul>
+
+        <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20الباقة%20المميزة%20-%20Zenova%20IPTV"
+           target="_blank" rel="noopener"
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg shadow-blue-200">
+          اشترك الآن
+        </a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card">
+        <h3 class="text-xl font-black text-blue-800 text-center mb-1">الباقة الاحترافية</h3>
+        <p class="text-gray-400 text-center text-sm mb-6">للمشاهدة بلا حدود</p>
+
+        <div class="mb-6">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider"
+            id="sl-pro" oninput="updatePrice(this.value,'pro')">
+          <div class="flex justify-between text-xs font-bold text-gray-400 mt-2">
+            <span onclick="setSlider(0,'pro')" class="cursor-pointer hover:text-blue-600">شهر</span>
+            <span onclick="setSlider(1,'pro')" class="cursor-pointer hover:text-blue-600">3 أشهر</span>
+            <span onclick="setSlider(2,'pro')" class="cursor-pointer hover:text-blue-600">6 أشهر</span>
+            <span onclick="setSlider(3,'pro')" class="cursor-pointer hover:text-blue-600">سنة</span>
+            <span onclick="setSlider(4,'pro')" class="cursor-pointer hover:text-blue-600">سنتان</span>
+          </div>
+        </div>
+
+        <div class="text-center mb-6">
+          <span class="plan-price-num" id="price-pro">50</span>
+          <span class="text-gray-400 font-semibold text-lg"> يورو</span>
+          <div class="text-gray-400 text-sm" id="per-pro">/ السنة</div>
+        </div>
+
+        <ul class="plan-features mb-8">
+          <li>+50,000 قناة متنوعة</li>
+          <li>+60,000 مسلسل</li>
+          <li>+190,000 فيلم</li>
+          <li>فيديو حسب الطلب VOD</li>
+          <li>جودة UHD / 4K / 8K</li>
+          <li>أسرع سرعة بث</li>
+          <li>جميع الأجهزة</li>
+          <li>تحديثات يومية</li>
+          <li>دعم فني VIP</li>
+          <li>ضمان 10 أيام</li>
+        </ul>
+
+        <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20الباقة%20الاحترافية%20-%20Zenova%20IPTV"
+           target="_blank" rel="noopener"
+           class="block w-full text-center bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-3 rounded-xl transition-all duration-300">
+          اشترك الآن
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEVICES -->
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-4xl mx-auto">
+    <p class="sec-title">يعمل على جميع أجهزتك</p>
+    <div class="title-line"></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+      <div class="device-card">
+        <div class="text-4xl mb-3">📱</div>
+        <div class="font-bold text-blue-900">هاتف ذكي</div>
+        <div class="text-xs text-gray-400 mt-1">Android & iOS</div>
+      </div>
+      <div class="device-card">
+        <div class="text-4xl mb-3">📺</div>
+        <div class="font-bold text-blue-900">تلفاز ذكي</div>
+        <div class="text-xs text-gray-400 mt-1">Smart TV & Android TV</div>
+      </div>
+      <div class="device-card">
+        <div class="text-4xl mb-3">💻</div>
+        <div class="font-bold text-blue-900">حاسوب</div>
+        <div class="text-xs text-gray-400 mt-1">Windows & Mac</div>
+      </div>
+      <div class="device-card">
+        <div class="text-4xl mb-3">🔥</div>
+        <div class="font-bold text-blue-900">Firestick</div>
+        <div class="text-xs text-gray-400 mt-1">Amazon Fire TV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-20 px-4">
+  <div class="max-w-5xl mx-auto">
+    <p class="sec-title">ماذا يقول عملاؤنا</p>
+    <div class="title-line"></div>
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
+      <div class="testi-card">
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm">"أفضل خدمة IPTV جربتها، لا يوجد تقطع إطلاقاً وجودة الصورة رائعة."</p>
+        <div class="flex items-center gap-3">
+          <div class="testi-avatar">م</div>
+          <div>
+            <div class="font-bold text-blue-900 text-sm">محمد</div>
+            <div class="text-xs text-yellow-500">★★★★★ من الجزائر</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm">"أشترك منذ سنة وكل شيء ممتاز، الدعم الفني سريع والخدمة لا تنقطع."</p>
+        <div class="flex items-center gap-3">
+          <div class="testi-avatar">أ</div>
+          <div>
+            <div class="font-bold text-blue-900 text-sm">أحمد</div>
+            <div class="text-xs text-yellow-500">★★★★★ من المغرب</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm">"قنوات رياضية ممتازة، شاهدت كل مباريات الدوري بجودة 4K لا تصدق."</p>
+        <div class="flex items-center gap-3">
+          <div class="testi-avatar">ك</div>
+          <div>
+            <div class="font-bold text-blue-900 text-sm">كريم</div>
+            <div class="text-xs text-yellow-500">★★★★★ من فرنسا</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm">"سعر مناسب جداً مقارنة بما تقدمه. العائلة كلها تستخدمه على Smart TV."</p>
+        <div class="flex items-center gap-3">
+          <div class="testi-avatar">س</div>
+          <div>
+            <div class="font-bold text-blue-900 text-sm">سارة</div>
+            <div class="text-xs text-yellow-500">★★★★★ من بلجيكا</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-4 bg-gray-50">
+  <div class="max-w-3xl mx-auto">
+    <p class="sec-title">أسئلة شائعة</p>
+    <div class="title-line"></div>
+    <div class="mt-10 space-y-3">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>ما هو IPTV وكيف يعمل؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">IPTV هو نظام بث القنوات عبر الإنترنت. بعد الاشتراك تحصل على رابط M3U أو بيانات API تدخلها في تطبيق IPTV وتبدأ المشاهدة فوراً.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>على أي أجهزة يعمل Zenova IPTV؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">يعمل على الهاتف (Android & iOS)، التلفاز الذكي، Firestick، الحاسوب، وأي جهاز يدعم تطبيقات مثل IPTV Smarters أو TiviMate.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>كيف أحصل على الاشتراك؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">تواصل معنا عبر واتساب، اختر باقتك وادفع. ستحصل على بيانات الاشتراك خلال دقائق وتبدأ المشاهدة فوراً.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>هل يوجد ضمان استرجاع؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">نعم، نوفر ضمان استرجاع كامل خلال 10 أيام إذا لم تكن راضياً عن الخدمة بدون أي أسئلة.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>هل توجد قنوات رياضية حصرية؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">نعم، نوفر قنوات beIN Sport، Sky Sport، DAZN، Canal+ وغيرها لمتابعة جميع المباريات والبطولات العالمية.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span>ماذا أفعل إذا انقطعت الخدمة؟</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-content">فريق الدعم الفني متاح 24/7 عبر واتساب ويتم حل المشاكل في الغالب خلال دقائق معدودة.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-4 hero-bg text-center">
+  <div class="max-w-2xl mx-auto relative z-10">
+    <h2 class="text-3xl md:text-4xl font-black text-white mb-4">جاهز للبدء؟</h2>
+    <p class="text-blue-100 text-lg mb-8">تواصل معنا الآن واحصل على اشتراكك في دقائق</p>
+    <a href="https://wa.me/213674451524?text=مرحباً،%20أريد%20الاشتراك%20في%20Zenova%20IPTV"
+       target="_blank" rel="noopener" class="wa-btn justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.535 5.856L.057 23.572a.5.5 0 0 0 .612.612l5.712-1.478A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.96 0-3.8-.56-5.352-1.528l-.385-.232-3.986 1.031 1.03-3.986-.232-.385A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      تواصل معنا الآن
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);" class="py-10 px-4 text-center">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="z-logo">Z</div>
+      <span class="font-black text-white text-xl">ZENOVA IPTV</span>
+    </div>
+    <p class="text-blue-200 text-sm mb-4">أفضل تجربة مشاهدة IPTV – قنوات، أفلام، مسلسلات بجودة 4K</p>
+    <p class="text-blue-300 text-xs">© 2025 Zenova IPTV. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
+<script>
+  const prices = {
+    basic:   [10, 18, 24, 30, 50],
+    premium: [14, 24, 32, 40, 65],
+    pro:     [18, 30, 40, 50, 80]
+  };
+  const periods = ['/ الشهر', '/ 3 أشهر', '/ 6 أشهر', '/ السنة', '/ سنتان'];
+
+  function updatePrice(val, plan) {
+    val = parseInt(val);
+    document.getElementById('price-' + plan).textContent = prices[plan][val];
+    document.getElementById('per-' + plan).textContent = periods[val];
+  }
+
+  function setSlider(val, plan) {
+    document.getElementById('sl-' + plan).value = val;
+    updatePrice(val, plan);
+  }
+
+  function toggleFaq(btn) {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    icon.textContent = isOpen ? '+' : '×';
+  }
+</script>
+</body>
+</html>
