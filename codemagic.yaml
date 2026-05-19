@@ -1,12 +1,19 @@
 workflows:
 
   prime-player-android:
-    name: Prime Player – Android APK
-    max_build_duration: 120
-    instance_type: mac_mini_m1
+    name: Prime Player – Android APK (arm64)
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
 
     environment:
-      flutter: stable
+      flutter: 3.29.3
       java: 17
 
     working_directory: prime-player
@@ -15,42 +22,16 @@ workflows:
       - name: Get Flutter packages
         script: flutter pub get
 
-      - name: Diagnostics
+      - name: Build APK (arm64 release)
         script: |
-          echo "=== Flutter version ==="
-          flutter --version
-          echo "=== Plugins ==="
-          cat .flutter-plugins 2>/dev/null || echo "(no .flutter-plugins)"
-          echo "=== Plugin dependencies ==="
-          cat .flutter-plugins-dependencies 2>/dev/null || echo "(no .flutter-plugins-dependencies)"
-
-      - name: Build APK (release)
-        script: |
-          flutter build apk --release
-
-      - name: Share APK download link
-        script: |
-          APK=$(find build -name "app-release.apk" | head -1)
-          echo "APK path: $APK"
-          if [ -f "$APK" ]; then
-            echo "APK size: $(du -h "$APK" | cut -f1)"
-            echo "Uploading to gofile.io..."
-            SERVER=$(curl -s "https://api.gofile.io/servers" | \
-              python3 -c "import sys,json; print(json.load(sys.stdin)['data']['servers'][0]['name'])" 2>/dev/null)
-            [ -z "$SERVER" ] && SERVER="store1"
-            echo "Server: $SERVER"
-            RESP=$(curl -s -F "file=@$APK" "https://$SERVER.gofile.io/contents/uploadfile")
-            echo "Response: $RESP"
-            LINK=$(echo "$RESP" | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['downloadPage'])" 2>/dev/null)
-            echo "================================"
-            echo "APK DOWNLOAD LINK: $LINK"
-            echo "================================"
-          else
-            echo "APK file not found"
-          fi
+          flutter build apk \
+            --release \
+            --no-tree-shake-icons \
+            --target-platform android-arm64 \
+            --no-pub
 
     artifacts:
-      - prime-player/build/app/outputs/flutter-apk/*.apk
+      - prime-player/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
 
     publishing:
       email:
