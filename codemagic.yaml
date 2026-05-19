@@ -32,11 +32,3 @@ workflows:
 
     artifacts:
       - prime-player/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-
-    publishing:
-      email:
-        recipients:
-          - zamouriiiptv@gmail.com
-        notify:
-          success: true
-          failure: true
