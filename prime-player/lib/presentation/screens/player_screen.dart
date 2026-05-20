@@ -127,6 +127,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                           .toggleFavorite(ch);
                     }
                   },
+                  onExternal: () =>
+                      ref.read(playerProvider.notifier).openInExternalPlayer(),
                 ),
               ),
             ),
@@ -246,7 +248,7 @@ class _ControlsOverlay extends StatelessWidget {
   final Channel?   channel;
   final bool       isPlaying;
   final Duration   position, duration;
-  final VoidCallback onBack, onPlayPause, onFavorite;
+  final VoidCallback onBack, onPlayPause, onFavorite, onExternal;
   final ValueChanged<double> onSeek;
 
   const _ControlsOverlay({
@@ -258,6 +260,7 @@ class _ControlsOverlay extends StatelessWidget {
     required this.onPlayPause,
     required this.onSeek,
     required this.onFavorite,
+    required this.onExternal,
   });
 
   @override
@@ -314,6 +317,12 @@ class _ControlsOverlay extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.open_in_new_rounded,
+                      color: Colors.white70),
+                  onPressed: onExternal,
+                  tooltip: 'External Player',
                 ),
                 IconButton(
                   icon: const Icon(Icons.favorite_border_rounded,

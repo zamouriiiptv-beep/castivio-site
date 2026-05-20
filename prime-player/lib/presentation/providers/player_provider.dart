@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:android_intent_plus/android_intent.dart';
+import 'package:android_intent_plus/flag.dart';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -276,6 +278,21 @@ class PlayerNotifier extends Notifier<PlayerState> {
   }
 
   void seek(Duration position) => _activeCtrl?.seekTo(position);
+
+  /// Opens the current channel in an external player (VLC, MX Player, etc.)
+  Future<void> openInExternalPlayer() async {
+    final url = state.channel?.streamUrl;
+    if (url == null) return;
+    try {
+      final intent = AndroidIntent(
+        action: 'action_view',
+        data: url,
+        type: 'video/*',
+        flags: [Flag.FLAG_ACTIVITY_NEW_TASK],
+      );
+      await intent.launch();
+    } catch (_) {}
+  }
 
   void stop() {
     final ctrl = _activeCtrl;

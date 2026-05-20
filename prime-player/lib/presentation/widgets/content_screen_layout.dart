@@ -603,6 +603,17 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                             fontWeight: FontWeight.w600),
                         maxLines: 1, overflow: TextOverflow.ellipsis)),
                     GestureDetector(
+                      onTap: () => ref
+                          .read(playerProvider.notifier)
+                          .openInExternalPlayer(),
+                      child: const Tooltip(
+                        message: 'External Player',
+                        child: Icon(Icons.open_in_new_rounded,
+                            color: Colors.white70, size: 18),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
                       onTap: () => Navigator.push(
                         context,
                         PageRouteBuilder(
