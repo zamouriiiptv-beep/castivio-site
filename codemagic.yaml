@@ -15,6 +15,9 @@ workflows:
     environment:
       flutter: 3.29.3
       java: 17
+      vars:
+        GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.parallel=true"
+        JAVA_OPTS: "-Xmx4g"
 
     scripts:
       - name: Get Flutter packages
@@ -29,9 +32,6 @@ workflows:
             --no-tree-shake-icons \
             --target-platform android-arm64 \
             --no-pub
-        env:
-          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.parallel=true"
-          JAVA_OPTS: "-Xmx4g"
 
       - name: Upload APK to gofile.io
         working_directory: prime-player
