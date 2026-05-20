@@ -158,12 +158,13 @@ class PlayerNotifier extends Notifier<PlayerState> {
     );
 
     try {
-      final fmt = _detectFormat(channel.streamUrl);
+      final streamUrl = _preferHls(channel.streamUrl);
+      final fmt = _detectFormat(streamUrl);
       await ctrl.setupDataSource(
         BetterPlayerDataSource(
           BetterPlayerDataSourceType.network,
-          channel.streamUrl,
-          liveStream:        _isLikelyLive(channel.streamUrl),
+          streamUrl,
+          liveStream:        _isLikelyLive(streamUrl),
           videoFormat:       fmt,
           useAsmsTracks:     fmt == BetterPlayerVideoFormat.hls,
           useAsmsAudioTracks: fmt == BetterPlayerVideoFormat.hls,
@@ -240,14 +241,15 @@ class PlayerNotifier extends Notifier<PlayerState> {
     });
 
     try {
-      final isLive = _isLikelyLive(channel.streamUrl);
-      final fmt    = _detectFormat(channel.streamUrl);
-      debugPrint('[Player] open: ${channel.streamUrl} live=$isLive fmt=$fmt');
+      final streamUrl = _preferHls(channel.streamUrl);
+      final isLive    = _isLikelyLive(streamUrl);
+      final fmt       = _detectFormat(streamUrl);
+      debugPrint('[Player] open: $streamUrl live=$isLive fmt=$fmt');
 
       await ctrl.setupDataSource(
         BetterPlayerDataSource(
           BetterPlayerDataSourceType.network,
-          channel.streamUrl,
+          streamUrl,
           liveStream: isLive,
           videoFormat: fmt,
           useAsmsTracks: fmt == BetterPlayerVideoFormat.hls,
@@ -290,10 +292,18 @@ class PlayerNotifier extends Notifier<PlayerState> {
     return true;
   }
 
-  /// Detect container format from URL for BetterPlayer.
-  /// Critical for Xtream `.ts` streams which need ProgressiveMediaSource
-  /// with the MPEG-TS extractor — without explicit format ExoPlayer
-  /// auto-detection often fails silently on live streams.
+  /// Rewrite Xtream Codes live URLs to HLS format.
+  /// Xtream servers expose every live stream as both MPEG-TS (.ts) and HLS
+  /// (.m3u8). ExoPlayer handles adaptive HLS far more reliably than raw
+  /// MPEG-TS over HTTP, so we always prefer the HLS variant for live paths.
+  String _preferHls(String url) {
+    if (url.toLowerCase().contains('/live/') &&
+        url.toLowerCase().endsWith('.ts')) {
+      return '${url.substring(0, url.length - 3)}.m3u8';
+    }
+    return url;
+  }
+
   BetterPlayerVideoFormat _detectFormat(String url) {
     final lower = url.toLowerCase().split('?').first;
     if (lower.endsWith('.m3u8') || lower.contains('.m3u8?')) {
@@ -305,7 +315,6 @@ class PlayerNotifier extends Notifier<PlayerState> {
     if (lower.endsWith('.ism') || lower.endsWith('/manifest')) {
       return BetterPlayerVideoFormat.ss;
     }
-    // .ts, .mp4, .mkv, plain Xtream live paths → progressive
     return BetterPlayerVideoFormat.other;
   }
 
