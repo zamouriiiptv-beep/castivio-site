@@ -548,24 +548,48 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                         ),
                       ],
                       const SizedBox(height: 12),
-                      GestureDetector(
-                        onTap: () => ref
-                            .read(playerProvider.notifier)
-                            .openChannel(channel),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 6),
-                          decoration: BoxDecoration(
-                            gradient: kPrimeGradient,
-                            borderRadius: BorderRadius.circular(8),
+                      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        GestureDetector(
+                          onTap: () => ref
+                              .read(playerProvider.notifier)
+                              .openChannel(channel),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            decoration: BoxDecoration(
+                              gradient: kPrimeGradient,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text('إعادة المحاولة',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700)),
                           ),
-                          child: const Text('Retry',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700)),
                         ),
-                      ),
+                        const SizedBox(width: 8),
+                        GestureDetector(
+                          onTap: () => _showExternalPlayerDialog(context, ref, channel.streamUrl),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.white12,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white24),
+                            ),
+                            child: const Row(mainAxisSize: MainAxisSize.min, children: [
+                              Icon(Icons.open_in_new_rounded, color: Colors.white, size: 12),
+                              SizedBox(width: 4),
+                              Text('مشغل خارجي',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700)),
+                            ]),
+                          ),
+                        ),
+                      ]),
                     ],
                   ),
                 ),
@@ -595,21 +619,30 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10, vertical: 6),
-                  color: Colors.black54,
+                  color: Colors.black87,
                   child: Row(children: [
                     Expanded(child: Text(channel.name,
                         style: const TextStyle(
                             color: Colors.white, fontSize: 12,
                             fontWeight: FontWeight.w600),
                         maxLines: 1, overflow: TextOverflow.ellipsis)),
+                    const SizedBox(width: 8),
+                    // External player button — prominent
                     GestureDetector(
-                      onTap: () => ref
-                          .read(playerProvider.notifier)
-                          .openInExternalPlayer(),
-                      child: const Tooltip(
-                        message: 'External Player',
-                        child: Icon(Icons.open_in_new_rounded,
-                            color: Colors.white70, size: 18),
+                      onTap: () => _showExternalPlayerDialog(context, ref, channel.streamUrl),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                          gradient: kPrimeGradient,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: const Row(mainAxisSize: MainAxisSize.min, children: [
+                          Icon(Icons.open_in_new_rounded, color: Colors.white, size: 14),
+                          SizedBox(width: 4),
+                          Text('مشغل خارجي',
+                              style: TextStyle(color: Colors.white, fontSize: 11,
+                                  fontWeight: FontWeight.w700)),
+                        ]),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -623,7 +656,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                         ),
                       ),
                       child: const Icon(Icons.fullscreen_rounded,
-                          color: Colors.white70, size: 20),
+                          color: Colors.white70, size: 22),
                     ),
                   ]),
                 ),
@@ -717,6 +750,51 @@ class _Controls extends StatelessWidget {
 }
 
 // ── Lazy-load shared widgets ──────────────────────────────────────────────────
+
+void _showExternalPlayerDialog(BuildContext context, WidgetRef ref, String url) {
+  showDialog(
+    context: context,
+    builder: (_) => AlertDialog(
+      backgroundColor: AppColors.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      title: const Row(children: [
+        Icon(Icons.play_circle_outline_rounded, color: AppColors.primary, size: 22),
+        SizedBox(width: 8),
+        Text('مشغل خارجي',
+            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700)),
+      ]),
+      content: Column(mainAxisSize: MainAxisSize.min, children: [
+        Text('سيتم فتح الرابط في المشغل الخارجي المثبت على جهازك (VLC، MX Player، إلخ)',
+            style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+            textAlign: TextAlign.center),
+        const SizedBox(height: 16),
+        Text(url,
+            style: const TextStyle(color: AppColors.textMuted, fontSize: 10),
+            maxLines: 2, overflow: TextOverflow.ellipsis,
+            textDirection: TextDirection.ltr),
+      ]),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('إلغاء', style: TextStyle(color: AppColors.textSecondary)),
+        ),
+        ElevatedButton.icon(
+          onPressed: () {
+            Navigator.pop(context);
+            ref.read(playerProvider.notifier).openInExternalPlayer();
+          },
+          icon: const Icon(Icons.open_in_new_rounded, size: 16),
+          label: const Text('فتح الآن'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 class SectionLoader extends ConsumerWidget {
   final IconData     icon;

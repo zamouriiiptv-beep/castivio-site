@@ -220,13 +220,13 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
     state = PlayerState(channel: channel, controller: ctrl, isBuffering: true);
 
-    // If stream doesn't start within 25s, show error instead of infinite spinner.
+    // If stream doesn't start within 15s, show error with external player suggestion.
     _bufferTimeout?.cancel();
-    _bufferTimeout = Timer(const Duration(seconds: 25), () {
-      if (state.isBuffering) {
+    _bufferTimeout = Timer(const Duration(seconds: 15), () {
+      if (state.isBuffering || (!state.isPlaying && !state.hasError)) {
         state = state.copyWith(
           hasError:     true,
-          errorMessage: 'Stream timed out — check your connection or try another channel.',
+          errorMessage: 'تعذر تشغيل البث. جرب المشغل الخارجي (VLC أو MX Player).',
           isBuffering:  false,
         );
       }
