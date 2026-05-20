@@ -251,10 +251,6 @@ class _ChannelList extends ConsumerWidget {
   void _openPlayer(BuildContext ctx, WidgetRef ref, Channel ch,
       List<Channel> channels, int i) {
     ref.read(playerProvider.notifier).openChannel(ch);
-    // Preload the next channel while the user watches the current one.
-    if (i + 1 < channels.length) {
-      ref.read(playerProvider.notifier).preloadChannel(channels[i + 1]);
-    }
     Navigator.push(
       ctx,
       PageRouteBuilder(

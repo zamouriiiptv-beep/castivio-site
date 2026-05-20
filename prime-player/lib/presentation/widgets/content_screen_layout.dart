@@ -3,8 +3,8 @@
 library;
 
 import 'dart:async';
-import 'package:better_player_plus/better_player_plus.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/app_localizations.dart';
@@ -340,14 +340,8 @@ class ChannelsListPanel extends ConsumerWidget {
                       final ch       = channels[i];
                       final isActive = ch.streamUrl == activeChannel?.streamUrl;
                       return GestureDetector(
-                        onTap: () {
-                          ref.read(playerProvider.notifier).openChannel(ch);
-                          // Preload next channel while current one plays.
-                          if (i + 1 < channels.length) {
-                            ref.read(playerProvider.notifier)
-                                .preloadChannel(channels[i + 1]);
-                          }
-                        },
+                        onTap: () =>
+                            ref.read(playerProvider.notifier).openChannel(ch),
                         child: Container(
                           color: isActive
                               ? AppColors.primary.withOpacity(0.12)
@@ -502,11 +496,14 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
         child: Container(
           color: Colors.black,
           child: Stack(children: [
-            // Video surface — always in tree so ExoPlayer always has a Surface
-            // ready when setupDataSource() is called. Without this, the platform
-            // view doesn't exist yet and autoPlay fires into the void.
             if (ctrl != null)
-              Positioned.fill(child: BetterPlayer(controller: ctrl)),
+              Positioned.fill(
+                child: Video(
+                  controller: ctrl,
+                  controls: NoVideoControls,
+                  fill: Colors.black,
+                ),
+              ),
 
             // Idle overlay — covers the (black) video surface until a channel
             // is selected.
