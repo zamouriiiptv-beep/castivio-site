@@ -158,14 +158,20 @@ class PlayerNotifier extends Notifier<PlayerState> {
     );
 
     try {
+      final fmt = _detectFormat(channel.streamUrl);
       await ctrl.setupDataSource(
         BetterPlayerDataSource(
           BetterPlayerDataSourceType.network,
           channel.streamUrl,
-          liveStream: _isLikelyLive(channel.streamUrl),
+          liveStream:        _isLikelyLive(channel.streamUrl),
+          videoFormat:       fmt,
+          useAsmsTracks:     fmt == BetterPlayerVideoFormat.hls,
+          useAsmsAudioTracks: fmt == BetterPlayerVideoFormat.hls,
+          useAsmsSubtitles:  false,
           headers: const {
             'Connection': 'keep-alive',
             'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+            'Accept': '*/*',
           },
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
             minBufferMs:                      500,
@@ -173,6 +179,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
             bufferForPlaybackMs:              500,
             bufferForPlaybackAfterRebufferMs: 1000,
           ),
+          cacheConfiguration: const BetterPlayerCacheConfiguration(useCache: false),
         ),
       );
       _preloadCtrl      = ctrl;
@@ -233,27 +240,39 @@ class PlayerNotifier extends Notifier<PlayerState> {
     });
 
     try {
+      final isLive = _isLikelyLive(channel.streamUrl);
+      final fmt    = _detectFormat(channel.streamUrl);
+      debugPrint('[Player] open: ${channel.streamUrl} live=$isLive fmt=$fmt');
+
       await ctrl.setupDataSource(
         BetterPlayerDataSource(
           BetterPlayerDataSourceType.network,
           channel.streamUrl,
-          liveStream: _isLikelyLive(channel.streamUrl),
+          liveStream: isLive,
+          videoFormat: fmt,
+          useAsmsTracks: fmt == BetterPlayerVideoFormat.hls,
+          useAsmsAudioTracks: fmt == BetterPlayerVideoFormat.hls,
+          useAsmsSubtitles: false,
           headers: const {
             'Connection': 'keep-alive',
             'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+            'Accept': '*/*',
+            'Icy-MetaData': '1',
           },
           bufferingConfiguration: const BetterPlayerBufferingConfiguration(
-            minBufferMs:                      800,
-            maxBufferMs:                     10000,
-            bufferForPlaybackMs:              200,
-            bufferForPlaybackAfterRebufferMs: 1000,
+            minBufferMs:                     1500,
+            maxBufferMs:                    15000,
+            bufferForPlaybackMs:              500,
+            bufferForPlaybackAfterRebufferMs: 2000,
           ),
+          cacheConfiguration: const BetterPlayerCacheConfiguration(useCache: false),
         ),
       );
-      // autoPlay:true only fires on first init — explicit play() required
-      // for subsequent setupDataSource calls on the same controller.
+      // setupDataSource enqueues play when autoPlay:true; one explicit call
+      // covers the case where the controller was already initialized.
       ctrl.play();
-    } catch (e) {
+    } catch (e, st) {
+      debugPrint('[Player] setupDataSource failed: $e\n$st');
       _bufferTimeout?.cancel();
       state = state.copyWith(
         hasError:     true,
@@ -269,6 +288,25 @@ class PlayerNotifier extends Notifier<PlayerState> {
     if (lower.endsWith('.mp4')     || lower.endsWith('.mkv') ||
         lower.endsWith('.avi')     || lower.endsWith('.mov')) return false;
     return true;
+  }
+
+  /// Detect container format from URL for BetterPlayer.
+  /// Critical for Xtream `.ts` streams which need ProgressiveMediaSource
+  /// with the MPEG-TS extractor — without explicit format ExoPlayer
+  /// auto-detection often fails silently on live streams.
+  BetterPlayerVideoFormat _detectFormat(String url) {
+    final lower = url.toLowerCase().split('?').first;
+    if (lower.endsWith('.m3u8') || lower.contains('.m3u8?')) {
+      return BetterPlayerVideoFormat.hls;
+    }
+    if (lower.endsWith('.mpd')) {
+      return BetterPlayerVideoFormat.dash;
+    }
+    if (lower.endsWith('.ism') || lower.endsWith('/manifest')) {
+      return BetterPlayerVideoFormat.ss;
+    }
+    // .ts, .mp4, .mkv, plain Xtream live paths → progressive
+    return BetterPlayerVideoFormat.other;
   }
 
   void togglePlay() {
