@@ -3,7 +3,7 @@ workflows:
   prime-player-android:
     name: Prime Player – Android APK (arm64)
     max_build_duration: 90
-    instance_type: linux
+    instance_type: mac_mini_m2
 
     triggering:
       events:
