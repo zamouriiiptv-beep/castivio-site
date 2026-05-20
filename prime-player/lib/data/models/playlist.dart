@@ -20,6 +20,7 @@ class Playlist extends HiveObject {
 
   @HiveField(7) DateTime? lastUpdated;
   @HiveField(8) int channelCount;
+  @HiveField(9) DateTime? expiryDate;
 
   Playlist({
     required this.id,
@@ -31,6 +32,7 @@ class Playlist extends HiveObject {
     this.xtreamPassword,
     this.lastUpdated,
     this.channelCount = 0,
+    this.expiryDate,
   });
 
   PlaylistType get playlistType =>

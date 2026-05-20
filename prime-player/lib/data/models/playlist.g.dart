@@ -20,6 +20,7 @@ class PlaylistAdapter extends TypeAdapter<Playlist> {
       xtreamPassword:   fields[6] as String?,
       lastUpdated:      fields[7] as DateTime?,
       channelCount:     fields[8] as int? ?? 0,
+      expiryDate:       fields[9] as DateTime?,
     );
   }
 
@@ -35,6 +36,7 @@ class PlaylistAdapter extends TypeAdapter<Playlist> {
       6: obj.xtreamPassword,
       7: obj.lastUpdated,
       8: obj.channelCount,
+      9: obj.expiryDate,
     });
   }
 
