@@ -3,442 +3,781 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Player — تطبيق IPTV الاحترافي</title>
-  <meta name="description" content="Prime Player — تطبيق IPTV احترافي يدعم 4K و8K مع تسريع الجهاز. شاهد آلاف القنوات والأفلام والمسلسلات.">
+  <title>Prime Player</title>
+  <meta name="description" content="Prime Player — تطبيق IPTV احترافي لإدارة قوائم التشغيل والبث المباشر">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:      #0a0a14;
-      --bg2:     #12121f;
-      --bg3:     #1a1a2e;
-      --accent:  #7c3aed;
-      --accent2: #a855f7;
-      --green:   #25D366;
-      --text:    #f0eeff;
-      --muted:   #8b8aaa;
-      --border:  #2a2a45;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0d0d1a;--bg2:#1a1a2d;--bg3:#252538;
+      --purple:#5b21b6;--pl:#7c3aed;
+      --teal:#0d9488;--amber-bg:#451a03;--amber:#fcd34d;
+      --text:#f0f0ff;--muted:#94a3b8;--border:#2d2d4a;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+    html{scroll-behavior:smooth}
+    body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;direction:rtl;overflow-x:hidden}
+
+    /* ── Top Nav ── */
+    .topnav{
+      position:fixed;top:0;left:0;right:0;z-index:200;height:56px;
+      background:rgba(13,13,26,.95);backdrop-filter:blur(14px);
+      display:flex;align-items:center;justify-content:space-between;padding:0 1rem;
+    }
+    .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;cursor:pointer}
+    .nav-logo-box{
+      width:34px;height:34px;border-radius:8px;
+      background:linear-gradient(135deg,#7c3aed,#4f1d96);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.95rem;font-weight:900;color:#fff;
+    }
+    .nav-logo-text{font-size:1rem;font-weight:900;color:#fff}
+    .nav-logo-text span{color:#c084fc}
+    .nav-actions{display:flex;gap:.3rem}
+    .icon-btn{
+      width:38px;height:38px;background:none;border:none;cursor:pointer;
+      color:var(--muted);font-size:1.15rem;
+      display:flex;align-items:center;justify-content:center;
+      border-radius:8px;transition:background .2s,color .2s;
+    }
+    .icon-btn:hover{background:var(--bg3);color:var(--text)}
+
+    /* ── Hero poster grid ── */
+    .hero{position:relative;height:240px;overflow:hidden;margin-top:56px}
+    .poster-grid{
+      display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);
+      width:115%;height:115%;gap:3px;
+      position:absolute;top:-8%;left:-7%;
+      transform:rotate(-4deg) scale(1.15);
+    }
+    .pi{border-radius:4px;opacity:.65}
+    .c1{background:linear-gradient(135deg,#1e3a5f,#0c1f38)}
+    .c2{background:linear-gradient(135deg,#5f1e1e,#3d0f0f)}
+    .c3{background:linear-gradient(135deg,#1e5f3a,#0f3d1e)}
+    .c4{background:linear-gradient(135deg,#5f5f1e,#3d3d0f)}
+    .c5{background:linear-gradient(135deg,#3a1e5f,#1e0f3d)}
+    .c6{background:linear-gradient(135deg,#1e4a5f,#0f2d3d)}
+    .c7{background:linear-gradient(135deg,#5f2d1e,#3d1a0f)}
+    .c8{background:linear-gradient(135deg,#1e5f5f,#0f3d3d)}
+    .c9{background:linear-gradient(135deg,#4a5f1e,#2d3d0f)}
+    .c10{background:linear-gradient(135deg,#5f1e4a,#3d0f2d)}
+    .c11{background:linear-gradient(135deg,#2d3a6b,#182045)}
+    .c12{background:linear-gradient(135deg,#6b2d2d,#451a1a)}
+    .c13{background:linear-gradient(135deg,#2d6b3a,#1a4523)}
+    .c14{background:linear-gradient(135deg,#6b3a2d,#452318)}
+    .c15{background:linear-gradient(135deg,#2d2d6b,#1a1a45)}
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(13,13,26,.25) 0%,rgba(13,13,26,.55) 55%,rgba(13,13,26,1) 100%);
+    }
+    .hero-title{
+      position:absolute;bottom:1rem;right:1.2rem;
+      font-size:1.9rem;font-weight:900;color:#fff;
+      text-shadow:0 2px 16px rgba(0,0,0,.9);
     }
 
-    /* ── Navbar ───────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 64px;
-      background: rgba(10,10,20,.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding: 0 1.5rem;
-    }
-    .logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-decoration: none; }
-    .logo span { color: var(--accent2); }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 600; transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: var(--accent); color: #fff !important;
-      padding: .4rem 1.1rem; border-radius: 8px; transition: background .2s;
-    }
-    .nav-cta:hover { background: var(--accent2); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; display: block; }
+    /* ── Pages ── */
+    .page{display:none}
+    .page.active{display:block}
 
-    /* Mobile menu */
-    .mobile-menu {
-      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-      background: var(--bg2); border-bottom: 1px solid var(--border);
-      padding: 1rem 1.5rem; flex-direction: column; gap: .75rem;
+    /* ── Info Card ── */
+    .info-card{
+      background:var(--bg2);border-radius:12px;
+      margin:.8rem 1rem;padding:1.1rem 1.3rem;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: var(--text); text-decoration: none; font-weight: 600; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+    .info-row{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.3rem 0;font-size:.9rem;
+    }
+    .info-label{color:var(--muted)}
+    .info-val{font-weight:700}
+    .inactive{color:#ef4444}
+    .active-status{color:#22c55e}
 
-    /* ── Hero ─────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 8rem 1.5rem 4rem;
-      background: radial-gradient(ellipse at top, #2d1b6940 0%, transparent 65%);
-      position: relative; overflow: hidden;
+    /* ── Action Buttons ── */
+    .abtn{
+      display:flex;align-items:center;justify-content:center;gap:.6rem;
+      width:calc(100% - 2rem);margin:.4rem 1rem;padding:.85rem;
+      border-radius:10px;border:none;cursor:pointer;
+      font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;
+      text-decoration:none;color:#fff;
+      transition:opacity .2s,transform .15s;
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, #7c3aed1a 0%, transparent 70%);
-      pointer-events: none;
+    .abtn:hover{opacity:.88;transform:translateY(-1px)}
+    .abtn-purple{background:#5b21b6}
+    .abtn-teal{background:#0d9488}
+    .abtn-row{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:.5rem;margin:.4rem 1rem;
     }
-    .badge {
-      display: inline-block;
-      background: #7c3aed1a; border: 1px solid #7c3aed55;
-      color: var(--accent2); padding: .3rem 1.1rem;
-      border-radius: 100px; font-size: .8rem; font-weight: 700;
-      margin-bottom: 1.5rem;
+    .abtn-outline{
+      padding:.75rem;border-radius:10px;
+      border:1.5px solid var(--border);background:transparent;
+      color:var(--text);font-family:'Cairo',sans-serif;
+      font-size:.88rem;font-weight:700;cursor:pointer;
+      transition:border-color .2s;
     }
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 4rem); font-weight: 900;
-      line-height: 1.2; margin-bottom: 1.2rem;
-    }
-    .grad {
-      background: linear-gradient(135deg, #c084fc, #7c3aed);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--muted); max-width: 560px; margin-bottom: 2.5rem; }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .abtn-outline:hover{border-color:var(--pl)}
 
-    /* ── Buttons ──────────────────────────────────── */
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .8rem 2rem; border-radius: 12px;
-      text-decoration: none; font-weight: 700; font-size: 1rem;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-purple {
-      background: linear-gradient(135deg, #7c3aed, #a855f7);
-      color: #fff; box-shadow: 0 4px 20px #7c3aed44;
-    }
-    .btn-purple:hover { box-shadow: 0 8px 30px #7c3aed66; }
-    .btn-green {
-      background: var(--green); color: #fff;
-      box-shadow: 0 4px 20px #25D36633;
-    }
-    .btn-green:hover { box-shadow: 0 8px 28px #25D36655; }
-    .btn-outline {
-      background: transparent; color: #fff;
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
-    .btn-full { width: 100%; justify-content: center; }
+    /* ── Section Title ── */
+    .sec-title{padding:.9rem 1rem .4rem;font-size:1rem;font-weight:800}
 
-    /* ── Stats ────────────────────────────────────── */
-    .stats {
-      display: flex; gap: 2rem; justify-content: center;
-      flex-wrap: wrap; margin-top: 4rem;
-      padding-top: 2.5rem; border-top: 1px solid var(--border);
+    /* ── Playlist Card ── */
+    .pl-card{
+      background:var(--bg2);border-radius:10px;
+      margin:.45rem 1rem;padding:1rem 1.1rem;
     }
-    .stat { text-align: center; }
-    .stat strong { display: block; font-size: 2rem; font-weight: 900; }
-    .stat span { font-size: .85rem; color: var(--muted); }
+    .pl-name{font-size:.98rem;font-weight:800;margin-bottom:.45rem}
+    .pl-badge{
+      display:inline-block;
+      border:1.5px solid #ef4444;color:#ef4444;
+      padding:.12rem .65rem;border-radius:6px;font-size:.78rem;font-weight:700;
+    }
+    .pl-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.7rem}
+    .pl-btn{
+      display:flex;align-items:center;gap:.3rem;
+      padding:.38rem .85rem;border-radius:7px;border:1.5px solid;
+      font-size:.82rem;font-weight:700;background:transparent;
+      cursor:pointer;font-family:'Cairo',sans-serif;transition:opacity .2s;
+    }
+    .pl-btn:hover{opacity:.75}
+    .pl-edit{border-color:#06b6d4;color:#06b6d4}
+    .pl-del{border-color:#ef4444;color:#ef4444}
 
-    /* ── Section wrapper ──────────────────────────── */
-    .section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 3rem; }
-    .section-title h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 900; margin-bottom: .6rem; }
-    .section-title p { color: var(--muted); max-width: 500px; margin: 0 auto; }
-    hr.div { border: none; border-top: 1px solid var(--border); }
+    /* ── Warning Box ── */
+    .warn{
+      background:#451a03;border-right:4px solid #f59e0b;
+      border-radius:10px;padding:.9rem 1.1rem;
+      margin:.5rem 1rem;font-size:.83rem;color:#fcd34d;line-height:1.85;
+    }
+    .warn-title{font-weight:800;margin-bottom:.35rem;display:flex;align-items:center;gap:.35rem}
 
-    /* ── Features ─────────────────────────────────── */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.25rem; }
-    .card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.75rem;
-      transition: border-color .2s, transform .2s;
+    /* ── Price Card ── */
+    .price-card{
+      background:var(--bg2);border-radius:14px;
+      margin:.6rem 1rem;padding:1.6rem 1.4rem;text-align:center;position:relative;
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .icon-box {
-      width: 48px; height: 48px; background: #7c3aed1a;
-      border-radius: 12px; display: flex; align-items: center;
-      justify-content: center; font-size: 1.4rem; margin-bottom: 1rem;
+    .price-name{font-size:1.4rem;font-weight:900;margin-bottom:.4rem}
+    .price-amt{font-size:2.2rem;font-weight:900;color:#c084fc}
+    .price-pay{
+      display:block;width:100%;padding:.7rem;border-radius:30px;
+      border:1.5px solid #c084fc;background:transparent;
+      color:#c084fc;font-family:'Cairo',sans-serif;
+      font-size:.92rem;font-weight:700;cursor:pointer;
+      margin-top:.9rem;text-decoration:none;
+      transition:background .2s;
     }
-    .card h3 { font-size: 1rem; font-weight: 800; margin-bottom: .4rem; }
-    .card p { font-size: .88rem; color: var(--muted); }
+    .price-pay:hover{background:#c084fc1a}
+    .off-badge{
+      position:absolute;top:.9rem;left:.9rem;
+      background:#22c55e;color:#fff;
+      padding:.18rem .55rem;border-radius:5px;font-size:.72rem;font-weight:800;
+    }
 
-    /* ── Pricing ──────────────────────────────────── */
-    .pricing-wrap { max-width: 700px; margin: 0 auto; }
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
-    .price-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2rem; text-align: center;
-      position: relative; transition: transform .2s;
+    /* ── Contact ── */
+    .contact-item{
+      display:flex;align-items:center;gap:.9rem;
+      background:var(--bg2);border-radius:12px;
+      margin:.45rem 1rem;padding:1rem 1.1rem;
+      text-decoration:none;color:var(--text);transition:opacity .2s;
     }
-    .price-card:hover { transform: translateY(-4px); }
-    .price-card.popular {
-      border-color: var(--accent);
-      background: linear-gradient(145deg, #1e1040, #12121f);
+    .contact-item:hover{opacity:.8}
+    .ci-icon{
+      width:44px;height:44px;min-width:44px;border-radius:50%;
+      background:var(--purple);display:flex;align-items:center;
+      justify-content:center;font-size:1.2rem;
     }
-    .pop-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, #7c3aed, #a855f7);
-      color: #fff; padding: .25rem 1.2rem;
-      border-radius: 100px; font-size: .75rem; font-weight: 700; white-space: nowrap;
-    }
-    .price-name { font-size: .95rem; font-weight: 700; color: var(--muted); margin-bottom: .8rem; }
-    .price-amount { font-size: 3rem; font-weight: 900; line-height: 1; }
-    .price-period { font-size: .85rem; color: var(--muted); margin: .4rem 0 1.5rem; }
-    .price-features { list-style: none; text-align: right; margin-bottom: 2rem; }
-    .price-features li {
-      padding: .35rem 0; font-size: .9rem;
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .price-features li::before { content: '✓'; color: #22c55e; font-weight: 900; flex-shrink: 0; }
+    .ci-title{font-weight:800;font-size:.9rem}
+    .ci-val{font-size:.8rem;color:var(--muted)}
 
-    /* ── Steps ────────────────────────────────────── */
-    .steps { display: flex; flex-direction: column; gap: 1rem; max-width: 620px; margin: 0 auto; }
-    .step {
-      display: flex; align-items: center; gap: 1rem;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 14px; padding: 1.2rem 1.5rem;
+    /* ── Form ── */
+    .form-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:.65rem;margin:0 1rem;
     }
-    .step-num {
-      width: 38px; height: 38px; min-width: 38px;
-      background: var(--accent); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: .9rem;
+    .form-full{grid-column:1/-1}
+    .finput{
+      width:100%;padding:.7rem .9rem;
+      background:var(--bg2);border:1.5px solid var(--border);
+      border-radius:10px;color:var(--text);
+      font-family:'Cairo',sans-serif;font-size:.88rem;
+      outline:none;transition:border-color .2s;
     }
-    .step strong { display: block; font-weight: 800; margin-bottom: .2rem; }
-    .step p { font-size: .88rem; color: var(--muted); }
+    .finput:focus{border-color:var(--pl)}
+    .finput::placeholder{color:var(--muted)}
+    textarea.finput{resize:vertical;min-height:100px}
+    .fsend{
+      display:block;width:calc(100% - 2rem);margin:.65rem 1rem;
+      padding:.8rem;border-radius:10px;
+      background:var(--bg2);border:none;color:var(--text);
+      font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:800;
+      cursor:pointer;transition:background .2s;
+    }
+    .fsend:hover{background:var(--bg3)}
 
-    /* ── Contact ──────────────────────────────────── */
-    .contact-wrap { background: linear-gradient(135deg, #12121f, #0a0a14); padding: 5rem 1.5rem; }
-    .contact-grid { display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 0 auto; }
-    .contact-card {
-      flex: 1; min-width: 200px;
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.75rem; text-align: center;
-      text-decoration: none; color: #fff;
-      transition: border-color .2s, transform .2s;
+    /* ── Footer ── */
+    footer{
+      background:var(--bg);border-top:1px solid var(--border);
+      padding:1.8rem 1rem 5.5rem;margin-top:1.5rem;
     }
-    .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .contact-card .ci { font-size: 2rem; margin-bottom: .6rem; }
-    .contact-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: .25rem; }
-    .contact-card p { font-size: .82rem; color: var(--muted); }
+    .f-logo{
+      display:flex;align-items:center;gap:.5rem;
+      justify-content:center;margin-bottom:1rem;
+    }
+    .f-logo-box{
+      width:38px;height:38px;border-radius:9px;
+      background:linear-gradient(135deg,#7c3aed,#4f1d96);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;font-weight:900;color:#fff;
+    }
+    .f-logo span{font-size:1.05rem;font-weight:900}
+    .f-about{
+      font-size:.82rem;color:var(--muted);line-height:1.9;
+      text-align:center;margin-bottom:1rem;
+    }
+    .f-social{display:flex;gap:.9rem;justify-content:center;margin-bottom:1.3rem}
+    .f-social a{
+      font-size:1.25rem;background:none;border:none;cursor:pointer;
+      text-decoration:none;transition:opacity .2s;
+    }
+    .f-social a:hover{opacity:.7}
+    .f-links-group{margin-bottom:1rem}
+    .f-links-title{font-size:.83rem;font-weight:800;margin-bottom:.45rem;color:var(--text)}
+    .f-links{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+    .f-links a{color:var(--muted);text-decoration:none;font-size:.8rem;transition:color .2s}
+    .f-links a:hover{color:var(--text)}
+    .f-copy{text-align:center;font-size:.74rem;color:var(--muted);margin-top:.8rem}
 
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      background: #06060e; border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem; text-align: center;
+    /* ── Settings Overlay ── */
+    .overlay{
+      position:fixed;inset:0;z-index:300;
+      background:rgba(0,0,0,.55);display:none;
     }
-    .f-logo { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 1rem; }
-    .f-logo span { color: var(--accent2); }
-    .f-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; list-style: none; margin-bottom: 1.25rem; }
-    .f-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
-    .f-links a:hover { color: #fff; }
-    footer p { font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+    .overlay.open{display:block}
+    .settings-panel{
+      position:absolute;top:0;left:0;width:270px;height:100%;
+      background:var(--bg2);padding:1.4rem 1rem;
+      transform:translateX(-100%);transition:transform .3s;
+    }
+    .overlay.open .settings-panel{transform:translateX(0)}
+    .panel-close{
+      position:absolute;top:.9rem;right:.9rem;
+      background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;
+    }
+    .settings-sec{margin-bottom:1.4rem}
+    .settings-lbl{font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.55rem}
+    .mode-row{display:flex;gap:.5rem}
+    .mode-btn{
+      flex:1;padding:.55rem;border-radius:9px;
+      border:1.5px solid var(--border);background:var(--bg3);
+      color:var(--text);font-size:1.1rem;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;transition:border-color .2s;
+    }
+    .mode-btn.on{border-color:var(--pl)}
+    .color-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
+    .cdot{
+      aspect-ratio:1;border-radius:9px;border:2px solid transparent;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      background:var(--bg3);transition:border-color .2s;
+    }
+    .cdot.on{border-color:#fff}
+    .cdot i{width:16px;height:16px;border-radius:50%;display:block}
+    .fs-btn{
+      width:100%;padding:.65rem;border-radius:9px;
+      border:1.5px solid var(--border);background:var(--bg3);
+      color:var(--text);font-family:'Cairo',sans-serif;
+      font-size:.88rem;font-weight:700;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:.45rem;
+    }
 
-    /* ── Responsive ───────────────────────────────── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
+    /* ── Sidebar Overlay ── */
+    .sidebar-panel{
+      position:absolute;top:0;right:0;width:230px;height:100%;
+      background:var(--bg2);padding:1.4rem 1rem;
+      transform:translateX(100%);transition:transform .3s;
     }
+    .overlay.open .sidebar-panel{transform:translateX(0)}
+    .sb-logo{margin-bottom:1.3rem}
+    .sb-nav{list-style:none;display:flex;flex-direction:column;gap:.2rem}
+    .sb-nav a{
+      display:block;padding:.7rem .9rem;border-radius:9px;
+      text-decoration:none;color:var(--muted);font-weight:700;font-size:.92rem;
+      transition:background .2s,color .2s;
+    }
+    .sb-nav a:hover,.sb-nav a.on{background:var(--bg3);color:var(--text)}
+
+    /* ── Pay Now FAB ── */
+    .pay-fab{
+      position:fixed;bottom:4.5rem;left:1rem;z-index:100;
+      background:var(--bg2);border:1.5px solid var(--border);
+      color:var(--text);padding:.55rem 1.1rem;border-radius:30px;
+      font-family:'Cairo',sans-serif;font-size:.83rem;font-weight:700;
+      text-decoration:none;display:flex;align-items:center;gap:.4rem;
+      box-shadow:0 4px 18px rgba(0,0,0,.45);transition:background .2s;
+    }
+    .pay-fab:hover{background:var(--bg3)}
+
+    /* ── Bottom Nav ── */
+    .bnav{
+      position:fixed;bottom:0;left:0;right:0;
+      background:var(--bg2);border-top:1px solid var(--border);
+      display:flex;z-index:150;
+    }
+    .bn{
+      flex:1;padding:.65rem .3rem;
+      display:flex;flex-direction:column;align-items:center;gap:.18rem;
+      background:none;border:none;cursor:pointer;color:var(--muted);
+      font-family:'Cairo',sans-serif;font-size:.62rem;font-weight:700;
+      transition:color .2s;
+    }
+    .bn.on{color:var(--pl)}
+    .bn svg{width:19px;height:19px}
+
+    /* ── Empty state ── */
+    .empty{text-align:center;color:var(--muted);padding:2.5rem 1rem;font-size:.88rem}
   </style>
 </head>
 <body>
 
-<!-- ── Navbar ── -->
-<nav>
-  <a href="#" class="logo">Prime <span>Player</span></a>
-  <ul class="nav-links">
-    <li><a href="#features">الميزات</a></li>
-    <li><a href="#pricing">الأسعار</a></li>
-    <li><a href="#how">كيفية الطلب</a></li>
-    <li><a href="#contact">تواصل</a></li>
-    <li><a href="#pricing" class="nav-cta">اشترك الآن</a></li>
-  </ul>
-  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="القائمة">
-    <span></span><span></span><span></span>
+<!-- Top Nav -->
+<nav class="topnav">
+  <div class="nav-logo" onclick="go('home')">
+    <div class="nav-logo-box">P</div>
+    <div class="nav-logo-text">Prime <span>Player</span></div>
+  </div>
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="openSettings()" title="الإعدادات">⚙️</button>
+    <button class="icon-btn" onclick="openSidebar()" title="القائمة">☰</button>
+  </div>
+</nav>
+
+<!-- Settings Overlay -->
+<div class="overlay" id="setOv" onclick="closeOv('setOv',event)">
+  <div class="settings-panel">
+    <button class="panel-close" onclick="closeOvForce('setOv')">✕</button>
+    <h3 style="font-weight:900;margin-bottom:1.2rem">Settings</h3>
+
+    <div class="settings-sec">
+      <div class="settings-lbl">Mode</div>
+      <div class="mode-row">
+        <button class="mode-btn" onclick="setMode('light',this)">☀️</button>
+        <button class="mode-btn on" onclick="setMode('dark',this)">🌙</button>
+      </div>
+    </div>
+
+    <div class="settings-sec">
+      <div class="settings-lbl">Presets</div>
+      <div class="color-grid">
+        <div class="cdot on" onclick="pickColor(this,'#7c3aed')"><i style="background:#c084fc"></i></div>
+        <div class="cdot" onclick="pickColor(this,'#2563eb')"><i style="background:#3b82f6"></i></div>
+        <div class="cdot" onclick="pickColor(this,'#7c3aed')"><i style="background:#a855f7"></i></div>
+        <div class="cdot" onclick="pickColor(this,'#1d4ed8')"><i style="background:#60a5fa"></i></div>
+        <div class="cdot" onclick="pickColor(this,'#d97706')"><i style="background:#f59e0b"></i></div>
+        <div class="cdot" onclick="pickColor(this,'#dc2626')"><i style="background:#ef4444"></i></div>
+      </div>
+    </div>
+
+    <button class="fs-btn" onclick="toggleFS()">⛶ Fullscreen</button>
+  </div>
+</div>
+
+<!-- Sidebar Overlay -->
+<div class="overlay" id="sbOv" onclick="closeOv('sbOv',event)">
+  <div class="sidebar-panel">
+    <div class="sb-logo">
+      <div class="nav-logo">
+        <div class="nav-logo-box">P</div>
+        <div class="nav-logo-text">Prime <span>Player</span></div>
+      </div>
+    </div>
+    <ul class="sb-nav">
+      <li><a href="#" id="sb-home" onclick="go('home');closeOvForce('sbOv')" class="on">الرئيسية</a></li>
+      <li><a href="#" id="sb-playlists" onclick="go('playlists');closeOvForce('sbOv')">إدارة قوائم التشغيل</a></li>
+      <li><a href="#" id="sb-activate" onclick="go('activate');closeOvForce('sbOv')">تفعيل</a></li>
+      <li><a href="#" id="sb-contact" onclick="go('contact');closeOvForce('sbOv')">اتصل بنا</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ HOME ════════ -->
+<div class="page active" id="pg-home">
+  <div class="hero">
+    <div class="poster-grid">
+      <div class="pi c1"></div><div class="pi c2"></div><div class="pi c3"></div><div class="pi c4"></div><div class="pi c5"></div>
+      <div class="pi c6"></div><div class="pi c7"></div><div class="pi c8"></div><div class="pi c9"></div><div class="pi c10"></div>
+      <div class="pi c11"></div><div class="pi c12"></div><div class="pi c13"></div><div class="pi c14"></div><div class="pi c15"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-title">إدارة قوائم التشغيل</div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-row"><span class="info-label">عنوان MAC :</span><span class="info-val" id="did1">---</span></div>
+    <div class="info-row"><span class="info-label">الحالة :</span><span class="info-val inactive" id="st1">Inactive</span></div>
+    <div class="info-row"><span class="info-label">تاريخ الانتهاء :</span><span class="info-val" id="ex1">---</span></div>
+  </div>
+
+  <button class="abtn abtn-purple" onclick="go('playlists')">⊞ إدارة قائمة التشغيل</button>
+  <button class="abtn abtn-purple" onclick="go('activate')">⊕ تفعيل الجهاز</button>
+  <button class="abtn abtn-teal" onclick="resetDev()">↩ تسجيل الخروج</button>
+
+  <div class="abtn-row">
+    <button class="abtn-outline" onclick="addM3U()">إضافة قائمة تشغيل</button>
+    <button class="abtn-outline" onclick="addXC()">XC إضافة قائمة</button>
+  </div>
+
+  <div class="sec-title">القوائم المضافة</div>
+  <div id="pl-home"></div>
+
+  <footer>
+    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
+    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا، المصمم للتحميل السريع والأداء الخالي من الأخطاء. يرجى ملاحظة أننا نقدم مشغل IPTV فقط ولا نوفر المحتوى.</p>
+    <div class="f-social">
+      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
+      <a href="https://wa.me/212666686732" target="_blank">💬</a>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">روابط سريعة</div>
+      <ul class="f-links">
+        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
+        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
+      </ul>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">قانوني</div>
+      <ul class="f-links">
+        <li><a href="#">الشروط والأحكام</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+    <p class="f-copy">© 2026. All rights reserved</p>
+  </footer>
+</div>
+
+<!-- ════════ PLAYLISTS ════════ -->
+<div class="page" id="pg-playlists">
+  <div class="hero">
+    <div class="poster-grid">
+      <div class="pi c5"></div><div class="pi c1"></div><div class="pi c8"></div><div class="pi c3"></div><div class="pi c10"></div>
+      <div class="pi c2"></div><div class="pi c9"></div><div class="pi c4"></div><div class="pi c11"></div><div class="pi c6"></div>
+      <div class="pi c14"></div><div class="pi c7"></div><div class="pi c13"></div><div class="pi c15"></div><div class="pi c12"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-title">القوائم المضافة</div>
+  </div>
+
+  <div class="sec-title">القوائم المضافة</div>
+  <div id="pl-page"></div>
+
+  <footer>
+    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
+    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
+    <div class="f-social">
+      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
+      <a href="https://wa.me/212666686732" target="_blank">💬</a>
+    </div>
+    <p class="f-copy">© 2026. All rights reserved</p>
+  </footer>
+</div>
+
+<!-- ════════ ACTIVATE ════════ -->
+<div class="page" id="pg-activate">
+  <div class="hero">
+    <div class="poster-grid">
+      <div class="pi c3"></div><div class="pi c8"></div><div class="pi c1"></div><div class="pi c12"></div><div class="pi c5"></div>
+      <div class="pi c10"></div><div class="pi c2"></div><div class="pi c15"></div><div class="pi c7"></div><div class="pi c4"></div>
+      <div class="pi c9"></div><div class="pi c13"></div><div class="pi c6"></div><div class="pi c11"></div><div class="pi c14"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-title">تفعيل جهازك</div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-row"><span class="info-label">عنوان MAC :</span><span class="info-val" id="did2">---</span></div>
+    <div class="info-row"><span class="info-label">الحالة :</span><span class="info-val inactive" id="st2">Inactive</span></div>
+    <div class="info-row"><span class="info-label">تاريخ الانتهاء :</span><span class="info-val" id="ex2">---</span></div>
+  </div>
+
+  <button class="abtn abtn-purple" onclick="go('playlists')">⊞ إدارة قائمة التشغيل</button>
+  <button class="abtn abtn-purple" onclick="scrollToPlans()">⊕ تفعيل الجهاز</button>
+  <button class="abtn abtn-teal" onclick="resetDev()">↩ تسجيل الخروج</button>
+
+  <div class="warn">
+    <div class="warn-title">⚠️ إخلاء المسؤولية</div>
+    خدمتنا هي مجرد مشغل وسائط. يجب عليك تحميل قائمة التشغيل الخاصة بك، فلن يعمل المشغل إذا لم يكن لديك قائمة تشغيل. لذلك لا تحتاج إلى الدفع. وبالتالي لا نسمح بالتفعيل للمستخدمين الذين لا يملكون قوائم تشغيل خاصة فريدة. لذا فإن الدفع صالح لجهاز MAC بعنوان واحد فقط.
+  </div>
+
+  <div id="plans-section">
+    <!-- Monthly -->
+    <div class="price-card">
+      <div class="price-name">شهري</div>
+      <div class="price-amt">€9.99</div>
+      <a href="https://paypal.me/MohammedBouinidane/9.99EUR" target="_blank" class="price-pay">
+        الدفع بالبطاقة
+      </a>
+    </div>
+
+    <!-- Annual -->
+    <div class="price-card">
+      <div class="off-badge">50% OFF</div>
+      <div class="price-name">سنوي</div>
+      <div class="price-amt">€49.99</div>
+      <a href="https://paypal.me/MohammedBouinidane/49.99EUR" target="_blank" class="price-pay">
+        الدفع بالبطاقة
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
+    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
+    <div class="f-social">
+      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
+      <a href="https://wa.me/212666686732" target="_blank">💬</a>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">روابط سريعة</div>
+      <ul class="f-links">
+        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
+        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
+      </ul>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">قانوني</div>
+      <ul class="f-links">
+        <li><a href="#">الشروط والأحكام</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+    <p class="f-copy">© 2026. All rights reserved</p>
+  </footer>
+</div>
+
+<!-- ════════ CONTACT ════════ -->
+<div class="page" id="pg-contact">
+  <div class="hero">
+    <div class="poster-grid">
+      <div class="pi c7"></div><div class="pi c3"></div><div class="pi c11"></div><div class="pi c5"></div><div class="pi c9"></div>
+      <div class="pi c1"></div><div class="pi c14"></div><div class="pi c6"></div><div class="pi c2"></div><div class="pi c13"></div>
+      <div class="pi c8"></div><div class="pi c4"></div><div class="pi c15"></div><div class="pi c10"></div><div class="pi c12"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-title">اتصل بنا</div>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);font-size:.88rem;padding:.8rem 1rem 0">
+    تواصل معنا للاستفسارات أو الدعم أو تقديم الملاحظات. نحن هنا لمساعدتك.
+  </p>
+
+  <a href="mailto:med.bouinidane@gmail.com" class="contact-item">
+    <div class="ci-icon">✉️</div>
+    <div><div class="ci-title">Email</div><div class="ci-val">med.bouinidane@gmail.com</div></div>
+  </a>
+
+  <a href="https://wa.me/212666686732" target="_blank" class="contact-item">
+    <div class="ci-icon">💬</div>
+    <div><div class="ci-title">WhatsApp</div><div class="ci-val">+212 666 686 732</div></div>
+  </a>
+
+  <div style="height:.6rem"></div>
+
+  <div class="form-grid">
+    <input class="finput" type="text" placeholder="Name *" id="f-name">
+    <input class="finput" type="email" placeholder="Email *" id="f-email">
+    <input class="finput" type="tel" placeholder="Phone" id="f-phone">
+    <input class="finput" type="text" placeholder="Mac Address" id="f-mac">
+    <input class="finput form-full" type="text" placeholder="Subject *" id="f-sub">
+    <textarea class="finput form-full" placeholder="Message *" id="f-msg"></textarea>
+  </div>
+  <button class="fsend" onclick="sendMsg()">Send Message</button>
+
+  <footer>
+    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
+    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
+    <div class="f-social">
+      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
+      <a href="https://wa.me/212666686732" target="_blank">💬</a>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">روابط سريعة</div>
+      <ul class="f-links">
+        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
+        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
+      </ul>
+    </div>
+    <div class="f-links-group">
+      <div class="f-links-title">قانوني</div>
+      <ul class="f-links">
+        <li><a href="#">الشروط والأحكام</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+    <p class="f-copy">© 2026. All rights reserved</p>
+  </footer>
+</div>
+
+<!-- Pay Now FAB -->
+<a href="https://paypal.me/MohammedBouinidane" target="_blank" class="pay-fab" id="payFab" style="display:none">
+  💲 Pay Now
+</a>
+
+<!-- Bottom Nav -->
+<nav class="bnav">
+  <button class="bn on" id="bn-home" onclick="go('home')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    الرئيسية
+  </button>
+  <button class="bn" id="bn-playlists" onclick="go('playlists')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+    القوائم
+  </button>
+  <button class="bn" id="bn-activate" onclick="go('activate')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    تفعيل
+  </button>
+  <button class="bn" id="bn-contact" onclick="go('contact')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    اتصل بنا
   </button>
 </nav>
 
-<div class="mobile-menu">
-  <a href="#features"  onclick="this.closest('.mobile-menu').classList.remove('open')">الميزات</a>
-  <a href="#pricing"   onclick="this.closest('.mobile-menu').classList.remove('open')">الأسعار</a>
-  <a href="#how"       onclick="this.closest('.mobile-menu').classList.remove('open')">كيفية الطلب</a>
-  <a href="#contact"   onclick="this.closest('.mobile-menu').classList.remove('open')">تواصل معنا</a>
-  <a href="https://wa.me/212666686732?text=السلام عليكم، أريد الاشتراك في Prime Player" target="_blank" style="color:#25D366">💬 واتساب</a>
-</div>
+<script>
+// ── Device ID ──
+function getDevId(){
+  let id=localStorage.getItem('ppid');
+  if(!id){
+    const h=()=>Math.floor(Math.random()*256).toString(16).padStart(2,'0');
+    id=`${h()}:${h()}:${h()}:${h()}:${h()}:${h()}`;
+    localStorage.setItem('ppid',id);
+  }
+  return id;
+}
+function initInfo(){
+  const id=getDevId();
+  const st=localStorage.getItem('ppst')||'Inactive';
+  const ex=localStorage.getItem('ppex')||'---';
+  ['did1','did2'].forEach(k=>{const e=document.getElementById(k);if(e)e.textContent=id;});
+  ['st1','st2'].forEach(k=>{
+    const e=document.getElementById(k);
+    if(e){e.textContent=st;e.className='info-val '+(st==='Active'?'active-status':'inactive');}
+  });
+  ['ex1','ex2'].forEach(k=>{const e=document.getElementById(k);if(e)e.textContent=ex;});
+  const fm=document.getElementById('f-mac');if(fm)fm.value=id;
+}
 
-<!-- ── Hero ── -->
-<section class="hero">
-  <div class="badge">📱 متاح الآن على Android</div>
-  <h1>شاهد كل شيء مع<br><span class="grad">Prime Player</span></h1>
-  <p>تطبيق IPTV احترافي يدعم 4K و8K مع تسريع الجهاز. آلاف القنوات والأفلام والمسلسلات بدون تقطيع.</p>
-  <div class="hero-btns">
-    <a href="https://wa.me/212666686732?text=السلام عليكم، أريد الاشتراك في Prime Player" class="btn btn-green" target="_blank">
-      💬 اشترك عبر واتساب
-    </a>
-    <a href="#pricing" class="btn btn-purple">💎 اختر خطتك</a>
-  </div>
-  <div class="stats">
-    <div class="stat"><strong>4K/8K</strong><span>جودة الصورة</span></div>
-    <div class="stat"><strong>+10,000</strong><span>قناة مباشرة</span></div>
-    <div class="stat"><strong>24/7</strong><span>دعم فني</span></div>
-    <div class="stat"><strong>Android</strong><span>+أنظمة قريباً</span></div>
-  </div>
-</section>
+// ── Playlists ──
+function getPL(){return JSON.parse(localStorage.getItem('pppl')||'[]');}
+function savePL(pl){localStorage.setItem('pppl',JSON.stringify(pl));}
+function renderPL(){
+  const pl=getPL();
+  ['pl-home','pl-page'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    if(!pl.length){el.innerHTML='<div class="empty">لا توجد قوائم مضافة بعد</div>';return;}
+    el.innerHTML=pl.map((p,i)=>`
+      <div class="pl-card">
+        <div class="pl-name">${p.name}</div>
+        <span class="pl-badge">محمي</span>
+        <div class="pl-actions">
+          <button class="pl-btn pl-edit" onclick="editPL(${i})">✏️ تعديل</button>
+          <button class="pl-btn pl-del" onclick="delPL(${i})">🗑️ حذف</button>
+        </div>
+      </div>`).join('');
+  });
+}
+function addM3U(){
+  const name=prompt('اسم قائمة التشغيل:');if(!name)return;
+  const url=prompt('رابط M3U:');if(!url)return;
+  const pl=getPL();pl.push({name,url});savePL(pl);renderPL();
+}
+function addXC(){
+  const name=prompt('اسم القائمة:');if(!name)return;
+  const host=prompt('رابط الخادم (Host):');if(!host)return;
+  const user=prompt('اسم المستخدم:');
+  const pass=prompt('كلمة المرور:');
+  const pl=getPL();
+  pl.push({name,url:`${host}/get.php?username=${user}&password=${pass}&type=m3u_plus`});
+  savePL(pl);renderPL();
+}
+function editPL(i){
+  const pl=getPL();
+  const n=prompt('الاسم الجديد:',pl[i].name);
+  if(n){pl[i].name=n;savePL(pl);renderPL();}
+}
+function delPL(i){
+  if(!confirm('هل تريد حذف هذه القائمة؟'))return;
+  const pl=getPL();pl.splice(i,1);savePL(pl);renderPL();
+}
+function resetDev(){
+  if(!confirm('هل تريد تسجيل الخروج وإعادة تعيين الجهاز؟'))return;
+  ['ppid','ppst','ppex','pppl'].forEach(k=>localStorage.removeItem(k));
+  location.reload();
+}
 
-<hr class="div">
+// ── Navigation ──
+const pages=['home','playlists','activate','contact'];
+function go(p){
+  pages.forEach(n=>{
+    document.getElementById('pg-'+n).classList.toggle('active',n===p);
+  });
+  window.scrollTo(0,0);
+  // bottom nav
+  pages.forEach(n=>{
+    const b=document.getElementById('bn-'+n);if(b)b.classList.toggle('on',n===p);
+  });
+  // sidebar nav
+  pages.forEach(n=>{
+    const s=document.getElementById('sb-'+n);if(s)s.classList.toggle('on',n===p);
+  });
+  // pay fab
+  document.getElementById('payFab').style.display=p==='activate'?'flex':'none';
+}
 
-<!-- ── Features ── -->
-<div class="section" id="features">
-  <div class="section-title">
-    <h2>لماذا <span class="grad">Prime Player</span>؟</h2>
-    <p>تقنية متقدمة لتجربة بث لا مثيل لها</p>
-  </div>
-  <div class="grid-3">
-    <div class="card">
-      <div class="icon-box">⚡</div>
-      <h3>تسريع الجهاز — ExoPlayer</h3>
-      <p>يستخدم ExoPlayer الأصلي من Google للحصول على أداء سلس بدون تقطيع حتى مع بث 4K.</p>
-    </div>
-    <div class="card">
-      <div class="icon-box">🎬</div>
-      <h3>جودة 4K و8K</h3>
-      <p>دعم كامل لبث المحتوى بجودة عالية مع ضغط بصري يوفر البيانات.</p>
-    </div>
-    <div class="card">
-      <div class="icon-box">📺</div>
-      <h3>+10,000 قناة</h3>
-      <p>قنوات عربية وعالمية، رياضة، أفلام، مسلسلات ومحتوى حصري.</p>
-    </div>
-    <div class="card">
-      <div class="icon-box">🔗</div>
-      <h3>مشغل خارجي</h3>
-      <p>دعم مدمج لفتح القنوات في VLC أو MX Player لتجربة مشاهدة شخصية.</p>
-    </div>
-    <div class="card">
-      <div class="icon-box">🌍</div>
-      <h3>جميع الأجهزة — قريباً</h3>
-      <p>قادم على iOS وWindows وmacOS وLinux والويب. تجربة موحدة على جميع أجهزتك.</p>
-    </div>
-    <div class="card">
-      <div class="icon-box">🛡️</div>
-      <h3>استقرار وموثوقية</h3>
-      <p>اتصال مستقر مع انتقال سريع بين القنوات وإعادة تشغيل تلقائية عند انقطاع البث.</p>
-    </div>
-  </div>
-</div>
+// ── Settings ──
+function openSettings(){document.getElementById('setOv').classList.add('open');}
+function openSidebar(){document.getElementById('sbOv').classList.add('open');}
+function closeOv(id,e){if(e.target===document.getElementById(id))closeOvForce(id);}
+function closeOvForce(id){document.getElementById(id).classList.remove('open');}
+function setMode(m,btn){
+  document.querySelectorAll('#setOv .mode-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.documentElement.style.setProperty('--bg',m==='light'?'#f5f5f5':'#0d0d1a');
+  document.documentElement.style.setProperty('--bg2',m==='light'?'#e8e8f0':'#1a1a2d');
+  document.documentElement.style.setProperty('--text',m==='light'?'#111':'#f0f0ff');
+}
+function pickColor(el,c){
+  document.querySelectorAll('.cdot').forEach(d=>d.classList.remove('on'));
+  el.classList.add('on');
+  document.documentElement.style.setProperty('--pl',c);
+}
+function toggleFS(){
+  if(!document.fullscreenElement)document.documentElement.requestFullscreen();
+  else document.exitFullscreen();
+}
+function scrollToPlans(){
+  document.getElementById('plans-section').scrollIntoView({behavior:'smooth'});
+}
 
-<hr class="div">
+// ── Contact Form ──
+function sendMsg(){
+  const n=document.getElementById('f-name').value;
+  const e=document.getElementById('f-email').value;
+  const p=document.getElementById('f-phone').value;
+  const m=document.getElementById('f-mac').value;
+  const s=document.getElementById('f-sub').value;
+  const msg=document.getElementById('f-msg').value;
+  if(!n||!e||!s||!msg){alert('يرجى ملء جميع الحقول المطلوبة (*)');return;}
+  const txt=`الاسم: ${n}\nالبريد: ${e}\nالهاتف: ${p}\nMAC: ${m}\nالموضوع: ${s}\nالرسالة: ${msg}`;
+  window.open(`https://wa.me/212666686732?text=${encodeURIComponent(txt)}`, '_blank');
+}
 
-<!-- ── Pricing ── -->
-<div class="section" id="pricing">
-  <div class="section-title">
-    <h2>خطط الاشتراك</h2>
-    <p>اختر الخطة المناسبة وتواصل معنا عبر واتساب للاشتراك الفوري</p>
-  </div>
-  <div class="pricing-wrap">
-    <div class="grid-2">
-
-      <!-- Monthly -->
-      <div class="price-card">
-        <div class="price-name">شهري</div>
-        <div class="price-amount">€9.99</div>
-        <div class="price-period">/ شهر</div>
-        <ul class="price-features">
-          <li>جميع القنوات المباشرة</li>
-          <li>جودة 4K و8K</li>
-          <li>جهاز واحد</li>
-          <li>دعم فني 24/7</li>
-          <li>تحديثات مستمرة</li>
-        </ul>
-        <a href="https://wa.me/212666686732?text=السلام عليكم، أريد الاشتراك الشهري في Prime Player" class="btn btn-green btn-full" target="_blank">
-          💬 اطلب الآن
-        </a>
-      </div>
-
-      <!-- Annual -->
-      <div class="price-card popular">
-        <div class="pop-badge">⭐ الأوفر — وفر 50%</div>
-        <div class="price-name">سنوي</div>
-        <div class="price-amount">€49.99</div>
-        <div class="price-period">/ سنة (€4.17 / شهر)</div>
-        <ul class="price-features">
-          <li>جميع القنوات المباشرة</li>
-          <li>جودة 4K و8K</li>
-          <li>جهاز واحد</li>
-          <li>دعم فني 24/7</li>
-          <li>تحديثات مستمرة</li>
-          <li>أولوية في الدعم</li>
-        </ul>
-        <a href="https://wa.me/212666686732?text=السلام عليكم، أريد الاشتراك السنوي في Prime Player" class="btn btn-purple btn-full" target="_blank">
-          💎 اطلب الآن
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<hr class="div">
-
-<!-- ── How to Order ── -->
-<div class="section" id="how">
-  <div class="section-title">
-    <h2>كيفية الاشتراك</h2>
-    <p>3 خطوات بسيطة للبدء في المشاهدة فوراً</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div>
-        <strong>اختر خطتك</strong>
-        <p>شهري أو سنوي — كلاهما يتيح الوصول الكامل لجميع القنوات والمحتوى</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div>
-        <strong>تواصل معنا عبر واتساب</strong>
-        <p>أرسل لنا رسالة وسنرسل لك بيانات الاشتراك خلال دقائق</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div>
-        <strong>حمّل Prime Player وابدأ المشاهدة</strong>
-        <p>نزّل التطبيق، أدخل بيانات الاشتراك واستمتع بالمشاهدة فوراً</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── Contact ── -->
-<div class="contact-wrap" id="contact">
-  <div class="section-title">
-    <h2>تواصل معنا</h2>
-    <p>نحن هنا للمساعدة على مدار الساعة</p>
-  </div>
-  <div class="contact-grid">
-    <a href="https://wa.me/212666686732" target="_blank" class="contact-card">
-      <div class="ci">💬</div>
-      <h3>واتساب</h3>
-      <p>+212 666 686 732</p>
-    </a>
-    <a href="mailto:med.bouinidane@gmail.com" class="contact-card">
-      <div class="ci">📧</div>
-      <h3>البريد الإلكتروني</h3>
-      <p>med.bouinidane@gmail.com</p>
-    </a>
-    <a href="https://wa.me/212666686732?text=السلام عليكم، أريد الاشتراك في Prime Player" target="_blank" class="contact-card" style="background:linear-gradient(135deg,#2d1069,#1a1a2e)">
-      <div class="ci">💎</div>
-      <h3>اشترك الآن</h3>
-      <p>خطط شهرية وسنوية</p>
-    </a>
-  </div>
-</div>
-
-<!-- ── Footer ── -->
-<footer>
-  <div class="f-logo">Prime <span>Player</span></div>
-  <ul class="f-links">
-    <li><a href="#features">الميزات</a></li>
-    <li><a href="#pricing">الأسعار</a></li>
-    <li><a href="#how">كيفية الطلب</a></li>
-    <li><a href="#contact">تواصل معنا</a></li>
-  </ul>
-  <p>© 2026 Prime Player. جميع الحقوق محفوظة.</p>
-  <p>نحن نوفر مشغل IPTV ولا نوفر المحتوى. يجب أن يمتلك المستخدم قائمة تشغيل خاصة.</p>
-</footer>
-
+// ── Init ──
+initInfo();
+renderPL();
+</script>
 </body>
 </html>
