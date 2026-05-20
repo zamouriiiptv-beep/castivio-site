@@ -519,6 +519,57 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
               const Center(child: CircularProgressIndicator(
                   color: AppColors.primary, strokeWidth: 2.5)),
 
+            // Stream error
+            if (ps.hasError && channel != null)
+              Positioned.fill(
+                child: Container(
+                  color: Colors.black87,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.signal_wifi_off_rounded,
+                          color: AppColors.error, size: 36),
+                      const SizedBox(height: 10),
+                      const Text('Stream Error',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700)),
+                      if (ps.errorMessage != null) ...[
+                        const SizedBox(height: 4),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(ps.errorMessage!,
+                              style: const TextStyle(
+                                  color: Colors.white54, fontSize: 10),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis),
+                        ),
+                      ],
+                      const SizedBox(height: 12),
+                      GestureDetector(
+                        onTap: () => ref
+                            .read(playerProvider.notifier)
+                            .openChannel(channel),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 6),
+                          decoration: BoxDecoration(
+                            gradient: kPrimeGradient,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Text('Retry',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
 
             // Controls overlay
             if (_showControls && channel != null)
