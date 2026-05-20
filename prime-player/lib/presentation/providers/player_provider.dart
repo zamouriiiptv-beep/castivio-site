@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/widgets.dart';
@@ -50,6 +51,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
   BetterPlayerController? _activeCtrl;
   BetterPlayerController? _preloadCtrl;
   Channel?                _preloadedChannel;
+  Timer?                  _bufferTimeout;
 
   @override
   PlayerState build() {
@@ -69,6 +71,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
     _activeCtrl!.addEventsListener(_onEvent);
 
     ref.onDispose(() {
+      _bufferTimeout?.cancel();
       _activeCtrl?.removeEventsListener(_onEvent);
       _activeCtrl?.dispose();
       _preloadCtrl?.dispose();
@@ -83,6 +86,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
   void _onEvent(BetterPlayerEvent event) {
     switch (event.betterPlayerEventType) {
       case BetterPlayerEventType.play:
+        _bufferTimeout?.cancel();
         state = state.copyWith(isPlaying: true, isBuffering: false);
         break;
       case BetterPlayerEventType.pause:
@@ -214,6 +218,18 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
     state = PlayerState(channel: channel, controller: ctrl, isBuffering: true);
 
+    // If stream doesn't start within 25s, show error instead of infinite spinner.
+    _bufferTimeout?.cancel();
+    _bufferTimeout = Timer(const Duration(seconds: 25), () {
+      if (state.isBuffering) {
+        state = state.copyWith(
+          hasError:     true,
+          errorMessage: 'Stream timed out — check your connection or try another channel.',
+          isBuffering:  false,
+        );
+      }
+    });
+
     try {
       await ctrl.setupDataSource(
         BetterPlayerDataSource(
@@ -232,7 +248,11 @@ class PlayerNotifier extends Notifier<PlayerState> {
           ),
         ),
       );
+      // autoPlay:true only fires on first init — explicit play() required
+      // for subsequent setupDataSource calls on the same controller.
+      ctrl.play();
     } catch (e) {
+      _bufferTimeout?.cancel();
       state = state.copyWith(
         hasError:     true,
         errorMessage: e.toString(),
