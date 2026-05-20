@@ -1,783 +1,664 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Player</title>
-  <meta name="description" content="Prime Player — تطبيق IPTV احترافي لإدارة قوائم التشغيل والبث المباشر">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#0d0d1a;--bg2:#1a1a2d;--bg3:#252538;
-      --purple:#5b21b6;--pl:#7c3aed;
-      --teal:#0d9488;--amber-bg:#451a03;--amber:#fcd34d;
-      --text:#f0f0ff;--muted:#94a3b8;--border:#2d2d4a;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;direction:rtl;overflow-x:hidden}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prime Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0c1c;
+  --bg2:#161329;
+  --card:#1b1834;
+  --card2:#211c3d;
+  --line:#2a2548;
+  --text:#ffffff;
+  --muted:#a9a3c7;
+  --accent:#a855f7;
+  --accent2:#7c3aed;
+  --purple-btn:#3d2270;
+  --teal:#0d9488;
+  --teal2:#14b8a6;
+  --red:#ef4444;
+  --orange:#f59e0b;
+  --warn-bg:#3b2510;
+  --warn-border:#b45309;
+  --green:#10b981;
+}
+.light{
+  --bg:#f3f0fb;
+  --bg2:#e9e3f6;
+  --card:#ffffff;
+  --card2:#f8f5ff;
+  --line:#d9d2ee;
+  --text:#15102b;
+  --muted:#574d78;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--text);font-family:'Cairo',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 
-    /* ── Top Nav ── */
-    .topnav{
-      position:fixed;top:0;left:0;right:0;z-index:200;height:56px;
-      background:rgba(13,13,26,.95);backdrop-filter:blur(14px);
-      display:flex;align-items:center;justify-content:space-between;padding:0 1rem;
-    }
-    .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;cursor:pointer}
-    .nav-logo-box{
-      width:34px;height:34px;border-radius:8px;
-      background:linear-gradient(135deg,#7c3aed,#4f1d96);
-      display:flex;align-items:center;justify-content:center;
-      font-size:.95rem;font-weight:900;color:#fff;
-    }
-    .nav-logo-text{font-size:1rem;font-weight:900;color:#fff}
-    .nav-logo-text span{color:#c084fc}
-    .nav-actions{display:flex;gap:.3rem}
-    .icon-btn{
-      width:38px;height:38px;background:none;border:none;cursor:pointer;
-      color:var(--muted);font-size:1.15rem;
-      display:flex;align-items:center;justify-content:center;
-      border-radius:8px;transition:background .2s,color .2s;
-    }
-    .icon-btn:hover{background:var(--bg3);color:var(--text)}
+.hdr{position:sticky;top:0;z-index:50;background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+.logo{display:flex;align-items:center;gap:0}
+.logo svg{width:62px;height:38px}
+.hdr-r{display:flex;align-items:center;gap:14px}
+.icon-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;color:var(--text);opacity:.95}
+.icon-btn:hover{background:var(--card)}
+.icon-btn svg{width:24px;height:24px}
 
-    /* ── Hero poster grid ── */
-    .hero{position:relative;height:240px;overflow:hidden;margin-top:56px}
-    .poster-grid{
-      display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);
-      width:115%;height:115%;gap:3px;
-      position:absolute;top:-8%;left:-7%;
-      transform:rotate(-4deg) scale(1.15);
-    }
-    .pi{border-radius:4px;opacity:.65}
-    .c1{background:linear-gradient(135deg,#1e3a5f,#0c1f38)}
-    .c2{background:linear-gradient(135deg,#5f1e1e,#3d0f0f)}
-    .c3{background:linear-gradient(135deg,#1e5f3a,#0f3d1e)}
-    .c4{background:linear-gradient(135deg,#5f5f1e,#3d3d0f)}
-    .c5{background:linear-gradient(135deg,#3a1e5f,#1e0f3d)}
-    .c6{background:linear-gradient(135deg,#1e4a5f,#0f2d3d)}
-    .c7{background:linear-gradient(135deg,#5f2d1e,#3d1a0f)}
-    .c8{background:linear-gradient(135deg,#1e5f5f,#0f3d3d)}
-    .c9{background:linear-gradient(135deg,#4a5f1e,#2d3d0f)}
-    .c10{background:linear-gradient(135deg,#5f1e4a,#3d0f2d)}
-    .c11{background:linear-gradient(135deg,#2d3a6b,#182045)}
-    .c12{background:linear-gradient(135deg,#6b2d2d,#451a1a)}
-    .c13{background:linear-gradient(135deg,#2d6b3a,#1a4523)}
-    .c14{background:linear-gradient(135deg,#6b3a2d,#452318)}
-    .c15{background:linear-gradient(135deg,#2d2d6b,#1a1a45)}
-    .hero-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to bottom,rgba(13,13,26,.25) 0%,rgba(13,13,26,.55) 55%,rgba(13,13,26,1) 100%);
-    }
-    .hero-title{
-      position:absolute;bottom:1rem;right:1.2rem;
-      font-size:1.9rem;font-weight:900;color:#fff;
-      text-shadow:0 2px 16px rgba(0,0,0,.9);
-    }
+.hero{position:relative;height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:3px;transform:scale(1.05)}
+.hero-grid .p{background:linear-gradient(135deg,var(--c1,#2a1f4a),var(--c2,#5b21b6));position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:6px;font-size:8px;color:rgba(255,255,255,.55);font-weight:700;text-align:center;font-family:'Poppins',sans-serif;letter-spacing:.5px;text-transform:uppercase}
+.hero-grid .p::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.15),transparent 60%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,28,.45) 0%,rgba(14,12,28,.7) 60%,var(--bg) 100%)}
+.hero-title{position:relative;z-index:2;font-size:34px;font-weight:900;text-shadow:0 4px 20px rgba(0,0,0,.6);text-align:center;padding:0 20px;letter-spacing:.5px}
 
-    /* ── Pages ── */
-    .page{display:none}
-    .page.active{display:block}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 80px}
 
-    /* ── Info Card ── */
-    .info-card{
-      background:var(--bg2);border-radius:12px;
-      margin:.8rem 1rem;padding:1.1rem 1.3rem;
-    }
-    .info-row{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:.3rem 0;font-size:.9rem;
-    }
-    .info-label{color:var(--muted)}
-    .info-val{font-weight:700}
-    .inactive{color:#ef4444}
-    .active-status{color:#22c55e}
+.info-card{background:var(--card);border-radius:16px;padding:22px 24px;margin-top:-30px;position:relative;z-index:3;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:15px}
+.info-row+.info-row{border-top:1px solid var(--line)}
+.info-row .lbl{color:var(--muted);font-weight:600}
+.info-row .val{font-weight:700;letter-spacing:.5px}
+.badge-inactive{color:#fca5a5}
+.badge-active{color:#86efac}
 
-    /* ── Action Buttons ── */
-    .abtn{
-      display:flex;align-items:center;justify-content:center;gap:.6rem;
-      width:calc(100% - 2rem);margin:.4rem 1rem;padding:.85rem;
-      border-radius:10px;border:none;cursor:pointer;
-      font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;
-      text-decoration:none;color:#fff;
-      transition:opacity .2s,transform .15s;
-    }
-    .abtn:hover{opacity:.88;transform:translateY(-1px)}
-    .abtn-purple{background:#5b21b6}
-    .abtn-teal{background:#0d9488}
-    .abtn-row{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:.5rem;margin:.4rem 1rem;
-    }
-    .abtn-outline{
-      padding:.75rem;border-radius:10px;
-      border:1.5px solid var(--border);background:transparent;
-      color:var(--text);font-family:'Cairo',sans-serif;
-      font-size:.88rem;font-weight:700;cursor:pointer;
-      transition:border-color .2s;
-    }
-    .abtn-outline:hover{border-color:var(--pl)}
+.btns{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:12px;font-size:15px;font-weight:700;width:100%;transition:.2s;border:1px solid transparent}
+.btn svg{width:18px;height:18px}
+.btn-purple{background:var(--purple-btn);color:#fff}
+.btn-purple:hover{background:#4a2887}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#0f766e}
+.btn-outline{background:transparent;border:1px solid var(--line);color:var(--text)}
+.btn-outline:hover{background:var(--card2)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 
-    /* ── Section Title ── */
-    .sec-title{padding:.9rem 1rem .4rem;font-size:1rem;font-weight:800}
+.sec-title{font-size:18px;font-weight:700;margin:34px 0 16px;padding:0 4px}
 
-    /* ── Playlist Card ── */
-    .pl-card{
-      background:var(--bg2);border-radius:10px;
-      margin:.45rem 1rem;padding:1rem 1.1rem;
-    }
-    .pl-name{font-size:.98rem;font-weight:800;margin-bottom:.45rem}
-    .pl-badge{
-      display:inline-block;
-      border:1.5px solid #ef4444;color:#ef4444;
-      padding:.12rem .65rem;border-radius:6px;font-size:.78rem;font-weight:700;
-    }
-    .pl-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.7rem}
-    .pl-btn{
-      display:flex;align-items:center;gap:.3rem;
-      padding:.38rem .85rem;border-radius:7px;border:1.5px solid;
-      font-size:.82rem;font-weight:700;background:transparent;
-      cursor:pointer;font-family:'Cairo',sans-serif;transition:opacity .2s;
-    }
-    .pl-btn:hover{opacity:.75}
-    .pl-edit{border-color:#06b6d4;color:#06b6d4}
-    .pl-del{border-color:#ef4444;color:#ef4444}
+.pl-list{display:flex;flex-direction:column;gap:12px}
+.pl-card{background:var(--card);border-radius:14px;padding:18px 20px}
+.pl-card .name{font-size:18px;font-weight:700;margin-bottom:10px}
+.pl-card .tag{display:inline-block;border:1px solid var(--orange);color:var(--orange);font-size:12px;font-weight:700;padding:3px 12px;border-radius:6px;margin-bottom:14px}
+.pl-card .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pl-card .actions button{padding:10px;border-radius:10px;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid}
+.pl-card .actions svg{width:15px;height:15px}
+.btn-edit{border-color:var(--teal2);color:var(--teal2);background:transparent}
+.btn-edit:hover{background:rgba(20,184,166,.1)}
+.btn-del{border-color:var(--red);color:var(--red);background:transparent}
+.btn-del:hover{background:rgba(239,68,68,.1)}
+.pl-empty{text-align:center;padding:30px 20px;color:var(--muted);background:var(--card);border-radius:14px}
 
-    /* ── Warning Box ── */
-    .warn{
-      background:#451a03;border-right:4px solid #f59e0b;
-      border-radius:10px;padding:.9rem 1.1rem;
-      margin:.5rem 1rem;font-size:.83rem;color:#fcd34d;line-height:1.85;
-    }
-    .warn-title{font-weight:800;margin-bottom:.35rem;display:flex;align-items:center;gap:.35rem}
+.warn{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:14px;padding:18px 20px;margin-top:22px;color:#fde68a;font-size:14px;line-height:1.8}
+.warn-title{font-weight:800;color:#fbbf24;font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.warn-title svg{width:18px;height:18px}
 
-    /* ── Price Card ── */
-    .price-card{
-      background:var(--bg2);border-radius:14px;
-      margin:.6rem 1rem;padding:1.6rem 1.4rem;text-align:center;position:relative;
-    }
-    .price-name{font-size:1.4rem;font-weight:900;margin-bottom:.4rem}
-    .price-amt{font-size:2.2rem;font-weight:900;color:#c084fc}
-    .price-pay{
-      display:block;width:100%;padding:.7rem;border-radius:30px;
-      border:1.5px solid #c084fc;background:transparent;
-      color:#c084fc;font-family:'Cairo',sans-serif;
-      font-size:.92rem;font-weight:700;cursor:pointer;
-      margin-top:.9rem;text-decoration:none;
-      transition:background .2s;
-    }
-    .price-pay:hover{background:#c084fc1a}
-    .off-badge{
-      position:absolute;top:.9rem;left:.9rem;
-      background:#22c55e;color:#fff;
-      padding:.18rem .55rem;border-radius:5px;font-size:.72rem;font-weight:800;
-    }
+.price-grid{display:flex;flex-direction:column;gap:20px;margin-top:26px}
+.price-card{background:var(--card);border-radius:18px;padding:30px 24px;text-align:center;position:relative;border:1px solid var(--line)}
+.price-card .ttl{font-size:22px;font-weight:800;margin-bottom:18px;color:#fff}
+.price-card .price{font-size:34px;font-weight:800;color:var(--accent);margin-bottom:22px;font-family:'Poppins',sans-serif}
+.price-btn{display:block;width:100%;padding:14px;border:1.5px solid var(--accent);color:var(--accent);border-radius:30px;font-weight:700;font-size:15px;background:transparent;transition:.2s}
+.price-btn:hover{background:var(--accent);color:#fff}
+.off-badge{position:absolute;top:14px;left:14px;background:rgba(16,185,129,.15);color:var(--green);border:1px solid var(--green);padding:5px 12px;border-radius:8px;font-size:13px;font-weight:800}
 
-    /* ── Contact ── */
-    .contact-item{
-      display:flex;align-items:center;gap:.9rem;
-      background:var(--bg2);border-radius:12px;
-      margin:.45rem 1rem;padding:1rem 1.1rem;
-      text-decoration:none;color:var(--text);transition:opacity .2s;
-    }
-    .contact-item:hover{opacity:.8}
-    .ci-icon{
-      width:44px;height:44px;min-width:44px;border-radius:50%;
-      background:var(--purple);display:flex;align-items:center;
-      justify-content:center;font-size:1.2rem;
-    }
-    .ci-title{font-weight:800;font-size:.9rem}
-    .ci-val{font-size:.8rem;color:var(--muted)}
+.contact-list{display:flex;flex-direction:column;gap:18px;margin-top:24px}
+.contact-row{display:flex;align-items:center;gap:16px;padding:6px 0}
+.contact-icon{width:50px;height:50px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:22px;height:22px;color:#fff}
+.contact-info .label{font-size:18px;font-weight:800;margin-bottom:2px}
+.contact-info .value{color:var(--muted);font-size:14px;direction:ltr;text-align:right}
 
-    /* ── Form ── */
-    .form-grid{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:.65rem;margin:0 1rem;
-    }
-    .form-full{grid-column:1/-1}
-    .finput{
-      width:100%;padding:.7rem .9rem;
-      background:var(--bg2);border:1.5px solid var(--border);
-      border-radius:10px;color:var(--text);
-      font-family:'Cairo',sans-serif;font-size:.88rem;
-      outline:none;transition:border-color .2s;
-    }
-    .finput:focus{border-color:var(--pl)}
-    .finput::placeholder{color:var(--muted)}
-    textarea.finput{resize:vertical;min-height:100px}
-    .fsend{
-      display:block;width:calc(100% - 2rem);margin:.65rem 1rem;
-      padding:.8rem;border-radius:10px;
-      background:var(--bg2);border:none;color:var(--text);
-      font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:800;
-      cursor:pointer;transition:background .2s;
-    }
-    .fsend:hover{background:var(--bg3)}
+.footer{background:var(--bg);padding:50px 18px 30px;margin-top:50px;border-top:1px solid var(--line);text-align:center}
+.footer .logo{justify-content:center;margin-bottom:20px}
+.footer .desc{color:var(--muted);font-size:14px;line-height:1.9;max-width:520px;margin:0 auto 24px;padding:0 10px}
+.footer-socials{display:flex;justify-content:center;gap:14px;margin-bottom:36px}
+.footer-socials a{width:38px;height:38px;border-radius:50%;background:transparent;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.footer-socials a:hover{color:var(--accent);border-color:var(--accent)}
+.footer-socials svg{width:18px;height:18px}
+.footer-col{margin-bottom:30px}
+.footer-col h4{font-size:16px;font-weight:800;margin-bottom:14px}
+.footer-col a{display:block;color:var(--muted);padding:7px 0;font-size:14px}
+.footer-col a:hover{color:var(--accent)}
+.copy{color:var(--muted);font-size:13px;padding-top:24px;border-top:1px solid var(--line)}
 
-    /* ── Footer ── */
-    footer{
-      background:var(--bg);border-top:1px solid var(--border);
-      padding:1.8rem 1rem 5.5rem;margin-top:1.5rem;
-    }
-    .f-logo{
-      display:flex;align-items:center;gap:.5rem;
-      justify-content:center;margin-bottom:1rem;
-    }
-    .f-logo-box{
-      width:38px;height:38px;border-radius:9px;
-      background:linear-gradient(135deg,#7c3aed,#4f1d96);
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.1rem;font-weight:900;color:#fff;
-    }
-    .f-logo span{font-size:1.05rem;font-weight:900}
-    .f-about{
-      font-size:.82rem;color:var(--muted);line-height:1.9;
-      text-align:center;margin-bottom:1rem;
-    }
-    .f-social{display:flex;gap:.9rem;justify-content:center;margin-bottom:1.3rem}
-    .f-social a{
-      font-size:1.25rem;background:none;border:none;cursor:pointer;
-      text-decoration:none;transition:opacity .2s;
-    }
-    .f-social a:hover{opacity:.7}
-    .f-links-group{margin-bottom:1rem}
-    .f-links-title{font-size:.83rem;font-weight:800;margin-bottom:.45rem;color:var(--text)}
-    .f-links{list-style:none;display:flex;flex-direction:column;gap:.3rem}
-    .f-links a{color:var(--muted);text-decoration:none;font-size:.8rem;transition:color .2s}
-    .f-links a:hover{color:var(--text)}
-    .f-copy{text-align:center;font-size:.74rem;color:var(--muted);margin-top:.8rem}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;opacity:0;pointer-events:none;transition:.3s}
+.overlay.on{opacity:1;pointer-events:auto}
+.side{position:fixed;top:0;bottom:0;right:0;width:78%;max-width:340px;background:var(--bg2);z-index:91;transform:translateX(100%);transition:.3s;overflow-y:auto;padding:24px 22px}
+.side.on{transform:translateX(0)}
+.side .logo{margin-bottom:30px}
+.side nav a{display:block;padding:14px 4px;font-size:16px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);transition:.2s}
+.side nav a:hover,.side nav a.active{color:var(--text);padding-right:8px}
 
-    /* ── Settings Overlay ── */
-    .overlay{
-      position:fixed;inset:0;z-index:300;
-      background:rgba(0,0,0,.55);display:none;
-    }
-    .overlay.open{display:block}
-    .settings-panel{
-      position:absolute;top:0;left:0;width:270px;height:100%;
-      background:var(--bg2);padding:1.4rem 1rem;
-      transform:translateX(-100%);transition:transform .3s;
-    }
-    .overlay.open .settings-panel{transform:translateX(0)}
-    .panel-close{
-      position:absolute;top:.9rem;right:.9rem;
-      background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;
-    }
-    .settings-sec{margin-bottom:1.4rem}
-    .settings-lbl{font-size:.75rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.55rem}
-    .mode-row{display:flex;gap:.5rem}
-    .mode-btn{
-      flex:1;padding:.55rem;border-radius:9px;
-      border:1.5px solid var(--border);background:var(--bg3);
-      color:var(--text);font-size:1.1rem;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;transition:border-color .2s;
-    }
-    .mode-btn.on{border-color:var(--pl)}
-    .color-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
-    .cdot{
-      aspect-ratio:1;border-radius:9px;border:2px solid transparent;
-      cursor:pointer;display:flex;align-items:center;justify-content:center;
-      background:var(--bg3);transition:border-color .2s;
-    }
-    .cdot.on{border-color:#fff}
-    .cdot i{width:16px;height:16px;border-radius:50%;display:block}
-    .fs-btn{
-      width:100%;padding:.65rem;border-radius:9px;
-      border:1.5px solid var(--border);background:var(--bg3);
-      color:var(--text);font-family:'Cairo',sans-serif;
-      font-size:.88rem;font-weight:700;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;gap:.45rem;
-    }
+.settings{position:fixed;top:0;bottom:0;left:0;width:78%;max-width:340px;background:var(--bg2);z-index:91;transform:translateX(-100%);transition:.3s;overflow-y:auto;padding:24px 22px}
+.settings.on{transform:translateX(0)}
+.set-hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.set-hdr h3{font-size:22px;font-weight:800;font-family:'Poppins',sans-serif}
+.set-hdr .actions{display:flex;gap:6px}
+.set-hdr button{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.set-hdr button:hover{background:var(--card);color:var(--text)}
+.set-hdr svg{width:20px;height:20px}
+.set-sec{margin-bottom:24px}
+.set-sec h4{font-size:14px;color:var(--muted);font-weight:600;margin-bottom:12px;font-family:'Poppins',sans-serif}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode-btn{aspect-ratio:1.6;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:var(--muted)}
+.mode-btn.on{border-color:var(--accent);color:var(--accent);background:rgba(168,85,247,.08)}
+.mode-btn svg{width:30px;height:30px}
+.preset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.preset-btn{aspect-ratio:1;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent}
+.preset-btn.on{background:rgba(168,85,247,.1);border-color:var(--accent)}
+.preset-btn .dot{width:22px;height:22px;border-radius:50%}
+.set-fullscreen{width:100%;padding:14px;border:1px solid var(--line);border-radius:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted)}
+.set-fullscreen:hover{color:var(--text)}
+.set-fullscreen svg{width:18px;height:18px}
 
-    /* ── Sidebar Overlay ── */
-    .sidebar-panel{
-      position:absolute;top:0;right:0;width:230px;height:100%;
-      background:var(--bg2);padding:1.4rem 1rem;
-      transform:translateX(100%);transition:transform .3s;
-    }
-    .overlay.open .sidebar-panel{transform:translateX(0)}
-    .sb-logo{margin-bottom:1.3rem}
-    .sb-nav{list-style:none;display:flex;flex-direction:column;gap:.2rem}
-    .sb-nav a{
-      display:block;padding:.7rem .9rem;border-radius:9px;
-      text-decoration:none;color:var(--muted);font-weight:700;font-size:.92rem;
-      transition:background .2s,color .2s;
-    }
-    .sb-nav a:hover,.sb-nav a.on{background:var(--bg3);color:var(--text)}
+.fab{position:fixed;bottom:22px;left:22px;background:#161329;border:1px solid var(--line);color:#fff;padding:12px 22px;border-radius:30px;font-weight:700;display:flex;align-items:center;gap:8px;z-index:40;box-shadow:0 6px 20px rgba(0,0,0,.5);font-size:15px}
+.fab:hover{background:#211c3d}
+.fab svg{width:18px;height:18px;color:var(--accent)}
+.fab.hidden{display:none}
 
-    /* ── Pay Now FAB ── */
-    .pay-fab{
-      position:fixed;bottom:4.5rem;left:1rem;z-index:100;
-      background:var(--bg2);border:1.5px solid var(--border);
-      color:var(--text);padding:.55rem 1.1rem;border-radius:30px;
-      font-family:'Cairo',sans-serif;font-size:.83rem;font-weight:700;
-      text-decoration:none;display:flex;align-items:center;gap:.4rem;
-      box-shadow:0 4px 18px rgba(0,0,0,.45);transition:background .2s;
-    }
-    .pay-fab:hover{background:var(--bg3)}
+.page{display:none}
+.page.on{display:block}
 
-    /* ── Bottom Nav ── */
-    .bnav{
-      position:fixed;bottom:0;left:0;right:0;
-      background:var(--bg2);border-top:1px solid var(--border);
-      display:flex;z-index:150;
-    }
-    .bn{
-      flex:1;padding:.65rem .3rem;
-      display:flex;flex-direction:column;align-items:center;gap:.18rem;
-      background:none;border:none;cursor:pointer;color:var(--muted);
-      font-family:'Cairo',sans-serif;font-size:.62rem;font-weight:700;
-      transition:color .2s;
-    }
-    .bn.on{color:var(--pl)}
-    .bn svg{width:19px;height:19px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.on{display:flex}
+.modal-box{background:var(--card);border-radius:16px;padding:24px;width:100%;max-width:440px;max-height:90vh;overflow-y:auto}
+.modal-box h3{font-size:20px;font-weight:800;margin-bottom:18px}
+.field{margin-bottom:14px}
+.field label{display:block;color:var(--muted);font-size:13px;font-weight:600;margin-bottom:6px}
+.field input{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;font-size:14px;font-family:inherit;direction:ltr;text-align:left}
+.field input:focus{outline:none;border-color:var(--accent)}
+.field input[dir=rtl]{direction:rtl;text-align:right}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 
-    /* ── Empty state ── */
-    .empty{text-align:center;color:var(--muted);padding:2.5rem 1rem;font-size:.88rem}
-  </style>
+@media(min-width:720px){
+  .hero{height:380px}
+  .hero-title{font-size:44px}
+  .footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:600px;margin:0 auto}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr}
+  .contact-list{display:grid;grid-template-columns:1fr 1fr;gap:20px 30px}
+}
+
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--card2);border-radius:3px}
+</style>
 </head>
 <body>
 
-<!-- Top Nav -->
-<nav class="topnav">
-  <div class="nav-logo" onclick="go('home')">
-    <div class="nav-logo-box">P</div>
-    <div class="nav-logo-text">Prime <span>Player</span></div>
-  </div>
-  <div class="nav-actions">
-    <button class="icon-btn" onclick="openSettings()" title="الإعدادات">⚙️</button>
-    <button class="icon-btn" onclick="openSidebar()" title="القائمة">☰</button>
-  </div>
-</nav>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ico-logo" viewBox="0 0 80 50">
+      <path d="M6 8 Q6 4 10 4 L66 4 Q74 4 74 10 L74 36 Q74 42 68 42 L66 42 L66 46 L58 42 L10 42 Q6 42 6 38 Z" fill="none" stroke="white" stroke-width="2.5"/>
+      <text x="40" y="28" text-anchor="middle" fill="white" font-family="Poppins,sans-serif" font-weight="900" font-size="16">IPTV</text>
+    </symbol>
+  </defs>
+</svg>
 
-<!-- Settings Overlay -->
-<div class="overlay" id="setOv" onclick="closeOv('setOv',event)">
-  <div class="settings-panel">
-    <button class="panel-close" onclick="closeOvForce('setOv')">✕</button>
-    <h3 style="font-weight:900;margin-bottom:1.2rem">Settings</h3>
+<header class="hdr">
+  <div class="logo">
+    <svg><use href="#ico-logo"/></svg>
+  </div>
+  <div class="hdr-r">
+    <button class="icon-btn" onclick="openSettings()" aria-label="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+    <button class="icon-btn" onclick="openSidebar()" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
 
-    <div class="settings-sec">
-      <div class="settings-lbl">Mode</div>
-      <div class="mode-row">
-        <button class="mode-btn" onclick="setMode('light',this)">☀️</button>
-        <button class="mode-btn on" onclick="setMode('dark',this)">🌙</button>
+<div class="page on" id="page-home">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <h1 class="hero-title">إدارة قوائم التشغيل</h1>
+  </section>
+
+  <div class="wrap">
+    <div class="info-card">
+      <div class="info-row"><span class="lbl">MAC : عنوان</span><span class="val" id="macAddr">--:--:--:--:--:--</span></div>
+      <div class="info-row"><span class="lbl">الحالة :</span><span class="val badge-inactive" id="status">Inactive</span></div>
+      <div class="info-row"><span class="lbl">تاريخ الانتهاء :</span><span class="val" id="expiry">--</span></div>
+    </div>
+
+    <div class="btns">
+      <button class="btn btn-purple" onclick="go('playlists')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        إدارة قائمة التشغيل
+      </button>
+      <button class="btn btn-purple" onclick="go('activate')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+        تفعيل الجهاز
+      </button>
+      <button class="btn btn-teal" onclick="logout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        تسجيل الخروج
+      </button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="openAddXC()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        XC إضافة قائمة تشغيل
+      </button>
+      <button class="btn btn-outline" onclick="openAddM3U()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        إضافة قائمة تشغيل
+      </button>
+    </div>
+
+    <h2 class="sec-title">القوائم المضافة</h2>
+    <div class="pl-list" id="plList"></div>
+  </div>
+</div>
+
+<div class="page" id="page-playlists">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <h1 class="hero-title">إدارة قوائم التشغيل</h1>
+  </section>
+  <div class="wrap">
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="openAddXC()">XC إضافة قائمة تشغيل</button>
+      <button class="btn btn-outline" onclick="openAddM3U()">إضافة قائمة تشغيل</button>
+    </div>
+    <h2 class="sec-title">القوائم المضافة</h2>
+    <div class="pl-list" id="plList2"></div>
+  </div>
+</div>
+
+<div class="page" id="page-activate">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <h1 class="hero-title">تفعيل جهازك</h1>
+  </section>
+  <div class="wrap">
+    <div class="info-card">
+      <div class="info-row"><span class="lbl">MAC : عنوان</span><span class="val" id="macAddr2">--:--:--:--:--:--</span></div>
+      <div class="info-row"><span class="lbl">الحالة :</span><span class="val badge-inactive" id="status2">Inactive</span></div>
+      <div class="info-row"><span class="lbl">تاريخ الانتهاء :</span><span class="val" id="expiry2">--</span></div>
+    </div>
+
+    <div class="btns">
+      <button class="btn btn-purple" onclick="go('playlists')">إدارة قائمة التشغيل</button>
+      <button class="btn btn-purple" onclick="go('activate')">تفعيل الجهاز</button>
+      <button class="btn btn-teal" onclick="logout()">تسجيل الخروج</button>
+    </div>
+
+    <div class="warn">
+      <div class="warn-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        إخلاء المسؤولية
+      </div>
+      نحن لا نوفر المحتوى؛ خدمتنا هي مجرد مشغل وسائط. لمشاهدة القنوات، يجب عليك تحميل قائمة التشغيل الخاصة بك. إذا لم يكن لديك قائمة تشغيل، فلن يعمل المشغل، وبالتالي، لا تحتاج إلى الدفع. بالإضافة إلى ذلك، لا نسمح بالتفعيل للمستخدمين الذين لا يمتلكون قوائم تشغيل خاصة فريد، لذا فإن الدفع صالح لجهاز عنوان MAC بهم. لكل جهاز عنوان واحد فقط.
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="ttl">مدى الحياة</div>
+        <div class="price">€14.99</div>
+        <button class="price-btn" onclick="pay(14.99)">الدفع بالبطاقة</button>
+      </div>
+      <div class="price-card">
+        <div class="off-badge">30% OFF</div>
+        <div class="ttl">5 * مدى الحياة</div>
+        <div class="price">€49.99</div>
+        <button class="price-btn" onclick="pay(49.99)">الدفع بالبطاقة</button>
       </div>
     </div>
-
-    <div class="settings-sec">
-      <div class="settings-lbl">Presets</div>
-      <div class="color-grid">
-        <div class="cdot on" onclick="pickColor(this,'#7c3aed')"><i style="background:#c084fc"></i></div>
-        <div class="cdot" onclick="pickColor(this,'#2563eb')"><i style="background:#3b82f6"></i></div>
-        <div class="cdot" onclick="pickColor(this,'#7c3aed')"><i style="background:#a855f7"></i></div>
-        <div class="cdot" onclick="pickColor(this,'#1d4ed8')"><i style="background:#60a5fa"></i></div>
-        <div class="cdot" onclick="pickColor(this,'#d97706')"><i style="background:#f59e0b"></i></div>
-        <div class="cdot" onclick="pickColor(this,'#dc2626')"><i style="background:#ef4444"></i></div>
-      </div>
-    </div>
-
-    <button class="fs-btn" onclick="toggleFS()">⛶ Fullscreen</button>
   </div>
 </div>
 
-<!-- Sidebar Overlay -->
-<div class="overlay" id="sbOv" onclick="closeOv('sbOv',event)">
-  <div class="sidebar-panel">
-    <div class="sb-logo">
-      <div class="nav-logo">
-        <div class="nav-logo-box">P</div>
-        <div class="nav-logo-text">Prime <span>Player</span></div>
-      </div>
-    </div>
-    <ul class="sb-nav">
-      <li><a href="#" id="sb-home" onclick="go('home');closeOvForce('sbOv')" class="on">الرئيسية</a></li>
-      <li><a href="#" id="sb-playlists" onclick="go('playlists');closeOvForce('sbOv')">إدارة قوائم التشغيل</a></li>
-      <li><a href="#" id="sb-activate" onclick="go('activate');closeOvForce('sbOv')">تفعيل</a></li>
-      <li><a href="#" id="sb-contact" onclick="go('contact');closeOvForce('sbOv')">اتصل بنا</a></li>
-    </ul>
-  </div>
-</div>
+<div class="page" id="page-contact">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <h1 class="hero-title">اتصل بنا</h1>
+  </section>
+  <div class="wrap">
+    <p style="text-align:center;color:var(--muted);margin-top:20px;font-size:14px;line-height:1.9">تواصل معنا للاستفسارات أو الدعم أو تقديم الملاحظات. نحن هنا لمساعدتك.</p>
 
-<!-- ════════ HOME ════════ -->
-<div class="page active" id="pg-home">
-  <div class="hero">
-    <div class="poster-grid">
-      <div class="pi c1"></div><div class="pi c2"></div><div class="pi c3"></div><div class="pi c4"></div><div class="pi c5"></div>
-      <div class="pi c6"></div><div class="pi c7"></div><div class="pi c8"></div><div class="pi c9"></div><div class="pi c10"></div>
-      <div class="pi c11"></div><div class="pi c12"></div><div class="pi c13"></div><div class="pi c14"></div><div class="pi c15"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-title">إدارة قوائم التشغيل</div>
-  </div>
-
-  <div class="info-card">
-    <div class="info-row"><span class="info-label">عنوان MAC :</span><span class="info-val" id="did1">---</span></div>
-    <div class="info-row"><span class="info-label">الحالة :</span><span class="info-val inactive" id="st1">Inactive</span></div>
-    <div class="info-row"><span class="info-label">تاريخ الانتهاء :</span><span class="info-val" id="ex1">---</span></div>
-  </div>
-
-  <button class="abtn abtn-purple" onclick="go('playlists')">⊞ إدارة قائمة التشغيل</button>
-  <button class="abtn abtn-purple" onclick="go('activate')">⊕ تفعيل الجهاز</button>
-  <button class="abtn abtn-teal" onclick="resetDev()">↩ تسجيل الخروج</button>
-
-  <div class="abtn-row">
-    <button class="abtn-outline" onclick="addM3U()">إضافة قائمة تشغيل</button>
-    <button class="abtn-outline" onclick="addXC()">XC إضافة قائمة</button>
-  </div>
-
-  <div class="sec-title">القوائم المضافة</div>
-  <div id="pl-home"></div>
-
-  <footer>
-    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
-    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا، المصمم للتحميل السريع والأداء الخالي من الأخطاء. يرجى ملاحظة أننا نقدم مشغل IPTV فقط ولا نوفر المحتوى.</p>
-    <div class="f-social">
-      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
-      <a href="https://wa.me/212666686732" target="_blank">💬</a>
-    </div>
-    <div class="f-links-group">
-      <div class="f-links-title">روابط سريعة</div>
-      <ul class="f-links">
-        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
-        <li><a href="#">الأسئلة الشائعة</a></li>
-        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
-        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
-      </ul>
-    </div>
-    <div class="f-links-group">
-      <div class="f-links-title">قانوني</div>
-      <ul class="f-links">
-        <li><a href="#">الشروط والأحكام</a></li>
-        <li><a href="#">سياسة الخصوصية</a></li>
-      </ul>
-    </div>
-    <p class="f-copy">© 2026. All rights reserved</p>
-  </footer>
-</div>
-
-<!-- ════════ PLAYLISTS ════════ -->
-<div class="page" id="pg-playlists">
-  <div class="hero">
-    <div class="poster-grid">
-      <div class="pi c5"></div><div class="pi c1"></div><div class="pi c8"></div><div class="pi c3"></div><div class="pi c10"></div>
-      <div class="pi c2"></div><div class="pi c9"></div><div class="pi c4"></div><div class="pi c11"></div><div class="pi c6"></div>
-      <div class="pi c14"></div><div class="pi c7"></div><div class="pi c13"></div><div class="pi c15"></div><div class="pi c12"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-title">القوائم المضافة</div>
-  </div>
-
-  <div class="sec-title">القوائم المضافة</div>
-  <div id="pl-page"></div>
-
-  <footer>
-    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
-    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
-    <div class="f-social">
-      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
-      <a href="https://wa.me/212666686732" target="_blank">💬</a>
-    </div>
-    <p class="f-copy">© 2026. All rights reserved</p>
-  </footer>
-</div>
-
-<!-- ════════ ACTIVATE ════════ -->
-<div class="page" id="pg-activate">
-  <div class="hero">
-    <div class="poster-grid">
-      <div class="pi c3"></div><div class="pi c8"></div><div class="pi c1"></div><div class="pi c12"></div><div class="pi c5"></div>
-      <div class="pi c10"></div><div class="pi c2"></div><div class="pi c15"></div><div class="pi c7"></div><div class="pi c4"></div>
-      <div class="pi c9"></div><div class="pi c13"></div><div class="pi c6"></div><div class="pi c11"></div><div class="pi c14"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-title">تفعيل جهازك</div>
-  </div>
-
-  <div class="info-card">
-    <div class="info-row"><span class="info-label">عنوان MAC :</span><span class="info-val" id="did2">---</span></div>
-    <div class="info-row"><span class="info-label">الحالة :</span><span class="info-val inactive" id="st2">Inactive</span></div>
-    <div class="info-row"><span class="info-label">تاريخ الانتهاء :</span><span class="info-val" id="ex2">---</span></div>
-  </div>
-
-  <button class="abtn abtn-purple" onclick="go('playlists')">⊞ إدارة قائمة التشغيل</button>
-  <button class="abtn abtn-purple" onclick="scrollToPlans()">⊕ تفعيل الجهاز</button>
-  <button class="abtn abtn-teal" onclick="resetDev()">↩ تسجيل الخروج</button>
-
-  <div class="warn">
-    <div class="warn-title">⚠️ إخلاء المسؤولية</div>
-    خدمتنا هي مجرد مشغل وسائط. يجب عليك تحميل قائمة التشغيل الخاصة بك، فلن يعمل المشغل إذا لم يكن لديك قائمة تشغيل. لذلك لا تحتاج إلى الدفع. وبالتالي لا نسمح بالتفعيل للمستخدمين الذين لا يملكون قوائم تشغيل خاصة فريدة. لذا فإن الدفع صالح لجهاز MAC بعنوان واحد فقط.
-  </div>
-
-  <div id="plans-section">
-    <!-- Monthly -->
-    <div class="price-card">
-      <div class="price-name">شهري</div>
-      <div class="price-amt">€9.99</div>
-      <a href="https://paypal.me/MohammedBouinidane/9.99EUR" target="_blank" class="price-pay">
-        الدفع بالبطاقة
+    <div class="contact-list">
+      <a href="mailto:med.bouinidane@gmail.com" class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="contact-info">
+          <div class="label">Email</div>
+          <div class="value">med.bouinidane@gmail.com</div>
+        </div>
       </a>
-    </div>
-
-    <!-- Annual -->
-    <div class="price-card">
-      <div class="off-badge">50% OFF</div>
-      <div class="price-name">سنوي</div>
-      <div class="price-amt">€49.99</div>
-      <a href="https://paypal.me/MohammedBouinidane/49.99EUR" target="_blank" class="price-pay">
-        الدفع بالبطاقة
+      <a href="https://t.me/primeplayer" class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+        <div class="contact-info">
+          <div class="label">Telegram</div>
+          <div class="value">@primeplayer</div>
+        </div>
+      </a>
+      <a href="https://wa.me/212666686732" class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div class="contact-info">
+          <div class="label">WhatsApp</div>
+          <div class="value">+212 666 686 732</div>
+        </div>
+      </a>
+      <a href="viber://chat?number=+212666686732" class="contact-row">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="contact-info">
+          <div class="label">Viber</div>
+          <div class="value">+212 666 686 732</div>
+        </div>
       </a>
     </div>
   </div>
-
-  <footer>
-    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
-    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
-    <div class="f-social">
-      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
-      <a href="https://wa.me/212666686732" target="_blank">💬</a>
-    </div>
-    <div class="f-links-group">
-      <div class="f-links-title">روابط سريعة</div>
-      <ul class="f-links">
-        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
-        <li><a href="#">الأسئلة الشائعة</a></li>
-        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
-        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
-      </ul>
-    </div>
-    <div class="f-links-group">
-      <div class="f-links-title">قانوني</div>
-      <ul class="f-links">
-        <li><a href="#">الشروط والأحكام</a></li>
-        <li><a href="#">سياسة الخصوصية</a></li>
-      </ul>
-    </div>
-    <p class="f-copy">© 2026. All rights reserved</p>
-  </footer>
 </div>
 
-<!-- ════════ CONTACT ════════ -->
-<div class="page" id="pg-contact">
-  <div class="hero">
-    <div class="poster-grid">
-      <div class="pi c7"></div><div class="pi c3"></div><div class="pi c11"></div><div class="pi c5"></div><div class="pi c9"></div>
-      <div class="pi c1"></div><div class="pi c14"></div><div class="pi c6"></div><div class="pi c2"></div><div class="pi c13"></div>
-      <div class="pi c8"></div><div class="pi c4"></div><div class="pi c15"></div><div class="pi c10"></div><div class="pi c12"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-title">اتصل بنا</div>
+<footer class="footer">
+  <div class="logo">
+    <svg width="62" height="38"><use href="#ico-logo"/></svg>
+  </div>
+  <p class="desc">مشغل Prime Player الخاص يوفر تجربة بث سلسة مع مشغل بنا، المصمم للتحميل السريع والأداء الخالي من الأخطاء. يضمن واجهتنا الجميلة تجربة مشاهدة ممتعة، ومع دعم متعدد الأنظمة، يمكنك الوصول إلى قنواتك المفضلة على أي جهاز. يرجى ملاحظة أننا فقط ولا نوفر المحتوى. استمتع IPTV نقدم مشغل 🚀!</p>
+
+  <div class="footer-socials">
+    <a href="mailto:med.bouinidane@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    <a href="https://t.me/primeplayer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></a>
+    <a href="https://wa.me/212666686732"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    <a href="viber://chat?number=+212666686732"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
   </div>
 
-  <p style="text-align:center;color:var(--muted);font-size:.88rem;padding:.8rem 1rem 0">
-    تواصل معنا للاستفسارات أو الدعم أو تقديم الملاحظات. نحن هنا لمساعدتك.
-  </p>
-
-  <a href="mailto:med.bouinidane@gmail.com" class="contact-item">
-    <div class="ci-icon">✉️</div>
-    <div><div class="ci-title">Email</div><div class="ci-val">med.bouinidane@gmail.com</div></div>
-  </a>
-
-  <a href="https://wa.me/212666686732" target="_blank" class="contact-item">
-    <div class="ci-icon">💬</div>
-    <div><div class="ci-title">WhatsApp</div><div class="ci-val">+212 666 686 732</div></div>
-  </a>
-
-  <div style="height:.6rem"></div>
-
-  <div class="form-grid">
-    <input class="finput" type="text" placeholder="Name *" id="f-name">
-    <input class="finput" type="email" placeholder="Email *" id="f-email">
-    <input class="finput" type="tel" placeholder="Phone" id="f-phone">
-    <input class="finput" type="text" placeholder="Mac Address" id="f-mac">
-    <input class="finput form-full" type="text" placeholder="Subject *" id="f-sub">
-    <textarea class="finput form-full" placeholder="Message *" id="f-msg"></textarea>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <a href="#" onclick="go('contact');return false">اتصل بنا</a>
+      <a href="#">الأسئلة الشائعة</a>
+      <a href="#" onclick="go('playlists');return false">إدارة قوائم التشغيل</a>
+      <a href="#" onclick="go('activate');return false">تفعيل</a>
+    </div>
+    <div class="footer-col">
+      <h4>قانوني</h4>
+      <a href="#">الشروط والأحكام</a>
+      <a href="#">سياسة الخصوصية</a>
+    </div>
   </div>
-  <button class="fsend" onclick="sendMsg()">Send Message</button>
 
-  <footer>
-    <div class="f-logo"><div class="f-logo-box">P</div><span>Prime Player</span></div>
-    <p class="f-about">نحن نوفر تجربة بث سلسة مع مشغل IPTV الخاص بنا.</p>
-    <div class="f-social">
-      <a href="mailto:med.bouinidane@gmail.com">✉️</a>
-      <a href="https://wa.me/212666686732" target="_blank">💬</a>
+  <div class="copy">© 2025. All rights reserved</div>
+</footer>
+
+<div class="overlay" id="ovl" onclick="closeAll()"></div>
+<aside class="side" id="side">
+  <div class="logo"><svg width="62" height="38"><use href="#ico-logo"/></svg></div>
+  <nav>
+    <a href="#" onclick="go('home');return false">الرئيسية</a>
+    <a href="#" onclick="go('playlists');return false">إدارة قوائم التشغيل</a>
+    <a href="#" onclick="go('activate');return false">تفعيل</a>
+    <a href="#" onclick="go('contact');return false">اتصل بنا</a>
+  </nav>
+</aside>
+
+<aside class="settings" id="settings">
+  <div class="set-hdr">
+    <div class="actions">
+      <button onclick="resetSettings()" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
+      <button onclick="closeAll()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <div class="f-links-group">
-      <div class="f-links-title">روابط سريعة</div>
-      <ul class="f-links">
-        <li><a href="#" onclick="go('contact')">اتصل بنا</a></li>
-        <li><a href="#">الأسئلة الشائعة</a></li>
-        <li><a href="#" onclick="go('playlists')">إدارة قوائم التشغيل</a></li>
-        <li><a href="#" onclick="go('activate')">تفعيل</a></li>
-      </ul>
+    <h3>Settings</h3>
+  </div>
+
+  <div class="set-sec">
+    <h4>Mode</h4>
+    <div class="mode-grid">
+      <button class="mode-btn" data-mode="light" onclick="setMode('light')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="mode-btn on" data-mode="dark" onclick="setMode('dark')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
-    <div class="f-links-group">
-      <div class="f-links-title">قانوني</div>
-      <ul class="f-links">
-        <li><a href="#">الشروط والأحكام</a></li>
-        <li><a href="#">سياسة الخصوصية</a></li>
-      </ul>
+  </div>
+
+  <div class="set-sec">
+    <h4>Presets</h4>
+    <div class="preset-grid">
+      <button class="preset-btn on" onclick="setColor('#c026d3',this)"><span class="dot" style="background:#c026d3"></span></button>
+      <button class="preset-btn" onclick="setColor('#3b82f6',this)"><span class="dot" style="background:#3b82f6"></span></button>
+      <button class="preset-btn" onclick="setColor('#7c3aed',this)"><span class="dot" style="background:#7c3aed"></span></button>
+      <button class="preset-btn" onclick="setColor('#2563eb',this)"><span class="dot" style="background:#2563eb"></span></button>
+      <button class="preset-btn" onclick="setColor('#f59e0b',this)"><span class="dot" style="background:#f59e0b"></span></button>
+      <button class="preset-btn" onclick="setColor('#ef4444',this)"><span class="dot" style="background:#ef4444"></span></button>
     </div>
-    <p class="f-copy">© 2026. All rights reserved</p>
-  </footer>
+  </div>
+
+  <button class="set-fullscreen" onclick="toggleFS()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+    Fullscreen
+  </button>
+</aside>
+
+<button class="fab hidden" id="fab" onclick="pay(14.99)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+  Pay Now
+</button>
+
+<div class="modal" id="m3uModal">
+  <div class="modal-box">
+    <h3>إضافة قائمة تشغيل M3U</h3>
+    <div class="field"><label>اسم القائمة</label><input id="m3uName" dir="rtl" placeholder="Prime"></div>
+    <div class="field"><label>رابط M3U URL</label><input id="m3uUrl" placeholder="http://..."></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('m3uModal')">إلغاء</button>
+      <button class="btn btn-purple" onclick="saveM3U()">حفظ</button>
+    </div>
+  </div>
 </div>
 
-<!-- Pay Now FAB -->
-<a href="https://paypal.me/MohammedBouinidane" target="_blank" class="pay-fab" id="payFab" style="display:none">
-  💲 Pay Now
-</a>
-
-<!-- Bottom Nav -->
-<nav class="bnav">
-  <button class="bn on" id="bn-home" onclick="go('home')">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-    الرئيسية
-  </button>
-  <button class="bn" id="bn-playlists" onclick="go('playlists')">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
-    القوائم
-  </button>
-  <button class="bn" id="bn-activate" onclick="go('activate')">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-    تفعيل
-  </button>
-  <button class="bn" id="bn-contact" onclick="go('contact')">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    اتصل بنا
-  </button>
-</nav>
+<div class="modal" id="xcModal">
+  <div class="modal-box">
+    <h3>إضافة قائمة Xtream Codes</h3>
+    <div class="field"><label>اسم القائمة</label><input id="xcName" dir="rtl" placeholder="Prime"></div>
+    <div class="field"><label>اسم المستخدم</label><input id="xcUser"></div>
+    <div class="field"><label>كلمة المرور</label><input id="xcPass" type="password"></div>
+    <div class="field"><label>عنوان الخادم URL</label><input id="xcUrl" placeholder="http://server:port"></div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal('xcModal')">إلغاء</button>
+      <button class="btn btn-purple" onclick="saveXC()">حفظ</button>
+    </div>
+  </div>
+</div>
 
 <script>
-// ── Device ID ──
-function getDevId(){
-  let id=localStorage.getItem('ppid');
-  if(!id){
-    const h=()=>Math.floor(Math.random()*256).toString(16).padStart(2,'0');
-    id=`${h()}:${h()}:${h()}:${h()}:${h()}:${h()}`;
-    localStorage.setItem('ppid',id);
+const MOVIES=['Resident','Simone','Rising','Bad','Honor','Airbender','50 Shades','Freed','Long Game','Minions','Trolls','Supacell','Find Me','Hillbilly','Vanished'];
+const PALETTES=[['#1e1b4b','#312e81'],['#581c87','#7c2d12'],['#7c2d12','#451a03'],['#0c4a6e','#1e3a8a'],['#831843','#9d174d'],['#365314','#3f6212'],['#7c2d12','#9a3412'],['#1e293b','#0f172a'],['#4c1d95','#5b21b6'],['#831843','#be185d'],['#064e3b','#065f46'],['#7e22ce','#a21caf'],['#92400e','#b45309'],['#1e40af','#2563eb'],['#991b1b','#b91c1c']];
+
+function buildHero(){
+  document.querySelectorAll('.hero-grid').forEach(g=>{
+    g.innerHTML='';
+    for(let i=0;i<15;i++){
+      const d=document.createElement('div');
+      d.className='p';
+      const c=PALETTES[i%PALETTES.length];
+      d.style.setProperty('--c1',c[0]);
+      d.style.setProperty('--c2',c[1]);
+      d.textContent=MOVIES[i%MOVIES.length];
+      g.appendChild(d);
+    }
+  });
+}
+
+function getDev(){
+  let d=localStorage.getItem('pp_dev');
+  if(!d){
+    d=Array(6).fill(0).map(()=>Math.floor(Math.random()*256).toString(16).padStart(2,'0')).join(':');
+    localStorage.setItem('pp_dev',d);
   }
-  return id;
-}
-function initInfo(){
-  const id=getDevId();
-  const st=localStorage.getItem('ppst')||'Inactive';
-  const ex=localStorage.getItem('ppex')||'---';
-  ['did1','did2'].forEach(k=>{const e=document.getElementById(k);if(e)e.textContent=id;});
-  ['st1','st2'].forEach(k=>{
-    const e=document.getElementById(k);
-    if(e){e.textContent=st;e.className='info-val '+(st==='Active'?'active-status':'inactive');}
-  });
-  ['ex1','ex2'].forEach(k=>{const e=document.getElementById(k);if(e)e.textContent=ex;});
-  const fm=document.getElementById('f-mac');if(fm)fm.value=id;
+  return d;
 }
 
-// ── Playlists ──
-function getPL(){return JSON.parse(localStorage.getItem('pppl')||'[]');}
-function savePL(pl){localStorage.setItem('pppl',JSON.stringify(pl));}
+function getSub(){
+  const s=localStorage.getItem('pp_sub');
+  return s?JSON.parse(s):{active:false,expiry:null};
+}
+function fmtDate(t){
+  if(!t)return'--';
+  const d=new Date(t);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function refreshInfo(){
+  const d=getDev(),s=getSub();
+  ['macAddr','macAddr2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=d});
+  ['status','status2'].forEach(id=>{const e=document.getElementById(id);if(e){
+    e.textContent=s.active?'Active':'Inactive';
+    e.className='val '+(s.active?'badge-active':'badge-inactive');
+  }});
+  ['expiry','expiry2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmtDate(s.expiry)});
+}
+
+function getPL(){return JSON.parse(localStorage.getItem('pp_pl')||'[]')}
+function savePL(p){localStorage.setItem('pp_pl',JSON.stringify(p))}
+
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
 function renderPL(){
-  const pl=getPL();
-  ['pl-home','pl-page'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    if(!pl.length){el.innerHTML='<div class="empty">لا توجد قوائم مضافة بعد</div>';return;}
-    el.innerHTML=pl.map((p,i)=>`
-      <div class="pl-card">
-        <div class="pl-name">${p.name}</div>
-        <span class="pl-badge">محمي</span>
-        <div class="pl-actions">
-          <button class="pl-btn pl-edit" onclick="editPL(${i})">✏️ تعديل</button>
-          <button class="pl-btn pl-del" onclick="delPL(${i})">🗑️ حذف</button>
-        </div>
-      </div>`).join('');
+  const items=getPL();
+  ['plList','plList2'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    if(!items.length){
+      el.innerHTML='<div class="pl-empty">لا توجد قوائم تشغيل بعد. أضف واحدة باستخدام الأزرار أعلاه.</div>';
+      return;
+    }
+    el.innerHTML=items.map((p,i)=>'<div class="pl-card"><div class="name">'+escapeHTML(p.name)+'</div><span class="tag">محمي</span><div class="actions"><button class="btn-edit" onclick="editPL('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>تعديل</button><button class="btn-del" onclick="delPL('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>حذف</button></div></div>').join('');
   });
 }
-function addM3U(){
-  const name=prompt('اسم قائمة التشغيل:');if(!name)return;
-  const url=prompt('رابط M3U:');if(!url)return;
-  const pl=getPL();pl.push({name,url});savePL(pl);renderPL();
-}
-function addXC(){
-  const name=prompt('اسم القائمة:');if(!name)return;
-  const host=prompt('رابط الخادم (Host):');if(!host)return;
-  const user=prompt('اسم المستخدم:');
-  const pass=prompt('كلمة المرور:');
-  const pl=getPL();
-  pl.push({name,url:`${host}/get.php?username=${user}&password=${pass}&type=m3u_plus`});
-  savePL(pl);renderPL();
-}
-function editPL(i){
-  const pl=getPL();
-  const n=prompt('الاسم الجديد:',pl[i].name);
-  if(n){pl[i].name=n;savePL(pl);renderPL();}
-}
+
 function delPL(i){
-  if(!confirm('هل تريد حذف هذه القائمة؟'))return;
-  const pl=getPL();pl.splice(i,1);savePL(pl);renderPL();
-}
-function resetDev(){
-  if(!confirm('هل تريد تسجيل الخروج وإعادة تعيين الجهاز؟'))return;
-  ['ppid','ppst','ppex','pppl'].forEach(k=>localStorage.removeItem(k));
-  location.reload();
+  if(!confirm('حذف هذه القائمة؟'))return;
+  const p=getPL();p.splice(i,1);savePL(p);renderPL();
 }
 
-// ── Navigation ──
-const pages=['home','playlists','activate','contact'];
+let editIdx=null;
+function editPL(i){
+  const p=getPL()[i];
+  editIdx=i;
+  if(p.type==='xc'){
+    document.getElementById('xcName').value=p.name;
+    document.getElementById('xcUser').value=p.user||'';
+    document.getElementById('xcPass').value=p.pass||'';
+    document.getElementById('xcUrl').value=p.url||'';
+    openModal('xcModal');
+  }else{
+    document.getElementById('m3uName').value=p.name;
+    document.getElementById('m3uUrl').value=p.url||'';
+    openModal('m3uModal');
+  }
+}
+
+function openAddM3U(){editIdx=null;document.getElementById('m3uName').value='';document.getElementById('m3uUrl').value='';openModal('m3uModal')}
+function openAddXC(){editIdx=null;document.getElementById('xcName').value='';document.getElementById('xcUser').value='';document.getElementById('xcPass').value='';document.getElementById('xcUrl').value='';openModal('xcModal')}
+
+function saveM3U(){
+  const n=document.getElementById('m3uName').value.trim();
+  const u=document.getElementById('m3uUrl').value.trim();
+  if(!n||!u){alert('يرجى إدخال الاسم والرابط');return}
+  const p=getPL();
+  const obj={type:'m3u',name:n,url:u};
+  if(editIdx!==null)p[editIdx]=obj;else p.push(obj);
+  savePL(p);renderPL();closeModal('m3uModal');
+}
+function saveXC(){
+  const n=document.getElementById('xcName').value.trim();
+  const usr=document.getElementById('xcUser').value.trim();
+  const ps=document.getElementById('xcPass').value.trim();
+  const u=document.getElementById('xcUrl').value.trim();
+  if(!n||!usr||!ps||!u){alert('يرجى تعبئة جميع الحقول');return}
+  const p=getPL();
+  const obj={type:'xc',name:n,user:usr,pass:ps,url:u};
+  if(editIdx!==null)p[editIdx]=obj;else p.push(obj);
+  savePL(p);renderPL();closeModal('xcModal');
+}
+
 function go(p){
-  pages.forEach(n=>{
-    document.getElementById('pg-'+n).classList.toggle('active',n===p);
-  });
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  const t=document.getElementById('page-'+p);
+  if(t)t.classList.add('on');
+  closeAll();
+  document.getElementById('fab').classList.toggle('hidden',p!=='activate');
   window.scrollTo(0,0);
-  // bottom nav
-  pages.forEach(n=>{
-    const b=document.getElementById('bn-'+n);if(b)b.classList.toggle('on',n===p);
-  });
-  // sidebar nav
-  pages.forEach(n=>{
-    const s=document.getElementById('sb-'+n);if(s)s.classList.toggle('on',n===p);
-  });
-  // pay fab
-  document.getElementById('payFab').style.display=p==='activate'?'flex':'none';
 }
 
-// ── Settings ──
-function openSettings(){document.getElementById('setOv').classList.add('open');}
-function openSidebar(){document.getElementById('sbOv').classList.add('open');}
-function closeOv(id,e){if(e.target===document.getElementById(id))closeOvForce(id);}
-function closeOvForce(id){document.getElementById(id).classList.remove('open');}
-function setMode(m,btn){
-  document.querySelectorAll('#setOv .mode-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.documentElement.style.setProperty('--bg',m==='light'?'#f5f5f5':'#0d0d1a');
-  document.documentElement.style.setProperty('--bg2',m==='light'?'#e8e8f0':'#1a1a2d');
-  document.documentElement.style.setProperty('--text',m==='light'?'#111':'#f0f0ff');
+function openSidebar(){document.getElementById('side').classList.add('on');document.getElementById('ovl').classList.add('on')}
+function openSettings(){document.getElementById('settings').classList.add('on');document.getElementById('ovl').classList.add('on')}
+function openModal(id){document.getElementById(id).classList.add('on')}
+function closeModal(id){document.getElementById(id).classList.remove('on')}
+function closeAll(){
+  document.getElementById('side').classList.remove('on');
+  document.getElementById('settings').classList.remove('on');
+  document.getElementById('ovl').classList.remove('on');
 }
-function pickColor(el,c){
-  document.querySelectorAll('.cdot').forEach(d=>d.classList.remove('on'));
-  el.classList.add('on');
-  document.documentElement.style.setProperty('--pl',c);
+
+function setMode(m){
+  document.body.classList.toggle('light',m==='light');
+  localStorage.setItem('pp_mode',m);
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('on',b.dataset.mode===m));
+}
+function shade(hex,n){
+  const c=hex.replace('#','');
+  const r=Math.max(0,Math.min(255,parseInt(c.substr(0,2),16)+n));
+  const g=Math.max(0,Math.min(255,parseInt(c.substr(2,2),16)+n));
+  const b=Math.max(0,Math.min(255,parseInt(c.substr(4,2),16)+n));
+  return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+function setColor(c,el){
+  document.documentElement.style.setProperty('--accent',c);
+  document.documentElement.style.setProperty('--accent2',c);
+  document.documentElement.style.setProperty('--purple-btn',shade(c,-50));
+  localStorage.setItem('pp_color',c);
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('on'));
+  if(el)el.classList.add('on');
+}
+function resetSettings(){
+  localStorage.removeItem('pp_mode');
+  localStorage.removeItem('pp_color');
+  document.body.classList.remove('light');
+  document.documentElement.style.removeProperty('--accent');
+  document.documentElement.style.removeProperty('--accent2');
+  document.documentElement.style.removeProperty('--purple-btn');
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('on',b.dataset.mode==='dark'));
+  document.querySelectorAll('.preset-btn').forEach((b,i)=>b.classList.toggle('on',i===0));
 }
 function toggleFS(){
-  if(!document.fullscreenElement)document.documentElement.requestFullscreen();
-  else document.exitFullscreen();
-}
-function scrollToPlans(){
-  document.getElementById('plans-section').scrollIntoView({behavior:'smooth'});
+  if(document.fullscreenElement)document.exitFullscreen();
+  else document.documentElement.requestFullscreen();
 }
 
-// ── Contact Form ──
-function sendMsg(){
-  const n=document.getElementById('f-name').value;
-  const e=document.getElementById('f-email').value;
-  const p=document.getElementById('f-phone').value;
-  const m=document.getElementById('f-mac').value;
-  const s=document.getElementById('f-sub').value;
-  const msg=document.getElementById('f-msg').value;
-  if(!n||!e||!s||!msg){alert('يرجى ملء جميع الحقول المطلوبة (*)');return;}
-  const txt=`الاسم: ${n}\nالبريد: ${e}\nالهاتف: ${p}\nMAC: ${m}\nالموضوع: ${s}\nالرسالة: ${msg}`;
-  window.open(`https://wa.me/212666686732?text=${encodeURIComponent(txt)}`, '_blank');
+function pay(amt){
+  const dev=getDev();
+  const url='https://paypal.me/MohammedBouinidane/'+amt+'EUR';
+  if(confirm('سيتم توجيهك إلى PayPal للدفع €'+amt+'.\nMAC : '+dev+'\nمتابعة؟')){
+    window.open(url,'_blank');
+  }
 }
 
-// ── Init ──
-initInfo();
-renderPL();
+function logout(){
+  if(!confirm('سيؤدي ذلك إلى مسح جميع البيانات المحلية. هل أنت متأكد؟'))return;
+  localStorage.clear();location.reload();
+}
+
+function init(){
+  buildHero();
+  const m=localStorage.getItem('pp_mode');
+  if(m==='light')setMode('light');
+  const c=localStorage.getItem('pp_color');
+  if(c){
+    document.documentElement.style.setProperty('--accent',c);
+    document.documentElement.style.setProperty('--accent2',c);
+    document.documentElement.style.setProperty('--purple-btn',shade(c,-50));
+  }
+  refreshInfo();
+  renderPL();
+}
+init();
 </script>
 </body>
 </html>
