@@ -16,13 +16,13 @@ workflows:
       flutter: 3.29.3
       java: 17
 
-    working_directory: prime-player
-
     scripts:
       - name: Get Flutter packages
+        working_directory: prime-player
         script: flutter pub get
 
       - name: Build APK (arm64 release)
+        working_directory: prime-player
         script: |
           flutter build apk \
             --release \
