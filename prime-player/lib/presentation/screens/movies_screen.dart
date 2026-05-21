@@ -214,111 +214,86 @@ class _PosterGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(8),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount:   7,
-        crossAxisSpacing: 6,
-        mainAxisSpacing:  6,
-        childAspectRatio: 0.68,
-      ),
-      itemCount:              items.length,
-      addAutomaticKeepAlives: false,
-      itemBuilder: (_, i) {
-        final item = items[i];
-        return _PosterCard(item: item, onTap: () => onTap(item));
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final cols = (constraints.maxWidth / 120).floor().clamp(2, 8);
+        return GridView.builder(
+          padding: const EdgeInsets.all(8),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount:   cols,
+            crossAxisSpacing: 6,
+            mainAxisSpacing:  6,
+            childAspectRatio: 0.68,
+          ),
+          itemCount:              items.length,
+          addAutomaticKeepAlives: false,
+          addRepaintBoundaries:   false,
+          itemBuilder: (_, i) {
+            final item = items[i];
+            return _PosterCard(item: item, onTap: () => onTap(item));
+          },
+        );
       },
     );
   }
 }
 
-class _PosterCard extends StatefulWidget {
+class _PosterCard extends StatelessWidget {
   final Channel      item;
   final VoidCallback onTap;
-  const _PosterCard({required this.item, required this.onTap});
-
-  @override
-  State<_PosterCard> createState() => _PosterCardState();
-}
-
-class _PosterCardState extends State<_PosterCard> {
-  bool _hovered = false;
+  const _PosterCard({required this.item, required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit:  (_) => setState(() => _hovered = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 120),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: _hovered ? AppColors.primary : AppColors.border,
-              width: _hovered ? 1.5 : 1,
-            ),
-            boxShadow: _hovered
-                ? [BoxShadow(color: AppColors.primary.withOpacity(0.3),
-                    blurRadius: 8, offset: const Offset(0, 3))]
-                : [],
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              // Poster image
-              widget.item.logoUrl != null && widget.item.logoUrl!.isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl:       widget.item.logoUrl!,
-                      fit:            BoxFit.cover,
-                      fadeInDuration: const Duration(milliseconds: 150),
-                      errorWidget:    (_, __, ___) => _NoImageFallback(widget.item.name, Icons.movie_rounded),
-                      placeholder:    (_, __) => Container(color: AppColors.surfaceLight),
-                    )
-                  : _NoImageFallback(widget.item.name, Icons.movie_rounded),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.border),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            item.logoUrl != null && item.logoUrl!.isNotEmpty
+                ? CachedNetworkImage(
+                    imageUrl:       item.logoUrl!,
+                    fit:            BoxFit.cover,
+                    fadeInDuration: Duration.zero,
+                    errorWidget:    (_, __, ___) =>
+                        _NoImageFallback(item.name, Icons.movie_rounded),
+                    placeholder:    (_, __) =>
+                        Container(color: AppColors.surfaceLight),
+                  )
+                : _NoImageFallback(item.name, Icons.movie_rounded),
 
-              // Bottom gradient + title
-              Positioned(
-                bottom: 0, left: 0, right: 0,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end:   Alignment.topCenter,
-                      colors: [Color(0xDD0A0E1A), Color(0x000A0E1A)],
-                    ),
-                  ),
-                  child: Text(
-                    widget.item.name,
-                    style: const TextStyle(
-                      color:      Colors.white,
-                      fontSize:   9,
-                      fontWeight: FontWeight.w600,
-                      shadows: [Shadow(color: Colors.black, blurRadius: 4)],
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+            Positioned(
+              bottom: 0, left: 0, right: 0,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end:   Alignment.topCenter,
+                    colors: [Color(0xDD0A0E1A), Color(0x000A0E1A)],
                   ),
                 ),
-              ),
-
-              // Play icon on hover
-              if (_hovered)
-                Center(
-                  child: Container(
-                    width: 32, height: 32,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: kPrimeGradient,
-                      boxShadow: [BoxShadow(
-                          color: Colors.black.withOpacity(0.5), blurRadius: 8)],
-                    ),
-                    child: const Icon(Icons.play_arrow_rounded,
-                        color: Colors.white, size: 18),
+                child: Text(
+                  item.name,
+                  style: const TextStyle(
+                    color: Colors.white, fontSize: 9,
+                    fontWeight: FontWeight.w600,
+                    shadows: [Shadow(color: Colors.black, blurRadius: 4)],
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+              const Center(
+                child: Icon(Icons.play_circle_outline_rounded,
+                    color: Colors.white24, size: 22),
                 ),
             ],
           ),
