@@ -164,7 +164,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
   }
 }
 
-// ── Shared search bar ─────────────────────────────────────────────────────────
+// ── Shared search bar ────────────────────────────────────────────────────────────────────────────────
 class _SearchBar extends StatelessWidget {
   final TextEditingController ctrl;
   final String               hint;
@@ -205,7 +205,7 @@ class _SearchBar extends StatelessWidget {
   }
 }
 
-// ── Poster grid ───────────────────────────────────────────────────────────────
+// ── Poster grid ──────────────────────────────────────────────────────────────────────────────────────
 class _PosterGrid extends StatelessWidget {
   final List<Channel>         items;
   final ValueChanged<Channel> onTap;
@@ -291,12 +291,11 @@ class _PosterCard extends StatelessWidget {
                 ),
               ),
             ),
-              const Center(
-                child: Icon(Icons.play_circle_outline_rounded,
-                    color: Colors.white24, size: 22),
-                ),
-            ],
-          ),
+            const Center(
+              child: Icon(Icons.play_circle_outline_rounded,
+                  color: Colors.white24, size: 22),
+            ),
+          ],
         ),
       ),
     );

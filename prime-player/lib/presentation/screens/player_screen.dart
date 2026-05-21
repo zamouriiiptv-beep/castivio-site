@@ -131,7 +131,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   }
 }
 
-// ── Buffering indicator ───────────────────────────────────────────────────────
+// ── Buffering indicator ────────────────────────────────────────────────────────────────────────────────
 class _BufferingIndicator extends StatelessWidget {
   const _BufferingIndicator();
 
@@ -153,7 +153,7 @@ class _BufferingIndicator extends StatelessWidget {
       );
 }
 
-// ── Error overlay ─────────────────────────────────────────────────────────────
+// ── Error overlay ──────────────────────────────────────────────────────────────────────────────────────
 class _ErrorOverlay extends StatelessWidget {
   final String?       message;
   final VoidCallback? onRetry;
@@ -226,7 +226,7 @@ class _ErrorOverlay extends StatelessWidget {
       );
 }
 
-// ── Controls overlay ──────────────────────────────────────────────────────────
+// ── Controls overlay ─────────────────────────────────────────────────────────────────────────────────────
 class _ControlsOverlay extends StatelessWidget {
   final Channel?   channel;
   final bool       isPlaying;
