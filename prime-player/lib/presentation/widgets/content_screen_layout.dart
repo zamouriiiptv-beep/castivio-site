@@ -516,8 +516,9 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
               const Center(child: CircularProgressIndicator(
                   color: AppColors.primary, strokeWidth: 2.5)),
 
-            // Stream error
-            if (ps.hasError && channel != null)
+            // Stream error — only shown when NOT playing (non-fatal codec
+            // warnings from libmpv can fire while video still plays).
+            if (ps.hasError && channel != null && !ps.isPlaying)
               Positioned.fill(
                 child: Container(
                   color: Colors.black87,

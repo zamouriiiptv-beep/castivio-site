@@ -89,7 +89,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
             if (ps.isBuffering)
               const Center(child: _BufferingIndicator()),
 
-            if (ps.hasError)
+            if (ps.hasError && !ps.isPlaying)
               _ErrorOverlay(
                 message:    ps.errorMessage,
                 onRetry:    () {
