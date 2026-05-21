@@ -6,6 +6,7 @@ import '../../core/constants.dart';
 import '../../data/models/channel.dart';
 import '../../data/models/playlist.dart';
 import '../providers/locale_provider.dart';
+import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
 import 'series_detail_screen.dart';
@@ -33,6 +34,11 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
   void dispose() {
     _searchCtrl.dispose();
     super.dispose();
+  }
+
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
   }
 
   Future<void> _loadIfNeeded() async {
@@ -68,7 +74,10 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     final series         = ref.watch(filteredSeriesChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
@@ -76,13 +85,13 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
             ContentTopBar(
               section:    tr.series.toUpperCase(),
               subSection: '${series.length} ${tr.shows}',
-              onBack:     () => Navigator.pop(context),
+              onBack:     _onBack,
             ),
             Expanded(
               child: Row(
                 children: [
                   IconSidebar(
-                    onBack: () => Navigator.pop(context),
+                    onBack: _onBack,
                     onSearch: () {
                       setState(() {
                         _searching = !_searching;
@@ -142,6 +151,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -150,8 +160,8 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: tr.loadingSeries, onCancel: () => Navigator.pop(context))),
+          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.loading, onBack: _onBack),
+          Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: tr.loadingSeries, onCancel: _onBack)),
         ])),
       );
   }
@@ -161,7 +171,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.error, onBack: _onBack),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );

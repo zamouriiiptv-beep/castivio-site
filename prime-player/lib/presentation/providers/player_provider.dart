@@ -15,6 +15,8 @@ class PlayerState {
   final bool             isBuffering;
   final bool             hasError;
   final String?          errorMessage;
+  final Duration         position;
+  final Duration         duration;
 
   const PlayerState({
     this.channel,
@@ -23,6 +25,8 @@ class PlayerState {
     this.isBuffering = false,
     this.hasError    = false,
     this.errorMessage,
+    this.position    = Duration.zero,
+    this.duration    = Duration.zero,
   });
 
   PlayerState copyWith({
@@ -32,6 +36,8 @@ class PlayerState {
     bool?            isBuffering,
     bool?            hasError,
     String?          errorMessage,
+    Duration?        position,
+    Duration?        duration,
   }) => PlayerState(
     channel:      channel      ?? this.channel,
     controller:   controller   ?? this.controller,
@@ -39,6 +45,8 @@ class PlayerState {
     isBuffering:  isBuffering  ?? this.isBuffering,
     hasError:     hasError     ?? this.hasError,
     errorMessage: errorMessage ?? this.errorMessage,
+    position:     position     ?? this.position,
+    duration:     duration     ?? this.duration,
   );
 }
 
@@ -76,6 +84,14 @@ class PlayerNotifier extends Notifier<PlayerState> {
         errorMessage: err,
         isBuffering:  false,
       );
+    });
+
+    _player.stream.position.listen((pos) {
+      state = state.copyWith(position: pos);
+    });
+
+    _player.stream.duration.listen((dur) {
+      state = state.copyWith(duration: dur);
     });
 
     ref.onDispose(() {
@@ -142,6 +158,10 @@ class PlayerNotifier extends Notifier<PlayerState> {
   Future<void> openInExternalPlayer() async {
     final url = state.channel?.streamUrl;
     if (url == null) return;
+    await openUrlInExternalPlayer(url);
+  }
+
+  Future<void> openUrlInExternalPlayer(String url) async {
     try {
       final intent = AndroidIntent(
         action: 'action_view',

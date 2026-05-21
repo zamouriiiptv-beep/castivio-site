@@ -29,6 +29,11 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     _load();
   }
 
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
+  }
+
   String get _seriesId =>
       widget.series.id.startsWith('series_')
           ? widget.series.id.substring('series_'.length)
@@ -68,6 +73,13 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     }
   }
 
+  void _openEpisodeExternal(Episode episode) {
+    final playlist = _activePlaylist();
+    if (playlist == null) return;
+    final url = ref.read(playlistRepositoryProvider).buildEpisodeUrl(playlist, episode);
+    ref.read(playerProvider.notifier).openUrlInExternalPlayer(url);
+  }
+
   Future<void> _playEpisode(Episode episode) async {
     final playlist = _activePlaylist();
     if (playlist == null) return;
@@ -81,18 +93,23 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     );
     ref.read(playerProvider.notifier).openChannel(ch);
     if (!mounted) return;
-    Navigator.push(context, PageRouteBuilder(
+    await Navigator.push(context, PageRouteBuilder(
       pageBuilder:        (_, a, __) => const PlayerScreen(),
       transitionsBuilder: (_, a, __, child) => FadeTransition(opacity: a, child: child),
       transitionDuration: const Duration(milliseconds: 200),
     ));
+    if (mounted) ref.read(playerProvider.notifier).stop();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(child: _buildBody()),
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: _buildBody()),
+      ),
     );
   }
 
@@ -199,7 +216,7 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
         child: Row(children: [
           IconButton(
             icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.white, size: 20),
-            onPressed: () => Navigator.pop(context),
+            onPressed: _onBack,
           ),
           Expanded(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -287,7 +304,17 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
                 ],
               ],
             )),
-            const Icon(Icons.play_arrow_rounded, color: AppColors.accent, size: 28),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.play_arrow_rounded, color: AppColors.accent, size: 28),
+                const SizedBox(height: 4),
+                GestureDetector(
+                  onTap: () => _openEpisodeExternal(e),
+                  child: const Icon(Icons.open_in_new_rounded, color: AppColors.textMuted, size: 18),
+                ),
+              ],
+            ),
           ]),
         ),
       );

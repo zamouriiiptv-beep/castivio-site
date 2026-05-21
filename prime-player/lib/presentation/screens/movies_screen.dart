@@ -35,6 +35,11 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     super.dispose();
   }
 
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
+  }
+
   Future<void> _loadIfNeeded() async {
     final id = ref.read(activePlaylistIdProvider);
     if (id == null) return;
@@ -68,7 +73,10 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     final movies         = ref.watch(filteredMovieChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
@@ -76,13 +84,13 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
             ContentTopBar(
               section:    tr.movies.toUpperCase(),
               subSection: '${movies.length} ${tr.films}',
-              onBack:     () => Navigator.pop(context),
+              onBack:     _onBack,
             ),
             Expanded(
               child: Row(
                 children: [
                   IconSidebar(
-                    onBack: () => Navigator.pop(context),
+                    onBack: _onBack,
                     onSearch: () {
                       setState(() {
                         _searching = !_searching;
@@ -138,6 +146,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -146,8 +155,8 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: tr.loadingMovies, onCancel: () => Navigator.pop(context))),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.loading, onBack: _onBack),
+          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: tr.loadingMovies, onCancel: _onBack)),
         ])),
       );
   }
@@ -157,7 +166,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.error, onBack: _onBack),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
