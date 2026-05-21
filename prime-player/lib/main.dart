@@ -37,7 +37,7 @@ class PrimePlayerApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Eagerly create the ExoPlayer controller so the first channel tap is instant.
+    // Eagerly create the player so the first channel tap is instant.
     ref.watch(playerProvider);
     final langCode = ref.watch(localeProvider);
     return MaterialApp(
