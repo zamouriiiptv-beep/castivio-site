@@ -197,15 +197,17 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                   onExternal:    () =>
                       ref.read(playerProvider.notifier).openInExternalPlayer(),
                   onSkipBack: () {
-                    final pos = (ps.position - const Duration(seconds: 10))
-                        .clamp(Duration.zero, ps.duration);
-                    ref.read(playerProvider.notifier).seek(pos);
+                    final ms = (ps.position.inMilliseconds - 10000)
+                        .clamp(0, ps.duration.inMilliseconds);
+                    ref.read(playerProvider.notifier)
+                        .seek(Duration(milliseconds: ms));
                     _resetHideTimer();
                   },
                   onSkipForward: () {
-                    final pos = (ps.position + const Duration(seconds: 10))
-                        .clamp(Duration.zero, ps.duration);
-                    ref.read(playerProvider.notifier).seek(pos);
+                    final ms = (ps.position.inMilliseconds + 10000)
+                        .clamp(0, ps.duration.inMilliseconds);
+                    ref.read(playerProvider.notifier)
+                        .seek(Duration(milliseconds: ms));
                     _resetHideTimer();
                   },
                   onSeekStart:   _onSeekStart,
