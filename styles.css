@@ -1359,36 +1359,6 @@ footer .border-t {
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 /* ⭐⭐ نهاية الأقسام الرئيسية ⭐⭐ */
 /* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
-/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
-/* 🎞️ السلايدرز والوسائط (Sliders & Media)
-   – Sliders, Carousels, Images, Video */
-/* 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 */
-/* ===============================
-🎞️ السلايدر (Swiper)
-=============================== */
-
-.swiper-slide {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-}
-
-.mySwiperMovies .swiper-slide,
-.mySwiperSports .swiper-slide {
-  height: 230px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mySwiperMovies img,
-.mySwiperSports img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover !important;
-  border-radius: 12px;
-  transition: 0.3s ease;
-}
 /* ===============================
    ⭐ عنوان قسم الأفلام (Movies Section)
 ================================ */
@@ -1507,60 +1477,6 @@ footer .border-t {
   vertical-align: middle;
 }
 
-/* ===============================
-🛠️ إصلاح نهائي لارتفاع السلايدر
-=============================== */
-
-.swiper-slide {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-slide img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-}
-
-/* 📱📱 موبايل صغير جداً – 200px */
-@media (max-width: 420px) {
-
-  .swiper-slide {
-    height: 200px !important;
-  }
-
-  .swiper-slide img {
-    height: 200px !important;
-  }
-}
-
-/* 📱 موبايل عادي – 230px */
-@media (min-width: 421px) and (max-width: 768px) {
-
-  .swiper-slide {
-    height: 230px !important;
-  }
-
-  .swiper-slide img {
-    height: 230px !important;
-  }
-}
-
-/* 🖥️ كمبيوتر – 360px */
-@media (min-width: 769px) {
-
-  .swiper-slide {
-    height: 360px !important;
-  }
-
-  .swiper-slide img {
-    height: 360px !important;
-  }
-}
-/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
-/* ⭐⭐ نهاية قسم السلايدرز والوسائط ⭐⭐ */
-/* 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 */
 /* 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥 */
 /* 🛠️ الإصلاحات والتجاوزات النهائية
    – حلول سريعة، تصحيحات، وكسر التعارضات */
@@ -1768,9 +1684,8 @@ body {
   margin-top: 6px;
 }
 
-/* محتوى القسم (بطاقات / سلايدر / Grid) */
+/* محتوى القسم (بطاقات / Grid) */
 .section-content,
-.section-slider,
 .section-grid {
   margin-top: 18px;
 }
@@ -1794,10 +1709,6 @@ body {
   /* محتوى القسم */
   .section-content {
     margin-top: clamp(26px, 4vw, 44px);
-  }
-
-  .section-slider {
-    margin-top: clamp(30px, 5vw, 60px);
   }
 
   .section-grid {
