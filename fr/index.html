@@ -14,7 +14,7 @@
   <meta name="googlebot" content="index, follow">
   <meta name="theme-color" content="#6B46C1">
 
-<link rel="preload" as="image" href="/images/new-header.webp">
+
 
   <title>Prime IPTV – Meilleur Abonnement IPTV France | Prime Live Streaming IPTV Officiel</title>
 
@@ -80,7 +80,6 @@
        7) ملفات CSS و JS الخارجية
        ============================ -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="/css/tailwind.min.css">
 
   <!-- ============================
@@ -439,15 +438,56 @@
       <div class="relative w-full max-w-[640px]">
         <div class="absolute inset-0 bg-white/20 blur-[60px] rounded-3xl -z-10" aria-hidden="true"></div>
 
-        <img
-  src="/images/new-header.webp"
-  alt="Interface de streaming Prime IPTV haute qualité"
-  class="w-full max-h-[240px] md:max-h-[360px] object-contain rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-  width="640"
-  height="360"
-  fetchpriority="high"
-  loading="eager"
-  decoding="async">
+        <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"
+          class="w-full max-h-[240px] md:max-h-[360px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+          role="img" aria-label="Prime IPTV streaming interface illustration">
+          <defs>
+            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1a1040"/>
+              <stop offset="100%" style="stop-color:#0d0720"/>
+            </linearGradient>
+            <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6B46C1"/>
+              <stop offset="100%" style="stop-color:#4f46e5"/>
+            </linearGradient>
+            <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#a855f7"/>
+              <stop offset="100%" style="stop-color:#6366f1"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="360" fill="url(#bg)" rx="24"/>
+          <rect x="60" y="40" width="380" height="240" rx="14" fill="#0f0a24" stroke="#6B46C1" stroke-width="2.5"/>
+          <rect x="74" y="54" width="352" height="212" rx="8" fill="url(#screen)" opacity="0.15"/>
+          <circle cx="250" cy="160" r="36" fill="#6B46C1" opacity="0.9"/>
+          <polygon points="238,143 238,177 274,160" fill="white"/>
+          <rect x="74" y="246" width="352" height="6" rx="3" fill="#ffffff18"/>
+          <rect x="74" y="246" width="180" height="6" rx="3" fill="url(#accent)"/>
+          <rect x="470" y="40" width="110" height="240" rx="10" fill="#110c2a" stroke="#6B46C1" stroke-width="1.5"/>
+          <text x="525" y="68" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">CHANNELS</text>
+          <rect x="480" y="76" width="90" height="22" rx="5" fill="url(#accent)" opacity="0.8"/>
+          <text x="525" y="91" fill="white" font-size="9" text-anchor="middle" font-family="Arial">Sports HD</text>
+          <rect x="480" y="104" width="90" height="22" rx="5" fill="#ffffff08"/>
+          <text x="525" y="119" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">Movies 4K</text>
+          <rect x="480" y="132" width="90" height="22" rx="5" fill="#ffffff08"/>
+          <text x="525" y="147" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">Series HD</text>
+          <rect x="480" y="160" width="90" height="22" rx="5" fill="#ffffff08"/>
+          <text x="525" y="175" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">Kids Zone</text>
+          <rect x="480" y="188" width="90" height="22" rx="5" fill="#ffffff08"/>
+          <text x="525" y="203" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">News Live</text>
+          <rect x="480" y="216" width="90" height="22" rx="5" fill="#ffffff08"/>
+          <text x="525" y="231" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Arial">Radio FM</text>
+          <rect x="60" y="296" width="80" height="26" rx="6" fill="#6B46C1"/>
+          <text x="100" y="313" fill="white" font-size="10" text-anchor="middle" font-family="Arial" font-weight="bold">4K · 8K</text>
+          <rect x="152" y="296" width="100" height="26" rx="6" fill="#4f46e5"/>
+          <text x="202" y="313" fill="white" font-size="10" text-anchor="middle" font-family="Arial" font-weight="bold">20,000+ CH</text>
+          <rect x="264" y="296" width="110" height="26" rx="6" fill="#7c3aed"/>
+          <text x="319" y="313" fill="white" font-size="10" text-anchor="middle" font-family="Arial" font-weight="bold">No Buffering</text>
+          <rect x="386" y="296" width="84" height="26" rx="6" fill="#2563eb"/>
+          <text x="428" y="313" fill="white" font-size="10" text-anchor="middle" font-family="Arial" font-weight="bold">24/7 Live</text>
+          <circle cx="490" cy="330" r="3" fill="#6B46C1" opacity="0.6"/>
+          <circle cx="505" cy="330" r="3" fill="#a855f7" opacity="0.8"/>
+          <circle cx="520" cy="330" r="3" fill="#6366f1" opacity="0.6"/>
+        </svg>
 
       </div>
 
@@ -472,121 +512,6 @@
 
 <!-- 🚨🚨 نهاية القسم الرئيسي 🏠 🎬 🚨🚨 -->
 
-<!-- 🚨🚨 بداية شريط بوسترات الأفلام 🍿 (UPDATED) 🚨🚨 -->
-<section id="movies" class="section-spacing section-bg-light" aria-label="Bande de posters de films">
-  <div class="container mx-auto px-4">
-
-
-<h2 class="section-title-unified">
-  <span class="title-line-1">
-    Regardez les derniers films et séries
-  </span>
-
-  <span class="title-line-2">
-    via IPTV
-    <img src="/images/Slayder/Aflame.webp"
-         class="title-icon"
-         alt="Icône films" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-
-    <div class="swiper mySwiperMovies">
-      <div class="swiper-wrapper">
-
-        <!-- كل الصور الآن تستخدم Lazy Loading الحقيقي -->
-        <!-- ملاحظة: Swiper سيتولى إضافة spinner تلقائيًا -->
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster1.webp"
-               data-src="/images/Aflame/poster1.webp"
-               class="swiper-lazy" alt="Affiche d'un nouveau film via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster2.webp"
-               data-src="/images/Aflame/poster2.webp"
-               class="swiper-lazy" alt="Affiche d'une série télévisée haute qualité" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster3.webp"
-               data-src="/images/Aflame/poster3.webp"
-               class="swiper-lazy" alt="Affiche d'un film d'action via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster4.webp"
-               data-src="/images/Aflame/poster4.webp"
-               class="swiper-lazy" alt="Affiche d'un film romantique et dramatique via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster5.webp"
-               data-src="/images/Aflame/poster5.webp"
-               class="swiper-lazy" alt="Affiche des nouveaux films à la demande" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster6.webp"
-               data-src="/images/Aflame/poster6.webp"
-               class="swiper-lazy" alt="Affiche de contenu Netflix via IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster7.webp"
-               data-src="/images/Aflame/poster7.webp"
-               class="swiper-lazy" alt="Affiche films dessin animé et anime" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster8.webp"
-               data-src="/images/Aflame/poster8.webp"
-               class="swiper-lazy" alt="Affiche films et séries arabes IPTV" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster9.webp"
-               data-src="/images/Aflame/poster9.webp"
-               class="swiper-lazy" alt="Affiche des séries télévisées populaires" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Aflame/poster10.webp"
-               data-src="/images/Aflame/poster10.webp"
-               class="swiper-lazy" alt="Affiche streaming direct des films sans interruption" width="200" height="300" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-      </div>
-
-      <div class="swiper-button-prev swiper-nav-color"></div>
-      <div class="swiper-button-next swiper-nav-color"></div>
-      <div class="swiper-pagination mt-4"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ✅ نهاية قسم الأفلام بعد التحسين ✅ -->
 
 <!-- 🚨🚨 بداية قسم المميزات ⭐ (UPDATED) 🚨🚨 -->
 <section id="why-us" class="section-spacing bg-gray-50" aria-label="Section des avantages">
@@ -739,129 +664,6 @@ Haute qualité, chaînes internationales et streaming en direct sans interruptio
 </section>
 <!-- ✅ Fin section guides -->
 
-<!-- 🚨🚨 قسم البطولات والرياضة (UPDATED) 🏆🚨🚨 -->
-<section id="sports" class="section-spacing section-bg-light" aria-label="Compétitions et sports">
-
-  <div class="container mx-auto px-4">
-
-    <h2 class="section-title-unified">
-
-  <span class="title-line-1 mobile-only">toutes les compétitions mondiales</span>
-
-  <span class="title-line-2">
-    via IPTV
-    <img src="/images/Slayder/Sport.webp" class="title-icon" alt="Icône sportive" loading="lazy" decoding="async">
-  </span>
-</h2>
-
-
-
-
-    <div class="swiper mySwiperSports">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport1.webp"
-               data-src="/images/Sport/sport1.webp" 
-               class="swiper-lazy"
-               alt="Diffusion en direct de la Premier League anglaise via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport2.webp"
-               data-src="/images/Sport/sport2.webp"
-               class="swiper-lazy"
-               alt="Regarder les matchs de La Liga en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport3.webp"
-               data-src="/images/Sport/sport3.webp"
-               class="swiper-lazy"
-               alt="Diffusion de la Ligue des Champions via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport4.webp"
-               data-src="/images/Sport/sport4.webp"
-               class="swiper-lazy"
-               alt="Regarder la Formule 1 en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport5.webp"
-               data-src="/images/Sport/sport5.webp"
-               class="swiper-lazy"
-               alt="Matchs NBA en direct via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport6.webp"
-               data-src="/images/Sport/sport6.webp"
-               class="swiper-lazy"
-               alt="Regarder UFC et boxe via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport7.webp"
-               data-src="/images/Sport/sport7.webp"
-               class="swiper-lazy"
-               alt="Compétition africaine des clubs en ligne" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport8.webp"
-               data-src="/images/Sport/sport8.webp"
-               class="swiper-lazy"
-               alt="Diffusion de la Ligue des Champions d'Asie IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport9.webp"
-               data-src="/images/Sport/sport9.webp"
-               class="swiper-lazy"
-               alt="Regarder la Coupe du Monde en ligne via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-        <div class="swiper-slide">
-          <img 
-               src="/images/Sport/sport10.webp"
-               data-src="/images/Sport/sport10.webp"
-               class="swiper-lazy"
-               alt="Chaînes sportives en direct via IPTV" width="200" height="150" loading="lazy" decoding="async">
-          <div class="swiper-lazy-preloader"></div>
-        </div>
-
-      </div>
-
-      <div class="swiper-button-prev swiper-nav-color"></div>
-      <div class="swiper-button-next swiper-nav-color"></div>
-      <div class="swiper-pagination mt-4"></div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ✅ نهاية قسم البطولات بعد التحسين ✅ -->
 
 <!-- 🚨🚨 قسم الخطط العالمية (نسخة LUXURY 🔥) 🚨🚨 -->
 <section id="pricing" class="section-spacing bg-gray-50" aria-label="Plans d'abonnement">
@@ -1105,10 +907,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
       <!-- رأي العميل 1 -->
 <div class="bg-white p-6 rounded-lg shadow">
   <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-         alt="Sarah Johnson utilisatrice IPTV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#7c3aed"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">S</text></svg>
     <div>
       <h3 class="font-semibold">Sarah Johnson</h3>
       <p class="text-gray-600">Du Canada</p>
@@ -1123,10 +922,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
 <!-- رأي العميل 2 -->
 <div class="bg-white p-6 rounded-lg shadow">
   <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-         alt="Michael Chen fan de sport regardant IPTV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#2563eb"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">M</text></svg>
     <div>
       <h3 class="font-semibold">Michael Chen</h3>
       <p class="text-gray-600">Supporter sportif</p>
@@ -1141,10 +937,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
 <!-- رأي العميل 3 -->
 <div class="bg-white p-6 rounded-lg shadow">
   <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80"
-         alt="Emma Wilson utilise IPTV sur Smart TV"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#059669"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">E</text></svg>
     <div>
       <h3 class="font-semibold">Emma Wilson</h3>
       <p class="text-gray-600">Utilisatrice sur Smart TV</p>
@@ -1159,10 +952,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
 <!-- رأي العميل 4 -->
 <div class="bg-white p-6 rounded-lg shadow">
   <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
-         alt="Leila Imran utilise IPTV en famille"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#d97706"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">L</text></svg>
     <div>
       <h3 class="font-semibold">Leila Imran</h3>
       <p class="text-gray-600">Maman de deux enfants</p>
@@ -1177,10 +967,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
 <!-- رأي العميل 5 -->
 <div class="bg-white p-6 rounded-lg shadow">
   <div class="flex items-center mb-4">
-    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
-         alt="Daniel Roche utilise IPTV en Europe"
-         class="w-12 h-12 rounded-full ml-4"
-         loading="lazy" decoding="async">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#dc2626"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">D</text></svg>
     <div>
       <h3 class="font-semibold">Daniel Roche</h3>
       <p class="text-gray-600">Réside en Europe</p>
@@ -1388,7 +1175,7 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
       <!-- بطاقة 3 -->
       <div class="netflix-card-light">
         <h3>Le meilleur choix pour les amateurs de foot et films</h3>
-        <p>Streaming en direct des chaînes beIN, Sky et DAZN.</p>
+        <p>Streaming en direct des chaînes sportives et de divertissement internationales.</p>
         <p>Bibliothèque mondiale de films et séries mise à jour.</p>
         <p>Compatible avec tous les appareils sans restrictions.</p>
 
@@ -1592,7 +1379,6 @@ Avis réels confirmant la qualité du service et la satisfaction de nos clients
 
 <!-- JavaScript -->
 <script src="/js/footer.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 <script src="/script.js?v=2" defer></script>
 
