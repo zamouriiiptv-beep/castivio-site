@@ -294,12 +294,11 @@ class _PosterCard extends StatelessWidget {
               const Center(
                 child: Icon(Icons.play_circle_outline_rounded,
                     color: Colors.white24, size: 22),
-                ),
+              ),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
