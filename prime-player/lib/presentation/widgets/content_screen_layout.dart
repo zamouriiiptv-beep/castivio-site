@@ -447,7 +447,8 @@ class VideoPlayerPanel extends ConsumerStatefulWidget {
 
 class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
     with WidgetsBindingObserver {
-  bool   _showControls = false;
+  BoxFit _videoFit     = BoxFit.contain;
+  bool   _showFitToast = false;
   Timer? _hideTimer;
 
   @override
@@ -465,14 +466,14 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
   }
 
   void _tap() {
-    if (_showControls) {
-      _hideTimer?.cancel();
-      setState(() => _showControls = false);
-    } else {
-      setState(() => _showControls = true);
-      _hideTimer = Timer(const Duration(seconds: 3),
-          () { if (mounted) setState(() => _showControls = false); });
-    }
+    setState(() {
+      _videoFit     = _videoFit == BoxFit.contain ? BoxFit.cover : BoxFit.contain;
+      _showFitToast = true;
+    });
+    _hideTimer?.cancel();
+    _hideTimer = Timer(const Duration(milliseconds: 900), () {
+      if (mounted) setState(() => _showFitToast = false);
+    });
   }
 
   @override
@@ -502,6 +503,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                   controller: ctrl,
                   controls: NoVideoControls,
                   fill: Colors.black,
+                  fit: _videoFit,
                 ),
               ),
 
@@ -593,20 +595,29 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
                 ),
               ),
 
-            // Controls overlay
-            if (_showControls && channel != null)
-              _Controls(
-                isPlaying: ps.isPlaying,
-                onPlayPause: () =>
-                    ref.read(playerProvider.notifier).togglePlay(),
-                onFullscreen: () => Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (_, a, __) => const PlayerScreen(),
-                    transitionsBuilder: (_, a, __, child) =>
-                        FadeTransition(opacity: a, child: child),
-                    transitionDuration: const Duration(milliseconds: 200),
+            // Fit mode toast
+            if (_showFitToast && channel != null)
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.65),
+                    borderRadius: BorderRadius.circular(20),
                   ),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Icon(
+                      _videoFit == BoxFit.cover
+                          ? Icons.crop_free_rounded
+                          : Icons.fit_screen_rounded,
+                      color: Colors.white, size: 16,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      _videoFit == BoxFit.cover ? 'ملء الشاشة' : 'حجم عادي',
+                      style: const TextStyle(color: Colors.white, fontSize: 11,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ]),
                 ),
               ),
 
