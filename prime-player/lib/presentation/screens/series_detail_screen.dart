@@ -86,11 +86,12 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     );
     ref.read(playerProvider.notifier).openChannel(ch);
     if (!mounted) return;
-    Navigator.push(context, PageRouteBuilder(
+    await Navigator.push(context, PageRouteBuilder(
       pageBuilder:        (_, a, __) => const PlayerScreen(),
       transitionsBuilder: (_, a, __, child) => FadeTransition(opacity: a, child: child),
       transitionDuration: const Duration(milliseconds: 200),
     ));
+    if (mounted) ref.read(playerProvider.notifier).stop();
   }
 
   @override
