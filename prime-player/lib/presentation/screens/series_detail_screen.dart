@@ -73,6 +73,13 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     }
   }
 
+  void _openEpisodeExternal(Episode episode) {
+    final playlist = _activePlaylist();
+    if (playlist == null) return;
+    final url = ref.read(playlistRepositoryProvider).buildEpisodeUrl(playlist, episode);
+    ref.read(playerProvider.notifier).openUrlInExternalPlayer(url);
+  }
+
   Future<void> _playEpisode(Episode episode) async {
     final playlist = _activePlaylist();
     if (playlist == null) return;
@@ -297,7 +304,17 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
                 ],
               ],
             )),
-            const Icon(Icons.play_arrow_rounded, color: AppColors.accent, size: 28),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.play_arrow_rounded, color: AppColors.accent, size: 28),
+                const SizedBox(height: 4),
+                GestureDetector(
+                  onTap: () => _openEpisodeExternal(e),
+                  child: const Icon(Icons.open_in_new_rounded, color: AppColors.textMuted, size: 18),
+                ),
+              ],
+            ),
           ]),
         ),
       );
