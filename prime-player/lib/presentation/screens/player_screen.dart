@@ -19,10 +19,12 @@ class PlayerScreen extends ConsumerStatefulWidget {
 
 class _PlayerScreenState extends ConsumerState<PlayerScreen>
     with WidgetsBindingObserver {
-  bool     _showControls = true;
+  bool     _showControls    = true;
   Timer?   _hideTimer;
-  bool     _isSeeking    = false;
-  Duration _dragPosition = Duration.zero;
+  bool     _isSeeking       = false;
+  Duration _dragPosition    = Duration.zero;
+  BoxFit   _videoFit        = BoxFit.contain;
+  bool     _showFitToast    = false;
 
   @override
   void initState() {
@@ -67,6 +69,17 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     }
   }
 
+  void _onDoubleTap() {
+    setState(() {
+      _videoFit     = _videoFit == BoxFit.contain ? BoxFit.cover : BoxFit.contain;
+      _showFitToast = true;
+    });
+    Future.delayed(const Duration(milliseconds: 900), () {
+      if (mounted) setState(() => _showFitToast = false);
+    });
+    _resetHideTimer();
+  }
+
   void _onSeekStart(double val) {
     _hideTimer?.cancel();
     setState(() {
@@ -95,7 +108,8 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     return Scaffold(
       backgroundColor: Colors.black,
       body: GestureDetector(
-        onTap:    _toggleControls,
+        onTap:       _toggleControls,
+        onDoubleTap: _onDoubleTap,
         behavior: HitTestBehavior.opaque,
         child: Stack(
           children: [
@@ -105,12 +119,48 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                       controller: ctrl,
                       controls:   NoVideoControls,
                       fill:       Colors.black,
+                      fit:        _videoFit,
                     )
                   : const SizedBox(),
             ),
 
             if (ps.isBuffering)
               const Center(child: _BufferingIndicator()),
+
+            if (_showFitToast)
+              Center(
+                child: AnimatedOpacity(
+                  opacity: _showFitToast ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 200),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.65),
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          _videoFit == BoxFit.cover
+                              ? Icons.crop_free_rounded
+                              : Icons.fit_screen_rounded,
+                          color: Colors.white, size: 20,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          _videoFit == BoxFit.cover ? 'ملء الشاشة' : 'حجم عادي',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
 
             if (ps.hasError && !ps.isPlaying)
               _ErrorOverlay(
