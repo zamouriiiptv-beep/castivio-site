@@ -8,6 +8,8 @@ import '../../data/models/channel.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 
+// ignore_for_file: use_build_context_synchronously
+
 class PlayerScreen extends ConsumerStatefulWidget {
   const PlayerScreen({super.key});
 
@@ -89,13 +91,15 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
 
             if (ps.hasError)
               _ErrorOverlay(
-                message: ps.errorMessage,
-                onRetry: () {
+                message:    ps.errorMessage,
+                onRetry:    () {
                   if (ps.channel != null) {
                     ref.read(playerProvider.notifier).openChannel(ps.channel!);
                   }
                 },
-                onBack: () => Navigator.pop(context),
+                onBack:     () => Navigator.pop(context),
+                onExternal: () =>
+                    ref.read(playerProvider.notifier).openInExternalPlayer(),
               ),
 
             AnimatedOpacity(
@@ -154,7 +158,8 @@ class _ErrorOverlay extends StatelessWidget {
   final String?       message;
   final VoidCallback? onRetry;
   final VoidCallback? onBack;
-  const _ErrorOverlay({this.message, this.onRetry, this.onBack});
+  final VoidCallback? onExternal;
+  const _ErrorOverlay({this.message, this.onRetry, this.onBack, this.onExternal});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -179,8 +184,9 @@ class _ErrorOverlay extends StatelessWidget {
                 ),
               ],
               const SizedBox(height: 20),
-              Row(
-                mainAxisSize: MainAxisSize.min,
+              Wrap(
+                spacing: 10, runSpacing: 8,
+                alignment: WrapAlignment.center,
                 children: [
                   if (onBack != null)
                     OutlinedButton.icon(
@@ -192,7 +198,6 @@ class _ErrorOverlay extends StatelessWidget {
                         side: const BorderSide(color: Colors.white38),
                       ),
                     ),
-                  if (onBack != null && onRetry != null) const SizedBox(width: 12),
                   if (onRetry != null)
                     ElevatedButton.icon(
                       onPressed: onRetry,
@@ -200,6 +205,16 @@ class _ErrorOverlay extends StatelessWidget {
                       label: const Text('Retry'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
+                        foregroundColor: Colors.white,
+                      ),
+                    ),
+                  if (onExternal != null)
+                    ElevatedButton.icon(
+                      onPressed: onExternal,
+                      icon:  const Icon(Icons.open_in_new_rounded),
+                      label: const Text('مشغل خارجي'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.accent,
                         foregroundColor: Colors.white,
                       ),
                     ),

@@ -9,7 +9,6 @@ import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
-import 'player_screen.dart';
 
 class MoviesScreen extends ConsumerStatefulWidget {
   const MoviesScreen({super.key});
@@ -104,7 +103,8 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                     },
                   ),
                   Container(width: 1, color: AppColors.border),
-                  Expanded(
+                  SizedBox(
+                    width: 290,
                     child: Column(
                       children: [
                         if (_searching)
@@ -121,22 +121,16 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                                   items: movies,
                                   onTap: (ch) {
                                     ref.read(playerProvider.notifier).openChannel(ch);
-                                    Navigator.push(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (_, a, __) =>
-                                            const PlayerScreen(),
-                                        transitionsBuilder: (_, a, __, child) =>
-                                            FadeTransition(opacity: a, child: child),
-                                        transitionDuration:
-                                            const Duration(milliseconds: 200),
-                                      ),
-                                    );
                                   },
                                 ),
                         ),
                       ],
                     ),
+                  ),
+                  Container(width: 1, color: AppColors.border),
+                  const VideoPlayerPanel(
+                    idleIcon:  Icons.movie_rounded,
+                    idleLabel: 'Select a movie',
                   ),
                 ],
               ),

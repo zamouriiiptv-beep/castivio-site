@@ -50,7 +50,14 @@ class PlayerNotifier extends Notifier<PlayerState> {
   @override
   PlayerState build() {
     _player    = Player();
-    _videoCtrl = VideoController(_player);
+    _videoCtrl = VideoController(
+      _player,
+      configuration: const VideoControllerConfiguration(
+        // Try hardware decode, fall back to software automatically.
+        // Without this, HEVC/H.265 streams throw "Could not open codec".
+        hwdec: 'auto-safe',
+      ),
+    );
 
     _player.stream.playing.listen((playing) {
       _bufferTimeout?.cancel();
