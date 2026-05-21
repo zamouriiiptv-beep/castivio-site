@@ -47,7 +47,9 @@
 <script src="/script.js" defer></script>
 
 <style>
-  body { font-family: 'Inter', 'Cairo', sans-serif !important; }
+  body { font-family: 'Inter', 'Cairo', sans-serif !important; overflow-x: hidden; }
+  html { overflow-x: hidden; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cairo', sans-serif !important;
@@ -463,7 +465,7 @@
 
 <p>Voici une comparaison claire pour comprendre les différences :</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Fonctionnalité</th>
@@ -522,7 +524,7 @@
       <td>✅ Oui</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- Section 3 -->
 <h2 id="appareils">3. Appareils compatibles</h2>
@@ -571,7 +573,7 @@
 
 <p>Votre vitesse Internet est le facteur le plus important pour une expérience IPTV fluide :</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Qualité vidéo</th>
@@ -601,7 +603,7 @@
       <td>80 Mbps</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="info-box tip">
   <strong>💡 Conseil pro :</strong> Utilisez une connexion filaire (câble ethernet) plutôt que le WiFi. Une connexion directe réduit considérablement les coupures et offre un flux plus stable.
@@ -841,11 +843,11 @@
         <div class="bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600 p-8 text-center">
           <div class="text-6xl mb-3">🇧🇪</div>
           <h3 class="text-2xl font-black text-white" style="font-family:'Montserrat',sans-serif;">Guide Belgique</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">Pro League · RTBF · VOO</p>
+          <p class="text-white text-opacity-90 text-sm mt-2">Football · Chaînes belges · 4K</p>
         </div>
         <div class="p-6">
           <p class="text-gray-700 mb-4 leading-relaxed">
-            Guide IPTV complet pour la Belgique. Pro League, RTBF, VOO, Proximus et contenu francophone, néerlandais et allemand.
+            Guide IPTV complet pour la Belgique. Sport belge, chaînes FR &amp; NL et contenu multilingue.
           </p>
           <div class="flex items-center text-orange-600 font-bold group-hover:text-orange-700">
             <span>Lire le guide</span>

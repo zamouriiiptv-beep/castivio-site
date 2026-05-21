@@ -48,7 +48,8 @@
 <script src="/script.js" defer></script>
 
 <style>
-  body { font-family: 'Inter', 'Cairo', sans-serif !important; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+  body { overflow-x: hidden; max-width: 100vw; font-family: 'Inter', 'Cairo', sans-serif !important; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cairo', sans-serif !important;
@@ -467,7 +468,7 @@
 
 <p>Many people wonder how IPTV compares to traditional cable TV or streaming-only services. Here's a clear breakdown:</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Feature</th>
@@ -526,7 +527,7 @@
       <td>✅ Yes</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- Section 3 -->
 <h2 id="devices">3. Compatible Devices</h2>
@@ -575,7 +576,7 @@
 
 <p>Your internet speed is the most important factor for a smooth IPTV experience. Here's what you need:</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Video Quality</th>

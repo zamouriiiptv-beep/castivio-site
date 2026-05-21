@@ -48,7 +48,8 @@
 <script src="/script.js" defer></script>
 
 <style>
-  body { font-family: 'Inter', 'Cairo', sans-serif !important; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+  body { overflow-x: hidden; max-width: 100vw; font-family: 'Inter', 'Cairo', sans-serif !important; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cairo', sans-serif !important;
@@ -484,7 +485,7 @@
 
 <p>Mucha gente se pregunta cómo se compara el IPTV con la televisión por cable tradicional o los servicios de streaming. Aquí tienes una comparativa clara:</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Característica</th>
@@ -549,7 +550,7 @@
       <td>❌ No</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- Section 3 -->
 <h2 id="dispositivos">3. Dispositivos Compatibles con IPTV</h2>
@@ -598,7 +599,7 @@
 
 <p>La velocidad de internet es el factor más importante para disfrutar de una experiencia IPTV fluida sin cortes. Esto es lo que necesitas:</p>
 
-<table class="speed-table">
+<div class="table-scroll"><table class="speed-table">
   <thead>
     <tr>
       <th>Calidad de Vídeo</th>
