@@ -15,9 +15,9 @@ dependencies:
   intl: ^0.19.0
 
   # ─── Video (media_kit + libmpv — handles any IPTV stream format) ────────────
-  media_kit: ^1.2.4
-  media_kit_video: ^1.2.4
-  media_kit_libs_android_video: ^1.2.3
+  media_kit: ^1.1.10
+  media_kit_video: ^1.1.4
+  media_kit_libs_android_video: ^1.0.5
 
   # ─── State Management ────────────────────────────────────────────────────────
   flutter_riverpod: ^2.5.1

@@ -18,10 +18,18 @@ android {
 
     defaultConfig {
         applicationId "com.primeiptv.primeplayer"
-        minSdk     21          // Android 5 — covers Fire TV Stick 1st gen
-        targetSdk  flutter.targetSdkVersion
-        versionCode flutter.versionCode
-        versionName flutter.versionName
+        minSdk          21
+        targetSdk       flutter.targetSdkVersion
+        versionCode     flutter.versionCode
+        versionName     flutter.versionName
+        multiDexEnabled true
+    }
+
+    // Required for media_kit_libs_android_video pre-compiled .so files.
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
     }
 
     buildTypes {
