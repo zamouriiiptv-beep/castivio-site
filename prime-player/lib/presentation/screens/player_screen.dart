@@ -19,8 +19,10 @@ class PlayerScreen extends ConsumerStatefulWidget {
 
 class _PlayerScreenState extends ConsumerState<PlayerScreen>
     with WidgetsBindingObserver {
-  bool _showControls = true;
-  Timer? _hideTimer;
+  bool     _showControls = true;
+  Timer?   _hideTimer;
+  bool     _isSeeking    = false;
+  Duration _dragPosition = Duration.zero;
 
   @override
   void initState() {
@@ -51,11 +53,12 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     _hideTimer?.cancel();
     setState(() => _showControls = true);
     _hideTimer = Timer(const Duration(seconds: 4), () {
-      if (mounted) setState(() => _showControls = false);
+      if (mounted && !_isSeeking) setState(() => _showControls = false);
     });
   }
 
   void _toggleControls() {
+    if (_isSeeking) return;
     if (_showControls) {
       _hideTimer?.cancel();
       setState(() => _showControls = false);
@@ -64,10 +67,30 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     }
   }
 
+  void _onSeekStart(double val) {
+    _hideTimer?.cancel();
+    setState(() {
+      _isSeeking    = true;
+      _dragPosition = Duration(seconds: val.toInt());
+      _showControls = true;
+    });
+  }
+
+  void _onSeekUpdate(double val) {
+    setState(() => _dragPosition = Duration(seconds: val.toInt()));
+  }
+
+  void _onSeekEnd(double val) {
+    ref.read(playerProvider.notifier).seek(Duration(seconds: val.toInt()));
+    setState(() => _isSeeking = false);
+    _resetHideTimer();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final ps   = ref.watch(playerProvider);
-    final ctrl = ps.controller;
+    final ps         = ref.watch(playerProvider);
+    final ctrl       = ps.controller;
+    final displayPos = _isSeeking ? _dragPosition : ps.position;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -108,10 +131,12 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               child: IgnorePointer(
                 ignoring: !_showControls,
                 child: _ControlsOverlay(
-                  channel:     ps.channel,
-                  isPlaying:   ps.isPlaying,
-                  onBack:      () => Navigator.pop(context),
-                  onPlayPause: () =>
+                  channel:       ps.channel,
+                  isPlaying:     ps.isPlaying,
+                  position:      displayPos,
+                  duration:      ps.duration,
+                  onBack:        () => Navigator.pop(context),
+                  onPlayPause:   () =>
                       ref.read(playerProvider.notifier).togglePlay(),
                   onFavorite: () {
                     final ch = ps.channel;
@@ -119,8 +144,23 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                       ref.read(playlistRepositoryProvider).toggleFavorite(ch);
                     }
                   },
-                  onExternal: () =>
+                  onExternal:    () =>
                       ref.read(playerProvider.notifier).openInExternalPlayer(),
+                  onSkipBack: () {
+                    final pos = (ps.position - const Duration(seconds: 10))
+                        .clamp(Duration.zero, ps.duration);
+                    ref.read(playerProvider.notifier).seek(pos);
+                    _resetHideTimer();
+                  },
+                  onSkipForward: () {
+                    final pos = (ps.position + const Duration(seconds: 10))
+                        .clamp(Duration.zero, ps.duration);
+                    ref.read(playerProvider.notifier).seek(pos);
+                    _resetHideTimer();
+                  },
+                  onSeekStart:   _onSeekStart,
+                  onSeekUpdate:  _onSeekUpdate,
+                  onSeekEnd:     _onSeekEnd,
                 ),
               ),
             ),
@@ -230,20 +270,39 @@ class _ErrorOverlay extends StatelessWidget {
 class _ControlsOverlay extends StatelessWidget {
   final Channel?   channel;
   final bool       isPlaying;
+  final Duration   position;
+  final Duration   duration;
   final VoidCallback onBack, onPlayPause, onFavorite, onExternal;
+  final VoidCallback onSkipBack, onSkipForward;
+  final ValueChanged<double> onSeekStart, onSeekUpdate, onSeekEnd;
 
   const _ControlsOverlay({
     required this.channel,
     required this.isPlaying,
+    required this.position,
+    required this.duration,
     required this.onBack,
     required this.onPlayPause,
     required this.onFavorite,
     required this.onExternal,
+    required this.onSkipBack,
+    required this.onSkipForward,
+    required this.onSeekStart,
+    required this.onSeekUpdate,
+    required this.onSeekEnd,
   });
+
+  String _fmt(Duration d) {
+    final h = d.inHours;
+    final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return h > 0 ? '$h:$m:$s' : '$m:$s';
+  }
 
   @override
   Widget build(BuildContext context) => Stack(
         children: [
+          // Top gradient
           Positioned(
             top: 0, left: 0, right: 0,
             child: Container(
@@ -256,6 +315,22 @@ class _ControlsOverlay extends StatelessWidget {
               ),
             ),
           ),
+
+          // Bottom gradient
+          Positioned(
+            bottom: 0, left: 0, right: 0,
+            child: Container(
+              height: 130,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter, end: Alignment.topCenter,
+                  colors: [Colors.black87, Colors.transparent],
+                ),
+              ),
+            ),
+          ),
+
+          // Top bar: back / title / external / favorite
           Positioned(
             top: 0, left: 0, right: 0,
             child: Padding(
@@ -294,23 +369,113 @@ class _ControlsOverlay extends StatelessWidget {
               ),
             ),
           ),
+
+          // Center: skip-10 / play-pause / skip+10
           Center(
-            child: GestureDetector(
-              onTap: onPlayPause,
-              child: Container(
-                width: 64, height: 64,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.5),
-                  border: Border.all(color: Colors.white30, width: 1.5),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _SkipButton(
+                  icon: Icons.replay_10_rounded,
+                  onTap: onSkipBack,
                 ),
-                child: Icon(
-                  isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
-                  color: Colors.white, size: 36,
+                const SizedBox(width: 36),
+                GestureDetector(
+                  onTap: onPlayPause,
+                  child: Container(
+                    width: 64, height: 64,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black.withOpacity(0.5),
+                      border: Border.all(color: Colors.white30, width: 1.5),
+                    ),
+                    child: Icon(
+                      isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                      color: Colors.white, size: 36,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 36),
+                _SkipButton(
+                  icon: Icons.forward_10_rounded,
+                  onTap: onSkipForward,
+                ),
+              ],
+            ),
+          ),
+
+          // Bottom: seek bar + time (VOD only)
+          if (duration > Duration.zero)
+            Positioned(
+              bottom: 0, left: 0, right: 0,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          _fmt(position),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 12,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        const Spacer(),
+                        Text(
+                          _fmt(duration),
+                          style: const TextStyle(
+                              color: Colors.white60, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 2),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        trackHeight:        3,
+                        thumbShape:         const RoundSliderThumbShape(
+                            enabledThumbRadius: 7),
+                        overlayShape:       const RoundSliderOverlayShape(
+                            overlayRadius: 16),
+                        activeTrackColor:   AppColors.primary,
+                        inactiveTrackColor: Colors.white30,
+                        thumbColor:         Colors.white,
+                        overlayColor:       AppColors.primary.withOpacity(0.25),
+                      ),
+                      child: Slider(
+                        value: position.inSeconds
+                            .toDouble()
+                            .clamp(0, duration.inSeconds.toDouble()),
+                        max:            duration.inSeconds.toDouble(),
+                        onChangeStart:  onSeekStart,
+                        onChanged:      onSeekUpdate,
+                        onChangeEnd:    onSeekEnd,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),
         ],
+      );
+}
+
+// ── Skip button ───────────────────────────────────────────────────────────────
+class _SkipButton extends StatelessWidget {
+  final IconData     icon;
+  final VoidCallback onTap;
+  const _SkipButton({required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 48, height: 48,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.black.withOpacity(0.35),
+          ),
+          child: Icon(icon, color: Colors.white, size: 32),
+        ),
       );
 }
