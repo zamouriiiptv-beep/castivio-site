@@ -29,6 +29,11 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
     _load();
   }
 
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
+  }
+
   String get _seriesId =>
       widget.series.id.startsWith('series_')
           ? widget.series.id.substring('series_'.length)
@@ -90,9 +95,13 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(child: _buildBody()),
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(child: _buildBody()),
+      ),
     );
   }
 
@@ -199,7 +208,7 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
         child: Row(children: [
           IconButton(
             icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.white, size: 20),
-            onPressed: () => Navigator.pop(context),
+            onPressed: _onBack,
           ),
           Expanded(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

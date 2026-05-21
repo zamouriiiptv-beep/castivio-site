@@ -29,6 +29,11 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadIfNeeded());
   }
 
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
+  }
+
   @override
   void dispose() {
     _searchCtrl.dispose();
@@ -68,7 +73,10 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
     final movies         = ref.watch(filteredMovieChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
 
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
@@ -76,13 +84,13 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
             ContentTopBar(
               section:    tr.movies.toUpperCase(),
               subSection: '${movies.length} ${tr.films}',
-              onBack:     () => Navigator.pop(context),
+              onBack:     _onBack,
             ),
             Expanded(
               child: Row(
                 children: [
                   IconSidebar(
-                    onBack: () => Navigator.pop(context),
+                    onBack: _onBack,
                     onSearch: () {
                       setState(() {
                         _searching = !_searching;
@@ -138,29 +146,37 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildLoading(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.loading, onBack: () => Navigator.pop(context)),
-          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: tr.loadingMovies, onCancel: () => Navigator.pop(context))),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.loading, onBack: _onBack),
+          Expanded(child: SectionLoader(icon: Icons.movie_rounded, label: tr.loadingMovies, onCancel: _onBack)),
         ])),
-      );
+      ),
+    );
   }
 
   Widget _buildError(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
+      child: Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
-          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.error, onBack: () => Navigator.pop(context)),
+          ContentTopBar(section: tr.movies.toUpperCase(), subSection: tr.error, onBack: _onBack),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
-      );
+      ),
+    );
   }
 }
 
