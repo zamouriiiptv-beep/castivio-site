@@ -97,69 +97,93 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
 
   void _showSubtitleSheet() {
     _hideTimer?.cancel();
-    final ps = ref.read(playerProvider);
+    final ps     = ref.read(playerProvider);
     final tracks = ps.subtitleTracks
         .where((t) => t.id != 'no' && t.id != 'auto')
         .toList();
+    SubtitleTrack? selected = ps.subtitleTrack?.id == 'no' || ps.subtitleTrack == null
+        ? null
+        : ps.subtitleTrack;
 
-    showModalBottomSheet(
+    showDialog(
       context: context,
-      backgroundColor: AppColors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDialogState) {
+          return AlertDialog(
+            backgroundColor: AppColors.surface,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            title: const Text('الترجمة',
+                style: TextStyle(color: Colors.white, fontSize: 16,
+                    fontWeight: FontWeight.w700)),
+            contentPadding: const EdgeInsets.symmetric(vertical: 8),
+            content: SizedBox(
+              width: 320,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Off option
+                    RadioListTile<String>(
+                      value: 'no',
+                      groupValue: selected?.id ?? 'no',
+                      activeColor: AppColors.primary,
+                      title: const Text('إيقاف الترجمة',
+                          style: TextStyle(color: Colors.white, fontSize: 14)),
+                      onChanged: (_) => setDialogState(() => selected = null),
+                    ),
+                    if (tracks.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.all(12),
+                        child: Text('لا توجد ترجمة في هذا الملف',
+                            style: TextStyle(color: AppColors.textMuted,
+                                fontSize: 12)),
+                      ),
+                    ...tracks.map((t) => RadioListTile<String>(
+                      value: t.id,
+                      groupValue: selected?.id ?? 'no',
+                      activeColor: AppColors.primary,
+                      title: Text(_langName(t),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 14)),
+                      onChanged: (_) => setDialogState(() => selected = t),
+                    )),
+                  ],
+                ),
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  _resetHideTimer();
+                },
+                child: const Text('إلغاء',
+                    style: TextStyle(color: AppColors.textSecondary)),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (selected == null) {
+                    ref.read(playerProvider.notifier)
+                        .setSubtitleTrack(SubtitleTrack.no());
+                  } else {
+                    ref.read(playerProvider.notifier)
+                        .setSubtitleTrack(selected!);
+                  }
+                  Navigator.pop(ctx);
+                  _resetHideTimer();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                ),
+                child: const Text('حسنًا'),
+              ),
+            ],
+          );
+        },
       ),
-      builder: (_) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 36, height: 4,
-              margin: const EdgeInsets.only(top: 10, bottom: 12),
-              decoration: BoxDecoration(
-                color: Colors.white24,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 8),
-              child: Text('الترجمة',
-                  style: TextStyle(color: Colors.white, fontSize: 16,
-                      fontWeight: FontWeight.w700)),
-            ),
-            const Divider(color: AppColors.border, height: 1),
-            // Off option
-            _SubtitleTile(
-              label: 'إيقاف الترجمة',
-              icon: Icons.subtitles_off_rounded,
-              isSelected: ps.subtitleTrack == null ||
-                  ps.subtitleTrack!.id == 'no',
-              onTap: () {
-                ref.read(playerProvider.notifier)
-                    .setSubtitleTrack(SubtitleTrack.no());
-                Navigator.pop(context);
-                _resetHideTimer();
-              },
-            ),
-            if (tracks.isEmpty)
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Text('لا توجد ترجمة في هذا الملف',
-                    style: TextStyle(color: AppColors.textMuted, fontSize: 13)),
-              ),
-            ...tracks.map((t) => _SubtitleTile(
-              label: _langName(t),
-              icon: Icons.subtitles_rounded,
-              isSelected: ps.subtitleTrack?.id == t.id,
-              onTap: () {
-                ref.read(playerProvider.notifier).setSubtitleTrack(t);
-                Navigator.pop(context);
-                _resetHideTimer();
-              },
-            )),
-            const SizedBox(height: 8),
-          ],
-        );
-      },
     ).whenComplete(_resetHideTimer);
   }
 
@@ -170,12 +194,43 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     return h > 0 ? '$h:$m:$s' : '$m:$s';
   }
 
+  void _showResumeDialog(Duration savedPos) {
+    _hideTimer?.cancel();
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => _ResumeDialog(
+        savedPosition: savedPos,
+        fmtTime: _fmt,
+        onResume: () {
+          Navigator.pop(context);
+          ref.read(playerProvider.notifier).seek(savedPos);
+          ref.read(playerProvider.notifier).dismissSavedPosition();
+          _resetHideTimer();
+        },
+        onFresh: () {
+          Navigator.pop(context);
+          ref.read(playerProvider.notifier).deleteSavedPosition();
+          _resetHideTimer();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final ps   = ref.watch(playerProvider);
     final ctrl = ps.controller;
     final isVod = ps.duration > Duration.zero;
     final displayPos = _isSeeking ? _dragPosition : ps.position;
+
+    ref.listen<PlayerState>(playerProvider, (prev, next) {
+      if (next.savedPosition != null && prev?.savedPosition == null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _showResumeDialog(next.savedPosition!);
+        });
+      }
+    });
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -652,6 +707,76 @@ class _SubtitleTile extends StatelessWidget {
             ? const Icon(Icons.check_rounded,
                 color: AppColors.primary, size: 18)
             : null,
+      );
+}
+
+// ── Resume dialog ─────────────────────────────────────────────────────────────
+class _ResumeDialog extends StatelessWidget {
+  final Duration             savedPosition;
+  final String Function(Duration) fmtTime;
+  final VoidCallback         onResume;
+  final VoidCallback         onFresh;
+  const _ResumeDialog({
+    required this.savedPosition,
+    required this.fmtTime,
+    required this.onResume,
+    required this.onFresh,
+  });
+
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+        backgroundColor: const Color(0xFF1E1E1E),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        title: const Text('استئناف',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 18,
+                fontWeight: FontWeight.w700)),
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Text('استئناف التشغيل من الموضع الأخير',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white70, fontSize: 14)),
+          const SizedBox(height: 12),
+          Text(fmtTime(savedPosition),
+              style: const TextStyle(
+                  color: Color(0xFFFFD700),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700)),
+        ]),
+        actionsAlignment: MainAxisAlignment.center,
+        actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        actions: [
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: onResume,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF333333),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text('استئناف',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+            ),
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: onFresh,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF333333),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text('البدء من جديد',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+            ),
+          ),
+        ],
       );
 }
 
