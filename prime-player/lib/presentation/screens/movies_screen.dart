@@ -112,8 +112,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                     },
                   ),
                   Container(width: 1, color: AppColors.border),
-                  SizedBox(
-                    width: 290,
+                  Expanded(
                     child: Column(
                       children: [
                         if (_searching)
@@ -144,11 +143,6 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                         ),
                       ],
                     ),
-                  ),
-                  Container(width: 1, color: AppColors.border),
-                  const VideoPlayerPanel(
-                    idleIcon:  Icons.movie_rounded,
-                    idleLabel: 'Select a movie',
                   ),
                 ],
               ),
@@ -233,25 +227,20 @@ class _PosterGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final cols = (constraints.maxWidth / 120).floor().clamp(2, 8);
-        return GridView.builder(
-          padding: const EdgeInsets.all(8),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount:   cols,
-            crossAxisSpacing: 6,
-            mainAxisSpacing:  6,
-            childAspectRatio: 0.68,
-          ),
-          itemCount:              items.length,
-          addAutomaticKeepAlives: false,
-          addRepaintBoundaries:   false,
-          itemBuilder: (_, i) {
-            final item = items[i];
-            return _PosterCard(item: item, onTap: () => onTap(item));
-          },
-        );
+    return GridView.builder(
+      padding: const EdgeInsets.all(8),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount:   5,
+        crossAxisSpacing: 6,
+        mainAxisSpacing:  6,
+        childAspectRatio: 0.68,
+      ),
+      itemCount:              items.length,
+      addAutomaticKeepAlives: false,
+      addRepaintBoundaries:   false,
+      itemBuilder: (_, i) {
+        final item = items[i];
+        return _PosterCard(item: item, onTap: () => onTap(item));
       },
     );
   }
