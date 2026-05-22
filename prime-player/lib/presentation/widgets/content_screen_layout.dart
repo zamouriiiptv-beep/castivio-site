@@ -20,12 +20,16 @@ class ContentTopBar extends ConsumerWidget {
   final String section;
   final String? subSection;
   final VoidCallback onBack;
+  final VoidCallback? onRefresh;
+  final bool isRefreshing;
 
   const ContentTopBar({
     super.key,
     required this.section,
     this.subSection,
     required this.onBack,
+    this.onRefresh,
+    this.isRefreshing = false,
   });
 
   @override
@@ -119,6 +123,11 @@ class ContentTopBar extends ConsumerWidget {
                 )),
             const SizedBox(width: 12),
           ],
+          // Refresh button
+          if (onRefresh != null) ...[
+            _RefreshButton(onTap: onRefresh!, isLoading: isRefreshing),
+            const SizedBox(width: 8),
+          ],
           // Info badge
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -137,6 +146,84 @@ class ContentTopBar extends ConsumerWidget {
       ),
     );
   }
+}
+
+// ── Refresh button ────────────────────────────────────────────────────────────
+class _RefreshButton extends StatefulWidget {
+  final VoidCallback onTap;
+  final bool isLoading;
+  const _RefreshButton({required this.onTap, required this.isLoading});
+
+  @override
+  State<_RefreshButton> createState() => _RefreshButtonState();
+}
+
+class _RefreshButtonState extends State<_RefreshButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    );
+    if (widget.isLoading) _ctrl.repeat();
+  }
+
+  @override
+  void didUpdateWidget(_RefreshButton old) {
+    super.didUpdateWidget(old);
+    if (widget.isLoading && !_ctrl.isAnimating) {
+      _ctrl.repeat();
+    } else if (!widget.isLoading && _ctrl.isAnimating) {
+      _ctrl.stop();
+      _ctrl.reset();
+    }
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: widget.isLoading ? null : widget.onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: AppColors.surfaceLight,
+            borderRadius: BorderRadius.circular(6),
+            border: Border.all(color: AppColors.border),
+          ),
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            RotationTransition(
+              turns: _ctrl,
+              child: Icon(
+                Icons.sync_rounded,
+                color: widget.isLoading
+                    ? AppColors.primary
+                    : AppColors.textSecondary,
+                size: 13,
+              ),
+            ),
+            const SizedBox(width: 5),
+            Text(
+              widget.isLoading ? 'جاري التحديث…' : 'تحديث',
+              style: TextStyle(
+                color: widget.isLoading
+                    ? AppColors.primary
+                    : AppColors.textSecondary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ]),
+        ),
+      );
 }
 
 // ── Left icon sidebar ─────────────────────────────────────────────────────────

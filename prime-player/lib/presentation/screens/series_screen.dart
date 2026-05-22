@@ -22,6 +22,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
   final _searchCtrl = TextEditingController();
   bool    _searching   = false;
   bool    _lazyLoading = false;
+  bool    _refreshing  = false;
   String? _lazyError;
 
   @override
@@ -64,6 +65,32 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     }
   }
 
+  Future<void> _refresh() async {
+    if (_refreshing) return;
+    final id = ref.read(activePlaylistIdProvider);
+    if (id == null) return;
+    final playlist = ref.read(playlistRepositoryProvider)
+        .getSavedPlaylists()
+        .cast<Playlist?>()
+        .firstWhere((p) => p?.id == id, orElse: () => null);
+    if (playlist == null || playlist.playlistType != PlaylistType.xtream) return;
+
+    setState(() => _refreshing = true);
+    try {
+      await ref.read(playlistRepositoryProvider).loadXtreamSeries(playlist);
+      if (mounted) ref.read(playlistRefreshProvider.notifier).state++;
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(e.toString().replaceFirst('Exception: ', '')),
+          backgroundColor: AppColors.error,
+        ));
+      }
+    } finally {
+      if (mounted) setState(() => _refreshing = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_lazyLoading) return _buildLoading(context);
@@ -83,9 +110,11 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    tr.series.toUpperCase(),
-              subSection: '${series.length} ${tr.shows}',
-              onBack:     _onBack,
+              section:      tr.series.toUpperCase(),
+              subSection:   '${series.length} ${tr.shows}',
+              onBack:       _onBack,
+              onRefresh:    _refresh,
+              isRefreshing: _refreshing,
             ),
             Expanded(
               child: Row(
