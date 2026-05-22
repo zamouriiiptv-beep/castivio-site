@@ -466,6 +466,20 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
   }
 
   void _tap() {
+    final channel = ref.read(playerProvider).channel;
+    if (channel == null) return;
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, a, __) => const PlayerScreen(),
+        transitionsBuilder: (_, a, __, child) =>
+            FadeTransition(opacity: a, child: child),
+        transitionDuration: const Duration(milliseconds: 200),
+      ),
+    );
+  }
+
+  void _doubleTap() {
     setState(() {
       _videoFit     = _videoFit == BoxFit.contain ? BoxFit.cover : BoxFit.contain;
       _showFitToast = true;
@@ -494,6 +508,7 @@ class _VideoPlayerPanelState extends ConsumerState<VideoPlayerPanel>
     return Expanded(
       child: GestureDetector(
         onTap: _tap,
+        onDoubleTap: _doubleTap,
         child: Container(
           color: Colors.black,
           child: Stack(children: [
