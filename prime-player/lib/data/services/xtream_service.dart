@@ -273,6 +273,24 @@ class XtreamService {
     }
   }
 
+  // ── VOD info ─────────────────────────────────────────────────────────────
+
+  Future<Map<String, dynamic>?> getVodInfo(String vodId) async {
+    try {
+      final res = await _dio.get<dynamic>(
+        '$_base&action=get_vod_info&vod_id=$vodId',
+        options: Options(receiveTimeout: const Duration(seconds: 20)),
+      );
+      if (res.data is Map<String, dynamic>) {
+        return res.data as Map<String, dynamic>;
+      }
+      return null;
+    } catch (e) {
+      debugPrint('[Xtream] getVodInfo error: $e');
+      return null;
+    }
+  }
+
   // ── Series info (seasons + episodes for one series) ──────────────────────
 
   Future<SeriesInfo?> getSeriesInfo(String seriesId) async {

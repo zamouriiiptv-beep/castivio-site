@@ -116,6 +116,9 @@ class PlaylistRepository {
   Future<SeriesInfo?> getSeriesInfo(Playlist playlist, String seriesId) =>
       _svcFor(playlist).getSeriesInfo(seriesId);
 
+  Future<Map<String, dynamic>?> getVodInfo(Playlist playlist, String vodId) =>
+      _svcFor(playlist).getVodInfo(vodId);
+
   String buildEpisodeUrl(Playlist playlist, Episode episode) => episode.streamUrl(
         host:     playlist.xtreamHost!,
         username: playlist.xtreamUsername!,
