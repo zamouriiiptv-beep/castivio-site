@@ -117,6 +117,40 @@ class TmdbService {
     );
   }
 
+  // ── Trailer ───────────────────────────────────────────────────────────────
+
+  /// Returns the YouTube video key for the best available trailer/teaser,
+  /// or null if none found or the API is unavailable.
+  Future<String?> fetchTrailerKey(int tmdbId, {bool isTv = false}) async {
+    try {
+      final path = isTv ? '/tv/$tmdbId/videos' : '/movie/$tmdbId/videos';
+      final res  = await _dio.get<dynamic>(
+        '$_base$path',
+        queryParameters: {'api_key': _apiKey, 'language': 'en-US'},
+      );
+      final results = ((res.data as Map?)?['results'] as List? ?? [])
+          .cast<Map<String, dynamic>>();
+
+      // Prefer official YouTube trailers, then teasers, then any YouTube video
+      for (final type in ['Trailer', 'Teaser']) {
+        final official = results.where(
+            (v) => v['site'] == 'YouTube' && v['type'] == type
+                && v['official'] == true);
+        if (official.isNotEmpty) return official.first['key'] as String?;
+
+        final any = results.where(
+            (v) => v['site'] == 'YouTube' && v['type'] == type);
+        if (any.isNotEmpty) return any.first['key'] as String?;
+      }
+      // Last resort: any YouTube entry
+      final yt = results.where((v) => v['site'] == 'YouTube');
+      if (yt.isNotEmpty) return yt.first['key'] as String?;
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   // ── Helpers ───────────────────────────────────────────────────────────────
 
   Future<String?> _englishOverview(int id, {required bool isTv}) async {

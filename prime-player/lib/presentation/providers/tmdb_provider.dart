@@ -52,6 +52,18 @@ final tmdbProvider = FutureProvider.autoDispose.family<TmdbResult?, Channel>(
   },
 );
 
+// ── Trailer key provider ──────────────────────────────────────────────────────
+// Family key: (tmdbId, isTv) — uses a Dart record so == / hashCode work correctly.
+final trailerKeyProvider =
+    FutureProvider.autoDispose.family<String?, (int, bool)>(
+  (ref, args) async {
+    final (tmdbId, isTv) = args;
+    final service = ref.watch(tmdbServiceProvider);
+    if (service == null) return null;
+    return service.fetchTrailerKey(tmdbId, isTv: isTv);
+  },
+);
+
 // ── Synchronous poster URL from cache (for grid cards) ─────────────────────────
 final tmdbCachedPosterProvider = Provider.autoDispose.family<String?, Channel>(
   (ref, channel) {

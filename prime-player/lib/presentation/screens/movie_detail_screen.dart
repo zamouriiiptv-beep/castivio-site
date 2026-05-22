@@ -79,8 +79,14 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
   @override
   Widget build(BuildContext context) {
     // TMDB data (async — shows when ready)
-    final tmdbAsync = ref.watch(tmdbProvider(widget.movie));
-    final tmdb      = tmdbAsync.valueOrNull;
+    final tmdbAsync    = ref.watch(tmdbProvider(widget.movie));
+    final tmdb         = tmdbAsync.valueOrNull;
+    // Trailer key — only fetched when TMDB ID is available
+    final trailerAsync = tmdb != null
+        ? ref.watch(trailerKeyProvider((tmdb.id, !tmdb.isMovie)))
+        : null;
+    final trailerKey     = trailerAsync?.valueOrNull;
+    final trailerLoading = trailerAsync?.isLoading ?? false;
 
     // Xtream data
     final xtream = (_xtreamInfo?['info'] as Map<String, dynamic>?) ?? {};
@@ -308,6 +314,19 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                                   ),
                                 ),
                               ),
+                              // Trailer button — shown only when TMDB is available
+                              if (tmdb != null) ...[
+                                const SizedBox(width: 10),
+                                _TrailerBtn(
+                                  isLoading:  trailerLoading,
+                                  hasTrailer: trailerKey != null,
+                                  onTap: trailerKey != null
+                                      ? () => ref
+                                          .read(playerProvider.notifier)
+                                          .openYouTubeTrailer(trailerKey)
+                                      : null,
+                                ),
+                              ],
                               const SizedBox(width: 10),
                               GestureDetector(
                                 onTap: _openExternal,
@@ -467,6 +486,61 @@ class _MetaRow extends StatelessWidget {
           ],
         ),
       );
+}
+
+// ── Trailer button ────────────────────────────────────────────────────────────
+class _TrailerBtn extends StatelessWidget {
+  final bool      isLoading;
+  final bool      hasTrailer;
+  final VoidCallback? onTap;
+  const _TrailerBtn({
+    required this.isLoading,
+    required this.hasTrailer,
+    this.onTap,
+  });
+
+  static const _red = Color(0xFFE74C3C);
+
+  @override
+  Widget build(BuildContext context) {
+    final active = hasTrailer && !isLoading;
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 44,
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        decoration: BoxDecoration(
+          color:        active ? _red.withOpacity(0.12) : AppColors.surfaceLight,
+          borderRadius: BorderRadius.circular(10),
+          border:       Border.all(
+            color: active ? _red.withOpacity(0.55) : AppColors.border,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (isLoading)
+              const SizedBox(
+                width: 13, height: 13,
+                child: CircularProgressIndicator(
+                    strokeWidth: 1.5, color: AppColors.textMuted),
+              )
+            else
+              Icon(Icons.play_circle_outline_rounded,
+                  color: active ? _red : AppColors.textMuted,
+                  size:  16),
+            const SizedBox(width: 6),
+            Text('الإعلان',
+                style: TextStyle(
+                    color:      active ? _red : AppColors.textMuted,
+                    fontSize:   13,
+                    fontWeight: FontWeight.w600)),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 // ── Year tag ──────────────────────────────────────────────────────────────────

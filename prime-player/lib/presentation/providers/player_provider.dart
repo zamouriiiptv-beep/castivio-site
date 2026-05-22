@@ -216,6 +216,19 @@ class PlayerNotifier extends Notifier<PlayerState> {
     } catch (_) {}
   }
 
+  /// Opens a YouTube video by key in the YouTube app (or browser).
+  /// Does NOT set type:'video/*' so the YouTube app takes priority.
+  Future<void> openYouTubeTrailer(String videoKey) async {
+    try {
+      final intent = AndroidIntent(
+        action: 'action_view',
+        data:   'https://www.youtube.com/watch?v=$videoKey',
+        flags:  [Flag.FLAG_ACTIVITY_NEW_TASK],
+      );
+      await intent.launch();
+    } catch (_) {}
+  }
+
   void setSubtitleTrack(SubtitleTrack track) {
     _player.setSubtitleTrack(track);
     state = state.copyWith(subtitleTrack: track);
