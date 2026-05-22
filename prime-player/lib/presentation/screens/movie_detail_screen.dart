@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
+import '../../core/name_cleaner.dart';
 import '../../data/models/channel.dart';
 import '../../data/models/tmdb_result.dart';
 import '../../data/models/playlist.dart';
@@ -105,11 +106,18 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
     final age        = (xtream['age'] as String?)?.trim() ?? '';
 
     // Rating: TMDB is 0–10, Xtream rating_5based is 0–5
-    final tmdbRating  = tmdb != null && tmdb.voteAverage > 0 ? tmdb.voteAverage : null;
-    final xtreamRaw   = xtream['rating_5based'];
-    final xtreamRating = xtreamRaw is num ? xtreamRaw.toDouble() * 2 : null; // scale to 10
-    final rating10    = tmdbRating ?? xtreamRating ?? 0.0;
-    final hasTmdb     = tmdb != null;
+    final tmdbRating   = tmdb != null && tmdb.voteAverage > 0 ? tmdb.voteAverage : null;
+    final xtreamRaw    = xtream['rating_5based'];
+    final xtreamRating = xtreamRaw is num ? xtreamRaw.toDouble() * 2 : null;
+    final rating10     = tmdbRating ?? xtreamRating ?? 0.0;
+    final hasTmdb      = tmdb != null;
+
+    // Quality badges — scan raw server name + groupTitle, then augment with
+    // Xtream technical video/audio fields if available
+    final rawSource =
+        '${(xtream['name'] as String?) ?? ''} ${widget.movie.groupTitle ?? ''}';
+    var badges = extractQualityBadges(rawSource);
+    if (_xtreamInfo != null) badges = augmentFromXtream(badges, xtream);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -200,7 +208,25 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                                     color: AppColors.textPrimary,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w800)),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 8),
+
+                            // Inline rating
+                            if (rating10 > 0) ...[
+                              _InlineRating(value: rating10, fromTmdb: hasTmdb),
+                              const SizedBox(height: 8),
+                            ],
+
+                            // Quality badges
+                            if (badges.isNotEmpty) ...[
+                              Wrap(
+                                spacing: 6, runSpacing: 5,
+                                children: badges
+                                    .map((b) => _QualityChip(b))
+                                    .toList(),
+                              ),
+                              const SizedBox(height: 12),
+                            ] else
+                              const SizedBox(height: 8),
 
                             if (release.isNotEmpty)  _MetaRow(label: 'تاريخ الإصدار', value: release),
                             if (duration.isNotEmpty) _MetaRow(label: 'المدة',         value: duration),
@@ -431,6 +457,86 @@ class _MetaRow extends StatelessWidget {
           ],
         ),
       );
+}
+
+// ── Inline rating (right panel, below title) ──────────────────────────────────
+class _InlineRating extends StatelessWidget {
+  final double value;    // 0–10
+  final bool   fromTmdb;
+  const _InlineRating({required this.value, required this.fromTmdb});
+
+  Color get _color {
+    if (value >= 7) return const Color(0xFF27AE60);
+    if (value >= 5) return const Color(0xFFF39C12);
+    return const Color(0xFFE74C3C);
+  }
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.star_rounded, color: _color, size: 16),
+      const SizedBox(width: 4),
+      Text(value.toStringAsFixed(1),
+          style: TextStyle(
+              color: _color, fontSize: 15, fontWeight: FontWeight.w800)),
+      Text(' / 10',
+          style: const TextStyle(
+              color: AppColors.textMuted, fontSize: 11)),
+      if (fromTmdb) ...[
+        const SizedBox(width: 8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+          decoration: BoxDecoration(
+            color: const Color(0xFF01D277).withOpacity(0.12),
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+                color: const Color(0xFF01D277).withOpacity(0.4)),
+          ),
+          child: const Text('TMDB',
+              style: TextStyle(
+                  color: Color(0xFF01D277),
+                  fontSize: 8,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.4)),
+        ),
+      ],
+    ],
+  );
+}
+
+// ── Quality chip (4K, HDR, 5.1 …) ────────────────────────────────────────────
+class _QualityChip extends StatelessWidget {
+  final QualityBadge badge;
+  const _QualityChip(this.badge);
+
+  static const _videoColor = Color(0xFF2980B9);
+  static const _hdrColor   = Color(0xFFF39C12);
+  static const _audioColor = Color(0xFF27AE60);
+  static const _codecColor = Color(0xFF8E44AD);
+
+  Color get _color => switch (badge.type) {
+    QualityBadgeType.video => _videoColor,
+    QualityBadgeType.hdr   => _hdrColor,
+    QualityBadgeType.audio => _audioColor,
+    QualityBadgeType.codec => _codecColor,
+  };
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+    decoration: BoxDecoration(
+      color:        _color.withOpacity(0.12),
+      borderRadius: BorderRadius.circular(5),
+      border:       Border.all(color: _color.withOpacity(0.5)),
+    ),
+    child: Text(badge.label,
+        style: TextStyle(
+            color:       _color,
+            fontSize:    10,
+            fontWeight:  FontWeight.w700,
+            letterSpacing: 0.3)),
+  );
 }
 
 // ── Favorite / Watchlist toggle button ───────────────────────────────────────

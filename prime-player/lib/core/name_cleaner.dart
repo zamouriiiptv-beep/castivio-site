@@ -6,7 +6,6 @@
 ///   "FR - Movie Name HD"   →  "Movie Name"
 ///   "Movie [HDR] [HEVC]"   →  "Movie"
 ///   "NF: Movie (2024) 4K"  →  "Movie (2024)"
-String cleanChannelName(String raw) {
   String s = raw.trim();
 
   // ── 1. Service prefix chains  "DSN+: ", "NF: ", "AMZN: HBO: " ─────────────
@@ -91,3 +90,93 @@ const _allTags = _qualityTags + r'|' + _langSet;
 
 // Matches a 4-digit year like 2024
 const _yearRx = r'\d{4}';
+
+// ── Quality badge detection ───────────────────────────────────────────────────
+
+enum QualityBadgeType { video, hdr, audio, codec }
+
+class QualityBadge {
+  final String           label;
+  final QualityBadgeType type;
+  const QualityBadge(this.label, this.type);
+}
+
+/// Scans [rawText] (raw server name, groupTitle, etc.) and returns detected
+/// quality badges. Most-specific pattern wins within each category.
+List<QualityBadge> extractQualityBadges(String rawText) {
+  final badges = <QualityBadge>[];
+
+  // Video resolution — most specific first
+  if (_tag(rawText, r'4K|UHD|2160p'))
+    badges.add(const QualityBadge('4K',  QualityBadgeType.video));
+  else if (_tag(rawText, r'FHD|1080[pi]'))
+    badges.add(const QualityBadge('FHD', QualityBadgeType.video));
+  else if (_tag(rawText, r'720p'))
+    badges.add(const QualityBadge('HD',  QualityBadgeType.video));
+
+  // HDR variants — most specific first
+  if (_tag(rawText, r'HDR10\+'))
+    badges.add(const QualityBadge('HDR10+',       QualityBadgeType.hdr));
+  else if (_tag(rawText, r'HDR10'))
+    badges.add(const QualityBadge('HDR10',        QualityBadgeType.hdr));
+  else if (_tag(rawText, r'DV|DoVi'))
+    badges.add(const QualityBadge('Dolby Vision', QualityBadgeType.hdr));
+  else if (_tag(rawText, r'HDR'))
+    badges.add(const QualityBadge('HDR',          QualityBadgeType.hdr));
+
+  // Audio format — most specific first
+  if (_tag(rawText, r'ATMOS'))
+    badges.add(const QualityBadge('Atmos',  QualityBadgeType.audio));
+  else if (_tag(rawText, r'TrueHD'))
+    badges.add(const QualityBadge('TrueHD', QualityBadgeType.audio));
+  else if (_tag(rawText, r'DTS[-.]?HD'))
+    badges.add(const QualityBadge('DTS-HD', QualityBadgeType.audio));
+  else if (_tag(rawText, r'DTS'))
+    badges.add(const QualityBadge('DTS',    QualityBadgeType.audio));
+  else if (_tag(rawText, r'DD5\.1|DD\+|EAC3|AC3|5\.1'))
+    badges.add(const QualityBadge('5.1',    QualityBadgeType.audio));
+
+  // Video codec
+  if (_tag(rawText, r'HEVC|H\.?265|x265'))
+    badges.add(const QualityBadge('HEVC',  QualityBadgeType.codec));
+  else if (_tag(rawText, r'H\.?264|x264|AVC'))
+    badges.add(const QualityBadge('H.264', QualityBadgeType.codec));
+
+  return badges;
+}
+
+/// Augments [badges] with Xtream technical video/audio fields when text
+/// detection found nothing for that category.
+List<QualityBadge> augmentFromXtream(
+    List<QualityBadge> badges, Map<dynamic, dynamic> xtreamInfo) {
+  final video = xtreamInfo['video'];
+  final audio = xtreamInfo['audio'];
+
+  if (badges.every((b) => b.type != QualityBadgeType.video)) {
+    final w = video is Map ? (video['width']  as num?)?.toInt() : null;
+    final h = video is Map ? (video['height'] as num?)?.toInt() : null;
+    final dim = ((w ?? 0) > (h ?? 0) ? w : h) ?? 0;
+    if (dim >= 2160)
+      badges.insert(0, const QualityBadge('4K',  QualityBadgeType.video));
+    else if (dim >= 1080)
+      badges.insert(0, const QualityBadge('FHD', QualityBadgeType.video));
+    else if (dim >= 720)
+      badges.insert(0, const QualityBadge('HD',  QualityBadgeType.video));
+  }
+
+  if (badges.every((b) => b.type != QualityBadgeType.audio)) {
+    final ch = audio is Map ? (audio['channels'] as num?)?.toInt() : null;
+    if (ch != null) {
+      badges.add(ch >= 6
+          ? const QualityBadge('5.1',    QualityBadgeType.audio)
+          : const QualityBadge('Stereo', QualityBadgeType.audio));
+    }
+  }
+
+  return badges;
+}
+
+bool _tag(String s, String pattern) =>
+    RegExp(r'(?:^|[\s\[\(\-_\.])(?:' + pattern + r')(?:$|[\s\]\)\-_\.])',
+        caseSensitive: false)
+        .hasMatch(s);
