@@ -206,6 +206,79 @@ final favoritesProvider = Provider<List<Channel>>((ref) {
 final playlistLoadingProvider = StateProvider<bool>((ref) => false);
 final playlistErrorProvider   = StateProvider<String?>((ref) => null);
 
+// ── Favorites & Watchlist refresh triggers ────────────────────────────────────
+final favRefreshProvider       = StateProvider<int>((ref) => 0);
+final watchlistRefreshProvider = StateProvider<int>((ref) => 0);
+
+// ── Favorite channels by content type ────────────────────────────────────────
+final favoriteMovieChannelsProvider = Provider<List<Channel>>((ref) {
+  ref.watch(favRefreshProvider);
+  ref.watch(playlistRefreshProvider);
+  final storage  = ref.read(storageServiceProvider);
+  final playlist = ref.watch(activePlaylistProvider);
+  if (playlist == null) return [];
+  if (playlist.playlistType == PlaylistType.xtream) {
+    return storage.getChannels(playlist.id, typePrefix: 'vod_')
+        .where((c) => c.isFavorite).toList();
+  }
+  return storage.getChannels(playlist.id)
+      .where((c) => c.isFavorite &&
+          detectContentType(c.groupTitle, c.streamUrl) == ContentType.movie)
+      .toList();
+});
+
+final watchlistMovieChannelsProvider = Provider<List<Channel>>((ref) {
+  ref.watch(watchlistRefreshProvider);
+  ref.watch(playlistRefreshProvider);
+  final storage  = ref.read(storageServiceProvider);
+  final ids      = storage.getWatchlistIds().toSet();
+  if (ids.isEmpty) return [];
+  final playlist = ref.watch(activePlaylistProvider);
+  if (playlist == null) return [];
+  if (playlist.playlistType == PlaylistType.xtream) {
+    return storage.getChannels(playlist.id, typePrefix: 'vod_')
+        .where((c) => ids.contains(c.id)).toList();
+  }
+  return storage.getChannels(playlist.id)
+      .where((c) => ids.contains(c.id) &&
+          detectContentType(c.groupTitle, c.streamUrl) == ContentType.movie)
+      .toList();
+});
+
+final favoriteSeriesChannelsProvider = Provider<List<Channel>>((ref) {
+  ref.watch(favRefreshProvider);
+  ref.watch(playlistRefreshProvider);
+  final storage  = ref.read(storageServiceProvider);
+  final playlist = ref.watch(activePlaylistProvider);
+  if (playlist == null) return [];
+  if (playlist.playlistType == PlaylistType.xtream) {
+    return storage.getChannels(playlist.id, typePrefix: 'series_')
+        .where((c) => c.isFavorite).toList();
+  }
+  return storage.getChannels(playlist.id)
+      .where((c) => c.isFavorite &&
+          detectContentType(c.groupTitle, c.streamUrl) == ContentType.series)
+      .toList();
+});
+
+final watchlistSeriesChannelsProvider = Provider<List<Channel>>((ref) {
+  ref.watch(watchlistRefreshProvider);
+  ref.watch(playlistRefreshProvider);
+  final storage  = ref.read(storageServiceProvider);
+  final ids      = storage.getWatchlistIds().toSet();
+  if (ids.isEmpty) return [];
+  final playlist = ref.watch(activePlaylistProvider);
+  if (playlist == null) return [];
+  if (playlist.playlistType == PlaylistType.xtream) {
+    return storage.getChannels(playlist.id, typePrefix: 'series_')
+        .where((c) => ids.contains(c.id)).toList();
+  }
+  return storage.getChannels(playlist.id)
+      .where((c) => ids.contains(c.id) &&
+          detectContentType(c.groupTitle, c.streamUrl) == ContentType.series)
+      .toList();
+});
+
 // ── Watch status providers ────────────────────────────────────────────────────
 // Incremented by PlayerNotifier whenever a position or watched state changes.
 // Causes isWatchedProvider / watchProgressProvider to re-read storage.

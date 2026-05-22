@@ -12,6 +12,8 @@ import '../widgets/content_screen_layout.dart';
 import '../widgets/top_search_bar.dart';
 import 'series_detail_screen.dart';
 
+enum _ContentTab { all, favorites, watchlist }
+
 class SeriesScreen extends ConsumerStatefulWidget {
   const SeriesScreen({super.key});
 
@@ -20,10 +22,11 @@ class SeriesScreen extends ConsumerStatefulWidget {
 }
 
 class _SeriesScreenState extends ConsumerState<SeriesScreen> {
-  final _searchCtrl = TextEditingController();
-  bool    _lazyLoading = false;
-  bool    _refreshing  = false;
-  String? _lazyError;
+  final _searchCtrl  = TextEditingController();
+  bool         _lazyLoading = false;
+  bool         _refreshing  = false;
+  String?      _lazyError;
+  _ContentTab  _tab         = _ContentTab.all;
 
   @override
   void initState() {
@@ -98,8 +101,22 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
 
     final categories     = ref.watch(seriesCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
-    final series         = ref.watch(filteredSeriesChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
+    final q              = ref.watch(searchQueryProvider).toLowerCase();
+
+    final List<Channel> series;
+    switch (_tab) {
+      case _ContentTab.all:
+        series = ref.watch(filteredSeriesChannelsProvider);
+      case _ContentTab.favorites:
+        final favs = ref.watch(favoriteSeriesChannelsProvider);
+        series = q.isEmpty ? favs
+            : favs.where((c) => c.name.toLowerCase().contains(q)).toList();
+      case _ContentTab.watchlist:
+        final wl = ref.watch(watchlistSeriesChannelsProvider);
+        series = q.isEmpty ? wl
+            : wl.where((c) => c.name.toLowerCase().contains(q)).toList();
+    }
 
     return PopScope(
       canPop: false,
@@ -137,6 +154,39 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                           hint:       tr.searchSeries,
                           onChanged:  (q) =>
                               ref.read(searchQueryProvider.notifier).state = q,
+                        ),
+                        // Tab row
+                        Container(
+                          height: 36,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          color: AppColors.surface,
+                          child: Row(children: [
+                            _TabChip(
+                              label:  'الكل',
+                              active: _tab == _ContentTab.all,
+                              onTap:  () => setState(
+                                  () => _tab = _ContentTab.all),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.favorite_rounded,
+                              label:       'المفضلة',
+                              active:      _tab == _ContentTab.favorites,
+                              activeColor: const Color(0xFFE74C3C),
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.favorites),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.bookmark_rounded,
+                              label:       'لاحقاً',
+                              active:      _tab == _ContentTab.watchlist,
+                              activeColor: AppColors.primary,
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.watchlist),
+                            ),
+                          ]),
                         ),
                         Expanded(
                           child: series.isEmpty
@@ -221,17 +271,40 @@ class _PosterGrid extends StatelessWidget {
   }
 }
 
-class _PosterCard extends StatefulWidget {
+class _PosterCard extends ConsumerStatefulWidget {
   final Channel      item;
   final VoidCallback onTap;
   const _PosterCard({required this.item, required this.onTap});
 
   @override
-  State<_PosterCard> createState() => _PosterCardState();
+  ConsumerState<_PosterCard> createState() => _PosterCardState();
 }
 
-class _PosterCardState extends State<_PosterCard> {
+class _PosterCardState extends ConsumerState<_PosterCard> {
   bool _hovered = false;
+  late bool _isFav;
+  late bool _isWl;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFav = widget.item.isFavorite;
+    _isWl  = ref.read(storageServiceProvider).isInWatchlist(widget.item.id);
+  }
+
+  Future<void> _toggleFav() async {
+    await ref.read(storageServiceProvider).toggleFavorite(widget.item);
+    if (!mounted) return;
+    setState(() => _isFav = widget.item.isFavorite);
+    ref.read(favRefreshProvider.notifier).state++;
+  }
+
+  Future<void> _toggleWl() async {
+    await ref.read(storageServiceProvider).toggleWatchlist(widget.item.id);
+    if (!mounted) return;
+    setState(() => _isWl = !_isWl);
+    ref.read(watchlistRefreshProvider.notifier).state++;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -257,7 +330,6 @@ class _PosterCardState extends State<_PosterCard> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              // Poster image
               widget.item.logoUrl != null && widget.item.logoUrl!.isNotEmpty
                   ? CachedNetworkImage(
                       imageUrl:       widget.item.logoUrl!,
@@ -295,12 +367,39 @@ class _PosterCardState extends State<_PosterCard> {
                 ),
               ),
 
-              // Rating badge top-left
+              // Rating badge — top-left
               if (widget.item.rating != null)
                 Positioned(
                   top: 5, left: 5,
                   child: _RatingBadge(widget.item.rating!),
                 ),
+
+              // Quick action icons — top-right
+              Positioned(
+                top: 4, right: 4,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _QuickIcon(
+                      icon:        _isWl
+                          ? Icons.bookmark_rounded
+                          : Icons.bookmark_border_rounded,
+                      active:      _isWl,
+                      activeColor: AppColors.primary,
+                      onTap:       _toggleWl,
+                    ),
+                    const SizedBox(width: 3),
+                    _QuickIcon(
+                      icon:        _isFav
+                          ? Icons.favorite_rounded
+                          : Icons.favorite_border_rounded,
+                      active:      _isFav,
+                      activeColor: const Color(0xFFE74C3C),
+                      onTap:       _toggleFav,
+                    ),
+                  ],
+                ),
+              ),
 
               // Play icon on hover
               if (_hovered)
@@ -401,4 +500,76 @@ class _EmptyView extends StatelessWidget {
               style: const TextStyle(color: AppColors.textMuted, fontSize: 14)),
         ]),
       );
+}
+
+// ── Tab chip ──────────────────────────────────────────────────────────────────
+class _TabChip extends StatelessWidget {
+  final String    label;
+  final IconData? icon;
+  final bool      active;
+  final Color     activeColor;
+  final VoidCallback onTap;
+  const _TabChip({
+    required this.label, required this.active, required this.onTap,
+    this.icon, this.activeColor = AppColors.primary,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      decoration: BoxDecoration(
+        color:        active ? activeColor.withOpacity(0.15) : Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        border:       Border.all(
+          color: active ? activeColor.withOpacity(0.6) : AppColors.border,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 11,
+                color: active ? activeColor : AppColors.textMuted),
+            const SizedBox(width: 4),
+          ],
+          Text(label,
+              style: TextStyle(
+                  color:      active ? activeColor : AppColors.textMuted,
+                  fontSize:   11,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    ),
+  );
+}
+
+// ── Small circular icon button on poster card ─────────────────────────────────
+class _QuickIcon extends StatelessWidget {
+  final IconData     icon;
+  final bool         active;
+  final Color        activeColor;
+  final VoidCallback onTap;
+  const _QuickIcon({
+    required this.icon, required this.active,
+    required this.activeColor, required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    behavior: HitTestBehavior.opaque,
+    child: Container(
+      width: 20, height: 20,
+      decoration: BoxDecoration(
+        color:  Colors.black.withOpacity(0.55),
+        shape:  BoxShape.circle,
+      ),
+      child: Icon(icon,
+          color: active ? activeColor : Colors.white70,
+          size:  12),
+    ),
+  );
 }

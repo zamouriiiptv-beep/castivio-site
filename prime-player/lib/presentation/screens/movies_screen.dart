@@ -14,6 +14,8 @@ import '../widgets/top_search_bar.dart';
 import 'movie_detail_screen.dart';
 import 'player_screen.dart';
 
+enum _ContentTab { all, favorites, watchlist }
+
 class MoviesScreen extends ConsumerStatefulWidget {
   const MoviesScreen({super.key});
 
@@ -22,10 +24,11 @@ class MoviesScreen extends ConsumerStatefulWidget {
 }
 
 class _MoviesScreenState extends ConsumerState<MoviesScreen> {
-  final _searchCtrl = TextEditingController();
-  bool    _lazyLoading = false;
-  bool    _refreshing  = false;
-  String? _lazyError;
+  final _searchCtrl  = TextEditingController();
+  bool         _lazyLoading = false;
+  bool         _refreshing  = false;
+  String?      _lazyError;
+  _ContentTab  _tab         = _ContentTab.all;
 
   @override
   void initState() {
@@ -100,8 +103,22 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
 
     final categories     = ref.watch(movieCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
-    final movies         = ref.watch(filteredMovieChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
+    final q              = ref.watch(searchQueryProvider).toLowerCase();
+
+    final List<Channel> movies;
+    switch (_tab) {
+      case _ContentTab.all:
+        movies = ref.watch(filteredMovieChannelsProvider);
+      case _ContentTab.favorites:
+        final favs = ref.watch(favoriteMovieChannelsProvider);
+        movies = q.isEmpty ? favs
+            : favs.where((c) => c.name.toLowerCase().contains(q)).toList();
+      case _ContentTab.watchlist:
+        final wl = ref.watch(watchlistMovieChannelsProvider);
+        movies = q.isEmpty ? wl
+            : wl.where((c) => c.name.toLowerCase().contains(q)).toList();
+    }
 
     return PopScope(
       canPop: false,
@@ -139,6 +156,39 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                           hint:       tr.searchMovies,
                           onChanged:  (q) =>
                               ref.read(searchQueryProvider.notifier).state = q,
+                        ),
+                        // Tab row
+                        Container(
+                          height: 36,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          color: AppColors.surface,
+                          child: Row(children: [
+                            _TabChip(
+                              label:  'الكل',
+                              active: _tab == _ContentTab.all,
+                              onTap:  () => setState(
+                                  () => _tab = _ContentTab.all),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.favorite_rounded,
+                              label:       'المفضلة',
+                              active:      _tab == _ContentTab.favorites,
+                              activeColor: const Color(0xFFE74C3C),
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.favorites),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.bookmark_rounded,
+                              label:       'لاحقاً',
+                              active:      _tab == _ContentTab.watchlist,
+                              activeColor: AppColors.primary,
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.watchlist),
+                            ),
+                          ]),
                         ),
                         Expanded(
                           child: movies.isEmpty
@@ -223,21 +273,49 @@ class _PosterGrid extends StatelessWidget {
   }
 }
 
-class _PosterCard extends ConsumerWidget {
+class _PosterCard extends ConsumerStatefulWidget {
   final Channel      item;
   final VoidCallback onTap;
   const _PosterCard({required this.item, required this.onTap, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // Use TMDB poster from cache if available; fall back to server logo
-    final tmdbPoster = ref.watch(tmdbCachedPosterProvider(item));
-    final displayUrl = tmdbPoster ?? item.logoUrl;
-    final isWatched  = ref.watch(isWatchedProvider(item.id));
-    final watchPct   = isWatched ? null : ref.watch(watchProgressProvider(item.id));
+  ConsumerState<_PosterCard> createState() => _PosterCardState();
+}
+
+class _PosterCardState extends ConsumerState<_PosterCard> {
+  late bool _isFav;
+  late bool _isWl;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFav = widget.item.isFavorite;
+    _isWl  = ref.read(storageServiceProvider).isInWatchlist(widget.item.id);
+  }
+
+  Future<void> _toggleFav() async {
+    await ref.read(storageServiceProvider).toggleFavorite(widget.item);
+    if (!mounted) return;
+    setState(() => _isFav = widget.item.isFavorite);
+    ref.read(favRefreshProvider.notifier).state++;
+  }
+
+  Future<void> _toggleWl() async {
+    await ref.read(storageServiceProvider).toggleWatchlist(widget.item.id);
+    if (!mounted) return;
+    setState(() => _isWl = !_isWl);
+    ref.read(watchlistRefreshProvider.notifier).state++;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tmdbPoster = ref.watch(tmdbCachedPosterProvider(widget.item));
+    final displayUrl = tmdbPoster ?? widget.item.logoUrl;
+    final isWatched  = ref.watch(isWatchedProvider(widget.item.id));
+    final watchPct   = isWatched ? null : ref.watch(watchProgressProvider(widget.item.id));
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -253,13 +331,12 @@ class _PosterCard extends ConsumerWidget {
                     fit:            BoxFit.cover,
                     fadeInDuration: Duration.zero,
                     errorWidget:    (_, __, ___) =>
-                        _NoImageFallback(item.name, Icons.movie_rounded),
+                        _NoImageFallback(widget.item.name, Icons.movie_rounded),
                     placeholder:    (_, __) =>
                         Container(color: AppColors.surfaceLight),
                   )
-                : _NoImageFallback(item.name, Icons.movie_rounded),
+                : _NoImageFallback(widget.item.name, Icons.movie_rounded),
 
-            // Watched dim overlay
             if (isWatched)
               Container(color: Colors.black.withOpacity(0.45)),
 
@@ -277,7 +354,7 @@ class _PosterCard extends ConsumerWidget {
                   ),
                 ),
                 child: Text(
-                  item.name,
+                  widget.item.name,
                   style: const TextStyle(
                     color: Colors.white, fontSize: 9,
                     fontWeight: FontWeight.w600,
@@ -289,37 +366,63 @@ class _PosterCard extends ConsumerWidget {
               ),
             ),
 
-            // In-progress bar at very bottom edge
             if (watchPct != null)
               Positioned(
                 bottom: 0, left: 0, right: 0,
                 child: LinearProgressIndicator(
-                  value:      watchPct,
-                  minHeight:  3,
+                  value:           watchPct,
+                  minHeight:       3,
                   backgroundColor: Colors.white24,
                   valueColor: const AlwaysStoppedAnimation(Color(0xFFF39C12)),
                 ),
               ),
 
-            // Rating badge top-left
-            if (item.rating != null)
+            // Rating badge — top-left
+            if (widget.item.rating != null)
               Positioned(
                 top: 5, left: 5,
-                child: _RatingBadge(item.rating!),
+                child: _RatingBadge(widget.item.rating!),
               ),
 
-            // Watched checkmark top-right
+            // Quick action icons — top-right
+            Positioned(
+              top: 4, right: 4,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _QuickIcon(
+                    icon:        _isWl
+                        ? Icons.bookmark_rounded
+                        : Icons.bookmark_border_rounded,
+                    active:      _isWl,
+                    activeColor: AppColors.primary,
+                    onTap:       _toggleWl,
+                  ),
+                  const SizedBox(width: 3),
+                  _QuickIcon(
+                    icon:        _isFav
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_border_rounded,
+                    active:      _isFav,
+                    activeColor: const Color(0xFFE74C3C),
+                    onTap:       _toggleFav,
+                  ),
+                ],
+              ),
+            ),
+
+            // Watched checkmark — bottom-right
             if (isWatched)
               Positioned(
-                top: 5, right: 5,
+                bottom: 6, right: 5,
                 child: Container(
-                  width: 18, height: 18,
+                  width: 16, height: 16,
                   decoration: const BoxDecoration(
                     color: Color(0xFF27AE60),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.check_rounded,
-                      color: Colors.white, size: 12),
+                      color: Colors.white, size: 10),
                 ),
               ),
           ],
@@ -405,4 +508,76 @@ class _EmptyView extends StatelessWidget {
               style: const TextStyle(color: AppColors.textMuted, fontSize: 14)),
         ]),
       );
+}
+
+// ── Tab chip ──────────────────────────────────────────────────────────────────
+class _TabChip extends StatelessWidget {
+  final String    label;
+  final IconData? icon;
+  final bool      active;
+  final Color     activeColor;
+  final VoidCallback onTap;
+  const _TabChip({
+    required this.label, required this.active, required this.onTap,
+    this.icon, this.activeColor = AppColors.primary,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      decoration: BoxDecoration(
+        color:        active ? activeColor.withOpacity(0.15) : Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        border:       Border.all(
+          color: active ? activeColor.withOpacity(0.6) : AppColors.border,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 11,
+                color: active ? activeColor : AppColors.textMuted),
+            const SizedBox(width: 4),
+          ],
+          Text(label,
+              style: TextStyle(
+                  color:      active ? activeColor : AppColors.textMuted,
+                  fontSize:   11,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    ),
+  );
+}
+
+// ── Small circular icon button on poster card ─────────────────────────────────
+class _QuickIcon extends StatelessWidget {
+  final IconData     icon;
+  final bool         active;
+  final Color        activeColor;
+  final VoidCallback onTap;
+  const _QuickIcon({
+    required this.icon, required this.active,
+    required this.activeColor, required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    behavior: HitTestBehavior.opaque,
+    child: Container(
+      width: 20, height: 20,
+      decoration: BoxDecoration(
+        color:  Colors.black.withOpacity(0.55),
+        shape:  BoxShape.circle,
+      ),
+      child: Icon(icon,
+          color: active ? activeColor : Colors.white70,
+          size:  12),
+    ),
+  );
 }
