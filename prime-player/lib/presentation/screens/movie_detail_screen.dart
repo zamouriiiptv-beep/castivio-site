@@ -119,6 +119,15 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
     var badges = extractQualityBadges(rawSource);
     if (_xtreamInfo != null) badges = augmentFromXtream(badges, xtream);
 
+    // Split title: strip trailing "(YYYY)" → displayTitle; keep year as a tag
+    final _yearRx     = RegExp(r'\s*\((\d{4})\)\s*$');
+    final yearMatch   = _yearRx.firstMatch(title);
+    final displayTitle = yearMatch != null
+        ? title.substring(0, yearMatch.start).trim()
+        : title;
+    final titleYear    = yearMatch?.group(1)
+        ?? (release.length >= 4 ? release.substring(0, 4) : null);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -139,7 +148,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(title,
+                child: Text(displayTitle,
                     style: const TextStyle(
                         color: AppColors.textPrimary,
                         fontSize: 14, fontWeight: FontWeight.w700),
@@ -203,7 +212,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(title,
+                            Text(displayTitle,
                                 style: const TextStyle(
                                     color: AppColors.textPrimary,
                                     fontSize: 20,
@@ -216,13 +225,14 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                               const SizedBox(height: 8),
                             ],
 
-                            // Quality badges
-                            if (badges.isNotEmpty) ...[
+                            // Year tag + quality badges
+                            if (titleYear != null || badges.isNotEmpty) ...[
                               Wrap(
                                 spacing: 6, runSpacing: 5,
-                                children: badges
-                                    .map((b) => _QualityChip(b))
-                                    .toList(),
+                                children: [
+                                  if (titleYear != null) _YearTag(titleYear),
+                                  ...badges.map((b) => _QualityChip(b)),
+                                ],
                               ),
                               const SizedBox(height: 12),
                             ] else
@@ -457,6 +467,27 @@ class _MetaRow extends StatelessWidget {
           ],
         ),
       );
+}
+
+// ── Year tag ──────────────────────────────────────────────────────────────────
+class _YearTag extends StatelessWidget {
+  final String year;
+  const _YearTag(this.year);
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+    decoration: BoxDecoration(
+      color:        AppColors.surfaceLight,
+      borderRadius: BorderRadius.circular(5),
+      border:       Border.all(color: AppColors.border),
+    ),
+    child: Text(year,
+        style: const TextStyle(
+            color:      AppColors.textSecondary,
+            fontSize:   10,
+            fontWeight: FontWeight.w700)),
+  );
 }
 
 // ── Inline rating (right panel, below title) ──────────────────────────────────
