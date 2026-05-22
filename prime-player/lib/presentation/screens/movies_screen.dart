@@ -8,6 +8,7 @@ import '../../data/models/playlist.dart';
 import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
+import '../providers/tmdb_provider.dart';
 import '../widgets/content_screen_layout.dart';
 import '../widgets/top_search_bar.dart';
 import 'movie_detail_screen.dart';
@@ -222,13 +223,17 @@ class _PosterGrid extends StatelessWidget {
   }
 }
 
-class _PosterCard extends StatelessWidget {
+class _PosterCard extends ConsumerWidget {
   final Channel      item;
   final VoidCallback onTap;
   const _PosterCard({required this.item, required this.onTap, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Use TMDB poster from cache if available; fall back to server logo
+    final tmdbPoster = ref.watch(tmdbCachedPosterProvider(item));
+    final displayUrl = tmdbPoster ?? item.logoUrl;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -240,9 +245,9 @@ class _PosterCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            item.logoUrl != null && item.logoUrl!.isNotEmpty
+            displayUrl != null && displayUrl.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl:       item.logoUrl!,
+                    imageUrl:       displayUrl,
                     fit:            BoxFit.cover,
                     fadeInDuration: Duration.zero,
                     errorWidget:    (_, __, ___) =>

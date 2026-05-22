@@ -11,15 +11,17 @@ class StorageService {
   static const _seriesBox   = 'channels_series';
   static const _m3uBox      = 'channels_m3u';
   static const _prefsBox    = 'prefs';
+  static const _tmdbBox     = 'tmdb_cache';
 
   static const _uuid = Uuid();
 
-  late Box<Playlist> _playlists;
-  late Box<Channel>  _live;
-  late Box<Channel>  _vod;
-  late Box<Channel>  _series;
-  late Box<Channel>  _m3u;
-  late Box<dynamic>  _prefs;
+  late Box<Playlist>         _playlists;
+  late Box<Channel>          _live;
+  late Box<Channel>          _vod;
+  late Box<Channel>          _series;
+  late Box<Channel>          _m3u;
+  late Box<dynamic>          _prefs;
+  late Box<Map<dynamic, dynamic>> _tmdb;
 
   Future<void> init() async {
     await Hive.initFlutter();
@@ -32,6 +34,7 @@ class StorageService {
     _series    = await Hive.openBox<Channel>(_seriesBox);
     _m3u       = await Hive.openBox<Channel>(_m3uBox);
     _prefs     = await Hive.openBox<dynamic>(_prefsBox);
+    _tmdb      = await Hive.openBox<Map<dynamic, dynamic>>(_tmdbBox);
   }
 
   // ── Playlists ──────────────────────────────────────────────────────────────
@@ -172,5 +175,41 @@ class StorageService {
       hash = (hash * 31 + c) & 0x7FFFFFFF;
     }
     return (hash % 900000 + 100000).toString();
+  }
+
+  // ── TMDB API key ───────────────────────────────────────────────────────────
+
+  String get tmdbApiKey => (_prefs.get('tmdbApiKey') as String?) ?? '';
+  Future<void> setTmdbApiKey(String key) => _prefs.put('tmdbApiKey', key.trim());
+
+  // ── TMDB cache ─────────────────────────────────────────────────────────────
+
+  static const _tmdbCacheTtlDays = 30;
+
+  Map<dynamic, dynamic>? getTmdbCache(String key) {
+    final entry = _tmdb.get(key);
+    if (entry == null) return null;
+    // Check TTL
+    final ts = entry['_ts'] as int?;
+    if (ts != null) {
+      final age = DateTime.now().millisecondsSinceEpoch - ts;
+      if (age > const Duration(days: _tmdbCacheTtlDays).inMilliseconds) {
+        _tmdb.delete(key);
+        return null;
+      }
+    }
+    return entry;
+  }
+
+  Future<void> setTmdbCache(String key, Map<String, dynamic> data) {
+    return _tmdb.put(key, {...data, '_ts': DateTime.now().millisecondsSinceEpoch});
+  }
+
+  String? getTmdbPosterUrl(String cacheKey) {
+    final entry = getTmdbCache(cacheKey);
+    if (entry == null) return null;
+    final path = entry['posterPath'] as String?;
+    if (path == null) return null;
+    return 'https://image.tmdb.org/t/p/w500$path';
   }
 }
