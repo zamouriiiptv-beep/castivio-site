@@ -228,14 +228,14 @@ class _RefreshButtonState extends State<_RefreshButton>
 
 // ── Left icon sidebar ─────────────────────────────────────────────────────────
 class IconSidebar extends ConsumerWidget {
-  final VoidCallback onBack;
-  final VoidCallback onSearch;
-  final bool isSearching;
+  final VoidCallback  onBack;
+  final VoidCallback? onSearch;
+  final bool          isSearching;
 
   const IconSidebar({
     super.key,
     required this.onBack,
-    required this.onSearch,
+    this.onSearch,
     this.isSearching = false,
   });
 
@@ -250,14 +250,7 @@ class IconSidebar extends ConsumerWidget {
           const SizedBox(height: 4),
           _SideIcon(icon: Icons.home_rounded,    onTap: onBack,     tip: tr.home),
           _SideIcon(icon: Icons.favorite_border_rounded, onTap: () {}, tip: tr.favorites),
-          _SideIcon(
-            icon: isSearching ? Icons.search_off_rounded : Icons.search_rounded,
-            onTap: onSearch,
-            tip: tr.search,
-            active: isSearching,
-          ),
           const Spacer(),
-          _SideIcon(icon: Icons.refresh_rounded,            onTap: () {}, tip: tr.refresh),
           _SideIcon(icon: Icons.power_settings_new_rounded, onTap: onBack, tip: tr.exit),
           const SizedBox(height: 6),
         ],

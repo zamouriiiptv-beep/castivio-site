@@ -9,6 +9,7 @@ import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
+import '../widgets/top_search_bar.dart';
 import 'movie_detail_screen.dart';
 import 'player_screen.dart';
 
@@ -21,7 +22,6 @@ class MoviesScreen extends ConsumerStatefulWidget {
 
 class _MoviesScreenState extends ConsumerState<MoviesScreen> {
   final _searchCtrl = TextEditingController();
-  bool    _searching   = false;
   bool    _lazyLoading = false;
   bool    _refreshing  = false;
   String? _lazyError;
@@ -120,19 +120,7 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
             Expanded(
               child: Row(
                 children: [
-                  IconSidebar(
-                    onBack: _onBack,
-                    onSearch: () {
-                      setState(() {
-                        _searching = !_searching;
-                        if (!_searching) {
-                          _searchCtrl.clear();
-                          ref.read(searchQueryProvider.notifier).state = '';
-                        }
-                      });
-                    },
-                    isSearching: _searching,
-                  ),
+                  IconSidebar(onBack: _onBack),
                   CategoriesPanel(
                     categories:     categories,
                     activeCategory: activeCategory,
@@ -145,13 +133,12 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
                   Expanded(
                     child: Column(
                       children: [
-                        if (_searching)
-                          _SearchBar(
-                            ctrl: _searchCtrl,
-                            hint: tr.searchMovies,
-                            onChanged: (q) =>
-                                ref.read(searchQueryProvider.notifier).state = q,
-                          ),
+                        TopSearchBar(
+                          controller: _searchCtrl,
+                          hint:       tr.searchMovies,
+                          onChanged:  (q) =>
+                              ref.read(searchQueryProvider.notifier).state = q,
+                        ),
                         Expanded(
                           child: movies.isEmpty
                               ? _EmptyView(icon: Icons.movie_rounded, label: tr.noContent)
@@ -204,47 +191,6 @@ class _MoviesScreenState extends ConsumerState<MoviesScreen> {
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
       );
-  }
-}
-
-// ── Shared search bar ────────────────────────────────────────────────────────────────────────────────
-class _SearchBar extends StatelessWidget {
-  final TextEditingController ctrl;
-  final String               hint;
-  final ValueChanged<String> onChanged;
-
-  const _SearchBar({
-    required this.ctrl,
-    required this.hint,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 36,
-      color: AppColors.surfaceLight,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Row(children: [
-        const Icon(Icons.search_rounded, color: AppColors.textMuted, size: 15),
-        const SizedBox(width: 6),
-        Expanded(
-          child: TextField(
-            controller: ctrl,
-            autofocus:  true,
-            onChanged:  onChanged,
-            style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
-            decoration: InputDecoration(
-              border:         InputBorder.none,
-              isDense:        true,
-              contentPadding: EdgeInsets.zero,
-              hintText:       hint,
-              hintStyle:      const TextStyle(color: AppColors.textMuted),
-            ),
-          ),
-        ),
-      ]),
-    );
   }
 }
 
