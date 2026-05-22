@@ -22,10 +22,14 @@ class MovieDetailScreen extends ConsumerStatefulWidget {
 class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
   Map<String, dynamic>? _xtreamInfo;
   bool _xtreamLoading = true;
+  late bool _isFavorite;
+  late bool _isInWatchlist;
 
   @override
   void initState() {
     super.initState();
+    _isFavorite    = widget.movie.isFavorite;
+    _isInWatchlist = ref.read(storageServiceProvider).isInWatchlist(widget.movie.id);
     WidgetsBinding.instance.addPostFrameCallback((_) => _fetchXtream());
   }
 
@@ -60,6 +64,16 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
 
   void _openExternal() =>
       ref.read(playerProvider.notifier).openUrlInExternalPlayer(widget.movie.streamUrl);
+
+  Future<void> _toggleFavorite() async {
+    await ref.read(storageServiceProvider).toggleFavorite(widget.movie);
+    if (mounted) setState(() => _isFavorite = widget.movie.isFavorite);
+  }
+
+  Future<void> _toggleWatchlist() async {
+    await ref.read(storageServiceProvider).toggleWatchlist(widget.movie.id);
+    if (mounted) setState(() => _isInWatchlist = !_isInWatchlist);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -285,6 +299,35 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                                 ),
                               ),
                             ]),
+
+                            const SizedBox(height: 10),
+                            Row(children: [
+                              Expanded(
+                                child: _ActionToggleButton(
+                                  icon:        _isFavorite
+                                      ? Icons.favorite_rounded
+                                      : Icons.favorite_border_rounded,
+                                  label:       _isFavorite ? 'في المفضلة' : 'المفضلة',
+                                  active:      _isFavorite,
+                                  activeColor: const Color(0xFFE74C3C),
+                                  onTap:       _toggleFavorite,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: _ActionToggleButton(
+                                  icon:        _isInWatchlist
+                                      ? Icons.bookmark_rounded
+                                      : Icons.bookmark_border_rounded,
+                                  label:       _isInWatchlist
+                                      ? 'في قائمتي'
+                                      : 'المشاهدة لاحقاً',
+                                  active:      _isInWatchlist,
+                                  activeColor: AppColors.primary,
+                                  onTap:       _toggleWatchlist,
+                                ),
+                              ),
+                            ]),
                           ],
                         ),
                       ),
@@ -388,6 +431,49 @@ class _MetaRow extends StatelessWidget {
           ],
         ),
       );
+}
+
+// ── Favorite / Watchlist toggle button ───────────────────────────────────────
+class _ActionToggleButton extends StatelessWidget {
+  final IconData     icon;
+  final String       label;
+  final bool         active;
+  final Color        activeColor;
+  final VoidCallback onTap;
+  const _ActionToggleButton({
+    required this.icon, required this.label, required this.active,
+    required this.activeColor, required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      height: 44,
+      decoration: BoxDecoration(
+        color:         active ? activeColor.withOpacity(0.12) : AppColors.surfaceLight,
+        borderRadius:  BorderRadius.circular(10),
+        border:        Border.all(
+          color: active ? activeColor.withOpacity(0.55) : AppColors.border,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon,
+              color: active ? activeColor : AppColors.textSecondary,
+              size:  18),
+          const SizedBox(width: 6),
+          Text(label,
+              style: TextStyle(
+                  color:      active ? activeColor : AppColors.textSecondary,
+                  fontSize:   12,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    ),
+  );
 }
 
 // ── Poster fallback ───────────────────────────────────────────────────────────

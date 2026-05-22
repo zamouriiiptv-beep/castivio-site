@@ -256,4 +256,21 @@ class StorageService {
     await _pos.delete(channelId);
     await _pos.delete('${channelId}_dur');
   }
+
+  // ── Watchlist ───────────────────────────────────────────────────────────────
+  static const _watchlistKey = 'watchlist_ids';
+
+  List<String> getWatchlistIds() {
+    final raw = _prefs.get(_watchlistKey);
+    if (raw is List) return List<String>.from(raw);
+    return [];
+  }
+
+  bool isInWatchlist(String channelId) => getWatchlistIds().contains(channelId);
+
+  Future<void> toggleWatchlist(String channelId) async {
+    final ids = getWatchlistIds();
+    if (ids.contains(channelId)) ids.remove(channelId); else ids.add(channelId);
+    await _prefs.put(_watchlistKey, ids);
+  }
 }
