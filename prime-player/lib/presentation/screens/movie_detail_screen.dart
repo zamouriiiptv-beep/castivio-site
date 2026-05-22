@@ -208,184 +208,208 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
 
               const VerticalDivider(width: 1, color: AppColors.border),
 
-              // ── Right: Info ───────────────────────────────────────────────
+              // ── Right: Info + fixed action bar ───────────────────────────
               Expanded(
-                child: _xtreamLoading && !hasTmdb
-                    ? const Center(child: CircularProgressIndicator(
-                        color: AppColors.primary, strokeWidth: 2.5))
-                    : SingleChildScrollView(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(displayTitle,
-                                style: const TextStyle(
-                                    color: AppColors.textPrimary,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w800)),
-                            const SizedBox(height: 8),
-
-                            // Inline rating
-                            if (rating10 > 0) ...[
-                              _InlineRating(value: rating10, fromTmdb: hasTmdb),
-                              const SizedBox(height: 8),
-                            ],
-
-                            // Year tag + quality badges
-                            if (titleYear != null || badges.isNotEmpty) ...[
-                              Wrap(
-                                spacing: 6, runSpacing: 5,
+                child: Column(
+                  children: [
+                    // Scrollable content
+                    Expanded(
+                      child: _xtreamLoading && !hasTmdb
+                          ? const Center(child: CircularProgressIndicator(
+                              color: AppColors.primary, strokeWidth: 2.5))
+                          : SingleChildScrollView(
+                              padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  if (titleYear != null) _YearTag(titleYear),
-                                  ...badges.map((b) => _QualityChip(b)),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                            ] else
-                              const SizedBox(height: 8),
+                                  Text(displayTitle,
+                                      style: const TextStyle(
+                                          color: AppColors.textPrimary,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w800)),
+                                  const SizedBox(height: 8),
 
-                            if (release.isNotEmpty)  _MetaRow(label: 'تاريخ الإصدار', value: release),
-                            if (duration.isNotEmpty) _MetaRow(label: 'المدة',         value: duration),
-                            if (age.isNotEmpty)      _MetaRow(label: 'التصنيف',       value: age),
-                            if (genre.isNotEmpty)    _MetaRow(label: 'النوع',         value: genre),
-                            if (director.isNotEmpty) _MetaRow(label: 'المخرج',        value: director),
-                            if (cast.isNotEmpty)     _MetaRow(label: 'طاقم التمثيل',  value: cast),
+                                  // Inline rating
+                                  if (rating10 > 0) ...[
+                                    _InlineRating(value: rating10, fromTmdb: hasTmdb),
+                                    const SizedBox(height: 8),
+                                  ],
 
-                            if (plot.isNotEmpty) ...[
-                              const SizedBox(height: 12),
-                              Container(height: 2, width: 48,
-                                  decoration: BoxDecoration(gradient: kPrimeGradient,
-                                      borderRadius: BorderRadius.circular(1))),
-                              const SizedBox(height: 12),
-                              Text(plot,
-                                  style: const TextStyle(
-                                      color: AppColors.textSecondary,
-                                      fontSize: 13, height: 1.6)),
-                            ],
-
-                            // Loading TMDB shimmer row
-                            if (tmdbAsync.isLoading) ...[
-                              const SizedBox(height: 16),
-                              Row(children: [
-                                const SizedBox(
-                                  width: 14, height: 14,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 1.5,
-                                    color: AppColors.textMuted,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                const Text('جاري جلب بيانات TMDB…',
-                                    style: TextStyle(
-                                        color: AppColors.textMuted,
-                                        fontSize: 11)),
-                              ]),
-                            ],
-
-                            const SizedBox(height: 32),
-
-                            // Action buttons
-                            Row(children: [
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: _watchNow,
-                                  child: Container(
-                                    height: 44,
-                                    decoration: BoxDecoration(
-                                      gradient: kPrimeGradient,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [BoxShadow(
-                                          color: AppColors.primary.withOpacity(0.4),
-                                          blurRadius: 12, offset: const Offset(0, 4))],
-                                    ),
-                                    child: const Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                  // Year tag + quality badges
+                                  if (titleYear != null || badges.isNotEmpty) ...[
+                                    Wrap(
+                                      spacing: 6, runSpacing: 5,
                                       children: [
-                                        Icon(Icons.play_arrow_rounded,
-                                            color: Colors.white, size: 22),
-                                        SizedBox(width: 6),
-                                        Text('شاهد الآن',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w700)),
+                                        if (titleYear != null) _YearTag(titleYear),
+                                        ...badges.map((b) => _QualityChip(b)),
                                       ],
                                     ),
-                                  ),
-                                ),
+                                    const SizedBox(height: 12),
+                                  ] else
+                                    const SizedBox(height: 8),
+
+                                  if (release.isNotEmpty)  _MetaRow(label: 'تاريخ الإصدار', value: release),
+                                  if (duration.isNotEmpty) _MetaRow(label: 'المدة',         value: duration),
+                                  if (age.isNotEmpty)      _MetaRow(label: 'التصنيف',       value: age),
+                                  if (genre.isNotEmpty)    _MetaRow(label: 'النوع',         value: genre),
+                                  if (director.isNotEmpty) _MetaRow(label: 'المخرج',        value: director),
+                                  if (cast.isNotEmpty)     _MetaRow(label: 'طاقم التمثيل',  value: cast),
+
+                                  if (plot.isNotEmpty) ...[
+                                    const SizedBox(height: 12),
+                                    Container(height: 2, width: 48,
+                                        decoration: BoxDecoration(gradient: kPrimeGradient,
+                                            borderRadius: BorderRadius.circular(1))),
+                                    const SizedBox(height: 12),
+                                    Text(plot,
+                                        style: const TextStyle(
+                                            color: AppColors.textSecondary,
+                                            fontSize: 13, height: 1.6)),
+                                  ],
+
+                                  // Loading TMDB shimmer row
+                                  if (tmdbAsync.isLoading) ...[
+                                    const SizedBox(height: 16),
+                                    Row(children: [
+                                      const SizedBox(
+                                        width: 14, height: 14,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 1.5,
+                                          color: AppColors.textMuted,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      const Text('جاري جلب بيانات TMDB…',
+                                          style: TextStyle(
+                                              color: AppColors.textMuted,
+                                              fontSize: 11)),
+                                    ]),
+                                  ],
+                                ],
                               ),
-                              // Trailer button — shown only when TMDB is available
-                              if (tmdb != null) ...[
-                                const SizedBox(width: 10),
-                                _TrailerBtn(
-                                  isLoading:  trailerLoading,
-                                  hasTrailer: trailerKey != null,
-                                  onTap: trailerKey != null
-                                      ? () => ref
-                                          .read(playerProvider.notifier)
-                                          .openYouTubeTrailer(trailerKey)
-                                      : null,
-                                ),
-                              ],
-                              const SizedBox(width: 10),
-                              GestureDetector(
-                                onTap: _openExternal,
+                            ),
+                    ),
+
+                    // ── Fixed action bar (never scrolls away) ─────────────────
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(24, 10, 24, 14),
+                      decoration: const BoxDecoration(
+                        color: AppColors.surface,
+                        border: Border(
+                          top: BorderSide(color: AppColors.border, width: 0.5),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Primary row: Watch + Trailer + External
+                          Row(children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: _watchNow,
                                 child: Container(
                                   height: 44,
-                                  padding: const EdgeInsets.symmetric(horizontal: 16),
                                   decoration: BoxDecoration(
-                                    color: AppColors.surfaceLight,
+                                    gradient: kPrimeGradient,
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: AppColors.border),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: AppColors.primary.withOpacity(0.55),
+                                          blurRadius: 16, offset: const Offset(0, 4)),
+                                      BoxShadow(
+                                          color: AppColors.primary.withOpacity(0.25),
+                                          blurRadius: 30, offset: Offset.zero),
+                                    ],
                                   ),
                                   child: const Row(
-                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.open_in_new_rounded,
-                                          color: AppColors.textSecondary, size: 16),
+                                      Icon(Icons.play_arrow_rounded,
+                                          color: Colors.white, size: 22),
                                       SizedBox(width: 6),
-                                      Text('مشغل خارجي',
+                                      Text('شاهد الآن',
                                           style: TextStyle(
-                                              color: AppColors.textSecondary,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w600)),
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700)),
                                     ],
                                   ),
                                 ),
                               ),
-                            ]),
-
-                            const SizedBox(height: 10),
-                            Row(children: [
-                              Expanded(
-                                child: _ActionToggleButton(
-                                  icon:        _isFavorite
-                                      ? Icons.favorite_rounded
-                                      : Icons.favorite_border_rounded,
-                                  label:       _isFavorite ? 'في المفضلة' : 'المفضلة',
-                                  active:      _isFavorite,
-                                  activeColor: const Color(0xFFE74C3C),
-                                  onTap:       _toggleFavorite,
-                                ),
-                              ),
+                            ),
+                            if (tmdb != null) ...[
                               const SizedBox(width: 10),
-                              Expanded(
-                                child: _ActionToggleButton(
-                                  icon:        _isInWatchlist
-                                      ? Icons.bookmark_rounded
-                                      : Icons.bookmark_border_rounded,
-                                  label:       _isInWatchlist
-                                      ? 'في قائمتي'
-                                      : 'المشاهدة لاحقاً',
-                                  active:      _isInWatchlist,
-                                  activeColor: AppColors.primary,
-                                  onTap:       _toggleWatchlist,
+                              _TrailerBtn(
+                                isLoading:  trailerLoading,
+                                hasTrailer: trailerKey != null,
+                                onTap: trailerKey != null
+                                    ? () => ref
+                                        .read(playerProvider.notifier)
+                                        .openYouTubeTrailer(trailerKey)
+                                    : null,
+                              ),
+                            ],
+                            const SizedBox(width: 10),
+                            GestureDetector(
+                              onTap: _openExternal,
+                              child: Container(
+                                height: 44,
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                decoration: BoxDecoration(
+                                  color: AppColors.surfaceLight,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: AppColors.border),
+                                ),
+                                child: const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.open_in_new_rounded,
+                                        color: AppColors.textSecondary, size: 16),
+                                    SizedBox(width: 6),
+                                    Text('مشغل خارجي',
+                                        style: TextStyle(
+                                            color: AppColors.textSecondary,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600)),
+                                  ],
                                 ),
                               ),
-                            ]),
-                          ],
-                        ),
+                            ),
+                          ]),
+                          const SizedBox(height: 8),
+                          // Secondary row: Favorites + Watchlist
+                          Row(children: [
+                            Expanded(
+                              child: _ActionToggleButton(
+                                icon:        _isFavorite
+                                    ? Icons.favorite_rounded
+                                    : Icons.favorite_border_rounded,
+                                label:       _isFavorite ? 'في المفضلة' : 'المفضلة',
+                                active:      _isFavorite,
+                                activeColor: const Color(0xFFE74C3C),
+                                onTap:       _toggleFavorite,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: _ActionToggleButton(
+                                icon:        _isInWatchlist
+                                    ? Icons.bookmark_rounded
+                                    : Icons.bookmark_border_rounded,
+                                label:       _isInWatchlist
+                                    ? 'في قائمتي'
+                                    : 'المشاهدة لاحقاً',
+                                active:      _isInWatchlist,
+                                activeColor: AppColors.primary,
+                                onTap:       _toggleWatchlist,
+                              ),
+                            ),
+                          ]),
+                        ],
                       ),
+                    ),
+                  ],
+                ),
               ),
             ],
           )),
