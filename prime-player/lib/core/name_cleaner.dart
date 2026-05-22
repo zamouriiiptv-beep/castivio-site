@@ -6,6 +6,7 @@
 ///   "FR - Movie Name HD"   →  "Movie Name"
 ///   "Movie [HDR] [HEVC]"   →  "Movie"
 ///   "NF: Movie (2024) 4K"  →  "Movie (2024)"
+String cleanChannelName(String raw) {
   String s = raw.trim();
 
   // ── 1. Service prefix chains  "DSN+: ", "NF: ", "AMZN: HBO: " ─────────────
