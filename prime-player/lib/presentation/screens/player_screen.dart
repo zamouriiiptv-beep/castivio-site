@@ -853,12 +853,34 @@ String _langName(SubtitleTrack t) {
   };
 
   final lang = t.language?.toLowerCase().trim() ?? '';
-  if (map.containsKey(lang)) return map[lang]!;
+  const plainLangTitles = {
+    'english', 'arabic', 'french', 'spanish', 'german', 'italian', 'russian',
+    'chinese', 'japanese', 'korean', 'turkish', 'portuguese', 'dutch', 'polish',
+    'swedish', 'danish', 'norwegian', 'finnish', 'hebrew', 'persian', 'hindi',
+    'urdu', 'greek', 'czech', 'hungarian', 'romanian', 'slovak', 'bulgarian',
+    'croatian', 'serbian', 'ukrainian', 'thai', 'vietnamese', 'indonesian',
+    'malay', 'catalan', 'lithuanian', 'latvian', 'estonian', 'slovenian',
+    'albanian', 'macedonian', 'azerbaijani', 'georgian', 'belarusian',
+    'icelandic', 'maltese', 'afrikaans', 'swahili', 'amharic', 'bengali',
+    'tamil', 'telugu', 'malayalam', 'kannada', 'marathi', 'gujarati',
+    'punjabi', 'burmese', 'khmer', 'lao', 'sinhala', 'nepali', 'mongolian',
+    'filipino', 'tagalog',
+  };
 
-  // Fall back to track title if language code is unknown
   final title = t.title?.trim();
-  if (title != null && title.isNotEmpty) return title;
+  if (map.containsKey(lang)) {
+    final arabicName = map[lang]!;
+    // If title has extra info beyond plain language name, append it
+    if (title != null && title.isNotEmpty &&
+        !plainLangTitles.contains(title.toLowerCase()) &&
+        title.toLowerCase() != lang) {
+      return '$arabicName · $title';
+    }
+    return arabicName;
+  }
 
+  // Language code unknown — fall back to title
+  if (title != null && title.isNotEmpty) return title;
   if (lang.isNotEmpty) return lang.toUpperCase();
   return 'ترجمة ${t.id}';
 }
