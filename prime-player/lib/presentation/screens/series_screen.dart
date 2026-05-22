@@ -231,7 +231,7 @@ class _PosterGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(8),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount:   7,
+        crossAxisCount:   5,
         crossAxisSpacing: 6,
         mainAxisSpacing:  6,
         childAspectRatio: 0.68,

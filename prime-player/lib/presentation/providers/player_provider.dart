@@ -148,12 +148,16 @@ class PlayerNotifier extends Notifier<PlayerState> {
   Future<void> openChannel(Channel channel) async {
     _bufferTimeout?.cancel();
 
-    // Load saved position for VOD (id starts with 'vod_')
+    // Load saved position for VOD (id starts with 'vod_') — non-fatal
     Duration? saved;
     if (channel.id.startsWith('vod_')) {
-      final box = await _getBox();
-      final ms  = box.get(channel.id);
-      if (ms != null && ms > 30000) saved = Duration(milliseconds: ms);
+      try {
+        final box = await _getBox();
+        final ms  = box.get(channel.id);
+        if (ms != null && ms > 30000) saved = Duration(milliseconds: ms);
+      } catch (e) {
+        debugPrint('[Player] saved position load failed: $e');
+      }
     }
 
     state = PlayerState(
@@ -235,18 +239,23 @@ class PlayerNotifier extends Notifier<PlayerState> {
   }
 
   Future<void> _savePosition() async {
-    final ch  = state.channel;
-    final pos = state.position;
-    final dur = state.duration;
-    if (ch == null || pos <= Duration.zero) return;
-    // Don't save if within last 2 minutes (treat as finished)
-    if (dur > Duration.zero && dur - pos < const Duration(minutes: 2)) {
+    try {
+      final ch  = state.channel;
+      final pos = state.position;
+      final dur = state.duration;
+      if (ch == null || pos <= Duration.zero) return;
+      // Only persist for VOD
+      if (!ch.id.startsWith('vod_')) return;
       final box = await _getBox();
-      await box.delete(ch.id);
-      return;
+      // Don't save if within last 2 minutes (treat as finished)
+      if (dur > Duration.zero && dur - pos < const Duration(minutes: 2)) {
+        await box.delete(ch.id);
+        return;
+      }
+      await box.put(ch.id, pos.inMilliseconds);
+    } catch (e) {
+      debugPrint('[Player] save position failed: $e');
     }
-    final box = await _getBox();
-    await box.put(ch.id, pos.inMilliseconds);
   }
 
   void stop() {
