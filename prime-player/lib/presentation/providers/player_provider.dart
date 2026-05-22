@@ -198,13 +198,13 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
   void seek(Duration position) => _player.seek(position);
 
-  Future<void> openInExternalPlayer() async {
+  Future<bool> openInExternalPlayer() async {
     final url = state.channel?.streamUrl;
-    if (url == null) return;
-    await openUrlInExternalPlayer(url);
+    if (url == null) return false;
+    return openUrlInExternalPlayer(url);
   }
 
-  Future<void> openUrlInExternalPlayer(String url) async {
+  Future<bool> openUrlInExternalPlayer(String url) async {
     try {
       final intent = AndroidIntent(
         action: 'action_view',
@@ -213,7 +213,10 @@ class PlayerNotifier extends Notifier<PlayerState> {
         flags:  [Flag.FLAG_ACTIVITY_NEW_TASK],
       );
       await intent.launch();
-    } catch (_) {}
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   /// Opens a YouTube video by key in the YouTube app (or browser).

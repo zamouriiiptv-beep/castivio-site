@@ -63,8 +63,18 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
     ));
   }
 
-  void _openExternal() =>
-      ref.read(playerProvider.notifier).openUrlInExternalPlayer(widget.movie.streamUrl);
+  Future<void> _openExternal() async {
+    final ok = await ref.read(playerProvider.notifier)
+        .openUrlInExternalPlayer(widget.movie.streamUrl);
+    if (!ok && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('لا يوجد مشغل خارجي مثبت (VLC أو MX Player)'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
 
   Future<void> _toggleFavorite() async {
     await ref.read(storageServiceProvider).toggleFavorite(widget.movie);

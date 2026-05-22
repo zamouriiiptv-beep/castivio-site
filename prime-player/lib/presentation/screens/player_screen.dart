@@ -20,13 +20,14 @@ class PlayerScreen extends ConsumerStatefulWidget {
 
 class _PlayerScreenState extends ConsumerState<PlayerScreen>
     with WidgetsBindingObserver {
-  bool      _showControls = true;
+  bool      _showControls      = true;
   Timer?    _hideTimer;
-  bool      _isSeeking    = false;
-  Duration  _dragPosition = Duration.zero;
-  BoxFit    _videoFit     = BoxFit.contain;
-  bool      _showFitToast = false;
+  bool      _isSeeking         = false;
+  Duration  _dragPosition      = Duration.zero;
+  BoxFit    _videoFit          = BoxFit.contain;
+  bool      _showFitToast      = false;
   Timer?    _toastTimer;
+  bool      _pausedByLifecycle = false;
 
   @override
   void initState() {
@@ -37,10 +38,27 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused ||
-        state == AppLifecycleState.hidden) {
-      ref.read(playerProvider.notifier).stop();
+  void didChangeAppLifecycleState(AppLifecycleState lifecycle) {
+    if (lifecycle == AppLifecycleState.paused ||
+        lifecycle == AppLifecycleState.hidden) {
+      final ps = ref.read(playerProvider);
+      if (ps.duration > Duration.zero && ps.isPlaying) {
+        // VOD: pause so we can resume on return (preserves channel + position).
+        ref.read(playerProvider.notifier).togglePlay();
+        _pausedByLifecycle = true;
+      } else if (ps.isPlaying) {
+        // Live stream: stop (stream would be stale on resume).
+        ref.read(playerProvider.notifier).stop();
+        _pausedByLifecycle = false;
+      }
+    } else if (lifecycle == AppLifecycleState.resumed) {
+      if (_pausedByLifecycle) {
+        _pausedByLifecycle = false;
+        final ps = ref.read(playerProvider);
+        if (!ps.isPlaying && ps.channel != null && !ps.hasError) {
+          ref.read(playerProvider.notifier).togglePlay();
+        }
+      }
     }
   }
 
@@ -60,6 +78,18 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     _hideTimer = Timer(const Duration(seconds: 4), () {
       if (mounted && !_isSeeking) setState(() => _showControls = false);
     });
+  }
+
+  Future<void> _openExternal() async {
+    final ok = await ref.read(playerProvider.notifier).openInExternalPlayer();
+    if (!ok && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('لا يوجد مشغل خارجي مثبت (VLC أو MX Player)'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
   }
 
   void _toggleControls() {
@@ -263,8 +293,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                   }
                 },
                 onBack:     () => Navigator.pop(context),
-                onExternal: () =>
-                    ref.read(playerProvider.notifier).openInExternalPlayer(),
+                onExternal: _openExternal,
               ),
 
             AnimatedOpacity(
@@ -291,8 +320,7 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                       ref.read(playlistRepositoryProvider).toggleFavorite(ch);
                     }
                   },
-                  onExternal:    () =>
-                      ref.read(playerProvider.notifier).openInExternalPlayer(),
+                  onExternal:    _openExternal,
                   onSubtitleTap: _showSubtitleSheet,
                   onSkipBack: () {
                     final ms = (ps.position.inMilliseconds - 10000)
