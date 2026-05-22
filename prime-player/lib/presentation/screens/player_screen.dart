@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import '../../core/constants.dart';
 import '../../data/models/channel.dart';
@@ -94,6 +95,74 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
     _resetHideTimer();
   }
 
+  void _showSubtitleSheet() {
+    _hideTimer?.cancel();
+    final ps = ref.read(playerProvider);
+    final tracks = ps.subtitleTracks
+        .where((t) => t.id != 'no' && t.id != 'auto')
+        .toList();
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 36, height: 4,
+              margin: const EdgeInsets.only(top: 10, bottom: 12),
+              decoration: BoxDecoration(
+                color: Colors.white24,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Text('الترجمة',
+                  style: TextStyle(color: Colors.white, fontSize: 16,
+                      fontWeight: FontWeight.w700)),
+            ),
+            const Divider(color: AppColors.border, height: 1),
+            // Off option
+            _SubtitleTile(
+              label: 'إيقاف الترجمة',
+              icon: Icons.subtitles_off_rounded,
+              isSelected: ps.subtitleTrack == null ||
+                  ps.subtitleTrack!.id == 'no',
+              onTap: () {
+                ref.read(playerProvider.notifier)
+                    .setSubtitleTrack(SubtitleTrack.no());
+                Navigator.pop(context);
+                _resetHideTimer();
+              },
+            ),
+            if (tracks.isEmpty)
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('لا توجد ترجمة في هذا الملف',
+                    style: TextStyle(color: AppColors.textMuted, fontSize: 13)),
+              ),
+            ...tracks.map((t) => _SubtitleTile(
+              label: _langName(t),
+              icon: Icons.subtitles_rounded,
+              isSelected: ps.subtitleTrack?.id == t.id,
+              onTap: () {
+                ref.read(playerProvider.notifier).setSubtitleTrack(t);
+                Navigator.pop(context);
+                _resetHideTimer();
+              },
+            )),
+            const SizedBox(height: 8),
+          ],
+        );
+      },
+    ).whenComplete(_resetHideTimer);
+  }
+
   String _fmt(Duration d) {
     final h = d.inHours;
     final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
@@ -149,13 +218,17 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
               child: IgnorePointer(
                 ignoring: !_showControls,
                 child: _ControlsOverlay(
-                  channel:     ps.channel,
-                  isPlaying:   ps.isPlaying,
-                  isVod:       isVod,
-                  position:    displayPos,
-                  duration:    ps.duration,
-                  onBack:      () => Navigator.pop(context),
-                  onPlayPause: () =>
+                  channel:        ps.channel,
+                  isPlaying:      ps.isPlaying,
+                  isVod:          isVod,
+                  position:       displayPos,
+                  duration:       ps.duration,
+                  hasSubtitles:   ps.subtitleTracks
+                      .any((t) => t.id != 'no' && t.id != 'auto'),
+                  subtitleActive: ps.subtitleTrack != null &&
+                      ps.subtitleTrack!.id != 'no',
+                  onBack:         () => Navigator.pop(context),
+                  onPlayPause:    () =>
                       ref.read(playerProvider.notifier).togglePlay(),
                   onFavorite: () {
                     final ch = ps.channel;
@@ -163,8 +236,9 @@ class _PlayerScreenState extends ConsumerState<PlayerScreen>
                       ref.read(playlistRepositoryProvider).toggleFavorite(ch);
                     }
                   },
-                  onExternal: () =>
+                  onExternal:    () =>
                       ref.read(playerProvider.notifier).openInExternalPlayer(),
+                  onSubtitleTap: _showSubtitleSheet,
                   onSkipBack: () {
                     final ms = (ps.position.inMilliseconds - 10000)
                         .clamp(0, ps.duration.inMilliseconds);
@@ -312,7 +386,9 @@ class _ControlsOverlay extends StatelessWidget {
   final bool       isVod;
   final Duration   position;
   final Duration   duration;
-  final VoidCallback onBack, onPlayPause, onFavorite, onExternal;
+  final bool       hasSubtitles;
+  final bool       subtitleActive;
+  final VoidCallback onBack, onPlayPause, onFavorite, onExternal, onSubtitleTap;
   final VoidCallback onSkipBack, onSkipFwd;
   final void Function(Duration) onSeekStart, onSeekUpdate, onSeekEnd;
   final String Function(Duration) fmtTime;
@@ -323,10 +399,13 @@ class _ControlsOverlay extends StatelessWidget {
     required this.isVod,
     required this.position,
     required this.duration,
+    required this.hasSubtitles,
+    required this.subtitleActive,
     required this.onBack,
     required this.onPlayPause,
     required this.onFavorite,
     required this.onExternal,
+    required this.onSubtitleTap,
     required this.onSkipBack,
     required this.onSkipFwd,
     required this.onSeekStart,
@@ -438,39 +517,84 @@ class _ControlsOverlay extends StatelessWidget {
             ),
           ),
 
-          // seek bar (VOD only)
+          // seek bar + subtitle button (VOD only)
           if (isVod)
             Positioned(
-              bottom: 16, left: 0, right: 0,
+              bottom: 8, left: 0, right: 0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(fmtTime(position),
-                        style: const TextStyle(color: Colors.white70, fontSize: 12)),
-                    Expanded(
-                      child: SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          trackHeight:          3,
-                          thumbShape:           const RoundSliderThumbShape(enabledThumbRadius: 7),
-                          overlayShape:         const RoundSliderOverlayShape(overlayRadius: 14),
-                          activeTrackColor:     AppColors.primary,
-                          inactiveTrackColor:   Colors.white24,
-                          thumbColor:           Colors.white,
-                          overlayColor:         Colors.white24,
+                    // Seek bar row
+                    Row(
+                      children: [
+                        Text(fmtTime(position),
+                            style: const TextStyle(color: Colors.white70, fontSize: 12)),
+                        Expanded(
+                          child: SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                              trackHeight:        3,
+                              thumbShape:         const RoundSliderThumbShape(enabledThumbRadius: 7),
+                              overlayShape:       const RoundSliderOverlayShape(overlayRadius: 14),
+                              activeTrackColor:   AppColors.primary,
+                              inactiveTrackColor: Colors.white24,
+                              thumbColor:         Colors.white,
+                              overlayColor:       Colors.white24,
+                            ),
+                            child: Slider(
+                              value: position.inMilliseconds.toDouble()
+                                  .clamp(0, duration.inMilliseconds.toDouble()),
+                              max: duration.inMilliseconds.toDouble(),
+                              onChangeStart: (v) => onSeekStart(Duration(milliseconds: v.toInt())),
+                              onChanged:     (v) => onSeekUpdate(Duration(milliseconds: v.toInt())),
+                              onChangeEnd:   (v) => onSeekEnd(Duration(milliseconds: v.toInt())),
+                            ),
+                          ),
                         ),
-                        child: Slider(
-                          value:    position.inMilliseconds.toDouble()
-                                        .clamp(0, duration.inMilliseconds.toDouble()),
-                          max:      duration.inMilliseconds.toDouble(),
-                          onChangeStart: (v) => onSeekStart(Duration(milliseconds: v.toInt())),
-                          onChanged:     (v) => onSeekUpdate(Duration(milliseconds: v.toInt())),
-                          onChangeEnd:   (v) => onSeekEnd(Duration(milliseconds: v.toInt())),
-                        ),
-                      ),
+                        Text(fmtTime(duration),
+                            style: const TextStyle(color: Colors.white70, fontSize: 12)),
+                      ],
                     ),
-                    Text(fmtTime(duration),
-                        style: const TextStyle(color: Colors.white70, fontSize: 12)),
+                    // Subtitle button row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: onSubtitleTap,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: subtitleActive
+                                  ? AppColors.primary.withOpacity(0.85)
+                                  : Colors.white12,
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                color: subtitleActive
+                                    ? AppColors.primary
+                                    : Colors.white24,
+                              ),
+                            ),
+                            child: Row(mainAxisSize: MainAxisSize.min, children: [
+                              Icon(
+                                subtitleActive
+                                    ? Icons.subtitles_rounded
+                                    : Icons.subtitles_off_rounded,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              const SizedBox(width: 5),
+                              const Text('الترجمة',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600)),
+                            ]),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -497,4 +621,123 @@ class _SkipButton extends StatelessWidget {
           child: Icon(icon, color: Colors.white, size: 28),
         ),
       );
+}
+
+// ── Subtitle tile ──────────────────────────────────────────────────────────────
+class _SubtitleTile extends StatelessWidget {
+  final String       label;
+  final IconData     icon;
+  final bool         isSelected;
+  final VoidCallback onTap;
+  const _SubtitleTile({
+    required this.label,
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+        onTap: onTap,
+        leading: Icon(icon,
+            color: isSelected ? AppColors.primary : AppColors.textMuted,
+            size: 20),
+        title: Text(label,
+            style: TextStyle(
+                color: isSelected ? AppColors.primaryLight : Colors.white,
+                fontSize: 14,
+                fontWeight:
+                    isSelected ? FontWeight.w700 : FontWeight.w400)),
+        trailing: isSelected
+            ? const Icon(Icons.check_rounded,
+                color: AppColors.primary, size: 18)
+            : null,
+      );
+}
+
+// ── Language name helper ───────────────────────────────────────────────────────
+String _langName(SubtitleTrack t) {
+  final title = t.title?.trim();
+  if (title != null && title.isNotEmpty) return title;
+  final lang = t.language?.toLowerCase().trim() ?? '';
+  const map = {
+    'ar':  'العربية',
+    'ara': 'العربية',
+    'en':  'الإنجليزية',
+    'eng': 'الإنجليزية',
+    'fr':  'الفرنسية',
+    'fre': 'الفرنسية',
+    'fra': 'الفرنسية',
+    'es':  'الإسبانية',
+    'spa': 'الإسبانية',
+    'de':  'الألمانية',
+    'ger': 'الألمانية',
+    'deu': 'الألمانية',
+    'pt':  'البرتغالية',
+    'por': 'البرتغالية',
+    'it':  'الإيطالية',
+    'ita': 'الإيطالية',
+    'ru':  'الروسية',
+    'rus': 'الروسية',
+    'zh':  'الصينية',
+    'zho': 'الصينية',
+    'chi': 'الصينية',
+    'ja':  'اليابانية',
+    'jpn': 'اليابانية',
+    'ko':  'الكورية',
+    'kor': 'الكورية',
+    'tr':  'التركية',
+    'tur': 'التركية',
+    'nl':  'الهولندية',
+    'nld': 'الهولندية',
+    'pl':  'البولندية',
+    'pol': 'البولندية',
+    'sv':  'السويدية',
+    'swe': 'السويدية',
+    'da':  'الدنماركية',
+    'dan': 'الدنماركية',
+    'no':  'النرويجية',
+    'nor': 'النرويجية',
+    'fi':  'الفنلندية',
+    'fin': 'الفنلندية',
+    'he':  'العبرية',
+    'heb': 'العبرية',
+    'fa':  'الفارسية',
+    'per': 'الفارسية',
+    'fas': 'الفارسية',
+    'hi':  'الهندية',
+    'hin': 'الهندية',
+    'ur':  'الأردية',
+    'urd': 'الأردية',
+    'el':  'اليونانية',
+    'ell': 'اليونانية',
+    'cs':  'التشيكية',
+    'ces': 'التشيكية',
+    'hu':  'الهنغارية',
+    'hun': 'الهنغارية',
+    'ro':  'الرومانية',
+    'ron': 'الرومانية',
+    'sk':  'السلوفاكية',
+    'slk': 'السلوفاكية',
+    'bg':  'البلغارية',
+    'bul': 'البلغارية',
+    'hr':  'الكرواتية',
+    'hrv': 'الكرواتية',
+    'sr':  'الصربية',
+    'srp': 'الصربية',
+    'uk':  'الأوكرانية',
+    'ukr': 'الأوكرانية',
+    'th':  'التايلاندية',
+    'tha': 'التايلاندية',
+    'vi':  'الفيتنامية',
+    'vie': 'الفيتنامية',
+    'id':  'الإندونيسية',
+    'ind': 'الإندونيسية',
+    'ms':  'الملايوية',
+    'msa': 'الملايوية',
+    'und': 'غير محدد',
+  };
+  if (map.containsKey(lang)) return map[lang]!;
+  if (lang.isNotEmpty) return lang.toUpperCase();
+  return 'ترجمة ${t.id}';
 }

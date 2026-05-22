@@ -9,44 +9,53 @@ import 'package:media_kit_video/media_kit_video.dart';
 import '../../data/models/channel.dart';
 
 class PlayerState {
-  final Channel?         channel;
-  final VideoController? controller;
-  final bool             isPlaying;
-  final bool             isBuffering;
-  final bool             hasError;
-  final String?          errorMessage;
-  final Duration         position;
-  final Duration         duration;
+  final Channel?            channel;
+  final VideoController?    controller;
+  final bool                isPlaying;
+  final bool                isBuffering;
+  final bool                hasError;
+  final String?             errorMessage;
+  final Duration            position;
+  final Duration            duration;
+  final List<SubtitleTrack> subtitleTracks;
+  final SubtitleTrack?      subtitleTrack;
 
   const PlayerState({
     this.channel,
     this.controller,
-    this.isPlaying   = false,
-    this.isBuffering = false,
-    this.hasError    = false,
+    this.isPlaying     = false,
+    this.isBuffering   = false,
+    this.hasError      = false,
     this.errorMessage,
-    this.position    = Duration.zero,
-    this.duration    = Duration.zero,
+    this.position      = Duration.zero,
+    this.duration      = Duration.zero,
+    this.subtitleTracks = const [],
+    this.subtitleTrack,
   });
 
   PlayerState copyWith({
-    Channel?         channel,
-    VideoController? controller,
-    bool?            isPlaying,
-    bool?            isBuffering,
-    bool?            hasError,
-    String?          errorMessage,
-    Duration?        position,
-    Duration?        duration,
+    Channel?            channel,
+    VideoController?    controller,
+    bool?               isPlaying,
+    bool?               isBuffering,
+    bool?               hasError,
+    String?             errorMessage,
+    Duration?           position,
+    Duration?           duration,
+    List<SubtitleTrack>? subtitleTracks,
+    SubtitleTrack?      subtitleTrack,
+    bool                clearSubtitleTrack = false,
   }) => PlayerState(
-    channel:      channel      ?? this.channel,
-    controller:   controller   ?? this.controller,
-    isPlaying:    isPlaying    ?? this.isPlaying,
-    isBuffering:  isBuffering  ?? this.isBuffering,
-    hasError:     hasError     ?? this.hasError,
-    errorMessage: errorMessage ?? this.errorMessage,
-    position:     position     ?? this.position,
-    duration:     duration     ?? this.duration,
+    channel:        channel       ?? this.channel,
+    controller:     controller    ?? this.controller,
+    isPlaying:      isPlaying     ?? this.isPlaying,
+    isBuffering:    isBuffering   ?? this.isBuffering,
+    hasError:       hasError      ?? this.hasError,
+    errorMessage:   errorMessage  ?? this.errorMessage,
+    position:       position      ?? this.position,
+    duration:       duration      ?? this.duration,
+    subtitleTracks: subtitleTracks ?? this.subtitleTracks,
+    subtitleTrack:  clearSubtitleTrack ? null : (subtitleTrack ?? this.subtitleTrack),
   );
 }
 
@@ -92,6 +101,14 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
     _player.stream.duration.listen((dur) {
       state = state.copyWith(duration: dur);
+    });
+
+    _player.stream.tracks.listen((tracks) {
+      state = state.copyWith(subtitleTracks: tracks.subtitle);
+    });
+
+    _player.stream.track.listen((track) {
+      state = state.copyWith(subtitleTrack: track.subtitle);
     });
 
     ref.onDispose(() {
@@ -171,6 +188,11 @@ class PlayerNotifier extends Notifier<PlayerState> {
       );
       await intent.launch();
     } catch (_) {}
+  }
+
+  void setSubtitleTrack(SubtitleTrack track) {
+    _player.setSubtitleTrack(track);
+    state = state.copyWith(subtitleTrack: track);
   }
 
   void stop() {
