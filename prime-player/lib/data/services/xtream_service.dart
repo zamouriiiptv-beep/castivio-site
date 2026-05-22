@@ -60,6 +60,7 @@ List<Channel> _parseVodJson(_ParseInput p) {
       streamUrl:  '${p.host}/movie/${p.username}/${p.password}/$streamId.${s['container_extension'] ?? 'mp4'}',
       logoUrl:    s['stream_icon'] as String?,
       groupTitle: p.catMap[catId] ?? p.catMap.values.firstOrNull ?? 'Movies',
+      rating:     _parseRating(s['rating']),
     ));
   }
   return result;
@@ -80,9 +81,19 @@ List<Channel> _parseSeriesJson(_ParseInput p) {
       streamUrl:  '${p.host}/series/${p.username}/${p.password}/$seriesId',
       logoUrl:    s['cover'] as String?,
       groupTitle: p.catMap[catId] ?? p.catMap.values.firstOrNull ?? 'Series',
+      rating:     _parseRating(s['rating']),
     ));
   }
   return result;
+}
+
+String? _parseRating(dynamic raw) {
+  if (raw == null) return null;
+  final s = raw.toString().trim();
+  if (s.isEmpty || s == '0' || s == '0.0') return null;
+  final d = double.tryParse(s);
+  if (d == null || d <= 0) return null;
+  return d.toStringAsFixed(1);
 }
 
 // ─── XtreamService ────────────────────────────────────────────────────────────

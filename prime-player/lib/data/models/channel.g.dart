@@ -21,6 +21,7 @@ class ChannelAdapter extends TypeAdapter<Channel> {
       language:   fields[7] as String?,
       country:    fields[8] as String?,
       isFavorite: fields[9] as bool,
+      rating:     fields[10] as String?,
     );
   }
 
@@ -37,6 +38,7 @@ class ChannelAdapter extends TypeAdapter<Channel> {
       7: obj.language,
       8: obj.country,
       9: obj.isFavorite,
+      10: obj.rating,
     });
   }
 

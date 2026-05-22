@@ -297,12 +297,13 @@ class _PosterCardState extends State<_PosterCard> {
               Positioned(
                 bottom: 0, left: 0, right: 0,
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
+                  padding: const EdgeInsets.fromLTRB(5, 20, 5, 5),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end:   Alignment.topCenter,
-                      colors: [Color(0xDD0A0E1A), Color(0x000A0E1A)],
+                      colors: [Color(0xFF0A0E1A), Color(0xBB0A0E1A), Color(0x000A0E1A)],
+                      stops: [0.0, 0.6, 1.0],
                     ),
                   ),
                   child: Text(
@@ -311,13 +312,20 @@ class _PosterCardState extends State<_PosterCard> {
                       color:      Colors.white,
                       fontSize:   9,
                       fontWeight: FontWeight.w600,
-                      shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                      shadows: [Shadow(color: Colors.black, blurRadius: 6)],
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
+
+              // Rating badge top-left
+              if (widget.item.rating != null)
+                Positioned(
+                  top: 5, left: 5,
+                  child: _RatingBadge(widget.item.rating!),
+                ),
 
               // Play icon on hover
               if (_hovered)
@@ -369,6 +377,35 @@ class _NoImageFallback extends StatelessWidget {
                 overflow: TextOverflow.ellipsis),
           ),
         ]),
+      );
+}
+
+class _RatingBadge extends StatelessWidget {
+  final String rating;
+  const _RatingBadge(this.rating);
+
+  Color get _color {
+    final v = double.tryParse(rating) ?? 0;
+    if (v >= 7.0) return const Color(0xFF27AE60);
+    if (v >= 5.0) return const Color(0xFFF39C12);
+    return const Color(0xFFE74C3C);
+  }
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        decoration: BoxDecoration(
+          color: _color,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Text(
+          rating,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 8,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
       );
 }
 
