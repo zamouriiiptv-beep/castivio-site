@@ -205,3 +205,22 @@ final favoritesProvider = Provider<List<Channel>>((ref) {
 // ── Loading state ─────────────────────────────────────────────────────────────
 final playlistLoadingProvider = StateProvider<bool>((ref) => false);
 final playlistErrorProvider   = StateProvider<String?>((ref) => null);
+
+// ── Watch status providers ────────────────────────────────────────────────────
+// Incremented by PlayerNotifier whenever a position or watched state changes.
+// Causes isWatchedProvider / watchProgressProvider to re-read storage.
+final watchRefreshProvider = StateProvider<int>((ref) => 0);
+
+final isWatchedProvider = Provider.autoDispose.family<bool, String>(
+  (ref, channelId) {
+    ref.watch(watchRefreshProvider);
+    return ref.read(storageServiceProvider).isWatched(channelId);
+  },
+);
+
+final watchProgressProvider = Provider.autoDispose.family<double?, String>(
+  (ref, channelId) {
+    ref.watch(watchRefreshProvider);
+    return ref.read(storageServiceProvider).getWatchProgressFraction(channelId);
+  },
+);

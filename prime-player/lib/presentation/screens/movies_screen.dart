@@ -233,6 +233,8 @@ class _PosterCard extends ConsumerWidget {
     // Use TMDB poster from cache if available; fall back to server logo
     final tmdbPoster = ref.watch(tmdbCachedPosterProvider(item));
     final displayUrl = tmdbPoster ?? item.logoUrl;
+    final isWatched  = ref.watch(isWatchedProvider(item.id));
+    final watchPct   = isWatched ? null : ref.watch(watchProgressProvider(item.id));
 
     return GestureDetector(
       onTap: onTap,
@@ -256,6 +258,10 @@ class _PosterCard extends ConsumerWidget {
                         Container(color: AppColors.surfaceLight),
                   )
                 : _NoImageFallback(item.name, Icons.movie_rounded),
+
+            // Watched dim overlay
+            if (isWatched)
+              Container(color: Colors.black.withOpacity(0.45)),
 
             // Bottom gradient + title
             Positioned(
@@ -282,11 +288,39 @@ class _PosterCard extends ConsumerWidget {
                 ),
               ),
             ),
+
+            // In-progress bar at very bottom edge
+            if (watchPct != null)
+              Positioned(
+                bottom: 0, left: 0, right: 0,
+                child: LinearProgressIndicator(
+                  value:      watchPct,
+                  minHeight:  3,
+                  backgroundColor: Colors.white24,
+                  valueColor: const AlwaysStoppedAnimation(Color(0xFFF39C12)),
+                ),
+              ),
+
             // Rating badge top-left
             if (item.rating != null)
               Positioned(
                 top: 5, left: 5,
                 child: _RatingBadge(item.rating!),
+              ),
+
+            // Watched checkmark top-right
+            if (isWatched)
+              Positioned(
+                top: 5, right: 5,
+                child: Container(
+                  width: 18, height: 18,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF27AE60),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.check_rounded,
+                      color: Colors.white, size: 12),
+                ),
               ),
           ],
         ),

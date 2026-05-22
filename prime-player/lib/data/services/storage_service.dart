@@ -12,16 +12,18 @@ class StorageService {
   static const _m3uBox      = 'channels_m3u';
   static const _prefsBox    = 'prefs';
   static const _tmdbBox     = 'tmdb_cache';
+  static const _posBox      = 'watch_positions'; // int ms; 0 = watched sentinel
 
   static const _uuid = Uuid();
 
-  late Box<Playlist>         _playlists;
-  late Box<Channel>          _live;
-  late Box<Channel>          _vod;
-  late Box<Channel>          _series;
-  late Box<Channel>          _m3u;
-  late Box<dynamic>          _prefs;
+  late Box<Playlist>              _playlists;
+  late Box<Channel>               _live;
+  late Box<Channel>               _vod;
+  late Box<Channel>               _series;
+  late Box<Channel>               _m3u;
+  late Box<dynamic>               _prefs;
   late Box<Map<dynamic, dynamic>> _tmdb;
+  late Box<int>                   _pos;
 
   Future<void> init() async {
     await Hive.initFlutter();
@@ -35,6 +37,7 @@ class StorageService {
     _m3u       = await Hive.openBox<Channel>(_m3uBox);
     _prefs     = await Hive.openBox<dynamic>(_prefsBox);
     _tmdb      = await Hive.openBox<Map<dynamic, dynamic>>(_tmdbBox);
+    _pos       = await Hive.openBox<int>(_posBox);
   }
 
   // ── Playlists ──────────────────────────────────────────────────────────────
@@ -211,5 +214,46 @@ class StorageService {
     final path = entry['posterPath'] as String?;
     if (path == null) return null;
     return 'https://image.tmdb.org/t/p/w500$path';
+  }
+
+  // ── Watch positions & watched status ────────────────────────────────────────
+  // Convention: 0 = watched (sentinel), >0 = in-progress ms, absent = never
+
+  /// true if the user has watched ≥80% or reached near the end.
+  bool isWatched(String channelId)    => _pos.get(channelId) == 0;
+
+  /// true if there is a saved mid-point position (not finished).
+  bool hasProgress(String channelId)  {
+    final v = _pos.get(channelId);
+    return v != null && v > 0;
+  }
+
+  /// Returns saved position in ms, or null.
+  int? getSavedPositionMs(String channelId) {
+    final v = _pos.get(channelId);
+    return (v != null && v > 0) ? v : null;
+  }
+
+  Future<void> savePositionMs(String channelId, int ms) =>
+      _pos.put(channelId, ms);
+
+  Future<void> saveDurationMs(String channelId, int ms) =>
+      _pos.put('${channelId}_dur', ms);
+
+  /// Returns progress as 0.0–1.0, or null if no saved in-progress position.
+  double? getWatchProgressFraction(String channelId) {
+    final pos = _pos.get(channelId);
+    if (pos == null || pos <= 0) return null;
+    final dur = _pos.get('${channelId}_dur');
+    if (dur == null || dur <= 0) return null;
+    return (pos / dur).clamp(0.0, 1.0);
+  }
+
+  Future<void> markWatched(String channelId) =>
+      _pos.put(channelId, 0);       // sentinel
+
+  Future<void> clearWatchData(String channelId) async {
+    await _pos.delete(channelId);
+    await _pos.delete('${channelId}_dur');
   }
 }

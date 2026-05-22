@@ -4,10 +4,10 @@ import 'package:android_intent_plus/android_intent.dart';
 import 'package:android_intent_plus/flag.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive/hive.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import '../../data/models/channel.dart';
+import 'playlist_provider.dart';
 
 class PlayerState {
   final Channel?            channel;
@@ -69,13 +69,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
   late final Player          _player;
   late final VideoController _videoCtrl;
   Timer? _bufferTimeout;
-  Box<int>? _posBox;
-
-  Future<Box<int>> _getBox() async {
-    if (_posBox != null && _posBox!.isOpen) return _posBox!;
-    _posBox = await Hive.openBox<int>('watch_positions');
-    return _posBox!;
-  }
+  bool   _markedWatched = false;
 
   @override
   PlayerState build() {
@@ -147,13 +141,14 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
   Future<void> openChannel(Channel channel) async {
     _bufferTimeout?.cancel();
+    _markedWatched = false;
 
     // Load saved position for VOD (id starts with 'vod_') — non-fatal
     Duration? saved;
     if (channel.id.startsWith('vod_')) {
       try {
-        final box = await _getBox();
-        final ms  = box.get(channel.id);
+        final storage = ref.read(storageServiceProvider);
+        final ms      = storage.getSavedPositionMs(channel.id);
         if (ms != null && ms > 30000) saved = Duration(milliseconds: ms);
       } catch (e) {
         debugPrint('[Player] saved position load failed: $e');
@@ -233,8 +228,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
   Future<void> deleteSavedPosition() async {
     final ch = state.channel;
     if (ch == null) return;
-    final box = await _getBox();
-    await box.delete(ch.id);
+    await ref.read(storageServiceProvider).clearWatchData(ch.id);
     state = state.copyWith(clearSavedPosition: true);
   }
 
@@ -244,15 +238,25 @@ class PlayerNotifier extends Notifier<PlayerState> {
       final pos = state.position;
       final dur = state.duration;
       if (ch == null || pos <= Duration.zero) return;
-      // Only persist for VOD
       if (!ch.id.startsWith('vod_')) return;
-      final box = await _getBox();
-      // Don't save if within last 2 minutes (treat as finished)
-      if (dur > Duration.zero && dur - pos < const Duration(minutes: 2)) {
-        await box.delete(ch.id);
+      if (_markedWatched) return;
+
+      final storage = ref.read(storageServiceProvider);
+
+      // Mark watched when ≥80% viewed
+      if (dur > Duration.zero &&
+          pos.inMilliseconds / dur.inMilliseconds >= 0.8) {
+        await storage.markWatched(ch.id);
+        _markedWatched = true;
+        ref.read(watchRefreshProvider.notifier).state++;
         return;
       }
-      await box.put(ch.id, pos.inMilliseconds);
+
+      await storage.savePositionMs(ch.id, pos.inMilliseconds);
+      if (dur > Duration.zero) {
+        await storage.saveDurationMs(ch.id, dur.inMilliseconds);
+      }
+      ref.read(watchRefreshProvider.notifier).state++;
     } catch (e) {
       debugPrint('[Player] save position failed: $e');
     }
