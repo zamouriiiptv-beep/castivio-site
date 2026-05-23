@@ -144,9 +144,14 @@ const currentFlag = document.getElementById("current-flag");
   const path = window.location.pathname;
   let lang = "ar";
 
-  if (path.startsWith("/en/")) lang = "en";
+  if      (path.startsWith("/en/")) lang = "en";
   else if (path.startsWith("/fr/")) lang = "fr";
   else if (path.startsWith("/es/")) lang = "es";
+  else if (path.startsWith("/pt/")) lang = "pt";
+  else if (path.startsWith("/de/")) lang = "de";
+  else if (path.startsWith("/tr/")) lang = "tr";
+  else if (path.startsWith("/it/")) lang = "it";
+  else if (path.startsWith("/nl/")) lang = "nl";
   else lang = "ar";
 
   document.documentElement.lang = lang;
