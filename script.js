@@ -144,7 +144,7 @@ const currentFlag = document.getElementById("current-flag");
   const path = window.location.pathname;
   let lang = "ar";
 
-  if      (path.startsWith("/en/")) lang = "en";
+  if      (path.startsWith("/english/")) lang = "en";
   else if (path.startsWith("/fr/")) lang = "fr";
   else if (path.startsWith("/es/")) lang = "es";
   else if (path.startsWith("/pt/")) lang = "pt";
@@ -202,9 +202,9 @@ document.querySelectorAll(".lang-option").forEach(option => {
       "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
 
       // العربية
-      "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
-      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "ar/khalij":   { ar: "/ar/khalij/",  en: "/english/",         fr: "/fr/",          es: "/es/" },
+      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/english/",         fr: "/fr/france/",   es: "/es/" },
+      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/english/",         fr: "/fr/",          es: "/es/" },
 
       // الأدلة
       "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
@@ -212,9 +212,9 @@ document.querySelectorAll(".lang-option").forEach(option => {
       "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
 
       // الرئيسية
-      "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "en":          { ar: "/",            en: "/english/",         fr: "/fr/",          es: "/es/" },
+      "fr":          { ar: "/",            en: "/english/",         fr: "/fr/",          es: "/es/" },
+      "es":          { ar: "/",            en: "/english/",         fr: "/fr/",          es: "/es/" },
     };
 
     let target = null;
@@ -228,7 +228,7 @@ document.querySelectorAll(".lang-option").forEach(option => {
 
     if (!target) {
       if (selectedLang === "ar") target = "/";
-      else if (selectedLang === "en") target = "/en/";
+      else if (selectedLang === "en") target = "/english/";
       else if (selectedLang === "fr") target = "/fr/";
       else if (selectedLang === "es") target = "/es/";
     }
