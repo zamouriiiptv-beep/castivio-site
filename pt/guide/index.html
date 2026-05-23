@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Guia Prime IPTV Portugal – Assinatura, Instalação &amp; Configuração | PrimeIPTV Oficial</title>
+
+<meta name="description" content="Guia oficial Prime IPTV para Portugal e Brasil. Como assinar, instalar a app, adicionar uma playlist M3U e configurar Prime IPTV no Firestick, Smart TV &amp; Android.">
+<meta name="keywords" content="guia IPTV Portugal, Prime IPTV Portugal guia, Prime IPTV Brasil, Prime IPTV avaliação, IPTV configuração Portugal, instalação IPTV, app IPTV Portugal, playlist IPTV, guia IPTV oficial, IPTV iniciantes, o que é IPTV, como funciona IPTV, instalar IPTV, IPTV Firestick, IPTV Smart TV, IPTV iPhone, IPTV Android, IPTV vs cabo, melhor IPTV, IPTV 4K sem buffering, assinatura IPTV, IPTV m3u playlist, IPTV Smarters Pro, TiviMate, EPG IPTV">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://primeiptvplus.com/pt/guide/">
+
+<link rel="alternate" hreflang="ar" href="https://primeiptvplus.com/guide/">
+<link rel="alternate" hreflang="en" href="https://primeiptvplus.com/en/guide/">
+<link rel="alternate" hreflang="fr" href="https://primeiptvplus.com/fr/guide/">
+<link rel="alternate" hreflang="es" href="https://primeiptvplus.com/es/guide/">
+<link rel="alternate" hreflang="pt" href="https://primeiptvplus.com/pt/guide/">
+<link rel="alternate" hreflang="de" href="https://primeiptvplus.com/de/guide/">
+<link rel="alternate" hreflang="tr" href="https://primeiptvplus.com/tr/guide/">
+<link rel="alternate" hreflang="it" href="https://primeiptvplus.com/it/guide/">
+<link rel="alternate" hreflang="nl" href="https://primeiptvplus.com/nl/guide/">
+<link rel="alternate" hreflang="x-default" href="https://primeiptvplus.com/en/guide/">
+
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Guia Completo IPTV para Iniciantes | Prime IPTV">
+<meta property="og:description" content="O guia definitivo de IPTV para iniciantes de língua portuguesa. Aprenda o que é IPTV, como instalá-lo e aproveitar streaming 4K sem buffering.">
+<meta property="og:url" content="https://primeiptvplus.com/pt/guide/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://primeiptvplus.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guia Completo IPTV – Iniciantes de Língua Portuguesa | Prime IPTV">
+<meta name="twitter:description" content="Tudo o que precisa saber sobre IPTV — instalação, dispositivos, canais, EPG e streaming 4K sem buffering.">
+<meta name="twitter:image" content="https://primeiptvplus.com/images/og-image.jpg">
+
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/css/tailwind.min.css">
+<link rel="stylesheet" href="/styles.css">
+
+<script src="/script.js" defer></script>
+
+<style>
+  body { font-family: 'Inter', 'Cairo', sans-serif !important; overflow-x: hidden; }
+  html { overflow-x: hidden; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
+  main article h2 { margin-top: 2em !important; margin-bottom: 0.7em !important; color: #6B21A8; font-size: 1.5rem; border-left: 4px solid #7c3aed; padding-left: 12px; }
+  main article h3 { margin-top: 1.5em !important; margin-bottom: 0.5em !important; color: #1E40AF; font-size: 1.15rem; }
+  main article p { margin-bottom: 1em !important; line-height: 1.85 !important; color: #374151; }
+  a.cta-btn { display: inline-block; background: linear-gradient(to right, #7c3aed, #3b82f6); color: white; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 15px -3px rgb(124 58 237 / 0.4); transition: transform 0.3s ease; }
+  a.cta-btn:hover { transform: scale(1.05); }
+  .guide-toc { background: linear-gradient(135deg, #f5f3ff, #eff6ff); border: 1px solid #e0d7ff; border-radius: 16px; padding: 24px 28px; margin: 32px 0; }
+  .guide-toc h3 { color: #6B21A8 !important; margin-top: 0 !important; margin-bottom: 12px !important; }
+  .guide-toc ol { margin: 0; padding-left: 20px; }
+  .guide-toc li { margin-bottom: 6px; display: list-item !important; }
+  .guide-toc li.toc-hidden { display: none !important; }
+  .toc-toggle { margin-top: 10px; background: none; border: none; color: #4f46e5; font-weight: 700; font-size: 0.88rem; cursor: pointer; padding: 0; }
+  .toc-toggle:hover { text-decoration: underline; }
+  .guide-toc a { color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .guide-toc a:hover { text-decoration: underline; }
+  .info-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
+  .info-box.tip { background: #eff6ff; border-color: #93c5fd; }
+  .speed-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin: 20px 0; }
+  .speed-table th { background: linear-gradient(135deg, #7c3aed, #3b82f6); color: #fff; padding: 12px 16px; text-align: left; }
+  .speed-table td { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+  .speed-table tr:nth-child(even) td { background: #f9f7ff; }
+  .device-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
+  @media(min-width: 600px) { .device-grid { grid-template-columns: repeat(3, 1fr); } }
+  .device-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .device-card .icon { font-size: 2rem; margin-bottom: 8px; }
+  .device-card .name { font-weight: 700; font-size: 0.9rem; color: #374151; }
+  .device-card .desc { font-size: 0.75rem; color: #6b7280; margin-top: 4px; }
+  .faq-item { border: 1px solid #e5e7eb; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .faq-item summary { cursor: pointer; font-weight: 700; padding: 16px 20px; background: #f9f7ff; color: #6B21A8; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item[open] summary { background: #ede9fe; }
+  .faq-item p { padding: 16px 20px; margin: 0 !important; background: #fff; color: #374151; }
+  ul.check-list { list-style: none; padding: 0; margin: 12px 0; }
+  ul.check-list li { display: flex !important; align-items: flex-start; gap: 8px; margin-bottom: 8px; color: #374151; }
+  ul.check-list li::before { content: "✅"; flex-shrink: 0; }
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
+  main { padding-top: 0 !important; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://primeiptvplus.com/pt/guide/#article",
+      "headline": "Guia Completo IPTV para Iniciantes de Língua Portuguesa",
+      "description": "O guia definitivo de IPTV para iniciantes de língua portuguesa em todo o mundo.",
+      "url": "https://primeiptvplus.com/pt/guide/",
+      "inLanguage": "pt",
+      "publisher": { "@type": "Organization", "name": "Prime IPTV", "url": "https://primeiptvplus.com/" }
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "pt",
+      "mainEntity": [
+        { "@type": "Question", "name": "O que é IPTV e como funciona?", "acceptedAnswer": { "@type": "Answer", "text": "IPTV (Internet Protocol Television) transmite canais de TV pela Internet em vez de sinais de cabo ou satélite. Funciona através de apps em Smart TV, Firestick, telemóvel ou computador, em streaming direto de servidores em HD e 4K." } },
+        { "@type": "Question", "name": "Que velocidade de Internet preciso para IPTV?", "acceptedAnswer": { "@type": "Answer", "text": "Para qualidade SD, 5 Mbps são suficientes. Para HD, planeie 10 Mbps. Para 4K, recomenda-se 25 Mbps ou mais. Uma ligação por cabo é ideal." } },
+        { "@type": "Question", "name": "Como instalar IPTV no Firestick?", "acceptedAnswer": { "@type": "Answer", "text": "Instale uma app IPTV como TiviMate ou IPTV Smarters Pro na Amazon App Store, depois introduza o seu URL M3U ou credenciais Xtream fornecidos pelo seu operador IPTV. Os canais carregam automaticamente." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18138909640"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "AW-18138909640");
+</script>
+</head>
+
+<body class="bg-gray-50 relative">
+
+<header id="header" class="fixed w-full bg-gradient-to-r from-blue-50 to-purple-50 shadow-md z-50">
+  <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
+    <div id="logo-name" class="flex items-center space-x-4">
+      <img id="logo-img" src="/images/logo.webp" alt="Prime IPTV Logo" class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="lazy" width="80" height="80" fetchpriority="high">
+      <span class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">Prime IPTV</span>
+    </div>
+    <nav id="nav-links" class="hidden md:flex space-x-6 items-center" aria-label="Navegação principal">
+      <a href="/pt/" class="nav-link text-gray-700 hover:text-purple-700">Início</a>
+      <a href="/pt/#why-us" class="nav-link text-gray-700 hover:text-purple-700">Vantagens</a>
+      <a href="/pt/#pricing" class="nav-link text-gray-700 hover:text-purple-700">Planos</a>
+      <a href="/pt/#faq" class="nav-link text-gray-700 hover:text-purple-700">FAQ</a>
+      <a href="/pt/#payment-methods" class="nav-link text-gray-700 hover:text-purple-700">Pagamentos</a>
+    </nav>
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div id="language-bar" dir="ltr">
+  <div id="flags-container"><div id="flags-scroll"></div></div>
+  <div class="lang-wrapper" id="lang-btn">
+    <img id="current-flag" class="flag-icon" src="/images/A3lame/flag8.webp" alt="Bandeira Portuguesa">
+    <span id="current-lang">PT</span>
+    <div id="lang-dropdown" class="lang-dropdown hidden">
+      <div class="lang-option"><a href="/" style="display:flex;align-items:center;width:100%;text-decoration:none;color:inherit;"><img src="/images/A3lame/flag1.webp" class="flag-icon" alt="العربية" loading="lazy"><span style="margin-right:8px;">العربية (AR)</span></a></div>
+      <div class="lang-option"><a href="/en/" style="display:flex;align-items:center;width:100%;text-decoration:none;color:inherit;"><img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English" loading="lazy"><span style="margin-right:8px;">English (EN)</span></a></div>
+      <div class="lang-option"><a href="/fr/" style="display:flex;align-items:center;width:100%;text-decoration:none;color:inherit;"><img src="/images/A3lame/flag2.webp" class="flag-icon" alt="Français" loading="lazy"><span style="margin-right:8px;">Français (FR)</span></a></div>
+      <div class="lang-option"><a href="/es/" style="display:flex;align-items:center;width:100%;text-decoration:none;color:inherit;"><img src="/images/A3lame/flag3.webp" class="flag-icon" alt="Español" loading="lazy"><span style="margin-right:8px;">Español (ES)</span></a></div>
+      <div class="lang-option"><a href="/pt/" style="display:flex;align-items:center;width:100%;text-decoration:none;color:inherit;"><img src="/images/A3lame/flag8.webp" class="flag-icon" alt="Português" loading="lazy"><span style="margin-right:8px;">Português (PT)</span></a></div>
+    </div>
+  </div>
+</div>
+
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+<div id="side-menu" class="side-menu glass-card" aria-hidden="true">
+  <button id="close-menu" class="close-btn" aria-label="Fechar menu">×</button>
+  <ul class="menu-links" role="menu">
+    <li><a href="/pt/" role="menuitem">Início</a></li>
+    <li><a href="/pt/#why-us" role="menuitem">Vantagens</a></li>
+    <li><a href="/pt/#pricing" role="menuitem">Planos</a></li>
+    <li><a href="/pt/#faq" role="menuitem">FAQ</a></li>
+  </ul>
+</div>
+
+<section class="hero-section bg-gradient-to-r from-green-700 via-purple-700 to-red-600 text-white">
+  <div class="container mx-auto px-6 max-w-4xl text-center">
+    <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-3">
+      📖 Guia Completo • Para Iniciantes de Língua Portuguesa
+    </div>
+    <h1 class="text-3xl md:text-5xl font-extrabold mb-3 leading-tight" style="color:#fff !important;">
+      O Guia Completo de IPTV para Iniciantes
+    </h1>
+    <p class="text-gray-200 max-w-3xl mx-auto mb-3 text-sm md:text-lg leading-relaxed">
+      Tudo o que precisa saber sobre IPTV — o que é, como funciona, como instalá-lo em qualquer dispositivo e como aproveitar o melhor streaming 4K do mundo sem buffering.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;max-width:640px;margin:0 auto 1.4rem;">
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">📺 O que é IPTV</span>
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🔥 Firestick &amp; Smart TV</span>
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🎬 30.000+ Canais</span>
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">⚡ Qualidade 4K &amp; 8K</span>
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🌍 Sem Buffering</span>
+      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">📱 iPhone &amp; Android</span>
+    </div>
+    <div class="flex justify-center items-center gap-3 pt-2">
+      <a href="/pt/#pricing" class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
+        🚀 Começar – A partir de 30€/ano
+      </a>
+      <a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20gostaria%20de%20um%20teste%20gratuito%20do%20Prime%20IPTV."
+         target="_blank" rel="noopener noreferrer"
+         class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">
+        💬 Teste Gratuito
+      </a>
+    </div>
+  </div>
+</section>
+
+<main class="container mx-auto px-6 max-w-4xl mt-10 mb-16">
+<article class="prose mx-auto prose-indigo prose-lg">
+
+<div class="guide-toc">
+  <h2>📋 Índice</h2>
+  <ol>
+    <li><a href="#o-que-e-iptv">O que é IPTV e como funciona?</a></li>
+    <li><a href="#iptv-vs-cabo">IPTV vs TV por cabo vs Serviços de streaming</a></li>
+    <li><a href="#dispositivos">Dispositivos compatíveis</a></li>
+    <li><a href="#velocidade-internet">Velocidade de Internet necessária</a></li>
+    <li><a href="#firestick">Como instalar IPTV no Firestick</a></li>
+    <li><a href="#smart-tv">Como instalar IPTV na Smart TV</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#telemovel">Como instalar IPTV no iPhone &amp; Android</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#epg">O que é o EPG?</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#sem-buffering">Como evitar buffering</a></li>
+    <li class="toc-hidden" style="display:none"><a href="#faq">Perguntas frequentes</a></li>
+  </ol>
+  <button class="toc-toggle" data-exp="0" onclick="(function(btn){var lis=btn.closest('.guide-toc').querySelectorAll('ol li');var exp=btn.dataset.exp==='1';lis.forEach(function(li,i){if(i>=6){if(exp)li.classList.add('toc-hidden');else li.classList.remove('toc-hidden');}});btn.dataset.exp=exp?'0':'1';btn.textContent=exp?'▼ Ver mais':'▲ Ver menos';})(this)">▼ Ver mais</button>
+</div>
+
+<h2 id="o-que-e-iptv">1. O que é IPTV e como funciona?</h2>
+<p><strong>IPTV</strong> significa <strong>Internet Protocol Television</strong>. Em vez de receber canais de TV através de uma antena parabólica ou cabo, o IPTV transmite canais ao vivo, filmes e séries diretamente através da sua ligação à Internet.</p>
+<p>Imagine-o como qualquer app de streaming — mas para televisão ao vivo. Abre uma app IPTV no seu dispositivo, ela liga-se a um servidor que lhe transmite os canais em tempo real. O resultado: uma experiência de TV flexível e de alta qualidade em qualquer ecrã.</p>
+<div class="info-box">
+  <strong>🔑 Diferença essencial:</strong> A TV tradicional envia um sinal fixo para todos. O IPTV envia apenas o canal que está a ver, diretamente para o seu dispositivo — mais eficiente e flexível.
+</div>
+<p>O IPTV funciona através de uma assinatura. Após a subscrição, recebe um link de lista M3U ou credenciais Xtream Codes, que introduz numa app player IPTV. A app carrega todos os seus canais e pode começar a ver imediatamente.</p>
+
+<h2 id="iptv-vs-cabo">2. IPTV vs TV por cabo vs Serviços de streaming</h2>
+<p>Uma comparação clara para entender as diferenças:</p>
+<div class="table-scroll"><table class="speed-table">
+  <thead><tr><th>Funcionalidade</th><th>IPTV</th><th>TV por cabo</th><th>Streaming</th></tr></thead>
+  <tbody>
+    <tr><td>Desporto ao vivo</td><td>✅ Sim</td><td>✅ Sim</td><td>❌ Limitado</td></tr>
+    <tr><td>Notícias ao vivo</td><td>✅ Sim</td><td>✅ Sim</td><td>❌ Não</td></tr>
+    <tr><td>Filmes &amp; Séries</td><td>✅ +190.000 títulos</td><td>⚠️ Limitado</td><td>✅ Sim</td></tr>
+    <tr><td>Número de canais</td><td>✅ +30.000</td><td>⚠️ 200–500</td><td>❌ Sem canais ao vivo</td></tr>
+    <tr><td>Qualidade 4K</td><td>✅ Todos os planos</td><td>⚠️ Custo extra</td><td>✅ Planos premium</td></tr>
+    <tr><td>Custo anual</td><td>✅ A partir de €30/ano</td><td>❌ 600–1.800€/ano</td><td>⚠️ 100–200€/ano</td></tr>
+    <tr><td>Sem compromisso</td><td>✅ Sim</td><td>❌ Contrato 12–24 meses</td><td>✅ Mensal</td></tr>
+    <tr><td>Todos os dispositivos</td><td>✅ Sim</td><td>❌ Descodificador necessário</td><td>✅ Sim</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="dispositivos">3. Dispositivos compatíveis</h2>
+<p>Uma das grandes vantagens do IPTV é que funciona em praticamente todos os ecrãs que já possui. Nenhum hardware especial necessário.</p>
+<div class="device-grid">
+  <div class="device-card"><div class="icon">🔥</div><div class="name">Amazon Firestick</div><div class="desc">Fire TV Stick, Fire TV Cube, Fire TV 4K</div></div>
+  <div class="device-card"><div class="icon">📺</div><div class="name">Smart TV</div><div class="desc">Samsung, LG, Sony, Hisense, TCL</div></div>
+  <div class="device-card"><div class="icon">📱</div><div class="name">iPhone &amp; iPad</div><div class="desc">iOS 12 e versões superiores</div></div>
+  <div class="device-card"><div class="icon">🤖</div><div class="name">Android</div><div class="desc">Telemóvel &amp; tablet Android 5.0+</div></div>
+  <div class="device-card"><div class="icon">💻</div><div class="name">PC &amp; Mac</div><div class="desc">Via browser ou VLC / Kodi</div></div>
+  <div class="device-card"><div class="icon">📦</div><div class="name">Android Box</div><div class="desc">Nvidia Shield, Mi Box e mais</div></div>
+</div>
+<div class="info-box tip">
+  <strong>💡 Melhor dispositivo para IPTV:</strong> O Amazon Firestick é a escolha mais popular no mundo — acessível, fácil de configurar e perfeitamente compatível com todas as apps IPTV.
+</div>
+
+<h2 id="velocidade-internet">4. Velocidade de Internet necessária</h2>
+<p>A velocidade de Internet é o fator mais importante para uma experiência IPTV fluída:</p>
+<div class="table-scroll"><table class="speed-table">
+  <thead><tr><th>Qualidade de vídeo</th><th>Velocidade mínima</th><th>Velocidade recomendada</th></tr></thead>
+  <tbody>
+    <tr><td>SD (Definição Standard)</td><td>3 Mbps</td><td>5 Mbps</td></tr>
+    <tr><td>HD (720p / 1080p)</td><td>8 Mbps</td><td>15 Mbps</td></tr>
+    <tr><td>4K Ultra HD</td><td>20 Mbps</td><td>30 Mbps</td></tr>
+    <tr><td>8K</td><td>50 Mbps</td><td>80 Mbps</td></tr>
+  </tbody>
+</table></div>
+<div class="info-box tip">
+  <strong>💡 Dica pro:</strong> Use uma ligação por cabo (cabo ethernet) em vez de WiFi. Uma ligação direta reduz consideravelmente o buffering e oferece um stream mais estável.
+</div>
+
+<h2 id="firestick">5. Como instalar IPTV no Firestick</h2>
+<p>Instalar IPTV no Amazon Firestick demora menos de 5 minutos. Aqui está o procedimento exato:</p>
+<ul class="check-list">
+  <li>Ligue o seu Firestick e vá a <strong>Definições → Meu Fire TV → Opções de programador</strong> e ative "Apps de fontes desconhecidas"</li>
+  <li>Volte ao ecrã inicial, clique no ícone de pesquisa e procure <strong>"Downloader"</strong></li>
+  <li>Instale a app Downloader e abra-a</li>
+  <li>Introduza o URL do seu player IPTV preferido (TiviMate ou IPTV Smarters Pro APK)</li>
+  <li>Instale a app player IPTV</li>
+  <li>Abra a app e introduza as suas informações de assinatura (URL M3U ou credenciais Xtream Codes)</li>
+  <li>Aguarde o carregamento dos canais — está pronto para ver!</li>
+</ul>
+<div class="info-box">
+  <strong>📱 Melhores apps IPTV para Firestick:</strong> TiviMate (melhor escolha global), IPTV Smarters Pro, GSE Smart IPTV e Perfect Player.
+</div>
+
+<h2 id="smart-tv">6. Como instalar IPTV na Smart TV</h2>
+<h3>Samsung Smart TV</h3>
+<ul class="check-list">
+  <li>Abra a Samsung App Store</li>
+  <li>Pesquise uma app IPTV (ex: Smart IPTV ou SS IPTV)</li>
+  <li>Instale e abra a app</li>
+  <li>Introduza o seu URL de lista M3U ou as suas credenciais de assinatura</li>
+</ul>
+<h3>LG Smart TV</h3>
+<ul class="check-list">
+  <li>Abra o LG Content Store</li>
+  <li>Pesquise "SS IPTV" ou "Smart IPTV"</li>
+  <li>Instale e introduza as suas informações de assinatura</li>
+</ul>
+<h3>Android TV</h3>
+<ul class="check-list">
+  <li>Abra a Google Play Store</li>
+  <li>Pesquise "TiviMate" ou "IPTV Smarters"</li>
+  <li>Instale e ligue-se com a sua assinatura</li>
+</ul>
+
+<h2 id="telemovel">7. Como instalar IPTV no iPhone &amp; Android</h2>
+<h3>iPhone &amp; iPad (iOS)</h3>
+<ul class="check-list">
+  <li>Abra a App Store e pesquise <strong>"IPTV Smarters Pro"</strong> ou <strong>"GSE Smart IPTV"</strong></li>
+  <li>Instale e abra a app</li>
+  <li>Escolha "Adicionar utilizador" e introduza o seu URL M3U ou Xtream Codes</li>
+  <li>Os canais carregam automaticamente — toque para ver</li>
+</ul>
+<h3>Android Telemóvel &amp; Tablet</h3>
+<ul class="check-list">
+  <li>Abra a Google Play Store e pesquise <strong>"TiviMate"</strong> ou <strong>"IPTV Smarters Pro"</strong></li>
+  <li>Instale e abra a app</li>
+  <li>Introduza as suas informações de assinatura</li>
+  <li>Desfrute de todos os seus canais onde quer que esteja</li>
+</ul>
+
+<h2 id="epg">8. O que é o EPG?</h2>
+<p>O <strong>EPG (Guia Eletrónico de Programas)</strong> é o seu guia de TV IPTV. Tal como o guia de canais na TV tradicional, o EPG mostra o que está a passar agora em cada canal e o que vem a seguir.</p>
+<ul class="check-list">
+  <li>Ver programas atuais e futuros em cada canal</li>
+  <li>Consultar programas das próximas horas ou dias</li>
+  <li>Pesquisa rápida de programas ou eventos desportivos</li>
+  <li>Definir lembretes para programas favoritos</li>
+  <li>Catch-up TV — rever programas perdidos (em canais suportados)</li>
+</ul>
+
+<h2 id="sem-buffering">9. Como evitar buffering no IPTV</h2>
+<p>O buffering é a queixa mais frequente dos utilizadores de IPTV. Veja como resolver:</p>
+<h3>Verifique a sua velocidade de Internet</h3>
+<p>Faça um teste de velocidade em fast.com ou speedtest.net. Para streaming HD, precisa de pelo menos 10 Mbps. Para 4K, vise 25 Mbps ou mais.</p>
+<h3>Use uma ligação por cabo</h3>
+<p>Ligue o seu Firestick ou dispositivo diretamente ao seu router via cabo ethernet. O WiFi pode ser instável, especialmente em casas muito conectadas.</p>
+<h3>Escolha um fornecedor IPTV fiável</h3>
+<p>A principal causa de buffering é um fornecedor IPTV com servidores sobrecarregados. Escolha a Prime IPTV, que usa tecnologia anti-freeze e servidores de alto desempenho.</p>
+<h3>Use um bom player IPTV</h3>
+<p>O TiviMate é amplamente considerado o melhor player IPTV para Firestick e Android. Oferece excelente gestão de buffering e reprodução fluída.</p>
+<div class="info-box">
+  <strong>⚡ Solução rápida:</strong> 90% dos problemas de buffering resolvem-se passando do WiFi para uma ligação por cabo e escolhendo um fornecedor IPTV fiável com servidores sólidos.
+</div>
+
+<h2 id="faq">10. Perguntas frequentes</h2>
+<details class="faq-item">
+  <summary>O que é IPTV? <span>+</span></summary>
+  <p>IPTV (Internet Protocol Television) é uma tecnologia que transmite canais de TV, desporto ao vivo, filmes e séries pela Internet em vez dos sinais tradicionais de cabo ou satélite. Funciona em qualquer dispositivo conectado: Smart TV, Firestick, telemóvel e computador.</p>
+</details>
+<details class="faq-item">
+  <summary>O IPTV é legal? <span>+</span></summary>
+  <p>A tecnologia IPTV em si é completamente legal. No entanto, a legalidade depende do conteúdo transmitido. Fornecedores IPTV licenciados com direitos de transmissão são legais para usar. Verifique sempre a regulamentação do seu país.</p>
+</details>
+<details class="faq-item">
+  <summary>Em quantos dispositivos posso usar uma assinatura IPTV? <span>+</span></summary>
+  <p>Depende do seu plano. Os planos básicos geralmente permitem 1 ligação, enquanto os planos Premium e Profissional permitem 2 a 3 ligações simultâneas em Smart TV, telemóvel, tablet e computador.</p>
+</details>
+<details class="faq-item">
+  <summary>Que velocidade de Internet preciso para IPTV? <span>+</span></summary>
+  <p>Para streaming HD, precisa de pelo menos 10 Mbps. Para 4K Ultra HD, vise 25 a 30 Mbps. Uma ligação por cabo estável é sempre preferível ao WiFi para IPTV.</p>
+</details>
+<details class="faq-item">
+  <summary>Qual é a melhor app player IPTV? <span>+</span></summary>
+  <p>O TiviMate é amplamente considerado o melhor player IPTV para Firestick e Android. Para iOS (iPhone/iPad), o IPTV Smarters Pro e o GSE Smart IPTV são excelentes escolhas. Para Smart TVs, o SS IPTV e o Smart IPTV funcionam muito bem.</p>
+</details>
+<details class="faq-item">
+  <summary>Posso ver IPTV sem antena parabólica? <span>+</span></summary>
+  <p>Sim! Esta é uma das grandes vantagens do IPTV. Só precisa de uma ligação à Internet — sem antena parabólica, sem cabo, sem descodificador especial. Apenas um dispositivo com Internet e uma app IPTV.</p>
+</details>
+
+<div class="text-center my-12" style="background:linear-gradient(135deg,#f5f3ff,#eff6ff);border-radius:20px;padding:40px 24px;">
+  <h2 style="color:#6B21A8 !important;margin-top:0 !important;">Pronto para começar? 🚀</h2>
+  <p style="color:#374151;margin-bottom:24px;">Junte-se a milhares de assinantes satisfeitos em todo o mundo — comece com a Prime IPTV a partir de 30€/ano</p>
+  <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <a href="/pt/#pricing" class="cta-btn">Ver planos &amp; preços</a>
+    <a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20gostaria%20de%20experimentar%20o%20Prime%20IPTV."
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;background:#25D366;color:#fff;padding:0.75rem 2rem;border-radius:9999px;font-weight:700;text-decoration:none;">
+      💬 Teste gratuito via WhatsApp
+    </a>
+  </div>
+  <p style="margin-top:16px;font-size:0.85rem;color:#6b7280;">✅ Garantia de reembolso de 10 dias &nbsp;•&nbsp; ✅ Sem compromisso &nbsp;•&nbsp; ✅ Disponível em todo o mundo</p>
+</div>
+
+</article>
+</main>
+
+<section class="bg-gradient-to-b from-gray-50 to-white py-16 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-black text-purple-800 mb-4">📍 Escolha a sua região</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Guia IPTV específico para a sua região com canais locais e preços adaptados ao seu país</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="/pt/portugal/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+        <div class="bg-gradient-to-br from-green-700 via-red-600 to-red-700 p-8 text-center">
+          <div class="text-6xl mb-3">🇵🇹</div>
+          <h3 class="text-2xl font-black text-white drop-shadow-lg">Guia Portugal</h3>
+          <p class="text-white text-sm mt-2">Futebol · Canais portugueses · 4K</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4 leading-relaxed">Guia IPTV completo para Portugal. Futebol, grandes competições desportivas e mais de 30.000 canais em 4K.</p>
+          <div class="flex items-center text-green-600 font-bold group-hover:text-green-700"><span>Ler o guia</span><i class="fas fa-arrow-right ml-2"></i></div>
+        </div>
+      </a>
+      <a href="/pt/brasil/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+        <div class="bg-gradient-to-br from-green-600 via-yellow-400 to-blue-600 p-8 text-center">
+          <div class="text-6xl mb-3">🇧🇷</div>
+          <h3 class="text-2xl font-black text-white drop-shadow-lg">Guia Brasil</h3>
+          <p class="text-white text-sm mt-2">Futebol · Canais brasileiros · 4K</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4 leading-relaxed">Guia IPTV completo para o Brasil. Futebol, esportes e mais de 30.000 canais em 4K.</p>
+          <div class="flex items-center text-yellow-600 font-bold group-hover:text-yellow-700"><span>Ler o guia</span><i class="fas fa-arrow-right ml-2"></i></div>
+        </div>
+      </a>
+      <a href="/pt/angola/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+        <div class="bg-gradient-to-br from-red-700 via-black to-yellow-500 p-8 text-center">
+          <div class="text-6xl mb-3">🇦🇴</div>
+          <h3 class="text-2xl font-black text-white drop-shadow-lg">Guia Angola</h3>
+          <p class="text-white text-sm mt-2">Desporto · Canais angolanos · 4K</p>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4 leading-relaxed">Guia IPTV completo para Angola. Desporto, canais angolanos e conteúdo lusófono em 4K.</p>
+          <div class="flex items-center text-red-600 font-bold group-hover:text-red-700"><span>Ler o guia</span><i class="fas fa-arrow-right ml-2"></i></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative mt-8">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-10 items-start">
+      <div class="flex flex-col items-start">
+        <div class="flex items-center mb-4">
+          <img src="/images/logo.webp" alt="Prime IPTV Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy">
+          <h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>
+        </div>
+        <p class="text-gray-200">A Prime IPTV é um <strong>serviço IPTV mundial</strong> com +30.000 canais e +190.000 filmes &amp; séries em 4K em todos os dispositivos em todo o mundo.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4 text-lg">Guias regionais</h4>
+        <ul class="space-y-3 text-gray-200" style="list-style:none;padding:0;">
+          <li style="display:block !important;"><a href="/pt/portugal/" class="hover:text-white">🇵🇹 Guia IPTV Portugal</a></li>
+          <li style="display:block !important;"><a href="/pt/brasil/" class="hover:text-white">🇧🇷 Guia IPTV Brasil</a></li>
+          <li style="display:block !important;"><a href="/pt/angola/" class="hover:text-white">🇦🇴 Guia IPTV Angola</a></li>
+          <li style="display:block !important;"><a href="/pt/" class="hover:text-white">🏠 Início em português</a></li>
+          <li style="display:block !important;"><a href="/pt/#pricing" class="hover:text-white">💰 Planos &amp; Preços</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4 text-lg">Comece hoje</h4>
+        <p class="text-gray-200 mb-4">Disponível em todo o mundo — suporte 24h via WhatsApp:</p>
+        <a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20gostaria%20de%20subscrever%20o%20Prime%20IPTV."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105">
+          <i class="fab fa-whatsapp mr-2"></i> Suporte WhatsApp 24/7
+        </a>
+        <div class="mt-4 space-y-2 text-gray-200 text-sm">
+          <p>🌍 Disponível em +150 países</p>
+          <p>⚡ Ativação instantânea</p>
+          <p>💰 Garantia de reembolso de 10 dias</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 pt-4 border-t border-gray-400 text-center text-gray-300">
+      <p class="text-xs">© 2026 Prime IPTV – Todos os direitos reservados | Guia Completo IPTV Mundial</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Prime%20IPTV."
+   class="whatsapp-float fixed bottom-6 left-6 z-50" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <img src="/images/whatsapp.webp" alt="WhatsApp" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy">
+</a>
+
+<link rel="stylesheet" href="/css/footer.css">
+<script src="/js/footer.js" defer></script>
+</body>
+</html>
