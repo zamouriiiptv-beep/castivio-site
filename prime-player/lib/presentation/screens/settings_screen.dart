@@ -80,6 +80,13 @@ class SettingsScreen extends ConsumerWidget {
 
           const SizedBox(height: 20),
 
+          // ── External Sources section ─────────────────────────────────────
+          _SectionHeader('المصادر الخارجية'),
+
+          _TmdbApiKeyTile(),
+
+          const SizedBox(height: 20),
+
           // ── Device section ───────────────────────────────────────────────
           _SectionHeader('Device'),
 
@@ -362,4 +369,147 @@ class _SettingsTile extends StatelessWidget {
       ),
     );
   }
+}
+
+// ── TMDB API Key tile ─────────────────────────────────────────────────────────
+class _TmdbApiKeyTile extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<_TmdbApiKeyTile> createState() => _TmdbApiKeyTileState();
+}
+
+class _TmdbApiKeyTileState extends ConsumerState<_TmdbApiKeyTile> {
+  late final TextEditingController _ctrl;
+  bool _obscure = true;
+  bool _saved   = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = TextEditingController(
+        text: ref.read(storageServiceProvider).tmdbApiKey);
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _save() async {
+    await ref.read(storageServiceProvider).setTmdbApiKey(_ctrl.text);
+    if (mounted) {
+      setState(() => _saved = true);
+      Future.delayed(const Duration(seconds: 2),
+          () { if (mounted) setState(() => _saved = false); });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Container(
+              width: 36, height: 36,
+              decoration: BoxDecoration(
+                color: const Color(0xFF01D277).withOpacity(0.15),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Center(
+                child: Text('T', style: TextStyle(
+                    color: Color(0xFF01D277),
+                    fontSize: 18, fontWeight: FontWeight.w900)),
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('TMDB API Key',
+                      style: TextStyle(
+                          color: AppColors.textPrimary,
+                          fontSize: 14, fontWeight: FontWeight.w600)),
+                  Text('لعرض تقييمات وقصص الأفلام تلقائياً',
+                      style: TextStyle(
+                          color: AppColors.textMuted, fontSize: 11)),
+                ],
+              ),
+            ),
+          ]),
+          const SizedBox(height: 12),
+          Row(children: [
+            Expanded(
+              child: TextField(
+                controller:  _ctrl,
+                obscureText: _obscure,
+                style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 12,
+                    fontFamily: 'monospace'),
+                decoration: InputDecoration(
+                  hintText:       'أدخل TMDB API Key هنا',
+                  hintStyle:      const TextStyle(
+                      color: AppColors.textMuted, fontSize: 12),
+                  filled:         true,
+                  fillColor:      AppColors.surfaceLight,
+                  border:         OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:   const BorderSide(color: AppColors.border),
+                  ),
+                  enabledBorder:  OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:   const BorderSide(color: AppColors.border),
+                  ),
+                  isDense:        true,
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 10, vertical: 10),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        _obscure ? Icons.visibility_off_rounded
+                                 : Icons.visibility_rounded,
+                        size: 16, color: AppColors.textMuted),
+                    onPressed: () => setState(() => _obscure = !_obscure),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            ElevatedButton(
+              onPressed: _save,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: _saved
+                    ? const Color(0xFF27AE60)
+                    : AppColors.primary,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16, vertical: 11),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
+              child: Text(_saved ? '✓ تم' : 'حفظ',
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w700)),
+            ),
+          ]),
+          const SizedBox(height: 8),
+          GestureDetector(
+            onTap: () {}, // could open browser to TMDB
+            child: const Text(
+              'احصل على مفتاح مجاني من themoviedb.org ← إعدادات ← API',
+              style: TextStyle(
+                  color: Color(0xFF01D277),
+                  fontSize: 10,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Color(0xFF01D277)),
+            ),
+          ),
+        ]),
+      );
 }

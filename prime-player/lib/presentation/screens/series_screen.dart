@@ -9,7 +9,10 @@ import '../providers/locale_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
 import '../widgets/content_screen_layout.dart';
+import '../widgets/top_search_bar.dart';
 import 'series_detail_screen.dart';
+
+enum _ContentTab { all, favorites, watchlist }
 
 class SeriesScreen extends ConsumerStatefulWidget {
   const SeriesScreen({super.key});
@@ -19,10 +22,11 @@ class SeriesScreen extends ConsumerStatefulWidget {
 }
 
 class _SeriesScreenState extends ConsumerState<SeriesScreen> {
-  final _searchCtrl = TextEditingController();
-  bool    _searching   = false;
-  bool    _lazyLoading = false;
-  String? _lazyError;
+  final _searchCtrl  = TextEditingController();
+  bool         _lazyLoading = false;
+  bool         _refreshing  = false;
+  String?      _lazyError;
+  _ContentTab  _tab         = _ContentTab.all;
 
   @override
   void initState() {
@@ -30,15 +34,15 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadIfNeeded());
   }
 
-  void _onBack() {
-    ref.read(playerProvider.notifier).stop();
-    Navigator.pop(context);
-  }
-
   @override
   void dispose() {
     _searchCtrl.dispose();
     super.dispose();
+  }
+
+  void _onBack() {
+    ref.read(playerProvider.notifier).stop();
+    Navigator.pop(context);
   }
 
   Future<void> _loadIfNeeded() async {
@@ -64,6 +68,32 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
     }
   }
 
+  Future<void> _refresh() async {
+    if (_refreshing) return;
+    final id = ref.read(activePlaylistIdProvider);
+    if (id == null) return;
+    final playlist = ref.read(playlistRepositoryProvider)
+        .getSavedPlaylists()
+        .cast<Playlist?>()
+        .firstWhere((p) => p?.id == id, orElse: () => null);
+    if (playlist == null || playlist.playlistType != PlaylistType.xtream) return;
+
+    setState(() => _refreshing = true);
+    try {
+      await ref.read(playlistRepositoryProvider).loadXtreamSeries(playlist);
+      if (mounted) ref.read(playlistRefreshProvider.notifier).state++;
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(e.toString().replaceFirst('Exception: ', '')),
+          backgroundColor: AppColors.error,
+        ));
+      }
+    } finally {
+      if (mounted) setState(() => _refreshing = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_lazyLoading) return _buildLoading(context);
@@ -71,8 +101,22 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
 
     final categories     = ref.watch(seriesCategoriesProvider);
     final activeCategory = ref.watch(activeCategoryProvider) ?? 'All';
-    final series         = ref.watch(filteredSeriesChannelsProvider);
     final tr             = AppLocalizations.of(ref.watch(localeProvider));
+    final q              = ref.watch(searchQueryProvider).toLowerCase();
+
+    final List<Channel> series;
+    switch (_tab) {
+      case _ContentTab.all:
+        series = ref.watch(filteredSeriesChannelsProvider);
+      case _ContentTab.favorites:
+        final favs = ref.watch(favoriteSeriesChannelsProvider);
+        series = q.isEmpty ? favs
+            : favs.where((c) => c.name.toLowerCase().contains(q)).toList();
+      case _ContentTab.watchlist:
+        final wl = ref.watch(watchlistSeriesChannelsProvider);
+        series = q.isEmpty ? wl
+            : wl.where((c) => c.name.toLowerCase().contains(q)).toList();
+    }
 
     return PopScope(
       canPop: false,
@@ -83,26 +127,16 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
         child: Column(
           children: [
             ContentTopBar(
-              section:    tr.series.toUpperCase(),
-              subSection: '${series.length} ${tr.shows}',
-              onBack:     _onBack,
+              section:      tr.series.toUpperCase(),
+              subSection:   '${series.length} ${tr.shows}',
+              onBack:       _onBack,
+              onRefresh:    _refresh,
+              isRefreshing: _refreshing,
             ),
             Expanded(
               child: Row(
                 children: [
-                  IconSidebar(
-                    onBack: _onBack,
-                    onSearch: () {
-                      setState(() {
-                        _searching = !_searching;
-                        if (!_searching) {
-                          _searchCtrl.clear();
-                          ref.read(searchQueryProvider.notifier).state = '';
-                        }
-                      });
-                    },
-                    isSearching: _searching,
-                  ),
+                  IconSidebar(onBack: _onBack),
                   CategoriesPanel(
                     categories:     categories,
                     activeCategory: activeCategory,
@@ -115,13 +149,45 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
                   Expanded(
                     child: Column(
                       children: [
-                        if (_searching)
-                          _SearchBar(
-                            ctrl: _searchCtrl,
-                            hint: tr.searchSeries,
-                            onChanged: (q) =>
-                                ref.read(searchQueryProvider.notifier).state = q,
-                          ),
+                        TopSearchBar(
+                          controller: _searchCtrl,
+                          hint:       tr.searchSeries,
+                          onChanged:  (q) =>
+                              ref.read(searchQueryProvider.notifier).state = q,
+                        ),
+                        // Tab row
+                        Container(
+                          height: 36,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          color: AppColors.surface,
+                          child: Row(children: [
+                            _TabChip(
+                              label:  'الكل',
+                              active: _tab == _ContentTab.all,
+                              onTap:  () => setState(
+                                  () => _tab = _ContentTab.all),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.favorite_rounded,
+                              label:       'المفضلة',
+                              active:      _tab == _ContentTab.favorites,
+                              activeColor: const Color(0xFFE74C3C),
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.favorites),
+                            ),
+                            const SizedBox(width: 6),
+                            _TabChip(
+                              icon:        Icons.bookmark_rounded,
+                              label:       'لاحقاً',
+                              active:      _tab == _ContentTab.watchlist,
+                              activeColor: AppColors.primary,
+                              onTap: () => setState(
+                                  () => _tab = _ContentTab.watchlist),
+                            ),
+                          ]),
+                        ),
                         Expanded(
                           child: series.isEmpty
                               ? _EmptyView(label: tr.noSeries)
@@ -151,78 +217,30 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
           ],
         ),
       ),
-    ));
+      ),
+    );
   }
 
   Widget _buildLoading(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.loading, onBack: _onBack),
           Expanded(child: SectionLoader(icon: Icons.video_library_rounded, label: tr.loadingSeries, onCancel: _onBack)),
         ])),
-      ),
-    );
+      );
   }
 
   Widget _buildError(BuildContext context) {
     final tr = AppLocalizations.of(ref.read(localeProvider));
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) { if (!didPop) _onBack(); },
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.background,
         body: SafeArea(child: Column(children: [
           ContentTopBar(section: tr.series.toUpperCase(), subSection: tr.error, onBack: _onBack),
           Expanded(child: SectionError(error: _lazyError!, onRetry: () => _loadIfNeeded())),
         ])),
-      ),
-    );
-  }
-}
-
-// ── Search bar ────────────────────────────────────────────────────────────────
-class _SearchBar extends StatelessWidget {
-  final TextEditingController ctrl;
-  final String               hint;
-  final ValueChanged<String> onChanged;
-
-  const _SearchBar({
-    required this.ctrl,
-    required this.hint,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 36,
-      color: AppColors.surfaceLight,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Row(children: [
-        const Icon(Icons.search_rounded, color: AppColors.textMuted, size: 15),
-        const SizedBox(width: 6),
-        Expanded(
-          child: TextField(
-            controller: ctrl,
-            autofocus:  true,
-            onChanged:  onChanged,
-            style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
-            decoration: InputDecoration(
-              border:         InputBorder.none,
-              isDense:        true,
-              contentPadding: EdgeInsets.zero,
-              hintText:       hint,
-              hintStyle:      const TextStyle(color: AppColors.textMuted),
-            ),
-          ),
-        ),
-      ]),
-    );
+      );
   }
 }
 
@@ -238,7 +256,7 @@ class _PosterGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(8),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount:   7,
+        crossAxisCount:   5,
         crossAxisSpacing: 6,
         mainAxisSpacing:  6,
         childAspectRatio: 0.68,
@@ -253,17 +271,40 @@ class _PosterGrid extends StatelessWidget {
   }
 }
 
-class _PosterCard extends StatefulWidget {
+class _PosterCard extends ConsumerStatefulWidget {
   final Channel      item;
   final VoidCallback onTap;
   const _PosterCard({required this.item, required this.onTap});
 
   @override
-  State<_PosterCard> createState() => _PosterCardState();
+  ConsumerState<_PosterCard> createState() => _PosterCardState();
 }
 
-class _PosterCardState extends State<_PosterCard> {
+class _PosterCardState extends ConsumerState<_PosterCard> {
   bool _hovered = false;
+  late bool _isFav;
+  late bool _isWl;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFav = widget.item.isFavorite;
+    _isWl  = ref.read(storageServiceProvider).isInWatchlist(widget.item.id);
+  }
+
+  Future<void> _toggleFav() async {
+    await ref.read(storageServiceProvider).toggleFavorite(widget.item);
+    if (!mounted) return;
+    setState(() => _isFav = widget.item.isFavorite);
+    ref.read(favRefreshProvider.notifier).state++;
+  }
+
+  Future<void> _toggleWl() async {
+    await ref.read(storageServiceProvider).toggleWatchlist(widget.item.id);
+    if (!mounted) return;
+    setState(() => _isWl = !_isWl);
+    ref.read(watchlistRefreshProvider.notifier).state++;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +330,6 @@ class _PosterCardState extends State<_PosterCard> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              // Poster image
               widget.item.logoUrl != null && widget.item.logoUrl!.isNotEmpty
                   ? CachedNetworkImage(
                       imageUrl:       widget.item.logoUrl!,
@@ -304,12 +344,13 @@ class _PosterCardState extends State<_PosterCard> {
               Positioned(
                 bottom: 0, left: 0, right: 0,
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
+                  padding: const EdgeInsets.fromLTRB(5, 20, 5, 5),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end:   Alignment.topCenter,
-                      colors: [Color(0xDD0A0E1A), Color(0x000A0E1A)],
+                      colors: [Color(0xFF0A0E1A), Color(0xBB0A0E1A), Color(0x000A0E1A)],
+                      stops: [0.0, 0.6, 1.0],
                     ),
                   ),
                   child: Text(
@@ -318,11 +359,45 @@ class _PosterCardState extends State<_PosterCard> {
                       color:      Colors.white,
                       fontSize:   9,
                       fontWeight: FontWeight.w600,
-                      shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                      shadows: [Shadow(color: Colors.black, blurRadius: 6)],
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
+                ),
+              ),
+
+              // Rating badge — top-left
+              if (widget.item.rating != null)
+                Positioned(
+                  top: 5, left: 5,
+                  child: _RatingBadge(widget.item.rating!),
+                ),
+
+              // Quick action icons — top-right
+              Positioned(
+                top: 4, right: 4,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _QuickIcon(
+                      icon:        _isWl
+                          ? Icons.bookmark_rounded
+                          : Icons.bookmark_border_rounded,
+                      active:      _isWl,
+                      activeColor: AppColors.primary,
+                      onTap:       _toggleWl,
+                    ),
+                    const SizedBox(width: 3),
+                    _QuickIcon(
+                      icon:        _isFav
+                          ? Icons.favorite_rounded
+                          : Icons.favorite_border_rounded,
+                      active:      _isFav,
+                      activeColor: const Color(0xFFE74C3C),
+                      onTap:       _toggleFav,
+                    ),
+                  ],
                 ),
               ),
 
@@ -379,6 +454,35 @@ class _NoImageFallback extends StatelessWidget {
       );
 }
 
+class _RatingBadge extends StatelessWidget {
+  final String rating;
+  const _RatingBadge(this.rating);
+
+  Color get _color {
+    final v = double.tryParse(rating) ?? 0;
+    if (v >= 7.0) return const Color(0xFF27AE60);
+    if (v >= 5.0) return const Color(0xFFF39C12);
+    return const Color(0xFFE74C3C);
+  }
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        decoration: BoxDecoration(
+          color: _color,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Text(
+          rating,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 8,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+}
+
 class _EmptyView extends StatelessWidget {
   final String label;
   const _EmptyView({required this.label});
@@ -396,4 +500,76 @@ class _EmptyView extends StatelessWidget {
               style: const TextStyle(color: AppColors.textMuted, fontSize: 14)),
         ]),
       );
+}
+
+// ── Tab chip ──────────────────────────────────────────────────────────────────
+class _TabChip extends StatelessWidget {
+  final String    label;
+  final IconData? icon;
+  final bool      active;
+  final Color     activeColor;
+  final VoidCallback onTap;
+  const _TabChip({
+    required this.label, required this.active, required this.onTap,
+    this.icon, this.activeColor = AppColors.primary,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      decoration: BoxDecoration(
+        color:        active ? activeColor.withOpacity(0.15) : Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        border:       Border.all(
+          color: active ? activeColor.withOpacity(0.6) : AppColors.border,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 11,
+                color: active ? activeColor : AppColors.textMuted),
+            const SizedBox(width: 4),
+          ],
+          Text(label,
+              style: TextStyle(
+                  color:      active ? activeColor : AppColors.textMuted,
+                  fontSize:   11,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    ),
+  );
+}
+
+// ── Small circular icon button on poster card ─────────────────────────────────
+class _QuickIcon extends StatelessWidget {
+  final IconData     icon;
+  final bool         active;
+  final Color        activeColor;
+  final VoidCallback onTap;
+  const _QuickIcon({
+    required this.icon, required this.active,
+    required this.activeColor, required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onTap,
+    behavior: HitTestBehavior.opaque,
+    child: Container(
+      width: 20, height: 20,
+      decoration: BoxDecoration(
+        color:  Colors.black.withOpacity(0.55),
+        shape:  BoxShape.circle,
+      ),
+      child: Icon(icon,
+          color: active ? activeColor : Colors.white70,
+          size:  12),
+    ),
+  );
 }

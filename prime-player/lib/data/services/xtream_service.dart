@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import '../models/channel.dart';
 import '../models/series_info.dart';
 import 'doh_interceptor.dart';
+import '../../core/name_cleaner.dart';
 
 // ─── Isolate-safe input ───────────────────────────────────────────────────────
 
@@ -56,10 +57,11 @@ List<Channel> _parseVodJson(_ParseInput p) {
     final catId = s['category_id']?.toString() ?? '';
     result.add(Channel(
       id:         'vod_$streamId',
-      name:       (s['name'] as String?)?.trim() ?? 'Unknown',
+      name:       cleanChannelName((s['name'] as String?)?.trim() ?? 'Unknown'),
       streamUrl:  '${p.host}/movie/${p.username}/${p.password}/$streamId.${s['container_extension'] ?? 'mp4'}',
       logoUrl:    s['stream_icon'] as String?,
       groupTitle: p.catMap[catId] ?? p.catMap.values.firstOrNull ?? 'Movies',
+      rating:     _parseRating(s['rating']),
     ));
   }
   return result;
@@ -76,13 +78,23 @@ List<Channel> _parseSeriesJson(_ParseInput p) {
     final catId = s['category_id']?.toString() ?? '';
     result.add(Channel(
       id:         'series_$seriesId',
-      name:       (s['name'] as String?)?.trim() ?? 'Unknown',
+      name:       cleanChannelName((s['name'] as String?)?.trim() ?? 'Unknown'),
       streamUrl:  '${p.host}/series/${p.username}/${p.password}/$seriesId',
       logoUrl:    s['cover'] as String?,
       groupTitle: p.catMap[catId] ?? p.catMap.values.firstOrNull ?? 'Series',
+      rating:     _parseRating(s['rating']),
     ));
   }
   return result;
+}
+
+String? _parseRating(dynamic raw) {
+  if (raw == null) return null;
+  final s = raw.toString().trim();
+  if (s.isEmpty || s == '0' || s == '0.0') return null;
+  final d = double.tryParse(s);
+  if (d == null || d <= 0) return null;
+  return d.toStringAsFixed(1);
 }
 
 // ─── XtreamService ────────────────────────────────────────────────────────────
@@ -270,6 +282,24 @@ class XtreamService {
     } catch (e) {
       debugPrint('[Xtream] getSeriesChannels error: $e');
       return [];
+    }
+  }
+
+  // ── VOD info ─────────────────────────────────────────────────────────────
+
+  Future<Map<String, dynamic>?> getVodInfo(String vodId) async {
+    try {
+      final res = await _dio.get<dynamic>(
+        '$_base&action=get_vod_info&vod_id=$vodId',
+        options: Options(receiveTimeout: const Duration(seconds: 20)),
+      );
+      if (res.data is Map<String, dynamic>) {
+        return res.data as Map<String, dynamic>;
+      }
+      return null;
+    } catch (e) {
+      debugPrint('[Xtream] getVodInfo error: $e');
+      return null;
     }
   }
 

@@ -13,7 +13,8 @@ class Channel extends HiveObject {
   @HiveField(6) final String? tvgName;
   @HiveField(7) final String? language;
   @HiveField(8) final String? country;
-  @HiveField(9) bool isFavorite;
+  @HiveField(9)  bool    isFavorite;
+  @HiveField(10) String? rating;
 
   Channel({
     required this.id,
@@ -26,6 +27,7 @@ class Channel extends HiveObject {
     this.language,
     this.country,
     this.isFavorite = false,
+    this.rating,
   });
 
   Channel copyWith({bool? isFavorite}) => Channel(
@@ -39,5 +41,6 @@ class Channel extends HiveObject {
     language:   language,
     country:    country,
     isFavorite: isFavorite ?? this.isFavorite,
+    rating:     rating,
   );
 }

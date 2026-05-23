@@ -11,9 +11,11 @@ workflows:
       branch_patterns:
         - pattern: main
           include: true
+        - pattern: claude/*
+          include: true
 
     environment:
-      flutter: 3.29.3
+      flutter: 3.32.1
       java: 17
       vars:
         GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.parallel=true"

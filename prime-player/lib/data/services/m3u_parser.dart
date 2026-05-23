@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 import '../models/channel.dart';
+import '../../core/name_cleaner.dart';
 
 /// Diagnostic info captured during a fetch attempt — useful for debugging.
 class M3uDiagnostic {
@@ -265,7 +266,7 @@ class M3uParser {
       } else if (!line.startsWith('#') && line.isNotEmpty && name != null) {
         channels.add(Channel(
           id:         uuid.v4(),
-          name:       name.isEmpty ? (tvgName ?? 'Channel') : name,
+          name:       cleanChannelName(name.isEmpty ? (tvgName ?? 'Channel') : name),
           streamUrl:  line,
           logoUrl:    logoUrl,
           groupTitle: groupTitle ?? 'Uncategorized',
