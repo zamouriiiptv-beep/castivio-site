@@ -681,19 +681,19 @@ a.button {
 /* 🖥️ ضبط الهيدر على الكمبيوتر لتقليل الارتفاع */
 @media (min-width: 768px) {
   #header .container {
-    height: 4.25rem !important; /* ↓ كان 5rem، الآن تقريبًا 68px */
-    padding-top: 0.2rem !important;
-    padding-bottom: 0.2rem !important;
+    height: 3.25rem !important; /* 52px */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     align-items: center !important;
   }
 
   #logo-img {
-    height: 64px !important;
-    width: 64px !important;
+    height: 46px !important;
+    width: 46px !important;
   }
 
   #logo-name span {
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;
     line-height: 1.1 !important;
     margin: 0 !important;
   }
@@ -1773,15 +1773,15 @@ section > *:last-child {
 /* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
 
 .hero-section {
-  padding-top: 96px;     /* ⬅️ كان 80px → نزلنا العنوان قليلاً في الهاتف */
-  padding-bottom: 36px;  /* مسافة خفيفة قبل القسم التالي */
+  padding-top: 82px;
+  padding-bottom: 30px;
 }
 
 /* 💻 كمبيوتر */
 @media (min-width: 768px) {
   .hero-section {
-    padding-top: 120px;  /* نفس القيمة – لا نلمس الكمبيوتر */
-    padding-bottom: 60px;
+    padding-top: 100px;
+    padding-bottom: 48px;
   }
 }
 /* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
@@ -1810,8 +1810,8 @@ section > *:last-child {
   }
 
   #logo-img {
-    height: 44px !important;
-    width: 44px !important;
+    height: 36px !important;
+    width: 36px !important;
     display: block;
   }
 
@@ -1838,7 +1838,7 @@ section > *:last-child {
   /* السطر الرئيسي داخل الهيدر */
   #header > .container,
   #header .header-inner {
-    transform: translateY(17px); /* 👈 النزول الحقيقي */
+    transform: translateY(6px); /* 👈 النزول الحقيقي */
   }
 
   /* تأكيد عدم وجود تعارض */
