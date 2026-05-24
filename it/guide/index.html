@@ -88,8 +88,8 @@
   ul.check-list { list-style: none; padding: 0; margin: 12px 0; }
   ul.check-list li { display: flex !important; align-items: flex-start; gap: 8px; margin-bottom: 8px; color: #374151; }
   ul.check-list li::before { content: "✅"; flex-shrink: 0; }
-  .hero-section { padding-top: 80px !important; padding-bottom: 50px !important; min-height: auto !important; }
-  @media (min-width: 768px) { .hero-section { padding-top: 80px !important; padding-bottom: 50px !important; min-height: auto !important; } }
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
     .hero-section h1, .hero-section h2 { text-shadow: 0 2px 14px rgba(0,0,0,0.95), 0 0 32px rgba(0,0,0,0.75); }
     .hero-section p, .hero-section span { text-shadow: 0 1px 10px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.85); }
   main { padding-top: 0 !important; }
@@ -250,7 +250,7 @@
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">💰 Abbonamento IPTV Economico</span>
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ Piani Mensili &amp; Annuali</span>
     </div>
-    <div class="flex justify-center items-center gap-3">
+    <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
       <a href="/it/#pricing" class="px-6 py-3 text-base font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
         🚀 Inizia – Da 30€/anno
       </a>
@@ -271,16 +271,16 @@
   <ol>
     <li><a href="#cos-e-iptv">Cos'è l'IPTV e come funziona?</a></li>
     <li><a href="#iptv-vs-cavo">IPTV vs TV via cavo vs Servizi di streaming</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#dispositivi">Dispositivi compatibili</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#velocita-internet">Velocità Internet necessaria</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#firestick">Come installare IPTV su Firestick</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#smart-tv">Come installare IPTV su Smart TV</a></li>
+    <li><a href="#dispositivi">Dispositivi compatibili</a></li>
+    <li><a href="#velocita-internet">Velocità Internet necessaria</a></li>
+    <li><a href="#firestick">Come installare IPTV su Firestick</a></li>
+    <li><a href="#smart-tv">Come installare IPTV su Smart TV</a></li>
     <li class="toc-hidden" style="display:none"><a href="#telefono">Come installare IPTV su iPhone &amp; Android</a></li>
     <li class="toc-hidden" style="display:none"><a href="#epg">Cos'è l'EPG?</a></li>
     <li class="toc-hidden" style="display:none"><a href="#senza-buffering">Come evitare il buffering</a></li>
     <li class="toc-hidden" style="display:none"><a href="#faq">Domande frequenti</a></li>
   </ol>
-  <button class="toc-toggle" data-exp="0" onclick="(function(btn){var lis=btn.closest('.guide-toc').querySelectorAll('ol li');var exp=btn.dataset.exp==='1';lis.forEach(function(li,i){if(i>=2){if(exp)li.classList.add('toc-hidden');else li.classList.remove('toc-hidden');}});btn.dataset.exp=exp?'0':'1';btn.textContent=exp?'▼ Mostra di più':'▲ Mostra di meno';})(this)">▼ Mostra di più</button>
+  <button class="toc-toggle" data-exp="0" onclick="(function(btn){var lis=btn.closest('.guide-toc').querySelectorAll('ol li');var exp=btn.dataset.exp==='1';lis.forEach(function(li,i){if(i>=6){if(exp)li.classList.add('toc-hidden');else li.classList.remove('toc-hidden');}});btn.dataset.exp=exp?'0':'1';btn.textContent=exp?'▼ Mostra di più':'▲ Mostra di meno';})(this)">▼ Mostra di più</button>
 </div>
 
 <h2 id="cos-e-iptv">1. Cos'è l'IPTV e come funziona?</h2>

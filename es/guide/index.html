@@ -215,8 +215,8 @@
     flex-shrink: 0;
   }
 
-  .hero-section { padding-top: 80px !important; padding-bottom: 50px !important; min-height: auto !important; }
-  @media (min-width: 768px) { .hero-section { padding-top: 80px !important; padding-bottom: 50px !important; min-height: auto !important; } }
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
+  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
     .hero-section h1, .hero-section h2 { text-shadow: 0 2px 14px rgba(0,0,0,0.95), 0 0 32px rgba(0,0,0,0.75); }
     .hero-section p, .hero-section span { text-shadow: 0 1px 10px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.85); }
   main { padding-top: 0 !important; }
@@ -454,7 +454,7 @@
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ Planes Mensuales y Anuales</span>
     </div>
 
-        <div class="flex justify-center items-center gap-3">
+        <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
         <a href="/es/espana/#precios"
            class="px-6 py-3 text-base font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-red-800 shadow-lg hover:scale-105 transition-transform">
           🚀 Empezar – Desde €30/año
@@ -479,17 +479,17 @@
   <ol>
     <li><a href="#que-es-iptv">¿Qué es IPTV y Cómo Funciona?</a></li>
     <li><a href="#iptv-vs-cable">IPTV vs Cable vs Plataformas de Streaming</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#dispositivos">Dispositivos Compatibles</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#velocidad-internet">Velocidad de Internet Necesaria</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#lista-m3u">¿Qué es una Lista M3U en IPTV?</a></li>
-    <li class="toc-hidden" style="display:none"><a href="#configurar-firestick">Cómo Configurar IPTV en Firestick</a></li>
+    <li><a href="#dispositivos">Dispositivos Compatibles</a></li>
+    <li><a href="#velocidad-internet">Velocidad de Internet Necesaria</a></li>
+    <li><a href="#lista-m3u">¿Qué es una Lista M3U en IPTV?</a></li>
+    <li><a href="#configurar-firestick">Cómo Configurar IPTV en Firestick</a></li>
     <li class="toc-hidden" style="display:none"><a href="#configurar-smart-tv">Cómo Configurar IPTV en Smart TV</a></li>
     <li class="toc-hidden" style="display:none"><a href="#configurar-movil">Cómo Configurar IPTV en iPhone y Android</a></li>
     <li class="toc-hidden" style="display:none"><a href="#epg">¿Qué es la EPG (Guía Electrónica de Programas)?</a></li>
     <li class="toc-hidden" style="display:none"><a href="#sin-cortes">Cómo Solucionar el Buffering en IPTV</a></li>
     <li class="toc-hidden" style="display:none"><a href="#faq">Preguntas Frecuentes</a></li>
   </ol>
-  <button class="toc-toggle" data-exp="0" onclick="(function(btn){var lis=btn.closest('.guide-toc').querySelectorAll('ol li');var exp=btn.dataset.exp==='1';lis.forEach(function(li,i){if(i>=2){if(exp)li.classList.add('toc-hidden');else li.classList.remove('toc-hidden');}});btn.dataset.exp=exp?'0':'1';btn.textContent=exp?'▼ Ver más':'▲ Ver menos';})(this)">▼ Ver más</button>
+  <button class="toc-toggle" data-exp="0" onclick="(function(btn){var lis=btn.closest('.guide-toc').querySelectorAll('ol li');var exp=btn.dataset.exp==='1';lis.forEach(function(li,i){if(i>=6){if(exp)li.classList.add('toc-hidden');else li.classList.remove('toc-hidden');}});btn.dataset.exp=exp?'0':'1';btn.textContent=exp?'▼ Ver más':'▲ Ver menos';})(this)">▼ Ver más</button>
 </div>
 
 <h2 id="que-es-iptv">1. ¿Qué es IPTV y Cómo Funciona?</h2>
