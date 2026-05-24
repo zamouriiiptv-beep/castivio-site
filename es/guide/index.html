@@ -216,8 +216,21 @@
     flex-shrink: 0;
   }
 
-  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
-  @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
+    .hero-section {
+    min-height: 455px;
+    display: flex;
+    align-items: center;
+    padding-top: 80px !important;
+    padding-bottom: 10px !important;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .hero-section {
+      min-height: 500px;
+      padding-top: 100px !important;
+      padding-bottom: 20px !important;
+    }
+  }
   main { padding-top: 0 !important; }
 </style>
 
