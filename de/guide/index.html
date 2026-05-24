@@ -90,6 +90,8 @@
   ul.check-list li::before { content: "✅"; flex-shrink: 0; }
   .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
   @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
+    .hero-section h1, .hero-section h2 { text-shadow: 0 2px 14px rgba(0,0,0,0.95), 0 0 32px rgba(0,0,0,0.75); }
+    .hero-section p, .hero-section span { text-shadow: 0 1px 10px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.85); }
   main { padding-top: 0 !important; }
 </style>
 
@@ -227,7 +229,7 @@
   </ul>
 </div>
 
-<section class="hero-section bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600 text-white">
+<section class="hero-section text-white" style="background:linear-gradient(135deg,#1a1a1a,#CC0000,#C4A000)">
   <div class="container mx-auto px-6 max-w-4xl text-center">
     <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-3">
       📖 Kompletter Guide • Für deutschsprachige Anfänger
