@@ -44,6 +44,10 @@
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* العنوان */
