@@ -43,6 +43,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/css/tailwind.min.css">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/css/global.css">
 
 <script src="/script.js" defer></script>
 
@@ -211,22 +212,8 @@
     flex-shrink: 0;
   }
 
-    .hero-section {
-    min-height: var(--hero-height-guide);
-    display: flex;
-    align-items: center;
-    padding-top: 80px !important;
-    padding-bottom: 10px !important;
-    box-sizing: border-box;
-  }
-  @media (min-width: 768px) {
-    .hero-section {
-      min-height: var(--hero-height-guide-md);
-      padding-top: 100px !important;
-      padding-bottom: 20px !important;
-    }
-  }
-  main { padding-top: 0 !important; }
+  main { padding-top: 0 !important; margin-top: 0 !important; }
+  article { margin-top: 0 !important; padding-top: 0 !important; }
 </style>
 
 <script type="application/ld+json">
@@ -389,44 +376,38 @@
 </div>
 
 <!-- Hero -->
-<section class="hero-section bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600 text-white">
-  <div class="container mx-auto px-6 max-w-4xl text-center">
+<section class="hero">
+  <div class="hero-content">
 
-    <div class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-3">
-      📖 Guide Complet • Pour Débutants Francophones
-    </div>
+    <span class="hero-chip">📖 Guide Complet • Pour Débutants Francophones</span>
 
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-3 leading-tight" style="color:#fff !important;">
-      Le Guide Complet IPTV
-    </h1>
+    <h1 class="hero-title">Le Guide Complet IPTV</h1>
 
-    <p class="text-gray-200 max-w-3xl mx-auto mb-3 text-sm md:text-lg leading-relaxed">
+    <p class="hero-description">
       Tout ce que vous devez savoir sur l'IPTV — ce que c'est, comment ça marche et comment profiter du meilleur streaming 4K sans coupure.
     </p>
 
-
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;max-width:640px;margin:0 auto 1.4rem;">
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">📺 Qu'est-ce que l'IPTV</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🔥 Firestick & Smart TV</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🎬 30 000+ Chaînes</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">⚡ Qualité 4K & 8K</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🌍 Sans Coupure</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">📱 iPhone & Android</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">💰 Abonnement IPTV Pas Cher</span>
-      <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ Offres Mensuelles & Annuelles</span>
+    <div class="hero-features">
+      <span class="hero-badge">📺 Qu'est-ce que l'IPTV</span>
+      <span class="hero-badge">🔥 Firestick & Smart TV</span>
+      <span class="hero-badge">🎬 30 000+ Chaînes</span>
+      <span class="hero-badge">⚡ Qualité 4K & 8K</span>
+      <span class="hero-badge">🌍 Sans Coupure</span>
+      <span class="hero-badge">📱 iPhone & Android</span>
+      <span class="hero-badge">💰 Abonnement IPTV Pas Cher</span>
+      <span class="hero-badge">🗓️ Offres Mensuelles & Annuelles</span>
     </div>
 
-        <div class="flex justify-center items-center gap-3">
-        <a href="/fr/france/#pricing"
-           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
-          🚀 Commencer – Dès 30€/an
-        </a>
-        <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20un%20essai%20gratuit%20de%20Prime%20IPTV."
-           target="_blank" rel="noopener noreferrer"
-           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-green-500 text-white shadow-lg hover:scale-105 transition-transform">
-          💬 Essai Gratuit
-        </a>
-      </div>
+    <div class="hero-buttons">
+      <a href="/fr/france/#pricing" class="hero-btn hero-btn-primary">
+        🚀 Commencer – Dès 30€/an
+      </a>
+      <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20un%20essai%20gratuit%20de%20Prime%20IPTV."
+         target="_blank" rel="noopener noreferrer"
+         class="hero-btn hero-btn-secondary">
+        💬 Essai Gratuit
+      </a>
+    </div>
 
   </div>
 </section>

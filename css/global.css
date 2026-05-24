@@ -1,0 +1,153 @@
+/* =========================================
+   PRIME IPTV — HERO SYSTEM
+   ملف CSS موحد للـ Hero — يُستخدم في جميع صفحات الدليل
+========================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 110px 20px 70px;
+
+  border-radius: 0 0 30px 30px;
+
+  background:
+    radial-gradient(circle at top left,  #4f46e5, transparent 40%),
+    radial-gradient(circle at bottom right, #c026d3, transparent 40%),
+    linear-gradient(135deg, #111827, #4f46e5, #7e22ce);
+
+  color: white;
+  text-align: center;
+}
+
+/* المحتوى */
+.hero-content {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* الشارة / الشريط العلوي */
+.hero-chip {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* العنوان */
+.hero-title {
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* الوصف */
+.hero-description {
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  line-height: 1.8;
+  opacity: 0.95;
+  max-width: 760px;
+  margin: 0 auto 35px;
+  color: #e5e7eb;
+}
+
+/* الميزات (chips) */
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 38px;
+}
+
+.hero-badge {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* الأزرار */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-btn {
+  min-width: 200px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-btn-primary {
+  background: #facc15;
+  color: #111827;
+  box-shadow: 0 8px 20px rgba(250,204,21,0.35);
+}
+
+.hero-btn-secondary {
+  background: #10b981;
+  color: white;
+  box-shadow: 0 8px 20px rgba(16,185,129,0.35);
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 90px 16px 55px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 320px;
+    min-width: unset;
+  }
+}
