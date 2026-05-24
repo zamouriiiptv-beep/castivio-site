@@ -182,7 +182,7 @@
   ul.check-list li::before { content: "✅"; flex-shrink: 0; }
 
     .hero-section {
-    min-height: 455px;
+    min-height: var(--hero-height-guide);
     display: flex;
     align-items: center;
     padding-top: 80px !important;
@@ -191,7 +191,7 @@
   }
   @media (min-width: 768px) {
     .hero-section {
-      min-height: 500px;
+      min-height: var(--hero-height-guide-md);
       padding-top: 100px !important;
       padding-bottom: 20px !important;
     }
