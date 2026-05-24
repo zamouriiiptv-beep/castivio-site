@@ -252,7 +252,7 @@ a.button {
   left: 0;
   direction: ltr;
   background: #fff;
-  width: 160px;
+  width: 190px;
   border-radius: 8px;
   border: 1px solid #ddd;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -277,10 +277,12 @@ a.button {
   padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-family: 'Inter', 'Cairo', sans-serif;
   font-weight: 600;
+  white-space: nowrap;
   transition: 0.2s;
 }
 
