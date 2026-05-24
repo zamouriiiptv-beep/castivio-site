@@ -3,20 +3,13 @@
    ملف CSS موحد للـ Hero — يُستخدم في جميع صفحات الدليل
 ========================================= */
 
+/* ملاحظة: الارتفاع والحشو والمحاذاة يتحكم بها styles.css (.hero-section, .hero)
+   هنا فقط تصميم الـ Hero الخاص بصفحات الدليل */
 .hero {
   position: relative;
   overflow: hidden;
-
-  width: 100%;
-  min-height: 520px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 80px 20px 60px;
-
-  border-radius: 0;
+  padding-left: 20px;
+  padding-right: 20px;
 
   background:
     radial-gradient(circle at top left,  #4f46e5, transparent 40%),
@@ -135,12 +128,6 @@
    MOBILE
 ========================================= */
 @media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding: 70px 16px 45px;
-    border-radius: 0;
-  }
-
   .hero-title {
     font-size: 2.2rem;
   }

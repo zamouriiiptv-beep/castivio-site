@@ -1772,27 +1772,23 @@ section > *:last-child {
    – ضبط المسافات للهاتف والكمبيوتر */
 /* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
 
-.hero-section {
+/* 🎯 ارتفاع موحّد للـ Hero في كامل الموقع — مصدر واحد للتحكم */
+.hero-section,
+.hero {
+  width: 100%;
   min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 72px;
-  padding-bottom: 28px;
+  padding-top: 82px;
+  padding-bottom: 40px;
   box-sizing: border-box;
 }
 
-/* 💻 كمبيوتر */
-@media (min-width: 768px) {
-  .hero-section {
-    min-height: 520px;
-    padding-top: 82px;
-    padding-bottom: 40px;
-  }
-}
-
+/* 📱 الهاتف */
 @media (max-width: 768px) {
-  .hero-section {
+  .hero-section,
+  .hero {
     min-height: auto;
     padding-top: 72px;
     padding-bottom: 28px;
