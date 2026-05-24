@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 96px 20px 65px;
+  padding: 80px 20px 60px;
 
   border-radius: 0 0 30px 30px;
 
@@ -127,7 +127,7 @@
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 80px 16px 50px;
+    padding: 70px 16px 45px;
     border-radius: 0 0 20px 20px;
   }
 
