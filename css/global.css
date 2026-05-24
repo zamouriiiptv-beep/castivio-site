@@ -110,6 +110,12 @@
   box-shadow: 0 8px 20px rgba(250,204,21,0.35);
 }
 
+.hero-btn-white {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
 .hero-btn-secondary {
   background: #10b981;
   color: white;
