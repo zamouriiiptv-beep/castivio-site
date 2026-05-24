@@ -16,7 +16,7 @@
 
   padding: 80px 20px 60px;
 
-  border-radius: 0 0 30px 30px;
+  border-radius: 0;
 
   background:
     radial-gradient(circle at top left,  #4f46e5, transparent 40%),
@@ -134,7 +134,7 @@
   .hero {
     min-height: auto;
     padding: 70px 16px 45px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0;
   }
 
   .hero-title {
