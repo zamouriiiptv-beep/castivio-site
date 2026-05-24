@@ -215,37 +215,9 @@
   /* Hero: compact, mobile-first */
 
   /* Hero: compact, mobile-first */
-  .hero-section { padding-top: 65px !important; padding-bottom: 0 !important; min-height: auto !important; }
+  .hero-section { padding-top: 80px !important; padding-bottom: 10px !important; min-height: auto !important; }
   @media (min-width: 768px) { .hero-section { padding-top: 100px !important; padding-bottom: 20px !important; } }
-
-  /* H1: responsive size — reserves 2-line height so AR & FR headings occupy same vertical block */
-  .hero-section h1 {
-    font-size: clamp(1.75rem, 5.5vw, 2.25rem) !important;
-    line-height: 1.2 !important;
-    min-height: 2.4em !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-bottom: 0.4rem !important;
-  }
-
-  /* Description: exactly 3 visible lines on mobile */
-  .hero-desc {
-    font-size: clamp(0.78rem, 2.5vw, 1rem);
-    line-height: 1.65;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 3 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-    margin-bottom: 0.5rem !important;
-    max-width: 34em;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  /* Spacing: close the gap between hero and TOC */
-  main { padding-top: 0 !important; margin-top: 0 !important; }
-  .guide-toc { margin-top: 0 !important; }
+  main { padding-top: 0 !important; }
   .guide-toc { margin-top: 0 !important; }
 </style>
 
@@ -450,12 +422,12 @@
       Le Guide Complet de l'IPTV pour Débutants
     </h1>
 
-    <p class="text-gray-200 max-w-3xl mx-auto text-sm md:text-lg leading-relaxed" hero-desc>
+    <p class="text-gray-200 max-w-3xl mx-auto text-sm md:text-lg leading-relaxed">
       Tout ce que vous devez savoir sur l'IPTV — ce que c'est, comment ça marche, comment l'installer sur n'importe quel appareil et comment profiter du meilleur streaming 4K au monde sans coupure.
     </p>
 
 
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;max-width:640px;margin:0 auto 0.5rem;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;max-width:640px;margin:0 auto 1.4rem;">
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">📺 Qu'est-ce que l'IPTV</span>
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🔥 Firestick & Smart TV</span>
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🎬 30 000+ Chaînes</span>
@@ -466,14 +438,14 @@
       <span style="background:rgba(255,255,255,0.15);border-radius:999px;padding:0.35rem 0.9rem;font-size:0.82rem;font-weight:600;">🗓️ Offres Mensuelles & Annuelles</span>
     </div>
 
-        <div style="display:flex;justify-content:center;gap:0.5rem;max-width:420px;margin:0 auto;">
-        <a style="flex:1;min-width:0;text-align:center;display:flex;align-items:center;justify-content:center;" href="/fr/france/#pricing"
-           class="px-6 py-3 text-base font-bold rounded-2xl bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
+        <div class="flex justify-center items-center gap-3 pt-2">
+        <a href="/fr/france/#pricing"
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-gradient-to-r from-yellow-300 to-white text-blue-900 shadow-lg hover:scale-105 transition-transform">
           🚀 Commencer – Dès 30€/an
         </a>
-        <a style="flex:1;min-width:0;text-align:center;display:flex;align-items:center;justify-content:center;" href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20un%20essai%20gratuit%20de%20Prime%20IPTV."
+        <a href="https://wa.me/212666686732?text=Bonjour%2C%20je%20voudrais%20un%20essai%20gratuit%20de%20Prime%20IPTV."
            target="_blank" rel="noopener noreferrer"
-           class="px-6 py-3 text-base font-bold rounded-2xl bg-green-500 text-white shadow-lg hover:scale-105 transition-transform animate-pulse">
+           class="px-5 py-3 text-sm font-bold rounded-2xl whitespace-nowrap bg-green-500 text-white shadow-lg hover:scale-105 transition-transform animate-pulse">
           💬 Essai Gratuit
         </a>
       </div>
