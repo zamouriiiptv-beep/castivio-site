@@ -2477,7 +2477,7 @@ div:has(> #price-val-pro)     span {
 }
 
 /* ── Mobile overrides for Latin ── */
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   :not(:lang(ar)) .hp-title {
     font-size: clamp(28px, 7.5vw, 40px);
   }
@@ -2717,41 +2717,63 @@ body:not(:has(.hp-hero)) #header {
 }
 
 
-/* ════ Responsive ════ */
-/* ── Tablet: ~75vh, tighter spacing ── */
-@media (max-width: 1024px) {
-  .hp-hero       { min-height: 75vh; min-height: 75svh; padding: 104px 20px 52px; }
-  .hp-inner      { gap: 20px; }
-  .hp-glow--core { width: 460px; height: 460px; }
+/* ════ Responsive — 4 standard international breakpoints ════ */
+
+/* ── Desktop Large ≥1440px: enhanced for wide screens ── */
+@media (min-width: 1440px) {
+  .hp-hero       { padding: 130px 40px 100px; }
+  .hp-inner      { max-width: 780px; gap: 30px; }
+  .hp-glow--core { width: 680px; height: 680px; }
+  .hp-btn        { padding: 15px 36px; font-size: 16px; }
+  .hp-chip       { font-size: 14px; padding: 9px 19px; }
+}
+
+/* ── Laptop 1024px–1439px: comfortable desktop ── */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .hp-hero       { min-height: 90vh; min-height: 90svh; padding: 112px 22px 76px; }
+  .hp-inner      { max-width: 700px; gap: 22px; }
+  .hp-glow--core { width: 520px; height: 520px; }
   .hp-glow--left,
-  .hp-glow--right{ width: 300px; height: 300px; }
-  .hp-btn        { padding: 13px 26px; font-size: 15px; }
+  .hp-glow--right{ width: 320px; height: 320px; }
+  .hp-btn        { padding: 13px 28px; font-size: 15px; }
   .hp-scroll     { bottom: 18px; }
 }
 
-/* ── Phone: balanced ~66vh, content hugs top (below navbar), premium spacing ── */
-@media (max-width: 640px) {
+/* ── Tablet 768px–1023px: balanced portrait/landscape ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hp-hero       { min-height: 82vh; min-height: 82svh; padding: 96px 28px 52px; }
+  .hp-inner      { max-width: 600px; gap: 18px; }
+  .hp-glow--core { width: 420px; height: 420px; }
+  .hp-glow--left,
+  .hp-glow--right{ width: 270px; height: 270px; }
+  .hp-btn        { padding: 12px 24px; font-size: 14.5px; }
+  .hp-chip       { font-size: 12.5px; padding: 7px 15px; }
+  .hp-scroll     { bottom: 14px; }
+}
+
+/* ── Mobile ≤767px: content hugs top, compact premium layout ── */
+@media (max-width: 767px) {
   .hp-hero {
     min-height: 60vh;
     min-height: 60svh;
-    justify-content: flex-start;   /* content hugs the top, just below the navbar */
+    justify-content: flex-start;
     padding: 74px 16px 14px;
   }
   .hp-inner      { gap: 13px; max-width: 460px; }
   .hp-title-sub  { margin-top: 5px; }
   .hp-desc       { line-height: 1.55; max-width: 320px; }
   .hp-br         { display: none; }
-  .hp-glow       { opacity: 0.6; }        /* lighter glow, still present */
+  .hp-glow       { opacity: 0.6; }
   .hp-glow--core { width: 320px; height: 320px; }
   .hp-glow--left,
   .hp-glow--right{ width: 210px; height: 210px; }
   .hp-orb        { transform: scale(0.7); }
   .hp-cta        { width: 100%; gap: 10px; }
   .hp-btn        { flex: 1; justify-content: center; min-width: 140px; padding: 12px 22px; font-size: 14.5px; }
-  .hp-scroll     { display: none; }       /* free up bottom space */
+  .hp-scroll     { display: none; }
 }
 
-/* ── Very small phones: trim a touch more ── */
+/* ── Extra small ≤380px: trim further for very narrow phones ── */
 @media (max-width: 380px) {
   .hp-hero  { padding-top: 64px; }
   .hp-inner { gap: 12px; }
