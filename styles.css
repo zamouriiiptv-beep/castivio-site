@@ -205,8 +205,8 @@ a.button {
 
 @media (min-width: 768px) {
   #header .container {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
   }
 }
 /* ===================================================
@@ -2252,7 +2252,7 @@ div:has(> #price-val-pro)     span {
   justify-content: center;
   min-height: 88vh;
   min-height: 88svh;
-  padding: 100px 22px 60px;
+  padding: 90px 22px 44px;
   overflow: hidden;
   background: var(--hp-bg);
   isolation: isolate;
@@ -2380,7 +2380,7 @@ div:has(> #price-val-pro)     span {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 22px;
+  gap: 16px;
   width: 100%;
   max-width: 720px;
 }
@@ -2432,11 +2432,11 @@ div:has(> #price-val-pro)     span {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 26px rgba(176,38,255,0.55));
+  filter: drop-shadow(0 0 18px rgba(176,38,255,0.40));
 }
 .hp-title-sub {
   display: block;
-  margin-top: 14px;
+  margin-top: 8px;
   font-size: clamp(20px, 4vw, 40px);
   font-weight: 800;
   color: #d8cdf2;
@@ -2448,10 +2448,10 @@ div:has(> #price-val-pro)     span {
   font-family: 'Tajawal', sans-serif !important;
   font-size: clamp(15px, 1.9vw, 18px);
   font-weight: 400;
-  line-height: 1.75;
-  letter-spacing: 0.2px;
+  line-height: 1.70;
+  letter-spacing: 0.15px;
   color: var(--hp-muted);
-  opacity: 0.88;
+  opacity: 0.85;
   max-width: 360px;
   margin: 0;
   text-wrap: pretty;
@@ -2479,9 +2479,9 @@ div:has(> #price-val-pro)     span {
 /* Description: AR compact script fits 2-3 lines at 360px.
    Latin needs ~490px at slightly smaller size to match same line-count. */
 :not(:lang(ar)) .hp-desc {
-  max-width: 490px;
+  max-width: 500px;
   font-size: clamp(14px, 1.65vw, 17px);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 /* ── Mobile overrides for Latin ── */
@@ -2636,35 +2636,39 @@ div:has(> #price-val-pro)     span {
   box-shadow: 0 8px 24px rgba(123,47,255,0.28);
 }
 
-/* Scroll cue */
+/* Scroll cue — anchored to hero bottom edge */
 .hp-scroll {
   position: absolute;
-  left: 50%; bottom: 26px;
+  left: 50%; bottom: 24px;
   transform: translateX(-50%);
   z-index: 5;
   text-decoration: none;
+  opacity: 0.45;
+  transition: opacity .3s ease;
 }
+.hp-scroll:hover { opacity: 0.72; }
 .hp-scroll-mouse {
   display: block;
-  width: 24px; height: 40px;
-  border: 2px solid rgba(199,168,255,0.5);
-  border-radius: 14px;
+  width: 20px; height: 32px;
+  border: 1.5px solid rgba(199,168,255,0.38);
+  border-radius: 12px;
   position: relative;
 }
 .hp-scroll-mouse::after {
   content: "";
   position: absolute;
-  left: 50%; top: 8px;
-  width: 4px; height: 8px;
-  border-radius: 4px;
-  background: var(--hp-purple-2);
+  left: 50%; top: 6px;
+  width: 3px; height: 6px;
+  border-radius: 3px;
+  background: rgba(176,38,255,0.75);
   transform: translateX(-50%);
-  animation: hp-wheel 1.8s ease-in-out infinite;
+  animation: hp-wheel 2.4s cubic-bezier(.4,0,.6,1) infinite;
 }
 @keyframes hp-wheel {
-  0%   { opacity: 0; transform: translate(-50%,0); }
-  40%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%,12px); }
+  0%,100% { opacity: 0;   transform: translate(-50%, 0);   }
+  20%     { opacity: 0.8; }
+  80%     { opacity: 0.3; }
+  99%     { opacity: 0;   transform: translate(-50%, 10px); }
 }
 
 /* ════ Reveal (fade-up) animation ════ */
@@ -2686,11 +2690,12 @@ div:has(> #price-val-pro)     span {
 
 /* Language bar — dark glass strip */
 #language-bar {
-  background: rgba(10,4,24,0.55) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(10,4,24,0.60) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: none !important;
   border-bottom: 1px solid rgba(176,38,255,0.18);
+  padding: 3px 12px !important;
 }
 
 /* Header — always dark glass; no text bleeds through at any scroll position */
@@ -2732,8 +2737,8 @@ body:not(:has(.hp-hero)) #header {
 
 /* ── Desktop Large ≥1440px: enhanced for wide screens ── */
 @media (min-width: 1440px) {
-  .hp-hero       { min-height: 90vh; min-height: 90svh; padding: 108px 40px 72px; }
-  .hp-inner      { max-width: 780px; gap: 28px; }
+  .hp-hero       { min-height: 90vh; min-height: 90svh; padding: 96px 40px 52px; }
+  .hp-inner      { max-width: 780px; gap: 20px; }
   .hp-glow--core { width: 680px; height: 680px; }
   .hp-btn        { padding: 15px 36px; font-size: 16px; }
   .hp-chip       { font-size: 14px; padding: 9px 19px; }
@@ -2741,8 +2746,8 @@ body:not(:has(.hp-hero)) #header {
 
 /* ── Laptop 1024px–1439px: comfortable desktop ── */
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .hp-hero       { min-height: 86vh; min-height: 86svh; padding: 90px 22px 50px; }
-  .hp-inner      { max-width: 700px; gap: 20px; }
+  .hp-hero       { min-height: 86vh; min-height: 86svh; padding: 84px 22px 40px; }
+  .hp-inner      { max-width: 700px; gap: 16px; }
   .hp-glow--core { width: 520px; height: 520px; }
   .hp-glow--left,
   .hp-glow--right{ width: 320px; height: 320px; }
