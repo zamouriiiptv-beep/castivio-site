@@ -2720,13 +2720,15 @@ body.hp-home #header.hp-scrolled {
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 240px;
+  height: 320px;
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(123,47,255,0.10) 55%,
-    rgba(176,38,255,0.16) 100%);
+    transparent           0%,
+    rgba(98,22,242,0.07)  38%,
+    rgba(123,47,255,0.17) 62%,
+    rgba(176,38,255,0.26) 84%,
+    rgba(176,38,255,0.22) 100%);
 }
 
 /* ── 2 · UNIVERSAL: any section immediately after a hp-hero ──
@@ -2738,21 +2740,21 @@ body.hp-home #header.hp-scrolled {
   margin-top: -26px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  box-shadow: 0 -26px 60px -22px rgba(123,47,255,0.45);
+  box-shadow: 0 -32px 80px -14px rgba(123,47,255,0.60);
 }
 
 .hp-hero + section::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 180px;
+  height: 240px;
   pointer-events: none;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  background: radial-gradient(70% 150% at 50% 0%,
-    rgba(123,47,255,0.12) 0%,
-    rgba(176,38,255,0.05) 40%,
-    transparent 72%);
+  background: radial-gradient(78% 170% at 50% 0%,
+    rgba(123,47,255,0.20) 0%,
+    rgba(176,38,255,0.09) 42%,
+    transparent 74%);
   z-index: 0;
 }
 
@@ -2767,8 +2769,9 @@ body.hp-home #header.hp-scrolled {
   .hp-hero + section::before {
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    height: 220px;
+    height: 280px;
   }
+  .hp-hero::after { height: 380px; }
 }
 
 /* ── 3 · AR page override (body.hp-home #why-us) — adds light-purple bg ── */
