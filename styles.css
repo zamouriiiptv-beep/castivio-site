@@ -2446,6 +2446,48 @@ div:has(> #price-val-pro)     span {
   opacity: 0.88;
   max-width: 360px;
   margin: 0;
+  text-wrap: pretty;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🌍 Hero Text Balance — language-specific overrides
+   Arabic (RTL, connected script) is naturally compact at 360px.
+   Latin scripts (EN/FR/DE/…) need wider max-width + smaller font
+   so they wrap in the same visual line-count as the Arabic reference.
+═══════════════════════════════════════════════════════════ */
+
+/* ── Title: balanced line-breaks for all languages ── */
+.hp-title      { text-wrap: balance; }
+.hp-title-sub  { text-wrap: balance; }
+
+/* ── Latin pages: slightly smaller title + wider description ── */
+:not(:lang(ar)) .hp-title {
+  font-size: clamp(32px, 6vw, 68px);   /* AR: clamp(36px,7vw,76px) */
+}
+:not(:lang(ar)) .hp-title-sub {
+  font-size: clamp(17px, 3.5vw, 36px); /* AR: clamp(20px,4vw,40px) */
+}
+
+/* Description: AR compact script fits 2-3 lines at 360px.
+   Latin needs ~490px at slightly smaller size to match same line-count. */
+:not(:lang(ar)) .hp-desc {
+  max-width: 490px;
+  font-size: clamp(14px, 1.65vw, 17px);
+  line-height: 1.7;
+}
+
+/* ── Mobile overrides for Latin ── */
+@media (max-width: 640px) {
+  :not(:lang(ar)) .hp-title {
+    font-size: clamp(28px, 7.5vw, 40px);
+  }
+  :not(:lang(ar)) .hp-title-sub {
+    font-size: clamp(15px, 4.5vw, 24px);
+  }
+  :not(:lang(ar)) .hp-desc {
+    max-width: 100%;
+    font-size: clamp(13.5px, 3.8vw, 16px);
+  }
 }
 
 /* 4 · CTA buttons */
