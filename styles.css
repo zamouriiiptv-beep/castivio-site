@@ -2573,8 +2573,24 @@ div:has(> #price-val-pro)     span {
   box-shadow: 0 10px 34px rgba(123,47,255,0.3);
 }
 
-/* 5 · Feature chips — HTML-enforced 3+1 layout (matches AR reference) */
-.hp-chips {
+/* 5 · Feature chips — dual-structure 3+1 layout
+   AR page: flat chips directly in .hp-chips (CSS Grid 3-col)
+   All other pages: explicit .hp-chips-row wrappers (flex column) */
+
+/* AR — flat structure: 4 direct .hp-chip children → CSS Grid 3+1 */
+.hp-chips:not(:has(.hp-chips-row)) {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+  justify-content: center;
+}
+.hp-chips:not(:has(.hp-chips-row)) > .hp-chip:nth-child(4) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+/* All language pages — .hp-chips-row wrapper structure */
+.hp-chips:has(.hp-chips-row) {
   display: flex;
   flex-direction: column;
   align-items: center;
