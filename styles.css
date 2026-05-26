@@ -1794,6 +1794,7 @@ section > *:last-child {
    عدّل القيم في :root أعلاه فقط — لا تعدّل هنا
 ═══════════════════════════════════════════════════════════ */
 
+/* ── Shell (layout + dark background) ── */
 .hero-section,
 .hero,
 .page-hero,
@@ -1807,13 +1808,24 @@ header.hero {
   padding-top: var(--hero-pt-desktop) !important;
   padding-bottom: var(--hero-pb-desktop) !important;
   box-sizing: border-box !important;
-  position: relative;
-  overflow: hidden;
+  position: relative !important;
+  overflow: hidden !important;
+  /* Dark premium background — JS injects hp-bg on top */
+  background: var(--hp-bg, #05010F) !important;
+  color: #fff !important;
+  isolation: isolate;
 }
 
-/* — المحتوى الداخلي — */
+/* ── Ensure content sits above the injected hp-bg layer ── */
+.hero-section > *:not(.hp-bg),
+.hero > *:not(.hp-bg),
+.page-hero > *:not(.hp-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Inner content wrapper ── */
 .hero-section > .container,
-.hero-section > div:not([aria-hidden="true"]):first-of-type,
 .hero > .hero-content,
 .page-hero > .hero-content {
   width: 100%;
@@ -1822,12 +1834,19 @@ header.hero {
   margin-right: auto;
 }
 
-/* — المسافة بين العناصر الداخلية — */
+/* ── Content column gap ── */
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--hero-content-gap);
+}
+
+/* ── Text inside any hero always white ── */
+.hero-section h1, .hero-section h2, .hero-section p,
+.hero h1,         .hero h2,         .hero p,
+.page-hero h1,    .page-hero h2,    .page-hero p {
+  color: #fff;
 }
 
 /* 💻 تابلت (641px – 1024px) */

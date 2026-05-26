@@ -5,17 +5,10 @@
 
 /* ملاحظة: الارتفاع والحشو والمحاذاة يتحكم بها styles.css (.hero-section, .hero)
    هنا فقط تصميم الـ Hero الخاص بصفحات الدليل */
-/* الارتفاع والحشو والمحاذاة يتحكم بها :root في styles.css */
+/* الارتفاع والخلفية والحشو يتحكم بها styles.css (Unified Hero System) */
 .hero {
   padding-left: 20px;
   padding-right: 20px;
-
-  background:
-    radial-gradient(circle at top left,  #4f46e5, transparent 40%),
-    radial-gradient(circle at bottom right, #c026d3, transparent 40%),
-    linear-gradient(135deg, #111827, #4f46e5, #7e22ce);
-
-  color: white;
   text-align: center;
 }
 

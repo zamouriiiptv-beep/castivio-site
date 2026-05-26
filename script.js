@@ -550,46 +550,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ========================================================= */
-/* ✦ Hero Premium Dark — particles + transparent navbar       */
+/* ✦ Hero Premium Dark — Unified System                       */
+/*   • injects hp-bg into every .hero-section / .hero        */
+/*   • generates particles per hero                          */
+/*   • transparent navbar scroll behaviour                   */
 /* ========================================================= */
 (function () {
-  const reduceMotion = window.matchMedia &&
+  var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function initHeroParticles() {
-    const layer = document.getElementById('hpParticles');
-    if (!layer || reduceMotion) return;
-    const count = window.innerWidth < 640 ? 14 : 28;
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement('span');
+  /* ── Particles into any layer element ── */
+  function spawnParticles(layer) {
+    if (reduceMotion) return;
+    var count = window.innerWidth < 640 ? 10 : 22;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement('span');
       p.className = 'hp-particle';
-      const size = (Math.random() * 2.5 + 1.5).toFixed(2);
-      p.style.left = (Math.random() * 100).toFixed(2) + '%';
-      p.style.width = size + 'px';
-      p.style.height = size + 'px';
-      p.style.animationDuration = (Math.random() * 10 + 9).toFixed(2) + 's';
-      p.style.animationDelay = (-Math.random() * 18).toFixed(2) + 's';
-      p.style.opacity = (Math.random() * 0.5 + 0.3).toFixed(2);
+      var size = (Math.random() * 2.5 + 1.5).toFixed(2);
+      p.style.left             = (Math.random() * 100).toFixed(2) + '%';
+      p.style.width            = size + 'px';
+      p.style.height           = size + 'px';
+      p.style.animationDuration= (Math.random() * 10 + 9).toFixed(2) + 's';
+      p.style.animationDelay   = (-Math.random() * 18).toFixed(2) + 's';
+      p.style.opacity          = (Math.random() * 0.5 + 0.3).toFixed(2);
       frag.appendChild(p);
     }
     layer.appendChild(frag);
   }
 
+  /* ── Inject hp-bg into a hero element that doesn't already have one ── */
+  function injectHeroBg(heroEl) {
+    if (heroEl.querySelector(':scope > .hp-bg')) return; // already done
+
+    /* Hide old background elements (absolute, aria-hidden, direct children) */
+    Array.prototype.forEach.call(heroEl.children, function (child) {
+      if (child.getAttribute('aria-hidden') === 'true' &&
+          !child.classList.contains('hp-bg')) {
+        child.style.cssText += ';display:none!important';
+      }
+    });
+
+    /* Build the background layer */
+    var bg = document.createElement('div');
+    bg.className = 'hp-bg';
+    bg.setAttribute('aria-hidden', 'true');
+    bg.innerHTML =
+      '<div class="hp-grid"></div>' +
+      '<div class="hp-glow hp-glow--core"></div>' +
+      '<div class="hp-glow hp-glow--left"></div>' +
+      '<div class="hp-glow hp-glow--right"></div>' +
+      '<div class="hp-beam"></div>' +
+      '<span class="hp-orb hp-orb--1"></span>' +
+      '<span class="hp-orb hp-orb--2"></span>' +
+      '<span class="hp-orb hp-orb--3"></span>' +
+      '<span class="hp-orb hp-orb--4"></span>' +
+      '<div class="hp-particles"></div>' +
+      '<div class="hp-vignette"></div>';
+
+    heroEl.insertBefore(bg, heroEl.firstChild);
+
+    spawnParticles(bg.querySelector('.hp-particles'));
+  }
+
+  /* ── Apply unified hero system to all matching sections ── */
+  function initUnifiedHero() {
+    var hpHome = document.querySelector('.hp-hero'); // Arabic page
+    document.querySelectorAll(
+      '.hero-section, .hero, .page-hero, header.hero'
+    ).forEach(function (el) {
+      if (el === hpHome || el.classList.contains('hp-hero')) return;
+      injectHeroBg(el);
+    });
+
+    /* Particles for the Arabic page (uses legacy id) */
+    var arLayer = document.getElementById('hpParticles');
+    if (arLayer) spawnParticles(arLayer);
+  }
+
+  /* ── Transparent navbar scrolls to solid on the AR homepage ── */
   function initNavbarScroll() {
-    if (!document.body.classList.contains('hp-home')) return;
-    const header = document.getElementById('header');
-    const hero = document.getElementById('home');
+    var header = document.getElementById('header');
+    var hero   = document.getElementById('home');
     if (!header || !hero) return;
-    const onScroll = () => {
-      const past = window.scrollY > (hero.offsetHeight - 120);
+
+    /* Dark navbar for any page with a unified hero */
+    if (document.querySelector('.hero-section, .hero, .page-hero, .hp-hero')) {
+      header.classList.add('hp-scrolled-ready');
+    }
+
+    if (!document.body.classList.contains('hp-home')) return;
+    var onScroll = function () {
+      var past = window.scrollY > (hero.offsetHeight - 120);
       header.classList.toggle('hp-scrolled', past);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  function start() { initHeroParticles(); initNavbarScroll(); }
+  function start() {
+    initUnifiedHero();
+    initNavbarScroll();
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
