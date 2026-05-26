@@ -2313,6 +2313,9 @@ div:has(> #price-val-pro)     span {
   box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset,
               0 10px 34px rgba(123,47,255,0.55),
               0 0 60px rgba(176,38,255,0.35);
+  /* Premium, slow, cinematic glow-pulse */
+  animation: hp-pulse-cta 2.8s ease-in-out infinite;
+  will-change: transform, box-shadow;
 }
 .hp-btn--primary::after {
   content: "";
@@ -2320,11 +2323,30 @@ div:has(> #price-val-pro)     span {
   background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, transparent 55%);
 }
 .hp-btn--primary:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px) scale(1.04) !important;
   color: #fff;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.18) inset,
-              0 16px 46px rgba(123,47,255,0.7),
-              0 0 90px rgba(176,38,255,0.5);
+  animation-play-state: paused;   /* settle on hover for an elegant feel */
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.22) inset,
+              0 18px 52px rgba(123,47,255,0.78),
+              0 0 110px rgba(176,38,255,0.62) !important;
+}
+
+/* Soft purple breathing: gentle glow + faint scale + subtle lighting */
+@keyframes hp-pulse-cta {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset,
+                0 10px 34px rgba(123,47,255,0.50),
+                0 0 46px rgba(176,38,255,0.28);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.18) inset,
+                0 14px 44px rgba(123,47,255,0.72),
+                0 0 82px rgba(176,38,255,0.58);
+    filter: brightness(1.06);
+  }
 }
 .hp-btn--ghost {
   color: #e7ddf7;
@@ -2544,6 +2566,7 @@ body.hp-home #why-us > * { position: relative; z-index: 1; }
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hp-glow--core, .hp-glow--left, .hp-glow--right, .hp-beam,
-  .hp-orb, .hp-particle, .hp-badge-dot, .hp-scroll-mouse::after { animation: none !important; }
+  .hp-orb, .hp-particle, .hp-badge-dot, .hp-scroll-mouse::after,
+  .hp-btn--primary { animation: none !important; }
   .hp-reveal { opacity: 1; transform: none; animation: none; }
 }
