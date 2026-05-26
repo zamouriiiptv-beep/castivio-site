@@ -613,19 +613,23 @@ document.addEventListener('DOMContentLoaded', () => {
     spawnParticles(bg.querySelector('.hp-particles'));
   }
 
-  /* ── Apply unified hero system to all matching sections ── */
+  /* ── Populate particles in ALL hero sections on this page ── */
+  function initAllParticles() {
+    document.querySelectorAll('.hp-particles').forEach(function (layer) {
+      if (layer.dataset.loaded) return;
+      layer.dataset.loaded = '1';
+      spawnParticles(layer);
+    });
+  }
+
+  /* ── Fallback: inject hp-bg into any legacy .hero-section still without it ── */
   function initUnifiedHero() {
-    var hpHome = document.querySelector('.hp-hero'); // Arabic page
     document.querySelectorAll(
-      '.hero-section, .hero, .page-hero, header.hero'
+      '.hero-section, .hero:not(.hp-hero), .page-hero, header.hero'
     ).forEach(function (el) {
-      if (el === hpHome || el.classList.contains('hp-hero')) return;
+      if (el.classList.contains('hp-hero')) return;
       injectHeroBg(el);
     });
-
-    /* Particles for the Arabic page (uses legacy id) */
-    var arLayer = document.getElementById('hpParticles');
-    if (arLayer) spawnParticles(arLayer);
   }
 
   /* ── Transparent navbar scrolls to solid on the AR homepage ── */
@@ -649,7 +653,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function start() {
-    initUnifiedHero();
+    initAllParticles();   // works for every .hp-hero on every page
+    initUnifiedHero();    // fallback for any remaining legacy hero sections
     initNavbarScroll();
   }
 
