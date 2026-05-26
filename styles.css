@@ -2795,6 +2795,73 @@ body:not(:has(.hp-hero)) #header {
   .hp-inner { gap: 12px; }
 }
 
+/* ══ Mobile Landscape — phone rotated sideways ══════════════════
+   Targets any device with viewport height ≤ 600px in landscape.
+   Does NOT affect portrait mode — safe for all vertical layouts.
+   ═══════════════════════════════════════════════════════════════ */
+@media (orientation: landscape) and (max-height: 600px) {
+
+  /* 1 · Slim the top chrome to recover vertical space */
+  #language-bar {
+    height: 26px !important;
+    line-height: 26px !important;
+  }
+  #header {
+    top: 26px !important;
+  }
+  #logo-img {
+    height: 24px !important;
+    width:  24px !important;
+  }
+  #logo-name span {
+    font-size: 0.88rem !important;
+  }
+  #header > .container,
+  #header .header-inner {
+    padding-top:    4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  /* 2 · Hero: fill full viewport height, content starts below slim chrome */
+  .hp-hero {
+    min-height: 100svh;
+    padding: 70px 24px 8px;
+    justify-content: flex-start;
+  }
+
+  /* 3 · Scale down content elements to fit the short viewport */
+  .hp-inner      { gap: 8px;  max-width: 620px; }
+  .hp-badge      { font-size: 10px; padding: 4px 12px; gap: 6px; }
+  .hp-title      { font-size: clamp(18px, 4.2vw, 26px); line-height: 1.14; }
+  .hp-title-sub  { font-size: clamp(12px, 2.6vw, 17px); margin-top: 2px; }
+  .hp-desc       { font-size: clamp(11.5px, 1.7vw, 13.5px); line-height: 1.42; max-width: 500px; }
+  .hp-br         { display: none; }
+  .hp-cta        { gap: 8px; }
+  .hp-btn        { padding: 8px 18px; font-size: 13px; }
+  .hp-btn i      { font-size: 11px; }
+  .hp-chip       { font-size: 10px; padding: 4px 10px; gap: 4px; }
+  .hp-chip i     { font-size: 9px; }
+  .hp-chips-row  { gap: 6px; }
+  .hp-chips      { gap: 6px; }
+
+  /* 4 · Reduce glow size so it doesn't dominate on small screens */
+  .hp-glow--core  { width: 240px; height: 240px; }
+  .hp-glow--left,
+  .hp-glow--right { width: 160px; height: 160px; }
+
+  /* 5 · Hide scroll cue — no room in landscape */
+  .hp-scroll { display: none; }
+
+  /* 6 · Latin: clamp description to 2 lines max */
+  :not(:lang(ar)) .hp-desc {
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════
    Cinematic transition: dark hero → light section
    ── Universal (all pages) ──────────────────────────────────────
