@@ -547,3 +547,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 }); // END DOMContentLoaded
+
+
+/* ========================================================= */
+/* ✦ Hero Premium Dark — particles + transparent navbar       */
+/* ========================================================= */
+(function () {
+  const reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function initHeroParticles() {
+    const layer = document.getElementById('hpParticles');
+    if (!layer || reduceMotion) return;
+    const count = window.innerWidth < 640 ? 14 : 28;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span');
+      p.className = 'hp-particle';
+      const size = (Math.random() * 2.5 + 1.5).toFixed(2);
+      p.style.left = (Math.random() * 100).toFixed(2) + '%';
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.animationDuration = (Math.random() * 10 + 9).toFixed(2) + 's';
+      p.style.animationDelay = (-Math.random() * 18).toFixed(2) + 's';
+      p.style.opacity = (Math.random() * 0.5 + 0.3).toFixed(2);
+      frag.appendChild(p);
+    }
+    layer.appendChild(frag);
+  }
+
+  function initNavbarScroll() {
+    if (!document.body.classList.contains('hp-home')) return;
+    const header = document.getElementById('header');
+    const hero = document.getElementById('home');
+    if (!header || !hero) return;
+    const onScroll = () => {
+      const past = window.scrollY > (hero.offsetHeight - 120);
+      header.classList.toggle('hp-scrolled', past);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  function start() { initHeroParticles(); initNavbarScroll(); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();

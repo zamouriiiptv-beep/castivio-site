@@ -252,7 +252,7 @@
 </script>
 </head>
 
-<body class="bg-gray-50 relative">
+<body class="bg-gray-50 relative hp-home">
 
 <!-- 🚨🚨 بداية شريط اللغة مع الأعلام ⚑ 🚨🚨 -->
 
@@ -392,71 +392,79 @@
 </div>
 <!-- 🚨🚨 نهاية قسم الهيدر 🚨🚨 -->
 <main>
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<section id="home" class="hv8-section" aria-label="القسم الرئيسي">
+<!-- 🚨🚨 بداية القسم الرئيسي — Hero Premium Dark (hp-) 🏠 🎬 🚨🚨 -->
+<section id="home" class="hp-hero" aria-label="القسم الرئيسي">
 
-  <!-- ░ Background ░ -->
-  <div class="hv8-bg" aria-hidden="true"></div>
+  <!-- ════ Background layers ════ -->
+  <div class="hp-bg" aria-hidden="true">
+    <div class="hp-grid"></div>
+    <div class="hp-glow hp-glow--core"></div>
+    <div class="hp-glow hp-glow--left"></div>
+    <div class="hp-glow hp-glow--right"></div>
+    <div class="hp-beam"></div>
 
-  <!-- ░ Decorative spheres ░ -->
-  <div class="hv8-sphere hv8-s-left"  aria-hidden="true"></div>
-  <div class="hv8-sphere hv8-s-right" aria-hidden="true"></div>
-  <div class="hv8-sphere hv8-s-top"   aria-hidden="true"></div>
+    <!-- Floating orbs -->
+    <span class="hp-orb hp-orb--1"></span>
+    <span class="hp-orb hp-orb--2"></span>
+    <span class="hp-orb hp-orb--3"></span>
+    <span class="hp-orb hp-orb--4"></span>
 
-  <!-- ░ Subtle arc lines ░ -->
-  <svg class="hv8-arcs" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-    <circle cx="180" cy="350" r="220" fill="none" stroke="rgba(139,92,246,0.07)" stroke-width="1"/>
-    <circle cx="180" cy="350" r="310" fill="none" stroke="rgba(139,92,246,0.04)" stroke-width="1"/>
-    <circle cx="1020" cy="370" r="280" fill="none" stroke="rgba(99,102,241,0.06)" stroke-width="1"/>
-  </svg>
+    <!-- JS-generated particles -->
+    <div class="hp-particles" id="hpParticles"></div>
 
-  <!-- ░ Content ░ -->
-  <div class="hv8-inner">
+    <div class="hp-vignette"></div>
+  </div>
 
-    <!-- 1 · Badge -->
-    <div class="hv8-badge">
-      <i class="fas fa-gem hv8-badge-icon"></i>
-      Premium Streaming Platform
-      <span class="hv8-badge-dot"></span>
+  <!-- ════ Content ════ -->
+  <div class="hp-inner">
+
+    <!-- 1 · Premium badge -->
+    <div class="hp-badge hp-reveal" style="--d:0ms">
+      <span class="hp-badge-dot"></span>
+      <i class="fas fa-gem hp-badge-gem"></i>
+      <span>منصّة بث عالمية بريميوم</span>
     </div>
 
-    <!-- 2 · Headline -->
-    <h1 class="hv8-h1">
-      أفضل منصة <span class="hv8-hl">Streaming</span> عالمية
-      <span class="hv8-sub">بتجربة فائقة السرعة</span>
+    <!-- 2 · Headline (عربي + English mix) -->
+    <h1 class="hp-title hp-reveal" style="--d:90ms">
+      أفضل منصة <span class="hp-grad">Streaming</span> عالمية
+      <span class="hp-title-sub">بتجربة فائقة السرعة</span>
     </h1>
 
-    <!-- 3 · Description -->
-    <p class="hv8-desc">
-      استمتع بتجربة مشاهدة حديثة، جودة عالية،<br>
-      ودعم لجميع أجهزتك الذكية.
+    <!-- 3 · Subtitle -->
+    <p class="hp-desc hp-reveal" style="--d:180ms">
+      استمتع بتجربة مشاهدة سينمائية حديثة بجودة فائقة الوضوح،
+      <br class="hp-br">
+      بثٌّ مستقر بلا تقطيع ودعمٌ لجميع أجهزتك الذكية.
     </p>
 
-    <!-- 4 · Buttons -->
-    <div class="hv8-cta">
+    <!-- 4 · CTA buttons -->
+    <div class="hp-cta hp-reveal" style="--d:270ms">
       <a href="https://wa.me/212666686732" target="_blank" rel="noopener noreferrer"
-         class="hv8-btn-primary">
-        <i class="fas fa-play"></i> جرّب مجاناً
+         class="hp-btn hp-btn--primary">
+        <i class="fas fa-play"></i>
+        <span>جرّب مجاناً</span>
       </a>
-      <a href="#pricing" class="hv8-btn-outline">
-        <i class="fas fa-crown"></i> اشترك الآن
+      <a href="#pricing" class="hp-btn hp-btn--ghost">
+        <i class="fas fa-crown"></i>
+        <span>اشترك الآن</span>
       </a>
     </div>
 
-    <!-- 5 · Keyword pills -->
-    <div class="hv8-pills">
-      <span class="hv8-pill"><i class="fas fa-bolt"></i>Fast</span>
-      <span class="hv8-pill"><i class="fas fa-gem"></i>Ultra Quality</span>
-      <span class="hv8-pill"><i class="fas fa-mobile-alt"></i>Smart Devices</span>
-      <span class="hv8-pill"><i class="fas fa-shield-alt"></i>Secure</span>
+    <!-- 5 · Feature chips -->
+    <div class="hp-chips hp-reveal" style="--d:360ms">
+      <span class="hp-chip"><i class="fas fa-bolt"></i>سريع</span>
+      <span class="hp-chip"><i class="fas fa-gem"></i>جودة فائقة</span>
+      <span class="hp-chip"><i class="fas fa-mobile-screen-button"></i>أجهزة ذكية</span>
+      <span class="hp-chip"><i class="fas fa-shield-halved"></i>آمن</span>
     </div>
 
   </div>
+
+  <!-- Scroll cue -->
+  <a href="#why-us" class="hp-scroll hp-reveal" style="--d:480ms" aria-label="انتقل للأسفل">
+    <span class="hp-scroll-mouse"></span>
+  </a>
 </section>
 <!-- 🚨🚨 نهاية القسم الرئيسي 🏠 🎬 🚨🚨 -->
 <!-- 🚨🚨 بداية قسم المميزات ⭐ (UPDATED) 🚨🚨 -->
