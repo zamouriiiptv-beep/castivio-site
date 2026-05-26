@@ -103,15 +103,20 @@ a.button {
   --hero-height-guide-md: 500px;
 
   /* 🎯 Unified Hero System — مصدر واحد للتحكم في كل صفحات الموقع */
-  --hero-min-mobile:  62vh;
-  --hero-min-tablet:  75vh;
-  --hero-min-desktop: 100vh;
-  --hero-pt-mobile:   72px;
-  --hero-pb-mobile:   32px;
-  --hero-pt-tablet:   100px;
-  --hero-pb-tablet:   48px;
-  --hero-pt-desktop:  120px;
-  --hero-pb-desktop:  80px;
+  --hero-min-mobile:    62vh;
+  --hero-min-tablet:    75vh;
+  --hero-min-desktop:   90vh;
+  --hero-pt-mobile:     90px;
+  --hero-pb-mobile:     40px;
+  --hero-pt-tablet:     104px;
+  --hero-pb-tablet:     52px;
+  --hero-pt-desktop:    120px;
+  --hero-pb-desktop:    80px;
+
+  /* 📐 Hero Content — عرض المحتوى الداخلي */
+  --hero-content-max-w: 860px;
+  --hero-content-gap:   28px;
+  --hero-content-gap-mob: 18px;
 
   /* 🎯 الألوان الأساسية */
   --prime-purple: #5B16A3;
@@ -1784,39 +1789,74 @@ section > *:last-child {
    – ضبط المسافات للهاتف والكمبيوتر */
 /* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
 
-/* 🎯 Unified Hero System — ارتفاع وتباعد موحّد لكل الصفحات */
+/* ═══════════════════════════════════════════════════════════
+   🏠 UNIFIED HERO SYSTEM — نظام Hero موحّد إجباري
+   عدّل القيم في :root أعلاه فقط — لا تعدّل هنا
+═══════════════════════════════════════════════════════════ */
+
 .hero-section,
-.hero {
-  width: 100%;
-  min-height: var(--hero-min-desktop);
-  min-height: min(var(--hero-min-desktop), 100svh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--hero-pt-desktop);
-  padding-bottom: var(--hero-pb-desktop);
-  box-sizing: border-box;
+.hero,
+.page-hero,
+header.hero {
+  width: 100% !important;
+  min-height: var(--hero-min-desktop) !important;
+  min-height: min(var(--hero-min-desktop), 100svh) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: var(--hero-pt-desktop) !important;
+  padding-bottom: var(--hero-pb-desktop) !important;
+  box-sizing: border-box !important;
+  position: relative;
+  overflow: hidden;
 }
 
-/* 💻 تابلت */
+/* — المحتوى الداخلي — */
+.hero-section > .container,
+.hero-section > div:not([aria-hidden="true"]):first-of-type,
+.hero > .hero-content,
+.page-hero > .hero-content {
+  width: 100%;
+  max-width: var(--hero-content-max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* — المسافة بين العناصر الداخلية — */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hero-content-gap);
+}
+
+/* 💻 تابلت (641px – 1024px) */
 @media (max-width: 1024px) {
   .hero-section,
-  .hero {
-    min-height: var(--hero-min-tablet);
-    min-height: min(var(--hero-min-tablet), 100svh);
-    padding-top: var(--hero-pt-tablet);
-    padding-bottom: var(--hero-pb-tablet);
+  .hero,
+  .page-hero,
+  header.hero {
+    min-height: var(--hero-min-tablet) !important;
+    min-height: min(var(--hero-min-tablet), 100svh) !important;
+    padding-top: var(--hero-pt-tablet) !important;
+    padding-bottom: var(--hero-pb-tablet) !important;
   }
 }
 
-/* 📱 الهاتف */
+/* 📱 هاتف (≤ 640px) */
 @media (max-width: 640px) {
   .hero-section,
-  .hero {
-    min-height: var(--hero-min-mobile);
-    min-height: min(var(--hero-min-mobile), 100svh);
-    padding-top: var(--hero-pt-mobile);
-    padding-bottom: var(--hero-pb-mobile);
+  .hero,
+  .page-hero,
+  header.hero {
+    min-height: var(--hero-min-mobile) !important;
+    min-height: min(var(--hero-min-mobile), 100svh) !important;
+    padding-top: var(--hero-pt-mobile) !important;
+    padding-bottom: var(--hero-pb-mobile) !important;
+  }
+
+  .hero-content {
+    gap: var(--hero-content-gap-mob);
   }
 }
 /* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
