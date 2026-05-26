@@ -2633,37 +2633,51 @@ div:has(> #price-val-pro)     span {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   Transparent navbar over the dark hero (scoped to body.hp-home)
+   Dark glassmorphism navbar — UNIVERSAL (all pages)
+   Pages with hp-hero: transparent → solid on scroll (via JS)
+   Pages without hp-hero: start solid (body:not(:has(.hp-hero)))
    ════════════════════════════════════════════════════════════════ */
-body.hp-home #language-bar {
+
+/* Language bar — dark glass strip */
+#language-bar {
   background: rgba(10,4,24,0.55) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: none;
+  box-shadow: none !important;
   border-bottom: 1px solid rgba(176,38,255,0.18);
 }
-body.hp-home #header {
+
+/* Header — transparent over dark hero, smooth transition */
+#header {
   background: transparent !important;
   box-shadow: none !important;
   transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
 }
-/* Logo + links light over the dark hero */
-body.hp-home #header #logo-name span { color: #fff !important; }
-body.hp-home #header .nav-link {
-  color: #d6ccef !important;
-  transition: color .2s ease;
-}
-body.hp-home #header .nav-link:hover { color: #fff !important; }
-body.hp-home #header #menu-btn { color: #fff !important; }
 
-/* When scrolled past the hero, give the navbar a solid glass bar */
-body.hp-home #header.hp-scrolled {
+/* Logo + nav-links always white */
+#header #logo-name span  { color: #fff !important; }
+#header .nav-link        { color: #d6ccef !important; transition: color .2s ease; }
+#header .nav-link:hover  { color: #fff !important; }
+#header #menu-btn        { color: #fff !important; }
+
+/* Solid dark glass once scrolled past the hero */
+#header.hp-scrolled {
   background: rgba(8,3,20,0.82) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45) !important;
   border-bottom: 1px solid rgba(176,38,255,0.18);
 }
+
+/* Pages with no hp-hero (terms / privacy / 404 / etc.): start solid */
+body:not(:has(.hp-hero)) #header {
+  background: rgba(8,3,20,0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
+  border-bottom: 1px solid rgba(176,38,255,0.18);
+}
+
 
 /* ════ Responsive ════ */
 /* ── Tablet: ~75vh, tighter spacing ── */

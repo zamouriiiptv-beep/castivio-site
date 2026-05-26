@@ -632,18 +632,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Transparent navbar scrolls to solid on the AR homepage ── */
+  /* ── Navbar: transparent over hero → solid glass on scroll (all pages) ── */
   function initNavbarScroll() {
     var header = document.getElementById('header');
-    var hero   = document.getElementById('home');
-    if (!header || !hero) return;
-
-    /* Dark navbar for any page with a unified hero */
-    if (document.querySelector('.hero-section, .hero, .page-hero, .hp-hero')) {
-      header.classList.add('hp-scrolled-ready');
-    }
-
-    if (!document.body.classList.contains('hp-home')) return;
+    var hero   = document.querySelector('.hp-hero');
+    if (!header || !hero) return;   /* no hero → CSS handles static solid state */
     var onScroll = function () {
       var past = window.scrollY > (hero.offsetHeight - 120);
       header.classList.toggle('hp-scrolled', past);
