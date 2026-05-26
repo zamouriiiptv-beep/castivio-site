@@ -2452,31 +2452,48 @@ body.hp-home #header.hp-scrolled {
   .hp-scroll     { bottom: 18px; }
 }
 
-/* ── Phone: compact ~60vh, content hugs top (below navbar), no big gaps ── */
+/* ── Phone: balanced ~66vh, content hugs top (below navbar), premium spacing ── */
 @media (max-width: 640px) {
   .hp-hero {
-    min-height: 58vh;
-    min-height: 58svh;
+    min-height: 66vh;
+    min-height: 66svh;
     justify-content: flex-start;   /* avoid centering gap + content hidden behind navbar */
-    padding: 116px 16px 26px;
+    padding: 104px 16px 30px;
   }
-  .hp-inner      { gap: 13px; max-width: 460px; }
-  .hp-title-sub  { margin-top: 7px; }
-  .hp-desc       { line-height: 1.8; }
+  .hp-inner      { gap: 15px; max-width: 460px; }
+  .hp-title-sub  { margin-top: 6px; }
+  .hp-desc       { line-height: 1.55; max-width: 420px; }
   .hp-br         { display: none; }
+  .hp-glow       { opacity: 0.6; }        /* lighter glow, still present */
   .hp-glow--core { width: 320px; height: 320px; }
   .hp-glow--left,
   .hp-glow--right{ width: 210px; height: 210px; }
   .hp-orb        { transform: scale(0.7); }
   .hp-cta        { width: 100%; gap: 10px; }
   .hp-btn        { flex: 1; justify-content: center; min-width: 140px; padding: 12px 22px; font-size: 14.5px; }
-  .hp-scroll     { display: none; }   /* free up bottom space */
+  .hp-scroll     { display: none; }       /* free up bottom space */
 }
 
 /* ── Very small phones: trim a touch more ── */
 @media (max-width: 380px) {
-  .hp-hero  { padding-top: 110px; }
-  .hp-inner { gap: 11px; }
+  .hp-hero  { padding-top: 100px; }
+  .hp-inner { gap: 13px; }
+}
+
+/* ── Smooth, slightly overlapping transition into the next section ── */
+body.hp-home #why-us {
+  position: relative;
+  z-index: 2;
+  margin-top: -34px;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+@media (min-width: 1024px) {
+  body.hp-home #why-us {
+    margin-top: -44px;
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+  }
 }
 
 /* Respect reduced-motion preferences */
