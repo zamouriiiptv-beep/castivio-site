@@ -2506,7 +2506,8 @@ body.hp-home #header.hp-scrolled {
 body.hp-home #why-us {
   position: relative;
   z-index: 2;
-  margin-top: -38px;
+  margin-top: -26px;          /* gentle overlap, section starts higher */
+  padding-top: 14px;          /* pull section content up, less gap */
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   /* off-white → light-purple instead of pure white */
@@ -2532,7 +2533,8 @@ body.hp-home #why-us > * { position: relative; z-index: 1; }
 
 @media (min-width: 1024px) {
   body.hp-home #why-us {
-    margin-top: -52px;
+    margin-top: -30px;          /* gentle overlap on larger screens */
+    padding-top: 52px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
   }
