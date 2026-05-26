@@ -2707,10 +2707,15 @@ body.hp-home #header.hp-scrolled {
 
 /* ════════════════════════════════════════════════════════════════
    Cinematic transition: dark hero → light section
-   Purple glow wash at hero bottom + rounded panel rising with overlap
+   ── Universal (all pages) ──────────────────────────────────────
+   .hp-hero::after      : purple wash at hero bottom
+   .hp-hero + section   : rounded rising panel on every page
+   ── AR page override ──────────────────────────────────────────
+   body.hp-home #why-us : same system but with light-purple bg added
+   (higher specificity → overrides the universal rule automatically)
    ════════════════════════════════════════════════════════════════ */
 
-/* Soft purple-to-dark fade at the very bottom of the hero (behind content) */
+/* ── 1 · Soft purple-to-dark fade at the very bottom of the hero ── */
 .hp-hero::after {
   content: "";
   position: absolute;
@@ -2724,6 +2729,49 @@ body.hp-home #header.hp-scrolled {
     rgba(176,38,255,0.16) 100%);
 }
 
+/* ── 2 · UNIVERSAL: any section immediately after a hp-hero ──
+   Works on EN / FR / DE / ES / IT / NL / PT / TR and all sub-pages.
+   AR page keeps body.hp-home #why-us (higher specificity → wins). */
+.hp-hero + section {
+  position: relative;
+  z-index: 2;
+  margin-top: -26px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 -26px 60px -22px rgba(123,47,255,0.45);
+}
+
+.hp-hero + section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 180px;
+  pointer-events: none;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background: radial-gradient(70% 150% at 50% 0%,
+    rgba(123,47,255,0.12) 0%,
+    rgba(176,38,255,0.05) 40%,
+    transparent 72%);
+  z-index: 0;
+}
+
+.hp-hero + section > * { position: relative; z-index: 1; }
+
+@media (min-width: 1024px) {
+  .hp-hero + section {
+    margin-top: -30px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+  .hp-hero + section::before {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    height: 220px;
+  }
+}
+
+/* ── 3 · AR page override (body.hp-home #why-us) — adds light-purple bg ── */
 /* The next section rises over the hero with a slight overlap */
 body.hp-home #why-us {
   position: relative;
