@@ -2458,13 +2458,13 @@ body.hp-home #header.hp-scrolled {
 /* ── Phone: balanced ~66vh, content hugs top (below navbar), premium spacing ── */
 @media (max-width: 640px) {
   .hp-hero {
-    min-height: 66vh;
-    min-height: 66svh;
+    min-height: 60vh;
+    min-height: 60svh;
     justify-content: flex-start;   /* content hugs the top, just below the navbar */
-    padding: 88px 16px 26px;
+    padding: 74px 16px 14px;
   }
-  .hp-inner      { gap: 15px; max-width: 460px; }
-  .hp-title-sub  { margin-top: 6px; }
+  .hp-inner      { gap: 13px; max-width: 460px; }
+  .hp-title-sub  { margin-top: 5px; }
   .hp-desc       { line-height: 1.55; max-width: 320px; }
   .hp-br         { display: none; }
   .hp-glow       { opacity: 0.6; }        /* lighter glow, still present */
@@ -2479,8 +2479,8 @@ body.hp-home #header.hp-scrolled {
 
 /* ── Very small phones: trim a touch more ── */
 @media (max-width: 380px) {
-  .hp-hero  { padding-top: 84px; }
-  .hp-inner { gap: 13px; }
+  .hp-hero  { padding-top: 64px; }
+  .hp-inner { gap: 12px; }
 }
 
 /* ════════════════════════════════════════════════════════════════
