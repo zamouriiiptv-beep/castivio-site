@@ -102,6 +102,17 @@ a.button {
   --hero-height-guide: 455px;
   --hero-height-guide-md: 500px;
 
+  /* 🎯 Unified Hero System — مصدر واحد للتحكم في كل صفحات الموقع */
+  --hero-min-mobile:  62vh;
+  --hero-min-tablet:  75vh;
+  --hero-min-desktop: 100vh;
+  --hero-pt-mobile:   72px;
+  --hero-pb-mobile:   32px;
+  --hero-pt-tablet:   100px;
+  --hero-pb-tablet:   48px;
+  --hero-pt-desktop:  120px;
+  --hero-pb-desktop:  80px;
+
   /* 🎯 الألوان الأساسية */
   --prime-purple: #5B16A3;
   --prime-purple-light: #7A3CEB;
@@ -1773,26 +1784,39 @@ section > *:last-child {
    – ضبط المسافات للهاتف والكمبيوتر */
 /* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
 
-/* 🎯 ارتفاع موحّد للـ Hero في كامل الموقع — مصدر واحد للتحكم */
+/* 🎯 Unified Hero System — ارتفاع وتباعد موحّد لكل الصفحات */
 .hero-section,
 .hero {
   width: 100%;
-  min-height: 520px;
+  min-height: var(--hero-min-desktop);
+  min-height: min(var(--hero-min-desktop), 100svh);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 82px;
-  padding-bottom: 40px;
+  padding-top: var(--hero-pt-desktop);
+  padding-bottom: var(--hero-pb-desktop);
   box-sizing: border-box;
 }
 
-/* 📱 الهاتف */
-@media (max-width: 768px) {
+/* 💻 تابلت */
+@media (max-width: 1024px) {
   .hero-section,
   .hero {
-    min-height: auto;
-    padding-top: 72px;
-    padding-bottom: 28px;
+    min-height: var(--hero-min-tablet);
+    min-height: min(var(--hero-min-tablet), 100svh);
+    padding-top: var(--hero-pt-tablet);
+    padding-bottom: var(--hero-pb-tablet);
+  }
+}
+
+/* 📱 الهاتف */
+@media (max-width: 640px) {
+  .hero-section,
+  .hero {
+    min-height: var(--hero-min-mobile);
+    min-height: min(var(--hero-min-mobile), 100svh);
+    padding-top: var(--hero-pt-mobile);
+    padding-bottom: var(--hero-pb-mobile);
   }
 }
 /* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
