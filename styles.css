@@ -2586,6 +2586,7 @@ div:has(> #price-val-pro)     span {
   font-family: 'Tajawal', sans-serif;
   font-size: 13px;
   font-weight: 700;
+  white-space: nowrap;
   color: #cfc2ec;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(176,38,255,0.22);
