@@ -2484,10 +2484,19 @@ div:has(> #price-val-pro)     span {
   :not(:lang(ar)) .hp-title-sub {
     font-size: clamp(15px, 4.5vw, 24px);
   }
+  /* Clamp to 2 lines — matches Arabic compact script density on mobile */
   :not(:lang(ar)) .hp-desc {
     max-width: 100%;
     font-size: clamp(13.5px, 3.8vw, 16px);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+  /* Compact chips so all 3 fit on one row on narrow phones */
+  .hp-chip      { font-size: 11px; padding: 6px 12px; gap: 5px; }
+  .hp-chip i    { font-size: 10px; }
+  .hp-chips-row { gap: 8px; }
 }
 
 /* 4 · CTA buttons */
