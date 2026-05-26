@@ -1881,6 +1881,81 @@ header.hero {
 /* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
 /* ⭐ نهاية كود التحكم في حجم ومسافات الهيرو ⭐ */
 /* 🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧 */
+
+/* ═══════════════════════════════════════════════════════════
+   🖼  HERO VISUAL BALANCE — توازن بصري موحّد
+   يمنع العناصر الداخلية من تمديد ارتفاع الـ Hero
+═══════════════════════════════════════════════════════════ */
+
+/* ── Universal inner wrapper ── */
+.hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hero-content-gap, 26px);
+  box-sizing: border-box;
+}
+
+/* ── Visual elements (images · mockups · preview cards · SVG) ── */
+.hero-visual,
+.hp-hero    img, .hp-hero    video, .hp-hero    svg:not(.hp-grid),
+.hero-section img, .hero-section video,
+.hero       img, .hero       video {
+  max-height: 280px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Spacing: title — description — buttons — chips ── */
+
+/* Title: controlled by parent gap; no extra margin */
+.hp-title, .hero-title,
+.hero-section h1, .hero h1, .page-hero h1 { margin: 0; }
+
+/* Description: capped width + comfortable line-height */
+.hp-desc, .hero-description,
+.hero-section > .container p:first-of-type,
+.hero-content p { max-width: 600px; line-height: 1.75; margin: 0; }
+
+/* CTA group: consistent gap + centered wrap */
+.hp-cta, .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* Chips / badges row */
+.hp-chips { gap: 10px; }
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .hero-visual,
+  .hp-hero    img, .hp-hero    video, .hp-hero    svg:not(.hp-grid),
+  .hero-section img, .hero-section video,
+  .hero       img, .hero       video { max-height: 220px; }
+
+  .hero-inner { gap: 20px; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .hero-visual,
+  .hp-hero    img, .hp-hero    video, .hp-hero    svg:not(.hp-grid),
+  .hero-section img, .hero-section video,
+  .hero       img, .hero       video { max-height: 160px; }
+
+  .hero-inner         { gap: 14px; padding: 0 16px; }
+  .hp-desc, .hero-description { max-width: 100%; }
+  .hp-cta, .hero-buttons { gap: 10px; }
+}
 /* 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 */
 /* 📱💻 إصلاح تمركز الهيدر (الهاتف + الكمبيوتر)
    – توسيط الشعار واسم الموقع
