@@ -2564,8 +2564,25 @@ div:has(> #price-val-pro)     span {
   box-shadow: 0 10px 34px rgba(123,47,255,0.3);
 }
 
-/* 5 · Feature chips */
-.hp-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+/* 5 · Feature chips — forced 3+1 grid layout (matches AR reference) */
+.hp-chips {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+  justify-content: center;
+}
+.hp-chips .hp-chip:nth-child(4) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+/* Mobile: revert to flex-wrap (grid 3-col overflows on very small screens) */
+@media (max-width: 480px) {
+  .hp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 .hp-chip {
   display: inline-flex;
   align-items: center;
