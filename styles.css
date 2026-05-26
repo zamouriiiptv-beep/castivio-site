@@ -2460,8 +2460,8 @@ body.hp-home #header.hp-scrolled {
   .hp-hero {
     min-height: 66vh;
     min-height: 66svh;
-    justify-content: flex-start;   /* avoid centering gap + content hidden behind navbar */
-    padding: 104px 16px 30px;
+    justify-content: flex-start;   /* content hugs the top, just below the navbar */
+    padding: 88px 16px 26px;
   }
   .hp-inner      { gap: 15px; max-width: 460px; }
   .hp-title-sub  { margin-top: 6px; }
@@ -2479,7 +2479,7 @@ body.hp-home #header.hp-scrolled {
 
 /* ── Very small phones: trim a touch more ── */
 @media (max-width: 380px) {
-  .hp-hero  { padding-top: 100px; }
+  .hp-hero  { padding-top: 84px; }
   .hp-inner { gap: 13px; }
 }
 
