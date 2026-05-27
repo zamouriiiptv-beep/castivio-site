@@ -45,11 +45,11 @@ footer::after {
   background: linear-gradient(180deg, rgba(4,1,14,0.65) 0%, transparent 100%);
 }
 
-/* ── 4 · Content above all pseudo-elements ── */
+/* ── 4 · Content above ambient layer ── */
 footer .container,
 footer > .container {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -189,10 +189,10 @@ footer .text-base {
    Injected by footer.js · softer/quieter than hero
    ═══════════════════════════════════════════════════════════════ */
 
-/* Container */
+/* Container — z-index:2 to render above footer .container (z-index:1) */
 .ft-ambient {
   position: absolute; inset: 0;
-  z-index: 0; pointer-events: none; overflow: hidden;
+  z-index: 2; pointer-events: none; overflow: hidden;
 }
 
 /* ── Floating orbs — same style as hero, slightly quieter ── */
