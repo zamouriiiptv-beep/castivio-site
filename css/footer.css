@@ -189,9 +189,10 @@ footer .text-base {
    ═══════════════════════════════════════════════════════════════ */
 
 @keyframes floatParticle {
-  0%   { transform: translateY(40px) translateX(0);   opacity: 0; }
-  20%  { opacity: 1; }
-  100% { transform: translateY(-500px) translateX(40px); opacity: 0; }
+  0%   { transform: translateY(0)      translateX(0);    opacity: 0; }
+  15%  { opacity: 0.85; }
+  85%  { opacity: 0.40; }
+  100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
 }
 
 .footer-particles {
@@ -204,22 +205,22 @@ footer .text-base {
 
 .particle {
   position: absolute;
-  bottom: 0;
   border-radius: 50%;
-  background: rgba(176, 38, 255, 0.75);
+  background: rgba(176, 38, 255, 0.80);
   filter: blur(2px);
   animation: floatParticle linear infinite;
   opacity: 0;
 }
 
-.p1 { width: 8px;  height: 8px;  left:  8%; animation-duration: 12s; animation-delay:  0s; }
-.p2 { width: 12px; height: 12px; left: 22%; animation-duration: 16s; animation-delay:  3s; }
-.p3 { width:  5px; height:  5px; left: 38%; animation-duration: 10s; animation-delay:  6s; }
-.p4 { width: 10px; height: 10px; left: 54%; animation-duration: 14s; animation-delay:  1s; }
-.p5 { width:  7px; height:  7px; left: 68%; animation-duration: 18s; animation-delay:  4s; }
-.p6 { width: 11px; height: 11px; left: 80%; animation-duration: 13s; animation-delay:  8s; }
-.p7 { width:  6px; height:  6px; left: 46%; animation-duration: 11s; animation-delay:  2s; }
-.p8 { width:  9px; height:  9px; left: 15%; animation-duration: 15s; animation-delay:  5s; }
+/* bottom = starting height — distributed across full footer */
+.p1 { width:  8px; height:  8px; left:  8%; bottom:  5%; animation-duration: 14s; animation-delay:  0s; }
+.p2 { width: 12px; height: 12px; left: 22%; bottom: 20%; animation-duration: 18s; animation-delay:  3s; }
+.p3 { width:  5px; height:  5px; left: 38%; bottom: 55%; animation-duration: 11s; animation-delay:  1s; }
+.p4 { width: 10px; height: 10px; left: 54%; bottom: 35%; animation-duration: 16s; animation-delay:  5s; }
+.p5 { width:  7px; height:  7px; left: 68%; bottom: 70%; animation-duration: 13s; animation-delay:  2s; }
+.p6 { width: 11px; height: 11px; left: 80%; bottom: 10%; animation-duration: 20s; animation-delay:  7s; }
+.p7 { width:  6px; height:  6px; left: 46%; bottom: 80%; animation-duration: 12s; animation-delay:  4s; }
+.p8 { width:  9px; height:  9px; left: 15%; bottom: 45%; animation-duration: 15s; animation-delay:  6s; }
 
 /* ═══════════════════════════════════════════════════════════════
    Mobile compact footer (preserved from original)
