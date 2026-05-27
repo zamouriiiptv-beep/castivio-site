@@ -2822,18 +2822,17 @@ body:not(:has(.hp-hero)) #header {
     padding-bottom: 4px !important;
   }
 
-  /* 2 · Hero: fill viewport; center content in usable area below chrome */
+  /* 2 · Hero: column-flex so align-items=center means horizontal, immune to RTL */
   .hp-hero {
     min-height: 100svh;
-    /* Top = chrome height (26px bar + ~50px nav). Bottom mirrors the top chrome
-       so the content sits in the true visual center of the usable space. */
-    padding: 76px 24px 76px;
-    justify-content: center;   /* horizontal center — RTL-safe */
-    align-items: center;       /* vertical center within padded area */
+    padding: 76px 24px;
+    flex-direction: column;  /* column: align-items controls horizontal, RTL has no effect */
+    justify-content: center; /* vertical center */
+    align-items: center;     /* TRUE horizontal center regardless of text direction */
   }
 
-  /* 3 · Scale down content elements to fit the short viewport */
-  .hp-inner      { gap: 8px; width: 100%; max-width: 620px; margin-inline: auto; }
+  /* 3 · Scale down content elements; margin:0 auto as physical fallback */
+  .hp-inner      { gap: 8px; width: 100%; max-width: 620px; margin: 0 auto; }
   .hp-badge      { font-size: 10px; padding: 4px 12px; gap: 6px; }
   .hp-title      { font-size: clamp(18px, 4.2vw, 26px); line-height: 1.14; }
   .hp-title-sub  { font-size: clamp(12px, 2.6vw, 17px); margin-top: 2px; }
