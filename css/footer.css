@@ -4,40 +4,37 @@
    Same color palette, glow language, and grid overlay as hp-hero
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── 1 · Background: dark cinematic purple (override Tailwind) ── */
+/* ── 1 · Background: exact hero atmosphere (override Tailwind) ── */
 footer {
   background:
-    radial-gradient(ellipse 110% 65% at 50% 115%, rgba(98,22,242,0.30) 0%, transparent 62%),
-    radial-gradient(ellipse 60% 50% at 8%  55%,   rgba(123,47,255,0.14) 0%, transparent 52%),
-    radial-gradient(ellipse 60% 45% at 92% 25%,   rgba(176,38,255,0.10) 0%, transparent 50%),
-    linear-gradient(180deg, #05020f 0%, #030010 55%, #060118 100%) !important;
+    /* Large centre glow — mirrors hp-glow--core blur effect */
+    radial-gradient(ellipse 80% 65% at 50% 35%,  rgba(123,47,255,0.38) 0%, rgba(123,47,255,0.12) 40%, transparent 66%),
+    /* Right purple flare — mirrors hp-glow--right */
+    radial-gradient(ellipse 55% 50% at 92% 15%,  rgba(176,38,255,0.20) 0%, transparent 52%),
+    /* Left indigo flare — mirrors hp-glow--left */
+    radial-gradient(ellipse 55% 45% at 8%  68%,  rgba(99,102,241,0.16) 0%, transparent 50%),
+    /* Top depth glow — same as hero hp-bg::before top */
+    radial-gradient(120% 90% at 50% -5%,         rgba(123,47,255,0.22) 0%, transparent 55%),
+    /* Bottom warm haze — same as hero hp-bg::before bottom */
+    radial-gradient(90%  80% at 50% 115%,         rgba(176,38,255,0.18) 0%, transparent 60%),
+    /* Base: exact hero dark gradient */
+    linear-gradient(180deg, #0a0418 0%, #05010F 55%, #04010c 100%) !important;
   position: relative !important;
   isolation: isolate;
   overflow: hidden;
 }
 
-/* ── 2 · Grid overlay: same 48px purple mesh as hero ── */
+/* ── 2 · Grid overlay: exact hero hp-grid system (60px, rgba(139,92,246,0.06)) ── */
 footer::before {
   content: "";
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(176,38,255,0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(176,38,255,0.055) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0,0,0,0.55) 16%,
-    rgba(0,0,0,0.55) 86%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0,0,0,0.55) 16%,
-    rgba(0,0,0,0.55) 86%,
-    transparent 100%
-  );
+    linear-gradient(rgba(139,92,246,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.65;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
 }
 
 /* ── 3 · Top cinematic fade: smooth hero → sections → footer ── */
