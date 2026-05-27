@@ -2510,6 +2510,10 @@ div:has(> #price-val-pro)     span {
     line-height: 1.25;
     word-spacing: -0.03em;
   }
+  /* ES-only: narrower description to match EN proportions */
+  :lang(es) .hp-desc {
+    max-width: 480px;
+  }
 }
 
 /* 4 · CTA buttons */
