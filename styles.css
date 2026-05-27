@@ -2470,22 +2470,6 @@ div:has(> #price-val-pro)     span {
 .hp-title      { text-wrap: balance; }
 .hp-title-sub  { text-wrap: balance; }
 
-/* ── Latin pages: slightly smaller title + wider description ── */
-:not(:lang(ar)) .hp-title {
-  font-size: clamp(32px, 6vw, 68px);   /* AR: clamp(36px,7vw,76px) */
-}
-:not(:lang(ar)) .hp-title-sub {
-  font-size: clamp(17px, 3.5vw, 36px); /* AR: clamp(20px,4vw,40px) */
-}
-
-/* Description: AR compact script fits 2-3 lines at 360px.
-   Latin needs ~490px at slightly smaller size to match same line-count. */
-:not(:lang(ar)) .hp-desc {
-  max-width: 500px;
-  font-size: clamp(14px, 1.65vw, 17px);
-  line-height: 1.65;
-}
-
 /* ── Mobile overrides for Latin ── */
 @media (max-width: 767px) {
   :not(:lang(ar)) .hp-title {
