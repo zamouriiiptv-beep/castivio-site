@@ -2822,6 +2822,20 @@ body:not(:has(.hp-hero)) #header {
     padding-bottom: 4px !important;
   }
 
+  /* Nav links: replace Tailwind space-x-6 with proper flex gap */
+  #nav-links {
+    display: flex !important;
+    gap: 22px !important;        /* consistent gap regardless of RTL direction */
+    font-size: 13px !important;  /* slightly smaller to fit without crowding */
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+  /* Reset Tailwind's space-x margin-left that breaks RTL spacing */
+  #nav-links > :not([hidden]) ~ :not([hidden]) {
+    margin-left:  0 !important;
+    margin-right: 0 !important;
+  }
+
   /* 2 · Hero: column-flex so align-items=center means horizontal, immune to RTL */
   .hp-hero {
     min-height: 100svh;
