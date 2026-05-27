@@ -2831,20 +2831,41 @@ body:not(:has(.hp-hero)) #header {
     align-items: center;     /* TRUE horizontal center regardless of text direction */
   }
 
-  /* 3 · Scale down content elements; margin:0 auto as physical fallback */
-  .hp-inner      { gap: 8px; width: 100%; max-width: 620px; margin: 0 auto; }
-  .hp-badge      { font-size: 10px; padding: 4px 12px; gap: 6px; }
-  .hp-title      { font-size: clamp(18px, 4.2vw, 26px); line-height: 1.14; }
-  .hp-title-sub  { font-size: clamp(12px, 2.6vw, 17px); margin-top: 2px; }
-  .hp-desc       { font-size: clamp(11.5px, 1.7vw, 13.5px); line-height: 1.42; max-width: 500px; }
-  .hp-br         { display: none; }
-  .hp-cta        { gap: 8px; }
-  .hp-btn        { padding: 8px 18px; font-size: 13px; }
-  .hp-btn i      { font-size: 11px; }
-  .hp-chip       { font-size: 10px; padding: 4px 10px; gap: 4px; }
-  .hp-chip i     { font-size: 9px; }
-  .hp-chips-row  { gap: 6px; }
-  .hp-chips      { gap: 6px; }
+  /* 3 · Content wrapper — fixed relative width, physically centered */
+  .hp-inner {
+    gap: 8px;
+    width: min(90%, 950px);  /* relative to viewport, not to RTL container */
+    margin-left: auto;       /* physical margins, not logical, to avoid RTL interference */
+    margin-right: auto;
+    /* Ensure every child stacks on the same vertical axis */
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 4 · Heading: capped width, centered on its own axis */
+  .hp-title {
+    font-size: clamp(18px, 4.2vw, 26px);
+    line-height: 1.15;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hp-title-sub  { font-size: clamp(12px, 2.6vw, 17px); margin-top: 2px;
+                   margin-left: auto; margin-right: auto; }
+
+  /* 5 · Description, CTA, chips — all on same center axis */
+  .hp-desc  { font-size: clamp(11.5px, 1.7vw, 13.5px); line-height: 1.42;
+              max-width: 680px; margin-left: auto; margin-right: auto; }
+  .hp-cta   { gap: 8px; justify-content: center; align-items: center; }
+  .hp-chips { justify-content: center; align-items: center; }
+  .hp-badge { font-size: 10px; padding: 4px 12px; gap: 6px; }
+  .hp-br    { display: none; }
+  .hp-btn   { padding: 8px 18px; font-size: 13px; }
+  .hp-btn i { font-size: 11px; }
+  .hp-chip      { font-size: 10px; padding: 4px 10px; gap: 4px; }
+  .hp-chip i    { font-size: 9px; }
+  .hp-chips-row { gap: 6px; justify-content: center; }
+  .hp-chips     { gap: 6px; }
 
   /* 4 · Reduce glow size so it doesn't dominate on small screens */
   .hp-glow--core  { width: 240px; height: 240px; }
