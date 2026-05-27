@@ -2504,6 +2504,12 @@ div:has(> #price-val-pro)     span {
   :lang(fr) .hp-grad {
     filter: drop-shadow(0 0 18px rgba(176,38,255,0.46));
   }
+  /* FR-only: tighter title block for longer French text */
+  :lang(fr) .hp-title {
+    max-width: 580px;
+    line-height: 1.25;
+    word-spacing: -0.03em;
+  }
 }
 
 /* 4 · CTA buttons */
