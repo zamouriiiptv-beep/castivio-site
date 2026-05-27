@@ -195,42 +195,41 @@ footer .text-base {
   z-index: 0; pointer-events: none; overflow: hidden;
 }
 
-/* ── Floating orbs (same gradient as hero, half opacity + blur) ── */
+/* ── Floating orbs — same style as hero, slightly quieter ── */
 .ft-orb {
   position: absolute;
   border-radius: 50%;
   background: radial-gradient(circle at 32% 28%,
     #c8a8ff 0%, #7b2fff 45%, rgba(123,47,255,0) 72%);
-  box-shadow: 0 0 22px rgba(123,47,255,0.45);
-  opacity: 0.28;
-  filter: blur(0.8px);
+  box-shadow: 0 0 28px rgba(123,47,255,0.60);
+  opacity: 0.55;
 }
-.ft-orb--1 { width: 10px; height: 10px; left: 7%;   top: 22%;
-             animation: hp-orb 22s ease-in-out infinite; }
-.ft-orb--2 { width:  6px; height:  6px; right: 11%; top: 16%;
-             animation: hp-orb 28s ease-in-out infinite 3.5s; }
-.ft-orb--3 { width: 12px; height: 12px; right: 20%; bottom: 28%;
-             animation: hp-orb 24s ease-in-out infinite 1.8s; }
-.ft-orb--4 { width:  8px; height:  8px; left: 28%;  bottom: 16%;
-             animation: hp-orb 30s ease-in-out infinite 5s; }
+.ft-orb--1 { width: 13px; height: 13px; left: 7%;   top: 22%;
+             animation: hp-orb 20s ease-in-out infinite; }
+.ft-orb--2 { width:  8px; height:  8px; right: 11%; top: 16%;
+             animation: hp-orb 25s ease-in-out infinite 2s; }
+.ft-orb--3 { width: 15px; height: 15px; right: 22%; bottom: 26%;
+             animation: hp-orb 22s ease-in-out infinite 1s; }
+.ft-orb--4 { width: 10px; height: 10px; left: 28%;  bottom: 18%;
+             animation: hp-orb 27s ease-in-out infinite 4s; }
 
 /* ── Rising particles ── */
 .ft-particles { position: absolute; inset: 0; overflow: hidden; }
 .ft-particle {
   position: absolute;
-  bottom: -8px;
+  bottom: -10px;
   border-radius: 50%;
-  background: rgba(199,168,255,0.50);
-  box-shadow: 0 0 5px rgba(123,47,255,0.45);
+  background: rgba(199,168,255,0.88);
+  box-shadow: 0 0 8px rgba(123,47,255,0.75);
   animation: ft-rise linear infinite;
   opacity: 0;
 }
 
 @keyframes ft-rise {
   0%   { transform: translateY(0)       translateX(0);    opacity: 0; }
-  8%   { opacity: 0.50; }
-  90%  { opacity: 0.20; }
-  100% { transform: translateY(-100vh)  translateX(18px); opacity: 0; }
+  8%   { opacity: 0.75; }
+  88%  { opacity: 0.40; }
+  100% { transform: translateY(-100vh)  translateX(20px); opacity: 0; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
