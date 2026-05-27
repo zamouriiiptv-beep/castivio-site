@@ -200,7 +200,7 @@ footer .text-base {
   footer h3             { font-size: 1.1rem  !important; margin-bottom: 0.5rem !important; }
   footer h4             { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
   footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
-  .footer-logo          { max-width: 90px !important; margin-top: 0.6rem !important; }
+  .footer-logo          { max-width: 90px !important; margin-top: 0.6rem !important; filter: drop-shadow(0 0 12px rgba(176,38,255,0.28)) !important; }
   footer a[href*="wa.me"] { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
   footer .fab           { font-size: 1.1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
