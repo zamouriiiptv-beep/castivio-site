@@ -2383,6 +2383,7 @@ div:has(> #price-val-pro)     span {
   gap: 16px;
   width: 100%;
   max-width: 720px;
+  margin-top: 10px;
 }
 
 /* 1 · Premium badge (glass) */
@@ -2433,6 +2434,7 @@ div:has(> #price-val-pro)     span {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 13px rgba(176,38,255,0.32));
+  font-size: 0.95em;
 }
 .hp-title-sub {
   display: block;
