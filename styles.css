@@ -2493,6 +2493,17 @@ div:has(> #price-val-pro)     span {
   .hp-chips-row { gap: 8px; }
 }
 
+/* ── EN tablet + desktop polish (min-width 768px, mobile untouched) ── */
+@media (min-width: 768px) {
+  :lang(en) .hp-title {
+    max-width: 660px;
+    line-height: 1.30;
+  }
+  :lang(en) .hp-grad {
+    filter: drop-shadow(0 0 18px rgba(176,38,255,0.46));
+  }
+}
+
 /* 4 · CTA buttons */
 .hp-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .hp-btn {
