@@ -2825,9 +2825,9 @@ body:not(:has(.hp-hero)) #header {
   /* 2 · Hero: fill viewport; horizontal center preserved in RTL */
   .hp-hero {
     min-height: 100svh;
-    padding: 70px 24px 8px;
-    justify-content: center;   /* horizontal center — never flex-start in RTL flex-row */
-    align-items: flex-start;   /* vertical: content starts after padding-top */
+    padding: 62px 24px 8px;
+    justify-content: center;   /* horizontal center — RTL-safe */
+    align-items: center;       /* vertical: true center within available height */
   }
 
   /* 3 · Scale down content elements to fit the short viewport */
