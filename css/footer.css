@@ -1,21 +1,69 @@
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    FOOTER — Prime IPTV
-   Shared across all pages
-=============================== */
+   Dark cinematic identity — visually unified with the hero system
+   Same color palette, glow language, and grid overlay as hp-hero
+   ═══════════════════════════════════════════════════════════════ */
 
+/* ── 1 · Background: dark cinematic purple (override Tailwind) ── */
 footer {
-  direction: rtl;
+  background:
+    radial-gradient(ellipse 110% 65% at 50% 115%, rgba(98,22,242,0.30) 0%, transparent 62%),
+    radial-gradient(ellipse 60% 50% at 8%  55%,   rgba(123,47,255,0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 60% 45% at 92% 25%,   rgba(176,38,255,0.10) 0%, transparent 50%),
+    linear-gradient(180deg, #05020f 0%, #030010 55%, #060118 100%) !important;
+  position: relative !important;
+  isolation: isolate;
+  overflow: hidden;
 }
 
-footer h3,
-footer h4,
-footer p,
-footer ul,
-footer li {
+/* ── 2 · Grid overlay: same 48px purple mesh as hero ── */
+footer::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(176,38,255,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176,38,255,0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,0,0,0.55) 16%,
+    rgba(0,0,0,0.55) 86%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,0,0,0.55) 16%,
+    rgba(0,0,0,0.55) 86%,
+    transparent 100%
+  );
+}
+
+/* ── 3 · Top cinematic fade: smooth hero → sections → footer ── */
+footer::after {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 80px; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(4,1,14,0.65) 0%, transparent 100%);
+}
+
+/* ── 4 · Content above all pseudo-elements ── */
+footer .container,
+footer > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Direction + alignment (preserved exactly from original)
+   ═══════════════════════════════════════════════════════════════ */
+footer { direction: rtl; }
+
+footer h3, footer h4, footer p, footer ul, footer li {
   text-align: right;
 }
 
-/* LTR override for EN / FR / ES pages */
 [dir="ltr"] footer,
 html[lang="en"] footer,
 html[lang="fr"] footer,
@@ -23,121 +71,138 @@ html[lang="es"] footer {
   direction: ltr;
 }
 
-[dir="ltr"] footer h3,
-[dir="ltr"] footer h4,
-[dir="ltr"] footer p,
-[dir="ltr"] footer ul,
-[dir="ltr"] footer li,
-html[lang="en"] footer h3,
-html[lang="en"] footer h4,
-html[lang="en"] footer p,
-html[lang="en"] footer ul,
-html[lang="en"] footer li,
-html[lang="fr"] footer h3,
-html[lang="fr"] footer h4,
-html[lang="fr"] footer p,
-html[lang="fr"] footer ul,
-html[lang="fr"] footer li,
-html[lang="es"] footer h3,
-html[lang="es"] footer h4,
-html[lang="es"] footer p,
-html[lang="es"] footer ul,
-html[lang="es"] footer li {
+[dir="ltr"] footer h3, [dir="ltr"] footer h4,
+[dir="ltr"] footer p,  [dir="ltr"] footer ul, [dir="ltr"] footer li,
+html[lang="en"] footer h3, html[lang="en"] footer h4,
+html[lang="en"] footer p,  html[lang="en"] footer ul, html[lang="en"] footer li,
+html[lang="fr"] footer h3, html[lang="fr"] footer h4,
+html[lang="fr"] footer p,  html[lang="fr"] footer ul, html[lang="fr"] footer li,
+html[lang="es"] footer h3, html[lang="es"] footer h4,
+html[lang="es"] footer p,  html[lang="es"] footer ul, html[lang="es"] footer li {
   text-align: left;
 }
 
-/* ===============================
-   Footer logo
-=============================== */
-
-.footer-logo {
-  max-width: 144px;
+/* ═══════════════════════════════════════════════════════════════
+   Typography
+   ═══════════════════════════════════════════════════════════════ */
+footer h3,
+footer h4 {
+  color: #ede5ff;
+  letter-spacing: 0.01em;
 }
 
-/* ===============================
-   WhatsApp button inside footer
-=============================== */
+footer p,
+footer ul li,
+footer .text-gray-200 {
+  color: rgba(212,198,242,0.84) !important;
+}
 
+footer .text-gray-300 {
+  color: rgba(192,175,230,0.72) !important;
+}
+
+/* ── Links ── */
+footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex) {
+  color: rgba(212,198,242,0.80);
+  transition: color 0.22s ease, text-shadow 0.22s ease;
+  text-decoration: none;
+}
+footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
+  color: #e8dcff;
+  text-shadow: 0 0 14px rgba(176,38,255,0.50);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Country pills — glassmorphism purple tint
+   ═══════════════════════════════════════════════════════════════ */
+footer a.flex,
+footer .bg-white\/10 {
+  background: rgba(176,38,255,0.10) !important;
+  border: 1px solid rgba(176,38,255,0.20) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: rgba(222,208,255,0.88) !important;
+  transition: background 0.22s ease, border-color 0.22s ease,
+              box-shadow 0.22s ease, color 0.22s ease !important;
+}
+footer a.flex:hover,
+footer .bg-white\/10:hover {
+  background: rgba(176,38,255,0.22) !important;
+  border-color: rgba(176,38,255,0.42) !important;
+  box-shadow: 0 0 18px rgba(176,38,255,0.18) !important;
+  color: #ede6ff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Borders — purple-tinted
+   ═══════════════════════════════════════════════════════════════ */
+footer .border-t,
+footer .border-gray-400 {
+  border-color: rgba(176,38,255,0.22) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Logo
+   ═══════════════════════════════════════════════════════════════ */
+.footer-logo {
+  max-width: 144px;
+  filter: drop-shadow(0 0 14px rgba(176,38,255,0.22));
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   WhatsApp button — keep green, add glow
+   ═══════════════════════════════════════════════════════════════ */
 footer a[href*="wa.me"] {
   font-weight: 700;
   letter-spacing: 0.2px;
+  box-shadow: 0 4px 22px rgba(34,197,94,0.32) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+footer a[href*="wa.me"]:hover {
+  box-shadow: 0 6px 30px rgba(34,197,94,0.48) !important;
 }
 
-/* ===============================
+/* ═══════════════════════════════════════════════════════════════
    Social icons
-=============================== */
-
+   ═══════════════════════════════════════════════════════════════ */
 footer .fab {
-  opacity: 0.8;
+  opacity: 0.78;
   transition: all 0.25s ease;
 }
-
 footer a:hover .fab {
   opacity: 1;
   transform: scale(1.15);
 }
 
-/* ===============================
-   Copyright border
-=============================== */
-
-footer .border-t {
-  border-color: rgba(255, 255, 255, 0.25);
+/* ═══════════════════════════════════════════════════════════════
+   Section label (Global Coverage)
+   ═══════════════════════════════════════════════════════════════ */
+footer .uppercase {
+  color: rgba(196,168,255,0.60) !important;
+  letter-spacing: 0.08em;
 }
 
-/* ===============================
-   Mobile compact footer
-=============================== */
+/* Copyright */
+footer .text-base {
+  color: rgba(172,145,225,0.58) !important;
+}
 
+/* ═══════════════════════════════════════════════════════════════
+   Mobile compact footer (preserved from original)
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
-
   footer {
     padding-top: 1.6rem !important;
     padding-bottom: 1.6rem !important;
   }
-
-  footer .grid {
-    gap: 1.2rem !important;
-  }
-
-  footer p:first-of-type {
-    display: none !important;
-  }
-
-  footer h3 {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  footer h4 {
-    font-size: 0.95rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  footer ul li {
-    margin-bottom: 0.35rem !important;
-    font-size: 0.88rem !important;
-  }
-
-  .footer-logo {
-    max-width: 90px !important;
-    margin-top: 0.6rem !important;
-  }
-
-  footer a[href*="wa.me"] {
-    padding: 0.5rem 0.9rem !important;
-    font-size: 0.9rem !important;
-  }
-
-  footer .fab {
-    font-size: 1.1rem !important;
-  }
-
-  footer .flex.justify-center.mt-10 {
-    margin-top: 1rem !important;
-  }
-
-  footer h6 {
-    font-size: 0.65rem !important;
-  }
+  footer .grid          { gap: 1.2rem !important; }
+  footer p:first-of-type { display: none !important; }
+  footer h3             { font-size: 1.1rem  !important; margin-bottom: 0.5rem !important; }
+  footer h4             { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
+  footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
+  .footer-logo          { max-width: 90px !important; margin-top: 0.6rem !important; }
+  footer a[href*="wa.me"] { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
+  footer .fab           { font-size: 1.1rem !important; }
+  footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
+  footer h6             { font-size: 0.65rem !important; }
 }
