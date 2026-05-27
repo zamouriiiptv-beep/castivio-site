@@ -2761,6 +2761,7 @@ body:not(:has(.hp-hero)) #header {
 @media (min-width: 768px) and (max-width: 1023px) {
   .hp-hero       { min-height: 82vh; min-height: 82svh; padding: 96px 28px 52px; }
   .hp-inner      { max-width: 600px; gap: 18px; }
+  .hp-desc       { max-width: 700px; }
   .hp-glow--core { width: 420px; height: 420px; }
   .hp-glow--left,
   .hp-glow--right{ width: 270px; height: 270px; }
