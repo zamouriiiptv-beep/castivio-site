@@ -2504,6 +2504,21 @@ div:has(> #price-val-pro)     span {
   }
 }
 
+/* ── FR tablet + desktop polish (min-width 768px, mobile untouched) ── */
+@media (min-width: 768px) {
+  :lang(fr) .hp-title {
+    max-width: 620px;
+    line-height: 1.32;
+  }
+}
+
+/* ── FR tablet only: 3% smaller title ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :lang(fr) .hp-title {
+    font-size: clamp(35px, 6.8vw, 74px);
+  }
+}
+
 /* 4 · CTA buttons */
 .hp-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .hp-btn {
