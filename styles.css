@@ -2504,18 +2504,29 @@ div:has(> #price-val-pro)     span {
   }
 }
 
-/* ── FR tablet + desktop polish (min-width 768px, mobile untouched) ── */
-@media (min-width: 768px) {
+/* ── FR desktop + laptop: scaled-down title to fit long French text ── */
+@media (min-width: 1024px) {
   :lang(fr) .hp-title {
-    max-width: 620px;
-    line-height: 1.32;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.20;
+    max-width: 560px;
+  }
+  :lang(fr) .hp-inner {
+    gap: 13px;
+    margin-top: 0;
   }
 }
 
-/* ── FR tablet only: 3% smaller title ── */
+/* ── FR tablet: same proportions, slightly looser ── */
 @media (min-width: 768px) and (max-width: 1023px) {
   :lang(fr) .hp-title {
-    font-size: clamp(35px, 6.8vw, 74px);
+    font-size: clamp(26px, 4.8vw, 42px);
+    line-height: 1.20;
+    max-width: 520px;
+  }
+  :lang(fr) .hp-inner {
+    gap: 13px;
+    margin-top: 0;
   }
 }
 
