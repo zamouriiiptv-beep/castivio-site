@@ -2493,32 +2493,16 @@ div:has(> #price-val-pro)     span {
   .hp-chips-row { gap: 8px; }
 }
 
-/* ── EN tablet + desktop polish (min-width 768px, mobile untouched) ── */
+/* ── EN + FR tablet + desktop polish (min-width 768px, mobile untouched) ── */
 @media (min-width: 768px) {
-  :lang(en) .hp-title {
+  :lang(en) .hp-title,
+  :lang(fr) .hp-title {
     max-width: 660px;
     line-height: 1.30;
   }
-  :lang(en) .hp-grad {
+  :lang(en) .hp-grad,
+  :lang(fr) .hp-grad {
     filter: drop-shadow(0 0 18px rgba(176,38,255,0.46));
-  }
-}
-
-/* ── FR desktop + laptop: smaller title only, all other values = EN base ── */
-@media (min-width: 1024px) {
-  :lang(fr) .hp-title {
-    font-size: clamp(28px, 3.5vw, 42px);
-    line-height: 1.30;
-    max-width: 600px;
-  }
-}
-
-/* ── FR tablet: same proportions as EN tablet ── */
-@media (min-width: 768px) and (max-width: 1023px) {
-  :lang(fr) .hp-title {
-    font-size: clamp(26px, 4.5vw, 38px);
-    line-height: 1.30;
-    max-width: 520px;
   }
 }
 
