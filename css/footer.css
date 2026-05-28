@@ -29,6 +29,7 @@ footer::before {
     linear-gradient(90deg, rgba(139,92,246,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0.35;
+  filter: blur(90px);
   mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
 }
@@ -143,8 +144,7 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
   color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0,0,0,0.35) !important;
   box-shadow: 0 0 10px rgba(168,85,247,0.10), inset 0 0 10px rgba(255,255,255,0.02) !important;
-  transition: transform 0.24s ease, border-color 0.24s ease,
-              box-shadow 0.24s ease, background 0.24s ease !important;
+  transition: all 0.28s ease !important;
   overflow: hidden !important;
 }
 
@@ -155,10 +155,10 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
 }
 
 .ft-country-grid a:hover {
-  transform: translateY(-1px) !important;
-  border-color: rgba(200,107,255,0.45) !important;
+  transform: translateY(-3px) !important;
+  border-color: rgba(168,85,247,0.55) !important;
   background: rgba(100,30,160,0.26) !important;
-  box-shadow: 0 0 22px rgba(200,107,255,0.22) !important;
+  box-shadow: 0 0 20px rgba(168,85,247,0.18) !important;
   color: #f0d6ff !important;
 }
 
@@ -224,9 +224,14 @@ footer a[href*="wa.me"]:hover {
 
 /* ── Floating WhatsApp icon — raised above cards ── */
 .whatsapp-float {
-  bottom: 110px !important;
+  bottom: 140px !important;
   right: 18px !important;
   left: auto !important;
+}
+
+.whatsapp-float img {
+  width: 58px !important;
+  height: 58px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
