@@ -442,25 +442,24 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 14px !important;
     margin-top: 12px;
-    padding: 0 14px !important;
+    padding: 0 4px;
   }
   .ft-country-grid a {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: 105px !important;
+    min-height: 60px !important;
     height: auto !important;
-    padding: 16px 8px !important;
+    padding: 8px 6px !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2px !important;
-    border-radius: 22px !important;
-    white-space: normal !important;
+    border-radius: 16px !important;
+    white-space: nowrap !important;
     overflow: visible !important;
-    text-overflow: unset !important;
     text-align: center !important;
     background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
     border: 1px solid rgba(180,80,255,.18) !important;
