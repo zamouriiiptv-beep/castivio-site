@@ -287,7 +287,7 @@ footer .text-xs {
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-top: 14px;
   }
