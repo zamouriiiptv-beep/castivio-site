@@ -437,38 +437,42 @@ footer .uppercase::before {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 8px;
+    gap: 14px !important;
     margin-top: 16px;
     padding: 0 2px;
   }
   .ft-country-grid a {
-    flex: 0 0 calc(25% - 6px) !important;
-    width: calc(25% - 6px) !important;
-    min-height: 70px !important;
-    height: 70px !important;
-    padding: 0 4px !important;
-    font-size: 11.5px !important;
-    font-weight: 600 !important;
-    line-height: 70px !important;
-    border-radius: 16px !important;
+    flex: 0 0 calc(25% - 10.5px) !important;
+    width: calc(25% - 10.5px) !important;
+    display: block !important;
+    min-height: 92px !important;
+    height: 92px !important;
+    padding: 0 8px !important;
+    line-height: 92px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 22px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     text-align: center !important;
-    display: block !important;
+    background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
     border: 1px solid rgba(180,80,255,0.18) !important;
-    box-shadow: 0 0 10px rgba(140,0,255,0.14), inset 0 0 10px rgba(255,255,255,0.02) !important;
+    box-shadow: 0 0 18px rgba(120,0,255,0.12) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
   }
   .ft-country-grid a:hover {
     transform: translateY(-2px) !important;
-    border-color: rgba(180,80,255,0.35) !important;
-    box-shadow: 0 4px 14px rgba(140,0,255,0.22), inset 0 0 10px rgba(255,255,255,0.02) !important;
+    box-shadow: 0 4px 16px rgba(140,0,255,0.18) !important;
   }
   .global-coverage {
-    padding: 20px 10px 16px !important;
+    padding-top: 18px !important;
+    padding-bottom: 16px !important;
+    margin-top: 0 !important;
   }
   .global-coverage .gc-title {
-    font-size: 0.9rem !important;
-    margin-bottom: 16px !important;
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 22px !important;
   }
 }
