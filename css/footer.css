@@ -255,4 +255,14 @@ footer .text-base {
   footer .fab           { font-size: 1.1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
   footer h6             { font-size: 0.65rem !important; }
+  .ft-country-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .ft-country-grid a {
+    padding: 5px 6px !important;
+    font-size: 0.68rem !important;
+    gap: 3px !important;
+    border-radius: 20px !important;
+  }
 }
