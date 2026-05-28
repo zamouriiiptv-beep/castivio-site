@@ -46,6 +46,12 @@ footer .container,
 footer > .container {
   position: relative;
   z-index: 3;
+  padding-bottom: 40px;
+}
+
+footer .container > *:last-child,
+footer > .container > *:last-child {
+  margin-bottom: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -116,6 +122,7 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
   gap: 10px;
   max-width: 860px;
   margin: 18px auto 0;
+  margin-bottom: 0;
 }
 
 .ft-country-grid a {
@@ -205,11 +212,21 @@ footer .border-gray-400 {
 footer a[href*="wa.me"] {
   font-weight: 700;
   letter-spacing: 0.2px;
+  padding: 14px 24px !important;
+  font-size: 15px !important;
+  border-radius: 18px !important;
   box-shadow: 0 4px 22px rgba(34,197,94,0.32) !important;
   transition: transform 0.22s ease, box-shadow 0.22s ease !important;
 }
 footer a[href*="wa.me"]:hover {
   box-shadow: 0 6px 30px rgba(34,197,94,0.48) !important;
+}
+
+/* ── Floating WhatsApp icon — raised above cards ── */
+.whatsapp-float {
+  bottom: 110px !important;
+  right: 18px !important;
+  left: auto !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
