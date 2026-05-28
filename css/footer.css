@@ -248,10 +248,7 @@ footer a[href*="wa.me"]:hover {
   display: block;
 }
 
-/* Cards stay above floating button */
 .ft-country-grid {
-  position: relative;
-  z-index: 50;
   padding-bottom: 0;
 }
 
