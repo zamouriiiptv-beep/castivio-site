@@ -435,26 +435,26 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 16px;
     padding: 0 2px;
   }
   .ft-country-grid a {
-    min-height: 34px !important;
-    height: 34px !important;
-    padding: 0 5px !important;
-    font-size: 10.5px !important;
+    min-height: 70px !important;
+    height: 70px !important;
+    padding: 6px !important;
+    font-size: 13px !important;
     font-weight: 600 !important;
-    gap: 3px !important;
-    border-radius: 10px !important;
+    gap: 4px !important;
+    border-radius: 16px !important;
     white-space: nowrap !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
   }
   .global-coverage {
-    padding: 18px 10px 14px !important;
+    padding: 20px 10px 16px !important;
   }
   .global-coverage .gc-title {
-    font-size: 0.85rem !important;
-    margin-bottom: 8px !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 16px !important;
   }
 }
