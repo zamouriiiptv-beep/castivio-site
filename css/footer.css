@@ -443,10 +443,10 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 12px !important;
     margin-top: 12px;
-    padding: 0 4px;
+    padding-inline: 12px !important;
   }
   .ft-country-grid a {
     display: flex !important;
@@ -454,7 +454,7 @@ footer .uppercase::before {
     justify-content: center !important;
     height: 88px !important;
     min-height: 88px !important;
-    padding: 10px 14px !important;
+    padding: 10px 8px !important;
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2px !important;
