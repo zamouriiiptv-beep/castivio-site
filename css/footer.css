@@ -222,18 +222,35 @@ footer a[href*="wa.me"]:hover {
   box-shadow: 0 6px 30px rgba(34,197,94,0.48) !important;
 }
 
-/* ── Floating WhatsApp icon — raised above cards ── */
+/* ── Floating WhatsApp icon ── */
 .whatsapp-float {
-  bottom: 140px !important;
+  bottom: 110px !important;
   right: 18px !important;
   left: auto !important;
+  z-index: 30 !important;
+  background: rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08) !important;
 }
 
 .whatsapp-float img {
-  width: 56px !important;
-  height: 56px !important;
-  box-shadow: 0 0 18px rgba(37,211,102,0.35) !important;
+  width: 54px !important;
+  height: 54px !important;
   border-radius: 50%;
+  box-shadow: 0 0 16px rgba(37,211,102,0.28) !important;
+  display: block;
+}
+
+/* Cards stay above floating button */
+.ft-country-grid {
+  position: relative;
+  z-index: 50;
 }
 
 /* ═══════════════════════════════════════════════════════════════
