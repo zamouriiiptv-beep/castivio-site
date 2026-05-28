@@ -452,10 +452,10 @@ footer .uppercase::before {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 68px !important;
-    min-height: 68px !important;
-    padding: 6px 4px !important;
-    font-size: 12px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    padding: 4px 3px !important;
+    font-size: 11px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2px !important;
     border-radius: 22px !important;
