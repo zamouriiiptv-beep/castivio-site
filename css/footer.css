@@ -110,6 +110,21 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Country grid — language-specific global coverage
+   ═══════════════════════════════════════════════════════════════ */
+.ft-country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.ft-country-grid a {
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    Country pills — glassmorphism purple tint
    ═══════════════════════════════════════════════════════════════ */
 footer a.flex,
