@@ -442,33 +442,39 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 14px !important;
     margin-top: 12px;
-    padding: 0 4px;
+    padding-inline: 14px !important;
   }
   .ft-country-grid a {
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    min-height: 85px !important;
-    height: auto !important;
-    padding: 14px 8px !important;
-    font-size: 13px !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    height: 88px !important;
+    min-height: 88px !important;
+    padding: 14px 16px !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2px !important;
     border-radius: 22px !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-align: center !important;
+    text-align: start !important;
     background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
     border: 1px solid rgba(180,80,255,.18) !important;
     box-shadow: 0 0 14px rgba(120,0,255,.10) !important;
     transition: transform .2s ease, box-shadow .2s ease !important;
   }
+  .ft-country-grid a,
+  .ft-country-grid a * {
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+  }
   .ft-country-grid a:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 16px rgba(140,0,255,.18) !important;
+    box-shadow: 0 4px 18px rgba(140,0,255,.22) !important;
   }
   .global-coverage {
     padding-top: 18px !important;
