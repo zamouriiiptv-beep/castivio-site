@@ -296,6 +296,10 @@ footer .uppercase::before {
 
 /* ── Copyright section ── */
 footer .border-t.border-gray-400 {
+  text-align: center !important;
+}
+
+footer .border-t.border-gray-400 {
   margin-top: 40px !important;
   padding-top: 28px !important;
   border-top: 1px solid rgba(168,85,247,0.10) !important;
