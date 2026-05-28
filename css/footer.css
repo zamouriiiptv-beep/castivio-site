@@ -224,15 +224,16 @@ footer a[href*="wa.me"]:hover {
 
 /* ── Floating WhatsApp icon ── */
 .whatsapp-float {
+  position: fixed !important;
   bottom: 24px !important;
-  right: 14px !important;
+  right: 20px !important;
   left: auto !important;
-  z-index: 30 !important;
+  z-index: 2147483647 !important;
   background: rgba(255,255,255,0.08) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border-radius: 50% !important;
-  transition: all 0.3s ease !important;
+  transition: transform 0.3s ease !important;
 }
 
 .whatsapp-float:hover {
