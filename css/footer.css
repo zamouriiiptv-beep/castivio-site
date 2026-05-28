@@ -452,13 +452,13 @@ footer .uppercase::before {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 14px !important;
-    margin-top: 16px;
+    gap: 10px !important;
+    margin-top: 12px;
     padding: 0 2px;
   }
   .ft-country-grid a {
-    flex: 0 0 calc(25% - 10.5px) !important;
-    width: calc(25% - 10.5px) !important;
+    flex: 0 0 calc(25% - 7.5px) !important;
+    width: calc(25% - 7.5px) !important;
     display: block !important;
     min-height: 88px !important;
     height: 88px !important;
@@ -470,7 +470,6 @@ footer .uppercase::before {
     border-radius: 22px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
     text-align: center !important;
     background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
     border: 1px solid rgba(180,80,255,0.18) !important;
