@@ -252,7 +252,7 @@ footer a[href*="wa.me"]:hover {
 .ft-country-grid {
   position: relative;
   z-index: 50;
-  padding-bottom: 80px;
+  padding-bottom: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -294,10 +294,26 @@ footer .uppercase::before {
   z-index: -1;
 }
 
-/* Copyright */
-footer .text-base,
-footer .text-xs {
-  color: rgba(255,255,255,0.52) !important;
+/* ── Copyright section ── */
+footer .border-t.border-gray-400 {
+  margin-top: 40px !important;
+  padding-top: 28px !important;
+  border-top: 1px solid rgba(168,85,247,0.10) !important;
+  max-width: 320px !important;
+  margin-inline: auto !important;
+}
+
+footer .border-t.border-gray-400 p:first-child {
+  color: rgba(255,255,255,0.78) !important;
+  letter-spacing: 0.4px !important;
+  text-shadow: 0 0 10px rgba(168,85,247,0.12) !important;
+  font-size: 0.85rem !important;
+}
+
+footer .border-t.border-gray-400 p:last-child {
+  color: rgba(255,255,255,0.48) !important;
+  letter-spacing: 0.4px !important;
+  font-size: 0.75rem !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
