@@ -317,12 +317,47 @@ footer .uppercase::before {
    ═══════════════════════════════════════════════════════════════ */
 .global-coverage {
   position: relative;
-  padding: 70px 0 50px;
+  padding: 70px 0 60px;
   background:
     radial-gradient(ellipse 70% 60% at 50% 50%, rgba(123,47,255,0.18) 0%, transparent 70%),
     linear-gradient(180deg, #0a0418 0%, #0d0420 100%);
-  border-bottom: 1px solid rgba(168,85,247,0.10);
+  border-bottom: none;
   overflow: visible !important;
+}
+
+/* Smooth fade into footer */
+.global-coverage::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(90,20,160,0.06) 40%,
+    rgba(10,4,24,0.85) 80%,
+    #0a0418 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Thin separator glow line */
+.global-coverage::before {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168,85,247,0.18) 30%,
+    rgba(168,85,247,0.30) 50%,
+    rgba(168,85,247,0.18) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(168,85,247,0.12);
+  z-index: 1;
 }
 
 .ft-country-grid {
