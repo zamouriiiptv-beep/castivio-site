@@ -116,7 +116,7 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
-  max-width: 520px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
