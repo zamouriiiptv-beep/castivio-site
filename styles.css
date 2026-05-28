@@ -1323,7 +1323,7 @@ footer .border-t {
 
   /* الحشو العام */
   footer {
-    padding-top: 1.6rem !important;
+    padding-top: 0 !important;
     padding-bottom: 1.6rem !important;
   }
 
