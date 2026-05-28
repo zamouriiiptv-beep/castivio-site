@@ -294,6 +294,32 @@ footer .uppercase::before {
   z-index: -1;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   Global Coverage — standalone section before footer
+   ═══════════════════════════════════════════════════════════════ */
+.global-coverage {
+  position: relative;
+  padding: 70px 0 50px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(123,47,255,0.18) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0418 0%, #0d0420 100%);
+  border-bottom: 1px solid rgba(168,85,247,0.10);
+}
+
+.global-coverage .gc-title {
+  text-align: center;
+  color: #f3e9ff;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  margin: 0 0 30px;
+  text-shadow: 0 0 18px rgba(168,85,247,0.40);
+}
+
+.global-coverage .ft-country-grid {
+  margin-top: 0;
+}
+
 /* ── Footer bottom bar ── */
 .footer-bottom {
   width: 100%;
