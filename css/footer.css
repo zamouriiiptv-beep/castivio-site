@@ -118,9 +118,9 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
    Country grid — Global Coverage
    ═══════════════════════════════════════════════════════════════ */
 .ft-country-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
   max-width: 860px;
   margin: 16px auto 0;
   margin-bottom: 0;
