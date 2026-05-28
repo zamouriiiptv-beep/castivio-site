@@ -6,6 +6,7 @@
 
 /* ── 1 · Background: exact hero atmosphere (override Tailwind) ── */
 footer {
+  margin-top: 0 !important;
   background:
     radial-gradient(ellipse 80% 65% at 50% 35%,  rgba(123,47,255,0.28) 0%, rgba(123,47,255,0.08) 40%, transparent 66%),
     radial-gradient(ellipse 55% 50% at 92% 15%,  rgba(176,38,255,0.14) 0%, transparent 52%),
