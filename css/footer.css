@@ -130,30 +130,45 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
-  min-height: 68px !important;
-  height: auto !important;
-  padding: 0 12px !important;
+  text-align: center !important;
+  gap: 6px !important;
+  height: 92px !important;
+  min-height: 92px !important;
+  max-height: 92px !important;
+  width: 100% !important;
+  padding: 12px !important;
   border: 1px solid rgba(180,80,255,0.18) !important;
   background: linear-gradient(180deg, rgba(70,0,120,0.55), rgba(20,0,40,0.95)) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  border-radius: 22px !important;
-  font-size: 0.92rem !important;
+  border-radius: 24px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
   color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0,0,0,0.35) !important;
   box-shadow: 0 0 14px rgba(120,0,255,0.10) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   white-space: normal !important;
   text-overflow: unset !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.2 !important;
+}
+
+.ft-country-grid a span,
+.ft-country-grid a * {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.2 !important;
+  font-size: 15px !important;
+  overflow: hidden !important;
 }
 
 .ft-country-grid a .emoji,
 .ft-country-grid a *:first-child {
-  font-size: 16px !important;
   flex-shrink: 0 !important;
 }
 
@@ -449,33 +464,19 @@ footer .uppercase::before {
     padding: 0 4px;
   }
   .ft-country-grid a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     height: 52px !important;
     min-height: 52px !important;
+    max-height: 52px !important;
     padding: 4px 3px !important;
     font-size: 11px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.2px !important;
-    border-radius: 22px !important;
-    text-align: center !important;
-    aspect-ratio: auto !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-    background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
-    border: 1px solid rgba(180,80,255,.18) !important;
-    box-shadow: 0 0 14px rgba(120,0,255,.10) !important;
-    transition: transform .2s ease, box-shadow .2s ease !important;
+    border-radius: 16px !important;
+    line-height: 1.2 !important;
   }
   .ft-country-grid a span,
   .ft-country-grid a h3,
   .ft-country-grid a * {
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-    font-size: 15px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
   }
   .ft-country-grid a:hover {
     transform: translateY(-2px) !important;
