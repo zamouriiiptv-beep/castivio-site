@@ -15,7 +15,7 @@ footer {
     linear-gradient(180deg, #0a0418 0%, #05010F 55%, #04010c 100%) !important;
   position: relative !important;
   isolation: isolate;
-  overflow: hidden;
+  height: auto;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -47,7 +47,7 @@ footer .container,
 footer > .container {
   position: relative;
   z-index: 3;
-  padding-bottom: 90px;
+  padding-bottom: 0;
 }
 
 footer .container > *:last-child,
@@ -294,30 +294,23 @@ footer .uppercase::before {
   z-index: -1;
 }
 
-/* ── Copyright section ── */
-footer .border-t.border-gray-400 {
-  text-align: center !important;
+/* ── Footer bottom bar ── */
+.footer-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 28px 0 20px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(168,85,247,.08);
 }
 
-footer .border-t.border-gray-400 {
-  margin-top: 40px !important;
-  padding-top: 28px !important;
-  border-top: 1px solid rgba(168,85,247,0.10) !important;
-  max-width: 320px !important;
-  margin-inline: auto !important;
-}
-
-footer .border-t.border-gray-400 p:first-child {
-  color: rgba(255,255,255,0.78) !important;
-  letter-spacing: 0.4px !important;
-  text-shadow: 0 0 10px rgba(168,85,247,0.12) !important;
-  font-size: 0.85rem !important;
-}
-
-footer .border-t.border-gray-400 p:last-child {
-  color: rgba(255,255,255,0.48) !important;
-  letter-spacing: 0.4px !important;
-  font-size: 0.75rem !important;
+.footer-bottom p {
+  color: rgba(255,255,255,.42);
+  font-size: 13px;
+  letter-spacing: .5px;
+  text-shadow: 0 0 12px rgba(168,85,247,.06);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -370,7 +363,6 @@ footer .border-t.border-gray-400 p:last-child {
   }
   footer .grid          { gap: 1.2rem !important; }
   footer p:first-of-type { display: none !important; }
-  footer .border-t.border-gray-400 p { display: block !important; }
   footer h3             { font-size: 1.1rem  !important; margin-bottom: 0.5rem !important; }
   footer h4             { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
   footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
