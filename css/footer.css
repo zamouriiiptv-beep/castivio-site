@@ -7,24 +7,20 @@
 /* ── 1 · Background: exact hero atmosphere (override Tailwind) ── */
 footer {
   background:
-    /* Large centre glow — mirrors hp-glow--core blur effect */
-    radial-gradient(ellipse 80% 65% at 50% 35%,  rgba(123,47,255,0.38) 0%, rgba(123,47,255,0.12) 40%, transparent 66%),
-    /* Right purple flare — mirrors hp-glow--right */
-    radial-gradient(ellipse 55% 50% at 92% 15%,  rgba(176,38,255,0.20) 0%, transparent 52%),
-    /* Left indigo flare — mirrors hp-glow--left */
-    radial-gradient(ellipse 55% 45% at 8%  68%,  rgba(99,102,241,0.16) 0%, transparent 50%),
-    /* Top depth glow — same as hero hp-bg::before top */
-    radial-gradient(120% 90% at 50% -5%,         rgba(123,47,255,0.22) 0%, transparent 55%),
-    /* Bottom warm haze — same as hero hp-bg::before bottom */
-    radial-gradient(90%  80% at 50% 115%,         rgba(176,38,255,0.18) 0%, transparent 60%),
-    /* Base: exact hero dark gradient */
+    radial-gradient(ellipse 80% 65% at 50% 35%,  rgba(123,47,255,0.28) 0%, rgba(123,47,255,0.08) 40%, transparent 66%),
+    radial-gradient(ellipse 55% 50% at 92% 15%,  rgba(176,38,255,0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 8%  68%,  rgba(99,102,241,0.11) 0%, transparent 50%),
+    radial-gradient(120% 90% at 50% -5%,         rgba(123,47,255,0.16) 0%, transparent 55%),
+    radial-gradient(90%  80% at 50% 115%,        rgba(176,38,255,0.12) 0%, transparent 60%),
     linear-gradient(180deg, #0a0418 0%, #05010F 55%, #04010c 100%) !important;
   position: relative !important;
   isolation: isolate;
   overflow: hidden;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
-/* ── 2 · Grid overlay: exact hero hp-grid system (60px, rgba(139,92,246,0.06)) ── */
+/* ── 2 · Grid overlay ── */
 footer::before {
   content: "";
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -32,12 +28,12 @@ footer::before {
     linear-gradient(rgba(139,92,246,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(139,92,246,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
-  opacity: 0.65;
+  opacity: 0.35;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 38%, rgba(0,0,0,0.7) 0%, transparent 82%);
 }
 
-/* ── 3 · Top cinematic fade: smooth hero → sections → footer ── */
+/* ── 3 · Top cinematic fade ── */
 footer::after {
   content: "";
   position: absolute; top: 0; left: 0; right: 0;
@@ -53,7 +49,7 @@ footer > .container {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Direction + alignment (preserved exactly from original)
+   Direction + alignment
    ═══════════════════════════════════════════════════════════════ */
 footer { direction: rtl; }
 
@@ -80,33 +76,35 @@ html[lang="es"] footer p,  html[lang="es"] footer ul, html[lang="es"] footer li 
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Typography
+   Typography — Premium bright
    ═══════════════════════════════════════════════════════════════ */
 footer h3,
 footer h4 {
-  color: #ede5ff;
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(180,90,255,0.45);
   letter-spacing: 0.01em;
 }
 
 footer p,
 footer ul li,
 footer .text-gray-200 {
-  color: rgba(212,198,242,0.84) !important;
+  color: rgba(255,255,255,0.82) !important;
+  text-shadow: 0 0 8px rgba(180,90,255,0.18);
 }
 
 footer .text-gray-300 {
-  color: rgba(192,175,230,0.72) !important;
+  color: rgba(255,255,255,0.70) !important;
 }
 
 /* ── Links ── */
 footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex) {
-  color: rgba(212,198,242,0.80);
+  color: rgba(255,255,255,0.88);
   transition: color 0.22s ease, text-shadow 0.22s ease;
   text-decoration: none;
 }
 footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
-  color: #e8dcff;
-  text-shadow: 0 0 14px rgba(176,38,255,0.50);
+  color: #c86bff;
+  text-shadow: 0 0 10px rgba(200,107,255,0.70);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -125,24 +123,27 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Country pills — glassmorphism purple tint
+   Country pills — Premium glassmorphism
    ═══════════════════════════════════════════════════════════════ */
 footer a.flex,
 footer .bg-white\/10 {
-  background: rgba(176,38,255,0.10) !important;
-  border: 1px solid rgba(176,38,255,0.20) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  color: rgba(222,208,255,0.88) !important;
+  background: rgba(140,60,255,0.14) !important;
+  border: 1px solid rgba(180,90,255,0.30) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.40) !important;
   transition: background 0.22s ease, border-color 0.22s ease,
               box-shadow 0.22s ease, color 0.22s ease !important;
 }
 footer a.flex:hover,
 footer .bg-white\/10:hover {
-  background: rgba(176,38,255,0.22) !important;
-  border-color: rgba(176,38,255,0.42) !important;
-  box-shadow: 0 0 18px rgba(176,38,255,0.18) !important;
-  color: #ede6ff !important;
+  background: rgba(180,90,255,0.28) !important;
+  border-color: rgba(200,107,255,0.55) !important;
+  box-shadow: 0 0 20px rgba(200,107,255,0.30), 0 0 8px rgba(180,90,255,0.20) !important;
+  color: #f0d6ff !important;
+  text-shadow: 0 0 10px rgba(200,107,255,0.50) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -150,7 +151,7 @@ footer .bg-white\/10:hover {
    ═══════════════════════════════════════════════════════════════ */
 footer .border-t,
 footer .border-gray-400 {
-  border-color: rgba(176,38,255,0.22) !important;
+  border-color: rgba(180,90,255,0.25) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -158,11 +159,11 @@ footer .border-gray-400 {
    ═══════════════════════════════════════════════════════════════ */
 .footer-logo {
   max-width: 144px;
-  filter: drop-shadow(0 0 14px rgba(176,38,255,0.22));
+  filter: drop-shadow(0 0 14px rgba(180,90,255,0.30));
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   WhatsApp button — keep green, add glow
+   WhatsApp button — keep green
    ═══════════════════════════════════════════════════════════════ */
 footer a[href*="wa.me"] {
   font-weight: 700;
@@ -178,7 +179,7 @@ footer a[href*="wa.me"]:hover {
    Social icons
    ═══════════════════════════════════════════════════════════════ */
 footer .fab {
-  opacity: 0.78;
+  opacity: 0.85;
   transition: all 0.25s ease;
 }
 footer a:hover .fab {
@@ -187,16 +188,19 @@ footer a:hover .fab {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Section label (Global Coverage)
+   Global Coverage label — Premium
    ═══════════════════════════════════════════════════════════════ */
 footer .uppercase {
-  color: rgba(196,168,255,0.60) !important;
-  letter-spacing: 0.08em;
+  color: #f3e9ff !important;
+  text-shadow: 0 0 18px rgba(168,85,247,0.45);
+  letter-spacing: 0.10em;
+  font-weight: 700 !important;
 }
 
 /* Copyright */
-footer .text-base {
-  color: rgba(172,145,225,0.58) !important;
+footer .text-base,
+footer .text-xs {
+  color: rgba(255,255,255,0.52) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -238,7 +242,7 @@ footer .text-base {
 .p8 { width:  9px; height:  9px; left: 15%; bottom: 45%; animation-duration: 15s; animation-delay:  6s; }
 
 /* ═══════════════════════════════════════════════════════════════
-   Mobile compact footer (preserved from original)
+   Mobile compact footer
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
   footer {
@@ -250,7 +254,7 @@ footer .text-base {
   footer h3             { font-size: 1.1rem  !important; margin-bottom: 0.5rem !important; }
   footer h4             { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
   footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
-  .footer-logo          { max-width: 90px !important; margin-top: 0.6rem !important; filter: drop-shadow(0 0 12px rgba(176,38,255,0.28)) !important; }
+  .footer-logo          { max-width: 90px !important; margin-top: 0.6rem !important; filter: drop-shadow(0 0 12px rgba(180,90,255,0.30)) !important; }
   footer a[href*="wa.me"] { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
   footer .fab           { font-size: 1.1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
