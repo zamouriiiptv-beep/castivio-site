@@ -47,12 +47,12 @@ footer .container,
 footer > .container {
   position: relative;
   z-index: 3;
-  padding-bottom: 40px;
+  padding-bottom: 90px;
 }
 
 footer .container > *:last-child,
 footer > .container > *:last-child {
-  margin-bottom: 0;
+  margin-bottom: 24px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -224,8 +224,8 @@ footer a[href*="wa.me"]:hover {
 
 /* ── Floating WhatsApp icon ── */
 .whatsapp-float {
-  bottom: 110px !important;
-  right: 18px !important;
+  bottom: 70px !important;
+  right: 14px !important;
   left: auto !important;
   z-index: 30 !important;
   background: rgba(255,255,255,0.08) !important;
@@ -240,10 +240,10 @@ footer a[href*="wa.me"]:hover {
 }
 
 .whatsapp-float img {
-  width: 54px !important;
-  height: 54px !important;
+  width: 52px !important;
+  height: 52px !important;
   border-radius: 50%;
-  box-shadow: 0 0 16px rgba(37,211,102,0.28) !important;
+  box-shadow: 0 0 12px rgba(37,211,102,0.22) !important;
   display: block;
 }
 
