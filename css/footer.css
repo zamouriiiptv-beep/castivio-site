@@ -306,6 +306,19 @@ footer .uppercase::before {
     radial-gradient(ellipse 70% 60% at 50% 50%, rgba(123,47,255,0.18) 0%, transparent 70%),
     linear-gradient(180deg, #0a0418 0%, #0d0420 100%);
   border-bottom: 1px solid rgba(168,85,247,0.10);
+  overflow: visible !important;
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.ft-country-grid {
+  overflow: visible !important;
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .global-coverage .gc-title {
