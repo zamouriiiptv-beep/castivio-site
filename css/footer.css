@@ -108,7 +108,7 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Country grid — language-specific global coverage
+   Country grid — Global Coverage
    ═══════════════════════════════════════════════════════════════ */
 .ft-country-grid {
   display: grid;
@@ -120,30 +120,57 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
 
 .ft-country-grid a {
   justify-content: center;
+  border: 1px solid rgba(168,85,247,0.22) !important;
+  background: rgba(80,20,120,0.18) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 18px !important;
+  padding: 12px 18px !important;
+  min-height: 54px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35) !important;
+  box-shadow: 0 0 12px rgba(168,85,247,0.12), inset 0 0 12px rgba(255,255,255,0.03) !important;
+  transition: transform 0.24s ease, border-color 0.24s ease,
+              box-shadow 0.24s ease, background 0.24s ease !important;
+  gap: 8px !important;
+}
+
+.ft-country-grid a:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(200,107,255,0.45) !important;
+  background: rgba(100,30,160,0.26) !important;
+  box-shadow: 0 0 22px rgba(200,107,255,0.22) !important;
+  color: #f0d6ff !important;
+}
+
+/* Global Coverage title spacing */
+footer .uppercase {
+  margin-bottom: 28px !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Country pills — Premium glassmorphism
+   Country pills — non-grid (legacy selector, keep styled)
    ═══════════════════════════════════════════════════════════════ */
-footer a.flex,
+footer a.flex:not(.ft-country-grid a),
 footer .bg-white\/10 {
-  background: rgba(140,60,255,0.14) !important;
-  border: 1px solid rgba(180,90,255,0.30) !important;
+  background: rgba(80,20,120,0.18) !important;
+  border: 1px solid rgba(168,85,247,0.22) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   color: #ffffff !important;
   font-weight: 600 !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.40) !important;
-  transition: background 0.22s ease, border-color 0.22s ease,
-              box-shadow 0.22s ease, color 0.22s ease !important;
+  box-shadow: 0 0 12px rgba(168,85,247,0.12) !important;
+  transition: background 0.24s ease, border-color 0.24s ease,
+              box-shadow 0.24s ease !important;
 }
-footer a.flex:hover,
+footer a.flex:not(.ft-country-grid a):hover,
 footer .bg-white\/10:hover {
-  background: rgba(180,90,255,0.28) !important;
-  border-color: rgba(200,107,255,0.55) !important;
-  box-shadow: 0 0 20px rgba(200,107,255,0.30), 0 0 8px rgba(180,90,255,0.20) !important;
+  background: rgba(100,30,160,0.26) !important;
+  border-color: rgba(200,107,255,0.45) !important;
+  box-shadow: 0 0 22px rgba(200,107,255,0.22) !important;
   color: #f0d6ff !important;
-  text-shadow: 0 0 10px rgba(200,107,255,0.50) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -193,7 +220,7 @@ footer a:hover .fab {
 footer .uppercase {
   color: #f3e9ff !important;
   text-shadow: 0 0 18px rgba(168,85,247,0.45);
-  letter-spacing: 0.10em;
+  letter-spacing: 1px;
   font-weight: 700 !important;
 }
 
