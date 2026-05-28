@@ -1436,5 +1436,27 @@
     decoding="async"
     fetchpriority="high">
 </a>
+<script>
+(function(){
+  var btn = document.querySelector('.whatsapp-float');
+  if(!btn) return;
+  document.body.appendChild(btn);
+  btn.style.cssText = [
+    'position:fixed',
+    'bottom:90px',
+    'right:18px',
+    'left:auto',
+    'width:58px',
+    'height:58px',
+    'border-radius:50%',
+    'z-index:2147483647',
+    'display:flex',
+    'align-items:center',
+    'justify-content:center',
+    'transform:none',
+    'overflow:visible'
+  ].join('!important;') + '!important';
+})();
+</script>
 </body>
 </html>
