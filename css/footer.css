@@ -421,26 +421,6 @@ footer .uppercase::before {
   .ft-ambient {
     display: none !important;
   }
-  .ft-country-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 12px !important;
-    margin-top: 12px;
-    padding-inline: 12px !important;
-  }
-  .ft-country-grid a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 88px !important;
-    min-height: 88px !important;
-    padding: 10px 8px !important;
-    border-radius: 22px !important;
-    aspect-ratio: auto !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -463,10 +443,10 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 12px !important;
     margin-top: 12px;
-    padding-inline: 12px !important;
+    padding: 0 4px;
   }
   .ft-country-grid a {
     display: flex !important;
