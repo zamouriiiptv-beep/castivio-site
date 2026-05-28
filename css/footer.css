@@ -297,24 +297,26 @@ footer .uppercase::before {
 /* ── Footer bottom bar ── */
 .footer-bottom {
   width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 26px 0 18px;
-  margin-top: 22px;
+  margin-top: 28px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   border-top: 1px solid rgba(168,85,247,.12);
+  z-index: 5;
 }
 
 .footer-bottom p {
-  color: #cfc7ff;
-  opacity: .88;
+  margin: 0;
+  color: #d8d2ff;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .6px;
-  text-shadow:
-    0 0 10px rgba(168,85,247,.22),
-    0 0 20px rgba(168,85,247,.12);
+  opacity: .92;
+  text-shadow: 0 0 10px rgba(168,85,247,.15);
 }
 
 /* ═══════════════════════════════════════════════════════════════
