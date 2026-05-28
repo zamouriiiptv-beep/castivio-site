@@ -142,12 +142,13 @@ footer a:not([href*="wa.me"]):not(.inline-flex):not(.flex):hover {
   font-size: 0.92rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
-  white-space: nowrap !important;
   color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0,0,0,0.35) !important;
   box-shadow: 0 0 14px rgba(120,0,255,0.10) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: unset !important;
 }
 
 .ft-country-grid a .emoji,
@@ -442,25 +443,24 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 14px !important;
     margin-top: 12px;
-    padding-inline: 14px !important;
+    padding: 0 4px;
   }
   .ft-country-grid a {
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 10px !important;
-    height: 88px !important;
-    min-height: 88px !important;
-    padding: 14px 16px !important;
-    font-size: 15px !important;
+    justify-content: center !important;
+    height: 55px !important;
+    min-height: 55px !important;
+    padding: 8px 6px !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2px !important;
-    border-radius: 22px !important;
-    text-align: start !important;
+    border-radius: 14px !important;
+    text-align: center !important;
+    aspect-ratio: auto !important;
     background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
     border: 1px solid rgba(180,80,255,.18) !important;
     box-shadow: 0 0 14px rgba(120,0,255,.10) !important;
@@ -474,7 +474,7 @@ footer .uppercase::before {
   }
   .ft-country-grid a:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 18px rgba(140,0,255,.22) !important;
+    box-shadow: 0 4px 16px rgba(140,0,255,.18) !important;
   }
   .global-coverage {
     padding-top: 18px !important;
