@@ -435,15 +435,23 @@ footer .uppercase::before {
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 14px;
+    gap: 6px;
+    margin-top: 10px;
   }
   .ft-country-grid a {
-    height: 44px !important;
-    padding: 0 8px !important;
-    font-size: 11px !important;
-    gap: 4px !important;
-    border-radius: 12px !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 0 5px !important;
+    font-size: 10px !important;
+    gap: 3px !important;
+    border-radius: 10px !important;
     white-space: nowrap !important;
+  }
+  .global-coverage {
+    padding: 28px 10px 24px !important;
+  }
+  .global-coverage .gc-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 14px !important;
   }
 }
