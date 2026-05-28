@@ -449,36 +449,34 @@ footer .uppercase::before {
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
   footer h6             { font-size: 0.65rem !important; }
   .ft-country-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 14px !important;
     margin-top: 12px;
-    padding: 0 2px;
+    padding: 0 4px;
   }
   .ft-country-grid a {
-    flex: 0 0 calc(25% - 7.5px) !important;
-    width: calc(25% - 7.5px) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     min-height: 88px !important;
-    height: 88px !important;
-    padding: 12px 6px !important;
-    font-size: 12px !important;
+    height: auto !important;
+    padding: 12px 8px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
     border-radius: 22px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-align: center !important;
     background: linear-gradient(180deg, rgba(70,0,120,.55), rgba(20,0,40,.95)) !important;
-    border: 1px solid rgba(180,80,255,0.18) !important;
-    box-shadow: 0 0 14px rgba(120,0,255,0.10) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    border: 1px solid rgba(180,80,255,.18) !important;
+    box-shadow: 0 0 14px rgba(120,0,255,.10) !important;
+    transition: transform .2s ease, box-shadow .2s ease !important;
   }
   .ft-country-grid a:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 16px rgba(140,0,255,0.18) !important;
+    box-shadow: 0 4px 16px rgba(140,0,255,.18) !important;
   }
   .global-coverage {
     padding-top: 18px !important;
@@ -487,7 +485,7 @@ footer .uppercase::before {
   }
   .global-coverage .gc-title {
     font-size: 1.1rem !important;
-    line-height: 1.4 !important;
-    margin-bottom: 16px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 22px !important;
   }
 }
