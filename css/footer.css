@@ -243,9 +243,22 @@ footer .border-gray-400 {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Tablet (641px+) — logo 25% larger + better centering
+   Links grid — single col on mobile (default), 2 cols on tablet+
+   ═══════════════════════════════════════════════════════════════ */
+.ft-links-grid {
+  display: block; /* mobile: stacked */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Tablet (641px+) — 2-col links grid + logo 25% larger
    ═══════════════════════════════════════════════════════════════ */
 @media (min-width: 641px) {
+  .ft-links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    align-items: start;
+  }
   .footer-logo {
     max-width: 250px;
   }

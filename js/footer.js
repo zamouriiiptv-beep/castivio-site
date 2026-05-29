@@ -1,4 +1,4 @@
-/* footer.js — Prime IPTV Unified Footer v13 */
+/* footer.js — Prime IPTV Unified Footer v14 */
 (function () {
   'use strict';
 
@@ -15,6 +15,8 @@
       pricing : 'خطط الأسعار',
       faq     : 'الأسئلة الشائعة',
       whyUs   : 'لماذا تختار IPTV؟',
+      payment : 'طرق الدفع',
+      reviews : 'آراء عملائنا',
       contactLink: 'تواصل معنا',
       contact : 'تواصل معنا',
       waText  : 'WhatsApp – دعم 24/7',
@@ -30,6 +32,8 @@
       pricing : 'Subscription Plans',
       faq     : 'FAQ',
       whyUs   : 'Why Choose IPTV?',
+      payment : 'Payment Methods',
+      reviews : 'Customer Reviews',
       contactLink: 'Contact Us',
       contact : 'Contact Us',
       waText  : 'WhatsApp – Support 24/7',
@@ -45,6 +49,8 @@
       pricing : "Plans d'abonnement",
       faq     : 'FAQ',
       whyUs   : 'Pourquoi choisir IPTV ?',
+      payment : 'Moyens de paiement',
+      reviews : 'Avis clients',
       contactLink: 'Contactez-nous',
       contact : 'Contactez-nous',
       waText  : 'WhatsApp – Support 24/7',
@@ -60,6 +66,8 @@
       pricing : 'Planes de suscripción',
       faq     : 'Preguntas frecuentes',
       whyUs   : '¿Por qué elegir IPTV?',
+      payment : 'Métodos de pago',
+      reviews : 'Opiniones de clientes',
       contactLink: 'Contáctanos',
       contact : 'Contáctanos',
       waText  : 'WhatsApp – Soporte 24/7',
@@ -75,6 +83,8 @@
       pricing : 'Abonnement-Pakete',
       faq     : 'FAQ',
       whyUs   : 'Warum IPTV wählen?',
+      payment : 'Zahlungsmethoden',
+      reviews : 'Kundenbewertungen',
       contactLink: 'Kontakt',
       contact : 'Kontakt',
       waText  : 'WhatsApp – Support 24/7',
@@ -90,6 +100,8 @@
       pricing : 'Piani di abbonamento',
       faq     : 'Domande frequenti',
       whyUs   : 'Perché scegliere IPTV?',
+      payment : 'Metodi di pagamento',
+      reviews : 'Recensioni clienti',
       contactLink: 'Contattaci',
       contact : 'Contattaci',
       waText  : 'WhatsApp – Supporto 24/7',
@@ -105,6 +117,8 @@
       pricing : 'Abonnementsplannen',
       faq     : 'Veelgestelde vragen',
       whyUs   : 'Waarom IPTV kiezen?',
+      payment : 'Betaalmethoden',
+      reviews : 'Klantbeoordelingen',
       contactLink: 'Contact',
       contact : 'Contact',
       waText  : 'WhatsApp – Support 24/7',
@@ -120,6 +134,8 @@
       pricing : 'Planos de assinatura',
       faq     : 'Perguntas frequentes',
       whyUs   : 'Por que escolher IPTV?',
+      payment : 'Métodos de pagamento',
+      reviews : 'Avaliações de clientes',
       contactLink: 'Contate-nos',
       contact : 'Contate-nos',
       waText  : 'WhatsApp – Suporte 24/7',
@@ -135,6 +151,8 @@
       pricing : 'Abonelik planları',
       faq     : 'Sık Sorulan Sorular',
       whyUs   : 'Neden IPTV seçilir?',
+      payment : 'Ödeme Yöntemleri',
+      reviews : 'Müşteri Yorumları',
       contactLink: 'İletişim',
       contact : 'İletişim',
       waText  : 'WhatsApp – Destek 24/7',
@@ -152,15 +170,25 @@
   const waEl  = footer.querySelector('a[href*="wa.me"]');
   const waHref = waEl ? waEl.getAttribute('href') : 'https://wa.me/212666686732';
 
-  /* ── Fixed nav links: 5 links ── */
-  const ulHTML =
-    '<ul class="space-y-3 text-gray-200">' +
-      '<li><a href="' + t.base + '#home"    class="hover:text-white">' + t.home    + '</a></li>' +
-      '<li><a href="' + t.base + '#pricing" class="hover:text-white">' + t.pricing + '</a></li>' +
-      '<li><a href="' + t.base + '#faq"     class="hover:text-white">' + t.faq     + '</a></li>' +
-      '<li><a href="' + t.base + '#why-us"  class="hover:text-white">' + t.whyUs   + '</a></li>' +
-      '<li><a href="' + waHref + '" target="_blank" rel="noopener noreferrer" class="hover:text-white">' + t.contactLink + '</a></li>' +
-    '</ul>';
+  /* ── Nav links: 2-column grid on tablet/desktop, single col on mobile ── */
+  var li = function(href, text, ext) {
+    return '<li><a href="' + href + '" class="hover:text-white"' +
+      (ext ? ' target="_blank" rel="noopener noreferrer"' : '') +
+      '>' + text + '</a></li>';
+  };
+  var ulHTML =
+    '<div class="ft-links-grid">' +
+      '<ul class="space-y-3 text-gray-200">' +
+        li(t.base + '#home',    t.home)    +
+        li(t.base + '#pricing', t.pricing) +
+        li(t.base + '#faq',     t.faq)     +
+      '</ul>' +
+      '<ul class="space-y-3 text-gray-200">' +
+        li(t.base + '#why-us',          t.whyUs)  +
+        li(t.base + '#payment-methods', t.payment) +
+        li(t.base + '#testimonials',    t.reviews) +
+      '</ul>' +
+    '</div>';
 
   /* ── Rebuild footer ── */
   footer.className = 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative';
