@@ -243,6 +243,35 @@ footer .border-gray-400 {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Tablet (641px+) — logo 25% larger + better centering
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 641px) {
+  .footer-logo {
+    max-width: 250px;
+  }
+  .ft-player-logo-wrap {
+    justify-content: center;
+    align-items: center;
+    padding-inline-start: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Desktop (1024px+) — logo 35% larger + enhanced glow
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .footer-logo {
+    max-width: 270px;
+    filter:
+      drop-shadow(0 0 36px rgba(168,85,247,0.88))
+      drop-shadow(0 0 72px rgba(123,47,255,0.52));
+  }
+  .ft-player-logo-wrap {
+    min-height: 200px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    WhatsApp button — keep green
    ═══════════════════════════════════════════════════════════════ */
 footer a[href*="wa.me"] {

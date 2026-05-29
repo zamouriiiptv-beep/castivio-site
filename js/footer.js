@@ -1,4 +1,4 @@
-/* footer.js — Prime IPTV Unified Footer v12 */
+/* footer.js — Prime IPTV Unified Footer v13 */
 (function () {
   'use strict';
 
@@ -13,6 +13,9 @@
       links   : 'روابط مهمة',
       home    : 'الصفحة الرئيسية',
       pricing : 'خطط الأسعار',
+      faq     : 'الأسئلة الشائعة',
+      whyUs   : 'لماذا تختار IPTV؟',
+      contactLink: 'تواصل معنا',
       contact : 'تواصل معنا',
       waText  : 'WhatsApp – دعم 24/7',
       waAria  : 'دعم واتساب 24 ساعة',
@@ -25,6 +28,9 @@
       links   : 'Important Links',
       home    : 'Home Page',
       pricing : 'Subscription Plans',
+      faq     : 'FAQ',
+      whyUs   : 'Why Choose IPTV?',
+      contactLink: 'Contact Us',
       contact : 'Contact Us',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
@@ -37,6 +43,9 @@
       links   : 'Liens importants',
       home    : "Page d'accueil",
       pricing : "Plans d'abonnement",
+      faq     : 'FAQ',
+      whyUs   : 'Pourquoi choisir IPTV ?',
+      contactLink: 'Contactez-nous',
       contact : 'Contactez-nous',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'Support WhatsApp 24/7',
@@ -49,6 +58,9 @@
       links   : 'Enlaces importantes',
       home    : 'Inicio',
       pricing : 'Planes de suscripción',
+      faq     : 'Preguntas frecuentes',
+      whyUs   : '¿Por qué elegir IPTV?',
+      contactLink: 'Contáctanos',
       contact : 'Contáctanos',
       waText  : 'WhatsApp – Soporte 24/7',
       waAria  : 'Soporte WhatsApp 24/7',
@@ -61,6 +73,9 @@
       links   : 'Wichtige Links',
       home    : 'Startseite',
       pricing : 'Abonnement-Pakete',
+      faq     : 'FAQ',
+      whyUs   : 'Warum IPTV wählen?',
+      contactLink: 'Kontakt',
       contact : 'Kontakt',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
@@ -73,6 +88,9 @@
       links   : 'Link importanti',
       home    : 'Pagina principale',
       pricing : 'Piani di abbonamento',
+      faq     : 'Domande frequenti',
+      whyUs   : 'Perché scegliere IPTV?',
+      contactLink: 'Contattaci',
       contact : 'Contattaci',
       waText  : 'WhatsApp – Supporto 24/7',
       waAria  : 'Supporto WhatsApp 24/7',
@@ -85,6 +103,9 @@
       links   : 'Belangrijke links',
       home    : 'Startpagina',
       pricing : 'Abonnementsplannen',
+      faq     : 'Veelgestelde vragen',
+      whyUs   : 'Waarom IPTV kiezen?',
+      contactLink: 'Contact',
       contact : 'Contact',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
@@ -97,6 +118,9 @@
       links   : 'Links importantes',
       home    : 'Página inicial',
       pricing : 'Planos de assinatura',
+      faq     : 'Perguntas frequentes',
+      whyUs   : 'Por que escolher IPTV?',
+      contactLink: 'Contate-nos',
       contact : 'Contate-nos',
       waText  : 'WhatsApp – Suporte 24/7',
       waAria  : 'Suporte WhatsApp 24/7',
@@ -109,6 +133,9 @@
       links   : 'Önemli Bağlantılar',
       home    : 'Ana Sayfa',
       pricing : 'Abonelik planları',
+      faq     : 'Sık Sorulan Sorular',
+      whyUs   : 'Neden IPTV seçilir?',
+      contactLink: 'İletişim',
       contact : 'İletişim',
       waText  : 'WhatsApp – Destek 24/7',
       waAria  : 'WhatsApp Destek 24/7',
@@ -125,11 +152,14 @@
   const waEl  = footer.querySelector('a[href*="wa.me"]');
   const waHref = waEl ? waEl.getAttribute('href') : 'https://wa.me/212666686732';
 
-  /* ── Fixed nav links: Home + Pricing only ── */
+  /* ── Fixed nav links: 5 links ── */
   const ulHTML =
     '<ul class="space-y-3 text-gray-200">' +
-      '<li><a href="' + t.base + '#home" class="hover:text-white">' + t.home + '</a></li>' +
+      '<li><a href="' + t.base + '#home"    class="hover:text-white">' + t.home    + '</a></li>' +
       '<li><a href="' + t.base + '#pricing" class="hover:text-white">' + t.pricing + '</a></li>' +
+      '<li><a href="' + t.base + '#faq"     class="hover:text-white">' + t.faq     + '</a></li>' +
+      '<li><a href="' + t.base + '#why-us"  class="hover:text-white">' + t.whyUs   + '</a></li>' +
+      '<li><a href="' + waHref + '" target="_blank" rel="noopener noreferrer" class="hover:text-white">' + t.contactLink + '</a></li>' +
     '</ul>';
 
   /* ── Rebuild footer ── */
@@ -183,22 +213,18 @@
 
     '</div>';
 
-  /* ── Copyright div OUTSIDE footer ── */
-  /* Remove any existing copyright div that was inside HTML */
-  const oldCopy = document.querySelector('.footer-bottom, .copyright-text');
-  if (oldCopy) {
-    const parent = oldCopy.closest('.footer-bottom') || oldCopy;
-    if (parent && parent !== footer) parent.remove();
-  }
+  /* ── Copyright div OUTSIDE footer — insert once, remove all duplicates ── */
+  /* 1. Remove any existing copyright divs already in the HTML */
+  document.querySelectorAll('[data-ft-copy], .footer-bottom').forEach(function(el) {
+    el.remove();
+  });
 
-  /* Insert copyright after footer (only once) */
-  if (!footer.nextElementSibling || !footer.nextElementSibling.dataset.ftCopy) {
-    const copyDiv = document.createElement('div');
-    copyDiv.dataset.ftCopy = '1';
-    copyDiv.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
-    copyDiv.innerHTML = '<p style="margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);">' + t.copy + '</p>';
-    footer.insertAdjacentElement('afterend', copyDiv);
-  }
+  /* 2. Insert a fresh one after footer */
+  var copyDiv = document.createElement('div');
+  copyDiv.dataset.ftCopy = '1';
+  copyDiv.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
+  copyDiv.innerHTML = '<p style="margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);">' + t.copy + '</p>';
+  footer.insertAdjacentElement('afterend', copyDiv);
 
   /* ── Seed rising particles ── */
   const pContainer = footer.querySelector('.footer-particles');
