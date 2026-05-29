@@ -414,6 +414,55 @@ footer .uppercase::before {
 .p8 { width:  9px; height:  9px; left: 15%; bottom: 45%; animation-duration: 15s; animation-delay:  6s; }
 
 /* ═══════════════════════════════════════════════════════════════
+   Popular IPTV Searches — between global-coverage and footer
+   ═══════════════════════════════════════════════════════════════ */
+.iptv-searches-section {
+  background: transparent;
+  text-align: center;
+  padding: 18px 16px 14px;
+  margin: 0;
+}
+
+.iptv-searches-title {
+  color: rgba(200,160,255,0.60);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.iptv-searches-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.iptv-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid rgba(168,85,247,0.28);
+  border-radius: 999px;
+  background: rgba(123,47,255,0.08);
+  color: rgba(220,190,255,0.80);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: default;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.iptv-tag:hover {
+  border-color: rgba(168,85,247,0.65);
+  background: rgba(123,47,255,0.18);
+  color: #e2c4ff;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    Mobile — disable heavy GPU effects for smooth scroll
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
