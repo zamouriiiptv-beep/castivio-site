@@ -1,4 +1,4 @@
-/* footer.js — Prime IPTV Unified Footer v14 */
+/* footer.js — Prime IPTV Unified Footer v15 */
 (function () {
   'use strict';
 
@@ -11,6 +11,7 @@
   const i18n = {
     ar: {
       links   : 'روابط مهمة',
+      links2  : 'روابط إضافية',
       home    : 'الصفحة الرئيسية',
       pricing : 'خطط الأسعار',
       faq     : 'الأسئلة الشائعة',
@@ -28,6 +29,7 @@
     },
     en: {
       links   : 'Important Links',
+      links2  : 'Additional Links',
       home    : 'Home Page',
       pricing : 'Subscription Plans',
       faq     : 'FAQ',
@@ -45,6 +47,7 @@
     },
     fr: {
       links   : 'Liens importants',
+      links2  : 'Liens supplémentaires',
       home    : "Page d'accueil",
       pricing : "Plans d'abonnement",
       faq     : 'FAQ',
@@ -62,6 +65,7 @@
     },
     es: {
       links   : 'Enlaces importantes',
+      links2  : 'Enlaces adicionales',
       home    : 'Inicio',
       pricing : 'Planes de suscripción',
       faq     : 'Preguntas frecuentes',
@@ -79,6 +83,7 @@
     },
     de: {
       links   : 'Wichtige Links',
+      links2  : 'Weitere Links',
       home    : 'Startseite',
       pricing : 'Abonnement-Pakete',
       faq     : 'FAQ',
@@ -96,6 +101,7 @@
     },
     it: {
       links   : 'Link importanti',
+      links2  : 'Link aggiuntivi',
       home    : 'Pagina principale',
       pricing : 'Piani di abbonamento',
       faq     : 'Domande frequenti',
@@ -113,6 +119,7 @@
     },
     nl: {
       links   : 'Belangrijke links',
+      links2  : 'Extra links',
       home    : 'Startpagina',
       pricing : 'Abonnementsplannen',
       faq     : 'Veelgestelde vragen',
@@ -130,6 +137,7 @@
     },
     pt: {
       links   : 'Links importantes',
+      links2  : 'Links adicionais',
       home    : 'Página inicial',
       pricing : 'Planos de assinatura',
       faq     : 'Perguntas frequentes',
@@ -147,6 +155,7 @@
     },
     tr: {
       links   : 'Önemli Bağlantılar',
+      links2  : 'Ek Bağlantılar',
       home    : 'Ana Sayfa',
       pricing : 'Abonelik planları',
       faq     : 'Sık Sorulan Sorular',
@@ -177,17 +186,24 @@
       '>' + text + '</a></li>';
   };
   var ulHTML =
+    '<h4 class="ft-links-main-h4 font-semibold mb-4 text-lg">' + t.links + '</h4>' +
     '<div class="ft-links-grid">' +
-      '<ul class="space-y-3 text-gray-200">' +
-        li(t.base + '#home',    t.home)    +
-        li(t.base + '#pricing', t.pricing) +
-        li(t.base + '#faq',     t.faq)     +
-      '</ul>' +
-      '<ul class="space-y-3 text-gray-200">' +
-        li(t.base + '#why-us',          t.whyUs)  +
-        li(t.base + '#payment-methods', t.payment) +
-        li(t.base + '#testimonials',    t.reviews) +
-      '</ul>' +
+      '<div class="ft-links-col">' +
+        '<h4 class="ft-links-col-h4 font-semibold mb-4 text-lg">' + t.links + '</h4>' +
+        '<ul class="space-y-3 text-gray-200">' +
+          li(t.base + '#home',    t.home)    +
+          li(t.base + '#pricing', t.pricing) +
+          li(t.base + '#faq',     t.faq)     +
+        '</ul>' +
+      '</div>' +
+      '<div class="ft-links-col">' +
+        '<h4 class="ft-links-col-h4 font-semibold mb-4 text-lg">' + t.links2 + '</h4>' +
+        '<ul class="space-y-3 text-gray-200">' +
+          li(t.base + '#why-us',          t.whyUs)  +
+          li(t.base + '#payment-methods', t.payment) +
+          li(t.base + '#testimonials',    t.reviews) +
+        '</ul>' +
+      '</div>' +
     '</div>';
 
   /* ── Rebuild footer ── */
@@ -210,10 +226,7 @@
             '<img src="/images/logo.webp" alt="Prime IPTV" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">' +
             '<h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>' +
           '</div>' +
-          '<div>' +
-            '<h4 class="font-semibold mb-4 text-lg">' + t.links + '</h4>' +
-            ulHTML +
-          '</div>' +
+          '<div>' + ulHTML + '</div>' +
           '<div>' +
             '<h4 class="font-semibold mb-4 text-lg">' + t.contact + '</h4>' +
             '<a href="' + waHref + '" target="_blank" rel="noopener noreferrer"' +

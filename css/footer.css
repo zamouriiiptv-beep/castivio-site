@@ -249,15 +249,21 @@ footer .border-gray-400 {
   display: block; /* mobile: stacked */
 }
 
+/* mobile: show single heading, hide per-col headings */
+.ft-links-col-h4 { display: none; }
+
 /* ═══════════════════════════════════════════════════════════════
    Tablet (641px+) — 2-col links grid + logo 25% larger
    ═══════════════════════════════════════════════════════════════ */
 @media (min-width: 641px) {
+  .ft-links-main-h4 { display: none; }
+  .ft-links-col-h4  { display: block; }
   .ft-links-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 20px;
+    grid-template-columns: auto auto;
+    gap: 0 40px;
     align-items: start;
+    justify-content: start;
   }
   .footer-logo {
     max-width: 250px;
