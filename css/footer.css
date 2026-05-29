@@ -452,7 +452,7 @@ footer .uppercase::before {
     0 0 18px rgba(216,180,254,0.99),
     0 0 40px rgba(168,85,247,0.61),
     0 0 70px rgba(139,92,246,0.28);
-  margin: 0 0 22px;
+  margin: 0 0 10px;
 }
 
 .iptv-searches-title::before,
@@ -471,11 +471,11 @@ footer .uppercase::before {
 .iptv-searches-subtitle {
   position: relative;
   z-index: 1;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.58);
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 1px;
-  margin: -14px 0 18px;
+  margin: -10px 0 26px;
 }
 
 .iptv-searches-tags {
