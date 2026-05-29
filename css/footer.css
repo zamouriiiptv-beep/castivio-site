@@ -581,8 +581,8 @@ footer .uppercase::before {
   footer h3             { font-size: 1.1rem  !important; margin-bottom: 0.5rem !important; }
   footer h4             { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
   footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
-  .footer-logo          { max-width: 150px !important; filter: drop-shadow(0 0 14px rgba(168,85,247,0.50)) !important; }
-  .ft-player-logo-wrap  { order: -1; padding: 0 0 1rem !important; align-self: auto !important; }
+  .footer-logo          { max-width: 140px !important; filter: drop-shadow(0 0 14px rgba(168,85,247,0.50)) !important; }
+  .ft-player-logo-wrap  { align-self: auto !important; min-height: auto !important; }
   footer a[href*="wa.me"] { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
   footer .fab           { font-size: 1.1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
