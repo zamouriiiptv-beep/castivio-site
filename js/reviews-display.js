@@ -50,10 +50,11 @@
 
         snapshot.forEach(function (doc) {
           var r = doc.data();
-          total += r.rating;
+          var stars = r.rating || r.number || 5;
+          total += stars;
           html +=
             '<div class="lr-card">' +
-              '<div class="lr-stars">' + renderStars(r.rating) + '</div>' +
+              '<div class="lr-stars">' + renderStars(stars) + '</div>' +
               '<p class="lr-comment">&ldquo;' + esc(r.comment) + '&rdquo;</p>' +
               '<div class="lr-meta">' +
                 '<span class="lr-name">' + esc(r.name) + '</span>' +
