@@ -273,6 +273,14 @@ footer .border-gray-400 {
     align-items: center;
     padding-inline-start: 10px;
   }
+  /* Reduce bottom gap between footer content and copyright */
+  footer {
+    padding-bottom: 1.25rem !important;
+  }
+  footer .container > *:last-child,
+  footer > .container > *:last-child {
+    margin-bottom: 8px;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
