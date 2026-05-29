@@ -71,22 +71,25 @@ footer h3, footer h4, footer p, footer ul, footer li {
   text-align: right;
 }
 
-[dir="ltr"] footer,
-html[lang="en"] footer,
-html[lang="fr"] footer,
-html[lang="es"] footer {
-  direction: ltr;
-}
-
-[dir="ltr"] footer h3, [dir="ltr"] footer h4,
-[dir="ltr"] footer p,  [dir="ltr"] footer ul, [dir="ltr"] footer li,
+/* LTR text alignment for non-Arabic pages — keep footer grid RTL for column order */
 html[lang="en"] footer h3, html[lang="en"] footer h4,
-html[lang="en"] footer p,  html[lang="en"] footer ul, html[lang="en"] footer li,
+html[lang="en"] footer p,  html[lang="en"] footer ul, html[lang="en"] footer li, html[lang="en"] footer a,
 html[lang="fr"] footer h3, html[lang="fr"] footer h4,
-html[lang="fr"] footer p,  html[lang="fr"] footer ul, html[lang="fr"] footer li,
+html[lang="fr"] footer p,  html[lang="fr"] footer ul, html[lang="fr"] footer li, html[lang="fr"] footer a,
 html[lang="es"] footer h3, html[lang="es"] footer h4,
-html[lang="es"] footer p,  html[lang="es"] footer ul, html[lang="es"] footer li {
+html[lang="es"] footer p,  html[lang="es"] footer ul, html[lang="es"] footer li, html[lang="es"] footer a,
+html[lang="nl"] footer h3, html[lang="nl"] footer h4,
+html[lang="nl"] footer p,  html[lang="nl"] footer ul, html[lang="nl"] footer li, html[lang="nl"] footer a,
+html[lang="pt"] footer h3, html[lang="pt"] footer h4,
+html[lang="pt"] footer p,  html[lang="pt"] footer ul, html[lang="pt"] footer li, html[lang="pt"] footer a,
+html[lang="de"] footer h3, html[lang="de"] footer h4,
+html[lang="de"] footer p,  html[lang="de"] footer ul, html[lang="de"] footer li, html[lang="de"] footer a,
+html[lang="tr"] footer h3, html[lang="tr"] footer h4,
+html[lang="tr"] footer p,  html[lang="tr"] footer ul, html[lang="tr"] footer li, html[lang="tr"] footer a,
+html[lang="it"] footer h3, html[lang="it"] footer h4,
+html[lang="it"] footer p,  html[lang="it"] footer ul, html[lang="it"] footer li, html[lang="it"] footer a {
   text-align: left;
+  direction: ltr;
 }
 
 /* ═══════════════════════════════════════════════════════════════
