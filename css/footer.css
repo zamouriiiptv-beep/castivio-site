@@ -420,7 +420,7 @@ footer .uppercase::before {
   position: relative;
   background: linear-gradient(180deg, #0b0120 0%, #080016 55%, #05000f 100%);
   text-align: center;
-  padding: 40px 20px 34px;
+  padding: 40px 20px 58px;
   margin: 0;
   overflow: hidden;
 }
@@ -449,9 +449,9 @@ footer .uppercase::before {
   font-weight: 800;
   letter-spacing: 2px;
   text-shadow:
-    0 0 16px rgba(216,180,254,0.90),
-    0 0 36px rgba(168,85,247,0.55),
-    0 0 64px rgba(139,92,246,0.25);
+    0 0 18px rgba(216,180,254,0.99),
+    0 0 40px rgba(168,85,247,0.61),
+    0 0 70px rgba(139,92,246,0.28);
   margin: 0 0 22px;
 }
 
