@@ -248,11 +248,13 @@ footer .border-gray-400 {
 footer a[href*="wa.me"] {
   font-weight: 700;
   letter-spacing: 0.2px;
-  padding: 14px 24px !important;
-  font-size: 15px !important;
+  padding: 10px 20px !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
   border-radius: 18px !important;
   box-shadow: 0 4px 22px rgba(34,197,94,0.32) !important;
   transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+  white-space: nowrap !important;
 }
 footer a[href*="wa.me"]:hover {
   box-shadow: 0 6px 30px rgba(34,197,94,0.48) !important;
@@ -586,7 +588,7 @@ footer .uppercase::before {
   footer ul li          { margin-bottom: 0.35rem !important; font-size: 0.88rem !important; }
   .footer-logo          { max-width: 140px !important; filter: drop-shadow(0 0 14px rgba(168,85,247,0.50)) !important; }
   .ft-player-logo-wrap  { align-self: auto !important; min-height: auto !important; padding-right: 14px !important; }
-  footer a[href*="wa.me"] { padding: 0.42rem 0.75rem !important; font-size: 0.78rem !important; }
+  footer a[href*="wa.me"] { padding: 0.38rem 0.9rem !important; font-size: 0.75rem !important; line-height: 1.4 !important; white-space: nowrap !important; }
   footer .fab           { font-size: 1.1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 1rem !important; }
   footer h6             { font-size: 0.65rem !important; }
