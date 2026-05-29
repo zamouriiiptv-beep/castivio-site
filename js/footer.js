@@ -1,4 +1,4 @@
-/* footer.js — Prime IPTV Unified Footer v11 */
+/* footer.js — Prime IPTV Unified Footer v12 */
 (function () {
   'use strict';
 
@@ -11,97 +11,126 @@
   const i18n = {
     ar: {
       links   : 'روابط مهمة',
+      home    : 'الصفحة الرئيسية',
+      pricing : 'خطط الأسعار',
       contact : 'تواصل معنا',
       waText  : 'WhatsApp – دعم 24/7',
       waAria  : 'دعم واتساب 24 ساعة',
       privacy : 'سياسة الخصوصية', privacyHref: '/privacy-policy/',
       terms   : 'شروط الاستخدام',  termsHref : '/terms-of-service/',
       copy    : '© جميع حقوق الطبع والنشر محفوظة – Prime IPTV',
+      base    : '/',
     },
     en: {
       links   : 'Important Links',
+      home    : 'Home Page',
+      pricing : 'Subscription Plans',
       contact : 'Contact Us',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacy Policy',     privacyHref: '/en/privacy-policy/',
       terms   : 'Terms of Service',   termsHref  : '/en/terms-of-service/',
       copy    : '© All Rights Reserved – Prime IPTV',
+      base    : '/en/',
     },
     fr: {
       links   : 'Liens importants',
+      home    : "Page d'accueil",
+      pricing : "Plans d'abonnement",
       contact : 'Contactez-nous',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'Support WhatsApp 24/7',
       privacy : 'Politique de confidentialité', privacyHref: '/fr/privacy-policy/',
       terms   : "Conditions d'utilisation",     termsHref  : '/fr/terms-of-service/',
       copy    : '© Tous droits réservés – Prime IPTV',
+      base    : '/fr/',
     },
     es: {
       links   : 'Enlaces importantes',
+      home    : 'Inicio',
+      pricing : 'Planes de suscripción',
       contact : 'Contáctanos',
       waText  : 'WhatsApp – Soporte 24/7',
       waAria  : 'Soporte WhatsApp 24/7',
       privacy : 'Política de privacidad', privacyHref: '/es/privacy-policy/',
       terms   : 'Términos de servicio',   termsHref  : '/es/terms-of-service/',
       copy    : '© Todos los derechos reservados – Prime IPTV',
+      base    : '/es/',
     },
     de: {
       links   : 'Wichtige Links',
+      home    : 'Startseite',
+      pricing : 'Abonnement-Pakete',
       contact : 'Kontakt',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Datenschutzerklärung', privacyHref: '/privacy-policy/',
       terms   : 'Nutzungsbedingungen',  termsHref  : '/terms-of-service/',
       copy    : '© Alle Rechte vorbehalten – Prime IPTV',
+      base    : '/de/',
     },
     it: {
       links   : 'Link importanti',
+      home    : 'Pagina principale',
+      pricing : 'Piani di abbonamento',
       contact : 'Contattaci',
       waText  : 'WhatsApp – Supporto 24/7',
       waAria  : 'Supporto WhatsApp 24/7',
       privacy : 'Privacy Policy',      privacyHref: '/privacy-policy/',
       terms   : 'Termini di servizio', termsHref  : '/terms-of-service/',
       copy    : '© Tutti i diritti riservati – Prime IPTV',
+      base    : '/it/',
     },
     nl: {
       links   : 'Belangrijke links',
+      home    : 'Startpagina',
+      pricing : 'Abonnementsplannen',
       contact : 'Contact',
       waText  : 'WhatsApp – Support 24/7',
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacybeleid',       privacyHref: '/privacy-policy/',
       terms   : 'Servicevoorwaarden',  termsHref  : '/terms-of-service/',
       copy    : '© Alle rechten voorbehouden – Prime IPTV',
+      base    : '/nl/',
     },
     pt: {
       links   : 'Links importantes',
+      home    : 'Página inicial',
+      pricing : 'Planos de assinatura',
       contact : 'Contate-nos',
       waText  : 'WhatsApp – Suporte 24/7',
       waAria  : 'Suporte WhatsApp 24/7',
       privacy : 'Política de privacidade', privacyHref: '/privacy-policy/',
       terms   : 'Termos de serviço',       termsHref  : '/terms-of-service/',
       copy    : '© Todos os direitos reservados – Prime IPTV',
+      base    : '/pt/',
     },
     tr: {
       links   : 'Önemli Bağlantılar',
+      home    : 'Ana Sayfa',
+      pricing : 'Abonelik planları',
       contact : 'İletişim',
       waText  : 'WhatsApp – Destek 24/7',
       waAria  : 'WhatsApp Destek 24/7',
       privacy : 'Gizlilik Politikası',  privacyHref: '/privacy-policy/',
       terms   : 'Kullanım Şartları',    termsHref  : '/terms-of-service/',
       copy    : '© Tüm hakları saklıdır – Prime IPTV',
+      base    : '/tr/',
     },
   };
 
   const t = i18n[lang] || i18n['en'];
 
-  /* ── Extract page-specific data from existing footer ── */
+  /* ── Extract WhatsApp href from existing footer ── */
   const waEl  = footer.querySelector('a[href*="wa.me"]');
   const waHref = waEl ? waEl.getAttribute('href') : 'https://wa.me/212666686732';
 
-  const ul = footer.querySelector('ul');
-  const ulHTML = ul ? ul.outerHTML
-    .replace(/class="[^"]*"/, 'class="space-y-3 text-gray-200"')
-    .replace(/style="[^"]*"/g, '') : '';
+  /* ── Fixed nav links: Home + Pricing only ── */
+  const ulHTML =
+    '<ul class="space-y-3 text-gray-200">' +
+      '<li><a href="' + t.base + '#home" class="hover:text-white">' + t.home + '</a></li>' +
+      '<li><a href="' + t.base + '#pricing" class="hover:text-white">' + t.pricing + '</a></li>' +
+    '</ul>';
 
   /* ── Rebuild footer ── */
   footer.className = 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative';
