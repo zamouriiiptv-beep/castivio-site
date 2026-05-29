@@ -1,34 +1,187 @@
-/* footer.js — Prime IPTV */
+/* footer.js — Prime IPTV Unified Footer v11 */
 (function () {
   'use strict';
 
   const footer = document.querySelector('footer');
   if (!footer) return;
 
-  /* ── Inject ambient layer (orbs + particles) ── */
-  const ambient = document.createElement('div');
-  ambient.className = 'ft-ambient';
-  ambient.setAttribute('aria-hidden', 'true');
-  ambient.innerHTML =
-    '<span class="ft-orb ft-orb--1"></span>' +
-    '<span class="ft-orb ft-orb--2"></span>' +
-    '<span class="ft-orb ft-orb--3"></span>' +
-    '<span class="ft-orb ft-orb--4"></span>' +
-    '<div class="ft-particles"></div>';
+  const lang = document.documentElement.lang || 'ar';
 
-  footer.insertBefore(ambient, footer.firstChild);
+  /* ── Translations ── */
+  const i18n = {
+    ar: {
+      links   : 'روابط مهمة',
+      contact : 'تواصل معنا',
+      waText  : 'WhatsApp – دعم 24/7',
+      waAria  : 'دعم واتساب 24 ساعة',
+      privacy : 'سياسة الخصوصية', privacyHref: '/privacy-policy/',
+      terms   : 'شروط الاستخدام',  termsHref : '/terms-of-service/',
+      copy    : '© جميع حقوق الطبع والنشر محفوظة – Prime IPTV',
+    },
+    en: {
+      links   : 'Important Links',
+      contact : 'Contact Us',
+      waText  : 'WhatsApp – Support 24/7',
+      waAria  : 'WhatsApp Support 24/7',
+      privacy : 'Privacy Policy',     privacyHref: '/en/privacy-policy/',
+      terms   : 'Terms of Service',   termsHref  : '/en/terms-of-service/',
+      copy    : '© All Rights Reserved – Prime IPTV',
+    },
+    fr: {
+      links   : 'Liens importants',
+      contact : 'Contactez-nous',
+      waText  : 'WhatsApp – Support 24/7',
+      waAria  : 'Support WhatsApp 24/7',
+      privacy : 'Politique de confidentialité', privacyHref: '/fr/privacy-policy/',
+      terms   : "Conditions d'utilisation",     termsHref  : '/fr/terms-of-service/',
+      copy    : '© Tous droits réservés – Prime IPTV',
+    },
+    es: {
+      links   : 'Enlaces importantes',
+      contact : 'Contáctanos',
+      waText  : 'WhatsApp – Soporte 24/7',
+      waAria  : 'Soporte WhatsApp 24/7',
+      privacy : 'Política de privacidad', privacyHref: '/es/privacy-policy/',
+      terms   : 'Términos de servicio',   termsHref  : '/es/terms-of-service/',
+      copy    : '© Todos los derechos reservados – Prime IPTV',
+    },
+    de: {
+      links   : 'Wichtige Links',
+      contact : 'Kontakt',
+      waText  : 'WhatsApp – Support 24/7',
+      waAria  : 'WhatsApp Support 24/7',
+      privacy : 'Datenschutzerklärung', privacyHref: '/privacy-policy/',
+      terms   : 'Nutzungsbedingungen',  termsHref  : '/terms-of-service/',
+      copy    : '© Alle Rechte vorbehalten – Prime IPTV',
+    },
+    it: {
+      links   : 'Link importanti',
+      contact : 'Contattaci',
+      waText  : 'WhatsApp – Supporto 24/7',
+      waAria  : 'Supporto WhatsApp 24/7',
+      privacy : 'Privacy Policy',      privacyHref: '/privacy-policy/',
+      terms   : 'Termini di servizio', termsHref  : '/terms-of-service/',
+      copy    : '© Tutti i diritti riservati – Prime IPTV',
+    },
+    nl: {
+      links   : 'Belangrijke links',
+      contact : 'Contact',
+      waText  : 'WhatsApp – Support 24/7',
+      waAria  : 'WhatsApp Support 24/7',
+      privacy : 'Privacybeleid',       privacyHref: '/privacy-policy/',
+      terms   : 'Servicevoorwaarden',  termsHref  : '/terms-of-service/',
+      copy    : '© Alle rechten voorbehouden – Prime IPTV',
+    },
+    pt: {
+      links   : 'Links importantes',
+      contact : 'Contate-nos',
+      waText  : 'WhatsApp – Suporte 24/7',
+      waAria  : 'Suporte WhatsApp 24/7',
+      privacy : 'Política de privacidade', privacyHref: '/privacy-policy/',
+      terms   : 'Termos de serviço',       termsHref  : '/terms-of-service/',
+      copy    : '© Todos os direitos reservados – Prime IPTV',
+    },
+    tr: {
+      links   : 'Önemli Bağlantılar',
+      contact : 'İletişim',
+      waText  : 'WhatsApp – Destek 24/7',
+      waAria  : 'WhatsApp Destek 24/7',
+      privacy : 'Gizlilik Politikası',  privacyHref: '/privacy-policy/',
+      terms   : 'Kullanım Şartları',    termsHref  : '/terms-of-service/',
+      copy    : '© Tüm hakları saklıdır – Prime IPTV',
+    },
+  };
+
+  const t = i18n[lang] || i18n['en'];
+
+  /* ── Extract page-specific data from existing footer ── */
+  const waEl  = footer.querySelector('a[href*="wa.me"]');
+  const waHref = waEl ? waEl.getAttribute('href') : 'https://wa.me/212666686732';
+
+  const ul = footer.querySelector('ul');
+  const ulHTML = ul ? ul.outerHTML
+    .replace(/class="[^"]*"/, 'class="space-y-3 text-gray-200"')
+    .replace(/style="[^"]*"/g, '') : '';
+
+  /* ── Rebuild footer ── */
+  footer.className = 'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative';
+  footer.style.marginTop = '0';
+
+  footer.innerHTML =
+    '<div class="footer-particles" aria-hidden="true">' +
+      '<span class="particle p1"></span><span class="particle p2"></span>' +
+      '<span class="particle p3"></span><span class="particle p4"></span>' +
+      '<span class="particle p5"></span><span class="particle p6"></span>' +
+      '<span class="particle p7"></span><span class="particle p8"></span>' +
+    '</div>' +
+    '<div class="container mx-auto px-4">' +
+      '<div class="grid grid-cols-2 gap-4 md:gap-12">' +
+
+        /* Content column */
+        '<div class="flex flex-col gap-7">' +
+          '<div class="flex items-center">' +
+            '<img src="/images/logo.webp" alt="Prime IPTV" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">' +
+            '<h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>' +
+          '</div>' +
+          '<div>' +
+            '<h4 class="font-semibold mb-4 text-lg">' + t.links + '</h4>' +
+            ulHTML +
+          '</div>' +
+          '<div>' +
+            '<h4 class="font-semibold mb-4 text-lg">' + t.contact + '</h4>' +
+            '<a href="' + waHref + '" target="_blank" rel="noopener noreferrer"' +
+               ' class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105"' +
+               ' aria-label="' + t.waAria + '">' +
+              '<i class="fab fa-whatsapp mr-2" aria-hidden="true"></i>' +
+              t.waText +
+            '</a>' +
+          '</div>' +
+        '</div>' +
+
+        /* Logo column */
+        '<div class="ft-player-logo-wrap">' +
+          '<img src="/images/Prime-Player.webp" alt="Prime Player" class="footer-logo" loading="lazy" decoding="async" fetchpriority="high">' +
+        '</div>' +
+
+      '</div>' +
+
+      /* Legal links */
+      '<div class="flex justify-center gap-6 mt-10">' +
+        '<a href="' + t.privacyHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.privacy + '</a>' +
+        '<span class="text-gray-500">|</span>' +
+        '<a href="' + t.termsHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.terms + '</a>' +
+      '</div>' +
+
+    '</div>';
+
+  /* ── Copyright div OUTSIDE footer ── */
+  /* Remove any existing copyright div that was inside HTML */
+  const oldCopy = document.querySelector('.footer-bottom, .copyright-text');
+  if (oldCopy) {
+    const parent = oldCopy.closest('.footer-bottom') || oldCopy;
+    if (parent && parent !== footer) parent.remove();
+  }
+
+  /* Insert copyright after footer (only once) */
+  if (!footer.nextElementSibling || !footer.nextElementSibling.dataset.ftCopy) {
+    const copyDiv = document.createElement('div');
+    copyDiv.dataset.ftCopy = '1';
+    copyDiv.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
+    copyDiv.innerHTML = '<p style="margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);">' + t.copy + '</p>';
+    footer.insertAdjacentElement('afterend', copyDiv);
+  }
 
   /* ── Seed rising particles ── */
-  const container = ambient.querySelector('.ft-particles');
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('span');
+  const pContainer = footer.querySelector('.footer-particles');
+  for (var i = 0; i < 14; i++) {
+    var p = document.createElement('span');
     p.className = 'ft-particle';
-    const size = (2 + Math.random() * 2).toFixed(1) + 'px';
-    p.style.left               = (Math.random() * 100).toFixed(1) + '%';
-    p.style.width              = size;
-    p.style.height             = size;
-    p.style.animationDuration  = (10 + Math.random() * 14).toFixed(1) + 's';
-    p.style.animationDelay     = (Math.random() * 8).toFixed(1) + 's';
-    container.appendChild(p);
+    var size = (2 + Math.random() * 2).toFixed(1) + 'px';
+    p.style.cssText = 'left:' + (Math.random() * 100).toFixed(1) + '%;' +
+      'width:' + size + ';height:' + size + ';' +
+      'animation-duration:' + (10 + Math.random() * 14).toFixed(1) + 's;' +
+      'animation-delay:' + (Math.random() * 8).toFixed(1) + 's;';
+    pContainer.appendChild(p);
   }
+
 })();
