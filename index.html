@@ -87,6 +87,7 @@
        ============================ -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="stylesheet" href="/css/reviews.css?v=1">
 
   <!-- ============================
        ✅ 8) تفعيل الخطوط في الموقع
@@ -951,6 +952,26 @@
   </div>
 </section>
 <!-- ✅ نهاية قسم آراء العملاء بعد التحسين النهائي ✅ -->
+
+<!-- ⭐ قسم التقييمات الحية من Firebase ⭐ -->
+<section id="testimonials-live" class="live-reviews-section" aria-label="تقييمات العملاء الحقيقية">
+
+  <div class="live-reviews-header">
+    <h2>ما يقوله <span>عملاؤنا</span></h2>
+    <div class="live-reviews-meta">
+      <span class="lr-avg-badge">
+        <i class="fas fa-star" style="color:#f59e0b; margin-left:4px;"></i>
+        <span id="live-reviews-avg">5.0/5</span>
+      </span>
+      <span class="lr-count-badge" id="live-reviews-count"></span>
+    </div>
+  </div>
+
+  <div id="live-reviews-grid"></div>
+
+</section>
+<!-- ✅ نهاية قسم التقييمات الحية ✅ -->
+
 <!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
 <!-- ❓❓ بداية قسم الأسئلة الشائعة (FAQ) — Prime IPTV
      – عنوان موحّد مع أيقونة
@@ -1410,6 +1431,21 @@
 </main>
 
 <script src="script.js?v=10" defer></script>
+
+<!-- Firebase compat SDK for live reviews -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script>
+  firebase.initializeApp({
+    apiKey:            "REPLACE_API_KEY",
+    authDomain:        "REPLACE_PROJECT_ID.firebaseapp.com",
+    projectId:         "REPLACE_PROJECT_ID",
+    storageBucket:     "REPLACE_PROJECT_ID.appspot.com",
+    messagingSenderId: "REPLACE_SENDER_ID",
+    appId:             "REPLACE_APP_ID"
+  });
+</script>
+<script src="js/reviews-display.js?v=1" defer></script>
 
 <!-- Cookie Consent Banner -->
 <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1e1b4b; border-top:1px solid #4f46e5; padding:16px 24px;">
