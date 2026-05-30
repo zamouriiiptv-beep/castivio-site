@@ -190,7 +190,6 @@ a.button {
   align-items: center;
   background: linear-gradient(to right, #dbeafe, #bfdbfe);
   box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-  backdrop-filter: blur(4px);
   padding: 0 10px;
   margin: 0 !important;
 }
@@ -362,7 +361,6 @@ a.button {
   padding:22px 18px;
   border-radius:0 24px 24px 0;
   background:rgba(255,255,255,0.55);
-  backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,0.40);
   box-shadow:0 10px 30px rgba(0,0,0,0.18);
   opacity:0;
@@ -1206,7 +1204,6 @@ a.button {
   height: 42px;
   border-radius: 50%;
   background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2284,7 +2281,7 @@ div:has(> #price-val-pro)     span {
 }
 
 /* Soft blurred glows */
-.hp-glow { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.75; }
+.hp-glow { position: absolute; border-radius: 50%; opacity: 0.75; }
 .hp-glow--core {
   width: 620px; height: 620px;
   left: 50%; top: 30%; transform: translate(-50%, -50%);
@@ -2311,7 +2308,7 @@ div:has(> #price-val-pro)     span {
   width: 140%; height: 70%;
   transform: translateX(-50%) rotate(8deg);
   background: linear-gradient(180deg, rgba(176,38,255,0.16) 0%, transparent 65%);
-  filter: blur(40px);
+ 
   mix-blend-mode: screen;
   animation: hp-beam 11s ease-in-out infinite;
 }
@@ -2400,8 +2397,6 @@ div:has(> #price-val-pro)     span {
   letter-spacing: 0.2px;
   background: rgba(123,47,255,0.10);
   border: 1px solid rgba(176,38,255,0.35);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset,
               0 8px 30px rgba(123,47,255,0.25);
 }
@@ -2579,8 +2574,6 @@ div:has(> #price-val-pro)     span {
   color: #e7ddf7;
   background: rgba(255,255,255,0.04);
   border: 1.5px solid rgba(176,38,255,0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 .hp-btn--ghost:hover {
   transform: translateY(-3px) scale(1.02);
@@ -2632,8 +2625,6 @@ div:has(> #price-val-pro)     span {
   color: #cfc2ec;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(176,38,255,0.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   transition: transform .2s, border-color .2s, box-shadow .2s, color .2s;
   cursor: default;
 }
@@ -2700,8 +2691,6 @@ div:has(> #price-val-pro)     span {
 /* Language bar — dark glass strip */
 #language-bar {
   background: rgba(10,4,24,0.60) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: none !important;
   border-bottom: 1px solid rgba(176,38,255,0.18);
   padding: 3px 12px !important;
@@ -2710,11 +2699,9 @@ div:has(> #price-val-pro)     span {
 /* Header — always dark glass; no text bleeds through at any scroll position */
 #header {
   background: rgba(8,8,20,.75) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
   border-bottom: 1px solid rgba(176,38,255,0.15) !important;
   box-shadow: none !important;
-  transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+  transition: background .35s ease, box-shadow .35s ease;
 }
 
 /* Logo + nav-links always white */
@@ -2726,8 +2713,6 @@ div:has(> #price-val-pro)     span {
 /* Denser glass once scrolled past the hero */
 #header.hp-scrolled {
   background: rgba(6,2,18,0.92) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
   border-bottom: 1px solid rgba(176,38,255,0.26) !important;
 }
@@ -2735,8 +2720,6 @@ div:has(> #price-val-pro)     span {
 /* Pages with no hp-hero (terms / privacy / 404 / etc.): start solid */
 body:not(:has(.hp-hero)) #header {
   background: rgba(6,2,18,0.92) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
   border-bottom: 1px solid rgba(176,38,255,0.22) !important;
 }
@@ -3118,8 +3101,6 @@ body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
   padding: 10px 14px 10px 22px !important;
   border-radius: 999px !important;
   background: rgba(10,4,28,0.88) !important;
-  backdrop-filter: blur(22px) !important;
-  -webkit-backdrop-filter: blur(22px) !important;
   border: 1px solid rgba(176,38,255,0.28) !important;
   border-top: 1px solid rgba(176,38,255,0.28) !important;
   box-shadow: 0 8px 48px rgba(0,0,0,0.6),
@@ -3170,11 +3151,7 @@ body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 /* ── 1. Root dark canvas (fills full page height) ─────────── */
 html {
   min-height: 100%;
-  background:
-    radial-gradient(circle at 10% 0%,   rgba(139,92,246,.16), transparent 42%),
-    radial-gradient(circle at 90% 100%, rgba(59,130,246,.11), transparent 42%),
-    radial-gradient(circle at 55% 45%,  rgba(176,38,255,.07), transparent 58%),
-    linear-gradient(180deg, #050014 0%, #0a0225 35%, #120033 70%, #1a0448 100%);
+  background: linear-gradient(180deg, #050014 0%, #0a0225 35%, #120033 70%, #1a0448 100%);
 }
 body { background: transparent !important; color: #c8c8e8; }
 
@@ -3206,8 +3183,6 @@ main, section:not(.hp-hero), article, aside,
 .bg-white.shadow,    .bg-white.shadow-sm,
 .bg-white.shadow-md, .bg-white.shadow-lg, .bg-white.shadow-xl {
   background: rgba(255,255,255,0.04) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   border-radius: 24px !important;
   box-shadow:
@@ -3231,8 +3206,6 @@ main, section:not(.hp-hero), article, aside,
 .netflix-card-light,
 [class*="card-"], [class*="-card"] {
   background: rgba(255,255,255,0.04) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   border-radius: 24px !important;
   box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
@@ -3242,13 +3215,9 @@ main, section:not(.hp-hero), article, aside,
 .lang-wrapper {
   background: rgba(255,255,255,0.08) !important;
   border: 1px solid rgba(139,92,246,0.28) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
 }
 .lang-dropdown {
   background: rgba(6,0,20,0.96) !important;
-  backdrop-filter: blur(22px) !important;
-  -webkit-backdrop-filter: blur(22px) !important;
   border: 1px solid rgba(139,92,246,0.28) !important;
   box-shadow: 0 16px 48px rgba(0,0,0,0.65) !important;
 }

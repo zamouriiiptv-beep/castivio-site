@@ -88,7 +88,7 @@
        ============================ -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="/css/tailwind.min.css?v=2">
+  <link rel="preload" href="/css/tailwind.min.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/tailwind.min.css?v=2"></noscript>
 
   <!-- ============================
        ✅ 8) تفعيل الخطوط في الموقع
@@ -351,7 +351,7 @@
     <!-- الشعار -->
     <div id="logo-name" class="flex items-center space-x-4">
       <img id="logo-img" src="images/logo.webp" alt="شعار Prime IPTV"
-           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="lazy" decoding="async" width="80" height="80" fetchpriority="high">
+           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
       <span class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">
         Prime IPTV
       </span>
@@ -481,36 +481,6 @@
     background: transparent;
     padding: 90px 0 100px;
   }
-  #why-us .wu-glow-top {
-    position: absolute;
-    top: -120px; left: 50%; transform: translateX(-50%);
-    width: 700px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(123,47,255,0.28) 0%, transparent 68%);
-    filter: blur(70px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  #why-us .wu-glow-l {
-    position: absolute;
-    top: 35%; left: -120px;
-    width: 340px; height: 340px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(99,102,241,0.22) 0%, transparent 68%);
-    filter: blur(70px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  #why-us .wu-glow-r {
-    position: absolute;
-    bottom: -80px; right: -100px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(176,38,255,0.22) 0%, transparent 68%);
-    filter: blur(70px);
-    pointer-events: none;
-    z-index: 0;
-  }
   #why-us .wu-inner { position: relative; z-index: 1; }
   #why-us .wu-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -519,8 +489,6 @@
     color: #c4b5fd;
     padding: 6px 22px; border-radius: 999px;
     font-size: 0.85rem; font-weight: 700;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     margin-bottom: 22px;
   }
   #why-us .wu-title {
@@ -554,9 +522,7 @@
   /* Card */
   .wu-card {
     position: relative;
-    background: rgba(255,255,255,0.045);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    background: rgba(10,3,32,0.80);
     border: 1px solid rgba(139,92,246,0.18);
     border-radius: 22px;
     padding: 16px 14px 13px;
@@ -564,7 +530,7 @@
     flex-direction: column;
     gap: 8px;
     cursor: default;
-    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+    transition: transform 0.22s ease, border-color 0.22s ease;
     overflow: hidden;
   }
   .wu-card::before {
@@ -576,12 +542,8 @@
   }
   .wu-card:hover {
     transform: translateY(-4px);
-    background: rgba(123,47,255,0.09);
+    background: rgba(18,5,50,0.90);
     border-color: rgba(139,92,246,0.45);
-    box-shadow:
-      0 0 0 1px rgba(139,92,246,0.12),
-      0 10px 30px rgba(0,0,0,0.5),
-      0 0 38px rgba(123,47,255,0.18);
   }
   /* Icon + title row */
   .wu-card-top {
@@ -596,19 +558,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     position: relative;
-    box-shadow: 0 0 16px rgba(123,47,255,0.32);
   }
-  .wu-icon-wrap::after {
-    content: "";
-    position: absolute; inset: -4px;
-    border-radius: 50%;
-    background: inherit;
-    opacity: 0;
-    filter: blur(12px);
-    z-index: -1;
-    transition: opacity 0.28s ease;
-  }
-  .wu-card:hover .wu-icon-wrap::after { opacity: 0.5; }
   .wu-icon-wrap i { font-size: 0.85rem; color: #fff; }
   /* Card title */
   .wu-card h3 {
@@ -683,10 +633,6 @@
 </style>
 
 <section id="why-us" aria-label="قسم المميزات">
-  <div class="wu-glow-top" aria-hidden="true"></div>
-  <div class="wu-glow-l" aria-hidden="true"></div>
-  <div class="wu-glow-r" aria-hidden="true"></div>
-
   <div class="wu-inner container mx-auto px-4 max-w-5xl">
 
     <div class="text-center">
@@ -1608,7 +1554,7 @@
           src="images/Prime-Player.webp"
           alt="شعار Prime Player"
           class="footer-logo"
-          loading="lazy" decoding="async" fetchpriority="high">
+          loading="lazy" decoding="async">
       </div>
 
     </div>
@@ -1626,7 +1572,7 @@
 
 
 <!-- CSS -->
-<link rel="stylesheet" href="css/footer.css?v=32">
+<link rel="preload" href="css/footer.css?v=32" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="css/footer.css?v=32"></noscript>
 
 <!-- JavaScript -->
 <script src="js/footer.js?v=15" defer></script>
