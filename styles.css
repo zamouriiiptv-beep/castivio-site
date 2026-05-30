@@ -3055,14 +3055,17 @@ body:not(:has(.hp-hero)) #header {
   .hp-hero::after { height: 380px; }
 }
 
-/* ── 3 · AR page override (body.hp-home #why-us) — transparent, inherits html canvas ── */
+/* ── 3 · AR page override (body.hp-home #why-us) ── */
 body.hp-home #why-us {
   position: relative;
   z-index: 2;
   margin-top: 0 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
-  background: transparent !important;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(123,47,255,0.20) 0%, transparent 100%),
+    radial-gradient(ellipse 55% 45% at -5%  50%, rgba(99,102,241,0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 55% 45% at 105% 90%, rgba(176,38,255,0.12) 0%, transparent 100%) !important;
   box-shadow: none !important;
 }
 /* Kill the light-purple pseudo overlay */
@@ -3151,7 +3154,10 @@ body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 /* ── 1. Root dark canvas (fills full page height) ─────────── */
 html {
   min-height: 100%;
-  background: linear-gradient(180deg, #050014 0%, #0a0225 35%, #120033 70%, #1a0448 100%);
+  background:
+    radial-gradient(ellipse 80% 40% at 10% 0%,  rgba(139,92,246,.14) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 35% at 90% 100%, rgba(59,130,246,.10) 0%, transparent 100%),
+    linear-gradient(180deg, #050014 0%, #0a0225 35%, #120033 70%, #1a0448 100%);
 }
 body { background: transparent !important; color: #c8c8e8; }
 
@@ -3182,13 +3188,13 @@ main, section:not(.hp-hero), article, aside,
 .bg-white.rounded-2xl,.bg-white.rounded-3xl,
 .bg-white.shadow,    .bg-white.shadow-sm,
 .bg-white.shadow-md, .bg-white.shadow-lg, .bg-white.shadow-xl {
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(12,4,38,0.75) !important;
+  border: 1px solid rgba(139,92,246,0.14) !important;
   border-radius: 24px !important;
   box-shadow:
-    0 4px 24px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(139,92,246,0.10) inset !important;
-  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    0 2px 16px rgba(0,0,0,0.50),
+    0 0 0 1px rgba(139,92,246,0.08) inset !important;
+  transition: background .22s ease, border-color .22s ease;
 }
 .bg-white.p-3:hover, .bg-white.p-4:hover, .bg-white.p-5:hover,
 .bg-white.p-6:hover, .bg-white.p-7:hover, .bg-white.p-8:hover,
@@ -3205,10 +3211,10 @@ main, section:not(.hp-hero), article, aside,
 /* ── 5. Named card types → dark glass ──────────────────────── */
 .netflix-card-light,
 [class*="card-"], [class*="-card"] {
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(12,4,38,0.75) !important;
+  border: 1px solid rgba(139,92,246,0.14) !important;
   border-radius: 24px !important;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.45) !important;
 }
 
 /* ── 6. Language selector → dark glass ─────────────────────── */

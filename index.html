@@ -478,7 +478,6 @@
   #why-us {
     position: relative;
     overflow: hidden;
-    background: transparent;
     padding: 90px 0 100px;
   }
   #why-us .wu-inner { position: relative; z-index: 1; }
@@ -522,15 +521,16 @@
   /* Card */
   .wu-card {
     position: relative;
-    background: rgba(10,3,32,0.80);
-    border: 1px solid rgba(139,92,246,0.18);
+    background: rgba(10,3,32,0.82);
+    border: 1px solid rgba(139,92,246,0.20);
     border-radius: 22px;
     padding: 16px 14px 13px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     cursor: default;
-    transition: transform 0.22s ease, border-color 0.22s ease;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.45), 0 0 0 1px rgba(139,92,246,0.06) inset;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     overflow: hidden;
   }
   .wu-card::before {
@@ -538,12 +538,13 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.35), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.40), transparent);
   }
   .wu-card:hover {
     transform: translateY(-4px);
-    background: rgba(18,5,50,0.90);
+    background: rgba(16,5,45,0.92);
     border-color: rgba(139,92,246,0.45);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.12) inset;
   }
   /* Icon + title row */
   .wu-card-top {
