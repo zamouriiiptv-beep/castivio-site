@@ -591,3 +591,22 @@ window.updatePlanData = function(value, planType) {
     start();
   }
 })();
+
+/* ── WhatsApp Conversion Tracking (GA4 + Google Ads) ── */
+document.addEventListener('click', function (e) {
+  var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+  if (!link) return;
+  if (typeof gtag !== 'function') return;
+
+  /* GA4 event */
+  gtag('event', 'whatsapp_click', {
+    event_category: 'engagement',
+    event_label: link.href
+  });
+
+  /* Google Ads conversion — replace YOUR_CONVERSION_LABEL with the label
+     from Google Ads > Goals > Conversions > your WhatsApp conversion action */
+  gtag('event', 'conversion', {
+    send_to: 'AW-18138909640/YOUR_CONVERSION_LABEL'
+  });
+});
