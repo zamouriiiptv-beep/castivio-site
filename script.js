@@ -1,7 +1,3 @@
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ========================================================= */
@@ -478,62 +474,11 @@ window.updatePlanData = function(value, planType) {
     });
 };
 
-/* ========================================================= */
-/* =================== إدارة أحداث الصفحة ===================== */
-/* ========================================================= */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    /* --- تفعيل الأكورديون (عرض الميزات) بدون حذف أي ميزة --- */
-    document.querySelectorAll(".toggle-features-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            const card = button.closest(".plan-card");
-            const featuresList = card.querySelector(".plan-features");
-            const label = button.querySelector("span:not(.plan-arrow)");
-            const arrow = button.querySelector(".plan-arrow");
-
-            if (featuresList.classList.contains("hidden")) {
-                featuresList.classList.remove("hidden");
-                label.textContent = "إخفاء الميزات";
-                arrow.textContent = "🔼";
-            } else {
-                featuresList.classList.add("hidden");
-                label.textContent = "عرض الميزات";
-                arrow.textContent = "🔽";
-            }
-        });
-    });
-
-    /* --- تهيئة السلايدر عند تحميل الصفحة (ليبدأ من خيار "سنة") --- */
-    ['basic', 'premium', 'pro'].forEach(type => {
-        const slider = document.getElementById(`${type}-plan-slider`);
-        if (slider) updatePlanData(slider.value, type);
-    });
-
-    /* ========================================================= */
-    /* كود شريط الأعلام (Flags Animation) كما كان لديك سابقاً */
-    /* ========================================================= */
-    const flagsScroll = document.getElementById('flags-scroll');
-    if (flagsScroll) {
-        let scrollPos = 0;
-        let paused = false;
-        function animateFlags() {
-            if (!paused) {
-                scrollPos += 0.6;
-                if (scrollPos >= flagsScroll.scrollWidth / 2) scrollPos = 0;
-                flagsScroll.style.transform = `translateX(${scrollPos}px)`;
-            }
-            requestAnimationFrame(animateFlags);
-        }
-        requestAnimationFrame(animateFlags);
-        
-        flagsScroll.addEventListener('mouseenter', () => paused = true);
-        flagsScroll.addEventListener('mouseleave', () => paused = false);
-    }
-
-}); // نهاية DOMContentLoaded
-
-
+  /* --- تهيئة السلايدر عند تحميل الصفحة --- */
+  ['basic', 'premium', 'pro'].forEach(type => {
+    const slider = document.getElementById(`${type}-plan-slider`);
+    if (slider) updatePlanData(slider.value, type);
+  });
 
 }); // END DOMContentLoaded
 
