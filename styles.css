@@ -3153,103 +3153,194 @@ body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 
 
 /* ══════════════════════════════════════════════════════════════
-   PRIME IPTV — Unified Dark Background System v1
-   Single block. Zero white. Full-site dark identity.
-   Rules use !important to override Tailwind + earlier styles.
+   PRIME IPTV — Premium Dark Theme System v2
+   CSS-only transformation. Zero HTML changes.
+   Covers: canvas · sections · cards · FAQ · plans · text · nav
 ══════════════════════════════════════════════════════════════ */
 
-/* 1 ─ Root canvas: dark gradient painted on html, fills full page */
+/* ── 1. Root dark canvas (fills full page height) ─────────── */
 html {
   min-height: 100%;
   background:
-    radial-gradient(circle at 12% 0%,   rgba(139,92,246,.18), transparent 40%),
-    radial-gradient(circle at 88% 100%, rgba(59,130,246,.13), transparent 40%),
-    linear-gradient(180deg, #070014 0%, #12003a 50%, #1a0052 100%);
+    radial-gradient(circle at 10% 0%,   rgba(139,92,246,.16), transparent 42%),
+    radial-gradient(circle at 90% 100%, rgba(59,130,246,.11), transparent 42%),
+    radial-gradient(circle at 55% 45%,  rgba(176,38,255,.07), transparent 58%),
+    linear-gradient(180deg, #050014 0%, #0a0225 35%, #120033 70%, #1a0448 100%);
 }
-body { background: transparent !important; color: #e0e0f4; }
+body { background: transparent !important; color: #c8c8e8; }
 
-/* 2 ─ Structural layout → transparent (html canvas shows through) */
-main, section, article, aside,
-.container, .max-w-6xl, .max-w-5xl, .max-w-4xl,
-.max-w-3xl, .max-w-2xl, .max-w-xl, .max-w-lg,
-#faq, #testimonials, #seo-text, #plans {
+/* ── 2. All structural containers → transparent ────────────── */
+main, section:not(.hp-hero), article, aside,
+.container, .max-w-7xl, .max-w-6xl, .max-w-5xl,
+.max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl, .max-w-lg,
+#faq, #testimonials, #seo-text, #plans, #pricing, #features {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 3 ─ Tailwind white / light-gray utilities → transparent */
-.bg-white, .bg-gray-50, .bg-gray-100, .bg-gray-200,
-.bg-slate-50, .bg-slate-100,
-.bg-purple-50, .bg-purple-100, .bg-indigo-50, .bg-blue-50 {
+/* ── 3. Tailwind white / light utilities → transparent ──────── */
+.bg-white, .bg-gray-50, .bg-gray-100, .bg-gray-200, .bg-gray-300,
+.bg-slate-50, .bg-slate-100, .bg-neutral-50, .bg-neutral-100,
+.bg-purple-50, .bg-purple-100, .bg-indigo-50, .bg-indigo-100,
+.bg-blue-50, .bg-violet-50 {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 4 ─ Cards (bg-white + spacing / shape combos) → glassmorphism */
-.bg-white.p-4, .bg-white.p-5, .bg-white.p-6, .bg-white.p-8,
-.bg-white.rounded, .bg-white.rounded-lg,
-.bg-white.rounded-xl, .bg-white.rounded-2xl,
-.bg-white.shadow, .bg-white.shadow-md,
-.bg-white.shadow-lg, .bg-white.shadow-xl {
-  background: rgba(255,255,255,0.05) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border-color: rgba(139,92,246,.22) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,.45),
-              0 0 0 1px rgba(139,92,246,.10) !important;
+/* ── 4. Cards: bg-white + shape/spacing → glassmorphism ──────
+   Compound selectors beat the single .bg-white above            */
+.bg-white.p-3, .bg-white.p-4, .bg-white.p-5,
+.bg-white.p-6, .bg-white.p-7, .bg-white.p-8,
+.bg-white.rounded,    .bg-white.rounded-md,
+.bg-white.rounded-lg, .bg-white.rounded-xl,
+.bg-white.rounded-2xl,.bg-white.rounded-3xl,
+.bg-white.shadow,    .bg-white.shadow-sm,
+.bg-white.shadow-md, .bg-white.shadow-lg, .bg-white.shadow-xl {
+  background: rgba(255,255,255,0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(139,92,246,0.10) inset !important;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.bg-white.p-3:hover, .bg-white.p-4:hover, .bg-white.p-5:hover,
+.bg-white.p-6:hover, .bg-white.p-7:hover, .bg-white.p-8:hover,
+.bg-white.rounded:hover,    .bg-white.rounded-md:hover,
+.bg-white.rounded-lg:hover, .bg-white.rounded-xl:hover,
+.bg-white.rounded-2xl:hover,.bg-white.rounded-3xl:hover {
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(139,92,246,0.35) !important;
+  box-shadow:
+    0 8px 36px rgba(0,0,0,0.55),
+    0 0 28px rgba(123,47,255,0.16) !important;
 }
 
-/* 5 ─ .netflix-card-light → dark glass */
-.netflix-card-light {
-  background: rgba(255,255,255,0.05) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(139,92,246,.22) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,.4) !important;
+/* ── 5. Named card types → dark glass ──────────────────────── */
+.netflix-card-light,
+[class*="card-"], [class*="-card"] {
+  background: rgba(255,255,255,0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
 }
 
-/* 6 ─ Language selector → dark glass */
+/* ── 6. Language selector → dark glass ─────────────────────── */
 .lang-wrapper {
-  background: rgba(255,255,255,0.09) !important;
-  border-color: rgba(139,92,246,.32) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(139,92,246,0.28) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
 .lang-dropdown {
-  background: rgba(8,0,24,0.94) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(139,92,246,.28) !important;
-  box-shadow: 0 12px 40px rgba(0,0,0,.55) !important;
+  background: rgba(6,0,20,0.96) !important;
+  backdrop-filter: blur(22px) !important;
+  -webkit-backdrop-filter: blur(22px) !important;
+  border: 1px solid rgba(139,92,246,0.28) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.65) !important;
 }
-.lang-option { color: #c8c8e8 !important; }
+.lang-option { color: #c0c0e0 !important; }
 .lang-option:hover {
-  background: rgba(139,92,246,.18) !important;
-  color: #fff !important;
+  background: rgba(123,47,255,0.18) !important;
+  color: #ffffff !important;
 }
 
-/* 7 ─ Text: dark Tailwind colors → light on dark bg */
-.text-gray-900, .text-gray-800 { color: #ffffff !important; }
-.text-gray-700                  { color: #d8d8f0 !important; }
-.text-gray-600, .text-gray-500  { color: #9898c0 !important; }
-.text-purple-800, .text-purple-900,
-.text-indigo-700, .text-indigo-800 { color: #c4b5fd !important; }
+/* ── 7. Typography on dark backgrounds ─────────────────────── */
+/* Dark Tailwind text → white/light (gradient text preserved via
+   -webkit-text-fill-color:transparent which overrides color)    */
+.text-gray-900, .text-gray-800, .text-black { color: #ffffff !important; }
+.text-gray-700, .text-gray-600              { color: #b0b0d0 !important; }
+.text-gray-500, .text-gray-400              { color: #8080a8 !important; }
+.text-purple-700, .text-purple-800,
+.text-purple-900, .text-violet-800          { color: #c4b5fd !important; }
+.text-indigo-600, .text-indigo-700,
+.text-indigo-800, .text-blue-700            { color: #a5b4fc !important; }
 
-/* 8 ─ Borders → purple-tinted */
-.border-gray-200, .border-gray-300, .border-gray-100 {
-  border-color: rgba(139,92,246,.18) !important;
+/* ── 8. Borders → subtle purple-tinted ─────────────────────── */
+.border-gray-100, .border-gray-200, .border-gray-300,
+.border-slate-200, .border-slate-300 {
+  border-color: rgba(139,92,246,0.18) !important;
 }
-hr { border-color: rgba(139,92,246,.15) !important; }
+.divide-gray-100 > * + *,
+.divide-gray-200 > * + * { border-color: rgba(139,92,246,0.15) !important; }
+hr { border-color: rgba(139,92,246,0.15) !important; }
 
-/* 9 ─ FAQ / accordion panels */
-#faq details,
-#faq details > summary {
+/* ── 9. Shadows → deep dark ────────────────────────────────── */
+.shadow-sm { box-shadow: 0 2px 12px rgba(0,0,0,0.40) !important; }
+.shadow     { box-shadow: 0 4px 20px rgba(0,0,0,0.45) !important; }
+.shadow-md  { box-shadow: 0 6px 24px rgba(0,0,0,0.50) !important; }
+.shadow-lg  { box-shadow: 0 8px 32px rgba(0,0,0,0.55) !important; }
+.shadow-xl  { box-shadow: 0 12px 40px rgba(0,0,0,0.60) !important; }
+.shadow-2xl { box-shadow: 0 20px 56px rgba(0,0,0,0.65) !important; }
+
+/* ── 10. FAQ section ────────────────────────────────────────── */
+#faq details {
   background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(139,92,246,.15) !important;
-  color: #e0e0f4 !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 16px !important;
+  transition: background .25s, border-color .25s;
+}
+#faq details[open] {
+  background: rgba(123,47,255,0.07) !important;
+  border-color: rgba(139,92,246,0.30) !important;
+}
+#faq details summary {
+  color: #ffffff !important;
+  cursor: pointer;
+}
+#faq details p, #faq details div:not([class*="icon"]) {
+  color: #9090b8 !important;
 }
 
-/* 10 ─ Shadows: darken to match dark theme */
-.shadow, .shadow-sm, .shadow-md,
-.shadow-lg, .shadow-xl, .shadow-2xl {
-  box-shadow: 0 4px 20px rgba(0,0,0,.45) !important;
+/* ── 11. Testimonials ───────────────────────────────────────── */
+#testimonials .bg-white,
+#testimonials [class*="card"] {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 20px !important;
+}
+
+/* ── 12. Plans / Pricing ────────────────────────────────────── */
+#plans .bg-white,
+#plans [class*="plan"],
+#pricing .bg-white {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(139,92,246,0.22) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+}
+
+/* ── 13. Inputs / Forms ─────────────────────────────────────── */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+textarea, select {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(139,92,246,0.28) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+}
+input::placeholder, textarea::placeholder { color: #5050a0 !important; }
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(139,92,246,0.6) !important;
+  box-shadow: 0 0 0 3px rgba(123,47,255,0.15) !important;
+  outline: none !important;
+}
+
+/* ── 14. Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #050014; }
+::-webkit-scrollbar-thumb {
+  background: rgba(139,92,246,0.45);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.70); }
+
+/* ── 15. Selection highlight ────────────────────────────────── */
+::selection {
+  background: rgba(123,47,255,0.40);
+  color: #ffffff;
 }
 /* ════════════════════════════════════════════════════════════ */
