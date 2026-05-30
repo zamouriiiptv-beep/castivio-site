@@ -312,6 +312,31 @@ def find_insert_pos(html: str) -> int:
     return -1
 
 
+def replace_old_why_us(html: str, ltr: bool) -> str | None:
+    """Replace old-design <section id="why-us"> with the new block."""
+    # Find opening tag
+    m_start = re.search(r'<section[^>]+id=["\']why-us["\'][^>]*>', html)
+    if not m_start:
+        return None
+    # Find its matching </section>
+    depth = 1
+    pos = m_start.end()
+    while depth > 0 and pos < len(html):
+        open_m  = re.search(r'<section', html[pos:])
+        close_m = re.search(r'</section>', html[pos:])
+        if close_m is None:
+            return None
+        if open_m and open_m.start() < close_m.start():
+            depth += 1
+            pos += open_m.end()
+        else:
+            depth -= 1
+            pos += close_m.end()
+    direction = "right" if ltr else "left"
+    block = WHY_US_BLOCK.replace("fa-arrow-DIRECTION", f"fa-arrow-{direction}")
+    return html[:m_start.start()] + block + html[pos:]
+
+
 def process(html: str, ltr: bool) -> str:
     direction = "right" if ltr else "left"
     block = WHY_US_BLOCK.replace("fa-arrow-DIRECTION", f"fa-arrow-{direction}")
@@ -321,41 +346,62 @@ def process(html: str, ltr: bool) -> str:
     return html[:pos] + block + "\n" + html[pos:]
 
 
+def is_old_design(html: str) -> bool:
+    """True if the existing why-us uses the old card design (not our new one)."""
+    return 'id="why-us"' in html and 'wu-card' not in html
+
+
 def main():
     apply = "--apply" in sys.argv
     pages = get_pages()
     mode  = "APPLYING" if apply else "DRY RUN"
     print(f"{mode} — {len(pages)} pages\n")
 
-    added = skipped = already = 0
+    added = replaced = skipped = already = 0
     for page in pages:
         with open(page, encoding="utf-8") as f:
             html = f.read()
 
         rel = page.replace(ROOT, "")
+        ltr = is_ltr(html)
 
-        if 'id="why-us"' in html or "id='why-us'" in html:
+        # Already has NEW design → skip
+        if ('id="why-us"' in html or "id='why-us'" in html) and 'wu-card' in html:
             already += 1
-            print(f"  ✓ already has #why-us: {rel}")
+            print(f"  ✓ new design already: {rel}")
             continue
 
-        ltr = is_ltr(html)
-        result = process(html, ltr)
+        # Has OLD design → replace
+        if 'id="why-us"' in html or "id='why-us'" in html:
+            result = replace_old_why_us(html, ltr)
+            if result:
+                replaced += 1
+                print(f"  {'↺' if apply else '~'} REPLACE OLD {'LTR' if ltr else 'RTL'} {rel}")
+                if apply:
+                    with open(page, "w", encoding="utf-8") as f:
+                        f.write(result)
+            else:
+                skipped += 1
+                print(f"  ⚠ could not replace old why-us: {rel}")
+            continue
 
+        # No why-us → insert before #pricing
+        result = process(html, ltr)
         if result is None:
             skipped += 1
             print(f"  ⚠ no insertion point found: {rel}")
             continue
 
         added += 1
-        print(f"  {'✏' if apply else '+'} {'LTR' if ltr else 'RTL'} {rel}")
+        print(f"  {'✏' if apply else '+'} ADD {'LTR' if ltr else 'RTL'} {rel}")
         if apply:
             with open(page, "w", encoding="utf-8") as f:
                 f.write(result)
 
-    print(f"\n{'Added' if apply else 'Would add'} #why-us to {added} pages.")
-    print(f"Already present: {already}. No insertion point: {skipped}.")
-    if not apply and added:
+    print(f"\n{'Replaced' if apply else 'Would replace'} {replaced} old, "
+          f"{'added' if apply else 'add'} {added} new.")
+    print(f"Already new design: {already}. Skipped: {skipped}.")
+    if not apply and (added + replaced):
         print("Run with --apply to save.")
 
 
