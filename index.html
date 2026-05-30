@@ -470,87 +470,28 @@
   </a>
 </section>
 <!-- 🚨🚨 نهاية القسم الرئيسي 🏠 🎬 🚨🚨 -->
-<!-- 🚨🚨 بداية قسم المميزات ⭐ (UPDATED) 🚨🚨 -->
+<!-- 🚨🚨 بداية قسم المميزات ⭐ 🚨🚨 -->
 <style>
   #why-us {
-    position: relative;
-    overflow: hidden;
-    background: #070014;
-    padding: 100px 0;
-    isolation: isolate;
+    background: linear-gradient(180deg, #0a0020 0%, #130038 60%, #0a0020 100%);
+    padding: 80px 0;
   }
-  #why-us::before {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(120% 80% at 50% -5%, rgba(123,47,255,0.32) 0%, transparent 55%),
-      radial-gradient(80% 60% at 80% 100%, rgba(176,38,255,0.2) 0%, transparent 55%),
-      radial-gradient(60% 50% at 10% 80%, rgba(99,102,241,0.18) 0%, transparent 55%),
-      linear-gradient(180deg, #070014 0%, #12003A 50%, #1A0052 100%);
-    z-index: 0;
-  }
-  #why-us .wu-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(139,92,246,0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139,92,246,0.055) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 0%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 0%, transparent 80%);
-  }
-  #why-us .wu-glow-core {
-    position: absolute; z-index: 0;
-    width: 700px; height: 700px;
-    top: -10%; left: 50%; transform: translateX(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(123,47,255,0.38) 0%, rgba(123,47,255,0.08) 45%, transparent 70%);
-    filter: blur(80px);
-    animation: wu-pulse 9s ease-in-out infinite;
-  }
-  #why-us .wu-glow-l {
-    position: absolute; z-index: 0;
-    width: 420px; height: 420px;
-    left: -100px; top: 30%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, transparent 70%);
-    filter: blur(80px);
-    animation: wu-float 14s ease-in-out infinite;
-  }
-  #why-us .wu-glow-r {
-    position: absolute; z-index: 0;
-    width: 460px; height: 460px;
-    right: -110px; bottom: 5%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(176,38,255,0.38) 0%, transparent 70%);
-    filter: blur(80px);
-    animation: wu-float 17s ease-in-out infinite reverse;
-  }
-  @keyframes wu-pulse {
-    0%,100% { opacity:.75; transform:translateX(-50%) scale(1); }
-    50%      { opacity:.95; transform:translateX(-50%) scale(1.08); }
-  }
-  @keyframes wu-float {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-28px); }
-  }
-  #why-us .wu-inner { position: relative; z-index: 1; }
   #why-us .wu-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(123,47,255,0.18);
     border: 1px solid rgba(139,92,246,0.4);
     color: #c4b5fd;
-    padding: 6px 22px; border-radius: 999px;
-    font-size: 0.88rem; font-weight: 700;
-    backdrop-filter: blur(10px);
+    padding: 6px 20px; border-radius: 999px;
+    font-size: 0.85rem; font-weight: 700;
     margin-bottom: 20px;
   }
   #why-us .wu-title {
     color: #fff;
-    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.25;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   #why-us .wu-title span {
     background: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
@@ -559,96 +500,83 @@
     background-clip: text;
   }
   #why-us .wu-sub {
-    color: #CFCFE8;
-    font-size: 1rem;
+    color: #b0b0d8;
+    font-size: 0.95rem;
     text-align: center;
-    max-width: 500px;
-    margin: 0 auto 56px;
+    max-width: 480px;
+    margin: 0 auto 48px;
     line-height: 1.7;
   }
   .wu-grid-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  @media(min-width: 768px) {
-    .wu-grid-cards { grid-template-columns: repeat(4, 1fr); }
+    gap: 16px;
   }
   .wu-card {
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 24px;
-    padding: 24px 20px;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 16px;
+    padding: 18px 16px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
     gap: 14px;
-    transition: all 0.3s ease;
+    position: relative;
+    transition: background 0.25s, border-color 0.25s;
     cursor: default;
   }
   .wu-card:hover {
-    transform: translateY(-5px);
     background: rgba(255,255,255,0.07);
-    border-color: rgba(139,92,246,0.45);
-    box-shadow: 0 0 28px rgba(123,47,255,0.18), 0 12px 40px rgba(0,0,0,0.4);
+    border-color: rgba(139,92,246,0.4);
   }
   .wu-icon-wrap {
-    position: relative;
-    width: 52px; height: 52px;
-    border-radius: 16px;
+    width: 46px; height: 46px;
+    border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .wu-icon-wrap::after {
-    content: "";
-    position: absolute; inset: -6px;
-    border-radius: 20px;
-    opacity: 0.3;
-    filter: blur(10px);
-    z-index: -1;
-  }
-  .wu-icon-wrap i { font-size: 1.25rem; color: #fff; position: relative; z-index: 1; }
-  .wu-card h3 {
-    color: #FFFFFF;
-    font-size: 0.97rem;
+  .wu-icon-wrap i { font-size: 1.1rem; color: #fff; }
+  .wu-card-body { flex: 1; min-width: 0; }
+  .wu-card-body h3 {
+    color: #fff;
+    font-size: 0.9rem;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 5px;
     line-height: 1.3;
   }
-  .wu-card p {
-    color: #CFCFE8;
-    font-size: 0.82rem;
-    line-height: 1.6;
+  .wu-card-body p {
+    color: #a0a0c8;
+    font-size: 0.78rem;
+    line-height: 1.55;
     margin: 0;
+  }
+  .wu-arrow {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    color: rgba(139,92,246,0.45);
+    font-size: 0.7rem;
   }
   .wu-4k-badge {
     display: inline-block;
     background: linear-gradient(90deg,#f59e0b,#ef4444);
     color: #fff;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 800;
-    padding: 1px 5px;
-    border-radius: 4px;
+    padding: 1px 4px;
+    border-radius: 3px;
     vertical-align: middle;
-    margin-right: 4px;
+    margin-left: 4px;
   }
-  @media(max-width: 480px) {
-    .wu-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .wu-card { padding: 18px 14px; border-radius: 18px; }
-    #why-us .wu-glow-core { width: 320px; height: 320px; }
-    #why-us .wu-glow-l, #why-us .wu-glow-r { width: 220px; height: 220px; }
+  @media(max-width: 500px) {
+    .wu-grid-cards { gap: 10px; }
+    .wu-card { padding: 14px 12px; border-radius: 14px; gap: 10px; }
+    .wu-icon-wrap { width: 40px; height: 40px; border-radius: 10px; }
   }
 </style>
 
 <section id="why-us" aria-label="قسم المميزات">
-  <!-- Background layers -->
-  <div class="wu-grid" aria-hidden="true"></div>
-  <div class="wu-glow-core" aria-hidden="true"></div>
-  <div class="wu-glow-l" aria-hidden="true"></div>
-  <div class="wu-glow-r" aria-hidden="true"></div>
+  <div class="container mx-auto px-4 max-w-5xl">
 
-  <div class="wu-inner container mx-auto px-4 max-w-6xl">
-
-    <!-- Badge -->
     <div class="text-center">
       <span class="wu-badge">
         <i class="fas fa-crown" style="color:#f5c518;"></i>
@@ -656,113 +584,109 @@
       </span>
     </div>
 
-    <!-- Title -->
     <h2 class="wu-title">
       تجربة مشاهدة أفضل<br>
       <span>جودة أعلى</span>
     </h2>
 
-    <!-- Subtitle -->
     <p class="wu-sub">
       استمتع بتقنية <strong style="color:#fff;">IPTV</strong> الحديثة التي تمنحك حرية المشاهدة عالية الجودة من أي وقت ومن أي مكان
     </p>
 
-    <!-- Cards grid -->
     <div class="wu-grid-cards">
 
-      <!-- 1 مشاهدة مرنة -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);">
           <i class="fas fa-play-circle"></i>
-          <span class="wu-icon-wrap::after" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);"></span>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>مشاهدة مرنة</h3>
           <p>شاهد ما تريد في أي وقت ومن أي مكان بدون قيود.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 2 توافق شامل -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);">
           <i class="fas fa-tv"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>توافق شامل</h3>
           <p>يعمل على Smart TV، Firestick، Android TV، iPhone والكمبيوتر.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 3 بث مستقر -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#10b981,#059669);">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>بث مستقر</h3>
           <p>تقنية Anti-Freeze تضمن بثاً مستمراً بدون أي تقطيع.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 4 جودة عالية -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">
           <i class="fas fa-gem"></i>
         </div>
-        <div>
-          <h3><span class="wu-4k-badge">4K</span>جودة عالية</h3>
+        <div class="wu-card-body">
+          <h3>جودة عالية <span class="wu-4k-badge">4K</span></h3>
           <p>استمتع بدقة HD وحتى 4K مع صوت واضح وصورة نقية.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 5 محتوى متنوع -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">
           <i class="fas fa-film"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>محتوى متنوع</h3>
           <p>مكتبة ضخمة من المسلسلات والأفلام والقنوات بلا حدود.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 6 تفعيل فوري -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">
           <i class="fas fa-bolt"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>تفعيل فوري</h3>
           <p>تفعيل سريع وسهل فور الاشتراك — خلال دقائق.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 7 دعم 24/7 -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
           <i class="fas fa-headset"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>دعم 24/7</h3>
           <p>فريق دعم متاح على مدار الساعة عبر WhatsApp.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
-      <!-- 8 أسعار مناسبة -->
       <div class="wu-card">
         <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#f43f5e,#be123c);">
           <i class="fas fa-tag"></i>
         </div>
-        <div>
+        <div class="wu-card-body">
           <h3>أسعار مناسبة</h3>
           <p>خطط اشتراك تناسب جميع الميزانيات تبدأ من 30€/سنة.</p>
         </div>
+        <i class="fas fa-arrow-left wu-arrow"></i>
       </div>
 
     </div>
   </div>
 </section>
-<!-- ✅ نهاية قسم المميزات بعد التحسين ✅ -->
+<!-- ✅ نهاية قسم المميزات ✅ -->
 
 <!-- 🚀 قسم أدلة IPTV حسب المنطقة -->
 <section class="container mx-auto px-4 mt-12 mb-12">
@@ -1606,7 +1530,7 @@
 
 
 <!-- CSS -->
-<link rel="stylesheet" href="css/footer.css?v=30">
+<link rel="stylesheet" href="css/footer.css?v=31">
 
 <!-- JavaScript -->
 <script src="js/footer.js?v=15" defer></script>
