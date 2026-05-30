@@ -797,13 +797,19 @@
   .gs-card-top {
     display: flex; align-items: center; gap: 10px;
   }
-  /* Icon badge 36px — same as wu-icon-wrap */
+  /* Icon badge — circular glowing */
   .gs-icon-wrap {
-    width: 36px; height: 36px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    font-size: 0.88rem;
+    font-size: 1.05rem;
+    box-shadow: 0 0 16px rgba(139,92,246,0.45), 0 3px 8px rgba(0,0,0,0.32);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+  .gs-card:hover .gs-icon-wrap {
+    box-shadow: 0 0 26px rgba(139,92,246,0.62), 0 4px 12px rgba(0,0,0,0.38);
+    transform: scale(1.06);
   }
   .gs-card h3 {
     color: #ffffff;
@@ -825,13 +831,14 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  /* Text link at bottom */
+  /* Text link pinned to bottom (equal-height cards) */
   .gs-card-link {
     display: inline-flex; align-items: center; gap: 5px;
     color: #a78bfa;
     font-size: 0.76rem;
     font-weight: 700;
-    margin-top: 2px;
+    margin-top: auto;
+    padding-top: 6px;
     transition: color 0.2s;
   }
   .gs-card:hover .gs-card-link { color: #c4b5fd; }
@@ -911,19 +918,35 @@
     opacity: 0.9; transform: scale(1.03);
     box-shadow: 0 4px 20px rgba(123,47,255,0.56);
   }
-  /* ── Mobile: 2 columns ── */
-  @media(max-width: 640px) {
+  /* ── Mobile: single column, full width, equal height ── */
+  @media(max-width: 768px) {
     #guides-section { padding: 50px 0 58px; }
-    #guides-section .gs-sub { margin-bottom: 24px; }
-    .gs-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .gs-card { padding: 13px 11px 11px; border-radius: 18px; }
-    .gs-icon-wrap { width: 30px; height: 30px; font-size: 0.78rem; }
-    .gs-card h3 { font-size: 0.80rem; }
-    .gs-card p { font-size: 0.70rem; -webkit-line-clamp: 2; }
-    .gs-card-link { font-size: 0.70rem; }
-    .gs-full-card { flex-direction: column; align-items: flex-start; padding: 18px 18px; min-height: unset; gap: 12px; }
-    .gs-full-thumb { width: 56px; height: 56px; font-size: 1.4rem; border-radius: 10px; }
-    .gs-full-btn { font-size: 0.76rem; padding: 8px 14px; }
+    #guides-section .gs-sub { margin-bottom: 28px; }
+    .gs-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .gs-card {
+      width: 100%;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+    }
+    .gs-icon-wrap { width: 48px; height: 48px; font-size: 1.15rem; }
+    .gs-card h3 { font-size: 0.98rem; }
+    .gs-card p { font-size: 0.82rem; -webkit-line-clamp: 2; }
+    .gs-card-link { font-size: 0.82rem; margin-top: 4px; }
+    /* Full guide banner stays horizontal: book left, text+btn right */
+    .gs-full-card { padding: 18px 18px; min-height: unset; gap: 14px; }
+    .gs-full-thumb { width: 64px; height: 64px; font-size: 1.5rem; border-radius: 12px; }
+    .gs-full-body h3 { font-size: 0.92rem; }
+    .gs-full-body p { font-size: 0.76rem; }
+    .gs-full-btn { font-size: 0.72rem; padding: 8px 13px; }
+  }
+  /* ── Very small phones: stack banner button below text ── */
+  @media(max-width: 460px) {
+    .gs-full-card { flex-wrap: wrap; }
+    .gs-full-body { flex: 1 1 auto; }
+    .gs-full-btn { width: 100%; justify-content: center; margin-top: 4px; }
   }
 </style>
 
