@@ -3092,6 +3092,15 @@ body.hp-home #why-us > [aria-hidden] {
 /* Content wrapper above glows */
 body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 
+/* Mobile: restore gentle overlap so section starts closer to hero bottom */
+@media (max-width: 768px) {
+  body.hp-home #why-us {
+    margin-top: -24px !important;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    box-shadow: 0 -18px 50px -12px rgba(123,47,255,0.35) !important;
+  }
+}
 @media (min-width: 1024px) {
   body.hp-home #why-us { padding-top: 90px; }
   .hp-hero::after { height: 300px; }
