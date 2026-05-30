@@ -653,13 +653,30 @@
     vertical-align: middle;
     margin-left: 4px;
   }
-  @media(max-width: 420px) {
+  @media(max-width: 768px) {
+    /* Section: -30% padding */
+    #why-us { padding: 62px 0 70px; }
+    /* Subtitle → grid gap: 52px → 30px */
+    #why-us .wu-sub { margin-bottom: 30px; }
+    /* Badge + title breathing room */
+    #why-us .wu-badge { margin-bottom: 14px; }
+    #why-us .wu-title { margin-bottom: 8px; }
+    /* Grid: keep 14px gap, tighter on small screens */
+    .wu-grid-cards { gap: 14px; }
+    /* Cards: compress padding + internal gaps */
+    .wu-card {
+      padding: 18px 14px 15px;
+      gap: 7px;
+      border-radius: 20px;
+    }
+    /* Icons: -15% */
+    .wu-icon-wrap { width: 44px; height: 44px; border-radius: 13px; }
+    .wu-icon-wrap::after { border-radius: 17px; }
+    .wu-icon-wrap i { font-size: 1.1rem; }
+  }
+  @media(max-width: 400px) {
     .wu-grid-cards { gap: 10px; }
-    .wu-card { padding: 18px 14px 16px; border-radius: 20px; }
-    .wu-icon-wrap { width: 46px; height: 46px; border-radius: 14px; }
-    .wu-icon-wrap i { font-size: 1.15rem; }
-    .wu-card h3 { font-size: 0.85rem; }
-    .wu-card p { font-size: 0.74rem; }
+    .wu-card { padding: 15px 12px 13px; }
   }
 </style>
 
