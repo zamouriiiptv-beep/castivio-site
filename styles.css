@@ -3072,14 +3072,14 @@ body:not(:has(.hp-hero)) #header {
   .hp-hero::after { height: 380px; }
 }
 
-/* ── 3 · AR page override (body.hp-home #why-us) — dark hero continuation ── */
+/* ── 3 · AR page override (body.hp-home #why-us) — transparent, inherits html canvas ── */
 body.hp-home #why-us {
   position: relative;
   z-index: 2;
   margin-top: 0 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
-  background: linear-gradient(180deg, #070014 0%, #12003a 52%, #1a0052 100%) !important;
+  background: transparent !important;
   box-shadow: none !important;
 }
 /* Kill the light-purple pseudo overlay */
@@ -3092,13 +3092,13 @@ body.hp-home #why-us > [aria-hidden] {
 /* Content wrapper above glows */
 body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 
-/* Mobile: restore gentle overlap so section starts closer to hero bottom */
+/* Mobile: flush transition — no overlap, no radius (section is transparent) */
 @media (max-width: 768px) {
   body.hp-home #why-us {
-    margin-top: -24px !important;
-    border-top-left-radius: 16px !important;
-    border-top-right-radius: 16px !important;
-    box-shadow: 0 -18px 50px -12px rgba(123,47,255,0.35) !important;
+    margin-top: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    box-shadow: none !important;
   }
 }
 @media (min-width: 1024px) {
