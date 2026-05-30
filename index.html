@@ -772,46 +772,49 @@
   /* ── Region tile — icon+title row at top (matches reference) ── */
   .gd-tile {
     position: relative;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(139,92,246,0.30);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,92,246,0.45);
     border-radius: 22px;
     padding: 20px 18px 16px;
     display: flex; flex-direction: column; gap: 11px;
     text-decoration: none;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.38), 0 0 0 1px rgba(139,92,246,0.10) inset;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.40), 0 0 18px rgba(139,92,246,0.12), 0 0 0 1px rgba(139,92,246,0.14) inset;
     transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
     -webkit-tap-highlight-color: transparent;
   }
   .gd-tile::before {
     content: "";
     position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.55), transparent);
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.70), transparent);
   }
   .gd-tile:hover {
     transform: translateY(-4px);
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(139,92,246,0.55);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.48), 0 0 26px rgba(139,92,246,0.22), 0 0 0 1px rgba(139,92,246,0.16) inset;
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(167,139,250,0.70);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.50), 0 0 30px rgba(139,92,246,0.30), 0 0 0 1px rgba(139,92,246,0.20) inset;
   }
   /* Icon + title row */
   .gd-head {
     display: flex; align-items: center; gap: 12px;
   }
-  /* Glowing circular badge */
+  /* Glowing circular badge — uniform dark-purple ring (matches reference) */
   .gd-badge {
     width: 52px; height: 52px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    font-size: 1.3rem;
-    box-shadow: 0 0 20px rgba(139,92,246,0.55), 0 3px 10px rgba(0,0,0,0.36);
+    background: radial-gradient(circle at 50% 40%, rgba(124,58,237,0.40), rgba(76,29,149,0.30));
+    border: 1px solid rgba(167,139,250,0.55);
+    box-shadow: 0 0 22px rgba(139,92,246,0.55), inset 0 0 12px rgba(139,92,246,0.25);
     transition: box-shadow 0.22s ease, transform 0.22s ease;
   }
+  .gd-badge i { color: #d6c9ff; font-size: 1.3rem; }
   .gd-tile:hover .gd-badge {
-    box-shadow: 0 0 32px rgba(139,92,246,0.72), 0 4px 14px rgba(0,0,0,0.42);
+    box-shadow: 0 0 34px rgba(139,92,246,0.78), inset 0 0 14px rgba(139,92,246,0.35);
     transform: scale(1.06);
   }
+  .gd-tile:hover .gd-badge i { color: #ffffff; }
   .gd-tile h3 {
     color: #ffffff;
     font-size: 1rem;
@@ -960,7 +963,7 @@
 
       <a href="/guide/khalij/" class="gd-tile">
         <div class="gd-head">
-          <div class="gd-badge" style="background:linear-gradient(135deg,#f59e0b,#d97706);">🕌</div>
+          <div class="gd-badge"><i class="fas fa-mosque"></i></div>
           <h3>دول الخليج</h3>
         </div>
         <p class="gd-desc">دليل شامل لأفضل القنوات والباقات والخدمات في دول الخليج.</p>
@@ -969,7 +972,7 @@
 
       <a href="/guide/maghreb/" class="gd-tile">
         <div class="gd-head">
-          <div class="gd-badge" style="background:linear-gradient(135deg,#10b981,#059669);">🌍</div>
+          <div class="gd-badge"><i class="fas fa-earth-africa"></i></div>
           <h3>المغرب العربي</h3>
         </div>
         <p class="gd-desc">دليل مخصص لأفضل القنوات والمحتوى والباقات في المغرب العربي.</p>
@@ -978,7 +981,7 @@
 
       <a href="/guide/mashriq/" class="gd-tile">
         <div class="gd-head">
-          <div class="gd-badge" style="background:linear-gradient(135deg,#3b82f6,#6366f1);">🌅</div>
+          <div class="gd-badge"><i class="fas fa-mountain-sun"></i></div>
           <h3>المشرق العربي</h3>
         </div>
         <p class="gd-desc">دليل يشمل أفضل الخيارات والمنصات والخدمات في المشرق العربي.</p>
@@ -989,13 +992,13 @@
 
     <!-- Banner الدليل الشامل: thumbnail يسار | نص وسط | زر يمين -->
     <a href="/guide/" class="gd-banner" aria-label="اقرأ الدليل الشامل لـ IPTV">
-      <div class="gd-thumb">📺</div>
+      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
       <div class="gd-banner-body">
         <h3><i class="fas fa-star"></i> الدليل الشامل لـ IPTV</h3>
         <p>كل ما تحتاج معرفته — التثبيت، الأجهزة، القنوات وأفضل تجربة بث 4K بدون تقطيع.</p>
         <span class="gd-btn">
+          <i class="fas fa-book" style="font-size:0.78rem;"></i>
           اقرأ الدليل الشامل
-          <i class="fas fa-arrow-left" style="font-size:0.68rem;"></i>
         </span>
       </div>
     </a>
