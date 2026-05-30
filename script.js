@@ -1,19 +1,10 @@
-/* ========================================================= */
-/* منع المتصفح من استرجاع آخر صفحة (Session Restore Fix) */
-/* ========================================================= */
-
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
-window.addEventListener("pageshow", (event) => {
-  if (event.persisted) {
-    window.location.reload();
-  }
-});
-
-
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('ready');
+
 
   /* ========================================================= */
   /* ====================== شريط الأعلام ===================== */
