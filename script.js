@@ -3,8 +3,6 @@ if ("scrollRestoration" in history) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('ready');
-
 
   /* ========================================================= */
   /* ====================== شريط الأعلام ===================== */
