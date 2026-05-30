@@ -3072,43 +3072,28 @@ body:not(:has(.hp-hero)) #header {
   .hp-hero::after { height: 380px; }
 }
 
-/* ── 3 · AR page override (body.hp-home #why-us) — adds light-purple bg ── */
-/* The next section rises over the hero with a slight overlap */
+/* ── 3 · AR page override (body.hp-home #why-us) — dark hero continuation ── */
 body.hp-home #why-us {
   position: relative;
   z-index: 2;
-  margin-top: -26px;          /* gentle overlap, section starts higher */
-  padding-top: 14px;          /* pull section content up, less gap */
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  /* off-white → light-purple instead of pure white */
-  background: linear-gradient(180deg, #f4f0fd 0%, #faf9fe 180px) !important;
-  /* purple glow lifting off the dark hero edge */
-  box-shadow: 0 -26px 60px -22px rgba(123,47,255,0.45);
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  background: linear-gradient(180deg, #070014 0%, #12003a 52%, #1a0052 100%) !important;
+  box-shadow: none !important;
 }
-/* Soft purple light at the top of the section */
-body.hp-home #why-us::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 180px;
-  pointer-events: none;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  background: radial-gradient(70% 150% at 50% 0%,
-    rgba(123,47,255,0.14) 0%,
-    rgba(176,38,255,0.06) 40%,
-    transparent 72%);
+/* Kill the light-purple pseudo overlay */
+body.hp-home #why-us::before { display: none !important; }
+/* Keep glow orbs (aria-hidden divs) absolutely positioned despite > * rule */
+body.hp-home #why-us > [aria-hidden] {
+  position: absolute !important;
+  z-index: 0 !important;
 }
-body.hp-home #why-us > * { position: relative; z-index: 1; }
+/* Content wrapper above glows */
+body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
 
 @media (min-width: 1024px) {
-  body.hp-home #why-us {
-    margin-top: -30px;          /* gentle overlap on larger screens */
-    padding-top: 52px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-  }
+  body.hp-home #why-us { padding-top: 90px; }
   .hp-hero::after { height: 300px; }
 }
 
