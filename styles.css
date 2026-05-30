@@ -3150,3 +3150,106 @@ body.hp-home #why-us .wu-inner { position: relative; z-index: 1; }
   .hp-btn--primary { animation: none !important; }
   .hp-reveal { opacity: 1; transform: none; animation: none; }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   PRIME IPTV — Unified Dark Background System v1
+   Single block. Zero white. Full-site dark identity.
+   Rules use !important to override Tailwind + earlier styles.
+══════════════════════════════════════════════════════════════ */
+
+/* 1 ─ Root canvas: dark gradient painted on html, fills full page */
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 12% 0%,   rgba(139,92,246,.18), transparent 40%),
+    radial-gradient(circle at 88% 100%, rgba(59,130,246,.13), transparent 40%),
+    linear-gradient(180deg, #070014 0%, #12003a 50%, #1a0052 100%);
+}
+body { background: transparent !important; color: #e0e0f4; }
+
+/* 2 ─ Structural layout → transparent (html canvas shows through) */
+main, section, article, aside,
+.container, .max-w-6xl, .max-w-5xl, .max-w-4xl,
+.max-w-3xl, .max-w-2xl, .max-w-xl, .max-w-lg,
+#faq, #testimonials, #seo-text, #plans {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 3 ─ Tailwind white / light-gray utilities → transparent */
+.bg-white, .bg-gray-50, .bg-gray-100, .bg-gray-200,
+.bg-slate-50, .bg-slate-100,
+.bg-purple-50, .bg-purple-100, .bg-indigo-50, .bg-blue-50 {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 4 ─ Cards (bg-white + spacing / shape combos) → glassmorphism */
+.bg-white.p-4, .bg-white.p-5, .bg-white.p-6, .bg-white.p-8,
+.bg-white.rounded, .bg-white.rounded-lg,
+.bg-white.rounded-xl, .bg-white.rounded-2xl,
+.bg-white.shadow, .bg-white.shadow-md,
+.bg-white.shadow-lg, .bg-white.shadow-xl {
+  background: rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border-color: rgba(139,92,246,.22) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,.45),
+              0 0 0 1px rgba(139,92,246,.10) !important;
+}
+
+/* 5 ─ .netflix-card-light → dark glass */
+.netflix-card-light {
+  background: rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px solid rgba(139,92,246,.22) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4) !important;
+}
+
+/* 6 ─ Language selector → dark glass */
+.lang-wrapper {
+  background: rgba(255,255,255,0.09) !important;
+  border-color: rgba(139,92,246,.32) !important;
+}
+.lang-dropdown {
+  background: rgba(8,0,24,0.94) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(139,92,246,.28) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.55) !important;
+}
+.lang-option { color: #c8c8e8 !important; }
+.lang-option:hover {
+  background: rgba(139,92,246,.18) !important;
+  color: #fff !important;
+}
+
+/* 7 ─ Text: dark Tailwind colors → light on dark bg */
+.text-gray-900, .text-gray-800 { color: #ffffff !important; }
+.text-gray-700                  { color: #d8d8f0 !important; }
+.text-gray-600, .text-gray-500  { color: #9898c0 !important; }
+.text-purple-800, .text-purple-900,
+.text-indigo-700, .text-indigo-800 { color: #c4b5fd !important; }
+
+/* 8 ─ Borders → purple-tinted */
+.border-gray-200, .border-gray-300, .border-gray-100 {
+  border-color: rgba(139,92,246,.18) !important;
+}
+hr { border-color: rgba(139,92,246,.15) !important; }
+
+/* 9 ─ FAQ / accordion panels */
+#faq details,
+#faq details > summary {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(139,92,246,.15) !important;
+  color: #e0e0f4 !important;
+}
+
+/* 10 ─ Shadows: darken to match dark theme */
+.shadow, .shadow-sm, .shadow-md,
+.shadow-lg, .shadow-xl, .shadow-2xl {
+  box-shadow: 0 4px 20px rgba(0,0,0,.45) !important;
+}
+/* ════════════════════════════════════════════════════════════ */
