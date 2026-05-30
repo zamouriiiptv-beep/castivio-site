@@ -910,22 +910,21 @@
     transform: scale(1.04);
     box-shadow: 0 4px 24px rgba(123,47,255,0.60);
   }
-  /* ── Mobile ── */
-  @media(max-width: 768px) {
+  /* ── Tablet: 2 columns ── */
+  @media(max-width: 860px) {
+    .gs-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  /* ── Mobile: 1 column ── */
+  @media(max-width: 580px) {
     #guides-section { padding: 60px 0 70px; }
     #guides-section .gs-sub { margin-bottom: 32px; }
     .gs-grid { grid-template-columns: 1fr; gap: 14px; }
-    .gs-card { flex-direction: row; align-items: flex-start; padding: 20px 18px; gap: 16px; }
-    .gs-icon-circle { width: 56px; height: 56px; font-size: 1.5rem; margin-bottom: 0; flex-shrink: 0; }
-    .gs-card h3 { text-align: right; margin-bottom: 6px; }
-    .gs-card p { text-align: right; margin-bottom: 12px; }
-    .gs-card-btn { font-size: 0.76rem; padding: 7px 15px; }
+    .gs-card { padding: 24px 20px 20px; }
+    .gs-icon-circle { width: 60px; height: 60px; font-size: 1.6rem; margin-bottom: 16px; }
+    .gs-card h3 { font-size: 1rem; }
+    .gs-card-btn { font-size: 0.8rem; padding: 8px 18px; }
     .gs-full-card { flex-direction: column; align-items: flex-start; padding: 22px 20px; gap: 16px; }
     .gs-full-icon { width: 64px; height: 64px; font-size: 1.6rem; }
-  }
-  @media(max-width: 480px) {
-    .gs-card { padding: 16px 14px; gap: 12px; }
-    .gs-icon-circle { width: 48px; height: 48px; font-size: 1.3rem; }
   }
 </style>
 
