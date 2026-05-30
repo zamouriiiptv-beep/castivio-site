@@ -58,26 +58,1354 @@
      ============================ -->
 
 <!-- الاتصال المسبق بالمصادر الخارجية -->
-<!-- [SYNC-PERF-HEAD-START] -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+<!-- تهيئة DNS للمصادر الخارجية -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preload" href="/styles.css?v=16" as="style">
-  <link rel="stylesheet" href="/styles.css?v=16">
-  <link rel="preload" href="/css/tailwind.min.css?v=2" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css?v=2">
+
+  <!-- ============================
+       5) تحسين السرعة (Speed)
+       ============================ -->
+  <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+
+  <script src="/script.js?v=2" defer></script>
+
+  <!-- ============================
+       ✅ 6) خطوط الموقع (Cairo + Tajawal)
+       ============================ -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap"></noscript>
+
+  <!-- ============================
+       7) ملفات CSS و JS الخارجية
+       ============================ -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-<!-- [SYNC-PERF-HEAD-END] -->
-  <!-- [SYNC-PERF-FOOT-START] -->
-<link rel="preload" href="/css/footer.css?v=32" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/footer.css?v=32"></noscript>
+  <link rel="preload" href="/css/tailwind.min.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/tailwind.min.css?v=2"></noscript>
+  <link rel="preload" href="/css/footer.css?v=29" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/footer.css?v=29"></noscript>
+
+  <!-- ============================
+       ✅ 8) تفعيل الخطوط في الموقع
+       ============================ -->
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif !important;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    .title,
+    .heading {
+      font-family: 'Cairo', sans-serif !important;
+      font-weight: 800;
+    }
+
+    #basic-plan-slider   { accent-color: #2563eb; }
+    #premium-plan-slider { accent-color: #d97706; }
+    #pro-plan-slider     { accent-color: #7e22ce; }
+  </style>
+
+  <script>
+    window.customPricingConfig = {
+      basic: [
+        { price: 5,  period: "/ mo",    text: "1 Month" },
+        { price: 12, period: "/ 3 mo",  text: "3 Months" },
+        { price: 20, period: "/ 6 mo",  text: "6 Months" },
+        { price: 30, period: "/ year",  text: "1 Year" },
+        { price: 50, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      premium: [
+        { price: 7,  period: "/ mo",    text: "1 Month" },
+        { price: 17, period: "/ 3 mo",  text: "3 Months" },
+        { price: 27, period: "/ 6 mo",  text: "6 Months" },
+        { price: 40, period: "/ year",  text: "1 Year" },
+        { price: 70, period: "/ 2 yrs", text: "2 Years" }
+      ],
+      pro: [
+        { price: 9,  period: "/ mo",    text: "1 Month" },
+        { price: 22, period: "/ 3 mo",  text: "3 Months" },
+        { price: 35, period: "/ 6 mo",  text: "6 Months" },
+        { price: 50, period: "/ year",  text: "1 Year" },
+        { price: 90, period: "/ 2 yrs", text: "2 Years" }
+      ]
+    };
+    window.customPlanNames = { basic: 'Basic', premium: 'Premium', pro: 'Professional' };
+    window.customWhatsAppMessage = (plan, duration) => `Hello, I'd like to subscribe to the ${plan} plan for ${duration} - Prime IPTV`;
+    window.addEventListener('load', function() {
+      var cfg = window.customPricingConfig, names = window.customPlanNames;
+      var msgFn = window.customWhatsAppMessage;
+      function setWA(planType, idx) {
+        var sel = cfg[planType][parseInt(idx)];
+        var wa = document.getElementById('whatsapp-link-'+planType);
+        if(sel && wa) wa.href = 'https://wa.me/212666686732?text='+encodeURIComponent(msgFn(names[planType], sel.text));
+      }
+      ['basic','premium','pro'].forEach(function(t){ var s=document.getElementById(t+'-plan-slider'); if(s) setWA(t,s.value); });
+      var origMove = window.moveSlider;
+      window.moveSlider = function(v,t){ if(origMove) origMove(v,t); setWA(t,v); };
+      var origUpdate = window.updatePlanData;
+      window.updatePlanData = function(v,t){ if(origUpdate) origUpdate(v,t); setWA(t,v); };
+    });
+  </script>
+
+  <!-- ============================
+       9) البيانات المنظمة (Schema)
+       ============================ -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "Organization",
+      "@id": "https://primeiptvplus.com/#organization",
+      "name": "Prime IPTV",
+      "url": "https://primeiptvplus.com/",
+      "logo": { "@id": "https://primeiptvplus.com/#logo" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+212666686732",
+        "contactType": "customer service",
+        "availableLanguage": ["en"]
+      }
+    },
+
+    {
+      "@type": "ImageObject",
+      "@id": "https://primeiptvplus.com/#logo",
+      "url": "https://primeiptvplus.com/images/logo.webp",
+      "width": 300,
+      "height": 300
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://primeiptvplus.com/en/#website",
+      "url": "https://primeiptvplus.com/en/",
+      "name": "Prime IPTV EN",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://primeiptvplus.com/#organization" }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://primeiptvplus.com/en/#webpage",
+      "url": "https://primeiptvplus.com/en/",
+      "name": "Prime IPTV – Best IPTV subscription to watch channels and matches in high quality",
+      "isPartOf": { "@id": "https://primeiptvplus.com/en/#website" },
+      "about": { "@id": "https://primeiptvplus.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://primeiptvplus.com/#logo" },
+      "description": "Prime IPTV EN offers a high-quality IPTV subscription to watch live channels, sports, movies, and series in HD, 4K, and 8K with stable streaming.",
+      "inLanguage": "en"
+    },
+
+    {
+      "@type": "Product",
+      "@id": "https://primeiptvplus.com/en/#product",
+      "name": "Prime IPTV Subscription (EN)",
+      "image": "https://primeiptvplus.com/images/logo.webp",
+      "description": "Reliable IPTV subscription for English-speaking users with high-quality streaming.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Prime IPTV"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1240",
+        "bestRating": "5"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "25",
+        "highPrice": "40",
+        "offerCount": "3",
+        "url": "https://primeiptvplus.com/en/#pricing",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://primeiptvplus.com/en/#faq",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I use the service on multiple devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, a single account can be used on multiple devices depending on the plan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the service support 4K quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all plans support streaming up to 8K depending on content availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there 24/7 technical support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, technical support is available 24/7 via WhatsApp."
+          }
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+
+  <!-- ============================
+       10) وسوم أوبن غراف
+       ============================ -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prime IPTV – Best IPTV subscription to watch channels and matches in high quality">
+<meta property="og:description" content="The best IPTV subscription to watch channels, matches, and movies in HD, 4K, and 8K with fast and stable streaming working on all devices without interruption.">
+<meta property="og:url" content="https://primeiptvplus.com/en/">
+<meta property="og:image" content="https://primeiptvplus.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+
+  <!-- ============================
+       11) بطاقات تويتر (Twitter Cards)
+       ============================ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prime IPTV – Best IPTV service for matches and channels">
+  <meta name="twitter:description" content="High speed + sports channels + movies and series in 4K.">
+  <meta name="twitter:image" content="https://primeiptvplus.com/images/og-image.jpg">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18138909640"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "AW-18138909640");
+</script>
+</head>
+
+<body class="bg-gray-50 relative">
+
+<!-- 🚨🚨 بداية شريط اللغة مع الأعلام ⚑ 🚨🚨 -->
+<div id="language-bar">
+
+  <!-- حاوية الأعلام المتحركة -->
+  <div id="flags-container">
+    <div id="flags-scroll"></div>
+  </div>
+
+  <!-- زر اللغة + القائمة داخله -->
+  <div class="lang-wrapper" id="lang-btn">
+    <img src="/images/A3lame/flag10.webp" class="flag-icon" id="current-flag" alt="English Flag" loading="lazy">
+<span id="current-lang">EN</span>
+
+    <!-- 🚨 القائمة المنسدلة داخل زر اللغة 🚨 -->
+    <div id="lang-dropdown" class="lang-dropdown hidden">
+      
+      <div class="lang-option" data-lang="ar" data-flag="/images/A3lame/flag1.webp">
+        <a href="/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag1.webp" class="flag-icon" alt="Arabic Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">العربية (AR)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="en" data-flag="/images/A3lame/flag10.webp">
+        <a href="/en/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag10.webp" class="flag-icon" alt="English Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">English (EN)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="fr" data-flag="/images/A3lame/flag2.webp">
+        <a href="/fr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag2.webp" class="flag-icon" alt="French Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Français (FR)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="es" data-flag="/images/A3lame/flag3.webp">
+        <a href="/es/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag3.webp" class="flag-icon" alt="Spanish Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Español (ES)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="pt" data-flag="/images/A3lame/flag8.webp">
+        <a href="/pt/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag8.webp" class="flag-icon" alt="Portuguese Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Português (PT)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="de" data-flag="/images/A3lame/flag-de.svg">
+        <a href="/de/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag-de.svg" class="flag-icon" alt="German Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Deutsch (DE)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="tr" data-flag="/images/A3lame/flag13.webp">
+        <a href="/tr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag13.webp" class="flag-icon" alt="Turkish Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Türkçe (TR)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="it" data-flag="/images/A3lame/flag20.webp">
+        <a href="/it/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag20.webp" class="flag-icon" alt="Italian Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Italiano (IT)</span>
+        </a>
+      </div>
+
+      <div class="lang-option" data-lang="nl" data-flag="/images/A3lame/flag19.webp">
+        <a href="/nl/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
+          <img src="/images/A3lame/flag19.webp" class="flag-icon" alt="Dutch Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <span style="margin-right: 8px;">Nederlands (NL)</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- 🚨🚨 نهاية شريط اللغة ⚑ 🚨🚨 -->
+<!-- 🚨🚨 بداية قسم الهيدر 🚨🚨 -->
+<header id="header"
+  class="fixed w-full bg-gradient-to-r from-blue-50 to-purple-50 shadow-md z-50">
+
+  <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
+
+    <!-- الشعار -->
+    <div id="logo-name" class="flex items-center space-x-4">
+      <img id="logo-img" src="/images/logo.webp" alt="Prime IPTV Logo"
+           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
+      <span class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">
+        Prime IPTV
+      </span>
+    </div>
+
+    <!-- قائمة سطح المكتب -->
+    <nav id="nav-links" class="hidden md:flex space-x-6 items-center" aria-label="Main navigation links">
+  <a href="/en/#home" class="nav-link text-gray-700 hover:text-purple-700">Home</a>
+  <a href="/en/#why-us" class="nav-link text-gray-700 hover:text-purple-700">Advantages</a>
+  <a href="/en/#pricing" class="nav-link text-gray-700 hover:text-purple-700">Plans</a>
+  <a href="/en/#testimonials" class="nav-link text-gray-700 hover:text-purple-700">Customer Reviews</a>
+  <a href="/en/#faq" class="nav-link text-gray-700 hover:text-purple-700">FAQ</a>
+  <a href="/en/#payment-methods" class="nav-link text-gray-700 hover:text-purple-700">Payment Methods</a>
+</nav>
+
+    <!-- زر الموبايل -->
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+  </div>
+
+</header>
+
+<!-- الخلفية -->
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+
+<!-- القائمة الجانبية الفاخرة -->
+<div id="side-menu" class="side-menu glass-card" aria-hidden="true">
+    <button id="close-menu" class="close-btn" aria-label="Close menu">×</button>
+
+    <ul class="menu-links" role="menu">
+    <li><a href="/en/#home" role="menuitem">Home</a></li>
+    <li><a href="/en/#why-us" role="menuitem">Advantages</a></li>
+    <li><a href="/en/#pricing" role="menuitem">Plans</a></li>
+    <li><a href="/en/#testimonials" role="menuitem">Customer Reviews</a></li>
+    <li><a href="/en/#faq" role="menuitem">FAQ</a></li>
+    <li><a href="/en/#payment-methods" role="menuitem">Payment Methods</a></li>
+</ul>
+
+</div>
+<!-- 🚨🚨 نهاية قسم الهيدر 🚨🚨 -->
+<main>
+<!-- 🚨🚨 بداية القسم الرئيسي 🏠 🎬 🚨🚨 -->
+<section id="home" class="hp-hero" aria-label="Hero section">
+
+  <!-- ════ Background layers ════ -->
+  <div class="hp-bg" aria-hidden="true">
+    <div class="hp-grid"></div>
+    <div class="hp-glow hp-glow--core"></div>
+    <div class="hp-glow hp-glow--left"></div>
+    <div class="hp-glow hp-glow--right"></div>
+    <div class="hp-beam"></div>
+    <span class="hp-orb hp-orb--1"></span>
+    <span class="hp-orb hp-orb--2"></span>
+    <span class="hp-orb hp-orb--3"></span>
+    <span class="hp-orb hp-orb--4"></span>
+    <div class="hp-particles"></div>
+    <div class="hp-vignette"></div>
+  </div>
+
+  <!-- ════ Content ════ -->
+  <div class="hp-inner">
+
+    <div class="hp-badge hp-reveal" style="--d:0ms">
+      <span class="hp-badge-dot"></span>
+      <i class="fas fa-gem hp-badge-gem"></i>
+      <span>Premium Global Streaming Platform</span>
+    </div>
+
+    <h1 class="hp-title hp-reveal" style="--d:90ms">
+      Best Global <span class="hp-grad">Streaming</span> Platform
+      <span class="hp-title-sub">With Ultra-Fast Experience</span>
+    </h1>
+
+    <p class="hp-desc hp-reveal" style="--d:180ms">
+      Enjoy a cinematic viewing experience in crystal-clear quality,
+      <br class="hp-br">
+      stable streaming with no interruptions and support for all your smart devices.
+    </p>
+
+    <div class="hp-cta hp-reveal" style="--d:270ms">
+      <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20try%20Prime%20IPTV%20for%20free%20%E2%80%93%20Prime%20IPTV" target="_blank" rel="noopener noreferrer"
+         class="hp-btn hp-btn--primary">
+        <i class="fas fa-play"></i>
+        <span>Try for Free</span>
+      </a>
+      <a href="#pricing" class="hp-btn hp-btn--ghost">
+        <i class="fas fa-crown"></i>
+        <span>Subscribe Now</span>
+      </a>
+    </div>
+
+    <div class="hp-chips hp-reveal" style="--d:360ms">
+        <div class="hp-chips-row">
+          <span class="hp-chip"><i class="fas fa-bolt"></i>Fast</span>
+          <span class="hp-chip"><i class="fas fa-gem"></i>Ultra Quality</span>
+          <span class="hp-chip"><i class="fas fa-mobile-screen-button"></i>Smart Devices</span>
+        </div>
+        <div class="hp-chips-row">
+          <span class="hp-chip"><i class="fas fa-shield-halved"></i>Secure</span>
+        </div>
+      </div>
+
+  </div>
+
+  <a href="#why-us" class="hp-scroll hp-reveal" style="--d:480ms" aria-label="Scroll down">
+    <span class="hp-scroll-mouse"></span>
+  </a>
+</section>
+
+<!-- 🚨🚨 نهاية القسم الرئيسي 🏠 🎬 🚨🚨 -->
+
+
+<!-- 🚨🚨 بداية قسم المميزات ⭐ (UPDATED) 🚨🚨 -->
+<section id="why-us" class="section-spacing bg-gray-50" aria-label="Advantages section">
+  <div class="container mx-auto px-4">
+
+<h2 class="section-title-unified">
+  <span class="title-line-1">Why people prefer</span>
+  <span class="title-line-2">
+    IPTV
+    <img src="/images/Logo/icon6.webp" alt="IPTV icon" class="title-icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+<p class="section-description">
+High quality, international channels, and uninterrupted live streaming
+</p>
+
+    <!-- قائمة المميزات -->
+    <div class="grid md:grid-cols-4 gap-8">
+
+      <!-- ميزة 1 : التنوع -->
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+        <div class="text-indigo-600 mb-4 text-4xl">
+          <i class="fas fa-tv" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">
+          Thousands of live channels
+        </h3>
+        <p class="text-gray-600 leading-relaxed">
+          IPTV offers a vast library of
+          <strong>Live Channels</strong> including Arab, foreign, sports, and entertainment channels
+          covering all interests.
+        </p>
+      </div>
+
+      <!-- ميزة 2 : الجودة -->
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+        <div class="text-indigo-600 mb-4 text-4xl">
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">
+          High quality streaming without interruption
+        </h3>
+        <p class="text-gray-600 leading-relaxed">
+          Enjoy a smooth streaming experience
+          with powerful servers supporting
+          <strong>HD – 4K – 8K</strong> with minimum cut-offs.
+        </p>
+      </div>
+
+      <!-- ميزة 3 : الأجهزة -->
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+        <div class="text-indigo-600 mb-4 text-4xl">
+          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">
+          Works on all devices
+        </h3>
+        <p class="text-gray-600 leading-relaxed">
+          IPTV works on Smart TV,
+          phone, computer, Android Box, and Fire Stick
+          without complicated setups.
+        </p>
+      </div>
+
+      <!-- ميزة 4 : المحتوى -->
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+        <div class="text-indigo-600 mb-4 text-4xl">
+          <i class="fas fa-film" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">
+          A huge library of movies and series
+        </h3>
+        <p class="text-gray-600 leading-relaxed">
+          Access to thousands of
+          <strong>Latest movies and TV series</strong>
+          regularly updated in multiple languages and categories.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ✅ نهاية قسم المميزات بعد التحسين ✅ -->
+
+<!-- 🚀 Regional IPTV Guides Section -->
+<section class="container mx-auto px-4 mt-12 mb-12">
+
+  <div class="text-center mb-6">
+    <h2 class="text-2xl md:text-3xl font-black text-purple-800 mb-2" style="font-family:'Cairo',sans-serif;">
+      📍 IPTV Guides by Region
+    </h2>
+    <p class="text-gray-600 text-sm md:text-base">Choose your local guide</p>
+  </div>
+
+  <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-3xl mx-auto items-stretch">
+
+    <a href="/en/usa/" class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
+      <div class="bg-gradient-to-br from-blue-700 via-red-600 to-blue-800 p-3 md:p-4 text-center flex-grow flex flex-col justify-center items-center">
+        <div class="text-3xl md:text-4xl mb-1">🇺🇸</div>
+        <h3 class="text-xs md:text-sm font-black text-white leading-tight" style="font-family:'Cairo',sans-serif;">USA</h3>
+      </div>
+      <div class="p-2 md:p-3 text-center bg-white border-t border-gray-50">
+        <span class="text-xs md:text-sm font-bold text-blue-600 group-hover:text-blue-700">
+          Read <i class="fas fa-arrow-right ml-1 text-xs"></i>
+        </span>
+      </div>
+    </a>
+
+    <a href="/en/uk/" class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
+      <div class="bg-gradient-to-br from-blue-800 via-red-700 to-blue-900 p-3 md:p-4 text-center flex-grow flex flex-col justify-center items-center">
+        <div class="text-3xl md:text-4xl mb-1">🇬🇧</div>
+        <h3 class="text-xs md:text-sm font-black text-white leading-tight" style="font-family:'Cairo',sans-serif;">UK</h3>
+      </div>
+      <div class="p-2 md:p-3 text-center bg-white border-t border-gray-50">
+        <span class="text-xs md:text-sm font-bold text-red-600 group-hover:text-red-700">
+          Read <i class="fas fa-arrow-right ml-1 text-xs"></i>
+        </span>
+      </div>
+    </a>
+
+    <a href="/en/canada/" class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
+      <div class="bg-gradient-to-br from-red-600 via-red-500 to-red-700 p-3 md:p-4 text-center flex-grow flex flex-col justify-center items-center">
+        <div class="text-3xl md:text-4xl mb-1">🇨🇦</div>
+        <h3 class="text-xs md:text-sm font-black text-white leading-tight" style="font-family:'Cairo',sans-serif;">Canada</h3>
+      </div>
+      <div class="p-2 md:p-3 text-center bg-white border-t border-gray-50">
+        <span class="text-xs md:text-sm font-bold text-red-600 group-hover:text-red-700">
+          Read <i class="fas fa-arrow-right ml-1 text-xs"></i>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <a href="/en/guide/"
+       class="inline-flex items-center gap-2 px-6 py-3 text-sm md:text-base font-bold rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+       role="button">
+      <i class="fas fa-book-open"></i>
+      <span>📖 Read the Complete IPTV Guide</span>
+    </a>
+  </div>
+
+</section>
+
+<!-- ✅ End Regional Guides Section -->
+
+
+<!-- 🚨🚨 قسم الخطط العالمية (نسخة LUXURY 🔥) 🚨🚨 -->
+<section id="pricing" class="section-spacing bg-gray-50" aria-label="Subscription plans">
+
+  <div class="container mx-auto px-6">
+
+    <!-- عنوان -->
+    <h2 class="section-title-unified">
+  <span class="title-line-1">Choose your subscription plan</span>
+  <span class="title-line-2">
+    IPTV
+    <img src="/images/Logo/icon7.webp" alt="IPTV subscription icon" class="title-icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+    <p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
+          text-transparent bg-clip-text bg-gradient-to-r 
+          from-pink-500 via-fuchsia-500 to-purple-500">
+  Choose your ideal plan to enjoy unlimited streaming
+</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- 🟦 الخطة الأساسية -->
+      <!-- 🟦 Basic Plan -->
+<div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
+<div class="luxury-card-inner">
+<div style="height:20px"></div>
+
+  <!-- BADGE -->
+  <div class="plan-badge badge-economy">Economical option</div>
+
+  <div class="relative z-10 text-center">
+    <h3 class="text-2xl font-bold text-blue-500 mb-2">Basic Plan</h3>
+    <p class="text-gray-600 mb-4">The best start for a world-class experience without complications</p>
+
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">month</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3mo</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6mo</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">year</span>
+        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-basic">30</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-basic" class="text-lg font-medium">/ year</span>
+    </div>
+
+    <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
+      <span class="font-bold text-blue-600">View Features</span>
+      <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
+    </button>
+
+    <ul id="features-basic" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
+      <li>Over 21,000 varied channels</li>
+      <li>Over 30,000 series</li>
+      <li>Over 158,000 movies</li>
+      <li>Video on demand (VOD)</li>
+      <li>Smooth streaming without interruption</li>
+      <li>Compatible with all devices</li>
+      <li>Quality SD / HD / UHD / 4K / 8K</li>
+      <li>99%+ uptime rate</li>
+      <li>Daily server updates</li>
+      <li>24/7 technical support</li>
+      <li>10-day money-back guarantee</li>
+      <li>Exclusive and regularly renewed content</li>
+    </ul>
+
+    <a id="whatsapp-link-basic"
+     href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+     target="_blank"
+     rel="noopener noreferrer"
+     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
+            hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+  Subscribe now
+</a>
+
+  </div>
+</div>
+</div>
+
+<!-- 🟨 Premium Plan -->
+<div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
+<div class="luxury-card-inner">
+<div style="height:20px"></div>
+
+  <!-- BADGE -->
+  <div class="plan-badge badge-best">Best seller</div>
+
+  <div class="relative z-10 text-center">
+   <h3 class="text-2xl font-bold text-yellow-500 mb-2">
+Premium Plan
+</h3>
+    <p class="text-gray-600 mb-4">The best choice for the most active users</p>
+
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">month</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3mo</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6mo</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">year</span>
+        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-premium">40</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-premium" class="text-lg font-medium">/ year</span>
+    </div>
+
+    <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
+      <span class="font-bold text-yellow-500">View Features</span>
+      <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
+    </button>
+
+    <ul id="features-premium" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
+     <li>Over 15,000 varied channels</li>
+      <li>Over 14,000 series</li>
+      <li>Over 63,000 movies</li>
+      <li>Video on demand (VOD)</li>
+      <li>Uninterrupted streaming</li>
+      <li>Compatible with all devices</li>
+      <li>Quality SD / HD / 4K / 8K</li>
+       <li>99%+ uptime rate</li>
+      <li>Daily updates</li>
+      <li>Technical support</li>
+      <li>10-day guarantee</li>
+      <li>Exclusive and regularly renewed content</li>
+    </ul>
+
+    <a id="whatsapp-link-premium"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+  Subscribe now
+</a>
+
+  </div>
+</div>
+</div>
+
+      <!-- 🟪 الخطة الاحترافية -->
+      <!-- 🟪 Pro Plan -->
+<div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
+<div class="luxury-card-inner">
+<div style="height:20px"></div>
+
+  <!-- BADGE -->
+  <div class="plan-badge badge-gold">Gold Plan</div>
+
+  <div class="relative z-10 text-center">
+    <h3 class="text-2xl font-bold text-purple-600 mb-2">Professional Plan</h3>
+    <p class="text-gray-600 mb-4">For users who want only the best streaming experience</p>
+
+    <div class="duration-slider-container mb-6">
+      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
+      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">month</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3mo</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6mo</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">year</span>
+        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2yr</span>
+      </div>
+    </div>
+    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
+      <span id="price-val-pro">50</span>
+      <span class="text-xl font-bold">EUR</span>
+      <span id="period-text-pro" class="text-lg font-medium">/ year</span>
+    </div>
+
+    <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
+      <span class="font-bold text-purple-600">Show Features</span>
+      <span class="plan-arrow text-lg" aria-hidden="true">🔽</span>
+    </button>
+
+    <ul id="features-pro" class="plan-features hidden text-right mb-6 leading-relaxed space-y-2">
+      <li>More than 50,000 channels</li>
+      <li>More than 40,000 series</li>
+      <li>More than 190,000 movies</li>
+      <li>Video On Demand (VOD)</li>
+      <li>Smooth watching without interruptions</li>
+      <li>Quality SD / HD / UHD / 4K / 8K</li>
+      <li>Stable playback</li>
+      <li>99%+ uptime</li>
+      <li>Supports all devices</li>
+      <li>Daily updates</li>
+      <li>24/7 technical support</li>
+      <li>10 days guarantee</li>
+      <li>Exclusive content constantly renewed</li>
+    </ul>
+
+    <a id="whatsapp-link-pro"
+       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
+              hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
+  Subscribe Now
+</a>
+
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- 🚨🚨 نهاية قسم الخطط العالمية 💎 🚨🚨 -->
+
+<!-- 🚨🚨 قسم آراء العملاء 🗣️ 🚨🚨 -->
+<section id="testimonials" class="section-spacing bg-gray-50" aria-label="Customer reviews">
+
+  <div class="container mx-auto px-4">
+
+    <h2 class="section-title-unified">
+  <span class="title-line-1">What our customers say</span>
+  <span class="title-line-2">
+    Prime IPTV
+    <img src="/images/Logo/icon8.webp" class="title-icon" alt="Customer reviews icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+<p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
+          text-transparent bg-clip-text bg-gradient-to-r 
+          from-pink-500 via-fuchsia-500 to-purple-500">
+Real reviews confirming the quality of service and satisfaction of our customers
+</p>
+
+
+    <div class="grid md:grid-cols-5 gap-8">
+
+     <!-- رأي العميل 1 -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <div class="flex items-center mb-4">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#7c3aed"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">S</text></svg>
+    <div>
+      <h3 class="font-semibold">Sarah Johnson</h3>
+      <p class="text-gray-600">From Canada</p>
+    </div>
+  </div>
+  <p class="text-gray-700 leading-relaxed">
+    I started using this <strong>IPTV subscription</strong> to watch movies and series,
+    and what I liked most is the clarity of the picture and easy access to content anytime without annoying ads.
+  </p>
+</div>
+
+<!-- رأي العميل 2 -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <div class="flex items-center mb-4">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#2563eb"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">M</text></svg>
+    <div>
+      <h3 class="font-semibold">Michael Chen</h3>
+      <p class="text-gray-600">Sports fan</p>
+    </div>
+  </div>
+  <p class="text-gray-700 leading-relaxed">
+    For me, the best with <strong>watching matches via IPTV</strong> is stability during peak hours.
+    I follow competitions without interruptions even with an average Internet connection.
+  </p>
+</div>
+
+<!-- رأي العميل 3 -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <div class="flex items-center mb-4">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#059669"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">E</text></svg>
+    <div>
+      <h3 class="font-semibold">Emma Wilson</h3>
+      <p class="text-gray-600">User on Smart TV</p>
+    </div>
+  </div>
+  <p class="text-gray-700 leading-relaxed">
+    Setting up <strong>the IPTV service on Smart TV and phone</strong> was very easy.
+    I like the quick channel switching and consistent display quality.
+  </p>
+</div>
+
+<!-- رأي العميل 4 -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <div class="flex items-center mb-4">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#d97706"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">L</text></svg>
+    <div>
+      <h3 class="font-semibold">Leila Imran</h3>
+      <p class="text-gray-600">Mother of two children</p>
+    </div>
+  </div>
+  <p class="text-gray-700 leading-relaxed">
+    At home, we use <strong>IPTV</strong> to watch kids' programs and family movies,
+    everything works perfectly with a wide choice of channels suitable for all ages.
+  </p>
+</div>
+
+<!-- رأي العميل 5 -->
+<div class="bg-white p-6 rounded-lg shadow">
+  <div class="flex items-center mb-4">
+    <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#dc2626"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">D</text></svg>
+    <div>
+      <h3 class="font-semibold">Daniel Roche</h3>
+      <p class="text-gray-600">Resides in Europe</p>
+    </div>
+  </div>
+  <p class="text-gray-700 leading-relaxed">
+    Using <strong>IPTV outside my country</strong> allowed me to follow my favorite channels wherever I am.
+    The experience is stable and smooth even when traveling.
+  </p>
+  </div> <!-- نهاية بطاقة العميل 5 -->
+
+    </div> 
+  </div> 
+</section> 
+
+
+<!-- ✅ نهاية قسم آراء العملاء بعد التحسين النهائي ✅ -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<!-- ❓❓ بداية قسم الأسئلة الشائعة (FAQ) — Prime IPTV
+     – عنوان موحّد مع أيقونة
+     – Grid من عمودين (كمبيوتر) وعمود واحد (موبايل)
+     – Accordion (فتح/إغلاق الأسئلة)
+     – خاضع لنظام section-spacing لتوحيد المسافات -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<section id="faq" class="section-spacing bg-white" aria-label="Frequently Asked Questions (FAQ)">
+
+  <!-- ⭐ عنوان القسم (موحّد) -->
+  <h2 class="section-title-unified">
+  <span class="title-line-1">Frequently asked questions about</span>
+  <span class="title-line-2">
+    IPTV
+    <img src="/images/Logo/icon9.webp" class="title-icon" alt="IPTV FAQ icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+  <!-- محتوى FAQ -->
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- FAQ 1 -->
+<div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
+  <button class="faq-btn w-full flex justify-between items-center" type="button"
+    aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
+
+    <span class="font-bold faq-title" id="faq1-label">
+      What is IPTV subscription and is it worth it?
+    </span>
+
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </button>
+
+  <div id="faq1-content" class="faq-content hidden mt-4"
+    role="region" aria-labelledby="faq1-label">
+    IPTV subscription is a service that allows you to watch channels and movies on the Internet.
+  </div>
+</div>
+
+    <!-- FAQ 2 -->
+    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
+        <span class="font-bold text-purple-700" id="faq2-label">How to choose the best IPTV provider?</span>
+        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq2-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq2-label">
+        The choice depends on server stability, number of channels, technical support, and customer reviews.
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
+        <span class="font-bold text-blue-700" id="faq3-label">How to use the M3U playlist and what is the difference with the API?</span>
+        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq3-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq3-label">
+        M3U is a direct link to channels, while API is a professional access system with more features.
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq4-content" id="faq4-btn">
+        <span class="font-bold text-pink-700" id="faq4-label">How to improve IPTV server stability and reduce interruptions?</span>
+        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq4-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq4-label">
+        This is done by using a reliable provider and a stable, fast internet connection.
+      </div>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq5-content" id="faq5-btn">
+        <span class="font-bold text-indigo-700" id="faq5-label">How to fix IPTV buffering problem?</span>
+        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq5-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq5-label">
+        By strengthening your internet connection, reducing load, and choosing the appropriate streaming quality.
+      </div>
+    </div>
+
+    <!-- FAQ 6 -->
+    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq6-content" id="faq6-btn">
+        <span class="font-bold text-purple-700" id="faq6-label">Does IPTV work on Android and Firestick?</span>
+        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq6-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq6-label">
+        Yes, it works with applications like IPTV Smarters and TiviMate.
+      </div>
+    </div>
+
+    <!-- FAQ 7 -->
+    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq7-content" id="faq7-btn">
+        <span class="font-bold text-blue-700" id="faq7-label">What are the advantages of IPTV VOD?</span>
+        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq7-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq7-label">
+        It offers a huge library of movies and series in addition to live streaming.
+      </div>
+    </div>
+
+    <!-- FAQ 8 -->
+    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq8-content" id="faq8-btn">
+        <span class="font-bold text-pink-700" id="faq8-label">How many channels are generally in an IPTV subscription?</span>
+        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq8-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq8-label">
+        It varies according to the plan, often over 10,000 channels.
+      </div>
+    </div>
+
+    <!-- FAQ 9 -->
+    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq9-content" id="faq9-btn">
+        <span class="font-bold text-indigo-700" id="faq9-label">How to set up IPTV on Smart TV or phone?</span>
+        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
+      </button>
+      <div id="faq9-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq9-label">
+        By installing an IPTV app and entering the M3U link or API data.
+      </div>
+    </div>
+
+    <!-- FAQ 10 -->
+    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
+      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq10-content" id="faq10-btn">
+        <span class="font-bold text-purple-700" id="faq10-label">Is technical support available if channels are lost?</span>
+        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
+      </button>
+              <div id="faq10-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq10-label">
+        Yes, most providers offer support via WhatsApp or email.
+      </div>
+    </div>
+
+  </div> <!-- نهاية grid -->
+</section>
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- ⭐ نهاية قسم الأسئلة الشائعة (FAQ) ⭐ -->
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<!-- 🔎 بداية قسم السيو (SEO Content) — Prime IPTV
+     – محتوى نصي مخصص لمحركات البحث (SEO)
+     – عناوين + فقرات داعمة للكلمات المفتاحية
+     – بطاقات بمظهر خفيف (Light Cards)
+     – خاضع لنظام section-spacing لتوحيد المسافات
+     – لا يؤثر على التصميم البصري الرئيسي -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<section id="seo-text" class="section-spacing seo-light-section" aria-label="SEO Content">
+
+  <div class="container mx-auto px-4 max-w-6xl">
+
+    <h2 class="section-title-unified">
+  <span class="title-line-1">Watch on all your devices</span>
+  <span class="title-line-2">
+    Prime IPTV
+    <img src="/images/Logo/icon10.webp" class="title-icon" alt="Prime IPTV icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+    <div class="seo-grid">
+
+      <!-- بطاقة 1 -->
+      <div class="netflix-card-light">
+        <h3>How IPTV makes TV more flexible?</h3>
+        <p>Watch channels via <strong>IPTV</strong> in high quality and without interruptions.</p>
+        <p>Thousands of channels, movies, and series on demand.</p>
+        <p>A smart and fast solution replacing traditional TV.</p>
+
+        <div class="card-icon">
+          <img src="/images/Logo/icon1.webp" alt="IPTV television icon" class="title-icon" loading="lazy" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- بطاقة 2 -->
+      <div class="netflix-card-light">
+        <h3>Why do people search for IPTV subscription daily?</h3>
+        <p>IPTV subscription offers thousands of channels in high quality.</p>
+        <p>Instead of several subscriptions, one is enough.</p>
+        <p>Watch your country's channels from anywhere in the world.</p>
+
+        <div class="card-icon">
+         <img src="/images/Logo/icon2.webp" alt="Global IPTV channels icon" loading="lazy" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- بطاقة 3 -->
+      <div class="netflix-card-light">
+        <h3>The best choice for football and movie lovers</h3>
+        <p>Live streaming of international sports and entertainment channels.</p>
+        <p>Worldwide library of movies and series updated.</p>
+        <p>Compatible with all devices without restrictions.</p>
+
+        <div class="card-icon">
+         <img src="/images/Logo/icon3.webp" alt="IPTV movies and sports icon" loading="lazy" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- بطاقة 4 -->
+      <div class="netflix-card-light">
+        <h3>Devices and platforms supporting IPTV</h3>
+        <p>Smart TV, Android, iPhone, and PC.</p>
+        <p>Activation via M3U, code, or QR.</p>
+        <p>Total freedom of use without complications.</p>
+
+        <div class="card-icon">
+          <img src="/images/Logo/icon4.webp" alt="IPTV devices icon" loading="lazy" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- البطاقة الكبيرة -->
+      <div class="netflix-card-light seo-big-card">
+        <h3 class="big-title">Why is Prime IPTV the smart choice?</h3>
+        <p>Powerful servers with <strong>Anti-Freeze</strong> technology for stable streaming.</p>
+        <p>Over 30,000 channels and thousands of exclusive movies.</p>
+        <p>Ideal viewing experience for the whole family.</p>
+
+        <div class="card-icon">
+          <img src="/images/Logo/icon5.webp" alt="IPTV protection icon" loading="lazy" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- ⭐ نهاية قسم السيو (SEO Content) ⭐ -->
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<!-- 💳 قسم طرق الدفع — Payment Methods -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<section id="payment-methods" class="py-8 mt-12" aria-label="Supported payment methods">
+
+  <h2 class="section-title-unified">
+  <span class="title-line-1">Payment supported on</span>
+  <span class="title-line-2">
+    Prime IPTV
+    <img src="/images/Logo/icon11.webp" class="title-icon" alt="IPTV payment icon" loading="lazy" decoding="async" fetchpriority="high">
+  </span>
+</h2>
+
+  <div class="payment-carousel">
+
+    <div class="arrow arrow-left" id="prevBtn" role="button" aria-label="Previous">❮</div>
+
+    <div id="cardsContainer" class="payment-list no-scrollbar" tabindex="0" aria-live="polite" aria-atomic="true">
+      <div class="card"><img src="/images/Bitakate/Bitaka1.webp" alt="Payment card 1" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka2.webp" alt="Payment card 2" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka3.webp" alt="Payment card 3" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka4.webp" alt="Payment card 4" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka5.webp" alt="Payment card 5" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka6.webp" alt="Payment card 6" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka7.webp" alt="Payment card 7" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka8.webp" alt="Payment card 8" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka9.webp" alt="Payment card 9" loading="lazy" decoding="async" fetchpriority="high"></div>
+      <div class="card"><img src="/images/Bitakate/Bitaka10.webp" alt="Payment card 10" loading="lazy" decoding="async" fetchpriority="high"></div>
+    </div>
+
+    <div class="arrow arrow-right" id="nextBtn" role="button" aria-label="Next">❯</div>
+
+  </div>
+
+</section>
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- ⭐ نهاية قسم طرق الدفع (Payment Methods) ⭐ -->
+<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
+<!-- ════════════════════════════════════════ -->
+<!-- 🔍 Also Known As / SEO Keywords Block  -->
+<!-- ════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════ -->
+
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+<!-- ⚙️ قسم التذييل (FOOTER) — Prime IPTV -->
+<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
+
+<section class="global-coverage">
+  <div class="container mx-auto px-4">
+    <h2 class="gc-title">🌍 Prime IPTV – Global Coverage</h2>
+    <div class="ft-country-grid">
+        <a href="/en/uk/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇬🇧 UK</a>
+        <a href="/en/usa/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇺🇸 USA</a>
+        <a href="/en/canada/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇨🇦 Canada EN</a>
+        <a href="/guide/khalij/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇸🇦 الخليج</a>
+        <a href="/guide/maghreb/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇲🇦 المغرب</a>
+        <a href="/guide/mashriq/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇪🇬 المشرق</a>
+        <a href="/fr/france/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇫🇷 France</a>
+        <a href="/fr/belgique/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇧🇪 Belgique</a>
+        <a href="/fr/canada/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇨🇦 Canada FR</a>
+        <a href="/es/espana/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇪🇸 España</a>
+        <a href="/es/mexico/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇲🇽 México</a>
+        <a href="/es/argentina/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇦🇷 Argentina</a>
+        <a href="/de/deutschland/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇩🇪 Deutschland</a>
+        <a href="/de/oesterreich/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇦🇹 Österreich</a>
+        <a href="/de/schweiz/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇨🇭 Schweiz</a>
+        <a href="/it/italia/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇮🇹 Italia</a>
+        <a href="/it/svizzera/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇨🇭 Svizzera</a>
+        <a href="/it/san-marino/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇸🇲 San Marino</a>
+        <a href="/it/germania/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇩🇪 Germania</a>
+        <a href="/nl/nederland/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇳🇱 Nederland</a>
+        <a href="/nl/belgie/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇧🇪 België</a>
+        <a href="/nl/suriname/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇸🇷 Suriname</a>
+        <a href="/nl/duitsland/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇩🇪 Duitsland</a>
+        <a href="/pt/portugal/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇵🇹 Portugal</a>
+        <a href="/pt/brasil/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇧🇷 Brasil</a>
+        <a href="/pt/angola/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇦🇴 Angola</a>
+        <a href="/tr/turkiye/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇹🇷 Türkiye</a>
+        <a href="/tr/azerbaycan/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇦🇿 Azerbaycan</a>
+        <a href="/tr/kibris/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇨🇾 Kıbrıs</a>
+        <a href="/tr/almanya/" class="flex items-center gap-2 bg-white/10 hover:bg-white/25 px-4 py-2 rounded-full text-sm font-medium transition">🇩🇪 Almanya</a>
+      </div>
+  </div>
+</section>
+
+<!-- Prime IPTV Services — most searched terms -->
+<section class="iptv-searches-section" aria-label="Prime IPTV Services">
+  <p class="iptv-searches-title">Prime IPTV Services</p>
+  <p class="iptv-searches-subtitle">Searched by thousands every day</p>
+  <div class="iptv-searches-tags">
+    <span class="iptv-tag">Best IPTV</span>
+    <span class="iptv-tag">IPTV Pro</span>
+    <span class="iptv-tag">IPTV Service</span>
+    <span class="iptv-tag">Best IPTV 2026</span>
+    <span class="iptv-tag">IPTV Streaming</span>
+    <span class="iptv-tag">Best IPTV Provider</span>
+    <span class="iptv-tag">Premium IPTV</span>
+    <span class="iptv-tag">IPTV Online</span>
+    <span class="iptv-tag">XTREAM IPTV</span>
+    <span class="iptv-tag">IPTV Subscription</span>
+    <span class="iptv-tag">4K IPTV</span>
+    <span class="iptv-tag">IPTV Provider</span>
+    <span class="iptv-tag">IPTV Live</span>
+    <span class="iptv-tag">IPTV Premium</span>
+  </div>
+</section>
+
+<footer class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 relative">
+  <div class="footer-particles">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+    <span class="particle p6"></span>
+    <span class="particle p7"></span>
+    <span class="particle p8"></span>
+  </div>
+<div class="container mx-auto px-4">
+
+    <!-- Footer grid: 2 columns — content right / logo left -->
+    <div class="grid grid-cols-2 gap-4 md:gap-12">
+
+      <!-- Right column: all content -->
+      <div class="flex flex-col gap-7">
+
+        <!-- Header -->
+        <div class="flex items-center">
+          <img src="/images/logo.webp" alt="Prime IPTV Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async" fetchpriority="high">
+          <h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>
+        </div>
+
+        <!-- Important links -->
+        <div>
+          <h4 class="font-semibold mb-4 text-xl">Important links</h4>
+          <ul class="space-y-3 text-gray-200 text-lg">
+            <li><a href="/en/#home" class="hover:text-white">Home page</a></li>
+            <li><a href="/en/#why-us" class="hover:text-white">Why choose IPTV?</a></li>
+            <li><a href="/en/#pricing" class="hover:text-white">Subscription plans</a></li>
+            <li><a href="/en/#faq" class="hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold mb-4 text-xl">Contact us</h4>
+          <a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20Prime%20IPTV.%20Please%20send%20me%20the%20details."
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition-transform hover:scale-105 text-lg"
+             aria-label="WhatsApp support 24h">
+            <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i>
+            WhatsApp – Support 24/7
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Left column: Prime Player logo centered -->
+      <div class="ft-player-logo-wrap">
+        <img
+          src="/images/Prime-Player.webp"
+          alt="Prime Player logo"
+          class="footer-logo"
+          loading="lazy" decoding="async" fetchpriority="high">
+      </div>
+
+    </div>
+ 
+    <!-- Legal links -->
+    <div class="flex justify-center gap-6 mt-10">
+      <a href="/en/privacy-policy/" class="text-gray-300 hover:text-white text-lg transition">Privacy Policy</a>
+      <span class="text-gray-500">|</span>
+      <a href="/en/terms-of-service/" class="text-gray-300 hover:text-white text-lg transition">Terms of Service</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- واتساب عائم -->
+<a href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20Prime%20IPTV.%20Please%20send%20me%20the%20details."
+   class="whatsapp-float fixed bottom-6 left-6 z-50"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="WhatsApp support">
+  <img src="/images/whatsapp.webp"
+       alt="WhatsApp icon"
+       class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition"
+       loading="lazy"
+       decoding="async"
+       fetchpriority="high">
+</a>
+
+
+<!-- JavaScript -->
 <script src="/js/footer.js?v=15" defer></script>
-<!-- [SYNC-PERF-FOOT-END] -->
 
 <!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
 <!-- ⭐ نهاية قسم التذييل (FOOTER) — Prime IPTV ⭐ -->
