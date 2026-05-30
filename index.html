@@ -61,34 +61,21 @@
      تحسينات الأداء وتسريع التحميل
      ============================ -->
 
-<!-- الاتصال المسبق بالمصادر الخارجية -->
+<!-- [SYNC-PERF-HEAD-START] -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-
-<!-- تهيئة DNS للمصادر الخارجية -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-  <!-- ============================
-       5) تحسين السرعة (Speed)
-       ============================ -->
-  <link rel="preload" href="styles.css?v=15" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css?v=15"></noscript>
-
-  <!-- ============================
-       ✅ 6) خطوط الموقع (Cairo + Tajawal)
-       ============================ -->
+  <link rel="preload" href="/styles.css?v=15" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/styles.css?v=15"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap"></noscript>
-
-  <!-- ============================
-       7) ملفات CSS و JS الخارجية
-       ============================ -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="preload" href="/css/tailwind.min.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/tailwind.min.css?v=2"></noscript>
+<!-- [SYNC-PERF-HEAD-END] -->
 
   <!-- ============================
        ✅ 8) تفعيل الخطوط في الموقع
@@ -1572,11 +1559,10 @@
 
 
 
-<!-- CSS -->
-<link rel="preload" href="css/footer.css?v=32" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="css/footer.css?v=32"></noscript>
-
-<!-- JavaScript -->
-<script src="js/footer.js?v=15" defer></script>
+<!-- [SYNC-PERF-FOOT-START] -->
+<link rel="preload" href="/css/footer.css?v=32" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/footer.css?v=32"></noscript>
+<script src="/js/footer.js?v=15" defer></script>
+<!-- [SYNC-PERF-FOOT-END] -->
 
 <!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
 <!-- ⭐ نهاية قسم التذييل (FOOTER) — Prime IPTV ⭐ -->
@@ -1584,7 +1570,7 @@
 
 </main>
 
-<script src="script.js?v=10" defer></script>
+<script src="/script.js?v=10" defer></script>
 
 
 <!-- Cookie Consent Banner -->
