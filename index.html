@@ -763,190 +763,177 @@
     line-height: 1.75;
   }
   /* ── 3-column grid ── */
-  .gs-grid {
+  .gd-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 14px;
+    margin-bottom: 16px;
   }
-  /* ── Region card — same language as wu-card ── */
-  .gs-card {
+  /* ── Region tile — icon+title row at top (matches reference) ── */
+  .gd-tile {
     position: relative;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(139,92,246,0.22);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(139,92,246,0.30);
     border-radius: 22px;
-    padding: 16px 14px 13px;
-    display: flex; flex-direction: column; gap: 8px;
+    padding: 20px 18px 16px;
+    display: flex; flex-direction: column; gap: 11px;
     text-decoration: none;
     overflow: hidden;
-    box-shadow: 0 2px 14px rgba(0,0,0,0.35), 0 0 0 1px rgba(139,92,246,0.07) inset;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.38), 0 0 0 1px rgba(139,92,246,0.10) inset;
     transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    -webkit-tap-highlight-color: transparent;
   }
-  .gs-card::before {
+  .gd-tile::before {
     content: "";
     position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.40), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.55), transparent);
   }
-  .gs-card:hover {
+  .gd-tile:hover {
     transform: translateY(-4px);
-    background: rgba(255,255,255,0.11);
-    border-color: rgba(139,92,246,0.42);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(139,92,246,0.12) inset;
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(139,92,246,0.55);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.48), 0 0 26px rgba(139,92,246,0.22), 0 0 0 1px rgba(139,92,246,0.16) inset;
   }
   /* Icon + title row */
-  .gs-card-top {
-    display: flex; align-items: center; gap: 10px;
+  .gd-head {
+    display: flex; align-items: center; gap: 12px;
   }
-  /* Icon badge — circular glowing */
-  .gs-icon-wrap {
-    width: 44px; height: 44px;
+  /* Glowing circular badge */
+  .gd-badge {
+    width: 52px; height: 52px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    font-size: 1.05rem;
-    box-shadow: 0 0 16px rgba(139,92,246,0.45), 0 3px 8px rgba(0,0,0,0.32);
+    font-size: 1.3rem;
+    box-shadow: 0 0 20px rgba(139,92,246,0.55), 0 3px 10px rgba(0,0,0,0.36);
     transition: box-shadow 0.22s ease, transform 0.22s ease;
   }
-  .gs-card:hover .gs-icon-wrap {
-    box-shadow: 0 0 26px rgba(139,92,246,0.62), 0 4px 12px rgba(0,0,0,0.38);
+  .gd-tile:hover .gd-badge {
+    box-shadow: 0 0 32px rgba(139,92,246,0.72), 0 4px 14px rgba(0,0,0,0.42);
     transform: scale(1.06);
   }
-  .gs-card h3 {
+  .gd-tile h3 {
     color: #ffffff;
-    font-size: 0.88rem;
+    font-size: 1rem;
     font-weight: 800;
     margin: 0;
     line-height: 1.3;
     flex: 1;
-    text-shadow: 0 0 12px rgba(167,139,250,0.18);
+    text-shadow: 0 0 12px rgba(167,139,250,0.20);
   }
   /* Description */
-  .gs-card p {
-    color: rgba(255,255,255,0.75);
-    font-size: 0.75rem;
-    line-height: 1.55;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  /* Text link pinned to bottom (equal-height cards) */
-  .gs-card-link {
-    display: inline-flex; align-items: center; gap: 5px;
-    color: #a78bfa;
-    font-size: 0.76rem;
-    font-weight: 700;
-    margin-top: auto;
-    padding-top: 6px;
-    transition: color 0.2s;
-  }
-  .gs-card:hover .gs-card-link { color: #c4b5fd; }
-  /* ── Comprehensive guide — horizontal banner ── */
-  .gs-full-card {
-    position: relative;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(139,92,246,0.28);
-    border-radius: 22px;
-    padding: 0 24px;
-    min-height: 160px;
-    display: flex; flex-direction: row-reverse; align-items: center; gap: 20px;
-    overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.36), 0 0 22px rgba(139,92,246,0.11), 0 0 0 1px rgba(139,92,246,0.06) inset;
-    transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
-    text-decoration: none;
-  }
-  .gs-full-card::before {
-    content: "";
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.50), transparent);
-  }
-  .gs-full-card:hover {
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(139,92,246,0.46);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.46), 0 0 32px rgba(139,92,246,0.18), 0 0 0 1px rgba(139,92,246,0.12) inset;
-    transform: translateY(-2px);
-  }
-  /* Book thumbnail — left side */
-  .gs-full-thumb {
-    width: 80px; height: 80px;
-    border-radius: 14px;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem;
-    box-shadow: 0 0 18px rgba(139,92,246,0.40), 0 3px 10px rgba(0,0,0,0.30);
-    transition: box-shadow 0.22s ease, transform 0.22s ease;
-  }
-  .gs-full-card:hover .gs-full-thumb {
-    box-shadow: 0 0 28px rgba(139,92,246,0.60), 0 5px 14px rgba(0,0,0,0.36);
-    transform: scale(1.04);
-  }
-  /* Text — center */
-  .gs-full-body { flex: 1; min-width: 0; }
-  .gs-full-body h3 {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 800;
-    margin: 0 0 6px;
-    display: flex; align-items: center; gap: 7px;
-    text-shadow: 0 0 10px rgba(167,139,250,0.15);
-  }
-  .gs-full-body h3 i { color: #f5c518; font-size: 0.85rem; }
-  .gs-full-body p {
-    color: rgba(255,255,255,0.70);
+  .gd-desc {
+    color: rgba(255,255,255,0.72);
     font-size: 0.80rem;
-    line-height: 1.65;
+    line-height: 1.6;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  /* Purple gradient button — right side */
-  .gs-full-btn {
-    display: inline-flex; align-items: center; gap: 7px;
+  /* Link pinned to bottom (equal-height tiles) */
+  .gd-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: #a78bfa;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: auto;
+    padding-top: 8px;
+    transition: color 0.2s;
+  }
+  .gd-tile:hover .gd-link { color: #c4b5fd; }
+  /* ── Comprehensive guide — horizontal banner ── */
+  .gd-banner {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(139,92,246,0.34);
+    border-radius: 22px;
+    padding: 22px 24px;
+    display: flex; flex-direction: row-reverse; align-items: center; gap: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.40), 0 0 24px rgba(139,92,246,0.14), 0 0 0 1px rgba(139,92,246,0.10) inset;
+    transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gd-banner::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.55), transparent);
+  }
+  .gd-banner:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(139,92,246,0.55);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.48), 0 0 34px rgba(139,92,246,0.22), 0 0 0 1px rgba(139,92,246,0.16) inset;
+    transform: translateY(-2px);
+  }
+  /* Book thumbnail — left */
+  .gd-thumb {
+    width: 72px; height: 72px;
+    border-radius: 16px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; color: #fff;
+    box-shadow: 0 0 20px rgba(139,92,246,0.46), 0 3px 11px rgba(0,0,0,0.32);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+  .gd-banner:hover .gd-thumb {
+    box-shadow: 0 0 30px rgba(139,92,246,0.66), 0 5px 15px rgba(0,0,0,0.38);
+    transform: scale(1.04);
+  }
+  /* Text + button — right (stacked) */
+  .gd-banner-body { flex: 1; min-width: 0; }
+  .gd-banner-body h3 {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 6px;
+    display: flex; align-items: center; gap: 7px;
+    text-shadow: 0 0 10px rgba(167,139,250,0.18);
+  }
+  .gd-banner-body h3 i { color: #f5c518; font-size: 0.88rem; }
+  .gd-banner-body p {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin: 0 0 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* Purple gradient button — below text, wide */
+  .gd-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     background: linear-gradient(135deg, #7c3aed, #4f46e5);
     color: #fff;
-    font-size: 0.82rem; font-weight: 700;
-    padding: 10px 20px; border-radius: 999px;
-    white-space: nowrap; flex-shrink: 0;
+    font-size: 0.85rem; font-weight: 700;
+    padding: 11px 26px; border-radius: 999px;
+    white-space: nowrap;
     transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 12px rgba(123,47,255,0.42);
+    box-shadow: 0 2px 14px rgba(123,47,255,0.46);
   }
-  .gs-full-card:hover .gs-full-btn {
-    opacity: 0.9; transform: scale(1.03);
-    box-shadow: 0 4px 20px rgba(123,47,255,0.56);
+  .gd-banner:hover .gd-btn {
+    opacity: 0.92; transform: scale(1.02);
+    box-shadow: 0 4px 22px rgba(123,47,255,0.60);
   }
   /* ── Mobile: single column, full width, equal height ── */
   @media(max-width: 768px) {
     #guides-section { padding: 50px 0 58px; }
     #guides-section .gs-sub { margin-bottom: 28px; }
-    .gs-grid {
+    .gd-grid {
       grid-template-columns: 1fr;
       gap: 14px;
     }
-    .gs-card {
-      width: 100%;
-      padding: 18px 18px 16px;
-      border-radius: 20px;
-    }
-    .gs-icon-wrap { width: 48px; height: 48px; font-size: 1.15rem; }
-    .gs-card h3 { font-size: 0.98rem; }
-    .gs-card p { font-size: 0.82rem; -webkit-line-clamp: 2; }
-    .gs-card-link { font-size: 0.82rem; margin-top: 4px; }
-    /* Full guide banner stays horizontal: book left, text+btn right */
-    .gs-full-card { padding: 18px 18px; min-height: unset; gap: 14px; }
-    .gs-full-thumb { width: 64px; height: 64px; font-size: 1.5rem; border-radius: 12px; }
-    .gs-full-body h3 { font-size: 0.92rem; }
-    .gs-full-body p { font-size: 0.76rem; }
-    .gs-full-btn { font-size: 0.72rem; padding: 8px 13px; }
+    .gd-tile { width: 100%; padding: 22px 18px 18px; }
+    .gd-btn { width: 100%; }
   }
-  /* ── Very small phones: stack banner button below text ── */
+  /* ── Very small phones ── */
   @media(max-width: 460px) {
-    .gs-full-card { flex-wrap: wrap; }
-    .gs-full-body { flex: 1 1 auto; }
-    .gs-full-btn { width: 100%; justify-content: center; margin-top: 4px; }
+    .gd-banner { padding: 18px 18px; gap: 16px; }
+    .gd-thumb { width: 60px; height: 60px; font-size: 1.45rem; }
   }
 </style>
 
@@ -969,48 +956,48 @@
     </p>
 
     <!-- بطاقات المناطق الثلاث -->
-    <div class="gs-grid">
+    <div class="gd-grid">
 
-      <a href="/guide/khalij/" class="gs-card">
-        <div class="gs-card-top">
-          <div class="gs-icon-wrap" style="background:linear-gradient(135deg,#f59e0b,#d97706);">🕌</div>
+      <a href="/guide/khalij/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge" style="background:linear-gradient(135deg,#f59e0b,#d97706);">🕌</div>
           <h3>دول الخليج</h3>
         </div>
-        <p>دليل شامل لأفضل القنوات والباقات والخدمات في دول الخليج.</p>
-        <span class="gs-card-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.6rem;"></i></span>
+        <p class="gd-desc">دليل شامل لأفضل القنوات والباقات والخدمات في دول الخليج.</p>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.62rem;"></i></span>
       </a>
 
-      <a href="/guide/maghreb/" class="gs-card">
-        <div class="gs-card-top">
-          <div class="gs-icon-wrap" style="background:linear-gradient(135deg,#10b981,#059669);">🌍</div>
+      <a href="/guide/maghreb/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge" style="background:linear-gradient(135deg,#10b981,#059669);">🌍</div>
           <h3>المغرب العربي</h3>
         </div>
-        <p>دليل مخصص لأفضل القنوات والمحتوى والباقات في المغرب العربي.</p>
-        <span class="gs-card-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.6rem;"></i></span>
+        <p class="gd-desc">دليل مخصص لأفضل القنوات والمحتوى والباقات في المغرب العربي.</p>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.62rem;"></i></span>
       </a>
 
-      <a href="/guide/mashriq/" class="gs-card">
-        <div class="gs-card-top">
-          <div class="gs-icon-wrap" style="background:linear-gradient(135deg,#3b82f6,#6366f1);">🌅</div>
+      <a href="/guide/mashriq/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge" style="background:linear-gradient(135deg,#3b82f6,#6366f1);">🌅</div>
           <h3>المشرق العربي</h3>
         </div>
-        <p>دليل يشمل أفضل الخيارات والمنصات والخدمات في المشرق العربي.</p>
-        <span class="gs-card-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.6rem;"></i></span>
+        <p class="gd-desc">دليل يشمل أفضل الخيارات والمنصات والخدمات في المشرق العربي.</p>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left" style="font-size:0.62rem;"></i></span>
       </a>
 
     </div>
 
     <!-- Banner الدليل الشامل: thumbnail يسار | نص وسط | زر يمين -->
-    <a href="/guide/" class="gs-full-card" aria-label="اقرأ الدليل الشامل لـ IPTV">
-      <div class="gs-full-thumb">📺</div>
-      <div class="gs-full-body">
+    <a href="/guide/" class="gd-banner" aria-label="اقرأ الدليل الشامل لـ IPTV">
+      <div class="gd-thumb">📺</div>
+      <div class="gd-banner-body">
         <h3><i class="fas fa-star"></i> الدليل الشامل لـ IPTV</h3>
         <p>كل ما تحتاج معرفته — التثبيت، الأجهزة، القنوات وأفضل تجربة بث 4K بدون تقطيع.</p>
+        <span class="gd-btn">
+          اقرأ الدليل الشامل
+          <i class="fas fa-arrow-left" style="font-size:0.68rem;"></i>
+        </span>
       </div>
-      <span class="gs-full-btn">
-        اقرأ الدليل الشامل
-        <i class="fas fa-arrow-left" style="font-size:0.68rem;"></i>
-      </span>
     </a>
 
   </div>
