@@ -824,6 +824,9 @@
     flex: 1;
     text-shadow: 0 0 14px rgba(167,139,250,0.24);
   }
+  /* Desktop: body wrapper transparent, mobile-title hidden */
+  .gd-body { display: contents; }
+  .gd-mtitle { display: none; }
   /* Description — 2 lines max */
   .gd-desc {
     color: rgba(255,255,255,0.74);
@@ -942,33 +945,52 @@
     filter: brightness(1.08);
     box-shadow: 0 10px 34px rgba(123,47,255,0.70), inset 0 1px 0 rgba(255,255,255,0.26);
   }
-  /* ── Mobile: single column, full width, equal height ── */
+  /* ── Mobile: compact — whole section fits one screen, no scroll ── */
   @media(max-width: 768px) {
-    #guides-section { padding: 50px 0 58px; }
-    #guides-section .gs-sub { margin-bottom: 28px; }
-    .gd-grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
+    #guides-section { padding: 26px 0 30px; }
+    #guides-section .gs-badge { margin-bottom: 10px; padding: 4px 16px; font-size: 0.74rem; }
+    #guides-section .gs-title { font-size: 1.5rem; margin-bottom: 5px; }
+    #guides-section .gs-sub { font-size: 0.78rem; margin-bottom: 14px; line-height: 1.5; }
+    .gd-grid { grid-template-columns: 1fr; gap: 9px; margin-bottom: 10px; }
+    /* Compact horizontal region tile: icon + (title over desc), link inline */
+    .gd-tile {
+      width: 100%; padding: 12px 14px;
+      flex-direction: row; align-items: center; gap: 12px;
+      border-radius: 16px;
     }
-    .gd-tile { width: 100%; padding: 24px 22px 20px; }
-    /* Hero card → centered stack on mobile (illustration on top) */
+    .gd-head { flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; }
+    .gd-badge { width: 42px; height: 42px; }
+    .gd-badge i { font-size: 1.1rem; }
+    .gd-tile h3 { display: none; }            /* title shown in body instead */
+    .gd-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .gd-body .gd-mtitle { display: block; color:#fff; font-weight:800; font-size:0.92rem; margin:0; line-height:1.25; }
+    .gd-desc { font-size: 0.72rem; line-height: 1.45; -webkit-line-clamp: 2; }
+    .gd-link {
+      font-size: 0.72rem; padding: 0; margin: 0;
+      flex-shrink: 0; flex-direction: column; gap: 4px;
+    }
+    .gd-link i { width: 20px; height: 20px; font-size: 0.6rem; }
+    /* Hero card → compact horizontal */
     .gd-banner {
-      flex-direction: column; text-align: center;
-      padding: 34px 26px; gap: 22px;
+      flex-direction: row-reverse; text-align: right;
+      padding: 14px 16px; gap: 13px; border-radius: 18px;
     }
-    .gd-thumb { width: 104px; height: 104px; font-size: 2.7rem; }
-    .gd-banner-body { width: 100%; }
-    .gd-banner-tag { margin-inline: auto; }
-    .gd-banner-body h3 { font-size: 1.42rem; }
-    .gd-btn { width: 100%; padding: 16px 28px; }
+    .gd-thumb { width: 60px; height: 60px; font-size: 1.6rem; border-radius: 14px; }
+    .gd-banner-body { width: auto; }
+    .gd-banner-tag { margin-bottom: 6px; padding: 3px 10px; font-size: 0.64rem; }
+    .gd-banner-body h3 { font-size: 1.02rem; margin-bottom: 5px; }
+    .gd-banner-body p { font-size: 0.74rem; line-height: 1.45; margin-bottom: 11px; }
+    .gd-btn { width: 100%; padding: 10px 20px; font-size: 0.84rem; }
   }
   /* ── Very small phones ── */
-  @media(max-width: 400px) {
-    .gd-tile { padding: 20px 18px 18px; }
-    .gd-badge { width: 60px; height: 60px; }
-    .gd-badge i { font-size: 1.5rem; }
-    .gd-thumb { width: 92px; height: 92px; font-size: 2.4rem; }
-    .gd-banner-body h3 { font-size: 1.28rem; }
+  @media(max-width: 380px) {
+    .gd-tile { padding: 10px 12px; gap: 10px; }
+    .gd-badge { width: 38px; height: 38px; }
+    .gd-badge i { font-size: 1rem; }
+    .gd-body .gd-mtitle { font-size: 0.86rem; }
+    .gd-desc { font-size: 0.68rem; }
+    .gd-thumb { width: 54px; height: 54px; font-size: 1.45rem; }
+    .gd-banner-body h3 { font-size: 0.96rem; }
   }
 </style>
 
@@ -998,7 +1020,10 @@
           <div class="gd-badge"><i class="fas fa-mosque"></i></div>
           <h3>دول الخليج</h3>
         </div>
-        <p class="gd-desc">اكتشف أفضل خيارات المشاهدة والخدمات الرقمية المتاحة في دول الخليج.</p>
+        <div class="gd-body">
+          <p class="gd-mtitle">دول الخليج</p>
+          <p class="gd-desc">اكتشف أفضل خيارات المشاهدة والخدمات الرقمية المتاحة في دول الخليج.</p>
+        </div>
         <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
       </a>
 
@@ -1007,7 +1032,10 @@
           <div class="gd-badge"><i class="fas fa-earth-africa"></i></div>
           <h3>المغرب العربي</h3>
         </div>
-        <p class="gd-desc">دليل مخصص لاكتشاف أفضل الخدمات الرقمية وخيارات المشاهدة في دول المغرب العربي.</p>
+        <div class="gd-body">
+          <p class="gd-mtitle">المغرب العربي</p>
+          <p class="gd-desc">دليل مخصص لاكتشاف أفضل الخدمات الرقمية وخيارات المشاهدة في دول المغرب العربي.</p>
+        </div>
         <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
       </a>
 
@@ -1016,7 +1044,10 @@
           <div class="gd-badge"><i class="fas fa-mountain-sun"></i></div>
           <h3>المشرق العربي</h3>
         </div>
-        <p class="gd-desc">استكشف أفضل المنصات والخدمات والمحتوى المتاح في دول المشرق العربي.</p>
+        <div class="gd-body">
+          <p class="gd-mtitle">المشرق العربي</p>
+          <p class="gd-desc">استكشف أفضل المنصات والخدمات والمحتوى المتاح في دول المشرق العربي.</p>
+        </div>
         <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
       </a>
 
