@@ -550,7 +550,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 }
 #pricing .ps-sub {
   color:#9494bc; font-size:0.92rem; text-align:center;
-  max-width:440px; margin:0 auto 36px; line-height:1.75;
+  max-width:700px; margin:0 auto 36px; line-height:1.75;
 }
 @media(max-width:768px){
   #pricing .ps-badge { margin-bottom:10px; padding:4px 16px; font-size:0.74rem; }
