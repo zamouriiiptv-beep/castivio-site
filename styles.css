@@ -667,10 +667,11 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-col { display:flex; flex-direction:column; min-width:0; }
 .pc-col .pc-card { width:100%; }
 .pc-trust {
-  display:flex; flex-direction:row;
+  display:flex; flex-direction:row; direction:ltr;
   margin-top:10px;
   border:1px solid rgba(255,255,255,.08); border-radius:14px; overflow:hidden;
 }
+.pc-trust-tx { direction:rtl; }
 .pc-trust-item {
   flex:1; display:flex; flex-direction:column; align-items:center; text-align:center;
   padding:7px 2px;
