@@ -743,7 +743,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-tabs     { grid-area:tabs; }
   .pc-price    { grid-area:price; }
   .pc-cta      { grid-area:cta; margin-top:0; }
-  .pc-features { grid-area:feats; display:flex; flex-direction:column; align-content:start; }
+  .pc-features { grid-area:feats; display:flex; flex-direction:column; justify-content:center; }
   .pc-feat     { padding:10px 4px; }
 }
 
@@ -767,7 +767,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-tabs     { grid-area:tabs; }
   .pc-price    { grid-area:price; }
   .pc-cta      { grid-area:cta; margin-top:0; }
-  .pc-features { grid-area:feats; display:flex; flex-direction:column; align-content:start; }
+  .pc-features { grid-area:feats; display:flex; flex-direction:column; justify-content:center; }
   .pc-feat     { padding:12px 4px; }
 }
 
