@@ -687,11 +687,9 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 </section>
 <!-- ═══════════════ End Guides Section ═══════════════ -->
 
-<section id="pricing" class="section-spacing bg-gray-50" aria-label="Abonelik planları">
+<section id="pricing" class="section-spacing pc-section" aria-label="Abonelik planları">
+  <div class="container mx-auto px-4">
 
-  <div class="container mx-auto px-6">
-
-    <!-- Başlık -->
     <h2 class="section-title-unified">
   <span class="title-line-1">Abonelik planınızı seçin</span>
   <span class="title-line-2">
@@ -706,183 +704,153 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
   Sınırsız yayın için ideal planınızı seçin
 </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="pc-grid">
 
-      <!-- Temel Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
+      <!-- ── Temel Plan ── -->
+      <div class="pc-card pc-card-basic">
+        <span class="pc-badge pc-badge-basic">Temel Plan</span>
 
-  <!-- ROZET -->
-  <div class="plan-badge badge-economy">Ekonomik Seçenek</div>
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-layer-group"></i></div>
+          <h3 class="pc-plan-title">Temel Plan</h3>
+          <p class="pc-plan-sub">Komplikasyon olmadan dünya standartlarında deneyim için en iyi başlangıç</p>
+        </div>
 
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-blue-500 mb-2">Temel Plan</h3>
-    <p class="text-gray-600 mb-4">Komplikasyon olmadan dünya standartlarında deneyim için en iyi başlangıç</p>
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'basic')" type="button">ay</button>
+          <button class="pc-tab" onclick="moveSlider(1,'basic')" type="button">3a</button>
+          <button class="pc-tab" onclick="moveSlider(2,'basic')" type="button">6a</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'basic')" type="button">yıl</button>
+          <button class="pc-tab" onclick="moveSlider(4,'basic')" type="button">2y</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+        </div>
 
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">ay</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3a</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6a</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">yıl</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2y</span>
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-basic">30</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-basic">/ yıl</span>
+          </span>
+        </div>
+
+        <ul id="features-basic" class="pc-features plan-features" dir="ltr">
+          <li>21.000'den fazla çeşitli kanal</li>
+<li>30.000'den fazla dizi</li>
+<li>158.000'den fazla film</li>
+<li>İsteğe Bağlı Video (VOD)</li>
+<li>Kesintisiz akıcı yayın</li>
+<li>Tüm cihazlarla uyumlu</li>
+<li>SD / HD / UHD / 4K / 8K kalite</li>
+<li>%99+ çalışma süresi</li>
+<li>Günlük sunucu güncellemeleri</li>
+<li>7/24 teknik destek</li>
+<li>10 gün para iade garantisi</li>
+<li>Özel ve düzenli olarak yenilenen içerik</li>
+        </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Temel%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Hemen abone ol</a>
+      </div>
+      <!-- ── Premium Plan ── -->
+      <div class="pc-card pc-card-premium">
+        <span class="pc-badge pc-badge-premium">Premium Plan</span>
+
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3 class="pc-plan-title">Premium Plan</h3>
+          <p class="pc-plan-sub">En aktif kullanıcılar için en iyi seçim</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'premium')" type="button">ay</button>
+          <button class="pc-tab" onclick="moveSlider(1,'premium')" type="button">3a</button>
+          <button class="pc-tab" onclick="moveSlider(2,'premium')" type="button">6a</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'premium')" type="button">yıl</button>
+          <button class="pc-tab" onclick="moveSlider(4,'premium')" type="button">2y</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+        </div>
+
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-premium">40</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-premium">/ yıl</span>
+          </span>
+        </div>
+
+        <ul id="features-premium" class="pc-features plan-features" dir="ltr">
+          <li>15.000'den fazla çeşitli kanal</li>
+<li>14.000'den fazla dizi</li>
+<li>63.000'den fazla film</li>
+<li>İsteğe Bağlı Video (VOD)</li>
+<li>Kesintisiz yayın</li>
+<li>Tüm cihazlarla uyumlu</li>
+<li>SD / HD / 4K / 8K kalite</li>
+<li>%99+ çalışma süresi</li>
+<li>Günlük güncellemeler</li>
+<li>Teknik destek</li>
+<li>10 gün garantisi</li>
+<li>Özel ve düzenli olarak yenilenen içerik</li>
+        </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Premium%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Hemen abone ol</a>
+      </div>
+      <!-- ── Profesyonel Plan ── -->
+      <div class="pc-card pc-card-pro">
+        <span class="pc-badge pc-badge-pro">Profesyonel Plan</span>
+
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
+          <h3 class="pc-plan-title">Profesyonel Plan</h3>
+          <p class="pc-plan-sub">Yalnızca en iyi yayın deneyimini isteyen kullanıcılar için</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'pro')" type="button">ay</button>
+          <button class="pc-tab" onclick="moveSlider(1,'pro')" type="button">3a</button>
+          <button class="pc-tab" onclick="moveSlider(2,'pro')" type="button">6a</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'pro')" type="button">yıl</button>
+          <button class="pc-tab" onclick="moveSlider(4,'pro')" type="button">2y</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+        </div>
+
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-pro">50</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-pro">/ yıl</span>
+          </span>
+        </div>
+
+        <ul id="features-pro" class="pc-features plan-features" dir="ltr">
+          <li>50.000'den fazla kanal</li>
+<li>40.000'den fazla dizi</li>
+<li>190.000'den fazla film</li>
+<li>İsteğe Bağlı Video (VOD)</li>
+<li>Kesintisiz akıcı izleme</li>
+<li>SD / HD / UHD / 4K / 8K kalite</li>
+<li>Kararlı oynatma</li>
+<li>%99+ çalışma süresi</li>
+<li>Tüm cihazları destekler</li>
+<li>Günlük güncellemeler</li>
+<li>7/24 teknik destek</li>
+<li>10 gün garantisi</li>
+<li>Sürekli yenilenen özel içerik</li>
+        </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Profesyonel%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Hemen abone ol</a>
       </div>
     </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-basic">30</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-basic" class="text-lg font-medium">/ yıl</span>
-    </div>
-<ul id="features-basic" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>21.000'den fazla çeşitli kanal</li>
-      <li>30.000'den fazla dizi</li>
-      <li>158.000'den fazla film</li>
-      <li>İsteğe Bağlı Video (VOD)</li>
-      <li>Kesintisiz akıcı yayın</li>
-      <li>Tüm cihazlarla uyumlu</li>
-      <li>SD / HD / UHD / 4K / 8K kalite</li>
-      <li>%99+ çalışma süresi</li>
-      <li>Günlük sunucu güncellemeleri</li>
-      <li>7/24 teknik destek</li>
-      <li>10 gün para iade garantisi</li>
-      <li>Özel ve düzenli olarak yenilenen içerik</li>
-    </ul>
 
-    <a id="whatsapp-link-basic"
-     href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Temel%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Hemen abone ol
-</a>
+    <div class="pc-trust-bar">
+      <div class="pc-trust-item"><i class="fas fa-headset"></i><span>Online destek</span></div>
+        <div class="pc-trust-item"><i class="fas fa-bolt"></i><span>Anında aktivasyon</span></div>
+        <div class="pc-trust-item"><i class="fas fa-clock"></i><span>7/24 destek</span></div>
+        <div class="pc-trust-item"><i class="fas fa-star"></i><span>HD kalite</span></div>
+    </div>
 
   </div>
-</div>
-</div>
-
-<!-- Premium Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- ROZET -->
-  <div class="plan-badge badge-best">En Çok Satan</div>
-
-  <div class="relative z-10 text-center">
-   <h3 class="text-2xl font-bold text-yellow-500 mb-2">
-Premium Plan
-</h3>
-    <p class="text-gray-600 mb-4">En aktif kullanıcılar için en iyi seçim</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">ay</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3a</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6a</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">yıl</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2y</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-premium">40</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-premium" class="text-lg font-medium">/ yıl</span>
-    </div>
-<ul id="features-premium" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>15.000'den fazla çeşitli kanal</li>
-      <li>14.000'den fazla dizi</li>
-      <li>63.000'den fazla film</li>
-      <li>İsteğe Bağlı Video (VOD)</li>
-      <li>Kesintisiz yayın</li>
-      <li>Tüm cihazlarla uyumlu</li>
-      <li>SD / HD / 4K / 8K kalite</li>
-      <li>%99+ çalışma süresi</li>
-      <li>Günlük güncellemeler</li>
-      <li>Teknik destek</li>
-      <li>10 gün garantisi</li>
-      <li>Özel ve düzenli olarak yenilenen içerik</li>
-    </ul>
-
-    <a id="whatsapp-link-premium"
-       href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Premium%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Hemen abone ol
-</a>
-
-  </div>
-</div>
-</div>
-
-      <!-- Profesyonel Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- ROZET -->
-  <div class="plan-badge badge-gold">Gold Plan</div>
-
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-purple-600 mb-2">Profesyonel Plan</h3>
-    <p class="text-gray-600 mb-4">Yalnızca en iyi yayın deneyimini isteyen kullanıcılar için</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">ay</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3a</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6a</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">yıl</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2y</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-pro">50</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-pro" class="text-lg font-medium">/ yıl</span>
-    </div>
-<ul id="features-pro" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>50.000'den fazla kanal</li>
-      <li>40.000'den fazla dizi</li>
-      <li>190.000'den fazla film</li>
-      <li>İsteğe Bağlı Video (VOD)</li>
-      <li>Kesintisiz akıcı izleme</li>
-      <li>SD / HD / UHD / 4K / 8K kalite</li>
-      <li>Kararlı oynatma</li>
-      <li>%99+ çalışma süresi</li>
-      <li>Tüm cihazları destekler</li>
-      <li>Günlük güncellemeler</li>
-      <li>7/24 teknik destek</li>
-      <li>10 gün garantisi</li>
-      <li>Sürekli yenilenen özel içerik</li>
-    </ul>
-
-    <a id="whatsapp-link-pro"
-       href="https://wa.me/212666686732?text=Merhaba%2C%201%20Y%C4%B1l%20i%C3%A7in%20Profesyonel%20plan%C4%B1na%20abone%20olmak%20istiyorum%20%E2%80%93%20Prime%20IPTV"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Hemen abone ol
-</a>
-
-  </div>
-</div>
-</div>
-
-</div>
-</div>
 </section>
 
-<!-- Abonelik Planları Bölümü Sonu -->
-
-<!-- Müşteri Yorumları Bölümü Başlangıcı -->
 <section id="testimonials" class="section-spacing bg-gray-50" aria-label="Müşteri yorumları">
 
   <div class="container mx-auto px-4">

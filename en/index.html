@@ -676,11 +676,9 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
 
 <!-- 🚨🚨 قسم الخطط العالمية (نسخة LUXURY 🔥) 🚨🚨 -->
-<section id="pricing" class="section-spacing bg-gray-50" aria-label="Subscription plans">
+<section id="pricing" class="section-spacing pc-section" aria-label="Subscription plans">
+  <div class="container mx-auto px-4">
 
-  <div class="container mx-auto px-6">
-
-    <!-- عنوان -->
     <h2 class="section-title-unified">
   <span class="title-line-1">Choose your subscription plan</span>
   <span class="title-line-2">
@@ -695,185 +693,153 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
   Choose your ideal plan to enjoy unlimited streaming
 </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="pc-grid">
 
-      <!-- 🟦 الخطة الأساسية -->
-      <!-- 🟦 Basic Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
+      <!-- ── Basic Plan ── -->
+      <div class="pc-card pc-card-basic">
+        <span class="pc-badge pc-badge-basic">Basic Plan</span>
 
-  <!-- BADGE -->
-  <div class="plan-badge badge-economy">Economical option</div>
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-layer-group"></i></div>
+          <h3 class="pc-plan-title">Basic Plan</h3>
+          <p class="pc-plan-sub">The best start for a world-class experience without complications</p>
+        </div>
 
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-blue-500 mb-2">Basic Plan</h3>
-    <p class="text-gray-600 mb-4">The best start for a world-class experience without complications</p>
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'basic')" type="button">month</button>
+          <button class="pc-tab" onclick="moveSlider(1,'basic')" type="button">3mo</button>
+          <button class="pc-tab" onclick="moveSlider(2,'basic')" type="button">6mo</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'basic')" type="button">year</button>
+          <button class="pc-tab" onclick="moveSlider(4,'basic')" type="button">2yr</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+        </div>
 
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">month</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3mo</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6mo</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">year</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2yr</span>
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-basic">30</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-basic">/ year</span>
+          </span>
+        </div>
+
+        <ul id="features-basic" class="pc-features plan-features" dir="ltr">
+          <li>Over 21,000 varied channels</li>
+<li>Over 30,000 series</li>
+<li>Over 158,000 movies</li>
+<li>Video on demand (VOD)</li>
+<li>Smooth streaming without interruption</li>
+<li>Compatible with all devices</li>
+<li>Quality SD / HD / UHD / 4K / 8K</li>
+<li>99%+ uptime rate</li>
+<li>Daily server updates</li>
+<li>24/7 technical support</li>
+<li>10-day money-back guarantee</li>
+<li>Exclusive and regularly renewed content</li>
+        </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please." class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Subscribe now</a>
+      </div>
+      <!-- ── Premium Plan ── -->
+      <div class="pc-card pc-card-premium">
+        <span class="pc-badge pc-badge-premium">Premium Plan</span>
+
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3 class="pc-plan-title">Premium Plan</h3>
+          <p class="pc-plan-sub">The best choice for the most active users</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'premium')" type="button">month</button>
+          <button class="pc-tab" onclick="moveSlider(1,'premium')" type="button">3mo</button>
+          <button class="pc-tab" onclick="moveSlider(2,'premium')" type="button">6mo</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'premium')" type="button">year</button>
+          <button class="pc-tab" onclick="moveSlider(4,'premium')" type="button">2yr</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+        </div>
+
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-premium">40</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-premium">/ year</span>
+          </span>
+        </div>
+
+        <ul id="features-premium" class="pc-features plan-features" dir="ltr">
+          <li>Over 15,000 varied channels</li>
+<li>Over 14,000 series</li>
+<li>Over 63,000 movies</li>
+<li>Video on demand (VOD)</li>
+<li>Uninterrupted streaming</li>
+<li>Compatible with all devices</li>
+<li>Quality SD / HD / 4K / 8K</li>
+<li>99%+ uptime rate</li>
+<li>Daily updates</li>
+<li>Technical support</li>
+<li>10-day guarantee</li>
+<li>Exclusive and regularly renewed content</li>
+        </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please." class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Subscribe now</a>
+      </div>
+      <!-- ── Professional Plan ── -->
+      <div class="pc-card pc-card-pro">
+        <span class="pc-badge pc-badge-pro">Professional Plan</span>
+
+        <div class="pc-card-head">
+          <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
+          <h3 class="pc-plan-title">Professional Plan</h3>
+          <p class="pc-plan-sub">For users who want only the best streaming experience</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" onclick="moveSlider(0,'pro')" type="button">month</button>
+          <button class="pc-tab" onclick="moveSlider(1,'pro')" type="button">3mo</button>
+          <button class="pc-tab" onclick="moveSlider(2,'pro')" type="button">6mo</button>
+          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'pro')" type="button">year</button>
+          <button class="pc-tab" onclick="moveSlider(4,'pro')" type="button">2yr</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+        </div>
+
+        <div class="pc-price-row" dir="ltr">
+          <span class="pc-price-num" id="price-val-pro">50</span>
+          <span class="pc-price-meta">
+            <span class="pc-currency">EUR</span>
+            <span class="pc-period" id="period-text-pro">/ year</span>
+          </span>
+        </div>
+
+        <ul id="features-pro" class="pc-features plan-features" dir="ltr">
+          <li>More than 50,000 channels</li>
+<li>More than 40,000 series</li>
+<li>More than 190,000 movies</li>
+<li>Video On Demand (VOD)</li>
+<li>Smooth watching without interruptions</li>
+<li>Quality SD / HD / UHD / 4K / 8K</li>
+<li>Stable playback</li>
+<li>99%+ uptime</li>
+<li>Supports all devices</li>
+<li>Daily updates</li>
+<li>24/7 technical support</li>
+<li>10 days guarantee</li>
+<li>Exclusive content constantly renewed</li>
+        </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please." class="pc-cta-btn" target="_blank" rel="noopener noreferrer">Subscribe Now</a>
       </div>
     </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-basic">30</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-basic" class="text-lg font-medium">/ year</span>
-    </div>
-<ul id="features-basic" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>Over 21,000 varied channels</li>
-      <li>Over 30,000 series</li>
-      <li>Over 158,000 movies</li>
-      <li>Video on demand (VOD)</li>
-      <li>Smooth streaming without interruption</li>
-      <li>Compatible with all devices</li>
-      <li>Quality SD / HD / UHD / 4K / 8K</li>
-      <li>99%+ uptime rate</li>
-      <li>Daily server updates</li>
-      <li>24/7 technical support</li>
-      <li>10-day money-back guarantee</li>
-      <li>Exclusive and regularly renewed content</li>
-    </ul>
 
-    <a id="whatsapp-link-basic"
-     href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Basic%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-     target="_blank"
-     rel="noopener noreferrer"
-     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Subscribe now
-</a>
+    <div class="pc-trust-bar">
+      <div class="pc-trust-item"><i class="fas fa-headset"></i><span>Online support</span></div>
+        <div class="pc-trust-item"><i class="fas fa-bolt"></i><span>Instant activation</span></div>
+        <div class="pc-trust-item"><i class="fas fa-clock"></i><span>24/7 support</span></div>
+        <div class="pc-trust-item"><i class="fas fa-star"></i><span>HD quality</span></div>
+    </div>
 
   </div>
-</div>
-</div>
-
-<!-- 🟨 Premium Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- BADGE -->
-  <div class="plan-badge badge-best">Best seller</div>
-
-  <div class="relative z-10 text-center">
-   <h3 class="text-2xl font-bold text-yellow-500 mb-2">
-Premium Plan
-</h3>
-    <p class="text-gray-600 mb-4">The best choice for the most active users</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">month</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3mo</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6mo</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">year</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2yr</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-premium">40</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-premium" class="text-lg font-medium">/ year</span>
-    </div>
-<ul id="features-premium" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-     <li>Over 15,000 varied channels</li>
-      <li>Over 14,000 series</li>
-      <li>Over 63,000 movies</li>
-      <li>Video on demand (VOD)</li>
-      <li>Uninterrupted streaming</li>
-      <li>Compatible with all devices</li>
-      <li>Quality SD / HD / 4K / 8K</li>
-       <li>99%+ uptime rate</li>
-      <li>Daily updates</li>
-      <li>Technical support</li>
-      <li>10-day guarantee</li>
-      <li>Exclusive and regularly renewed content</li>
-    </ul>
-
-    <a id="whatsapp-link-premium"
-       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Premium%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Subscribe now
-</a>
-
-  </div>
-</div>
-</div>
-
-      <!-- 🟪 الخطة الاحترافية -->
-      <!-- 🟪 Pro Plan -->
-<div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- BADGE -->
-  <div class="plan-badge badge-gold">Gold Plan</div>
-
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-purple-600 mb-2">Professional Plan</h3>
-    <p class="text-gray-600 mb-4">For users who want only the best streaming experience</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">month</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3mo</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6mo</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">year</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2yr</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-pro">50</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-pro" class="text-lg font-medium">/ year</span>
-    </div>
-<ul id="features-pro" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>More than 50,000 channels</li>
-      <li>More than 40,000 series</li>
-      <li>More than 190,000 movies</li>
-      <li>Video On Demand (VOD)</li>
-      <li>Smooth watching without interruptions</li>
-      <li>Quality SD / HD / UHD / 4K / 8K</li>
-      <li>Stable playback</li>
-      <li>99%+ uptime</li>
-      <li>Supports all devices</li>
-      <li>Daily updates</li>
-      <li>24/7 technical support</li>
-      <li>10 days guarantee</li>
-      <li>Exclusive content constantly renewed</li>
-    </ul>
-
-    <a id="whatsapp-link-pro"
-       href="https://wa.me/212666686732?text=Hello%2C%20I%20would%20like%20to%20subscribe%20to%20the%20Professional%20plan%20%E2%80%93%20Prime%20IPTV.%20Please."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Subscribe Now
-</a>
-
-  </div>
-</div>
-</div>
-
-</div>
-</div>
 </section>
 
-<!-- 🚨🚨 نهاية قسم الخطط العالمية 💎 🚨🚨 -->
-
-<!-- 🚨🚨 قسم آراء العملاء 🗣️ 🚨🚨 -->
 <section id="testimonials" class="section-spacing bg-gray-50" aria-label="Customer reviews">
 
   <div class="container mx-auto px-4">

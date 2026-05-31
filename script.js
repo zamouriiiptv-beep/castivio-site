@@ -460,18 +460,25 @@ window.updatePlanData = function(value, planType) {
         waLink.href = `https://wa.me/212666686732?text=${encodeURIComponent(buildMsg(planName, selected.text))}`;
     }
 
-    // --- إبراز الكلمة المختارة وجعلها مثيرة للانتباه ---
-    // نبحث عن الكلمات داخل قسم السلايدر الخاص بهذه الخطة فقط
-    const container = document.getElementById(`${planType}-plan-slider`).parentElement;
-    const steps = container.querySelectorAll('.duration-step');
-    
-    steps.forEach((step, index) => {
-        if (index == value) {
-            step.classList.add('active-duration'); // الكلمة المختارة تصبح بارزة
-        } else {
-            step.classList.remove('active-duration'); // إزالة التمييز عن الباقي
+    // Update pc-tab active state for new design
+    const slider = document.getElementById(`${planType}-plan-slider`);
+    if (slider) {
+        const tabsContainer = slider.closest('.pc-tabs');
+        if (tabsContainer) {
+            tabsContainer.querySelectorAll('.pc-tab').forEach((tab, i) => {
+                tab.classList.toggle('pc-tab-active', i === parseInt(value));
+            });
         }
-    });
+    }
+
+    // Legacy: highlight duration-step words (old design)
+    const sliderEl = document.getElementById(`${planType}-plan-slider`);
+    if (sliderEl) {
+        const container = sliderEl.parentElement;
+        container.querySelectorAll('.duration-step').forEach((step, index) => {
+            step.classList.toggle('active-duration', index == value);
+        });
+    }
 };
 
   /* --- تهيئة السلايدر عند تحميل الصفحة --- */
