@@ -627,6 +627,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-feat-icon {
   width:42px; height:42px; border-radius:12px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center; font-size:1rem;
+  order: -1;
 }
 .pc-card-basic   .pc-feat-icon { background:rgba(124,58,237,.16); border:1px solid rgba(139,92,246,.35); color:#c4b5fd; }
 .pc-card-premium .pc-feat-icon { background:rgba(217,119,6,.16); border:1px solid rgba(245,158,11,.35); color:#fcd34d; }
