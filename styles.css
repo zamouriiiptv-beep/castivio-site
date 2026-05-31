@@ -663,27 +663,35 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-cta-pro     { background:linear-gradient(135deg,#ec4899,#db2777); box-shadow:0 6px 22px rgba(219,39,119,.5); }
 .pc-cta:hover { transform:translateY(-2px); opacity:.94; }
 
-/* ── Trust bar — horizontal 4-col under each card ── */
-.pc-col { display:flex; flex-direction:column; }
+/* ── Trust bar — horizontal row under each card ── */
+.pc-col { display:flex; flex-direction:column; min-width:0; }
+.pc-col .pc-card { width:100%; }
 .pc-trust {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:12px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; margin-top:10px;
+  border:1px solid rgba(255,255,255,.08); border-radius:14px; overflow:hidden;
 }
 .pc-trust-item {
   display:flex; flex-direction:column; align-items:center; text-align:center;
-  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
-  border-radius:12px; padding:10px 4px; min-width:0;
+  padding:10px 4px;
+  border-right:1px solid rgba(255,255,255,.08);
+  min-width:0;
 }
+.pc-trust-item:last-child { border-right:none; }
 .pc-trust-ic {
-  width:32px; height:32px; border-radius:8px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center; font-size:.85rem;
-  margin-bottom:6px;
+  width:28px; height:28px; border-radius:7px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:.78rem;
+  margin-bottom:5px;
 }
-.pc-trust-basic   .pc-trust-ic { background:rgba(124,58,237,.18); border:1px solid rgba(139,92,246,.35); color:#a78bfa; }
-.pc-trust-premium .pc-trust-ic { background:rgba(217,119,6,.18);  border:1px solid rgba(245,158,11,.35); color:#fcd34d; }
-.pc-trust-pro     .pc-trust-ic { background:rgba(219,39,119,.18); border:1px solid rgba(236,72,153,.35);  color:#f9a8d4; }
+.pc-trust-basic   .pc-trust-ic { background:rgba(124,58,237,.20); border:1px solid rgba(139,92,246,.40); color:#a78bfa; }
+.pc-trust-premium .pc-trust-ic { background:rgba(217,119,6,.20);  border:1px solid rgba(245,158,11,.40); color:#fcd34d; }
+.pc-trust-pro     .pc-trust-ic { background:rgba(219,39,119,.20); border:1px solid rgba(236,72,153,.40); color:#f9a8d4; }
+.pc-trust-basic   { background:rgba(124,58,237,.06); }
+.pc-trust-premium { background:rgba(217,119,6,.06); }
+.pc-trust-pro     { background:rgba(219,39,119,.06); }
 .pc-trust-tx { display:flex; flex-direction:column; align-items:center; }
-.pc-trust-tx strong { color:#fff; font-size:.70rem; font-weight:800; line-height:1.3; }
-.pc-trust-tx span   { color:rgba(255,255,255,.50); font-size:.60rem; }
+.pc-trust-tx strong { color:#fff; font-size:.66rem; font-weight:800; line-height:1.3; }
+.pc-trust-tx span   { color:rgba(255,255,255,.45); font-size:.56rem; }
 
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0 }
 
