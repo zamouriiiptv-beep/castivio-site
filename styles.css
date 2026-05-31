@@ -723,7 +723,33 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-trust-tx strong { color:#fff; font-size:.60rem; font-weight:800; line-height:1.3; }
 .pc-trust-tx span   { color:rgba(255,255,255,.45); font-size:.52rem; }
 
-.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0 }
+/* ══ Tablet layout: 2-column internal card (768px–1023px) ══ */
+@media (min-width:768px) and (max-width:1023px) {
+  .pc-grid { max-width:700px; }
+  .pc-card {
+    display: grid;
+    grid-template-columns: 44% 1fr;
+    grid-template-areas:
+      "head  feats"
+      "tabs  feats"
+      "price feats"
+      "cta   feats";
+    grid-template-rows: auto auto auto 1fr;
+    gap: 12px 22px;
+    align-items: start;
+  }
+  .pc-head     { grid-area:head; align-items:flex-end; text-align:right; margin-top:0; }
+  .pc-tabs     { grid-area:tabs; }
+  .pc-price    { grid-area:price; }
+  .pc-cta      { grid-area:cta; margin-top:0; }
+  .pc-features { grid-area:feats; display:grid; grid-template-columns:1fr 1fr; align-content:start; }
+  .pc-feat     { padding:10px 4px; }
+}
+
+/* ══ Desktop layout: 3-col grid, card stays single-column ══ */
+@media (min-width:1024px) {
+  .pc-head { align-items:center; text-align:center; }
+}
 
 @media (max-width:600px) {
   .pc-card          { padding:16px 14px 14px; gap:10px; border-radius:20px; }
