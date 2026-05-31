@@ -684,9 +684,23 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0 }
 
-@media (max-width:480px) {
-  .pc-card { padding:26px 16px 20px; }
-  .pc-tab { font-size:.66rem; padding:7px 2px; }
-  .pc-price-num { font-size:2.4rem; }
-  .pc-trust-item { min-width:140px; padding:10px 14px; }
+@media (max-width:600px) {
+  .pc-card          { padding:16px 14px 14px; gap:10px; border-radius:20px; }
+  .pc-head          { gap:6px; margin-top:8px; }
+  .pc-icon-wrap     { width:56px; height:56px; font-size:1.35rem; }
+  .pc-title         { font-size:1.15rem; }
+  .pc-sub           { font-size:.75rem; max-width:none; }
+  .pc-tabs          { padding:3px; gap:2px; }
+  .pc-tab           { font-size:.62rem; padding:6px 2px; }
+  .pc-price         { padding:11px 14px; gap:8px; border-radius:14px; }
+  .pc-price-num     { font-size:2rem; }
+  .pc-price-unit    { font-size:.85rem; }
+  .pc-price-period  { font-size:.72rem; }
+  .pc-feat          { padding:8px 2px; gap:8px; }
+  .pc-feat-title    { font-size:.82rem; }
+  .pc-feat-desc     { font-size:.68rem; }
+  .pc-feat-icon     { width:34px; height:34px; font-size:.85rem; border-radius:9px; }
+  .pc-cta           { padding:11px; font-size:.95rem; border-radius:12px; }
+  .pc-trust-item    { min-width:130px; padding:9px 12px; }
+  .pc-badge         { font-size:.70rem; padding:5px 13px; }
 }
