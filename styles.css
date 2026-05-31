@@ -566,7 +566,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   display:inline-flex; align-items:center; gap:6px;
   z-index: 2;
 }
-.pc-badge-basic   { background: linear-gradient(135deg,#7c3aed,#9333ea); }
+.pc-badge-basic   { background: linear-gradient(165deg,#2d2060,#1a1040); border-left:1px solid rgba(139,92,246,.45); border-bottom:1px solid rgba(139,92,246,.45); }
 .pc-badge-premium { background: linear-gradient(135deg,#f59e0b,#d97706); }
 .pc-badge-pro     { background: linear-gradient(135deg,#ec4899,#be185d); }
 
