@@ -734,12 +734,12 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
       "feats tabs"
       "feats price"
       "feats cta";
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: 1fr auto auto auto;
     gap: 24px;
     padding: 30px;
     align-items: start;
   }
-  .pc-head     { grid-area:head; align-items:flex-end; text-align:right; margin-top:0; }
+  .pc-head     { grid-area:head; align-self:center; align-items:center; text-align:center; margin-top:0; }
   .pc-tabs     { grid-area:tabs; }
   .pc-price    { grid-area:price; }
   .pc-cta      { grid-area:cta; margin-top:0; }
@@ -758,12 +758,12 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
       "feats tabs"
       "feats price"
       "feats cta";
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: 1fr auto auto auto;
     gap: 40px;
     padding: 40px;
     align-items: start;
   }
-  .pc-head     { grid-area:head; align-items:flex-end; text-align:right; margin-top:0; }
+  .pc-head     { grid-area:head; align-self:center; align-items:center; text-align:center; margin-top:0; }
   .pc-tabs     { grid-area:tabs; }
   .pc-price    { grid-area:price; }
   .pc-cta      { grid-area:cta; margin-top:0; }
