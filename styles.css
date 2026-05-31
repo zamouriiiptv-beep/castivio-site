@@ -725,7 +725,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 /* ══ Tablet layout: 2-column internal card (768px–1023px) ══ */
 @media (min-width:768px) and (max-width:1023px) {
-  .pc-grid { max-width:700px; }
+  .pc-grid { max-width:100%; }
   .pc-card {
     display: grid;
     grid-template-columns: 44% 1fr;
