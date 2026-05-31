@@ -723,32 +723,52 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-trust-tx strong { color:#fff; font-size:.60rem; font-weight:800; line-height:1.3; }
 .pc-trust-tx span   { color:rgba(255,255,255,.45); font-size:.52rem; }
 
-/* ══ Tablet layout: 2-column internal card (768px–1023px) ══ */
-@media (min-width:768px) and (max-width:1023px) {
-  .pc-grid { max-width:100%; }
+/* ══ Tablet layout: 2-column internal card (769px–1024px) ══ */
+@media (min-width:769px) and (max-width:1024px) {
+  .pc-grid { max-width:900px; margin-inline:auto; }
   .pc-card {
     display: grid;
-    grid-template-columns: 44% 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "head  feats"
-      "tabs  feats"
-      "price feats"
-      "cta   feats";
+      "feats head"
+      "feats tabs"
+      "feats price"
+      "feats cta";
     grid-template-rows: auto auto auto 1fr;
-    gap: 12px 22px;
+    gap: 24px;
+    padding: 30px;
     align-items: start;
   }
   .pc-head     { grid-area:head; align-items:flex-end; text-align:right; margin-top:0; }
   .pc-tabs     { grid-area:tabs; }
   .pc-price    { grid-area:price; }
   .pc-cta      { grid-area:cta; margin-top:0; }
-  .pc-features { grid-area:feats; display:grid; grid-template-columns:1fr 1fr; align-content:start; }
+  .pc-features { grid-area:feats; display:flex; flex-direction:column; align-content:start; }
   .pc-feat     { padding:10px 4px; }
 }
 
-/* ══ Desktop layout: 3-col grid, card stays single-column ══ */
-@media (min-width:1024px) {
-  .pc-head { align-items:center; text-align:center; }
+/* ══ Desktop layout: 2-column internal card (>1024px) ══ */
+@media (min-width:1025px) {
+  .pc-grid { max-width:1200px; margin-inline:auto; }
+  .pc-card {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    grid-template-areas:
+      "feats head"
+      "feats tabs"
+      "feats price"
+      "feats cta";
+    grid-template-rows: auto auto auto 1fr;
+    gap: 40px;
+    padding: 40px;
+    align-items: start;
+  }
+  .pc-head     { grid-area:head; align-items:flex-end; text-align:right; margin-top:0; }
+  .pc-tabs     { grid-area:tabs; }
+  .pc-price    { grid-area:price; }
+  .pc-cta      { grid-area:cta; margin-top:0; }
+  .pc-features { grid-area:feats; display:flex; flex-direction:column; align-content:start; }
+  .pc-feat     { padding:12px 4px; }
 }
 
 @media (max-width:600px) {
