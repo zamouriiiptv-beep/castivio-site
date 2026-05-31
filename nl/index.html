@@ -73,8 +73,8 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
   <!-- ============================
        5) Snelheidsoptimalisatie
        ============================ -->
-  <link rel="preload" href="/styles.css?v=17" as="style">
-  <link rel="stylesheet" href="/styles.css?v=17">
+  <link rel="preload" href="/styles.css?v=48" as="style">
+  <link rel="stylesheet" href="/styles.css?v=48">
 
   <script src="/script.js?v=2" defer></script>
 
@@ -684,196 +684,236 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 </section>
 <!-- ═══════════════ End Guides Section ═══════════════ -->
 
-<section id="pricing" class="section-spacing bg-gray-50" aria-label="Abonnementsplannen">
+<section id="pricing" class="section-spacing pc-section pc-section-ltr" aria-label="Abonnementsplannen">
+  <div class="container mx-auto px-4">
 
-  <div class="container mx-auto px-6">
+    <div class="text-center">
+      <span class="ps-badge">
+        <i class="fas fa-tags" style="color:#f5c518;"></i> Prime IPTV Pakketten
+      </span>
+    </div>
 
-    <!-- Titel -->
-    <h2 class="section-title-unified">
-  <span class="title-line-1">Kies uw abonnement</span>
-  <span class="title-line-2">
-    IPTV
-    <img src="/images/Logo/icon7.webp" alt="IPTV abonnement icoon" class="title-icon" loading="lazy" decoding="async" fetchpriority="high">
-  </span>
-</h2>
+    <h2 class="ps-title">
+      Kies <span>uw</span> ideale pakket
+    </h2>
 
-    <p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
- text-transparent bg-clip-text bg-gradient-to-r
-     from-pink-500 via-fuchsia-500 to-purple-500">
-  Kies uw ideale pakket voor onbeperkt streamen
-</p>
+    <p class="ps-sub">
+      Drie flexibele pakketten met kwaliteit tot 8K en stabiliteit zonder onderbrekingen — kies uw pakket en begin in minuten te kijken.
+    </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="pc-grid">
 
-      <!-- Basispakket -->
-<div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
+      <!-- basic -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-basic">
+        <span class="pc-badge pc-badge-basic"><i class="fas fa-wallet"></i> Basispakket</span>
 
-  <!-- BADGE -->
-  <div class="plan-badge badge-economy">Voordelige optie</div>
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-wallet"></i></div>
+          <h3 class="pc-title pc-title-basic">Basispakket</h3>
+          <p class="pc-sub">De beste start voor een soepele en betrouwbare ervaring</p>
+        </div>
 
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-blue-500 mb-2">Basispakket</h3>
-    <p class="text-gray-600 mb-4">De beste start voor een eersteklas ervaring zonder complicaties</p>
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'basic')">maand</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'basic')">3 mnd</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 mnd</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">jaar</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">2 jaar</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+        </div>
 
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(0, 'basic')">mnd</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(1, 'basic')">3m</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(2, 'basic')">6m</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(3, 'basic')">jaar</span>
-        <span class="cursor-pointer hover:text-blue-400" onclick="moveSlider(4, 'basic')">2j</span>
+        <div class="pc-price pc-price-basic">
+          <span class="pc-price-num" id="price-val-basic">30</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-basic">/ jaar</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Hoge streamingkwaliteit <span class="pc-feat-badge pc-feat-badge-basic">HD</span></span>
+              <span class="pc-feat-desc">Geniet van kristalheldere en verbeterde kwaliteit</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Stabiel &amp; soepel streamen</span>
+              <span class="pc-feat-desc">Geavanceerde technologie voor ononderbroken streaming</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibel met alle apparaten</span>
+              <span class="pc-feat-desc">Werkt op telefoons, computers en alle apparaten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Snelle &amp; eenvoudige activering</span>
+              <span class="pc-feat-desc">Ontvang uw abonnement in minuten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Technische ondersteuning 24/7</span>
+              <span class="pc-feat-desc">Team altijd klaar om u te helpen</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Basis-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-basic" target="_blank" rel="noopener noreferrer">Nu abonneren</a>
       </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-basic">30</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-basic" class="text-lg font-medium">/ jaar</span>
-    </div>
-<ul id="features-basic" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>Meer dan 21.000 gevarieerde kanalen</li>
-      <li>Meer dan 30.000 series</li>
-      <li>Meer dan 158.000 films</li>
-      <li>Video on Demand (VOD)</li>
-      <li>Soepel streamen zonder onderbreking</li>
-      <li>Compatibel met alle apparaten</li>
-      <li>Kwaliteit SD / HD / UHD / 4K / 8K</li>
-      <li>99%+ uptime</li>
-      <li>Dagelijkse serverupdates</li>
-      <li>24/7 technische ondersteuning</li>
-      <li>10 dagen garantie</li>
-      <li>Exclusieve en regelmatig vernieuwde content</li>
-    </ul>
+      <div class="pc-trust pc-trust-basic">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Veilige betaling</strong><span>Volledige bescherming</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Directe activering</strong><span>Minder dan een uur</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Support 24/7</strong><span>Snelle service</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Hoge kwaliteit</strong><span>Geavanceerde technologie</span></div></div>
+      </div>
+      </div>
+      <!-- premium -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-premium">
+        <span class="pc-badge pc-badge-premium"><i class="fas fa-star"></i> Premiumpakket</span>
 
-    <a id="whatsapp-link-basic"
-     href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Basis-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Nu abonneren
-</a>
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3 class="pc-title pc-title-premium">Premiumpakket</h3>
+          <p class="pc-sub">De beste keuze voor de meest actieve gebruikers</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'premium')">maand</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'premium')">3 mnd</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 mnd</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">jaar</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">2 jaar</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+        </div>
+
+        <div class="pc-price pc-price-premium">
+          <span class="pc-price-num" id="price-val-premium">40</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-premium">/ jaar</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Hoge streamingkwaliteit <span class="pc-feat-badge pc-feat-badge-premium">HD</span></span>
+              <span class="pc-feat-desc">Geniet van kristalheldere en verbeterde kwaliteit</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Stabiel &amp; soepel streamen</span>
+              <span class="pc-feat-desc">Geavanceerde technologie voor ononderbroken streaming</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibel met alle apparaten</span>
+              <span class="pc-feat-desc">Werkt op telefoons, computers en alle apparaten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Snelle &amp; eenvoudige activering</span>
+              <span class="pc-feat-desc">Ontvang uw abonnement in minuten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Technische ondersteuning 24/7</span>
+              <span class="pc-feat-desc">Team altijd klaar om u te helpen</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Premium-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-premium" target="_blank" rel="noopener noreferrer">Nu abonneren</a>
+      </div>
+      <div class="pc-trust pc-trust-premium">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Veilige betaling</strong><span>Volledige bescherming</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Directe activering</strong><span>Minder dan een uur</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Support 24/7</strong><span>Snelle service</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Hoge kwaliteit</strong><span>Geavanceerde technologie</span></div></div>
+      </div>
+      </div>
+      <!-- pro -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-pro">
+        <span class="pc-badge pc-badge-pro"><i class="fas fa-crown"></i> Pro-pakket</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
+          <h3 class="pc-title pc-title-pro">Pro-pakket</h3>
+          <p class="pc-sub">Voor gebruikers die alleen het beste willen</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'pro')">maand</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'pro')">3 mnd</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 mnd</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">jaar</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">2 jaar</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+        </div>
+
+        <div class="pc-price pc-price-pro">
+          <span class="pc-price-num" id="price-val-pro">50</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-pro">/ jaar</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Hoge streamingkwaliteit <span class="pc-feat-badge pc-feat-badge-pro">4K</span></span>
+              <span class="pc-feat-desc">Geniet van kristalheldere en verbeterde kwaliteit</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-gem"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Stabiel &amp; soepel streamen</span>
+              <span class="pc-feat-desc">Geavanceerde technologie voor ononderbroken streaming</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibel met alle apparaten</span>
+              <span class="pc-feat-desc">Werkt op telefoons, computers en alle apparaten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Snelle &amp; eenvoudige activering</span>
+              <span class="pc-feat-desc">Ontvang uw abonnement in minuten</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Technische ondersteuning 24/7</span>
+              <span class="pc-feat-desc">Team altijd klaar om u te helpen</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Professioneel-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-pro" target="_blank" rel="noopener noreferrer">Nu abonneren</a>
+      </div>
+      <div class="pc-trust pc-trust-pro">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Veilige betaling</strong><span>Volledige bescherming</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Directe activering</strong><span>Minder dan een uur</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Support 24/7</strong><span>Snelle service</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Hoge kwaliteit</strong><span>Geavanceerde technologie</span></div></div>
+      </div>
+      </div>
+
+    </div>
 
   </div>
-</div>
-</div>
-
-<!-- Premiumpakket -->
-<div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- BADGE -->
-  <div class="plan-badge badge-best">Best verkopend</div>
-
-  <div class="relative z-10 text-center">
-   <h3 class="text-2xl font-bold text-yellow-500 mb-2">
-Premiumpakket
-</h3>
-    <p class="text-gray-600 mb-4">De beste keuze voor de meest actieve gebruikers</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(0, 'premium')">mnd</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(1, 'premium')">3m</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(2, 'premium')">6m</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(3, 'premium')">jaar</span>
-        <span class="cursor-pointer hover:text-yellow-400" onclick="moveSlider(4, 'premium')">2j</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-premium">40</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-premium" class="text-lg font-medium">/ jaar</span>
-    </div>
-<ul id="features-premium" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>Meer dan 21.000 gevarieerde kanalen</li>
-      <li>Meer dan 30.000 series</li>
-      <li>Meer dan 158.000 films</li>
-      <li>Video on Demand (VOD)</li>
-      <li>Soepel streamen zonder onderbreking</li>
-      <li>Compatibel met alle apparaten</li>
-      <li>Kwaliteit SD / HD / UHD / 4K / 8K</li>
-      <li>99%+ uptime</li>
-      <li>Dagelijkse serverupdates</li>
-      <li>24/7 technische ondersteuning</li>
-      <li>10 dagen garantie</li>
-      <li>Exclusieve en regelmatig vernieuwde content</li>
-    </ul>
-
-    <a id="whatsapp-link-premium"
-       href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Premium-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Nu abonneren
-</a>
-
-  </div>
-</div>
-</div>
-
-      <!-- Professioneel pakket -->
-<div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper">
-<div class="luxury-card-inner">
-<div style="height:20px"></div>
-
-  <!-- BADGE -->
-  <div class="plan-badge badge-gold">Goud plan</div>
-
-  <div class="relative z-10 text-center">
-    <h3 class="text-2xl font-bold text-purple-600 mb-2">Professioneel pakket</h3>
-    <p class="text-gray-600 mb-4">Voor gebruikers die alleen de beste streamingervaring willen</p>
-
-    <div class="duration-slider-container mb-6">
-      <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
-      <div class="flex justify-between text-[11px] font-bold mt-2 px-1">
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(0, 'pro')">mnd</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(1, 'pro')">3m</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(2, 'pro')">6m</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(3, 'pro')">jaar</span>
-        <span class="cursor-pointer hover:text-purple-400" onclick="moveSlider(4, 'pro')">2j</span>
-      </div>
-    </div>
-    <div class="text-3xl md:text-4xl font-black mb-6 flex items-center justify-center gap-1">
-      <span id="price-val-pro">50</span>
-      <span class="text-xl font-bold">EUR</span>
-      <span id="period-text-pro" class="text-lg font-medium">/ jaar</span>
-    </div>
-<ul id="features-pro" class="plan-features text-right mb-6 leading-relaxed space-y-2">
-      <li>Meer dan 21.000 gevarieerde kanalen</li>
-      <li>Meer dan 30.000 series</li>
-      <li>Meer dan 158.000 films</li>
-      <li>Video on Demand (VOD)</li>
-      <li>Soepel streamen zonder onderbreking</li>
-      <li>Compatibel met alle apparaten</li>
-      <li>Kwaliteit SD / HD / UHD / 4K / 8K</li>
-      <li>99%+ uptime</li>
-      <li>Dagelijkse serverupdates</li>
-      <li>24/7 technische ondersteuning</li>
-      <li>10 dagen garantie</li>
-      <li>Exclusieve en regelmatig vernieuwde content</li>
-    </ul>
-
-    <a id="whatsapp-link-pro"
-       href="https://wa.me/212666686732?text=Hallo%2C%20ik%20wil%20me%20abonneren%20op%20het%20Professioneel-abonnement%20voor%201%20Jaar%20%E2%80%93%20Prime%20IPTV"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full
- hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-sm">
-  Nu abonneren
-</a>
-
-  </div>
-</div>
-</div>
-
-</div>
-</div>
 </section>
 
 <!-- Abonnementen sectie einde -->

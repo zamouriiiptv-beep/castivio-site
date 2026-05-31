@@ -771,6 +771,26 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-feat     { padding:12px 4px; }
 }
 
+/* ══ LTR pricing: swap column order (head left, feats right) ══ */
+@media (min-width:769px) and (max-width:1024px) {
+  .pc-section-ltr .pc-card {
+    grid-template-areas:
+      "head feats"
+      "tabs feats"
+      "price feats"
+      "cta  feats";
+  }
+}
+@media (min-width:1025px) {
+  .pc-section-ltr .pc-card {
+    grid-template-areas:
+      "head feats"
+      "tabs feats"
+      "price feats"
+      "cta  feats";
+  }
+}
+
 @media (max-width:600px) {
   .pc-card          { padding:16px 14px 14px; gap:10px; border-radius:20px; }
   .pc-head          { gap:6px; margin-top:8px; }
