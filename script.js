@@ -481,6 +481,22 @@ window.updatePlanData = function(value, planType) {
     }
 };
 
+// Toggle the full feature list (new pricing design)
+window.togglePlanFeatures = function(btn, planType) {
+    const list = document.getElementById(`features-${planType}`);
+    if (!list) return;
+    const isOpen = !list.hasAttribute('hidden');
+    if (isOpen) {
+        list.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+        const lbl = btn.querySelector('span'); if (lbl) lbl.textContent = 'عرض الميزات';
+    } else {
+        list.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        const lbl = btn.querySelector('span'); if (lbl) lbl.textContent = 'إخفاء الميزات';
+    }
+};
+
   /* --- تهيئة السلايدر عند تحميل الصفحة --- */
   ['basic', 'premium', 'pro'].forEach(type => {
     const slider = document.getElementById(`${type}-plan-slider`);

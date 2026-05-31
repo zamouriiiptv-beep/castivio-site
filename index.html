@@ -71,8 +71,8 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preload" href="/styles.css?v=17" as="style">
-  <link rel="stylesheet" href="/styles.css?v=17">
+  <link rel="preload" href="/styles.css?v=18" as="style">
+  <link rel="stylesheet" href="/styles.css?v=18">
   <link rel="preload" href="/css/tailwind.min.css?v=2" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css?v=2">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -652,145 +652,262 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
       <!-- ── الخطة الأساسية ── -->
       <div class="pc-card pc-card-basic">
-        <span class="pc-badge pc-badge-basic">الخطة الأساسية</span>
+        <span class="pc-badge pc-badge-basic"><i class="fas fa-wallet"></i> الخطة الأساسية</span>
 
-        <div class="pc-card-head">
-          <div class="pc-icon-wrap"><i class="fas fa-layer-group"></i></div>
-          <h3 class="pc-plan-title">الخطة الأساسية</h3>
-          <p class="pc-plan-sub">أفضل بداية لمشاهدة عالمية بدون تعقيدات</p>
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-wallet"></i></div>
+          <h3 class="pc-title pc-title-basic">الخطة الأساسية</h3>
+          <p class="pc-sub">أفضل بداية لتجربة مشاهدة سهلة وموثوقة</p>
         </div>
 
         <div class="pc-tabs">
-          <button class="pc-tab" onclick="moveSlider(0,'basic')" type="button">شهر</button>
-          <button class="pc-tab" onclick="moveSlider(1,'basic')" type="button">3أشهر</button>
-          <button class="pc-tab" onclick="moveSlider(2,'basic')" type="button">6أشهر</button>
-          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'basic')" type="button">سنة</button>
-          <button class="pc-tab" onclick="moveSlider(4,'basic')" type="button">سنتين</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'basic')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'basic')">3 أشهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 أشهر</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">سنتين</button>
           <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
         </div>
 
-        <div class="pc-price-row" dir="rtl">
+        <div class="pc-price pc-price-basic">
           <span class="pc-price-num" id="price-val-basic">30</span>
-          <span class="pc-price-meta">
-            <span class="pc-currency">يورو</span>
-            <span class="pc-period" id="period-text-basic">/ السنة</span>
-          </span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-basic">/ السنة</span></span>
         </div>
 
-        <ul id="features-basic" class="pc-features plan-features" dir="rtl">
-          <li>أزيد من 21,000 قناة متنوعة</li>
-<li>أزيد من 30,000 مسلسل</li>
-<li>أزيد من 158,000 فيلم</li>
-<li>فيديو حسب الطلب (VOD)</li>
-<li>مشاهدة سلسة بدون تقطعات</li>
-<li>يعمل على جميع الأجهزة</li>
-<li>جودة SD / HD / UHD / 4K / 8K</li>
-<li>نسبة تشغيل 99٪+</li>
-<li>تحديثات يومية للسرفر</li>
-<li>دعم فني دائم</li>
-<li>ضمان الاسترجاع 10 أيام</li>
-<li>محتوى حصري متجدد باستمرار</li>
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة مشاهدة عالية <span class="pc-feat-badge pc-feat-badge-basic">HD</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
         </ul>
 
-        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
+        <button class="pc-toggle" type="button" aria-expanded="false" onclick="togglePlanFeatures(this,'basic')">
+          <span>عرض الميزات</span> <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul id="features-basic" class="pc-fulllist" hidden>
+            <li>أزيد من 21,000 قناة متنوعة</li>
+            <li>أزيد من 30,000 مسلسل</li>
+            <li>أزيد من 158,000 فيلم</li>
+            <li>فيديو حسب الطلب (VOD)</li>
+            <li>مشاهدة سلسة بدون تقطعات</li>
+            <li>يعمل على جميع الأجهزة</li>
+            <li>جودة SD / HD / UHD / 4K / 8K</li>
+            <li>نسبة تشغيل 99٪+</li>
+            <li>تحديثات يومية للسرفر</li>
+            <li>دعم فني دائم</li>
+            <li>ضمان الاسترجاع 10 أيام</li>
+            <li>محتوى حصري متجدد باستمرار</li>
+          </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-basic" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
       </div>
+
       <!-- ── الخطة المميزة ── -->
       <div class="pc-card pc-card-premium">
-        <span class="pc-badge pc-badge-premium">الخطة المميزة</span>
+        <span class="pc-badge pc-badge-premium"><i class="fas fa-star"></i> الخطة المميزة</span>
 
-        <div class="pc-card-head">
+        <div class="pc-head">
           <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
-          <h3 class="pc-plan-title">الخطة المميزة</h3>
-          <p class="pc-plan-sub">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
+          <h3 class="pc-title pc-title-premium">الخطة المميزة</h3>
+          <p class="pc-sub">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
         </div>
 
         <div class="pc-tabs">
-          <button class="pc-tab" onclick="moveSlider(0,'premium')" type="button">شهر</button>
-          <button class="pc-tab" onclick="moveSlider(1,'premium')" type="button">3أشهر</button>
-          <button class="pc-tab" onclick="moveSlider(2,'premium')" type="button">6أشهر</button>
-          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'premium')" type="button">سنة</button>
-          <button class="pc-tab" onclick="moveSlider(4,'premium')" type="button">سنتين</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'premium')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'premium')">3 أشهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 أشهر</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">سنتين</button>
           <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
         </div>
 
-        <div class="pc-price-row" dir="rtl">
+        <div class="pc-price pc-price-premium">
           <span class="pc-price-num" id="price-val-premium">40</span>
-          <span class="pc-price-meta">
-            <span class="pc-currency">يورو</span>
-            <span class="pc-period" id="period-text-premium">/ السنة</span>
-          </span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-premium">/ السنة</span></span>
         </div>
 
-        <ul id="features-premium" class="pc-features plan-features" dir="rtl">
-          <li>أزيد من 15,000 قناة متنوعة</li>
-<li>أزيد من 14,000 مسلسل</li>
-<li>أزيد من 63,000 فيلم</li>
-<li>فيديو حسب الطلب (VOD)</li>
-<li>مشاهدة بدون تقطعات</li>
-<li>يدعم كل الأجهزة</li>
-<li>جودة SD / HD / 4K / 8K</li>
-<li>نسبة تشغيل 99٪+</li>
-<li>تحديثات يومية</li>
-<li>دعم فني</li>
-<li>ضمان 10 أيام</li>
-<li>محتوى حصري متجدد باستمرار</li>
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة مشاهدة عالية <span class="pc-feat-badge pc-feat-badge-premium">HD</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
         </ul>
 
-        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
+        <button class="pc-toggle" type="button" aria-expanded="false" onclick="togglePlanFeatures(this,'premium')">
+          <span>عرض الميزات</span> <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul id="features-premium" class="pc-fulllist" hidden>
+            <li>أزيد من 15,000 قناة متنوعة</li>
+            <li>أزيد من 14,000 مسلسل</li>
+            <li>أزيد من 63,000 فيلم</li>
+            <li>فيديو حسب الطلب (VOD)</li>
+            <li>بث بدون تقطعات</li>
+            <li>يعمل على جميع الأجهزة</li>
+            <li>جودة SD / HD / 4K / 8K</li>
+            <li>نسبة تشغيل 99٪+</li>
+            <li>تحديثات يومية</li>
+            <li>دعم فني</li>
+            <li>ضمان الاسترجاع 10 أيام</li>
+            <li>محتوى حصري متجدد باستمرار</li>
+          </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-premium" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
       </div>
+
       <!-- ── الخطة الاحترافية ── -->
       <div class="pc-card pc-card-pro">
-        <span class="pc-badge pc-badge-pro">الخطة الاحترافية</span>
+        <span class="pc-badge pc-badge-pro"><i class="fas fa-crown"></i> الخطة الاحترافية</span>
 
-        <div class="pc-card-head">
+        <div class="pc-head">
           <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
-          <h3 class="pc-plan-title">الخطة الاحترافية</h3>
-          <p class="pc-plan-sub">للمستخدمين الذين يريدون الأفضل فقط</p>
+          <h3 class="pc-title pc-title-pro">الخطة الاحترافية</h3>
+          <p class="pc-sub">للمستخدمين الذين يريدون الأفضل فقط</p>
         </div>
 
         <div class="pc-tabs">
-          <button class="pc-tab" onclick="moveSlider(0,'pro')" type="button">شهر</button>
-          <button class="pc-tab" onclick="moveSlider(1,'pro')" type="button">3أشهر</button>
-          <button class="pc-tab" onclick="moveSlider(2,'pro')" type="button">6أشهر</button>
-          <button class="pc-tab pc-tab-active" onclick="moveSlider(3,'pro')" type="button">سنة</button>
-          <button class="pc-tab" onclick="moveSlider(4,'pro')" type="button">سنتين</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'pro')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'pro')">3 أشهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 أشهر</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">سنتين</button>
           <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
         </div>
 
-        <div class="pc-price-row" dir="rtl">
+        <div class="pc-price pc-price-pro">
           <span class="pc-price-num" id="price-val-pro">50</span>
-          <span class="pc-price-meta">
-            <span class="pc-currency">يورو</span>
-            <span class="pc-period" id="period-text-pro">/ السنة</span>
-          </span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-pro">/ السنة</span></span>
         </div>
 
-        <ul id="features-pro" class="pc-features plan-features" dir="rtl">
-          <li>أزيد من 50,000 قناة</li>
-<li>أزيد من 40,000 مسلسل</li>
-<li>أزيد من 190,000 فيلم</li>
-<li>فيديو حسب الطلب (VOD)</li>
-<li>مشاهدة سلسة بدون تقطعات</li>
-<li>جودة SD / HD / UHD / 4K / 8K</li>
-<li>تشغيل مستقر</li>
-<li>نسبة تشغيل 99٪+</li>
-<li>يدعم جميع الأجهزة</li>
-<li>تحديثات يومية</li>
-<li>دعم فني دائم</li>
-<li>ضمان 10 أيام</li>
-<li>محتوى حصري متجدد باستمرار</li>
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة مشاهدة عالية <span class="pc-feat-badge pc-feat-badge-pro">4K</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-gem"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
         </ul>
 
-        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta-btn" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
+        <button class="pc-toggle" type="button" aria-expanded="false" onclick="togglePlanFeatures(this,'pro')">
+          <span>عرض الميزات</span> <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul id="features-pro" class="pc-fulllist" hidden>
+            <li>أزيد من 50,000 قناة</li>
+            <li>أزيد من 40,000 مسلسل</li>
+            <li>أزيد من 190,000 فيلم</li>
+            <li>فيديو حسب الطلب (VOD)</li>
+            <li>مشاهدة سلسة بدون تقطعات</li>
+            <li>جودة SD / HD / UHD / 4K / 8K</li>
+            <li>تشغيل مستقر</li>
+            <li>نسبة تشغيل 99٪+</li>
+            <li>يعمل على جميع الأجهزة</li>
+            <li>تحديثات يومية</li>
+            <li>دعم فني 24/7</li>
+            <li>ضمان الاسترجاع 10 أيام</li>
+            <li>محتوى حصري متجدد باستمرار</li>
+          </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-pro" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
       </div>
+
     </div>
 
-    <div class="pc-trust-bar">
-      <div class="pc-trust-item"><i class="fas fa-headset"></i><span>دعم فني أونلاين</span></div>
-        <div class="pc-trust-item"><i class="fas fa-bolt"></i><span>تفعيل فوري</span></div>
-        <div class="pc-trust-item"><i class="fas fa-clock"></i><span>دعم 24/7</span></div>
-        <div class="pc-trust-item"><i class="fas fa-star"></i><span>جودة عالية</span></div>
-    </div>
+      <div class="pc-trust">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>دفع آمن</strong><span>حماية متكاملة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>تفعيل فوري</strong><span>أقل من ساعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>دعم 24/7</strong><span>خدمة سريعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-photo-film"></i></div><div class="pc-trust-tx"><strong>جودة عالية</strong><span>تقنية متقدمة</span></div></div>
+      </div>
 
   </div>
 </section>
@@ -1318,7 +1435,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
 </main>
 
-<script src="/script.js?v=10" defer></script>
+<script src="/script.js?v=11" defer></script>
 
 
 <!-- Cookie Consent Banner -->
