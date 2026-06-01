@@ -816,7 +816,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-price-period  { font-size:.72rem; }
   .pc-feat          { padding:8px 2px; gap:8px; }
   .pc-feat-title    { font-size:.82rem; }
-  .pc-feat-desc     { font-size:.82rem; }
+  .pc-feat-desc     { font-size:.82rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .pc-feat-icon     { width:34px; height:34px; font-size:.85rem; border-radius:9px; }
   .pc-cta           { padding:11px; font-size:.95rem; border-radius:12px; }
   .pc-trust         { margin-top:8px; }
