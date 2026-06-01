@@ -962,30 +962,30 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 /* ── Features bar: single horizontal row ── */
 .rv-feats{
-  display:flex;flex-direction:row;justify-content:center;gap:10px;
-  max-width:680px;margin:28px auto 0;flex-wrap:nowrap}
+  display:flex;flex-direction:row;justify-content:center;gap:7px;
+  max-width:680px;margin:22px auto 0;flex-wrap:nowrap}
 .rv-feat{
-  display:flex;flex-direction:column;align-items:center;gap:7px;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
   background:rgba(22,10,50,0.70);
-  border:1px solid rgba(100,60,200,0.22);border-radius:14px;
-  padding:14px 10px 12px;text-align:center;flex:1;min-width:0;
+  border:1px solid rgba(100,60,200,0.22);border-radius:10px;
+  padding:9px 7px 8px;text-align:center;flex:1;min-width:0;
   box-shadow:0 4px 16px rgba(4,2,14,0.35)}
 .rv-feat-icon{
-  width:38px;height:38px;border-radius:50%;
+  width:28px;height:28px;border-radius:50%;
   background:rgba(80,20,160,0.35);
   border:1px solid rgba(120,80,220,0.30);
   display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rv-feat-icon svg{width:18px;height:18px;fill:#a78bfa}
+.rv-feat-icon svg{width:14px;height:14px;fill:#a78bfa}
 .rv-feat span{
-  font-family:'Tajawal',sans-serif;font-weight:600;font-size:11.5px;
-  color:#c0b5e0;line-height:1.4}
+  font-family:'Tajawal',sans-serif;font-weight:600;font-size:10px;
+  color:#c0b5e0;line-height:1.3}
 
 @media(max-width:480px){
   .rv-title h2{font-size:23px}
   .rv-laurel{width:42px}
   .rv-card{padding:18px 16px 16px;border-radius:18px}
-  .rv-feats{gap:7px;margin-top:22px}
-  .rv-feat{padding:12px 8px 10px}
-  .rv-feat span{font-size:10.5px}
+  .rv-feats{gap:5px;margin-top:18px}
+  .rv-feat{padding:8px 5px 7px}
+  .rv-feat span{font-size:9.5px}
 }
 
