@@ -880,7 +880,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   font-size:30px;margin:0;
   background:linear-gradient(100deg,#ffe3f1 0%,#f5a8e0 38%,#c084fc 72%,#a78bfa 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.rv-laurel{width:52px;height:auto;flex-shrink:0;opacity:0.95}
+.rv-laurel{width:60px;height:auto;flex-shrink:0;opacity:0.97}
 .rv-laurel.flip{transform:scaleX(-1)}
 .rv-sub{max-width:560px;margin:0 auto;color:#b9aee0;font-family:'Tajawal',sans-serif;
   font-size:15px;line-height:1.85;font-weight:400}
