@@ -845,3 +845,9 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
     gap: 5px !important;
   }
 }
+
+/* ── Tablet hamburger (768-1023px): show menu-btn, hide nav-links ── */
+@media (min-width:768px) and (max-width:1023px){
+  #menu-btn{display:flex !important;align-items:center;justify-content:center;color:#fff !important}
+  #nav-links{display:none !important}
+}
