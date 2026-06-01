@@ -828,3 +828,18 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-trust-tx span   { font-size:.62rem; }
   .pc-badge         { font-size:.70rem; padding:5px 13px; }
 }
+
+/* ── Lang dropdown – mobile compact (max-width: 600px) ── */
+@media (max-width: 600px) {
+  .lang-dropdown {
+    width: min(290px, 82vw) !important;
+  }
+  .lang-option {
+    padding: 6px 10px !important;
+    font-size: 12.5px !important;
+    gap: 6px !important;
+  }
+  .lang-option a {
+    gap: 6px !important;
+  }
+}
