@@ -37,8 +37,7 @@
   body { font-family: 'Tajawal', sans-serif !important; }
   h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
   .gulf-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); color:#FFD700; padding:8px 24px; border-radius:20px; font-size:.9rem; font-weight:800; margin-bottom:16px; border:2px solid #FFD700; text-shadow:0 1px 3px rgba(0,0,0,0.5); }
-  .channels-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px; }
-  @media(min-width:768px){ .channels-grid { grid-template-columns:repeat(4,1fr); } }
+  @media(min-width:768px){ }
   .channel-card { background:#fff; border-radius:16px; padding:20px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,.08); transition:transform .2s; }
   .channel-card:hover { transform:translateY(-4px); }
   .channel-icon { font-size:2.5rem; margin-bottom:10px; }
@@ -172,7 +171,6 @@
     </div>
     <nav class="hidden md:flex gap-6 items-center">
       <a href="/guide/khalij/#home" class="nav-link text-gray-700 hover:text-purple-700">الرئيسية</a>
-      <a href="/guide/khalij/#channels" class="nav-link text-gray-700 hover:text-purple-700">القنوات</a>
       <a href="/guide/khalij/#pricing" class="nav-link text-gray-700 hover:text-purple-700">الباقات</a>
       <a href="/guide/khalij/#faq" class="nav-link text-gray-700 hover:text-purple-700">الأسئلة</a>
       <a href="/" class="nav-link text-gray-700 hover:text-purple-700">الرئيسية العربية</a>
@@ -188,7 +186,6 @@
   <button id="close-menu" class="close-btn" aria-label="إغلاق">×</button>
   <ul class="menu-links" role="menu">
     <li><a href="/guide/khalij/#home">الرئيسية</a></li>
-    <li><a href="/guide/khalij/#channels">القنوات</a></li>
     <li><a href="/guide/khalij/#pricing">الباقات</a></li>
     <li><a href="/guide/khalij/#faq">الأسئلة الشائعة</a></li>
     <li><a href="/guide/maghreb/">المغرب العربي 🌍</a></li>
@@ -262,254 +259,534 @@
 
   </div>
 
-  <a href="#channels" class="hp-scroll hp-reveal" style="--d:480ms" aria-label="انتقل للأسفل">
+  <a href="#why-us" class="hp-scroll hp-reveal" style="--d:480ms" aria-label="انتقل للأسفل">
     <span class="hp-scroll-mouse"></span>
   </a>
 </section>
+<section id="why-us" aria-label="قسم المميزات">
+  <div class="wu-inner container mx-auto px-4 max-w-5xl">
 
-<!-- Trust Bar --><!-- القنوات -->
-<section id="channels" class="section-spacing bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="section-title-unified">
-      <span class="title-line-1">جميع القنوات الخليجية والعربية</span>
-      <span class="title-line-2">بجودة 4K مباشرة <img src="/images/Slayder/Sport.webp" class="title-icon" alt="رياضة" loading="lazy"></span>
+    <div class="text-center">
+      <span class="wu-badge">
+        <i class="fas fa-crown" style="color:#f5c518;"></i>
+        لماذا Prime IPTV
+      </span>
+    </div>
+
+    <h2 class="wu-title">
+      تجربة بث رقمية أفضل<br>
+      <span>جودة أعلى</span>
     </h2>
-    <p class="text-center text-gray-600 mb-8 text-lg">رياضة • ترفيه • أفلام • أخبار • أطفال • كرة القدم • كأس الخليج</p>
-    <div class="channels-grid">
-      <div class="channel-card"><div class="channel-icon">⚽</div><div class="channel-name">رياضة 4K</div><div class="channel-desc">القنوات الرياضية الكبرى بجودة 4K</div></div>
-      <div class="channel-card"><div class="channel-icon">📺</div><div class="channel-name">ترفيه عربي</div><div class="channel-desc">القنوات الترفيهية الكبرى بجودة HD</div></div>
-      <div class="channel-card"><div class="channel-icon">🎵</div><div class="channel-name">سينما وموسيقى</div><div class="channel-desc">أفلام وموسيقى عربية بجودة HD</div></div>
-      <div class="channel-card"><div class="channel-icon">🎬</div><div class="channel-name">أفلام دولية</div><div class="channel-desc">أفلام ومسلسلات عالمية بجودة 4K</div></div>
-      <div class="channel-card"><div class="channel-icon">📰</div><div class="channel-name">الجزيرة والعربية</div><div class="channel-desc">أخبار مباشرة على مدار الساعة</div></div>
-      <div class="channel-card"><div class="channel-icon">🏆</div><div class="channel-name">دوري السعودي</div><div class="channel-desc">جميع مباريات الدوري السعودي</div></div>
-      <div class="channel-card"><div class="channel-icon">🇦🇪</div><div class="channel-name">قنوات إماراتية</div><div class="channel-desc">أبوظبي، دبي، الظفرة وغيرها</div></div>
-      <div class="channel-card"><div class="channel-icon">🌙</div><div class="channel-name">قنوات دينية</div><div class="channel-desc">السعودية، اقرأ، المجد، هدى</div></div>
+
+    <p class="wu-sub">
+      استمتع بتقنية <strong style="color:#fff;">IPTV</strong> الحديثة التي تمنحك حرية المشاهدة بجودة عالية، في أي وقت ومن أي مكان.
+    </p>
+
+    <div class="wu-grid-cards">
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);"><i class="fas fa-play-circle"></i></div>
+          <h3>منصة بث رقمية مرنة</h3>
+        </div>
+        <p>منصة بث رقمية ما تريد في أي وقت ومن أي مكان بدون قيود.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);"><i class="fas fa-tv"></i></div>
+          <h3>توافق شامل</h3>
+        </div>
+        <p>يعمل على Smart TV، Firestick، Android TV، iPhone والكمبيوتر.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#10b981,#059669);"><i class="fas fa-shield-alt"></i></div>
+          <h3>بث مستقر</h3>
+        </div>
+        <p>تقنية Anti-Freeze تضمن بثاً مستمراً بدون أي تقطيع.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"><i class="fas fa-gem"></i></div>
+          <h3><span class="wu-4k-badge" style="background:linear-gradient(90deg,#8b5cf6,#3b82f6);margin-left:4px;">8K</span> جودة عالية</h3>
+        </div>
+        <p>استمتع بدقة HD و4K وحتى 8K مع صوت واضح وصورة نقية.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);"><i class="fas fa-film"></i></div>
+          <h3>محتوى متنوع</h3>
+        </div>
+        <p>مكتبة رقمية واسعة تلبي مختلف الاهتمامات والأذواق.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);"><i class="fas fa-bolt"></i></div>
+          <h3>تفعيل فوري</h3>
+        </div>
+        <p>تفعيل سريع وسهل فور الاشتراك — خلال دقائق.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#22c55e,#16a34a);"><i class="fas fa-headset"></i></div>
+          <h3>دعم 24/7</h3>
+        </div>
+        <p>فريق دعم متاح على مدار الساعة عبر WhatsApp.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
+      <div class="wu-card">
+        <div class="wu-card-top">
+          <div class="wu-icon-wrap" style="background:linear-gradient(135deg,#f43f5e,#be123c);"><i class="fas fa-tag"></i></div>
+          <h3>أسعار مناسبة</h3>
+        </div>
+        <p>خطط اشتراك تناسب جميع الميزانيات تبدأ من 30€/سنة.</p>
+        <span class="wu-card-arrow" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+      </div>
+
     </div>
   </div>
 </section>
+<section id="guides-section" aria-label="أدلة IPTV حسب المنطقة">
+  <div class="gs-inner container mx-auto px-4 max-w-5xl">
 
-<!-- مقارنة مع الاشتراكات التقليدية -->
-<section class="section-spacing section-bg-light">
-  <div class="container mx-auto px-4">
-    <h2 class="section-title-unified">
-      <span class="title-line-1">Prime IPTV مقابل الاشتراكات الباهظة</span>
-      <span class="title-line-2">وفّر أكثر من 1000 ريال/سنة 🛢️</span>
-    </h2>
-    <p class="text-center text-gray-600 mb-8">اشتراكات القنوات التقليدية تكلّف <strong>أكثر من 1200 ريال/سنة</strong> — Prime IPTV يمنحك أكثر بـ <strong>30€ فقط/سنة</strong></p>
-    <div class="overflow-x-auto">
-      <table class="vs-table">
-        <thead><tr><th>الميزة</th><th>Prime IPTV</th><th>اشتراك تقليدي</th></tr></thead>
-        <tbody>
-          <tr><td>التكلفة السنوية</td><td class="check">30€ – 50€/سنة</td><td class="cross">1200+ ريال/سنة</td></tr>
-          <tr><td>قنوات رياضية متعددة</td><td class="check">✅ مشمولة</td><td class="cross">❌ محدودة</td></tr>
-          <tr><td>قنوات ترفيه وأفلام</td><td class="check">✅ مشمولة</td><td class="cross">❌ غير مشمولة</td></tr>
-          <tr><td>جودة 4K</td><td class="check">✅ جميع الباقات</td><td class="cross">❌ تكلفة إضافية</td></tr>
-          <tr><td>بدون عقد</td><td class="check">✅ نعم</td><td class="cross">❌ عقد سنوي</td></tr>
-          <tr><td>يعمل على Firestick</td><td class="check">✅ نعم</td><td class="cross">❌ يحتاج رسيفر</td></tr>
-          <tr><td>عدد القنوات</td><td class="check">+30,000 قناة</td><td class="cross">~50 قناة فقط</td></tr>
-          <tr><td>أفلام ومسلسلات VOD</td><td class="check">+190,000 عنوان</td><td class="cross">محدود</td></tr>
-        </tbody>
-      </table>
+    <div class="text-center">
+      <span class="gs-badge">
+        <i class="fas fa-map-marker-alt" style="color:#f5c518;"></i>
+        أدلة IPTV حسب المنطقة
+      </span>
     </div>
+
+    <h2 class="gs-title">
+      أدلة <span>مخصصة</span> لكل منطقة
+    </h2>
+
+    <p class="gs-sub">
+      اختر دليلك المحلي واكتشف أفضل الخدمات الرقمية وخيارات المشاهدة في منطقتك.
+    </p>
+
+    <!-- بطاقات المناطق الثلاث -->
+    <div class="gd-grid">
+
+      <a href="/guide/khalij/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge"><i class="fas fa-mosque"></i></div>
+          <h3>دول الخليج</h3>
+        </div>
+        <div class="gd-body">
+          <p class="gd-mtitle">دول الخليج</p>
+          <p class="gd-desc">اكتشف أفضل خيارات المشاهدة والخدمات الرقمية المتاحة في دول الخليج.</p>
+        </div>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
+      </a>
+
+      <a href="/guide/maghreb/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge"><i class="fas fa-earth-africa"></i></div>
+          <h3>المغرب العربي</h3>
+        </div>
+        <div class="gd-body">
+          <p class="gd-mtitle">المغرب العربي</p>
+          <p class="gd-desc">دليل مخصص لاكتشاف أفضل الخدمات الرقمية وخيارات المشاهدة في دول المغرب العربي.</p>
+        </div>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
+      </a>
+
+      <a href="/guide/mashriq/" class="gd-tile">
+        <div class="gd-head">
+          <div class="gd-badge"><i class="fas fa-mountain-sun"></i></div>
+          <h3>المشرق العربي</h3>
+        </div>
+        <div class="gd-body">
+          <p class="gd-mtitle">المشرق العربي</p>
+          <p class="gd-desc">استكشف أفضل المنصات والخدمات والمحتوى المتاح في دول المشرق العربي.</p>
+        </div>
+        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
+      </a>
+
+    </div>
+
+    <!-- ★ Hero featured card — الدليل الشامل -->
+    <a href="/guide/" class="gd-banner" aria-label="اقرأ الدليل الشامل لـ IPTV">
+      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
+      <div class="gd-banner-body">
+        <span class="gd-banner-tag"><i class="fas fa-star"></i> الدليل المميز</span>
+        <h3>الدليل الشامل لـ IPTV</h3>
+        <p>كل ما تحتاج معرفته — الإعداد، الأجهزة، والخدمات الرقمية لأفضل تجربة استخدام.</p>
+        <span class="gd-btn">
+          <i class="fas fa-book-open"></i>
+          اقرأ الدليل الشامل
+        </span>
+      </div>
+    </a>
+
   </div>
 </section>
-
-<!-- المزايا -->
-<section class="section-spacing bg-gray-50">
+<section id="pricing" class="section-spacing pc-section" aria-label="خطط الاشتراك">
   <div class="container mx-auto px-4">
-    <h2 class="section-title-unified">
-      <span class="title-line-1">لماذا يختار أهل الخليج</span>
-      <span class="title-line-2">Prime IPTV <img src="/images/Logo/icon6.webp" alt="IPTV" class="title-icon" loading="lazy"></span>
-    </h2>
-    <div class="grid md:grid-cols-4 gap-8">
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-green-700 mb-4 text-4xl"><i class="fas fa-bolt"></i></div>
-        <h3 class="text-xl font-semibold mb-2">بدون تقطيع</h3>
-        <p class="text-gray-600">سيرفرات Anti-Freeze بجودة <strong>99.9% uptime</strong> — شاهد مباريات الدوري السعودي بدون انقطاع.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-green-700 mb-4 text-4xl"><i class="fas fa-dollar-sign"></i></div>
-        <h3 class="text-xl font-semibold mb-2">أرخص من الاشتراكات التقليدية</h3>
-        <p class="text-gray-600">الاشتراكات التقليدية تكلّف <strong>أكثر من 1200 ريال/سنة</strong>. Prime IPTV من <strong>30€ فقط/سنة</strong> مع آلاف القنوات الإضافية.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-green-700 mb-4 text-4xl"><i class="fas fa-fire"></i></div>
-        <h3 class="text-xl font-semibold mb-2">يعمل على Firestick</h3>
-        <p class="text-gray-600">تثبيت سهل على <strong>Amazon Firestick</strong>، Smart TV، iPhone، Android — في أقل من 5 دقائق.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
-        <div class="text-green-700 mb-4 text-4xl"><i class="fas fa-headset"></i></div>
-        <h3 class="text-xl font-semibold mb-2">دعم عربي 24/7</h3>
-        <p class="text-gray-600">فريق الدعم متاح <strong>على مدار الساعة</strong> عبر واتساب بالعربية لجميع عملاء الخليج.</p>
-      </div>
+
+    <div class="text-center">
+      <span class="ps-badge">
+        <i class="fas fa-tags" style="color:#f5c518;"></i>
+        باقات Prime IPTV
+      </span>
     </div>
-  </div>
-</section>
 
-<!-- الباقات -->
-<section id="pricing" class="section-spacing bg-white">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title-unified">
-      <span class="title-line-1">اختر باقتك</span>
-      <span class="title-line-2">بدون رسوم خفية <img src="/images/Logo/icon7.webp" alt="الأسعار" class="title-icon" loading="lazy"></span>
+    <h2 class="ps-title">
+      اختر <span>باقتك</span> المثالية
     </h2>
-    <p class="text-center mb-10 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500">جميع الباقات تشمل ضمان استرداد 10 أيام</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- الباقة الأساسية -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card">
-        <div style="height:20px"></div>
-        <div class="plan-badge badge-economy">أفضل قيمة</div>
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-blue-500 mb-2">الباقة الأساسية</h3>
-          <p class="text-gray-600 mb-4">مثالية للأفراد والعائلات</p>
-          <div class="duration-slider-container mb-6">
-            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')">
-            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
-              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(0, 'basic')">شهر</span>
-              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(1, 'basic')">3أشهر</span>
-              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(2, 'basic')">6أشهر</span>
-              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(3, 'basic')">سنة</span>
-              <span class="cursor-pointer hover:text-blue-600" onclick="moveSlider(4, 'basic')">سنتين</span>
+    <p class="ps-sub">
+      ثلاث خطط مرنة بجودة تصل إلى 8K واستقرار بلا تقطيع — اختر باقتك وابدأ المشاهدة خلال دقائق.
+    </p>
+
+    <div class="pc-grid">
+
+      <!-- ── الخطة الأساسية ── -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-basic">
+        <span class="pc-badge pc-badge-basic"><i class="fas fa-wallet"></i> الخطة الأساسية</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-wallet"></i></div>
+          <h3 class="pc-title pc-title-basic">الخطة الأساسية</h3>
+          <p class="pc-sub">أفضل بداية لتجربة مشاهدة سهلة وموثوقة</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'basic')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'basic')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>3</span></span></button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>6</span></span></button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">سنتين</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+        </div>
+
+        <div class="pc-price pc-price-basic">
+          <span class="pc-price-num" id="price-val-basic">30</span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-basic" dir="ltr">/ السنة</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة بث رقمية عالية <span class="pc-feat-badge pc-feat-badge-basic">HD</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
             </div>
-          </div>
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-            <span id="price-val-basic">30</span>
-            <span class="text-xl font-bold text-gray-500">يورو</span>
-            <span id="period-text-basic" class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
-          <button class="toggle-features-btn text-blue-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-basic" id="features-basic-btn">
-            <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
-          </button>
-          <ul id="features-basic" class="plan-features hidden text-right mb-6 space-y-2">
-            <li>✅ +21,000 قناة (خليجية، رياضة، عالمية)</li>
-            <li>✅ قنوات رياضية وترفيهية وإخبارية متعددة</li>
-            <li>✅ قنوات إخبارية عربية ودوريات كرة القدم</li>
-            <li>✅ +158,000 فيلم ومسلسل</li>
-            <li>✅ جودة HD / 4K / 8K</li>
-            <li>✅ Firestick، Smart TV، iPhone، Android</li>
-            <li>✅ سيرفرات Anti-Freeze بدون تقطيع</li>
-            <li>✅ دعم واتساب عربي 24/7</li>
-            <li>✅ ضمان استرداد 10 أيام</li>
-          </ul>
-          <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
-        </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-basic" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
+      </div>
+      <div class="pc-trust pc-trust-basic">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>دفع آمن</strong><span>حماية متكاملة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>تفعيل فوري</strong><span>أقل من ساعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>دعم 24/7</strong><span>خدمة سريعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>جودة عالية</strong><span>تقنية متقدمة</span></div></div>
+      </div>
       </div>
 
-      <!-- الباقة المميزة -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card">
-        <div style="height:20px"></div>
-        <div class="plan-badge badge-best">الأكثر طلباً</div>
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-yellow-500 mb-2">الباقة المميزة</h3>
-          <p class="text-gray-600 mb-4">للمتابع الجاد للرياضة والمسلسلات</p>
-          <div class="duration-slider-container mb-6">
-            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')">
-            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
-              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(0, 'premium')">شهر</span>
-              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(1, 'premium')">3أشهر</span>
-              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(2, 'premium')">6أشهر</span>
-              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(3, 'premium')">سنة</span>
-              <span class="cursor-pointer hover:text-yellow-500" onclick="moveSlider(4, 'premium')">سنتين</span>
-            </div>
-          </div>
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-            <span id="price-val-premium">40</span>
-            <span class="text-xl font-bold text-gray-500">يورو</span>
-            <span id="period-text-premium" class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
-          <button class="toggle-features-btn text-yellow-500 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-premium" id="features-premium-btn">
-            <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
-          </button>
-          <ul id="features-premium" class="plan-features hidden text-right mb-6 space-y-2">
-            <li>✅ كل مميزات الباقة الأساسية</li>
-            <li>✅ اتصالان متزامنان</li>
-            <li>✅ دليل البرامج EPG</li>
-            <li>✅ Catch-up (إعادة مشاهدة المباريات)</li>
-            <li>✅ قنوات رياضة 4K Ultra HD</li>
-            <li>✅ أولوية الوصول للسيرفر</li>
-            <li>✅ +63,000 فيلم عند الطلب</li>
-          </ul>
-          <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
+      <!-- ── الخطة المميزة ── -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-premium">
+        <span class="pc-badge pc-badge-premium"><i class="fas fa-star"></i> الخطة المميزة</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3 class="pc-title pc-title-premium">الخطة المميزة</h3>
+          <p class="pc-sub">أفضل اختيار للمستخدمين الأكثر نشاطاً</p>
         </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'premium')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'premium')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>3</span></span></button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>6</span></span></button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">سنتين</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+        </div>
+
+        <div class="pc-price pc-price-premium">
+          <span class="pc-price-num" id="price-val-premium">40</span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-premium" dir="ltr">/ السنة</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة بث رقمية عالية <span class="pc-feat-badge pc-feat-badge-premium">4K</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-film"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-premium" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
+      </div>
+      <div class="pc-trust pc-trust-premium">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>دفع آمن</strong><span>حماية متكاملة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>تفعيل فوري</strong><span>أقل من ساعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>دعم 24/7</strong><span>خدمة سريعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>جودة عالية</strong><span>تقنية متقدمة</span></div></div>
+      </div>
       </div>
 
-      <!-- الباقة الاحترافية -->
-      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card">
-        <div style="height:20px"></div>
-        <div class="plan-badge badge-gold">باقة ذهبية</div>
-        <div class="relative z-10 text-center">
-          <h3 class="text-2xl font-bold text-purple-600 mb-2">الباقة الاحترافية</h3>
-          <p class="text-gray-600 mb-4">لمن يريد أفضل تجربة بث</p>
-          <div class="duration-slider-container mb-6">
-            <input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')">
-            <div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1">
-              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(0, 'pro')">شهر</span>
-              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(1, 'pro')">3أشهر</span>
-              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(2, 'pro')">6أشهر</span>
-              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(3, 'pro')">سنة</span>
-              <span class="cursor-pointer hover:text-purple-600" onclick="moveSlider(4, 'pro')">سنتين</span>
-            </div>
-          </div>
-          <div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1" style="font-family:'Cairo',sans-serif;">
-            <span id="price-val-pro">50</span>
-            <span class="text-xl font-bold text-gray-500">يورو</span>
-            <span id="period-text-pro" class="text-lg font-medium text-gray-400">/ السنة</span>
-          </div>
-          <button class="toggle-features-btn text-purple-600 font-semibold mb-4 flex items-center justify-center w-full gap-2" type="button" aria-expanded="false" aria-controls="features-pro" id="features-pro-btn">
-            <span data-show="عرض المميزات" data-hide="إخفاء المميزات">عرض المميزات</span><span class="plan-arrow text-lg">🔽</span>
-          </button>
-          <ul id="features-pro" class="plan-features hidden text-right mb-6 space-y-2">
-            <li>✅ كل مميزات الباقة المميزة</li>
-            <li>✅ +50,000 قناة عالمية</li>
-            <li>✅ +190,000 فيلم و+40,000 مسلسل</li>
-            <li>✅ 3 اتصالات متزامنة</li>
-            <li>✅ جودة 8K Ultra HD</li>
-            <li>✅ سيرفر مخصص للخليج</li>
-            <li>✅ مباريات PPV مشمولة</li>
-            <li>✅ دعم VIP أولوية</li>
-          </ul>
-          <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">اشترك الآن</a>
+      <!-- ── الخطة الاحترافية ── -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-pro">
+        <span class="pc-badge pc-badge-pro"><i class="fas fa-crown"></i> الخطة الاحترافية</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
+          <h3 class="pc-title pc-title-pro">الخطة الاحترافية</h3>
+          <p class="pc-sub">للمستخدمين الذين يريدون الأفضل فقط</p>
         </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'pro')">شهر</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'pro')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>3</span></span></button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')"><span class="tab-ltr" dir="ltr"><span>أشهر</span><span>6</span></span></button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">سنة</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">سنتين</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+        </div>
+
+        <div class="pc-price pc-price-pro">
+          <span class="pc-price-num" id="price-val-pro">50</span>
+          <span class="pc-price-unit">يورو <span class="pc-price-period" id="period-text-pro" dir="ltr">/ السنة</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">جودة بث رقمية عالية <span class="pc-feat-badge pc-feat-badge-pro">8K</span></span>
+              <span class="pc-feat-desc">استمتع بجودة نقية وواضحة محسّنة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-gem"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">بث مستقر وسلس </span>
+              <span class="pc-feat-desc">تقنية متقدمة لضمان بث مستقر بدون تقطيع</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">متوافق مع جميع الأجهزة </span>
+              <span class="pc-feat-desc">يدعم كل الهواتف، الكمبيوتر وجميع الأجهزة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">تفعيل سريع وسهل </span>
+              <span class="pc-feat-desc">احصل على اشتراكك في دقائق معدودة</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">دعم فني متواصل 24/7 </span>
+              <span class="pc-feat-desc">فريق دعم جاهز لمساعدتك في أي وقت</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%20%D8%B3%D9%86%D8%A9%20-%20Prime%20IPTV" class="pc-cta pc-cta-pro" target="_blank" rel="noopener noreferrer">اشترك الآن</a>
       </div>
+      <div class="pc-trust pc-trust-pro">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>دفع آمن</strong><span>حماية متكاملة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>تفعيل فوري</strong><span>أقل من ساعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>دعم 24/7</strong><span>خدمة سريعة</span></div></div>
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>جودة عالية</strong><span>تقنية متقدمة</span></div></div>
+      </div>
+      </div>
+
     </div>
+
   </div>
 </section>
+<section id="testimonials" class="section-spacing bg-gray-50" aria-label="آراء العملاء">
 
-<!-- آراء العملاء -->
-<section class="section-spacing bg-gray-50">
   <div class="container mx-auto px-4">
+
     <h2 class="section-title-unified">
-      <span class="title-line-1">ماذا يقول عملاؤنا من الخليج</span>
-      <span class="title-line-2">Prime IPTV <img src="/images/Logo/icon8.webp" class="title-icon" alt="آراء" loading="lazy"></span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-8">
+  <span class="title-line-1">
+اكتشف ماذا يقول عملاء
+  </span>
+
+  <span class="title-line-2">
+    Prime IPTV
+    <img src="images/Logo/icon8.webp"
+         class="title-icon"
+         alt="أيقونة آراء العملاء"
+         loading="lazy" decoding="async">
+  </span>
+</h2>
+
+<p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
+ text-transparent bg-clip-text bg-gradient-to-r 
+     from-pink-500 via-fuchsia-500 to-purple-500">
+تقييمات حقيقية تؤكد جودة الخدمة ورضا عملائنا
+</p>
+
+
+    <div class="grid md:grid-cols-5 gap-8">
+
+      <!-- رأي العميل 1 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4 gap-3">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#2563eb"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">م</text></svg>
-          <div><h3 class="font-semibold font-cairo">محمد س.</h3><p class="text-gray-600">🇸🇦 الرياض، السعودية</p><div class="text-yellow-400">★★★★★</div></div>
+        <div class="flex items-center mb-4">
+          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#7c3aed"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">م</text></svg>
+          <div>
+            <p class="font-semibold text-lg">محمد العمراني</p>
+            <p class="text-gray-600">من المغرب</p>
+            <div class="text-yellow-400">★★★★★</div>
+          </div>
         </div>
-        <p class="text-gray-700 leading-relaxed">«شاهدت جميع مباريات الدوري السعودي للمحترفين هذا الموسم بجودة <strong>4K بدون تقطيع واحد</strong>. ألغيت الاشتراك التقليدي ووفّرت أكثر من 900 ريال في السنة. Prime IPTV الأفضل بلا شك!»</p>
+        <p class="text-gray-700 leading-relaxed">
+          بدأت باستخدام هذا <strong>الاشتراك في IPTV</strong> لمشاهدة المحتوى الترفيهي والبرامج ترفيهية، 
+          وأكثر ما أعجبني هو وضوح الصورة وسهولة الوصول إلى المحتوى في أي وقت بدون إعلانات مزعجة.
+        </p>
       </div>
+
+      <!-- رأي العميل 2 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4 gap-3">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#7c3aed"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">ف</text></svg>
-          <div><h3 class="font-semibold font-cairo">فاطمة ع.</h3><p class="text-gray-600">🇦🇪 دبي، الإمارات</p><div class="text-yellow-400">★★★★★</div></div>
+        <div class="flex items-center mb-4">
+          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#2563eb"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">ي</text></svg>
+          <div>
+            <h3 class="font-semibold">يوسف البكري</h3>
+            <p class="text-gray-600">مشجع رياضي</p>
+            <div class="text-yellow-400">★★★★★</div>
+          </div>
         </div>
-        <p class="text-gray-700 leading-relaxed">«التثبيت على Smart TV في 5 دقائق. أشاهد <strong>القنوات الترفيهية والأفلام</strong> بجودة رائعة. الدعم الفني رد عليّ بالعربية في دقيقتين. ممتاز جداً!»</p>
+        <p class="text-gray-700 leading-relaxed">
+          بالنسبة لي، أفضل ما في <strong>مشاهدة المباريات عبر IPTV</strong> هو الاستقرار في أوقات الذروة. 
+          أتابع البطولات بدون تقطيع حتى مع اتصال إنترنت متوسط.
+        </p>
       </div>
+
+      <!-- رأي العميل 3 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4 gap-3">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#059669"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">خ</text></svg>
-          <div><h3 class="font-semibold font-cairo">خالد م.</h3><p class="text-gray-600">🇰🇼 الكويت</p><div class="text-yellow-400">★★★★★</div></div>
+        <div class="flex items-center mb-4">
+          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#059669"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">إ</text></svg>
+          <div>
+            <h4 class="font-semibold">إيمان الزهراء</h4>
+            <p class="text-gray-600">تستخدمه على Smart TV</p>
+            <div class="text-yellow-400">★★★★★</div>
+          </div>
         </div>
-        <p class="text-gray-700 leading-relaxed">«مشترك من سنة ونص ما واجهت أي مشكلة. <strong>القنوات الرياضية بجودة 4K</strong> أفضل من الرسيفر الأصلي. واتساب الدعم يرد فوراً. أنصح فيه كل أهل الخليج!»</p>
+        <p class="text-gray-700 leading-relaxed">
+          إعداد <strong>خدمة IPTV على التلفاز الذكي والهاتف</strong> كان سهلًا جدًا. 
+          أعجبني التنقل بين المحتويات السريع وجودة العرض في جميع الأوقات.
+        </p>
       </div>
+
+      <!-- رأي العميل 4 -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <div class="flex items-center mb-4">
+          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#d97706"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">س</text></svg>
+          <div>
+            <h4 class="font-semibold">سلمى الرحموني</h4>
+            <p class="text-gray-600">أم لطفلين</p>
+            <div class="text-yellow-400">★★★★★</div>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          في المنزل نستخدم <strong>الـ IPTV</strong> لمشاهدة برامج الأطفال والمحتوى الترفيهي العائلية، 
+          وكل شيء يعمل بسلاسة مع تنوع كبير في المحتويات المناسبة لجميع الأعمار.
+        </p>
+      </div>
+
+      <!-- رأي العميل 5 -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <div class="flex items-center mb-4">
+          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#dc2626"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">خ</text></svg>
+          <div>
+            <h4 class="font-semibold">خالد الإدريسي</h4>
+            <p class="text-gray-600">يعيش في أوروبا</p>
+            <div class="text-yellow-400">★★★★★</div>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          استخدام <strong>IPTV خارج بلدي</strong> أعطاني إمكانية متابعة المحتويات المفضلة لدي أينما كنت. 
+          التجربة مستقرة وسلسة حتى أثناء السفر.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
-
-<!-- الأسئلة الشائعة -->
 <section id="faq" class="section-spacing bg-white">
   <div class="container mx-auto px-4 max-w-3xl">
     <h2 class="section-title-unified"><span class="title-line-1">الأسئلة الشائعة</span><span class="title-line-2">IPTV الخليج</span></h2>
@@ -522,98 +799,90 @@
     </div>
   </div>
 </section>
+<section id="seo-text" class="section-spacing seo-light-section" aria-label="محتوى تحسين محركات البحث SEO">
 
-<!-- CTA -->
-<section class="py-16 bg-gradient-to-l from-green-900 via-purple-700 to-red-900 text-white text-center">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4 font-cairo">جاهز للاشتراك؟ 🛢️</h2>
-    <p class="text-xl text-gray-200 mb-8">انضم لآلاف المشتركين من الخليج العربي الذين يستمتعون بـ Prime IPTV</p>
-    <div class="flex justify-center gap-4 flex-wrap">
-      <a href="#pricing" class="px-8 py-4 text-lg font-bold rounded-2xl bg-white text-purple-700 shadow-lg hover:scale-105 transition-transform">عرض الباقات – من 30€/سنة</a>
-      <a href="https://wa.me/212666686732?text=السلام%20عليكم%2C%20أريد%20تجربة%20مجانية%20من%20الخليج." target="_blank" rel="noopener noreferrer" class="px-8 py-4 text-lg font-bold rounded-2xl bg-green-500 text-white shadow-lg hover:scale-105 transition-transform animate-pulse">💬 تجربة مجانية واتساب</a>
+  <div class="container mx-auto px-4 max-w-6xl">
+
+    <h2 class="section-title-unified">
+  <span class="title-line-1">
+    مشاهدة سهلة على أي جهاز
+  </span>
+
+  <span class="title-line-2">
+    Prime IPTV
+    <img src="images/Logo/icon10.webp"
+         class="title-icon"
+         alt="أيقونة Prime IPTV"
+         loading="lazy" decoding="async">
+  </span>
+</h2>
+
+    <div class="seo-grid">
+
+      <!-- بطاقة 1 -->
+      <div class="netflix-card-light">
+        <h3>كيف يجعل IPTV مشاهدة التلفاز أكثر مرونة؟</h3>
+        <p>مشاهدة المحتويات عبر <strong>IPTV</strong> بجودة عالية وبدون تقطيع.</p>
+        <p>آلاف المحتوى الترفيهي والبث الرقمي حسب الطلب.</p>
+        <p>حل ذكي وسريع بدل التلفاز التقليدي.</p>
+
+        <div class="card-icon">
+          <img src="images/Logo/icon1.webp" alt="أيقونة مشاهدة التلفاز IPTV" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- بطاقة 2 -->
+      <div class="netflix-card-light">
+        <h3>لماذا يبحث الناس عن اشتراك IPTV يوميًا؟</h3>
+        <p>اشتراك IPTV يمنحك آلاف المحتويات بجودة عالية.</p>
+        <p>بدل عدة اشتراكات، اشتراك واحد يكفيك.</p>
+        <p>منصة بث رقمية محتويات بلدك من أي مكان في العالم.</p>
+
+        <div class="card-icon">
+          <img src="images/Logo/icon2.webp" alt="أيقونة محتوى عالمي IPTV" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- بطاقة 3 -->
+      <div class="netflix-card-light">
+        <h3>أفضل خيار لعشاق الكرة والمحتوى الترفيهي</h3>
+        <p>نقل مباشر لمحتويات الرياضة والترفيه الدولية.</p>
+        <p>مكتبة محتوى ترفيهي وبرامج ترفيهية عالمية محدثة.</p>
+        <p>يعمل على جميع الأجهزة بدون قيود.</p>
+
+        <div class="card-icon">
+          <img src="images/Logo/icon3.webp" alt="أيقونة الترفيه والرياضة IPTV" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- بطاقة 4 -->
+      <div class="netflix-card-light">
+        <h3>الأجهزة والمنصات التي تدعم IPTV</h3>
+        <p>Smart TV و Android و iPhone و PC.</p>
+        <p>تفعيل عبر M3U أو كود أو رمز QR.</p>
+        <p>حرية تشغيل كاملة بدون أي تعقيد.</p>
+
+        <div class="card-icon">
+          <img src="images/Logo/icon4.webp" alt="أيقونة أجهزة IPTV" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- البطاقة الكبيرة -->
+      <div class="netflix-card-light seo-big-card">
+        <h3 class="big-title">لماذا Prime IPTV هو الخيار الذكي؟</h3>
+        <p>خوادم قوية بتقنيات <strong>Anti-Freeze</strong> لبث مستقر.</p>
+        <p>أكثر من 30,000 محتوى وآلاف المحتوى الحصري.</p>
+        <p>تجربة مشاهدة مثالية لكل أفراد العائلة.</p>
+
+        <div class="card-icon">
+          <img src="images/Logo/icon5.webp" alt="أيقونة حماية IPTV" loading="lazy" decoding="async">
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
-
-</main>
-
-<!-- ══════════════════════════════════════════ -->
-<!--  قد يهمك أيضاً — الأقسام الأخرى            -->
-<!-- ══════════════════════════════════════════ -->
-<section class="bg-gradient-to-b from-gray-50 to-white py-16 px-4">
-  <div class="container mx-auto max-w-6xl">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-black text-purple-800 mb-3" style="font-family:'Cairo',sans-serif;">
-        🌍 قد يهمّك أيضاً
-      </h2>
-      <p class="text-gray-600 text-lg">اطّلع على دليل IPTV لبقية المناطق العربية</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- المغرب العربي -->
-      <a href="/guide/maghreb/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 p-8 text-center">
-          <div class="text-6xl mb-3">🌍</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المغرب العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇲🇦 🇩🇿 🇹🇳 🇱🇾 🇲🇷</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا. القنوات المحلية والأفلام الأوروبية.
-          </p>
-          <div class="flex items-center text-red-600 font-bold group-hover:text-red-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-      <!-- المشرق العربي -->
-      <a href="/guide/mashriq/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-600 p-8 text-center">
-          <div class="text-6xl mb-3">🌅</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المشرق العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇪🇬 🇸🇾 🇱🇧 🇯🇴 🇵🇸 🇮🇶</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق. المسلسلات العربية والقنوات الإخبارية.
-          </p>
-          <div class="flex items-center text-blue-600 font-bold group-hover:text-blue-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-      <!-- الدليل الشامل -->
-      <a href="/guide/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-purple-700 via-blue-600 to-indigo-700 p-8 text-center">
-          <div class="text-6xl mb-3">📖</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">الدليل الشامل</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🏠 كل المناطق</p>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            الدليل الأشمل لـ IPTV بالعربية — شرح كامل عن التثبيت، الأجهزة، EPG وحلّ مشاكل التقطيع.
-          </p>
-          <div class="flex items-center text-purple-600 font-bold group-hover:text-purple-700">
-            <span>الدليل الشامل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════ -->
-<!-- 🔍 SEO Keywords Block                  -->
-<!-- ════════════════════════════════════════ -->
-<!-- ════════════════════════════════════════ -->
-
 <section class="global-coverage">
   <div class="container mx-auto px-4">
     <h2 class="gc-title">🌍 Prime IPTV حول العالم</h2>
@@ -690,7 +959,7 @@
         <div class="flex items-center mb-4 gap-3"><img src="/images/logo.webp" alt="Prime IPTV" class="h-14 w-14 rounded-full" loading="lazy"><h3 class="text-2xl font-bold font-cairo">Prime IPTV</h3></div><p class="text-gray-200">أفضل <strong>خدمة IPTV في الخليج العربي</strong> — قنوات رياضية وترفيهية وأكثر من 30,000 قناة بجودة 4K من 30€/سنة.</p>
 <h4 class="font-semibold mb-4 text-lg font-cairo">روابط سريعة</h4>
         <ul class="space-y-3 text-gray-200" style="list-style:none;padding:0;">
-          <li style="display:block!important"><a href="/guide/khalij/#channels" class="hover:text-white">القنوات الخليجية</a></li>
+          <li style="display:block!important"></li>
           <li style="display:block!important"><a href="/guide/khalij/#pricing" class="hover:text-white">الباقات والأسعار</a></li>
           <li style="display:block!important"><a href="/guide/maghreb/" class="hover:text-white">المغرب العربي 🌍</a></li>
           <li style="display:block!important"><a href="/guide/mashriq/" class="hover:text-white">المشرق العربي 🌙</a></li>
