@@ -553,8 +553,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   max-width:700px; margin:0 auto 36px; line-height:1.75;
 }
 #pricing.pc-section-ltr .ps-sub       { text-align:left !important; margin-inline-start:0; }
-[dir="rtl"] .pc-tabs                  { direction:rtl; }
-[dir="rtl"] .pc-tab                   { direction:ltr; }
+[dir="rtl"] .pc-tabs                  { flex-direction:row-reverse; }
 .pc-section-ltr .pc-feat-text          { text-align:left; }
 .pc-section-ltr .pc-feat-title         { flex-direction:row; justify-content:flex-start; }
 .pc-section-ltr .pc-head              { text-align:left; align-items:flex-start; }
