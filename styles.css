@@ -832,7 +832,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* ── Lang dropdown – mobile compact (max-width: 600px) ── */
 @media (max-width: 600px) {
   .lang-dropdown {
-    width: min(290px, 82vw) !important;
+    width: min(170px, 72vw) !important;
   }
   .lang-option {
     padding: 6px 10px !important;
