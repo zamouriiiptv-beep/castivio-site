@@ -833,13 +833,15 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 @media (max-width: 600px) {
   .lang-dropdown {
     width: min(170px, 72vw) !important;
+    padding: 3px !important;
   }
   .lang-option {
-    padding: 6px 10px !important;
-    font-size: 12.5px !important;
-    gap: 6px !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    gap: 5px !important;
+    margin: 0 !important;
   }
   .lang-option a {
-    gap: 6px !important;
+    gap: 5px !important;
   }
 }
