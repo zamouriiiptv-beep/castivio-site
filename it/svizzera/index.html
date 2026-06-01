@@ -439,18 +439,235 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 80
 </section>
 <!-- ═══════════════ End Guides Section ═══════════════ -->
 
-<section id="prezzi" class="section-spacing bg-gray-50">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title-unified"><span class="title-line-1">Scegli il Tuo Piano</span><span class="title-line-2">Nessun Costo Nascosto <img src="/images/Logo/icon7.webp" alt="Prezzi" class="title-icon" loading="lazy"></span></h2>
-    <p class="text-center mb-10 text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500">Garanzia di rimborso di 10 giorni su tutti i piani</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="plan-card relative p-8 rounded-2xl shadow-md plan-basic-card luxury-card-wrapper"><div class="luxury-card-inner"><div style="height:20px"></div><div class="plan-badge badge-economy">Miglior Prezzo</div><div class="relative z-10 text-center"><h3 class="text-2xl font-bold text-blue-500 mb-2">Piano Base</h3><p class="text-gray-600 mb-4">Ideale per individui e famiglie</p><div class="duration-slider-container mb-6"><input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="basic-plan-slider" oninput="updatePlanData(this.value, 'basic')"><div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1"><span onclick="moveSlider(0,'basic')">mes</span><span onclick="moveSlider(1,'basic')">3m</span><span onclick="moveSlider(2,'basic')">6m</span><span onclick="moveSlider(3,'basic')">anno</span><span onclick="moveSlider(4,'basic')">2a</span></div></div><div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1"><span id="price-val-basic">30</span><span class="text-xl font-bold text-gray-500">EUR</span><span id="period-text-basic" class="text-lg font-medium text-gray-400">/ anno</span></div>
-<ul id="features-basic" class="plan-features text-left mb-6 space-y-2"><li>✅ +21.000 stream (CH, IT, Sport, Internazionali)</li><li>✅ Super League, premier football competitions, Coppa Svizzera</li><li>✅ Stream italiani e svizzeri premium</li><li>✅ +158.000 contenuti on demand TV</li><li>✅ Qualità HD / 4K / 8K</li><li>✅ Firestick, Smart TV, iPhone, Android</li><li>✅ Server anti-freeze</li><li>✅ Supporto WhatsApp 7/24</li><li>✅ Garanzia rimborso 10 giorni</li></ul><a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Ciao%2C%20sono%20in%20Svizzera%20e%20vorrei%20abbonarmi%20al%20Piano%20Base." target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">Abbonati – €30/anno</a></div></div></div>
-      <div class="plan-card relative p-8 rounded-2xl shadow-2xl plan-premium-card luxury-card-wrapper"><div class="luxury-card-inner"><div style="height:20px"></div><div class="plan-badge badge-best">Più Popolare</div><div class="relative z-10 text-center"><h3 class="text-2xl font-bold text-yellow-500 mb-2">Piano Premium</h3><p class="text-gray-600 mb-4">Ideale per appassionati di sport e programmi</p><div class="duration-slider-container mb-6"><input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="premium-plan-slider" oninput="updatePlanData(this.value, 'premium')"><div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1"><span onclick="moveSlider(0,'premium')">mes</span><span onclick="moveSlider(1,'premium')">3m</span><span onclick="moveSlider(2,'premium')">6m</span><span onclick="moveSlider(3,'premium')">anno</span><span onclick="moveSlider(4,'premium')">2a</span></div></div><div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1"><span id="price-val-premium">40</span><span class="text-xl font-bold text-gray-500">EUR</span><span id="period-text-premium" class="text-lg font-medium text-gray-400">/ anno</span></div>
-<ul id="features-premium" class="plan-features text-left mb-6 space-y-2"><li>✅ Tutto del Piano Base</li><li>✅ 2 connessioni simultanee</li><li>✅ Guida TV (EPG)</li><li>✅ Catch-up TV (rivedi le partite perse)</li><li>✅ Stream sport 4K Ultra HD</li><li>✅ +63.000 contenuti on demand</li></ul><a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Ciao%2C%20sono%20in%20Svizzera%20e%20vorrei%20abbonarmi%20al%20Piano%20Premium." target="_blank" rel="noopener noreferrer" class="inline-block bg-yellow-400 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">Abbonati – €40/anno</a></div></div></div>
-      <div class="plan-card relative p-8 rounded-2xl shadow-xl plan-pro-card luxury-card-wrapper"><div class="luxury-card-inner"><div style="height:20px"></div><div class="plan-badge badge-gold">Piano Gold</div><div class="relative z-10 text-center"><h3 class="text-2xl font-bold text-purple-600 mb-2">Piano Pro</h3><p class="text-gray-600 mb-4">L'esperienza di streaming definitiva</p><div class="duration-slider-container mb-6"><input type="range" min="0" max="4" value="3" step="1" class="custom-slider w-full cursor-pointer" id="pro-plan-slider" oninput="updatePlanData(this.value, 'pro')"><div class="flex justify-between text-[11px] font-bold text-gray-500 mt-2 px-1"><span onclick="moveSlider(0,'pro')">mes</span><span onclick="moveSlider(1,'pro')">3m</span><span onclick="moveSlider(2,'pro')">6m</span><span onclick="moveSlider(3,'pro')">anno</span><span onclick="moveSlider(4,'pro')">2a</span></div></div><div class="text-3xl md:text-4xl font-black text-purple-700 mb-6 flex items-center justify-center gap-1"><span id="price-val-pro">50</span><span class="text-xl font-bold text-gray-500">EUR</span><span id="period-text-pro" class="text-lg font-medium text-gray-400">/ anno</span></div>
-<ul id="features-pro" class="plan-features text-left mb-6 space-y-2"><li>✅ Tutto del Piano Premium</li><li>✅ +50.000 stream mondiali</li><li>✅ +190.000 contenuti e +40.000 programmi</li><li>✅ 3 connessioni simultanee</li><li>✅ 8K Ultra HD (dove disponibile)</li><li>✅ Server dedicato per la Svizzera</li><li>✅ Eventi PPV inclusi</li></ul><a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Ciao%2C%20sono%20in%20Svizzera%20e%20vorrei%20abbonarmi%20al%20Piano%20Pro." target="_blank" rel="noopener noreferrer" class="inline-block bg-purple-500 text-white font-semibold py-2 px-6 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all text-sm">Abbonati – €50/anno</a></div></div></div>
+<section id="pricing" class="section-spacing pc-section pc-section-ltr" aria-label="Piani di abbonamento">
+  <div class="container mx-auto px-4">
+
+    <div class="text-center">
+      <span class="ps-badge">
+        <i class="fas fa-tags" style="color:#f5c518;"></i> Pacchetti Prime IPTV
+      </span>
     </div>
+
+    <h2 class="ps-title">
+      Scegli <span>il tuo</span> pacchetto ideale
+    </h2>
+
+    <p class="ps-sub">
+      Tre pacchetti flessibili con qualità fino a 8K e stabilità senza interruzioni — scegli il tuo pacchetto e inizia a guardare in pochi minuti.
+    </p>
+
+    <div class="pc-grid">
+
+      <!-- basic -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-basic">
+        <span class="pc-badge pc-badge-basic"><i class="fas fa-wallet"></i> Pacchetto Base</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-wallet"></i></div>
+          <h3 class="pc-title pc-title-basic">Pacchetto Base</h3>
+          <p class="pc-sub">Il miglior inizio per un'esperienza fluida e affidabile</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'basic')">mese</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'basic')">3 mesi</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 mesi</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">anno</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">2 anni</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+        </div>
+
+        <div class="pc-price pc-price-basic">
+          <span class="pc-price-num" id="price-val-basic">30</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-basic">/ anno</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Qualità streaming elevata <span class="pc-feat-badge pc-feat-badge-basic">HD</span></span>
+              <span class="pc-feat-desc">Goditi una qualità nitida e migliorata</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-contenuti"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Streaming stabile e fluido</span>
+              <span class="pc-feat-desc">Tecnologia avanzata per garantire lo streaming senza interruzioni</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibile con tutti i dispositivi</span>
+              <span class="pc-feat-desc">Funziona su telefoni, computer e tutti i dispositivi</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Attivazione rapida e semplice</span>
+              <span class="pc-feat-desc">Ottieni il tuo abbonamento in pochi minuti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Supporto tecnico 24/7</span>
+              <span class="pc-feat-desc">Team sempre pronto ad aiutarti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-basic" href="https://wa.me/212666686732?text=Ciao%2C%20vorrei%20abbonarmi%20al%20piano%20Base%20per%201%20anno%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-basic" target="_blank" rel="noopener noreferrer">Abbonati ora</a>
+      </div>
+      <div class="pc-trust pc-trust-basic">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Pagamento sicuro</strong><span>Protezione totale</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Attivazione istantanea</strong><span>Meno di un'ora</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Supporto 24/7</strong><span>Servizio rapido</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Alta qualità</strong><span>Tecnologia avanzata</span></div></div>
+      </div>
+      </div>
+      <!-- premium -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-premium">
+        <span class="pc-badge pc-badge-premium"><i class="fas fa-star"></i> Pacchetto Premium</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3 class="pc-title pc-title-premium">Pacchetto Premium</h3>
+          <p class="pc-sub">La scelta migliore per gli utenti più attivi</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'premium')">mese</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'premium')">3 mesi</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 mesi</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">anno</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">2 anni</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+        </div>
+
+        <div class="pc-price pc-price-premium">
+          <span class="pc-price-num" id="price-val-premium">40</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-premium">/ anno</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Qualità streaming elevata <span class="pc-feat-badge pc-feat-badge-premium">4K</span></span>
+              <span class="pc-feat-desc">Goditi una qualità nitida e migliorata</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-photo-contenuti"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Streaming stabile e fluido</span>
+              <span class="pc-feat-desc">Tecnologia avanzata per garantire lo streaming senza interruzioni</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibile con tutti i dispositivi</span>
+              <span class="pc-feat-desc">Funziona su telefoni, computer e tutti i dispositivi</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Attivazione rapida e semplice</span>
+              <span class="pc-feat-desc">Ottieni il tuo abbonamento in pochi minuti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Supporto tecnico 24/7</span>
+              <span class="pc-feat-desc">Team sempre pronto ad aiutarti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-premium" href="https://wa.me/212666686732?text=Ciao%2C%20vorrei%20abbonarmi%20al%20piano%20Premium%20per%201%20anno%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-premium" target="_blank" rel="noopener noreferrer">Abbonati ora</a>
+      </div>
+      <div class="pc-trust pc-trust-premium">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Pagamento sicuro</strong><span>Protezione totale</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Attivazione istantanea</strong><span>Meno di un'ora</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Supporto 24/7</strong><span>Servizio rapido</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Alta qualità</strong><span>Tecnologia avanzata</span></div></div>
+      </div>
+      </div>
+      <!-- pro -->
+      <div class="pc-col">
+      <div class="pc-card pc-card-pro">
+        <span class="pc-badge pc-badge-pro"><i class="fas fa-crown"></i> Pacchetto Pro</span>
+
+        <div class="pc-head">
+          <div class="pc-icon-wrap"><i class="fas fa-crown"></i></div>
+          <h3 class="pc-title pc-title-pro">Pacchetto Pro</h3>
+          <p class="pc-sub">Per gli utenti che vogliono solo il meglio</p>
+        </div>
+
+        <div class="pc-tabs">
+          <button class="pc-tab" type="button" onclick="moveSlider(0,'pro')">mese</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(1,'pro')">3 mesi</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 mesi</button>
+          <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">anno</button>
+          <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">2 anni</button>
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+        </div>
+
+        <div class="pc-price pc-price-pro">
+          <span class="pc-price-num" id="price-val-pro">50</span>
+          <span class="pc-price-unit">EUR <span class="pc-price-period" id="period-text-pro">/ anno</span></span>
+        </div>
+
+        <ul class="pc-features">
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Qualità streaming elevata <span class="pc-feat-badge pc-feat-badge-pro">8K</span></span>
+              <span class="pc-feat-desc">Goditi una qualità nitida e migliorata</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-gem"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Streaming stabile e fluido</span>
+              <span class="pc-feat-desc">Tecnologia avanzata per garantire lo streaming senza interruzioni</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-signal"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Compatibile con tutti i dispositivi</span>
+              <span class="pc-feat-desc">Funziona su telefoni, computer e tutti i dispositivi</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-tv"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Attivazione rapida e semplice</span>
+              <span class="pc-feat-desc">Ottieni il tuo abbonamento in pochi minuti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-bolt"></i></div>
+          </li>
+          <li class="pc-feat">
+            <div class="pc-feat-text">
+              <span class="pc-feat-title">Supporto tecnico 24/7</span>
+              <span class="pc-feat-desc">Team sempre pronto ad aiutarti</span>
+            </div>
+            <div class="pc-feat-icon"><i class="fas fa-headset"></i></div>
+          </li>
+        </ul>
+
+        <a id="whatsapp-link-pro" href="https://wa.me/212666686732?text=Ciao%2C%20vorrei%20abbonarmi%20al%20piano%20Professionale%20per%201%20anno%20%E2%80%93%20Prime%20IPTV" class="pc-cta pc-cta-pro" target="_blank" rel="noopener noreferrer">Abbonati ora</a>
+      </div>
+      <div class="pc-trust pc-trust-pro">
+        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-shield-halved"></i></div><div class="pc-trust-tx"><strong>Pagamento sicuro</strong><span>Protezione totale</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-bolt"></i></div><div class="pc-trust-tx"><strong>Attivazione istantanea</strong><span>Meno di un'ora</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-headset"></i></div><div class="pc-trust-tx"><strong>Supporto 24/7</strong><span>Servizio rapido</span></div></div>        <div class="pc-trust-item"><div class="pc-trust-ic"><i class="fas fa-star"></i></div><div class="pc-trust-tx"><strong>Alta qualità</strong><span>Tecnologia avanzata</span></div></div>
+      </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 <section id="faq" class="section-spacing bg-white">
