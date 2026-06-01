@@ -904,37 +904,45 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 /* Card top row: quote-box (L) · stars (center) · flag (R) */
 .rv-top{display:flex;direction:ltr;align-items:center;justify-content:space-between;
-  gap:10px;margin-bottom:18px;position:relative;z-index:1}
+  gap:10px;margin-bottom:22px;position:relative;z-index:1}
+/* Quote box — bigger, clearer "  */
 .rv-qbox{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
-  width:36px;height:36px;border-radius:11px;
-  background:linear-gradient(140deg,rgba(124,58,237,0.30),rgba(76,29,149,0.30));
-  border:1px solid rgba(167,139,250,0.40);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 0 14px rgba(123,47,255,0.20)}
-.rv-qbox svg{width:18px;height:18px;fill:#d9c4ff}
-.rv-stars{color:#fbbf24;font-size:16px;letter-spacing:2px;direction:ltr;
-  text-shadow:0 0 10px rgba(251,191,36,0.35)}
-.rv-flag{width:42px;height:28px;border-radius:6px;object-fit:cover;flex-shrink:0;
-  box-shadow:0 2px 8px rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.14)}
+  width:40px;height:40px;border-radius:11px;
+  background:linear-gradient(140deg,rgba(124,58,237,0.35),rgba(76,29,149,0.35));
+  border:1px solid rgba(167,139,250,0.45);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.10),0 0 16px rgba(123,47,255,0.22)}
+.rv-qbox::after{content:'\201C';font-family:Georgia,serif;font-size:26px;
+  line-height:1;color:#c4b5fd;font-weight:700}
+/* Stars — slightly bigger */
+.rv-stars{color:#fbbf24;font-size:18px;letter-spacing:3px;direction:ltr;
+  text-shadow:0 0 12px rgba(251,191,36,0.40)}
+/* Flag — slightly smaller + subtle shadow */
+.rv-flag{width:36px;height:24px;border-radius:5px;object-fit:cover;flex-shrink:0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.12)}
 
-/* Person */
-.rv-person{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.rv-avatar{width:48px;height:48px;border-radius:50%;flex-shrink:0;
+/* Person — avatar on LEFT (ltr order), name on right */
+.rv-person{display:flex;direction:ltr;align-items:center;gap:12px;margin-bottom:14px}
+/* Avatar — deep purple/navy background with soft glow */
+.rv-avatar{width:50px;height:50px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(140deg,#8b5cf6,#5b21b6);
-  border:1px solid rgba(196,181,253,0.45);
-  box-shadow:0 0 0 4px rgba(123,47,255,0.12),0 4px 14px rgba(123,47,255,0.45)}
-.rv-avatar svg{width:25px;height:25px;fill:#fff;opacity:0.95}
+  background:linear-gradient(145deg,#1e0a4a,#2d1260);
+  border:1px solid rgba(139,92,246,0.35);
+  box-shadow:0 0 0 3px rgba(123,47,255,0.10),0 0 18px rgba(123,47,255,0.30)}
+.rv-avatar svg{width:26px;height:26px;fill:#a78bfa;opacity:0.90}
+/* Name + location — RTL text inside ltr row */
+.rv-person-info{text-align:right;direction:rtl}
 .rv-name{font-family:'Cairo',sans-serif;font-weight:800;color:#fff;font-size:16.5px;margin:0;line-height:1.2}
 .rv-loc{font-family:'Tajawal',sans-serif;color:#a99fd0;font-size:13px;margin:3px 0 0}
 
-/* Body text */
+/* Body text — line-height matches reference */
 .rv-text{font-family:'Tajawal',sans-serif;color:#d3cbef;font-size:14.5px;
-  line-height:1.9;margin:0 0 18px;position:relative;z-index:1}
+  line-height:1.75;margin:0 0 18px;position:relative;z-index:1}
 .rv-text strong{color:#ecdfff;font-weight:700}
 
-/* Device badges */
+/* Device badges — centered horizontally */
 .rv-tags{display:flex;flex-wrap:wrap;gap:8px;padding-top:16px;
-  border-top:1px solid rgba(167,139,250,0.16)}
+  border-top:1px solid rgba(167,139,250,0.16);
+  justify-content:center}
 .rv-tag{display:inline-flex;align-items:center;gap:6px;
   background:rgba(123,47,255,0.12);border:1px solid rgba(167,139,250,0.30);
   color:#cdbff3;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;
