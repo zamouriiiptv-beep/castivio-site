@@ -847,7 +847,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 }
 
 /* ── Hamburger icon: thick white strokes ── */
-#menu-btn svg{stroke:#ffffff !important;stroke-width:2.5px !important;width:28px !important;height:28px !important}
+#menu-btn svg{stroke:#ffffff !important;stroke-width:3px !important;width:34px !important;height:34px !important}
 
 /* ── Tablet hamburger (768-1023px): show menu-btn, hide nav-links ── */
 @media (min-width:768px) and (max-width:1023px){
