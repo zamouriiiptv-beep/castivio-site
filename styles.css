@@ -999,7 +999,20 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .rv-title h2{font-size:22px}
   .rv-head::before{width:300px;height:300px;opacity:.40}
   .rv-trust{font-size:13px;padding:8px 16px}
-  .rv-card{padding:18px 16px 16px;border-radius:18px}
+  /* ~12% tighter cards on mobile */
+  .rv-card{padding:16px 15px 14px;border-radius:18px}
+  .rv-top{margin-bottom:13px}
+  .rv-qbox{width:32px;height:32px;border-radius:8px}
+  .rv-qbox svg{width:16px;height:16px}
+  .rv-stars{font-size:16px}
+  .rv-flag{width:29px;height:19px}
+  .rv-person{gap:10px;margin-bottom:9px}
+  .rv-avatar{width:38px;height:38px}
+  .rv-avatar svg{width:19px;height:19px}
+  .rv-name{font-size:15px}
+  .rv-loc{font-size:12px}
+  .rv-text{font-size:13.5px;line-height:1.7;margin-bottom:12px}
+  .rv-tags{padding-top:11px;gap:7px}
   .rv-feats{margin-top:14px}
 }
 
