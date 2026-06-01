@@ -554,7 +554,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 }
 #pricing.pc-section-ltr .ps-sub       { text-align:left !important; margin-inline-start:0; }
 .pc-section-ltr .pc-feat-text          { text-align:left; }
-.pc-section-ltr .pc-feat-title         { flex-direction:row; }
+.pc-section-ltr .pc-feat-title         { flex-direction:row; justify-content:flex-start; }
 .pc-section-ltr .pc-head              { text-align:left; align-items:flex-start; }
 .pc-section-ltr .pc-sub               { max-width:none; }
 @media(max-width:768px){
