@@ -750,6 +750,8 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-cta      { grid-area:cta; margin-top:0; }
   .pc-features { grid-area:feats; align-self:stretch; display:flex; flex-direction:column; justify-content:center; padding-top:28px; }
   .pc-feat     { padding:10px 4px; }
+  .pc-trust-tx strong { font-size:.81rem; font-weight:600; }
+  .pc-trust-tx span   { font-size:.69rem; color:rgba(255,255,255,.72); }
 }
 
 /* ══ Desktop layout: 2-column internal card (>1024px) ══ */
@@ -774,6 +776,8 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-cta      { grid-area:cta; margin-top:0; }
   .pc-features { grid-area:feats; align-self:stretch; display:flex; flex-direction:column; justify-content:center; padding-top:28px; }
   .pc-feat     { padding:12px 4px; }
+  .pc-trust-tx strong { font-size:.81rem; font-weight:600; }
+  .pc-trust-tx span   { font-size:.69rem; color:rgba(255,255,255,.72); }
 }
 
 /* ══ LTR pricing: swap column order (head left, feats right) ══ */
