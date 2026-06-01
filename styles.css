@@ -921,6 +921,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .rv-card:hover{
   transform:translateY(-3px);border-color:rgba(140,100,240,0.55);
   box-shadow:0 10px 32px rgba(4,2,14,0.60),0 0 26px rgba(80,20,180,0.18),inset 0 1px 0 rgba(255,255,255,0.06)}
+@media(max-width:699px){.rv-card--lg{display:none}}
 
 /* ── Card top: [quote-box][stars][flag] ── */
 .rv-top{
