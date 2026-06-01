@@ -931,9 +931,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   background:rgba(60,20,120,0.55);
   border:1px solid rgba(120,80,220,0.40);
   display:inline-flex;align-items:center;justify-content:center}
-.rv-qbox::after{
-  content:'C';font-family:Georgia,serif;font-size:22px;
-  line-height:1;color:#b8a8e8;font-weight:700;margin-top:-3px}
+.rv-qbox svg{width:18px;height:18px;fill:#c4b5fd}
 .rv-stars{
   color:#f5a623;font-size:18px;letter-spacing:2px;direction:ltr;
   text-shadow:0 0 10px rgba(245,166,35,0.45)}
