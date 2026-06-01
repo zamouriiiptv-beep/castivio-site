@@ -71,8 +71,8 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preload" href="/styles.css?v=78" as="style">
-  <link rel="stylesheet" href="/styles.css?v=78">
+  <link rel="preload" href="/styles.css?v=79" as="style">
+  <link rel="stylesheet" href="/styles.css?v=79">
   <link rel="preload" href="/css/tailwind.min.css?v=2" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css?v=2">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -872,117 +872,137 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
   </div>
 </section>
 
-<section id="testimonials" class="section-spacing bg-gray-50" aria-label="آراء العملاء">
+<section id="testimonials" class="rv-section" aria-label="آراء العملاء">
+  <div class="rv-inner">
 
-  <div class="container mx-auto px-4">
+    <!-- رأس القسم -->
+    <div class="rv-head">
+      <span class="rv-badge">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16L3 5l5.5 4L12 4l3.5 5L21 5l-2 11H5zm0 3h14v1H5v-1z" fill="#fbbf24"/></svg>
+        Prime IPTV
+      </span>
 
-    <h2 class="section-title-unified">
-  <span class="title-line-1">
-اكتشف ماذا يقول عملاء
-  </span>
-
-  <span class="title-line-2">
-    Prime IPTV
-    <img src="images/Logo/icon8.webp"
-         class="title-icon"
-         alt="أيقونة آراء العملاء"
-         loading="lazy" decoding="async">
-  </span>
-</h2>
-
-<p class="text-center mb-10 text-lg md:text-xl leading-loose font-semibold
- text-transparent bg-clip-text bg-gradient-to-r 
-     from-pink-500 via-fuchsia-500 to-purple-500">
-تقييمات حقيقية تؤكد جودة الخدمة ورضا عملائنا
-</p>
-
-
-    <div class="grid md:grid-cols-5 gap-8">
-
-      <!-- رأي العميل 1 -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#7c3aed"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">م</text></svg>
-          <div>
-            <p class="font-semibold text-lg">محمد العمراني</p>
-            <p class="text-gray-600">من المغرب</p>
-            <div class="text-yellow-400">★★★★★</div>
-          </div>
-        </div>
-        <p class="text-gray-700 leading-relaxed">
-          بدأت باستخدام هذا <strong>الاشتراك في IPTV</strong> لمشاهدة المحتوى الترفيهي والبرامج ترفيهية، 
-          وأكثر ما أعجبني هو وضوح الصورة وسهولة الوصول إلى المحتوى في أي وقت بدون إعلانات مزعجة.
-        </p>
+      <div class="rv-title">
+        <svg class="rv-laurel" viewBox="0 0 40 80" fill="none" aria-hidden="true"><path d="M28 78C16 70 9 58 9 44 9 28 18 12 32 4c-9 11-13 24-13 38 0 14 4 27 9 36z" fill="#c8a23a"/><g fill="#3f8f4f"><ellipse cx="14" cy="56" rx="5" ry="2.5" transform="rotate(35 14 56)"/><ellipse cx="12" cy="46" rx="5" ry="2.5" transform="rotate(25 12 46)"/><ellipse cx="13" cy="36" rx="5" ry="2.5" transform="rotate(15 13 36)"/><ellipse cx="16" cy="26" rx="5" ry="2.5" transform="rotate(5 16 26)"/><ellipse cx="21" cy="17" rx="4.5" ry="2.3" transform="rotate(-8 21 17)"/></g></svg>
+        <h2>تجارب حقيقية من مستخدمينا</h2>
+        <svg class="rv-laurel flip" viewBox="0 0 40 80" fill="none" aria-hidden="true"><path d="M28 78C16 70 9 58 9 44 9 28 18 12 32 4c-9 11-13 24-13 38 0 14 4 27 9 36z" fill="#c8a23a"/><g fill="#3f8f4f"><ellipse cx="14" cy="56" rx="5" ry="2.5" transform="rotate(35 14 56)"/><ellipse cx="12" cy="46" rx="5" ry="2.5" transform="rotate(25 12 46)"/><ellipse cx="13" cy="36" rx="5" ry="2.5" transform="rotate(15 13 36)"/><ellipse cx="16" cy="26" rx="5" ry="2.5" transform="rotate(5 16 26)"/><ellipse cx="21" cy="17" rx="4.5" ry="2.3" transform="rotate(-8 21 17)"/></g></svg>
       </div>
 
-      <!-- رأي العميل 2 -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#2563eb"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">ي</text></svg>
-          <div>
-            <h3 class="font-semibold">يوسف البكري</h3>
-            <p class="text-gray-600">مشجع رياضي</p>
-            <div class="text-yellow-400">★★★★★</div>
-          </div>
-        </div>
-        <p class="text-gray-700 leading-relaxed">
-          بالنسبة لي، أفضل ما في <strong>مشاهدة المباريات عبر IPTV</strong> هو الاستقرار في أوقات الذروة. 
-          أتابع البطولات بدون تقطيع حتى مع اتصال إنترنت متوسط.
-        </p>
-      </div>
+      <p class="rv-sub">آلاف المستخدمين يعتمدون على Prime IPTV يومياً للاستمتاع بتجربة مشاهدة مستقرة وعالية الجودة.</p>
+    </div>
 
-      <!-- رأي العميل 3 -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#059669"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">إ</text></svg>
-          <div>
-            <h4 class="font-semibold">إيمان الزهراء</h4>
-            <p class="text-gray-600">تستخدمه على Smart TV</p>
-            <div class="text-yellow-400">★★★★★</div>
-          </div>
-        </div>
-        <p class="text-gray-700 leading-relaxed">
-          إعداد <strong>خدمة IPTV على التلفاز الذكي والهاتف</strong> كان سهلًا جدًا. 
-          أعجبني التنقل بين المحتويات السريع وجودة العرض في جميع الأوقات.
-        </p>
-      </div>
+    <!-- البطاقات -->
+    <div class="rv-grid">
 
-      <!-- رأي العميل 4 -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#d97706"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">س</text></svg>
+      <!-- رأي 1 -->
+      <article class="rv-card">
+        <span class="rv-quote">&#8220;</span>
+        <div class="rv-top">
+          <img class="rv-flag" src="images/A3lame/flag1.webp" alt="علم المغرب" loading="lazy" decoding="async">
+          <div class="rv-stars" aria-label="5 من 5">★★★★★</div>
+        </div>
+        <div class="rv-person">
+          <span class="rv-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
           <div>
-            <h4 class="font-semibold">سلمى الرحموني</h4>
-            <p class="text-gray-600">أم لطفلين</p>
-            <div class="text-yellow-400">★★★★★</div>
+            <p class="rv-name">محمد العمراني</p>
+            <p class="rv-loc">من المغرب</p>
           </div>
         </div>
-        <p class="text-gray-700 leading-relaxed">
-          في المنزل نستخدم <strong>الـ IPTV</strong> لمشاهدة برامج الأطفال والمحتوى الترفيهي العائلية، 
-          وكل شيء يعمل بسلاسة مع تنوع كبير في المحتويات المناسبة لجميع الأعمار.
-        </p>
-      </div>
+        <p class="rv-text">بدأت باستخدام هذا <strong>الاشتراك في IPTV</strong> لمشاهدة المحتوى الترفيهي، وأكثر ما أعجبني وضوح الصورة وسهولة الوصول إلى المحتوى في أي وقت بدون إعلانات مزعجة.</p>
+        <div class="rv-tags">
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v12H3V4zm0 14h18v2H3v-2zm6 1h6v2H9v-2z"/></svg>Smart TV</span>
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2l-2 7h3l-4 13 1-9H9l2-11h3z"/></svg>Firestick</span>
+        </div>
+      </article>
 
-      <!-- رأي العميل 5 -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <div class="flex items-center mb-4">
-          <svg width="48" height="48" viewBox="0 0 48 48" class="rounded-full ml-4 flex-shrink-0" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#dc2626"/><text x="24" y="29" text-anchor="middle" fill="white" font-size="18" font-family="Arial" font-weight="bold">خ</text></svg>
+      <!-- رأي 2 -->
+      <article class="rv-card">
+        <span class="rv-quote">&#8220;</span>
+        <div class="rv-top">
+          <img class="rv-flag" src="images/A3lame/flag-eg.svg" alt="علم مصر" loading="lazy" decoding="async">
+          <div class="rv-stars" aria-label="5 من 5">★★★★★</div>
+        </div>
+        <div class="rv-person">
+          <span class="rv-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
           <div>
-            <h4 class="font-semibold">خالد الإدريسي</h4>
-            <p class="text-gray-600">يعيش في أوروبا</p>
-            <div class="text-yellow-400">★★★★★</div>
+            <p class="rv-name">سلمى الرحموني</p>
+            <p class="rv-loc">من مصر</p>
           </div>
         </div>
-        <p class="text-gray-700 leading-relaxed">
-          استخدام <strong>IPTV خارج بلدي</strong> أعطاني إمكانية متابعة المحتويات المفضلة لدي أينما كنت. 
-          التجربة مستقرة وسلسة حتى أثناء السفر.
-        </p>
-      </div>
+        <p class="rv-text">في المنزل نستخدم <strong>الـ IPTV</strong> لمشاهدة برامج الأطفال والمحتوى الترفيهي العائلي، وكل شيء يعمل بسلاسة مع تنوع كبير في المحتويات المناسبة لجميع الأعمار.</p>
+        <div class="rv-tags">
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v12H3V4zm0 14h18v2H3v-2zm6 1h6v2H9v-2z"/></svg>Smart TV</span>
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm5 5v8l6-4-6-4z"/></svg>Android TV</span>
+        </div>
+      </article>
+
+      <!-- رأي 3 -->
+      <article class="rv-card">
+        <span class="rv-quote">&#8220;</span>
+        <div class="rv-top">
+          <img class="rv-flag" src="images/A3lame/flag7.webp" alt="علم السعودية" loading="lazy" decoding="async">
+          <div class="rv-stars" aria-label="5 من 5">★★★★★</div>
+        </div>
+        <div class="rv-person">
+          <span class="rv-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <div>
+            <p class="rv-name">خالد الإدريسي</p>
+            <p class="rv-loc">من السعودية</p>
+          </div>
+        </div>
+        <p class="rv-text">أستخدم <strong>Prime IPTV خارج بلدي</strong> لمتابعة المحتويات المفضلة لدي أينما كنت. التجربة مستقرة وسلسة حتى أثناء السفر.</p>
+        <div class="rv-tags">
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 2c-1 1-2.5 1-3.5.5C13 1 14.5 0 16 0c0 .7-.3 1.4 0 2zm3 16c-.6 1.4-1.3 2.7-2.3 3.8-.8.9-1.7 1.9-3 1.9s-1.7-.8-3.2-.8-2 .8-3.2.8-2.2-1-3-1.9C1 20 0 16.5 0 13c0-3.6 2.3-5.5 4.6-5.5 1.3 0 2.3.9 3.2.9.8 0 2-1 3.5-1 .6 0 2.7.1 4 2-3.5 2-3 6.6.7 7.6z"/></svg>iOS</span>
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>IPTV Player</span>
+        </div>
+      </article>
+
+      <!-- رأي 4 -->
+      <article class="rv-card">
+        <span class="rv-quote">&#8220;</span>
+        <div class="rv-top">
+          <img class="rv-flag" src="images/A3lame/flag-ae.svg" alt="علم الإمارات" loading="lazy" decoding="async">
+          <div class="rv-stars" aria-label="5 من 5">★★★★★</div>
+        </div>
+        <div class="rv-person">
+          <span class="rv-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <div>
+            <p class="rv-name">عبد الله المنصوري</p>
+            <p class="rv-loc">من الإمارات</p>
+          </div>
+        </div>
+        <p class="rv-text">أتابع <strong>المباريات الرياضية عبر IPTV</strong> في أوقات الذروة بدون تقطيع. الاستقرار ممتاز حتى مع اتصال إنترنت متوسط، وهذا أهم ما أبحث عنه.</p>
+        <div class="rv-tags">
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v12H3V4zm0 14h18v2H3v-2zm6 1h6v2H9v-2z"/></svg>Smart TV</span>
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2l-2 7h3l-4 13 1-9H9l2-11h3z"/></svg>Firestick</span>
+        </div>
+      </article>
+
+      <!-- رأي 5 -->
+      <article class="rv-card">
+        <span class="rv-quote">&#8220;</span>
+        <div class="rv-top">
+          <img class="rv-flag" src="images/A3lame/flag1.webp" alt="علم المغرب" loading="lazy" decoding="async">
+          <div class="rv-stars" aria-label="5 من 5">★★★★★</div>
+        </div>
+        <div class="rv-person">
+          <span class="rv-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <div>
+            <p class="rv-name">إيمان الزهراء</p>
+            <p class="rv-loc">من المغرب</p>
+          </div>
+        </div>
+        <p class="rv-text">إعداد <strong>خدمة IPTV على التلفاز الذكي والهاتف</strong> كان سهلاً جداً. أعجبني التنقل السريع بين المحتويات وجودة العرض الثابتة في جميع الأوقات.</p>
+        <div class="rv-tags">
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm5 5v8l6-4-6-4z"/></svg>Android TV</span>
+          <span class="rv-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>IPTV Player</span>
+        </div>
+      </article>
 
     </div>
   </div>
 </section>
-<!-- ✅ نهاية قسم آراء العملاء بعد التحسين النهائي ✅ -->
+<!-- ✅ نهاية قسم آراء العملاء — التصميم الجديد ✅ -->
 
 <!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
 <!-- ❓❓ بداية قسم الأسئلة الشائعة (FAQ) — Prime IPTV
