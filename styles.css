@@ -620,13 +620,13 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-title-basic   { background:linear-gradient(90deg,#c77dff,#9d4edd); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .pc-title-premium { background:linear-gradient(90deg,#fcd34d,#fbbf24); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .pc-title-pro     { background:linear-gradient(90deg,#f9a8d4,#f472b6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-.pc-sub { color:rgba(255,255,255,.62); font-size:.85rem; line-height:1.55; margin:0; max-width:260px; }
+.pc-sub { color:#c9c2e8; font-size:.88rem; line-height:1.55; margin:0; max-width:260px; }
 
 /* ── Duration tabs — force LTR so month→2yr order is always left→right ── */
 .pc-tabs { display:flex; gap:3px; background:rgba(0,0,0,.35); border-radius:999px; padding:4px; direction:ltr; }
 .pc-tab {
   flex:1; padding:8px 3px; border:none; background:transparent;
-  color:rgba(255,255,255,.55); font-size:.74rem; font-weight:700;
+  color:#c9c2e8; font-size:.78rem; font-weight:700;
   border-radius:999px; cursor:pointer; transition:background .2s,color .2s; white-space:nowrap;
   font-family:'Tajawal',sans-serif;
 }
@@ -726,7 +726,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .pc-trust-pro     { background:rgba(219,39,119,.06); }
 .pc-trust-tx { display:flex; flex-direction:column; align-items:center; direction:rtl; }
 .pc-trust-tx strong { color:#fff; font-size:.60rem; font-weight:800; line-height:1.3; }
-.pc-trust-tx span   { color:rgba(255,255,255,.45); font-size:.52rem; }
+.pc-trust-tx span   { color:#c9c2e8; font-size:.56rem; }
 
 /* ══ Tablet layout: 2-column internal card (769px–1024px) ══ */
 @media (min-width:769px) and (max-width:1024px) {
@@ -801,9 +801,9 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-head          { gap:6px; margin-top:8px; }
   .pc-icon-wrap     { width:56px; height:56px; font-size:1.35rem; }
   .pc-title         { font-size:1.15rem; }
-  .pc-sub           { font-size:.75rem; max-width:none; }
+  .pc-sub           { font-size:.80rem; max-width:none; }
   .pc-tabs          { padding:3px; gap:2px; }
-  .pc-tab           { font-size:.62rem; padding:6px 2px; }
+  .pc-tab           { font-size:.68rem; padding:6px 2px; }
   .pc-price         { padding:11px 14px; gap:8px; border-radius:14px; }
   .pc-price-num     { font-size:2rem; }
   .pc-price-unit    { font-size:.85rem; }
@@ -817,6 +817,6 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   .pc-trust-item    { min-width:0; padding:5px 1px; }
   .pc-trust-ic      { width:18px; height:18px; font-size:.55rem; margin-bottom:3px; }
   .pc-trust-tx strong { font-size:.52rem; }
-  .pc-trust-tx span   { font-size:.45rem; }
+  .pc-trust-tx span   { font-size:.50rem; }
   .pc-badge         { font-size:.70rem; padding:5px 13px; }
 }
