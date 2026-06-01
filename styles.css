@@ -625,6 +625,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* ── Duration tabs — force LTR so month→2yr order is always left→right ── */
 .pc-tabs { display:flex; gap:3px; background:rgba(0,0,0,.35); border-radius:999px; padding:4px; direction:ltr; }
 .tab-ltr { display:inline-flex; flex-direction:row; direction:ltr; gap:3px; }
+[dir="rtl"] .pc-tabs { flex-direction:row-reverse; }
 .pc-tab {
   flex:1; padding:8px 3px; border:none; background:transparent;
   color:#c9c2e8; font-size:.78rem; font-weight:700;
