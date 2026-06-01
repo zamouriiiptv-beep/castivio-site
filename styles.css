@@ -552,7 +552,11 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   color:#9494bc; font-size:0.92rem; text-align:center;
   max-width:700px; margin:0 auto 36px; line-height:1.75;
 }
-#pricing.pc-section-ltr .ps-sub { text-align:left !important; margin-inline-start:0; }
+#pricing.pc-section-ltr .ps-sub       { text-align:left !important; margin-inline-start:0; }
+.pc-section-ltr .pc-feat-text          { text-align:left; }
+.pc-section-ltr .pc-feat-title         { flex-direction:row; }
+.pc-section-ltr .pc-head              { text-align:left; align-items:flex-start; }
+.pc-section-ltr .pc-sub               { max-width:none; }
 @media(max-width:768px){
   #pricing .ps-badge { margin-bottom:10px; padding:4px 16px; font-size:0.74rem; }
   #pricing .ps-title { font-size:1.5rem; margin-bottom:5px; }
