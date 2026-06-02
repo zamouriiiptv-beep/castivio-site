@@ -306,35 +306,21 @@ document.addEventListener("click", () => {
 /* =========================== FAQ ========================= */
 /* =================== + و × Netflix Style ================= */
 
-// FAQ v2 — accordion + search
+// FAQ v2 — accordion (chevron, first open by default)
 document.querySelectorAll(".faq2-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const item = btn.closest(".faq2-item");
     const isActive = item.classList.contains("faq2-active");
     document.querySelectorAll(".faq2-item").forEach((i) => {
       i.classList.remove("faq2-active");
-      i.querySelector(".faq2-toggle").textContent = "+";
+      i.querySelector(".faq2-btn").setAttribute("aria-expanded", "false");
     });
     if (!isActive) {
       item.classList.add("faq2-active");
       btn.setAttribute("aria-expanded", "true");
-    } else {
-      btn.setAttribute("aria-expanded", "false");
     }
   });
 });
-
-const faqSearch = document.querySelector(".faq2-search");
-if (faqSearch) {
-  faqSearch.addEventListener("input", () => {
-    const q = faqSearch.value.trim().toLowerCase();
-    document.querySelectorAll(".faq2-item").forEach((item) => {
-      const text = item.querySelector(".faq2-q-text").textContent.toLowerCase();
-      const ans  = item.querySelector(".faq2-answer").textContent.toLowerCase();
-      item.classList.toggle("faq2-hidden", !!q && !text.includes(q) && !ans.includes(q));
-    });
-  });
-}
 
   /* ========================================================= */
   /* ============================ SEO ======================== */
