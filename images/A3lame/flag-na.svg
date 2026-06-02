@@ -1,0 +1,29 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue upper-left triangle -->
+  <polygon fill="#003580" points="0,0 900,0 0,600"/>
+  <!-- Green lower-right triangle -->
+  <polygon fill="#009543" points="900,0 900,600 0,600"/>
+  <!-- White diagonal border -->
+  <line x1="0" y1="600" x2="900" y2="0" stroke="#FFFFFF" stroke-width="130"/>
+  <!-- Red diagonal band -->
+  <line x1="0" y1="600" x2="900" y2="0" stroke="#D21034" stroke-width="90"/>
+  <!-- Gold sun with rays in blue section -->
+  <circle cx="185" cy="155" r="52" fill="#FFB612"/>
+  <circle cx="185" cy="155" r="36" fill="#FFB612"/>
+  <!-- 12 sun rays -->
+  <g stroke="#FFB612" stroke-width="8" stroke-linecap="round">
+    <line x1="185" y1="90" x2="185" y2="75"/>
+    <line x1="185" y1="220" x2="185" y2="235"/>
+    <line x1="120" y1="155" x2="105" y2="155"/>
+    <line x1="250" y1="155" x2="265" y2="155"/>
+    <line x1="139" y1="109" x2="128" y2="98"/>
+    <line x1="231" y1="201" x2="242" y2="212"/>
+    <line x1="231" y1="109" x2="242" y2="98"/>
+    <line x1="139" y1="201" x2="128" y2="212"/>
+    <line x1="120" y1="120" x2="110" y2="110"/>
+    <line x1="250" y1="190" x2="260" y2="200"/>
+    <line x1="155" y1="90" x2="148" y2="78"/>
+    <line x1="215" y1="220" x2="222" y2="232"/>
+  </g>
+  <circle cx="185" cy="155" r="28" fill="#FFB612"/>
+</svg>

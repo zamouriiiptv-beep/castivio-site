@@ -1,0 +1,29 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#00AFCA"/>
+  <!-- Yellow ornamental stripe on left -->
+  <rect width="60" height="600" fill="#FEC50C"/>
+  <!-- Yellow sun (32 rays) -->
+  <circle cx="480" cy="240" r="70" fill="#FEC50C"/>
+  <g stroke="#FEC50C" stroke-width="8" stroke-linecap="round">
+    <line x1="480" y1="155" x2="480" y2="138"/>
+    <line x1="480" y1="325" x2="480" y2="342"/>
+    <line x1="395" y1="240" x2="378" y2="240"/>
+    <line x1="565" y1="240" x2="582" y2="240"/>
+    <line x1="420" y1="180" x2="408" y2="168"/>
+    <line x1="540" y1="300" x2="552" y2="312"/>
+    <line x1="540" y1="180" x2="552" y2="168"/>
+    <line x1="420" y1="300" x2="408" y2="312"/>
+    <line x1="395" y1="195" x2="380" y2="183"/>
+    <line x1="565" y1="285" x2="580" y2="297"/>
+    <line x1="395" y1="285" x2="380" y2="297"/>
+    <line x1="565" y1="195" x2="580" y2="183"/>
+    <line x1="455" y1="156" x2="449" y2="140"/>
+    <line x1="505" y1="324" x2="511" y2="340"/>
+    <line x1="505" y1="156" x2="511" y2="140"/>
+    <line x1="455" y1="324" x2="449" y2="340"/>
+  </g>
+  <!-- Eagle (simplified) -->
+  <path d="M380,350 Q480,310 580,350 Q530,370 480,420 Q430,370 380,350Z" fill="#FEC50C"/>
+  <path d="M350,330 Q380,350 380,390 Q360,370 350,330Z" fill="#FEC50C"/>
+  <path d="M610,330 Q580,350 580,390 Q600,370 610,330Z" fill="#FEC50C"/>
+</svg>

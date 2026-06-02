@@ -1,0 +1,19 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="450" height="600" fill="#FFE000"/>
+  <rect x="450" width="450" height="600" fill="#FFFFFF"/>
+  <!-- Simplified papal tiara (3 rings + cross) -->
+  <g transform="translate(680,200)" fill="none" stroke="#C0A000" stroke-width="6">
+    <ellipse cx="0" cy="0" rx="45" ry="20"/>
+    <ellipse cx="0" cy="-30" rx="38" ry="17"/>
+    <ellipse cx="0" cy="-56" rx="30" ry="14"/>
+    <line x1="0" y1="-70" x2="0" y2="-95"/>
+    <line x1="-12" y1="-82" x2="12" y2="-82"/>
+  </g>
+  <!-- Simplified crossed keys -->
+  <g transform="translate(680,340)">
+    <ellipse cx="-25" cy="-55" rx="22" ry="22" fill="none" stroke="#C0A000" stroke-width="6"/>
+    <line x1="-25" y1="-33" x2="20" y2="60" stroke="#C0A000" stroke-width="6"/>
+    <ellipse cx="25" cy="-55" rx="22" ry="22" fill="none" stroke="#C0A000" stroke-width="6"/>
+    <line x1="25" y1="-33" x2="-20" y2="60" stroke="#C0A000" stroke-width="6"/>
+  </g>
+</svg>

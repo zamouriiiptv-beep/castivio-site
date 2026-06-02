@@ -1,0 +1,33 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#30A355"/>
+  <!-- Red vertical stripe on left with carpet patterns -->
+  <rect width="160" height="600" fill="#B71234"/>
+  <!-- 5 carpet gul patterns (simplified circles) -->
+  <g fill="none" stroke="#E8C060" stroke-width="4">
+    <circle cx="80" cy="80" r="35"/>
+    <circle cx="80" cy="80" r="22"/>
+    <circle cx="80" cy="80" r="10"/>
+    <circle cx="80" cy="200" r="35"/>
+    <circle cx="80" cy="200" r="22"/>
+    <circle cx="80" cy="200" r="10"/>
+    <circle cx="80" cy="320" r="35"/>
+    <circle cx="80" cy="320" r="22"/>
+    <circle cx="80" cy="320" r="10"/>
+    <circle cx="80" cy="440" r="35"/>
+    <circle cx="80" cy="440" r="22"/>
+    <circle cx="80" cy="440" r="10"/>
+    <circle cx="80" cy="555" r="35"/>
+    <circle cx="80" cy="555" r="22"/>
+  </g>
+  <!-- White crescent on green area -->
+  <circle cx="430" cy="230" r="70" fill="#FFFFFF"/>
+  <circle cx="460" cy="215" r="56" fill="#30A355"/>
+  <!-- 5 white stars -->
+  <g fill="#FFFFFF">
+    <polygon transform="translate(530,160)" points="0,-22 5.2,-16 19.7,-16 10,-6.1 14.3,8.5 0,-4.7 -14.3,8.5 -10,-6.1 -19.7,-16 -5.2,-16"/>
+    <polygon transform="translate(560,210)" points="0,-22 5.2,-16 19.7,-16 10,-6.1 14.3,8.5 0,-4.7 -14.3,8.5 -10,-6.1 -19.7,-16 -5.2,-16"/>
+    <polygon transform="translate(545,265)" points="0,-22 5.2,-16 19.7,-16 10,-6.1 14.3,8.5 0,-4.7 -14.3,8.5 -10,-6.1 -19.7,-16 -5.2,-16"/>
+    <polygon transform="translate(500,290)" points="0,-22 5.2,-16 19.7,-16 10,-6.1 14.3,8.5 0,-4.7 -14.3,8.5 -10,-6.1 -19.7,-16 -5.2,-16"/>
+    <polygon transform="translate(460,268)" points="0,-22 5.2,-16 19.7,-16 10,-6.1 14.3,8.5 0,-4.7 -14.3,8.5 -10,-6.1 -19.7,-16 -5.2,-16"/>
+  </g>
+</svg>
