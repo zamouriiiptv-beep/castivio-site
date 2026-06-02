@@ -322,31 +322,25 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
   <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
 
-    <!-- الشعار -->
-    <div id="logo-name" class="flex items-center space-x-4">
-      <img id="logo-img" src="images/logo.webp" alt="شعار Prime IPTV"
-           class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
-      <span class="text-2xl md:text-3xl font-bold text-purple-700 m-0 leading-none">
-        Prime IPTV
-      </span>
-    </div>
-
-    <!-- قائمة سطح المكتب -->
-    <nav id="nav-links" class="hidden md:flex space-x-6 items-center" aria-label="روابط التنقل الرئيسية">
-      <a href="#home" class="nav-link text-gray-700 hover:text-purple-700">الرئيسية</a>
-      <a href="#why-us" class="nav-link text-gray-700 hover:text-purple-700">المميزات</a>
-      <a href="#pricing" class="nav-link text-gray-700 hover:text-purple-700">الخطط</a>
-      <a href="#testimonials" class="nav-link text-gray-700 hover:text-purple-700">آراء عملائنا</a>
-      <a href="#faq" class="nav-link text-gray-700 hover:text-purple-700">الأسئلة الشائعة</a>
-    </nav>
-
-    <!-- زر الموبايل -->
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="زر القائمة">
+    <!-- الهمبرغر يسار -->
+    <button id="menu-btn" class="text-gray-700 focus:outline-none" aria-label="زر القائمة">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
+
+    <!-- الشعار في الوسط -->
+    <div id="logo-name" class="flex items-center space-x-3">
+      <img id="logo-img" src="images/logo.webp" alt="شعار Prime IPTV"
+           class="block h-16 w-16 md:h-20 md:w-20 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
+      <span class="text-xl md:text-2xl font-bold text-purple-700 m-0 leading-none">
+        Prime IPTV
+      </span>
+    </div>
+
+    <!-- زر الاشتراك يمين -->
+    <a href="#pricing" class="hdr-subscribe-btn" aria-label="اشترك الآن">اشترك الآن</a>
 
   </div>
 
@@ -1069,16 +1063,30 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 <section id="faq" aria-label="الأسئلة الشائعة">
   <div class="faq2-inner">
 
-    <div class="faq2-head">
-      <span class="faq2-badge"><svg viewBox="0 0 16 16" width="13" height="13" style="vertical-align:-2px;margin-left:5px;fill:currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm.75 10.5h-1.5v-1.5h1.5v1.5zm1.03-4.72-.68.7C8.6 7.9 8.25 8.4 8.25 9.25H7v-.38c0-.83.34-1.58.88-2.12l.93-.95c.28-.27.44-.64.44-1.05C9.25 3.84 8.69 3.25 8 3.25S6.75 3.84 6.75 4.5H5.5C5.5 3.12 6.62 2 8 2s2.5 1.12 2.5 2.5c0 .66-.27 1.26-.72 1.78z"/></svg>FAQ</span>
-      <h2 class="faq2-title">الأسئلة <span class="faq2-grad">الشائعة</span></h2>
-      <p class="faq2-sub">إجابات سريعة وواضحة لأكثر الأسئلة شيوعاً حول خدمة IPTV</p>
+    <!-- Header: text RIGHT + 3D image LEFT (RTL) -->
+    <div class="faq2-head-wrap">
+      <div class="faq2-head">
+        <span class="faq2-badge"><svg viewBox="0 0 16 16" width="13" height="13" style="vertical-align:-2px;margin-left:5px;fill:currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm.75 10.5h-1.5v-1.5h1.5v1.5zm1.03-4.72-.68.7C8.6 7.9 8.25 8.4 8.25 9.25H7v-.38c0-.83.34-1.58.88-2.12l.93-.95c.28-.27.44-.64.44-1.05C9.25 3.84 8.69 3.25 8 3.25S6.75 3.84 6.75 4.5H5.5C5.5 3.12 6.62 2 8 2s2.5 1.12 2.5 2.5c0 .66-.27 1.26-.72 1.78z"/></svg>FAQ</span>
+        <h2 class="faq2-title">الأسئلة <span class="faq2-grad">الشائعة</span></h2>
+        <p class="faq2-sub">إجابات سريعة وواضحة لأكثر الأسئلة شيوعاً حول خدمة IPTV</p>
+      </div>
+      <div class="faq2-3d-box" aria-hidden="true">
+        <span class="faq2-3d-q">❓</span>
+      </div>
+    </div>
+
+    <!-- Search bar -->
+    <div class="faq2-search-wrap">
+      <span class="faq2-search-icon"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
+      <input class="faq2-search-input" type="search" placeholder="ابحث في الأسئلة الشائعة..." aria-label="بحث في الأسئلة الشائعة" id="faqSearchInput">
     </div>
 
     <div class="faq2-list">
 
+      <!-- Q1 -->
       <div class="faq2-item faq2-active">
         <button class="faq2-btn" type="button" aria-expanded="true">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
           <span class="faq2-q-text">ما هو IPTV Subscription ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
@@ -1092,72 +1100,90 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
         </div>
       </div>
 
+      <!-- Q2 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></span>
           <span class="faq2-q-text">كيف أختار أفضل IPTV Provider ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">يتم الاختيار حسب استقرار السيرفرات، حجم المحتوى، الدعم الفني، وتجربة العملاء.</div>
       </div>
 
+      <!-- Q3 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></span>
           <span class="faq2-q-text">كيف أستخدم M3U Playlist وما الفرق بينها وبين API ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">M3U رابط تدفق رقمي، بينما API نظام دخول احترافي مع مزايا إضافية.</div>
       </div>
 
+      <!-- Q4 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5H4V5h16v3zM4 19h16c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2zm0-5h16v3H4v-3z"/></svg></span>
           <span class="faq2-q-text">كيف أحسن IPTV Server Stability وأقلل الانقطاع ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">يتم ذلك عبر استخدام مزود قوي واتصال إنترنت مستقر وسريع.</div>
       </div>
 
+      <!-- Q5 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></span>
           <span class="faq2-q-text">كيف أصلح مشكلة IPTV Buffering ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">عبر تقوية الإنترنت، تقليل الضغط، واختيار جودة بث مناسبة.</div>
       </div>
 
+      <!-- Q6 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></span>
           <span class="faq2-q-text">هل يعمل IPTV على Android و Firestick ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">نعم يعمل عبر تطبيقات مثل IPTV Smarters وTiviMate.</div>
       </div>
 
+      <!-- Q7 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg></span>
           <span class="faq2-q-text">ما هي مزايا IPTV VOD ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">يوفر مكتبة محتوى ترفيهي وبرامج ترفيهية ضخمة بالإضافة للبث المباشر.</div>
       </div>
 
+      <!-- Q8 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm0 14c-3.87 0-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17c0 .5-2.13 2-6 2z"/></svg></span>
           <span class="faq2-q-text">كم حجم المحتوى في اشتراك IPTV عادة ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">يختلف حسب الخطة، وقد يتجاوز 10,000 محتوى.</div>
       </div>
 
+      <!-- Q9 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></span>
           <span class="faq2-q-text">كيف أشغّل IPTV على التلفاز الذكي أو الهاتف ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
         <div class="faq2-answer">عبر تثبيت تطبيق IPTV وإدخال رابط M3U أو بيانات API.</div>
       </div>
 
+      <!-- Q10 -->
       <div class="faq2-item">
         <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg></span>
           <span class="faq2-q-text">هل يوجد دعم فني عند فقدان المحتويات ؟</span>
           <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
         </button>
@@ -1166,13 +1192,28 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
     </div>
 
-    <div class="faq2-cta">
-      <p class="faq2-cta-title">جاهز للبدء الآن ؟</p>
-      <p class="faq2-cta-sub">اختر الباقة المناسبة لك واستمتع بتجربة ترفيهية لا مثيل لها</p>
-      <a href="#pricing" class="faq2-cta-btn">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-left:8px"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14.8l.1.2H17c.75 0 1.41-.41 1.75-1.03l3.24-5.88A1 1 0 0 0 21.1 7H5.21L4.27 5H1v2h2l3.6 7.59zM16 11l-1.5 2.7H8.1l-1.4-2.7H16z"/></svg>
-        اشترك الآن
-      </a>
+    <!-- CTA — two cards -->
+    <div class="faq2-cta-wrap">
+      <!-- Card 1: لم تجد إجابتك؟ -->
+      <div class="faq2-cta">
+        <div class="faq2-cta-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg></div>
+        <p class="faq2-cta-title">لم تجد إجابتك؟</p>
+        <p class="faq2-cta-sub">تواصل معنا مباشرة عبر واتساب وسنرد في أقل من دقيقة</p>
+        <a href="https://wa.me/212666686732" target="_blank" rel="noopener noreferrer" class="faq2-cta-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.003 1.5C6.197 1.5 1.5 6.197 1.5 12.003c0 1.922.517 3.72 1.416 5.271L1.5 22.5l5.35-1.402A10.494 10.494 0 0 0 12.003 22.5c5.806 0 10.5-4.697 10.5-10.497C22.503 6.197 17.809 1.5 12.003 1.5z"/></svg>
+          تواصل معنا
+        </a>
+      </div>
+      <!-- Card 2: جاهز للبدء الآن؟ -->
+      <div class="faq2-cta">
+        <div class="faq2-cta-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="faq2-cta-title">جاهز للبدء الآن؟</p>
+        <p class="faq2-cta-sub">اختر الباقة المناسبة واستمتع بتجربة بث لا مثيل لها</p>
+        <a href="#pricing" class="faq2-cta-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14.8l.1.2H17c.75 0 1.41-.41 1.75-1.03l3.24-5.88A1 1 0 0 0 21.1 7H5.21L4.27 5H1v2h2l3.6 7.59z"/></svg>
+          اشترك الآن
+        </a>
+      </div>
     </div>
 
   </div>
