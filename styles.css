@@ -1065,9 +1065,9 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .faq2-cta-text{text-align:right}
 .faq2-cta-title{color:#f0eaff;font-family:"Cairo",sans-serif;font-weight:800;font-size:18px;margin:0 0 4px}
 .faq2-cta-sub{color:#cdbcf5;font-family:"Tajawal",sans-serif;font-size:12.5px;margin:0;line-height:1.5;white-space:nowrap}
-.faq2-cta-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#5B16A3,#7A3CEB);color:#fff;font-family:"Tajawal",sans-serif;font-weight:700;font-size:12.5px;padding:9px 18px;border-radius:10px;text-decoration:none;transition:opacity .2s;box-shadow:0 0 14px rgba(122,60,235,.35)}
+.faq2-cta-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#5B16A3,#7A3CEB);color:#fff;font-family:"Tajawal",sans-serif;font-weight:700;font-size:11px;padding:6px 11px;border-radius:8px;text-decoration:none;transition:opacity .2s;box-shadow:0 0 12px rgba(122,60,235,.3)}
 .faq2-cta-btn:hover{opacity:.9}
-.faq2-cta-btn svg{width:15px;height:15px}
+.faq2-cta-btn svg{width:13px;height:13px}
 .faq2-cta-wa{background:linear-gradient(135deg,#1ebe57,#25D366);box-shadow:0 0 16px rgba(37,211,102,.4)}
 @media(max-width:600px){
   #faq{padding:40px 0}
