@@ -1011,9 +1011,9 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 
 /* ── Header subscribe button ───────────────────────────── */
-.hdr-subscribe-btn{display:inline-flex;align-items:center;background:linear-gradient(135deg,#5B16A3,#7A3CEB);color:#fff !important;font-family:"Tajawal",sans-serif;font-weight:700;font-size:14px;padding:9px 20px;border-radius:50px;text-decoration:none;white-space:nowrap;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 14px rgba(122,60,235,.45)}
+.hdr-subscribe-btn{display:inline-flex;align-items:center;background:linear-gradient(135deg,#5B16A3,#7A3CEB);color:#fff !important;font-family:"Tajawal",sans-serif;font-weight:700;font-size:11px;padding:6px 13px;border-radius:50px;text-decoration:none;white-space:nowrap;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 14px rgba(122,60,235,.45)}
 .hdr-subscribe-btn:hover{opacity:.9;box-shadow:0 0 20px rgba(122,60,235,.65)}
-@media(max-width:380px){.hdr-subscribe-btn{font-size:12px;padding:7px 14px}}
+@media(max-width:380px){.hdr-subscribe-btn{font-size:10px;padding:5px 11px}}
 /* ── FAQ v2 (مطابق للمرجع 95%) ──────────────────────────── */
 #faq{background:transparent}
 .faq2-inner{max-width:720px;margin:0 auto;padding:0 20px;position:relative}
