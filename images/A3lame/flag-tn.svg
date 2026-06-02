@@ -1,0 +1,11 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#E70013"/>
+  <!-- White circle -->
+  <circle cx="450" cy="300" r="145" fill="#FFFFFF"/>
+  <!-- Red crescent (large circle minus offset circle) -->
+  <circle cx="430" cy="300" r="95" fill="#E70013"/>
+  <circle cx="468" cy="294" r="76" fill="#FFFFFF"/>
+  <!-- Red 5-pointed star to the right of crescent -->
+  <polygon fill="#E70013" transform="translate(510,300)"
+    points="0,-38 9,-13 35,-13 15,5 22,30 0,16 -22,30 -15,5 -35,-13 -9,-13"/>
+</svg>
