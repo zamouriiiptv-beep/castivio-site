@@ -138,18 +138,12 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 80
 </div>
 <header id="header" class="fixed w-full bg-gradient-to-r from-red-50 to-white shadow-md z-50">
   <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
-    <div class="flex items-center space-x-4">
+    <div id="logo-name" class="flex items-center space-x-4">
       <img id="logo-img" src="/images/logo.webp" alt="Prime IPTV Logo" class="block h-20 w-20 md:h-24 md:w-24 rounded-full object-cover" loading="eager" width="80" height="80" fetchpriority="high">
       <span class="text-2xl md:text-3xl font-bold text-purple-700">Prime IPTV</span>
     </div>
-    <nav class="hidden md:flex space-x-6 items-center">
-      <a href="/tr/almanya/#anasayfa" class="nav-link text-gray-700 hover:text-red-700">Anasayfa</a>
-      <a href="/tr/almanya/#spor" class="nav-link text-gray-700 hover:text-red-700">Spor</a>
-      <a href="/tr/almanya/#fiyatlar" class="nav-link text-gray-700 hover:text-red-700">Fiyatlar</a>
-      <a href="/tr/almanya/#sss" class="nav-link text-gray-700 hover:text-red-700">SSS</a>
-      <a href="/tr/" class="nav-link text-gray-700 hover:text-red-700">Global TR</a>
-    </nav>
-    <button id="menu-btn" class="md:hidden text-gray-700" aria-label="Menü"><svg class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <button id="menu-btn" class="text-gray-700" aria-label="Menü"><svg class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <a href="#home" class="hdr-subscribe-btn" aria-label="Küresel Platform">Küresel Platform</a>
   </div>
 </header>
 <div id="overlay" class="overlay" aria-hidden="true"></div>
