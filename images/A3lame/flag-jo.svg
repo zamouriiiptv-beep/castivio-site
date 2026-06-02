@@ -1,0 +1,13 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black top stripe -->
+  <rect width="900" height="200" fill="#007A3D"/>
+  <!-- White middle stripe -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Green bottom stripe -->
+  <rect y="400" width="900" height="200" fill="#000000"/>
+  <!-- Red triangle on hoist -->
+  <polygon points="0,0 0,600 450,300" fill="#CE1126"/>
+  <!-- White 7-pointed star in triangle -->
+  <polygon fill="#FFFFFF" transform="translate(180,300)"
+    points="0,-45 10.5,-14 43,-14 17.5,5 27,38 0,20 -27,38 -17.5,5 -43,-14 -10.5,-14"/>
+</svg>

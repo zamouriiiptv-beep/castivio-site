@@ -1,0 +1,19 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Red top stripe -->
+  <rect width="900" height="200" fill="#EE161F"/>
+  <!-- White middle stripe -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Red bottom stripe -->
+  <rect y="400" width="900" height="200" fill="#EE161F"/>
+  <!-- Green cedar tree (simplified) -->
+  <g fill="#00A650" transform="translate(450,300)">
+    <!-- trunk -->
+    <rect x="-12" y="40" width="24" height="40" rx="4"/>
+    <!-- lower branches -->
+    <polygon points="0,-80 -100,50 100,50"/>
+    <!-- middle branches -->
+    <polygon points="0,-110 -70,10 70,10"/>
+    <!-- top -->
+    <polygon points="0,-130 -40,-30 40,-30"/>
+  </g>
+</svg>
