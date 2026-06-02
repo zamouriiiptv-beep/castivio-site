@@ -545,7 +545,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   margin-bottom:12px;
 }
 #pricing .ps-title span {
-  background:linear-gradient(90deg,#a78bfa 0%,#60a5fa 100%);
+  background:linear-gradient(100deg,#e879f9 0%,#c084fc 50%,#a78bfa 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
 }
 #pricing .ps-sub {
