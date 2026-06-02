@@ -1,0 +1,13 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="600" fill="#006847"/>
+  <rect x="300" width="300" height="600" fill="#FFFFFF"/>
+  <rect x="600" width="300" height="600" fill="#CE1126"/>
+  <!-- Simplified eagle emblem -->
+  <circle cx="450" cy="300" r="55" fill="#D4AF37" opacity="0.3"/>
+  <ellipse cx="450" cy="305" rx="28" ry="38" fill="#8B4513"/>
+  <ellipse cx="435" cy="275" rx="18" ry="22" fill="#6B6B6B"/>
+  <ellipse cx="465" cy="275" rx="18" ry="22" fill="#6B6B6B"/>
+  <circle cx="450" cy="268" r="14" fill="#8B4513"/>
+  <ellipse cx="420" cy="320" rx="30" ry="12" fill="#8B4513" transform="rotate(-30 420 320)"/>
+  <ellipse cx="480" cy="320" rx="30" ry="12" fill="#8B4513" transform="rotate(30 480 320)"/>
+</svg>

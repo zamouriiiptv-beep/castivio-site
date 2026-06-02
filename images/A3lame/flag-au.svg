@@ -1,0 +1,31 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#00008B"/>
+  <!-- Union Jack top-left -->
+  <rect width="450" height="300" fill="#00008B"/>
+  <!-- White diagonals -->
+  <line x1="0" y1="0" x2="450" y2="300" stroke="#FFFFFF" stroke-width="60"/>
+  <line x1="450" y1="0" x2="0" y2="300" stroke="#FFFFFF" stroke-width="60"/>
+  <!-- Red diagonals -->
+  <line x1="0" y1="0" x2="450" y2="300" stroke="#CC0000" stroke-width="36"/>
+  <line x1="450" y1="0" x2="0" y2="300" stroke="#CC0000" stroke-width="36"/>
+  <!-- White cross -->
+  <rect x="180" width="90" height="300" fill="#FFFFFF"/>
+  <rect y="105" width="450" height="90" fill="#FFFFFF"/>
+  <!-- Red cross -->
+  <rect x="195" width="60" height="300" fill="#CC0000"/>
+  <rect y="120" width="450" height="60" fill="#CC0000"/>
+  <!-- Southern Cross stars (right side) -->
+  <polygon fill="#FFFFFF" transform="translate(660,170)"
+    points="0,-22 5,-14 14,-14 7,-8 10,1 0,-5 -10,1 -7,-8 -14,-14 -5,-14"/>
+  <polygon fill="#FFFFFF" transform="translate(750,280)"
+    points="0,-22 5,-14 14,-14 7,-8 10,1 0,-5 -10,1 -7,-8 -14,-14 -5,-14"/>
+  <polygon fill="#FFFFFF" transform="translate(640,350)"
+    points="0,-22 5,-14 14,-14 7,-8 10,1 0,-5 -10,1 -7,-8 -14,-14 -5,-14"/>
+  <polygon fill="#FFFFFF" transform="translate(760,420)"
+    points="0,-22 5,-14 14,-14 7,-8 10,1 0,-5 -10,1 -7,-8 -14,-14 -5,-14"/>
+  <polygon fill="#FFFFFF" transform="translate(680,490)"
+    points="0,-18 4,-11 11,-11 5.5,-6.5 8,0.5 0,-4 -8,0.5 -5.5,-6.5 -11,-11 -4,-11"/>
+  <!-- Commonwealth star -->
+  <polygon fill="#FFFFFF" transform="translate(225,430)"
+    points="0,-35 8,-22 22,-22 11,-13 16,2 0,-8 -16,2 -11,-13 -22,-22 -8,-22"/>
+</svg>
