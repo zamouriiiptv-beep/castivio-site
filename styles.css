@@ -1042,8 +1042,8 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* Card button: [icon-box RIGHT] [text] [circle-arrow LEFT] (RTL) */
 .faq2-btn{width:100%;min-height:60px;display:flex;align-items:center;gap:13px;padding:0 16px;background:none;border:none;cursor:pointer;direction:rtl;text-align:right}
 /* Purple glowing square icon box */
-.faq2-icon-box{flex-shrink:0;width:38px;height:38px;background:rgba(91,22,163,.38);border:1px solid rgba(196,181,253,.28);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(122,60,235,.4),inset 0 0 6px rgba(167,139,250,.1)}
-.faq2-icon-box svg{width:19px;height:19px;fill:#c4b5fd}
+.faq2-icon-box{flex-shrink:0;width:30px;height:30px;background:rgba(91,22,163,.38);border:1px solid rgba(196,181,253,.28);border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(122,60,235,.35),inset 0 0 5px rgba(167,139,250,.1)}
+.faq2-icon-box svg{width:15px;height:15px;fill:#c4b5fd}
 .faq2-item.faq2-active .faq2-icon-box{background:rgba(122,60,235,.5);box-shadow:0 0 18px rgba(122,60,235,.6),inset 0 0 8px rgba(167,139,250,.15)}
 .faq2-q-text{flex:1;color:#e9e0ff;font-family:"Cairo",sans-serif;font-weight:700;font-size:14px;text-align:right;line-height:1.5}
 /* Circular arrow */
@@ -1073,8 +1073,8 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   #faq{padding:40px 0}
   .faq2-title{font-size:22px}
   .faq2-btn{padding:0 12px;min-height:56px;gap:10px}
-  .faq2-icon-box{width:34px;height:34px}
-  .faq2-icon-box svg{width:16px;height:16px}
+  .faq2-icon-box{width:28px;height:28px}
+  .faq2-icon-box svg{width:14px;height:14px}
   .faq2-answer{padding:0 14px 12px}
   .faq2-feat{padding:10px 4px;gap:5px}
   .faq2-feat svg{width:19px;height:19px}
