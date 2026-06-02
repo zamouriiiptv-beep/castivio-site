@@ -1,0 +1,11 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- White upper right -->
+  <rect width="900" height="300" fill="#FFFFFF"/>
+  <!-- Red lower half -->
+  <rect y="300" width="900" height="300" fill="#D52B1E"/>
+  <!-- Blue square upper left -->
+  <rect width="300" height="300" fill="#0039A6"/>
+  <!-- White 5-pointed star in blue square -->
+  <polygon fill="#FFFFFF" transform="translate(150,150)"
+    points="0,-70 16.6,-51 59,-51 27,-20 43,30 0,-14 -43,30 -27,-20 -59,-51 -16.6,-51"/>
+</svg>
