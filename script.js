@@ -321,17 +321,6 @@ document.querySelectorAll(".faq2-btn").forEach((btn) => {
     }
   });
 });
-// FAQ v2 — search filter
-const faqSearchInput = document.getElementById("faqSearchInput");
-if (faqSearchInput) {
-  faqSearchInput.addEventListener("input", () => {
-    const q = faqSearchInput.value.trim().toLowerCase();
-    document.querySelectorAll(".faq2-item").forEach((item) => {
-      const text = item.querySelector(".faq2-q-text").textContent.toLowerCase();
-      item.classList.toggle("faq2-hidden", q.length > 0 && !text.includes(q));
-    });
-  });
-}
 
   /* ========================================================= */
   /* ============================ SEO ======================== */

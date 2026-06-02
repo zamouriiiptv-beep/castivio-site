@@ -1037,13 +1037,6 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .faq2-title{color:#f0eaff;font-size:30px;font-weight:800;font-family:"Cairo",sans-serif;margin:0 0 8px;line-height:1.3}
 .faq2-grad{background:linear-gradient(to left,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .faq2-sub{color:#9b80e8;font-size:14px;font-family:"Tajawal",sans-serif;margin:0;line-height:1.6}
-/* Search bar — slim, light border, big radius, purple glow */
-.faq2-search-wrap{position:relative;margin-bottom:18px}
-.faq2-search-input{width:100%;height:46px;background:rgba(22,10,56,.7);border:1px solid rgba(196,181,253,.14);border-radius:40px;padding:0 46px 0 18px;color:#e9e0ff;font-family:"Tajawal",sans-serif;font-size:14px;direction:rtl;outline:none;transition:border-color .2s,box-shadow .2s;box-sizing:border-box;box-shadow:0 0 14px rgba(122,60,235,.12)}
-.faq2-search-input::placeholder{color:#6b5a9e}
-.faq2-search-input:focus{border-color:rgba(122,60,235,.5);box-shadow:0 0 0 3px rgba(122,60,235,.15),0 0 18px rgba(122,60,235,.25)}
-.faq2-search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex;align-items:center}
-.faq2-search-icon svg{width:18px;height:18px;fill:#a78bfa}
 /* List */
 .faq2-list{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
 /* Card */
