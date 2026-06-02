@@ -1069,13 +1069,6 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .faq2-cta-btn:hover{opacity:.9}
 .faq2-cta-btn svg{width:13px;height:13px}
 .faq2-cta-wa{background:linear-gradient(135deg,#1ebe57,#25D366);box-shadow:0 0 16px rgba(37,211,102,.4)}
-.faq2-stats{display:flex;align-items:stretch;background:#07001a;border:1px solid rgba(196,181,253,.12);border-radius:14px;overflow:hidden;margin-top:14px;direction:rtl}
-.faq2-stat{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:13px 6px 12px;text-align:center;border-left:1px solid rgba(196,181,253,.1)}
-.faq2-stat:last-child{border-left:none}
-.faq2-stat-icon{width:34px;height:34px;background:rgba(91,22,163,.35);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
-.faq2-stat-icon svg{width:18px;height:18px;fill:#c4b5fd}
-.faq2-stat-title{color:#e9e0ff;font-family:"Cairo",sans-serif;font-weight:700;font-size:12px;line-height:1.3}
-.faq2-stat-sub{color:rgba(196,181,253,.6);font-family:"Tajawal",sans-serif;font-size:10px;line-height:1.3}
 @media(max-width:600px){
   #faq{padding:40px 0}
   .faq2-title{font-size:22px}
