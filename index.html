@@ -1066,157 +1066,117 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 <!-- ✅ نهاية قسم آراء العملاء ✅ -->
 
 
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<!-- ❓❓ بداية قسم الأسئلة الشائعة (FAQ) — Prime IPTV
-     – عنوان موحّد مع أيقونة
-     – Grid من عمودين (كمبيوتر) وعمود واحد (موبايل)
-     – Accordion (فتح/إغلاق الأسئلة)
-     – خاضع لنظام section-spacing لتوحيد المسافات -->
-<!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<section id="faq" class="section-spacing bg-white" aria-label="الأسئلة الشائعة">
+<section id="faq" aria-label="الأسئلة الشائعة">
+  <div class="faq2-inner">
 
-  <!-- ⭐ عنوان القسم (موحّد) -->
-  <h2 class="section-title-unified">
+    <div class="faq2-head">
+      <div class="faq2-icon-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+      </div>
+      <span class="faq2-badge">FAQ</span>
+      <h2 class="faq2-title">الأسئلة الشائعة</h2>
+      <p class="faq2-sub">إجابات سريعة وواضحة لأكثر الأسئلة شيوعاً حول خدمة IPTV</p>
+      <div class="faq2-search-wrap">
+        <svg class="faq2-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="search" class="faq2-search" placeholder="ابحث عن سؤال..." aria-label="بحث في الأسئلة الشائعة">
+      </div>
+    </div>
 
-    <span class="title-line-1">
-      أهم الأسئلة الشائعة حول تقنية
-    </span>
+    <div class="faq2-list">
 
-    <span class="title-line-2">
-      IPTV
-      <img src="images/Logo/icon9.webp"
-           class="title-icon"
-           alt="أيقونة الأسئلة الشائعة IPTV"
-           loading="lazy" decoding="async">
-    </span>
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="faq2-q-text">ما هو "IPTV Subscription" وهل يستحق الاشتراك؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">IPTV Subscription هو اشتراك يمكنك من مشاهدة المحتويات والمحتوى الترفيهي عبر الإنترنت.</div>
+      </div>
 
-  </h2>
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg></span>
+          <span class="faq2-q-text">كيف أختار أفضل "Best IPTV Provider"؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">يتم الاختيار حسب استقرار السيرفرات، حجم المحتوى، الدعم الفني، وتجربة العملاء.</div>
+      </div>
 
-  <!-- محتوى FAQ -->
-  <div class="grid md:grid-cols-2 gap-8">
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></span>
+          <span class="faq2-q-text">كيف أستخدم "M3U Playlist" وما الفرق بينها وبين API؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">M3U رابط تدفق رقمي، بينما API نظام دخول احترافي مع مزايا إضافية.</div>
+      </div>
 
-    <!-- FAQ 1 -->
-<div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-  <button class="faq-btn w-full flex justify-between items-center" type="button"
-    aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+          <span class="faq2-q-text">كيف أحسن "IPTV Server Stability" وأقلل الانقطاع؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">يتم ذلك عبر استخدام مزود قوي واتصال إنترنت مستقر وسريع.</div>
+      </div>
 
-    <span class="font-bold faq-title" id="faq1-label">
-      ما هو "IPTV Subscription" وهل يستحق الاشتراك؟
-    </span>
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4 2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></span>
+          <span class="faq2-q-text">كيف أصلح مشكلة IPTV Buffering؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">عبر تقوية الإنترنت، تقليل الضغط، واختيار جودة بث مناسبة.</div>
+      </div>
 
-    <span class="faq-icon" aria-hidden="true">+</span>
-  </button>
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="17.5" r="1.2" fill="currentColor"/></svg></span>
+          <span class="faq2-q-text">هل يعمل IPTV على Android و Firestick؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">نعم يعمل عبر تطبيقات مثل IPTV Smarters وTiviMate.</div>
+      </div>
 
-  <div id="faq1-content" class="faq-content hidden mt-4"
-    role="region" aria-labelledby="faq1-label">
-    IPTV Subscription هو اشتراك يمكنك من مشاهدة المحتويات والمحتوى الترفيهي عبر الإنترنت.
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></span>
+          <span class="faq2-q-text">ما هي مزايا IPTV VOD؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">يوفر مكتبة محتوى ترفيهي وبرامج ترفيهية ضخمة بالإضافة للبث المباشر.</div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <span class="faq2-q-text">كم حجم المحتوى في اشتراك IPTV عادة؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">يختلف حسب الخطة، وقد يتجاوز 10,000 محتوى.</div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.24 7.24 0 0 0-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.47.47 0 0 0 .12.61l2.03 1.58c-.05.3-.07.63-.07.94s.02.64.07.94l-2.03 1.58a.47.47 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.47.47 0 0 0-.12-.61l-2.03-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></span>
+          <span class="faq2-q-text">كيف أعدّ IPTV على التلفاز الذكي أو الهاتف؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">عبر تثبيت تطبيق IPTV وإدخال رابط M3U أو بيانات API.</div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-q-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></span>
+          <span class="faq2-q-text">هل يوجد دعم فني عند فقدان المحتويات؟</span>
+          <span class="faq2-toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq2-answer">نعم، أغلب المزودين يوفرون دعمًا فنيًا عبر واتساب أو البريد.</div>
+      </div>
+
+    </div>
   </div>
-</div>
-
-    <!-- FAQ 2 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
-        <span class="font-bold text-purple-700" id="faq2-label">كيف أختار أفضل "Best IPTV Provider"؟</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq2-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq2-label">
-        يتم الاختيار حسب استقرار السيرفرات، حجم المحتوى، الدعم الفني، وتجربة العملاء.
-      </div>
-    </div>
-
-    <!-- FAQ 3 -->
-    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
-        <span class="font-bold text-blue-700" id="faq3-label">كيف أستخدم "M3U Playlist" وما الفرق بينها وبين API؟</span>
-        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq3-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq3-label">
-        M3U رابط تدفق رقمي، بينما API نظام دخول احترافي مع مزايا إضافية.
-      </div>
-    </div>
-
-    <!-- FAQ 4 -->
-    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq4-content" id="faq4-btn">
-        <span class="font-bold text-pink-700" id="faq4-label">كيف أحسن "IPTV Server Stability" وأقلل الانقطاع؟</span>
-        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq4-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq4-label">
-        يتم ذلك عبر استخدام مزود قوي واتصال إنترنت مستقر وسريع.
-      </div>
-    </div>
-
-    <!-- FAQ 5 -->
-    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq5-content" id="faq5-btn">
-        <span class="font-bold text-indigo-700" id="faq5-label">كيف أصلح مشكلة IPTV Buffering؟</span>
-        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq5-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq5-label">
-        عبر تقوية الإنترنت، تقليل الضغط، واختيار جودة بث مناسبة.
-      </div>
-    </div>
-
-    <!-- FAQ 6 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq6-content" id="faq6-btn">
-        <span class="font-bold text-purple-700" id="faq6-label">هل يعمل IPTV على Android و Firestick؟</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq6-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq6-label">
-        نعم يعمل عبر تطبيقات مثل IPTV Smarters وTiviMate.
-      </div>
-    </div>
-
-    <!-- FAQ 7 -->
-    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq7-content" id="faq7-btn">
-        <span class="font-bold text-blue-700" id="faq7-label">ما هي مزايا IPTV VOD؟</span>
-        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq7-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq7-label">
-        يوفر مكتبة محتوى ترفيهي وبرامج ترفيهية ضخمة بالإضافة للبث المباشر.
-      </div>
-    </div>
-
-    <!-- FAQ 8 -->
-    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq8-content" id="faq8-btn">
-        <span class="font-bold text-pink-700" id="faq8-label">كم حجم المحتوى في اشتراك IPTV عادة؟</span>
-        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq8-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq8-label">
-        يختلف حسب الخطة، وقد يتجاوز 10,000 محتوى.
-      </div>
-    </div>
-
-    <!-- FAQ 9 -->
-    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq9-content" id="faq9-btn">
-        <span class="font-bold text-indigo-700" id="faq9-label">كيف أعدّ IPTV على التلفاز الذكي أو الهاتف؟</span>
-        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq9-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq9-label">
-        عبر تثبيت تطبيق IPTV وإدخال رابط M3U أو بيانات API.
-      </div>
-    </div>
-
-    <!-- FAQ 10 -->
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq10-content" id="faq10-btn">
-        <span class="font-bold text-purple-700" id="faq10-label">هل يوجد دعم فني عند فقدان المحتويات؟</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-              <div id="faq10-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq10-label">
-        نعم، أغلب المزودين يوفرون دعمًا فنيًا عبر واتساب أو البريد.
-      </div>
-    </div>
-
-  </div> <!-- نهاية grid -->
 </section>
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
-<!-- ⭐ نهاية قسم الأسئلة الشائعة (FAQ) ⭐ -->
-<!-- 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 -->
 <!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
 <!-- 🔎 بداية قسم السيو (SEO Content) — Prime IPTV
      – محتوى نصي مخصص لمحركات البحث (SEO)

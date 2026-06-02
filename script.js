@@ -306,36 +306,35 @@ document.addEventListener("click", () => {
 /* =========================== FAQ ========================= */
 /* =================== + و × Netflix Style ================= */
 
-document.querySelectorAll(".faq-btn").forEach((btn) => {
+// FAQ v2 — accordion + search
+document.querySelectorAll(".faq2-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-
-    const card = btn.closest("#faq .grid > div");
-    const content = card.querySelector(".faq-content");
-    const icon = btn.querySelector(".faq-icon");
-
-    document.querySelectorAll("#faq .grid > div").forEach((item) => {
-      if (item !== card) {
-        item.classList.remove("faq-item-active");
-
-        const c = item.querySelector(".faq-content");
-        const i = item.querySelector(".faq-icon");
-
-        if (c) c.classList.add("hidden");
-        if (i) i.textContent = "+";
-      }
+    const item = btn.closest(".faq2-item");
+    const isActive = item.classList.contains("faq2-active");
+    document.querySelectorAll(".faq2-item").forEach((i) => {
+      i.classList.remove("faq2-active");
+      i.querySelector(".faq2-toggle").textContent = "+";
     });
-
-    card.classList.toggle("faq-item-active");
-    content.classList.toggle("hidden");
-
-    if (card.classList.contains("faq-item-active")) {
-      icon.textContent = "×";
+    if (!isActive) {
+      item.classList.add("faq2-active");
+      btn.setAttribute("aria-expanded", "true");
     } else {
-      icon.textContent = "+";
+      btn.setAttribute("aria-expanded", "false");
     }
-
   });
 });
+
+const faqSearch = document.querySelector(".faq2-search");
+if (faqSearch) {
+  faqSearch.addEventListener("input", () => {
+    const q = faqSearch.value.trim().toLowerCase();
+    document.querySelectorAll(".faq2-item").forEach((item) => {
+      const text = item.querySelector(".faq2-q-text").textContent.toLowerCase();
+      const ans  = item.querySelector(".faq2-answer").textContent.toLowerCase();
+      item.classList.toggle("faq2-hidden", !!q && !text.includes(q) && !ans.includes(q));
+    });
+  });
+}
 
   /* ========================================================= */
   /* ============================ SEO ======================== */
