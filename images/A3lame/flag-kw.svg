@@ -1,0 +1,10 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green top stripe -->
+  <rect width="900" height="200" fill="#007A3D"/>
+  <!-- White middle stripe -->
+  <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+  <!-- Red bottom stripe -->
+  <rect y="400" width="900" height="200" fill="#CE1126"/>
+  <!-- Black trapezoid on left -->
+  <polygon points="0,0 200,200 200,400 0,600" fill="#000000"/>
+</svg>
