@@ -56,7 +56,7 @@
   @media (min-width: 768px) { .hero-section img { max-height: 260px; } }
   main { padding-top: 0 !important; }
   /* Gulf city skyline */
-  .khalij-skyline{position:absolute;bottom:0;left:0;width:100%;height:220px;pointer-events:none;z-index:2;display:block;overflow:visible}
+  .khalij-skyline{position:absolute;bottom:0;left:0;width:100%;height:220px;pointer-events:none;z-index:3;display:block}
   @media(min-width:768px){.khalij-skyline{height:280px}}
 </style>
 
@@ -215,30 +215,26 @@
     <span class="hp-orb hp-orb--4"></span>
     <div class="hp-particles"></div>
     <div class="hp-vignette"></div>
-    <!-- Gulf city skyline silhouette -->
-    <svg class="khalij-skyline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  </div>
+
+  <!-- Gulf city skyline silhouette — outside hp-bg for guaranteed visibility -->
+  <svg class="khalij-skyline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
-        <!-- Sky behind buildings: brighter blue-purple horizon -->
         <linearGradient id="khalijSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="rgba(10,4,40,0)"/>
-          <stop offset="55%"  stop-color="rgba(25,10,80,0.55)"/>
-          <stop offset="100%" stop-color="rgba(40,15,120,0.85)"/>
+          <stop offset="0%"   stop-color="rgba(15,6,55,0)"/>
+          <stop offset="40%"  stop-color="rgba(30,12,90,0.6)"/>
+          <stop offset="100%" stop-color="rgba(20,8,70,0.95)"/>
         </linearGradient>
-        <!-- City lights pulse at base -->
-        <radialGradient id="khalijLights" cx="50%" cy="100%" r="65%">
-          <stop offset="0%"  stop-color="rgba(100,40,255,0.65)"/>
-          <stop offset="45%" stop-color="rgba(50,15,180,0.30)"/>
+        <radialGradient id="khalijLights" cx="50%" cy="100%" r="70%">
+          <stop offset="0%"  stop-color="rgba(130,50,255,0.75)"/>
+          <stop offset="40%" stop-color="rgba(70,20,200,0.40)"/>
           <stop offset="100%" stop-color="rgba(5,1,20,0)"/>
         </radialGradient>
       </defs>
-      <!-- Sky gradient layer -->
       <rect width="1440" height="300" fill="url(#khalijSky)"/>
-      <!-- City lights glow -->
-      <ellipse cx="720" cy="310" rx="980" ry="180" fill="url(#khalijLights)"/>
-      <!-- Dubai/Gulf skyline silhouette — solid dark against the lit sky -->
-      <path fill="#02000a" d="M0,300 V280 H80 V275 H150 V280 H200 V272 H265 V278 H305 V268 H352 V274 H388 V263 H425 V268 H455 V257 H482 V263 H508 V251 H532 V257 H552 V243 H572 V249 H590 V236 H608 V242 H622 V228 H635 V234 H645 V219 H656 V225 H665 V209 H675 V215 H683 V198 H690 V205 H696 V186 H701 V193 H706 V174 H710 V162 H712 V148 H714 V132 H715 V115 H716 V96 H717 V75 H718 V52 H719 V28 H720 V8 H721 V5 H722 V8 H723 V28 H724 V52 H725 V75 H726 V96 H727 V115 H728 V132 H729 V148 H730 V138 H733 V150 H737 V132 H740 V142 H743 V128 H746 V140 H750 V120 H753 V132 H757 V145 H762 V158 H768 V170 H775 V182 H784 V195 H794 V208 H806 V220 H820 V232 H836 V243 H854 V253 H874 V261 H897 V267 H924 V272 H956 V276 H996 V279 H1046 V281 H1108 V283 H1185 V285 H1285 V287 H1440 V300 H0 Z"/>
-    </svg>
-  </div>
+      <ellipse cx="720" cy="310" rx="1000" ry="190" fill="url(#khalijLights)"/>
+      <path fill="#000008" d="M0,300 V280 H80 V275 H150 V280 H200 V272 H265 V278 H305 V268 H352 V274 H388 V263 H425 V268 H455 V257 H482 V263 H508 V251 H532 V257 H552 V243 H572 V249 H590 V236 H608 V242 H622 V228 H635 V234 H645 V219 H656 V225 H665 V209 H675 V215 H683 V198 H690 V205 H696 V186 H701 V193 H706 V174 H710 V162 H712 V148 H714 V132 H715 V115 H716 V96 H717 V75 H718 V52 H719 V28 H720 V8 H721 V5 H722 V8 H723 V28 H724 V52 H725 V75 H726 V96 H727 V115 H728 V132 H729 V148 H730 V138 H733 V150 H737 V132 H740 V142 H743 V128 H746 V140 H750 V120 H753 V132 H757 V145 H762 V158 H768 V170 H775 V182 H784 V195 H794 V208 H806 V220 H820 V232 H836 V243 H854 V253 H874 V261 H897 V267 H924 V272 H956 V276 H996 V279 H1046 V281 H1108 V283 H1185 V285 H1285 V287 H1440 V300 H0 Z"/>
+  </svg>
 
   <!-- ════ Content ════ -->
   <div class="hp-inner">
