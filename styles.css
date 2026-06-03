@@ -950,7 +950,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   box-shadow:0 0 0 3px rgba(80,20,160,0.08),0 0 12px rgba(80,20,160,0.18)}
 .rv-avatar svg{width:22px;height:22px;fill:#9b80e8;opacity:0.85}
 .rv-person-info{text-align:right;direction:rtl}
-.rv-name{font-family:'Cairo',sans-serif;font-weight:800;color:#f0eaff;font-size:16px;margin:0;line-height:1.25;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.rv-name{font-family:'Cairo',sans-serif;font-weight:800;color:#f0eaff;font-size:16px;margin:0;line-height:1.25;display:flex;align-items:center;gap:6px;flex-wrap:wrap;direction:ltr}
 .rv-verified{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.10);border:1px solid rgba(74,222,128,0.28);border-radius:20px;padding:1px 8px;white-space:nowrap;letter-spacing:0.3px;line-height:1.6}
 .rv-loc{font-family:'Tajawal',sans-serif;color:#7c6eaa;font-size:12.5px;margin:2px 0 0}
 
