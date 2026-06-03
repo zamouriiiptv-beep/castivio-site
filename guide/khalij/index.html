@@ -449,14 +449,48 @@
               <stop offset="0" stop-color="#7b2fff"/>
               <stop offset="1" stop-color="#4f46e5"/>
             </linearGradient>
+            <radialGradient id="pulseGlow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5c518" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5c518" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pulseGlow2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
           </defs>
-          <!-- اليابسة: شبه الجزيرة العربية -->
+
+          <!-- اليابسة -->
           <path d="M10 25 L20 40 L40 80 L50 105 L70 140 L90 185 L93 194 L110 192 L150 180 L180 165 L210 150 L230 130 L245 115 L255 95 L250 80 L225 57 L223 56 L205 76 L186 75 L176 70 L175 60 L172 59 L168 67 L160 55 L148 35 L140 27 L135 20 L100 5 L60 2 L30 15 Z"
                 fill="url(#gulfMapGrad)" fill-opacity="0.85"
                 stroke="#c084fc" stroke-width="1.4" stroke-linejoin="round"/>
           <!-- جزيرة البحرين -->
           <circle cx="164" cy="56" r="2.6" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="0.8"/>
-          <!-- خطوط إشارة للدول الصغيرة -->
+
+          <!-- نقطة الرياض (السعودية) — ذهبية متنفّسة -->
+          <circle cx="105" cy="108" r="18" fill="url(#pulseGlow1)" opacity="0.25">
+            <animate attributeName="r" values="14;22;14" dur="2.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.25;0.05;0.25" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="105" cy="108" r="4.5" fill="#f5c518" filter="url(#glow)">
+            <animate attributeName="r" values="3.5;5;3.5" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="105" cy="108" r="2" fill="#fff"/>
+
+          <!-- نقطة دبي (الإمارات) — بنفسجية متنفّسة -->
+          <circle cx="214" cy="88" r="16" fill="url(#pulseGlow2)" opacity="0.25">
+            <animate attributeName="r" values="12;20;12" dur="3.2s" repeatCount="indefinite" begin="0.6s"/>
+            <animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.2s" repeatCount="indefinite" begin="0.6s"/>
+          </circle>
+          <circle cx="214" cy="88" r="4" fill="#a78bfa" filter="url(#glow)">
+            <animate attributeName="r" values="3;4.8;3" dur="3.2s" repeatCount="indefinite" begin="0.6s"/>
+          </circle>
+          <circle cx="214" cy="88" r="1.8" fill="#fff"/>
+
+          <!-- خطوط إشارة -->
           <g stroke="#c084fc" stroke-width="0.7" stroke-opacity="0.75">
             <line x1="156" y1="42" x2="172" y2="61"/>
             <line x1="140" y1="50" x2="162" y2="56"/>
