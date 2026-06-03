@@ -1,9 +1,0 @@
-<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="450" height="600" fill="#006233"/>
-  <rect x="450" width="450" height="600" fill="#FFFFFF"/>
-  <!-- Red crescent and star -->
-  <circle cx="480" cy="300" r="110" fill="#D21034"/>
-  <circle cx="520" cy="300" r="90" fill="#FFFFFF"/>
-  <!-- Red star (5-pointed) -->
-  <polygon fill="#D21034" transform="translate(520,270)" points="0,-40 9.5,-29 38,-29 16,-11 25,17 0,1 -25,17 -16,-11 -38,-29 -9.5,-29"/>
-</svg>

@@ -1,8 +1,0 @@
-<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="300" height="600" fill="#00853F"/>
-  <rect x="300" width="300" height="600" fill="#FDEF42"/>
-  <rect x="600" width="300" height="600" fill="#E31B23"/>
-  <!-- Green star in yellow band -->
-  <polygon fill="#00853F" transform="translate(450,300)"
-    points="0,-60 14.1,-43.4 57,-43.4 22.8,-16.6 36.6,23.5 0,-7.5 -36.6,23.5 -22.8,-16.6 -57,-43.4 -14.1,-43.4"/>
-</svg>
