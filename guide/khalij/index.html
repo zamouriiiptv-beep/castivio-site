@@ -443,31 +443,36 @@
 
       <!-- العمود الثاني: خريطة الخليج العربي -->
       <div class="gulf-map-wrap">
-        <svg viewBox="0 0 220 220" role="img" aria-label="خريطة الخليج العربي">
+        <svg viewBox="0 0 270 210" role="img" aria-label="خريطة شبه الجزيرة العربية والخليج">
           <defs>
             <linearGradient id="gulfMapGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#a855f7"/>
+              <stop offset="0" stop-color="#7b2fff"/>
               <stop offset="1" stop-color="#4f46e5"/>
             </linearGradient>
           </defs>
-          <!-- شبه الجزيرة العربية -->
-          <path d="M70 30 L95 42 L106 52 L110 66 L116 56 L140 72 L158 67 L166 95 L159 122 L148 142 L120 160 L96 167 L73 159 L60 131 L47 100 L42 69 L52 44 L61 35 Z"
-                fill="url(#gulfMapGrad)" fill-opacity="0.20"
-                stroke="url(#gulfMapGrad)" stroke-width="1.6" stroke-opacity="0.9" stroke-linejoin="round"/>
-          <!-- مدن الخليج -->
-          <g fill="#c084fc">
-            <circle cx="80" cy="42" r="2.6"/>
-            <circle cx="100" cy="64" r="2.6"/>
-            <circle cx="110" cy="60" r="2.6"/>
-            <circle cx="138" cy="78" r="2.6"/>
-            <circle cx="158" cy="104" r="2.6"/>
-            <circle cx="92" cy="92" r="3.2" fill="#f5c518"/>
+          <!-- اليابسة: شبه الجزيرة العربية -->
+          <path d="M10 25 L20 40 L40 80 L50 105 L70 140 L90 185 L93 194 L110 192 L150 180 L180 165 L210 150 L230 130 L245 115 L255 95 L250 80 L225 57 L223 56 L205 76 L186 75 L176 70 L175 60 L172 59 L168 67 L160 55 L148 35 L140 27 L135 20 L100 5 L60 2 L30 15 Z"
+                fill="url(#gulfMapGrad)" fill-opacity="0.85"
+                stroke="#c084fc" stroke-width="1.4" stroke-linejoin="round"/>
+          <!-- البحرين -->
+          <circle cx="164" cy="56" r="2.4" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="0.8"/>
+          <!-- نقاط المدن -->
+          <g>
+            <circle cx="140" cy="26" r="2.6" fill="#fff"/>
+            <circle cx="130" cy="73" r="3.6" fill="#f5c518"/>
+            <circle cx="58" cy="106" r="2.6" fill="#fff"/>
+            <circle cx="175" cy="63" r="2.6" fill="#fff"/>
+            <circle cx="210" cy="70" r="2.6" fill="#fff"/>
+            <circle cx="245" cy="84" r="2.6" fill="#fff"/>
           </g>
-          <g stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.5">
-            <line x1="92" y1="92" x2="80" y2="42"/>
-            <line x1="92" y1="92" x2="100" y2="64"/>
-            <line x1="92" y1="92" x2="138" y2="78"/>
-            <line x1="92" y1="92" x2="158" y2="104"/>
+          <!-- أسماء المدن -->
+          <g fill="#f3e8ff" font-size="9" text-anchor="middle" font-weight="700" style="font-family:inherit">
+            <text x="140" y="17">الكويت</text>
+            <text x="130" y="86">الرياض</text>
+            <text x="58" y="98">مكة</text>
+            <text x="182" y="53">الدوحة</text>
+            <text x="214" y="62">دبي</text>
+            <text x="248" y="77">مسقط</text>
           </g>
         </svg>
       </div>
