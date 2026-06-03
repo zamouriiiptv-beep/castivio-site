@@ -62,7 +62,6 @@
   .gulf-channel-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;text-align:center;transition:transform .2s,border-color .2s}
   .gulf-channel-card:hover{transform:translateY(-3px);border-color:rgba(123,47,255,0.5)}
   @media(max-width:600px){.gulf-content-grid{grid-template-columns:repeat(2,1fr)}.gulf-features-grid{grid-template-columns:1fr}.gulf-banner{flex-direction:column;text-align:center}}
-  @media(max-width:767px){#guides-section .gs-inner>div[style*="grid-template-columns:1fr 1.6fr"]{grid-template-columns:1fr!important}}
 </style>
 
 <script type="application/ld+json">
@@ -384,82 +383,94 @@
     </h2>
 
     <p class="gs-sub">
-      استمتع بأقوى القنوات البرامجية والترفيهية والرياضية بجودة عالية وتغطية حصرية لأحداث المنطقة
+      استمتع بأقوى القنوات الرياضية والترفيهية والثقافية بجودة عالية وتغطية حصرية للأحداث المهمة
     </p>
 
-    <!-- شبكة المحتوى الرئيسية -->
-    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:24px;margin-top:32px;align-items:start">
-
-      <!-- صندوق المميزات -->
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px">
-        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:16px;color:#fff">
-          خدمة مصممة لمشاهدي الخليج
-        </h3>
-        <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:10px">
-          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-            أكثر من 500 قناة خليجية وعربية
-          </li>
-          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-            بث المباريات والأحداث الرياضية الكبرى
-          </li>
-          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-            جودة 4K وFHD بدون انقطاع
-          </li>
-          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-            محتوى ديني وثقافي خليجي حصري
-          </li>
-        </ul>
-        <a href="/#pricing" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7b2fff,#4f46e5);color:#fff;border-radius:10px;padding:11px 20px;font-size:.9rem;font-weight:700;text-decoration:none">
-          اكتشف المحتوى الخليجي
-          <i class="fas fa-arrow-left"></i>
-        </a>
+    <!-- صندوق الخدمة بعرض كامل -->
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(20,12,48,0.6));border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:28px;margin-top:32px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+          <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
+        </span>
+        <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">خدمة مصممة لمشاهدي الخليج</h3>
       </div>
+      <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0 0 24px">
+        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+          تغطية شاملة لجميع القنوات الخليجية والعربية
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+          بث مستمر وسريع بدون تقطيع
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+          محتوى محدّث يومياً
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+          دعم فني على مدار الساعة
+        </li>
+      </ul>
+      <a href="/#pricing" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7b2fff,#4f46e5);color:#fff;border-radius:10px;padding:12px 24px;font-size:.92rem;font-weight:700;text-decoration:none">
+        اكتشف المحتوى الخليجي
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
 
-      <!-- شبكة القنوات -->
-      <div class="gulf-content-grid">
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">📺</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">SSC</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">القنوات الرياضية السعودية</div>
-        </div>
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">🎬</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">MBC</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">مجموعة MBC الترفيهية</div>
-        </div>
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">🎵</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">روتانا</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أفلام وموسيقى عربية</div>
-        </div>
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">⚽</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">دوري أبطال آسيا</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">بطولة AFC Champions League</div>
-        </div>
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">🕌</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">البث المباشر للحرمين</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">قناة قرآن كريم وشعائر دينية</div>
-        </div>
-        <div class="gulf-channel-card">
-          <div style="font-size:1.6rem;margin-bottom:8px">🎭</div>
-          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">المسلسلات الخليجية</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أحدث الدراما الخليجية</div>
-        </div>
+    <!-- عنوان شبكة القنوات -->
+    <h3 style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin:36px 0 20px">أبرز المحتويات الخليجية</h3>
+
+    <!-- شبكة القنوات -->
+    <div class="gulf-content-grid">
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(123,47,255,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-futbol" style="color:#7b2fff;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.25rem;color:#e63946;letter-spacing:1px;margin-bottom:10px">SSC</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">قنوات SSC الرياضية</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">تغطية أحدث البطولات الرياضية</div>
       </div>
-
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(123,47,255,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-film" style="color:#7b2fff;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.25rem;color:#e63946;margin-bottom:10px">mbc</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">مجموعة قنوات MBC</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أفضل المسلسلات والبرامج العربية</div>
+      </div>
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(34,197,94,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-circle-check" style="color:#22c55e;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.25rem;color:#a855f7;margin-bottom:10px">روتانا</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">قنوات روتانا</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أحدث الأفلام والأغاني العربية</div>
+      </div>
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(123,47,255,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-trophy" style="color:#7b2fff;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.05rem;color:#fff;margin-bottom:10px">دوري أبطال آسيا</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">بطولات ومباريات آسيوية</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أقوى المباريات على مدار الموسم</div>
+      </div>
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(123,47,255,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-mosque" style="color:#7b2fff;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.05rem;color:#fff;margin-bottom:10px">البث المباشر للحرمين</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">قناة مكة والمدينة المباشرة</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">بث مباشر على مدار الساعة</div>
+      </div>
+      <div class="gulf-channel-card" style="position:relative;text-align:right">
+        <span style="position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:9px;background:rgba(123,47,255,0.15);display:inline-flex;align-items:center;justify-content:center"><i class="fas fa-masks-theater" style="color:#7b2fff;font-size:.85rem"></i></span>
+        <div style="font-weight:900;font-size:1.05rem;color:#fff;margin-bottom:10px">المسلسلات الخليجية</div>
+        <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">أحدث الإنتاجات الدرامية</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.6)">دراما خليجية حصرية</div>
+      </div>
     </div>
 
     <!-- بانر الختام -->
-    <div class="gulf-banner" style="background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:24px">
-      <div>
-        <div style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:4px">اكتشف جميع القنوات الخليجية</div>
-        <div style="font-size:.9rem;color:rgba(255,255,255,.65)">أكثر من 30,000 قناة عربية وعالمية بجودة 4K</div>
+    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+          <i class="fas fa-crown" style="color:#f5c518;font-size:1.1rem"></i>
+        </span>
+        <div>
+          <div style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">أفضل مسلسلات، قنوات أطفال، وأفلام والمزيد</div>
+          <div style="font-size:.88rem;color:rgba(255,255,255,.65)">اشتراك واحد يفتح لك كل المحتوى الخليجي والعربي</div>
+        </div>
       </div>
       <a href="/#pricing" style="flex-shrink:0;background:linear-gradient(135deg,#7b2fff,#4f46e5);color:#fff;border-radius:10px;padding:11px 22px;font-size:.9rem;font-weight:700;text-decoration:none;white-space:nowrap">
         عرض كل القنوات
