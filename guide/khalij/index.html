@@ -63,13 +63,14 @@
   .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
   .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
   .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .gulf-channel-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px;text-align:right;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .gulf-channel-card{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:14px 16px;text-align:right;transition:transform .25s,border-color .25s,box-shadow .25s}
   .gulf-channel-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.55);box-shadow:0 12px 30px rgba(123,47,255,.18)}
-  .gulf-logo{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.88rem;letter-spacing:.5px;margin-bottom:12px;box-shadow:0 5px 14px rgba(0,0,0,.25)}
-  .gulf-card-name{font-weight:800;font-size:.95rem;color:#fff;margin-bottom:5px}
-  .gulf-card-desc{font-size:.8rem;line-height:1.45;color:rgba(255,255,255,.6)}
+  .gulf-logo{flex-shrink:0;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.8rem;letter-spacing:.5px;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+  .gulf-card-text{flex:1;min-width:0}
+  .gulf-card-name{font-weight:800;font-size:.95rem;color:#fff;margin:0 0 4px;background:none;padding:0;border:0;box-shadow:none}
+  .gulf-card-desc{font-size:.8rem;line-height:1.4;color:rgba(255,255,255,.6);background:none;padding:0;border:0;box-shadow:none}
   @media(max-width:600px){
-    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .gulf-content-grid{grid-template-columns:1fr;gap:10px}
     .gulf-features-grid{grid-template-columns:1fr}
     .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:right}
     .gulf-channel-card{padding:11px 12px;gap:10px}
@@ -515,33 +516,45 @@
     <div class="gulf-content-grid">
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)"><i class="fas fa-futbol"></i></div>
-        <div class="gulf-card-name">أبوظبي الرياضية</div>
-        <div class="gulf-card-desc">بث مفتوح للبطولات والدوريات</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">أبوظبي الرياضية</div>
+          <div class="gulf-card-desc">بث مفتوح للبطولات والدوريات</div>
+        </div>
       </div>
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#b3122a)">mbc</div>
-        <div class="gulf-card-name">مجموعة قنوات MBC</div>
-        <div class="gulf-card-desc">أفضل المسلسلات والبرامج العربية</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">مجموعة قنوات MBC</div>
+          <div class="gulf-card-desc">أفضل المسلسلات والبرامج العربية</div>
+        </div>
       </div>
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#a855f7,#6d28d9)"><i class="fas fa-music"></i></div>
-        <div class="gulf-card-name">قنوات روتانا</div>
-        <div class="gulf-card-desc">أحدث الأفلام والأغاني العربية</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">قنوات روتانا</div>
+          <div class="gulf-card-desc">أحدث الأفلام والأغاني العربية</div>
+        </div>
       </div>
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)"><i class="fas fa-trophy"></i></div>
-        <div class="gulf-card-name">دوري أبطال آسيا</div>
-        <div class="gulf-card-desc">أقوى المباريات الآسيوية على مدار الموسم</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">دوري أبطال آسيا</div>
+          <div class="gulf-card-desc">أقوى المباريات الآسيوية على مدار الموسم</div>
+        </div>
       </div>
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)"><i class="fas fa-mosque"></i></div>
-        <div class="gulf-card-name">البث المباشر للحرمين</div>
-        <div class="gulf-card-desc">بث مباشر لمكة والمدينة على مدار الساعة</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">البث المباشر للحرمين</div>
+          <div class="gulf-card-desc">بث مباشر لمكة والمدينة على مدار الساعة</div>
+        </div>
       </div>
       <div class="gulf-channel-card">
         <div class="gulf-logo" style="background:linear-gradient(135deg,#7b2fff,#4f46e5)"><i class="fas fa-masks-theater"></i></div>
-        <div class="gulf-card-name">المسلسلات الخليجية</div>
-        <div class="gulf-card-desc">أحدث الإنتاجات الدرامية الحصرية</div>
+        <div class="gulf-card-text">
+          <div class="gulf-card-name">المسلسلات الخليجية</div>
+          <div class="gulf-card-desc">أحدث الإنتاجات الدرامية الحصرية</div>
+        </div>
       </div>
     </div>
 
