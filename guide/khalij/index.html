@@ -55,6 +55,14 @@
   .hero-section img { height: 233px; width: 100%; object-fit: contain; }
   @media (min-width: 768px) { .hero-section img { max-height: 260px; } }
   main { padding-top: 0 !important; }
+  /* Gulf content section */
+  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gulf-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .gulf-channel-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;text-align:center;transition:transform .2s,border-color .2s}
+  .gulf-channel-card:hover{transform:translateY(-3px);border-color:rgba(123,47,255,0.5)}
+  @media(max-width:600px){.gulf-content-grid{grid-template-columns:repeat(2,1fr)}.gulf-features-grid{grid-template-columns:1fr}.gulf-banner{flex-direction:column;text-align:center}}
+  @media(max-width:767px){#guides-section .gs-inner>div[style*="grid-template-columns:1fr 1.6fr"]{grid-template-columns:1fr!important}}
 </style>
 
 <script type="application/ld+json">
@@ -361,78 +369,103 @@
     </div>
   </div>
 </section>
-<section id="guides-section" aria-label="أدلة IPTV حسب المنطقة">
+<section id="guides-section" aria-label="محتوى الخليج العربي">
   <div class="gs-inner container mx-auto px-4 max-w-5xl">
 
     <div class="text-center">
       <span class="gs-badge">
         <i class="fas fa-map-marker-alt" style="color:#f5c518;"></i>
-        أدلة IPTV حسب المنطقة
+        مخصص لمشاهدي الخليج العربي
       </span>
     </div>
 
     <h2 class="gs-title">
-      أدلة <span>مخصصة</span> لكل منطقة
+      أفضل محتوى الخليج <span>في مكان واحد</span>
     </h2>
 
     <p class="gs-sub">
-      اختر دليلك المحلي واكتشف أفضل الخدمات الرقمية وخيارات المشاهدة في منطقتك.
+      استمتع بأقوى القنوات البرامجية والترفيهية والرياضية بجودة عالية وتغطية حصرية لأحداث المنطقة
     </p>
 
-    <!-- بطاقات المناطق الثلاث -->
-    <div class="gd-grid">
+    <!-- شبكة المحتوى الرئيسية -->
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:24px;margin-top:32px;align-items:start">
 
-      <a href="/guide/khalij/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-mosque"></i></div>
-          <h3>دول الخليج</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">دول الخليج</p>
-          <p class="gd-desc">اكتشف أفضل خيارات المشاهدة والخدمات الرقمية المتاحة في دول الخليج.</p>
-        </div>
-        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
-      </a>
+      <!-- صندوق المميزات -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px">
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:16px;color:#fff">
+          خدمة مصممة لمشاهدي الخليج
+        </h3>
+        <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            أكثر من 500 قناة خليجية وعربية
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            بث المباريات والأحداث الرياضية الكبرى
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            جودة 4K وFHD بدون انقطاع
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            محتوى ديني وثقافي خليجي حصري
+          </li>
+        </ul>
+        <a href="/#pricing" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7b2fff,#4f46e5);color:#fff;border-radius:10px;padding:11px 20px;font-size:.9rem;font-weight:700;text-decoration:none">
+          اكتشف المحتوى الخليجي
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
 
-      <a href="/guide/maghreb/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-earth-africa"></i></div>
-          <h3>المغرب العربي</h3>
+      <!-- شبكة القنوات -->
+      <div class="gulf-content-grid">
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">📺</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">SSC</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">القنوات الرياضية السعودية</div>
         </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">المغرب العربي</p>
-          <p class="gd-desc">دليل مخصص لاكتشاف أفضل الخدمات الرقمية وخيارات المشاهدة في دول المغرب العربي.</p>
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">🎬</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">MBC</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">مجموعة MBC الترفيهية</div>
         </div>
-        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
-      </a>
-
-      <a href="/guide/mashriq/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-mountain-sun"></i></div>
-          <h3>المشرق العربي</h3>
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">🎵</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">روتانا</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أفلام وموسيقى عربية</div>
         </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">المشرق العربي</p>
-          <p class="gd-desc">استكشف أفضل المنصات والخدمات والمحتوى المتاح في دول المشرق العربي.</p>
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">⚽</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">دوري أبطال آسيا</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">بطولة AFC Champions League</div>
         </div>
-        <span class="gd-link">استكشف الدليل <i class="fas fa-arrow-left"></i></span>
-      </a>
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">🕌</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">البث المباشر للحرمين</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">قناة قرآن كريم وشعائر دينية</div>
+        </div>
+        <div class="gulf-channel-card">
+          <div style="font-size:1.6rem;margin-bottom:8px">🎭</div>
+          <div style="font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px">المسلسلات الخليجية</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">أحدث الدراما الخليجية</div>
+        </div>
+      </div>
 
     </div>
 
-    <!-- ★ Hero featured card — الدليل الشامل -->
-    <a href="/guide/" class="gd-banner" aria-label="اقرأ الدليل الشامل لـ IPTV">
-      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
-      <div class="gd-banner-body">
-        <span class="gd-banner-tag"><i class="fas fa-star"></i> الدليل المميز</span>
-        <h3>الدليل الشامل لـ IPTV</h3>
-        <p>كل ما تحتاج معرفته — الإعداد، الأجهزة، والخدمات الرقمية لأفضل تجربة استخدام.</p>
-        <span class="gd-btn">
-          <i class="fas fa-book-open"></i>
-          اقرأ الدليل الشامل
-        </span>
+    <!-- بانر الختام -->
+    <div class="gulf-banner" style="background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:24px">
+      <div>
+        <div style="font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:4px">اكتشف جميع القنوات الخليجية</div>
+        <div style="font-size:.9rem;color:rgba(255,255,255,.65)">أكثر من 30,000 قناة عربية وعالمية بجودة 4K</div>
       </div>
-    </a>
+      <a href="/#pricing" style="flex-shrink:0;background:linear-gradient(135deg,#7b2fff,#4f46e5);color:#fff;border-radius:10px;padding:11px 22px;font-size:.9rem;font-weight:700;text-decoration:none;white-space:nowrap">
+        عرض كل القنوات
+        <i class="fas fa-arrow-left" style="margin-right:6px"></i>
+      </a>
+    </div>
 
   </div>
 </section>
