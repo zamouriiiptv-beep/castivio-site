@@ -1,4 +1,4 @@
-<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
   <!-- Blue upper-left triangle -->
   <polygon fill="#003580" points="0,0 900,0 0,600"/>
   <!-- Green lower-right triangle -->
