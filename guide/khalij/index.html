@@ -57,7 +57,10 @@
   main { padding-top: 0 !important; }
   /* Gulf content section */
   .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .gulf-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 20px}
+  .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+  .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
+  .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
   .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .gulf-channel-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;text-align:right;position:relative;transition:transform .2s,border-color .2s}
   .gulf-channel-card:hover{transform:translateY(-3px);border-color:rgba(123,47,255,0.5)}
@@ -74,9 +77,10 @@
     .gulf-card-brand{font-size:1rem;margin-bottom:6px}
     .gulf-card-name{font-size:.82rem}
     .gulf-card-desc{font-size:.72rem;line-height:1.35}
-    .gulf-service-box{padding:18px!important;margin-top:22px!important}
+    .gulf-service-box{padding:18px!important;margin-top:22px!important;grid-template-columns:1fr!important;gap:14px!important}
     .gulf-service-box h3{font-size:1rem!important}
     .gulf-service-box li{font-size:.82rem!important}
+    .gulf-map-wrap svg{max-width:170px!important}
     .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
     .gulf-banner{padding:16px!important}
     .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
@@ -408,30 +412,66 @@
 
     <!-- صندوق الخدمة بعرض كامل -->
     <div class="gulf-service-box" style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(20,12,48,0.6));border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:18px 24px;margin-top:32px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
-          <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
-        </span>
-        <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">خدمة مصممة لمشاهدي الخليج</h3>
+
+      <!-- العمود الأول: العنوان والأوصاف -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+            <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
+          </span>
+          <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">خدمة مصممة لمشاهدي الخليج</h3>
+        </div>
+        <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0">
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            تغطية شاملة لجميع القنوات الخليجية والعربية
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            بث مستمر وسريع بدون تقطيع
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            محتوى محدّث يومياً
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
+            <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
+            دعم فني على مدار الساعة
+          </li>
+        </ul>
       </div>
-      <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0">
-        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-          تغطية شاملة لجميع القنوات الخليجية والعربية
-        </li>
-        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-          بث مستمر وسريع بدون تقطيع
-        </li>
-        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-          محتوى محدّث يومياً
-        </li>
-        <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)">
-          <i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>
-          دعم فني على مدار الساعة
-        </li>
-      </ul>
+
+      <!-- العمود الثاني: خريطة الخليج العربي -->
+      <div class="gulf-map-wrap">
+        <svg viewBox="0 0 220 220" role="img" aria-label="خريطة الخليج العربي">
+          <defs>
+            <linearGradient id="gulfMapGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#a855f7"/>
+              <stop offset="1" stop-color="#4f46e5"/>
+            </linearGradient>
+          </defs>
+          <!-- شبه الجزيرة العربية -->
+          <path d="M70 30 L95 42 L106 52 L110 66 L116 56 L140 72 L158 67 L166 95 L159 122 L148 142 L120 160 L96 167 L73 159 L60 131 L47 100 L42 69 L52 44 L61 35 Z"
+                fill="url(#gulfMapGrad)" fill-opacity="0.20"
+                stroke="url(#gulfMapGrad)" stroke-width="1.6" stroke-opacity="0.9" stroke-linejoin="round"/>
+          <!-- مدن الخليج -->
+          <g fill="#c084fc">
+            <circle cx="80" cy="42" r="2.6"/>
+            <circle cx="100" cy="64" r="2.6"/>
+            <circle cx="110" cy="60" r="2.6"/>
+            <circle cx="138" cy="78" r="2.6"/>
+            <circle cx="158" cy="104" r="2.6"/>
+            <circle cx="92" cy="92" r="3.2" fill="#f5c518"/>
+          </g>
+          <g stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.5">
+            <line x1="92" y1="92" x2="80" y2="42"/>
+            <line x1="92" y1="92" x2="100" y2="64"/>
+            <line x1="92" y1="92" x2="138" y2="78"/>
+            <line x1="92" y1="92" x2="158" y2="104"/>
+          </g>
+        </svg>
+      </div>
+
     </div>
 
     <!-- عنوان شبكة القنوات -->
