@@ -874,7 +874,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   background:rgba(80,20,155,0.20);
   border:1px solid rgba(149,110,240,0.38);
   color:#c4b5fd;font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;
-  padding:6px 16px;border-radius:999px;backdrop-filter:blur(8px);margin-bottom:18px}
+  padding:6px 16px;border-radius:999px;margin-bottom:18px}
 .rv-badge svg{width:14px;height:14px;fill:currentColor;opacity:0.85}
 .rv-title{margin:0 auto 14px}
 .rv-title h2{
@@ -893,7 +893,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   background:rgba(123,47,255,0.12);
   border:1px solid rgba(149,110,240,0.50);
   color:#e2d6ff;font-family:'Tajawal',sans-serif;font-weight:700;font-size:14px;
-  padding:9px 18px;border-radius:999px;backdrop-filter:blur(6px);
+  padding:9px 18px;border-radius:999px;
   box-shadow:0 0 20px rgba(123,47,255,0.22)}
 .rv-trust svg{width:15px;height:15px;fill:#fbbf24;flex-shrink:0}
 
@@ -904,15 +904,14 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 /* ── Card ── */
 .rv-card{
-  background:linear-gradient(158deg,rgba(22,10,50,0.86) 0%,rgba(12,5,30,0.92) 100%);
+  background:rgba(18,8,42,0.96);
   border:1px solid rgba(120,80,220,0.36);border-radius:20px;
   padding:20px 20px 18px;
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 6px 24px rgba(4,2,14,0.55),0 0 18px rgba(80,20,180,0.09),inset 0 1px 0 rgba(255,255,255,0.04);
-  transition:transform .22s,border-color .22s,box-shadow .22s}
+  box-shadow:0 6px 20px rgba(4,2,14,0.50);
+  transition:transform .22s,border-color .18s;
+  will-change:transform}
 .rv-card:hover{
-  transform:translateY(-3px);border-color:rgba(140,100,240,0.55);
-  box-shadow:0 10px 32px rgba(4,2,14,0.60),0 0 26px rgba(80,20,180,0.18),inset 0 1px 0 rgba(255,255,255,0.06)}
+  transform:translateY(-3px);border-color:rgba(140,100,240,0.55)}
 @media(max-width:699px){.rv-card--lg{display:none}}
 
 /* ── Card top: [quote-box][stars][flag] ── */
@@ -929,12 +928,11 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* ── Rating summary bar ── */
 .rv-summary{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 28px;padding:14px 22px;background:rgba(50,15,100,0.30);border:1px solid rgba(120,80,220,0.26);border-radius:14px;text-align:center}
 .rv-summary-row{display:flex;align-items:center;gap:10px;direction:ltr}
-.rv-summary-stars{color:#f5a623;font-size:20px;letter-spacing:2px;text-shadow:0 0 10px rgba(245,166,35,0.38)}
+.rv-summary-stars{color:#f5a623;font-size:20px;letter-spacing:2px}
 .rv-summary-score{font-family:'Cairo',sans-serif;font-size:22px;font-weight:800;color:#f0eaff;line-height:1}
 .rv-summary-count{font-family:'Tajawal',sans-serif;color:#8a7ab5;font-size:13px;margin:0;line-height:1}
 .rv-stars{
-  color:#f5a623;font-size:18px;letter-spacing:2px;direction:ltr;
-  text-shadow:0 0 10px rgba(245,166,35,0.45)}
+  color:#f5a623;font-size:18px;letter-spacing:2px;direction:ltr}
 .rv-date{font-family:'Tajawal',sans-serif;color:#6b5e99;font-size:11px;margin:0;line-height:1;direction:ltr;white-space:nowrap;letter-spacing:0}
 .rv-flag{
   width:32px;height:21px;border-radius:3px;object-fit:cover;flex-shrink:0;
@@ -947,7 +945,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(145deg,#080220,#120540);
   border:1px solid rgba(100,60,200,0.25);
-  box-shadow:0 0 0 3px rgba(80,20,160,0.08),0 0 12px rgba(80,20,160,0.18)}
+  box-shadow:0 0 10px rgba(80,20,160,0.15)}
 .rv-avatar svg{width:22px;height:22px;fill:#9b80e8;opacity:0.85}
 .rv-person-info{text-align:right;direction:rtl}
 .rv-name{font-family:'Cairo',sans-serif;font-weight:800;color:#f0eaff;font-size:16px;margin:0;line-height:1.25;display:flex;align-items:center;gap:6px;flex-wrap:wrap;direction:ltr}
