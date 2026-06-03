@@ -926,6 +926,12 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   display:inline-flex;align-items:center;justify-content:center}
 .rv-qbox svg{width:18px;height:18px;fill:#c4b5fd}
 .rv-stars-wrap{display:flex;flex-direction:column;align-items:center;gap:4px}
+/* ── Rating summary bar ── */
+.rv-summary{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 28px;padding:14px 22px;background:rgba(50,15,100,0.30);border:1px solid rgba(120,80,220,0.26);border-radius:14px;text-align:center}
+.rv-summary-row{display:flex;align-items:center;gap:10px;direction:ltr}
+.rv-summary-stars{color:#f5a623;font-size:20px;letter-spacing:2px;text-shadow:0 0 10px rgba(245,166,35,0.38)}
+.rv-summary-score{font-family:'Cairo',sans-serif;font-size:22px;font-weight:800;color:#f0eaff;line-height:1}
+.rv-summary-count{font-family:'Tajawal',sans-serif;color:#8a7ab5;font-size:13px;margin:0;line-height:1}
 .rv-stars{
   color:#f5a623;font-size:18px;letter-spacing:2px;direction:ltr;
   text-shadow:0 0 10px rgba(245,166,35,0.45)}
