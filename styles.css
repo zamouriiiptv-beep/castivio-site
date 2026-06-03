@@ -1086,3 +1086,33 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* ── Navbar: absolute centering — logo always at exact 50% ── */
 #header>.container{display:flex !important;position:relative !important}
 #header #logo-name{position:absolute !important;left:50% !important;top:50% !important;transform:translate(-50%,-50%) !important;margin:0 !important;justify-self:unset !important;align-self:unset !important}
+
+/* ══════════════════════════════════════════════════════════════
+   UNIFIED HERO TYPOGRAPHY — same font-size/weight/line-height
+   across all languages (AR, EN, FR, ES, DE, IT, NL, PT, TR).
+   No color / spacing / layout changes.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Desktop + tablet base */
+.hp-title{font-size:clamp(36px,7vw,72px) !important;font-weight:900 !important;line-height:1.22 !important}
+.hp-title-sub{font-size:clamp(20px,4vw,38px) !important;font-weight:800 !important;line-height:1.3 !important}
+
+/* Mobile — applies to ALL languages equally (overrides :not(:lang(ar)) gap) */
+@media(max-width:767px){
+  .hp-title{font-size:clamp(28px,7.5vw,40px) !important;line-height:1.22 !important}
+  .hp-title-sub{font-size:clamp(15px,4.5vw,24px) !important;line-height:1.3 !important}
+}
+
+/* Landscape — short screens */
+@media(orientation:landscape)and(max-height:600px){
+  .hp-title{font-size:clamp(18px,4.2vw,26px) !important;line-height:1.15 !important}
+  .hp-title-sub{font-size:clamp(12px,2.6vw,17px) !important;line-height:1.2 !important}
+}
+@media(orientation:landscape)and(min-height:601px)and(max-height:700px){
+  .hp-title{font-size:clamp(24px,4.5vw,46px) !important;line-height:1.1 !important}
+  .hp-title-sub{font-size:clamp(14px,2.8vw,22px) !important;line-height:1.25 !important}
+}
+
+/* Section titles (Why Prime IPTV, etc.) — unified across all languages */
+.section-title-unified .title-line-1{font-size:clamp(22px,5.5vw,36px) !important;font-weight:900 !important;line-height:1.25 !important}
+.section-title-unified .title-line-2{font-size:clamp(26px,7vw,42px) !important;font-weight:900 !important;line-height:1.25 !important}
