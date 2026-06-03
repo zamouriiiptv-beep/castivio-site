@@ -6,6 +6,38 @@ body { font-family: 'Inter', 'Cairo', sans-serif !important; }
 h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
 
 .sport-name{color:#ED2939}
+  /* Region content section */
+  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  #guides-section .gs-badge{padding:5px 16px;font-size:.78rem}
+  .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+  .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
+  .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
+  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .gulf-channel-card{display:flex;flex-direction:column;justify-content:flex-start;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px 16px 20px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .gulf-channel-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.55);box-shadow:0 12px 30px rgba(123,47,255,.18)}
+  .gulf-card-head{display:flex;align-items:flex-start;gap:10px;min-height:48px}
+  .gulf-logo{flex-shrink:0;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.9rem;letter-spacing:.3px;box-shadow:0 4px 10px rgba(0,0,0,.22)}
+  .gulf-card-name{flex:1;min-width:0;min-height:2.6em;font-weight:800;font-size:1.02rem;line-height:1.3;color:#fff;margin:0;background:none;padding:0;border:0;box-shadow:none}
+  .gulf-card-desc{min-height:2.9em;font-size:.8rem;line-height:1.45;color:rgba(255,255,255,.6);margin:0;margin-inline-start:54px;background:none;padding:0;border:0;box-shadow:none}
+  @media(max-width:600px){
+    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .gulf-channel-card{padding:13px 13px 16px;gap:10px}
+    .gulf-card-head{gap:8px;min-height:44px}
+    .gulf-logo{width:40px;height:40px;border-radius:10px;font-size:.82rem}
+    .gulf-features-grid{grid-template-columns:1fr}
+    .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:left}
+    .gulf-card-name{font-size:.9rem;min-height:2.6em}
+    .gulf-card-desc{font-size:.74rem;line-height:1.4;margin-inline-start:0;min-height:2.8em}
+    .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
+    .gulf-service-box h3{font-size:.92rem!important}
+    .gulf-service-box li{font-size:.78rem!important}
+    .gulf-map-wrap svg{max-width:205px!important}
+    .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
+    .gulf-banner{padding:16px!important}
+    .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
+    .gulf-banner .gulf-banner-sub{font-size:.8rem!important}
+  }
 </style>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,73 +352,128 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 80
   </div>
 </section>
 <!-- ═══════════════ END WHY-US ═══════════════ --><!-- ═══════════════ IPTV Guides Section ═══════════════ -->
-<section id="guides-section" class="gd-ltr" aria-label="Guides nach Region">
+<section id="guides-section" class="gd-ltr" aria-label="Inhalte für österreichische Zuschauer">
   <div class="gs-inner container mx-auto px-4 max-w-5xl">
 
     <div class="text-center">
       <span class="gs-badge">
         <i class="fas fa-map-marker-alt" style="color:#f5c518;"></i>
-        Guides nach Region
+        Speziell für österreichische Zuschauer
       </span>
     </div>
 
     <h2 class="gs-title">
-      Guides <span>speziell</span> für deinen Markt
+      Das Beste der österreichischen <br><span>Unterhaltung auf einen Blick</span>
     </h2>
 
     <p class="gs-sub">
-      Entdecke lokale Streaming-Optionen, kompatible Geräte, Setup-Ressourcen und Empfehlungen für dein Land.
+      Genießen Sie die besten österreichischen Sport-, Film- und Serienkanäle in höchster Qualität
     </p>
 
-    <div class="gd-grid">
-      <a href="/de/deutschland/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-building"></i></div>
-          <h3>Deutschland</h3>
+    <div class="gulf-service-box" style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(20,12,48,0.6));border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:18px 24px;margin-top:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+            <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
+          </span>
+          <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">Ein Service speziell für Österreich</h3>
         </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Deutschland</p>
-          <p class="gd-desc">Apps, Geräte und Einrichtungsleitfäden für das beste digitale Streaming-Erlebnis in Deutschland.</p>
-        </div>
-        <span class="gd-link">Guide ansehen <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/de/oesterreich/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-mountain"></i></div>
-          <h3>Österreich</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Österreich</p>
-          <p class="gd-desc">Streaming-Optionen, kompatible Geräte und Tipps speziell für Zuschauer in Österreich.</p>
-        </div>
-        <span class="gd-link">Guide ansehen <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/de/schweiz/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-water"></i></div>
-          <h3>Schweiz</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Schweiz</p>
-          <p class="gd-desc">Einrichtungsressourcen, Apps und Empfehlungen für ein optimales Streaming-Erlebnis in der Schweiz.</p>
-        </div>
-        <span class="gd-link">Guide ansehen <i class="fas fa-arrow-right"></i></span>
-      </a>
-
+        <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0">
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Alle österreichischen und internationalen Sender</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Stabiles und unterbrechungsfreies Streaming</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Täglich aktualisierte Inhalte</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Technischer Support rund um die Uhr</li>
+        </ul>
+      </div>
+      <div class="gulf-map-wrap">
+        <svg viewBox="0 0 240 130" role="img" aria-label="Karte von Österreich">
+          <defs>
+            <linearGradient id="gulfMapGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7b2fff"/>
+              <stop offset="1" stop-color="#4f46e5"/>
+            </linearGradient>
+            <radialGradient id="pulseGlow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5c518" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5c518" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pulseGlow2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M8 48 L35 30 L68 22 L102 18 L140 20 L172 24 L200 34 L220 48 L225 68 L218 88 L200 102 L172 110 L140 114 L102 112 L68 107 L35 100 L12 84 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="1.4" stroke-linejoin="round"/>
+          
+          <circle cx="198" cy="62" r="18" fill="url(#pulseGlow1)" opacity="0.25"><animate attributeName="r" values="14;22;14" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="198" cy="62" r="4.5" fill="#f5c518" filter="url(#glow)"><animate attributeName="r" values="3.5;5;3.5" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="198" cy="62" r="2" fill="#fff"/>
+          <circle cx="72" cy="62" r="16" fill="url(#pulseGlow2)" opacity="0.25"><animate attributeName="r" values="12;20;12" dur="3.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="72" cy="62" r="4" fill="#a78bfa" filter="url(#glow)"><animate attributeName="r" values="3;4.8;3" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="72" cy="62" r="1.8" fill="#fff"/>
+          <g fill="#f3e8ff" text-anchor="middle" font-weight="800" style="font-family:inherit">
+            <text font-size="8" x="198" y="58">Wien</text>
+            <text font-size="9" x="120" y="72">Österreich</text>
+            <text font-size="7.5" x="72" y="58">Salzburg</text>
+          </g>
+        </svg>
+      </div>
     </div>
 
-    <a href="/de/guide/" class="gd-banner" aria-label="Der vollständige Streaming-Guide">
-      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
-      <div class="gd-banner-body">
-        <span class="gd-banner-tag"><i class="fas fa-star"></i> ⭐ Empfohlener Guide</span>
-        <h3>Der vollständige Streaming-Guide</h3>
-        <p>Alles an einem Ort — Einrichtung, Gerätekompatibilität und Tipps für ein besseres Seherlebnis.</p>
-        <span class="gd-btn">
-          <i class="fas fa-book-open"></i>
-          Vollständigen Guide lesen
-        </span>
+    <h3 class="gulf-grid-title" style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin:36px 0 20px">Österreichs beliebteste TV-Highlights</h3>
+
+    <div class="gulf-content-grid">
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)">ORF</div>
+          <div class="gulf-card-name">ORF 1<br>&amp; ORF 2</div>
+        </div>
+        <div class="gulf-card-desc">Das österreichische<br>öffentlich-rechtliche Fernsehen</div>
       </div>
-    </a>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)">ATV</div>
+          <div class="gulf-card-name">ATV<br>Österreich</div>
+        </div>
+        <div class="gulf-card-desc">Österreichs beliebtester<br>privater Sender</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)"><i class="fas fa-futbol"></i></div>
+          <div class="gulf-card-name">DAZN<br>Live</div>
+        </div>
+        <div class="gulf-card-desc">Live-Sport ohne<br>Unterbrechungen und Limits</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#171717,#44403c)">BLA</div>
+          <div class="gulf-card-name">Bundesliga<br>Österreich</div>
+        </div>
+        <div class="gulf-card-desc">Das österreichische Fußball<br>live jede Runde</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#f59e0b,#b45309)">P4</div>
+          <div class="gulf-card-name">Puls4<br>&amp; Puls24</div>
+        </div>
+        <div class="gulf-card-desc">News, Serien und<br>Shows aus Österreich</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#7b2fff,#4f46e5)"><i class="fas fa-film"></i></div>
+          <div class="gulf-card-name">Film<br>&amp; Serien</div>
+        </div>
+        <div class="gulf-card-desc">Das Beste aus Österreich<br>und ganz Europa</div>
+      </div>
+    </div>
+
+    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px;justify-content:flex-start;gap:14px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+        <i class="fas fa-crown" style="color:#f5c518;font-size:.9rem"></i>
+      </span>
+      <div>
+        <div class="gulf-banner-txt" style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">Unterhaltung für die ganze Familie</div>
+        <div class="gulf-banner-sub" style="font-size:.88rem;color:rgba(255,255,255,.65)">Ein Abonnement für alle österreichischen Inhalte</div>
+      </div>
+    </div>
 
   </div>
 </section>

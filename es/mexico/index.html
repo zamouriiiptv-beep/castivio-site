@@ -7,6 +7,38 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
 .sport-name{color:#006847}
 .vs-table th{background:linear-gradient(135deg,#006847,#F5F5F5,#CE1126)}
+  /* Region content section */
+  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  #guides-section .gs-badge{padding:5px 16px;font-size:.78rem}
+  .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+  .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
+  .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
+  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .gulf-channel-card{display:flex;flex-direction:column;justify-content:flex-start;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px 16px 20px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .gulf-channel-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.55);box-shadow:0 12px 30px rgba(123,47,255,.18)}
+  .gulf-card-head{display:flex;align-items:flex-start;gap:10px;min-height:48px}
+  .gulf-logo{flex-shrink:0;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.9rem;letter-spacing:.3px;box-shadow:0 4px 10px rgba(0,0,0,.22)}
+  .gulf-card-name{flex:1;min-width:0;min-height:2.6em;font-weight:800;font-size:1.02rem;line-height:1.3;color:#fff;margin:0;background:none;padding:0;border:0;box-shadow:none}
+  .gulf-card-desc{min-height:2.9em;font-size:.8rem;line-height:1.45;color:rgba(255,255,255,.6);margin:0;margin-inline-start:54px;background:none;padding:0;border:0;box-shadow:none}
+  @media(max-width:600px){
+    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .gulf-channel-card{padding:13px 13px 16px;gap:10px}
+    .gulf-card-head{gap:8px;min-height:44px}
+    .gulf-logo{width:40px;height:40px;border-radius:10px;font-size:.82rem}
+    .gulf-features-grid{grid-template-columns:1fr}
+    .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:left}
+    .gulf-card-name{font-size:.9rem;min-height:2.6em}
+    .gulf-card-desc{font-size:.74rem;line-height:1.4;margin-inline-start:0;min-height:2.8em}
+    .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
+    .gulf-service-box h3{font-size:.92rem!important}
+    .gulf-service-box li{font-size:.78rem!important}
+    .gulf-map-wrap svg{max-width:205px!important}
+    .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
+    .gulf-banner{padding:16px!important}
+    .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
+    .gulf-banner .gulf-banner-sub{font-size:.8rem!important}
+  }
 </style>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -453,73 +485,128 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 <!-- Precios -->
 
 <!-- ═══════════════ IPTV Guides Section ═══════════════ -->
-<section id="guides-section" class="gd-ltr" aria-label="Guías por región">
+<section id="guides-section" class="gd-ltr" aria-label="Contenido para los espectadores mexicanos">
   <div class="gs-inner container mx-auto px-4 max-w-5xl">
 
     <div class="text-center">
       <span class="gs-badge">
         <i class="fas fa-map-marker-alt" style="color:#f5c518;"></i>
-        Guías por región
+        Diseñado para los espectadores mexicanos
       </span>
     </div>
 
     <h2 class="gs-title">
-      Guías <span>adaptadas</span> a tu región
+      Lo mejor del entretenimiento <br><span>mexicano reunido</span>
     </h2>
 
     <p class="gs-sub">
-      Descubre opciones de streaming locales, dispositivos compatibles y recomendaciones pensadas para tu país.
+      Disfruta de los mejores canales de televisión, telenovelas y fútbol mexicano en alta calidad
     </p>
 
-    <div class="gd-grid">
-      <a href="/es/espana/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-sun"></i></div>
-          <h3>España</h3>
+    <div class="gulf-service-box" style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(20,12,48,0.6));border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:18px 24px;margin-top:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+            <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
+          </span>
+          <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">Un servicio pensado para México</h3>
         </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">España</p>
-          <p class="gd-desc">Apps, dispositivos y guías de configuración para sacar el máximo partido del streaming digital en España.</p>
-        </div>
-        <span class="gd-link">Explorar guía <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/es/mexico/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-mountain-sun"></i></div>
-          <h3>México</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">México</p>
-          <p class="gd-desc">Opciones de streaming, dispositivos compatibles y consejos pensados para espectadores en México.</p>
-        </div>
-        <span class="gd-link">Explorar guía <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/es/argentina/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-futbol"></i></div>
-          <h3>Argentina</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Argentina</p>
-          <p class="gd-desc">Recursos de configuración, apps y recomendaciones de visualización disponibles para Argentina.</p>
-        </div>
-        <span class="gd-link">Explorar guía <i class="fas fa-arrow-right"></i></span>
-      </a>
-
+        <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0">
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Todos los canales mexicanos e internacionales</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Transmisión estable y fluida sin cortes</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Contenido actualizado diariamente</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Soporte técnico disponible 24/7</li>
+        </ul>
+      </div>
+      <div class="gulf-map-wrap">
+        <svg viewBox="0 0 280 185" role="img" aria-label="Mapa de México">
+          <defs>
+            <linearGradient id="gulfMapGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7b2fff"/>
+              <stop offset="1" stop-color="#4f46e5"/>
+            </linearGradient>
+            <radialGradient id="pulseGlow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5c518" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5c518" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pulseGlow2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M10 42 L45 20 L88 10 L135 8 L178 14 L212 26 L240 42 L252 62 L246 84 L228 98 L215 90 L205 98 L194 114 L180 130 L168 148 L155 155 L143 148 L132 158 L122 150 L112 138 L95 120 L78 98 L58 75 L32 58 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M168 148 L178 158 L185 170 L178 180 L168 172 L162 158 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="0.8"/>
+          <circle cx="132" cy="95" r="18" fill="url(#pulseGlow1)" opacity="0.25"><animate attributeName="r" values="14;22;14" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="132" cy="95" r="4.5" fill="#f5c518" filter="url(#glow)"><animate attributeName="r" values="3.5;5;3.5" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="132" cy="95" r="2" fill="#fff"/>
+          <circle cx="58" cy="65" r="16" fill="url(#pulseGlow2)" opacity="0.25"><animate attributeName="r" values="12;20;12" dur="3.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="58" cy="65" r="4" fill="#a78bfa" filter="url(#glow)"><animate attributeName="r" values="3;4.8;3" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="58" cy="65" r="1.8" fill="#fff"/>
+          <g fill="#f3e8ff" text-anchor="middle" font-weight="800" style="font-family:inherit">
+            <text font-size="8" x="132" y="91">Ciudad de México</text>
+            <text font-size="7.5" x="58" y="61">Guadalajara</text>
+            <text font-size="9" x="138" y="125">México</text>
+          </g>
+        </svg>
+      </div>
     </div>
 
-    <a href="/es/guide/" class="gd-banner" aria-label="La Guía Completa de Streaming">
-      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
-      <div class="gd-banner-body">
-        <span class="gd-banner-tag"><i class="fas fa-star"></i> ⭐ Guía destacada</span>
-        <h3>La Guía Completa de Streaming</h3>
-        <p>Todo en un solo lugar — tutoriales de configuración, compatibilidad de dispositivos y consejos para mejorar tu experiencia.</p>
-        <span class="gd-btn">
-          <i class="fas fa-book-open"></i>
-          Leer la Guía Completa
-        </span>
+    <h3 class="gulf-grid-title" style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin:36px 0 20px">Lo más popular del entretenimiento mexicano</h3>
+
+    <div class="gulf-content-grid">
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)"><i class="fas fa-tv"></i></div>
+          <div class="gulf-card-name">Canal de las<br>Estrellas</div>
+        </div>
+        <div class="gulf-card-desc">La televisión más vista<br>en todo México</div>
       </div>
-    </a>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)">AZT</div>
+          <div class="gulf-card-name">TV Azteca<br>En vivo</div>
+        </div>
+        <div class="gulf-card-desc">Entretenimiento y noticias<br>desde el corazón de México</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)"><i class="fas fa-futbol"></i></div>
+          <div class="gulf-card-name">Liga MX<br>En vivo</div>
+        </div>
+        <div class="gulf-card-desc">El fútbol mexicano en directo<br>cada jornada del campeonato</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#f59e0b,#b45309)">CS</div>
+          <div class="gulf-card-name">Claro Sports<br>México</div>
+        </div>
+        <div class="gulf-card-desc">Deporte mexicano e internacional<br>sin interrupciones</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#7b2fff,#4f46e5)"><i class="fas fa-masks-theater"></i></div>
+          <div class="gulf-card-name">Telenovelas<br>Premium</div>
+        </div>
+        <div class="gulf-card-desc">Las mejores historias mexicanas<br>de pasión y drama</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#0f172a,#1e293b)"><i class="fas fa-film"></i></div>
+          <div class="gulf-card-name">Películas<br>&amp; Estrenos</div>
+        </div>
+        <div class="gulf-card-desc">Lo mejor del cine nacional<br>e internacional en México</div>
+      </div>
+    </div>
+
+    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px;justify-content:flex-start;gap:14px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+        <i class="fas fa-crown" style="color:#f5c518;font-size:.9rem"></i>
+      </span>
+      <div>
+        <div class="gulf-banner-txt" style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">Entretenimiento completo para toda la familia</div>
+        <div class="gulf-banner-sub" style="font-size:.88rem;color:rgba(255,255,255,.65)">Una suscripción para acceder a todo el contenido mexicano</div>
+      </div>
+    </div>
 
   </div>
 </section>

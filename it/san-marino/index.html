@@ -6,6 +6,38 @@ body { font-family: 'Inter', 'Cairo', sans-serif !important; }
 h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
 
 .sport-name{color:#5EB6E4}
+  /* Region content section */
+  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  #guides-section .gs-badge{padding:5px 16px;font-size:.78rem}
+  .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+  .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
+  .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
+  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .gulf-channel-card{display:flex;flex-direction:column;justify-content:flex-start;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px 16px 20px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .gulf-channel-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.55);box-shadow:0 12px 30px rgba(123,47,255,.18)}
+  .gulf-card-head{display:flex;align-items:flex-start;gap:10px;min-height:48px}
+  .gulf-logo{flex-shrink:0;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.9rem;letter-spacing:.3px;box-shadow:0 4px 10px rgba(0,0,0,.22)}
+  .gulf-card-name{flex:1;min-width:0;min-height:2.6em;font-weight:800;font-size:1.02rem;line-height:1.3;color:#fff;margin:0;background:none;padding:0;border:0;box-shadow:none}
+  .gulf-card-desc{min-height:2.9em;font-size:.8rem;line-height:1.45;color:rgba(255,255,255,.6);margin:0;margin-inline-start:54px;background:none;padding:0;border:0;box-shadow:none}
+  @media(max-width:600px){
+    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .gulf-channel-card{padding:13px 13px 16px;gap:10px}
+    .gulf-card-head{gap:8px;min-height:44px}
+    .gulf-logo{width:40px;height:40px;border-radius:10px;font-size:.82rem}
+    .gulf-features-grid{grid-template-columns:1fr}
+    .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:left}
+    .gulf-card-name{font-size:.9rem;min-height:2.6em}
+    .gulf-card-desc{font-size:.74rem;line-height:1.4;margin-inline-start:0;min-height:2.8em}
+    .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
+    .gulf-service-box h3{font-size:.92rem!important}
+    .gulf-service-box li{font-size:.78rem!important}
+    .gulf-map-wrap svg{max-width:205px!important}
+    .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
+    .gulf-banner{padding:16px!important}
+    .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
+    .gulf-banner .gulf-banner-sub{font-size:.8rem!important}
+  }
 </style>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -320,73 +352,128 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 80
   </div>
 </section>
 <!-- ═══════════════ END WHY-US ═══════════════ --><!-- ═══════════════ IPTV Guides Section ═══════════════ -->
-<section id="guides-section" class="gd-ltr" aria-label="Guide per regione">
+<section id="guides-section" class="gd-ltr" aria-label="Contenuto per gli spettatori di San Marino">
   <div class="gs-inner container mx-auto px-4 max-w-5xl">
 
     <div class="text-center">
       <span class="gs-badge">
         <i class="fas fa-map-marker-alt" style="color:#f5c518;"></i>
-        Guide per regione
+        Pensato per gli spettatori di San Marino
       </span>
     </div>
 
     <h2 class="gs-title">
-      Guide <span>pensate</span> per la tua regione
+      Il meglio dell'intrattenimento <br><span>italiano a San Marino</span>
     </h2>
 
     <p class="gs-sub">
-      Scopri le opzioni di streaming locali, dispositivi compatibili e consigli di configurazione pensati per il tuo paese.
+      Goditi i migliori canali italiani e di San Marino nella massima qualità HD
     </p>
 
-    <div class="gd-grid">
-      <a href="/it/italia/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-landmark"></i></div>
-          <h3>Italia</h3>
+    <div class="gulf-service-box" style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(20,12,48,0.6));border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:18px 24px;margin-top:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+            <i class="fas fa-gear" style="color:#fff;font-size:1.1rem"></i>
+          </span>
+          <h3 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0">Un servizio pensato per San Marino</h3>
         </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Italia</p>
-          <p class="gd-desc">App, dispositivi e guide di configurazione per sfruttare al meglio lo streaming digitale in Italia.</p>
-        </div>
-        <span class="gd-link">Vedi la guida <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/it/svizzera/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-mountain"></i></div>
-          <h3>Svizzera</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Svizzera</p>
-          <p class="gd-desc">Opzioni di streaming, dispositivi compatibili e consigli per gli spettatori in Svizzera.</p>
-        </div>
-        <span class="gd-link">Vedi la guida <i class="fas fa-arrow-right"></i></span>
-      </a>
-      <a href="/it/germania/" class="gd-tile">
-        <div class="gd-head">
-          <div class="gd-badge"><i class="fas fa-building"></i></div>
-          <h3>Germania</h3>
-        </div>
-        <div class="gd-body">
-          <p class="gd-mtitle">Germania</p>
-          <p class="gd-desc">Risorse di configurazione, app e consigli di visione disponibili per la Germania in italiano.</p>
-        </div>
-        <span class="gd-link">Vedi la guida <i class="fas fa-arrow-right"></i></span>
-      </a>
-
+        <ul class="gulf-features-grid" style="list-style:none;padding:0;margin:0">
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Tutti i canali italiani e internazionali</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Streaming stabile e senza interruzioni</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Contenuti aggiornati ogni giorno</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(255,255,255,.85)"><i class="fas fa-circle-check" style="color:#7b2fff;flex-shrink:0"></i>Assistenza tecnica disponibile 24/7</li>
+        </ul>
+      </div>
+      <div class="gulf-map-wrap">
+        <svg viewBox="0 0 170 265" role="img" aria-label="Mappa dell'Italia">
+          <defs>
+            <linearGradient id="gulfMapGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7b2fff"/>
+              <stop offset="1" stop-color="#4f46e5"/>
+            </linearGradient>
+            <radialGradient id="pulseGlow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f5c518" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f5c518" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pulseGlow2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M42 5 L70 8 L95 22 L108 45 L112 72 L108 98 L105 125 L112 152 L118 178 L122 198 L118 215 L108 225 L95 230 L78 222 L68 205 L65 185 L70 165 L60 148 L50 130 L40 112 L36 88 L36 62 L40 38 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M118 215 L130 218 L138 230 L130 240 L120 232 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="0.8"/><path d="M50 240 L70 232 L85 242 L82 255 L65 260 L50 252 Z" fill="url(#gulfMapGrad)" fill-opacity="0.85" stroke="#c084fc" stroke-width="0.8"/>
+          <circle cx="78" cy="182" r="18" fill="url(#pulseGlow1)" opacity="0.25"><animate attributeName="r" values="14;22;14" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="78" cy="182" r="4.5" fill="#f5c518" filter="url(#glow)"><animate attributeName="r" values="3.5;5;3.5" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="78" cy="182" r="2" fill="#fff"/>
+          <circle cx="70" cy="55" r="16" fill="url(#pulseGlow2)" opacity="0.25"><animate attributeName="r" values="12;20;12" dur="3.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="70" cy="55" r="4" fill="#a78bfa" filter="url(#glow)"><animate attributeName="r" values="3;4.8;3" dur="3.2s" repeatCount="indefinite" begin="0.6s"/></circle><circle cx="70" cy="55" r="1.8" fill="#fff"/>
+          <g fill="#f3e8ff" text-anchor="middle" font-weight="800" style="font-family:inherit">
+            <text font-size="8" x="78" y="178">Roma</text>
+            <text font-size="9" x="80" y="118">Italia</text>
+            <text font-size="7.5" x="70" y="51">Milano</text>
+          </g>
+        </svg>
+      </div>
     </div>
 
-    <a href="/it/guide/" class="gd-banner" aria-label="La Guida Completa allo Streaming">
-      <div class="gd-thumb"><i class="fas fa-book-open"></i></div>
-      <div class="gd-banner-body">
-        <span class="gd-banner-tag"><i class="fas fa-star"></i> ⭐ Guida in evidenza</span>
-        <h3>La Guida Completa allo Streaming</h3>
-        <p>Tutto in un unico posto — tutorial di configurazione, compatibilità dispositivi e consigli per migliorare la tua esperienza.</p>
-        <span class="gd-btn">
-          <i class="fas fa-book-open"></i>
-          Leggi la Guida Completa
-        </span>
+    <h3 class="gulf-grid-title" style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin:36px 0 20px">I canali più amati a San Marino</h3>
+
+    <div class="gulf-content-grid">
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)">RAI</div>
+          <div class="gulf-card-name">RAI 1<br>&amp; RAI 2</div>
+        </div>
+        <div class="gulf-card-desc">La televisione pubblica italiana<br>sempre con te</div>
       </div>
-    </a>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)">C5</div>
+          <div class="gulf-card-name">Mediaset<br>Canale 5</div>
+        </div>
+        <div class="gulf-card-desc">Il canale più visto d'Italia<br>e le serie più amate</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#5b21b6,#3b0764)">SM</div>
+          <div class="gulf-card-name">San Marino<br>RTV</div>
+        </div>
+        <div class="gulf-card-desc">La radiotelevisione ufficiale<br>della Repubblica di San Marino</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#171717,#44403c)">SA</div>
+          <div class="gulf-card-name">Serie A<br>Live</div>
+        </div>
+        <div class="gulf-card-desc">Il campionato italiano<br>in diretta ogni giornata</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#15803d,#14532d)"><i class="fas fa-futbol"></i></div>
+          <div class="gulf-card-name">DAZN<br>Live</div>
+        </div>
+        <div class="gulf-card-desc">Sport in diretta senza<br>interruzioni e senza limiti</div>
+      </div>
+      <div class="gulf-channel-card">
+        <div class="gulf-card-head">
+          <div class="gulf-logo" style="background:linear-gradient(135deg,#7b2fff,#4f46e5)"><i class="fas fa-film"></i></div>
+          <div class="gulf-card-name">Film<br>&amp; Serie</div>
+        </div>
+        <div class="gulf-card-desc">Le migliori produzioni<br>italiane e internazionali</div>
+      </div>
+    </div>
+
+    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px;justify-content:flex-start;gap:14px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
+        <i class="fas fa-crown" style="color:#f5c518;font-size:.9rem"></i>
+      </span>
+      <div>
+        <div class="gulf-banner-txt" style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">Intrattenimento completo per tutta la famiglia</div>
+        <div class="gulf-banner-sub" style="font-size:.88rem;color:rgba(255,255,255,.65)">Un solo abbonamento per tutti i contenuti italiani</div>
+      </div>
+    </div>
 
   </div>
 </section>
