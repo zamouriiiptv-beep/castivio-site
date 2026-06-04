@@ -1173,10 +1173,9 @@ body.light-mode #guides-section .gs-title span{
 }
 
 /* ══ HEADER ══ */
-#header>.container,#header .header-inner{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;position:relative!important}
-#header #menu-btn{order:1!important;flex-shrink:0!important;margin:0!important;padding:0!important}
-#header #logo-name{order:2!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;white-space:nowrap!important}
-#header .hdr-right{order:3!important;flex-shrink:0!important;margin:0!important}
+#header #menu-btn{flex-shrink:0!important;margin:0!important;padding:0!important}
+#header #logo-name{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;white-space:nowrap!important;pointer-events:none}
+#header .hdr-right{flex-shrink:0!important;margin:0!important;display:flex!important;align-items:center!important;gap:10px!important}
 body.light-mode #header{background:rgba(220,215,240,.97)!important;border-bottom:1px solid rgba(139,92,246,.2)!important;box-shadow:0 2px 16px rgba(91,22,163,.10)!important}
 body.light-mode #header.hp-scrolled{background:rgba(212,207,234,.99)!important;box-shadow:0 4px 20px rgba(91,22,163,.14)!important}
 body.light-mode #header #logo-name span{color:#000000!important}
