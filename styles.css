@@ -1132,10 +1132,10 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* ── Toggle button (always visible) ── */
 #theme-toggle{background:none;border:none;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s;padding:0;flex-shrink:0}
 #theme-toggle:hover{background:rgba(139,92,246,.18)}
-#theme-toggle svg{width:22px;height:22px;display:block}
+#theme-toggle svg{width:26px;height:26px;display:block}
 .icon-sun{display:none;fill:#f59e0b}
-.icon-moon{display:block;fill:#c4b5fd}
-body.light-mode .icon-sun{display:block}
+.icon-moon{display:block;fill:#ffffff}
+body.light-mode .icon-sun{display:block;fill:#d97706}
 body.light-mode .icon-moon{display:none}
 
 /* ── IPTV word highlight — purple in both modes ── */
