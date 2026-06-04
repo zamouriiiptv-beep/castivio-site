@@ -1278,11 +1278,41 @@ body.light-mode .faq2-stat-icon svg{fill:#4c1d95!important}
 
 /* ══ FOOTER ══ */
 body.light-mode footer{background:rgba(220,215,240,.97)!important;background-image:none!important;color:#1e1b4b!important}
-body.light-mode footer h3,body.light-mode footer h4,body.light-mode footer p,body.light-mode footer span,body.light-mode footer li{color:#1e1b4b!important}
+body.light-mode footer::before{display:none!important}
+body.light-mode footer h3,body.light-mode footer h4,body.light-mode footer p,body.light-mode footer span,body.light-mode footer li{color:#1e1b4b!important;text-shadow:none!important}
 body.light-mode footer a{color:#4c1d95!important}
 body.light-mode footer a:hover{color:#3b0764!important}
-body.light-mode footer .border-white\/20,body.light-mode footer [class*="border"]{border-color:rgba(91,22,163,.2)!important}
+body.light-mode footer .border-t,body.light-mode footer .border-white\/20,body.light-mode footer [class*="border"]{border-color:rgba(91,22,163,.2)!important}
+body.light-mode .footer-particles,.footer-particles .particle{display:none!important}
+body.light-mode .footer-logo{filter:drop-shadow(0 0 12px rgba(91,22,163,.3))!important}
 
-/* ══ SEO / SEARCHES / GLOBAL COVERAGE ══ */
-body.light-mode .iptv-searches-section a,body.light-mode .iptv-searches-section span{color:#3b0764!important;border-color:rgba(91,22,163,.35)!important}
-body.light-mode .global-coverage p,body.light-mode .global-coverage h2,body.light-mode .global-coverage h3{color:#1e1b4b!important}
+/* Footer uppercase title (Global Coverage heading) */
+body.light-mode footer .uppercase{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode footer .uppercase::before{display:none!important}
+
+/* Footer bottom copyright bar */
+body.light-mode .footer-bottom{background:rgba(212,207,234,.99)!important;border-top:1px solid rgba(91,22,163,.2)!important}
+body.light-mode .copyright-text{color:#3b0764!important;text-shadow:none!important}
+
+/* Country grid buttons */
+body.light-mode .ft-country-grid a{background:linear-gradient(180deg,rgba(139,92,246,.18),rgba(91,22,163,.28))!important;border-color:rgba(91,22,163,.35)!important;color:#1e1b4b!important;text-shadow:none!important;box-shadow:0 2px 8px rgba(91,22,163,.10)!important}
+body.light-mode .ft-country-grid a:hover{background:linear-gradient(180deg,rgba(139,92,246,.28),rgba(91,22,163,.40))!important;border-color:rgba(91,22,163,.55)!important;color:#1e1b4b!important;box-shadow:0 4px 14px rgba(91,22,163,.18)!important}
+
+/* Country pills (legacy flex links) */
+body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg-white\/10{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.28)!important;color:#1e1b4b!important;box-shadow:none!important}
+body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.25)!important;border-color:rgba(91,22,163,.45)!important;color:#3b0764!important}
+
+/* ══ GLOBAL COVERAGE section ══ */
+body.light-mode .global-coverage{background:rgba(220,215,240,.97)!important}
+body.light-mode .global-coverage .gc-title{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode .global-coverage p,body.light-mode .global-coverage h2,body.light-mode .global-coverage h3{color:#1e1b4b!important;text-shadow:none!important}
+
+/* ══ IPTV SEARCHES section ══ */
+body.light-mode .iptv-searches-section{background:rgba(212,207,234,.99)!important}
+body.light-mode .iptv-searches-section::before{display:none!important}
+body.light-mode .iptv-searches-title{color:#3b0764!important;text-shadow:none!important}
+body.light-mode .iptv-searches-title::before,body.light-mode .iptv-searches-title::after{background:linear-gradient(90deg,transparent,rgba(91,22,163,.6))!important}
+body.light-mode .iptv-searches-title::after{background:linear-gradient(90deg,rgba(91,22,163,.6),transparent)!important}
+body.light-mode .iptv-searches-subtitle{color:#374151!important}
+body.light-mode .iptv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.4)!important;color:#1e1b4b!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.light-mode .iptv-tag:hover{background:rgba(139,92,246,.26)!important;border-color:rgba(91,22,163,.65)!important;color:#3b0764!important;box-shadow:0 2px 12px rgba(91,22,163,.18)!important}
