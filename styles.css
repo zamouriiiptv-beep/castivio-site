@@ -1263,22 +1263,55 @@ body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,1
 body.light-mode #pricing .ps-title{color:#000000!important}
 body.light-mode #pricing .ps-sub{color:#000000!important}
 body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.45)!important;color:#1e1b4b!important}
-body.light-mode .pc-card-basic{background:linear-gradient(165deg,#ede9ff,#e2daff)!important;box-shadow:0 8px 28px rgba(91,22,163,.15)!important}
-body.light-mode .pc-card-premium{background:linear-gradient(165deg,#f5e9b0,#edd98a)!important;box-shadow:0 8px 28px rgba(180,83,9,.12)!important}
-body.light-mode .pc-card-pro{background:linear-gradient(165deg,#f5c8d8,#edafc4)!important;box-shadow:0 8px 28px rgba(157,23,77,.12)!important}
+body.light-mode .pc-card-basic{background:linear-gradient(160deg,#fdfcff 0%,#f2eeff 100%)!important;border:1.5px solid rgba(91,22,163,.28)!important;box-shadow:0 8px 32px rgba(91,22,163,.10)!important}
+body.light-mode .pc-card-premium{background:linear-gradient(160deg,#fffef8 0%,#fef8e6 100%)!important;border:1.5px solid rgba(180,83,9,.22)!important;box-shadow:0 8px 32px rgba(180,83,9,.08)!important}
+body.light-mode .pc-card-pro{background:linear-gradient(160deg,#fffcfe 0%,#fdecf5 100%)!important;border:1.5px solid rgba(157,23,77,.22)!important;box-shadow:0 8px 32px rgba(157,23,77,.08)!important}
 body.light-mode .pc-name{color:#000000!important}
 body.light-mode .pc-sub{color:#000000!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.08)!important}
 body.light-mode .pc-tab{color:#3b0764!important}
 body.light-mode .pc-tab:hover{color:#3b0764!important}
-body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,rgba(91,22,163,.55),rgba(122,60,235,.55))!important;color:#ffffff!important}
-body.light-mode .pc-card-premium .pc-tab-active{background:rgba(180,100,10,.50)!important;color:#ffffff!important}
-body.light-mode .pc-card-pro .pc-tab-active{background:rgba(190,50,100,.50)!important;color:#ffffff!important}
+body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important;color:#ffffff!important}
+body.light-mode .pc-card-premium .pc-tab-active{background:linear-gradient(135deg,#b45309,#d97706)!important;color:#ffffff!important}
+body.light-mode .pc-card-pro .pc-tab-active{background:linear-gradient(135deg,#9d174d,#db2777)!important;color:#ffffff!important}
 body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important;color:#ffffff!important;box-shadow:0 6px 20px rgba(91,22,163,.35)!important}
 body.light-mode .pc-feat-title{color:#000000!important}
 body.light-mode .pc-feat-desc{color:#000000!important}
-body.light-mode .pc-trust-tx strong{color:#000000!important}
-body.light-mode .pc-trust-tx span{color:#000000!important}
+body.light-mode .pc-trust-tx strong{color:#1e1b4b!important}
+body.light-mode .pc-trust-tx span{color:#4b5563!important}
+
+/* ── Pricing card internals: light-mode refinement ── */
+body.light-mode .pc-sub{color:#4b5563!important}
+body.light-mode .pc-tabs{background:rgba(0,0,0,.06)!important}
+body.light-mode .pc-card-premium .pc-tabs{background:rgba(180,83,9,.07)!important}
+body.light-mode .pc-card-pro .pc-tabs{background:rgba(157,23,77,.07)!important}
+body.light-mode .pc-card-basic .pc-tab{color:#5b21b6!important}
+body.light-mode .pc-card-premium .pc-tab{color:#92400e!important}
+body.light-mode .pc-card-pro .pc-tab{color:#831843!important}
+body.light-mode .pc-card-basic .pc-tab:hover,body.light-mode .pc-card-basic .pc-tab{color:#5b21b6!important}
+body.light-mode .pc-card-premium .pc-tab:hover{color:#92400e!important}
+body.light-mode .pc-card-pro .pc-tab:hover{color:#831843!important}
+/* Icon wraps: remove dark-mode glow, keep accent color */
+body.light-mode .pc-card-basic .pc-icon-wrap{background:rgba(91,22,163,.12)!important;border-color:rgba(91,22,163,.32)!important;color:#5b21b6!important;box-shadow:0 4px 14px rgba(91,22,163,.14)!important}
+body.light-mode .pc-card-premium .pc-icon-wrap{background:rgba(180,83,9,.12)!important;border-color:rgba(180,83,9,.32)!important;color:#b45309!important;box-shadow:0 4px 14px rgba(180,83,9,.14)!important}
+body.light-mode .pc-card-pro .pc-icon-wrap{background:rgba(157,23,77,.12)!important;border-color:rgba(157,23,77,.32)!important;color:#9d174d!important;box-shadow:0 4px 14px rgba(157,23,77,.14)!important}
+/* Card title: accent color, no gradient text */
+body.light-mode .pc-card-basic .pc-title{color:#5b21b6!important;-webkit-text-fill-color:#5b21b6!important;background:none!important;filter:none!important}
+body.light-mode .pc-card-premium .pc-title{color:#b45309!important;-webkit-text-fill-color:#b45309!important;background:none!important;filter:none!important}
+body.light-mode .pc-card-pro .pc-title{color:#9d174d!important;-webkit-text-fill-color:#9d174d!important;background:none!important;filter:none!important}
+/* Feature icons: visible accent on light bg */
+body.light-mode .pc-card-basic .pc-feat-icon{background:rgba(91,22,163,.09)!important;border-color:rgba(91,22,163,.28)!important;color:#5b21b6!important}
+body.light-mode .pc-card-premium .pc-feat-icon{background:rgba(180,83,9,.09)!important;border-color:rgba(180,83,9,.28)!important;color:#b45309!important}
+body.light-mode .pc-card-pro .pc-feat-icon{background:rgba(157,23,77,.09)!important;border-color:rgba(157,23,77,.28)!important;color:#9d174d!important}
+/* Feature separators */
+body.light-mode .pc-feat{border-bottom-color:rgba(0,0,0,.07)!important}
+/* Trust section */
+body.light-mode .pc-trust-basic{background:rgba(91,22,163,.04)!important}
+body.light-mode .pc-trust-premium{background:rgba(180,83,9,.04)!important}
+body.light-mode .pc-trust-pro{background:rgba(157,23,77,.04)!important}
+body.light-mode .pc-trust-basic .pc-trust-ic{background:rgba(91,22,163,.10)!important;border-color:rgba(91,22,163,.26)!important;color:#5b21b6!important}
+body.light-mode .pc-trust-premium .pc-trust-ic{background:rgba(180,83,9,.10)!important;border-color:rgba(180,83,9,.26)!important;color:#b45309!important}
+body.light-mode .pc-trust-pro .pc-trust-ic{background:rgba(157,23,77,.10)!important;border-color:rgba(157,23,77,.26)!important;color:#9d174d!important}
 
 /* ══ REVIEWS ══ */
 body.light-mode .rv-title h2{color:#000000!important}
