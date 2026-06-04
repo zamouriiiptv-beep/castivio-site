@@ -1057,6 +1057,10 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .faq2-features{display:flex;margin-top:12px;border:1px solid rgba(196,181,253,.12);border-radius:10px;background:rgba(91,22,163,.12);overflow:hidden}
 .faq2-feat{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:11px 6px;border-left:1px solid rgba(196,181,253,.12)}
 .faq2-feat:last-child{border-left:none}
+.faq2-steps{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.faq2-step{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(91,22,163,.12);border:1px solid rgba(196,181,253,.12);border-radius:10px}
+.faq2-step-num{min-width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#B026FF);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;font-family:'Tajawal',sans-serif;flex-shrink:0}
+.faq2-step-txt{font-size:13px;color:#e9e0ff;font-family:'Tajawal',sans-serif;font-weight:500;line-height:1.5}
 .faq2-feat svg{width:22px;height:22px;fill:#c4b5fd}
 .faq2-feat span{color:#e9e0ff;font-family:"Tajawal",sans-serif;font-size:11px;font-weight:600;line-height:1.4}
 /* CTA — horizontal rectangle: text RIGHT + اشترك الآن button LEFT (RTL) */
@@ -1365,6 +1369,9 @@ body.light-mode .faq2-item.faq2-active .faq2-toggle{background:rgba(91,22,163,.2
 body.light-mode .faq2-features{background:rgba(139,92,246,.07)!important;border-color:rgba(91,22,163,.38)!important}
 body.light-mode .faq2-feat span{color:#000000!important}
 body.light-mode .faq2-feat svg{fill:#4c1d95!important}
+body.light-mode .faq2-step{background:rgba(139,92,246,.07)!important;border-color:rgba(91,22,163,.25)!important}
+body.light-mode .faq2-step-num{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important}
+body.light-mode .faq2-step-txt{color:#3b0764!important}
 body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(37,99,235,.07))!important;border-color:rgba(91,22,163,.42)!important}
 body.light-mode .faq2-cta-title{color:#000000!important}
 body.light-mode .faq2-cta-sub{color:#000000!important}
