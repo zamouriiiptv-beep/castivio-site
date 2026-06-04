@@ -1216,6 +1216,8 @@ body.light-mode .wu-card-arrow i{color:#000000!important}
 
 /* ══ GUIDES ══ */
 body.light-mode #guides-section .gs-title span{background:linear-gradient(90deg,#5b21b6 0%,#2563eb 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+body.light-mode #guides-section .gs-badge{color:#000000!important;background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.35)!important}
+body.light-mode #guides-section .gs-title{color:#000000!important;text-shadow:none!important}
 body.light-mode .gd-tile{background:#c5bde6!important;border-color:rgba(91,22,163,.30)!important;box-shadow:0 4px 18px rgba(91,22,163,.12)!important}
 body.light-mode .gd-tile::before{display:none!important}
 body.light-mode .gd-tile:hover{background:#bcb3de!important}
