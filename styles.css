@@ -1263,9 +1263,9 @@ body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,1
 body.light-mode #pricing .ps-title{color:#000000!important}
 body.light-mode #pricing .ps-sub{color:#000000!important}
 body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.45)!important;color:#1e1b4b!important}
-body.light-mode .pc-card-basic{background:linear-gradient(160deg,#fdfcff 0%,#f2eeff 100%)!important;border:1.5px solid rgba(91,22,163,.28)!important;box-shadow:0 8px 32px rgba(91,22,163,.10)!important}
-body.light-mode .pc-card-premium{background:linear-gradient(160deg,#fffef8 0%,#fef8e6 100%)!important;border:1.5px solid rgba(180,83,9,.22)!important;box-shadow:0 8px 32px rgba(180,83,9,.08)!important}
-body.light-mode .pc-card-pro{background:linear-gradient(160deg,#fffcfe 0%,#fdecf5 100%)!important;border:1.5px solid rgba(157,23,77,.22)!important;box-shadow:0 8px 32px rgba(157,23,77,.08)!important}
+body.light-mode .pc-card-basic{background:#ffffff!important;border:1.5px solid rgba(91,22,163,.30)!important;box-shadow:0 8px 32px rgba(91,22,163,.10)!important}
+body.light-mode .pc-card-premium{background:#ffffff!important;border:1.5px solid rgba(180,83,9,.30)!important;box-shadow:0 8px 32px rgba(180,83,9,.10)!important}
+body.light-mode .pc-card-pro{background:#ffffff!important;border:1.5px solid rgba(157,23,77,.28)!important;box-shadow:0 8px 32px rgba(157,23,77,.10)!important}
 body.light-mode .pc-name{color:#000000!important}
 body.light-mode .pc-sub{color:#000000!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.08)!important}
@@ -1367,6 +1367,10 @@ a[href*="wa.me"]:not(.whatsapp-float),
 .faq2-cta-wa{background:linear-gradient(135deg,#1ebe57,#25D366)!important;color:#ffffff!important;box-shadow:0 4px 16px rgba(37,211,102,.35)!important;border-color:transparent!important}
 a[href*="wa.me"]:not(.whatsapp-float):hover,
 .faq2-cta-wa:hover{background:linear-gradient(135deg,#17a84a,#1ebe57)!important;box-shadow:0 6px 22px rgba(37,211,102,.50)!important}
+
+/* ── Pricing CTA: purple in light mode (overrides WhatsApp green above) ── */
+body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important;color:#ffffff!important;box-shadow:0 6px 20px rgba(91,22,163,.35)!important;border-color:transparent!important}
+body.light-mode [class*="pc-cta"]:hover{background:linear-gradient(135deg,#4c1d95,#6d28d9)!important;box-shadow:0 8px 26px rgba(91,22,163,.45)!important}
 
 /* ══ FOOTER ══ */
 body.light-mode footer{background:rgba(245,242,255,.97)!important;background-image:none!important;color:#000000!important}
