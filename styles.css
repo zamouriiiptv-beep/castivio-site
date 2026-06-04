@@ -1160,17 +1160,17 @@ body.light-mode .wu-title span,body.light-mode #pricing .ps-title span{backgroun
 /* ══ HEADER ══ */
 body.light-mode #header{background:rgba(220,215,240,.97)!important;border-bottom:1px solid rgba(139,92,246,.2)!important;box-shadow:0 2px 16px rgba(91,22,163,.10)!important}
 body.light-mode #header.hp-scrolled{background:rgba(212,207,234,.99)!important;box-shadow:0 4px 20px rgba(91,22,163,.14)!important}
-body.light-mode #header #logo-name span{color:#3b0764!important}
+body.light-mode #header #logo-name span{color:#000000!important}
 body.light-mode #menu-btn svg{stroke:#4c1d95!important}
 
 /* ══ LANGUAGE BAR ══ */
 body.light-mode #language-bar{background:linear-gradient(to right,#cac4e6,#d2cded)!important}
-body.light-mode #current-lang{color:#3b0764!important}
+body.light-mode #current-lang{color:#000000!important}
 body.light-mode .lang-wrapper{border-color:rgba(91,22,163,.35)!important;background:rgba(139,92,246,.10)!important}
 
 /* ══ SIDE MENU ══ */
 body.light-mode .side-menu{background:rgba(232,228,252,.98)!important;border-color:rgba(139,92,246,.22)!important}
-body.light-mode .side-menu a,body.light-mode .side-menu .nav-link{color:#1e1b4b!important}
+body.light-mode .side-menu a,body.light-mode .side-menu .nav-link{color:#000000!important}
 
 /* ══ HERO ══ */
 body.light-mode .hp-hero{--hp-bg:linear-gradient(135deg,#e8e3ff 0%,#dbeafe 100%)}
@@ -1179,141 +1179,141 @@ body.light-mode .hp-vignette{display:none!important}
 body.light-mode .hp-glow{opacity:.06!important}
 body.light-mode .hp-beam{opacity:.04!important}
 body.light-mode .hp-particle{background:rgba(109,40,217,.2)!important;box-shadow:none!important}
-body.light-mode .hp-title{color:#1e1b4b!important;text-shadow:none!important}
-body.light-mode .hp-title-sub{color:#3730a3!important}
-body.light-mode .hp-desc{color:#374151!important;opacity:1!important}
-body.light-mode .hp-chip{color:#3b0764!important;background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important}
+body.light-mode .hp-title{color:#000000!important;text-shadow:none!important}
+body.light-mode .hp-title-sub{color:#000000!important}
+body.light-mode .hp-desc{color:#000000!important;opacity:1!important}
+body.light-mode .hp-chip{color:#000000!important;background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important}
 body.light-mode .hp-chip i{color:#5b21b6!important}
-body.light-mode .hp-badge{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.3)!important;color:#3b0764!important}
-body.light-mode .hp-btn--ghost{color:#3b0764!important;border-color:rgba(91,22,163,.45)!important;background:rgba(139,92,246,.10)!important}
+body.light-mode .hp-badge{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
+body.light-mode .hp-btn--ghost{color:#000000!important;border-color:rgba(91,22,163,.45)!important;background:rgba(139,92,246,.10)!important}
 body.light-mode .hp-scroll-mouse{border-color:rgba(91,22,163,.4)!important}
 
 /* ══ WHY-US ══ */
-body.light-mode .wu-title{color:#1e1b4b!important}
-body.light-mode .wu-sub{color:#374151!important}
-body.light-mode .wu-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#4c1d95!important}
+body.light-mode .wu-title{color:#000000!important}
+body.light-mode .wu-sub{color:#000000!important}
+body.light-mode .wu-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
 body.light-mode .wu-card{background:#c5bde6!important;border-color:rgba(91,22,163,.30)!important;box-shadow:0 4px 18px rgba(91,22,163,.12)!important}
 body.light-mode .wu-card:hover{background:#bcb3de!important;border-color:rgba(91,22,163,.50)!important}
-body.light-mode .wu-card h3{color:#1e1b4b!important;text-shadow:none!important}
-body.light-mode .wu-card p{color:#374151!important}
+body.light-mode .wu-card h3{color:#000000!important;text-shadow:none!important}
+body.light-mode .wu-card p{color:#000000!important}
 body.light-mode .wu-card-arrow{background:rgba(139,92,246,.15)!important;border-color:rgba(91,22,163,.25)!important}
-body.light-mode .wu-card-arrow i{color:#4c1d95!important}
+body.light-mode .wu-card-arrow i{color:#000000!important}
 
 /* ══ GUIDES ══ */
 body.light-mode .gd-tile{background:#c5bde6!important;border-color:rgba(91,22,163,.30)!important;box-shadow:0 4px 18px rgba(91,22,163,.12)!important}
 body.light-mode .gd-tile:hover{background:#bcb3de!important}
-body.light-mode .gd-tile h3{color:#1e1b4b!important}
-body.light-mode .gd-mtitle{color:#1e1b4b!important}
-body.light-mode .gd-desc{color:#374151!important}
-body.light-mode .gd-link{color:#4c1d95!important;font-weight:700}
-body.light-mode .gd-link i{color:#4c1d95!important;border-color:rgba(91,22,163,.3)!important}
+body.light-mode .gd-tile h3{color:#000000!important}
+body.light-mode .gd-mtitle{color:#000000!important}
+body.light-mode .gd-desc{color:#000000!important}
+body.light-mode .gd-link{color:#000000!important;font-weight:700}
+body.light-mode .gd-link i{color:#000000!important;border-color:rgba(91,22,163,.3)!important}
 body.light-mode .gd-badge{background:rgba(139,92,246,.15)!important;border-color:rgba(91,22,163,.3)!important}
-body.light-mode .gd-badge i{color:#4c1d95!important}
+body.light-mode .gd-badge i{color:#000000!important}
 body.light-mode .gd-banner{background:linear-gradient(130deg,rgba(91,22,163,.2),rgba(37,99,235,.12))!important;border-color:rgba(139,92,246,.3)!important}
-body.light-mode .gd-banner-body h3{color:#1e1b4b!important}
-body.light-mode .gd-banner-body p{color:#374151!important}
-body.light-mode .gd-banner-tag{color:#4c1d95!important;border-color:rgba(91,22,163,.3)!important;background:rgba(139,92,246,.12)!important}
+body.light-mode .gd-banner-body h3{color:#000000!important}
+body.light-mode .gd-banner-body p{color:#000000!important}
+body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,163,.3)!important;background:rgba(139,92,246,.12)!important}
 
 /* ══ PRICING ══ */
-body.light-mode #pricing .ps-title{color:#1e1b4b!important}
-body.light-mode #pricing .ps-sub{color:#374151!important}
-body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#4c1d95!important}
+body.light-mode #pricing .ps-title{color:#000000!important}
+body.light-mode #pricing .ps-sub{color:#000000!important}
+body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
 body.light-mode .pc-card-basic{background:linear-gradient(165deg,#bdb4e2,#b5abda)!important;box-shadow:0 8px 24px rgba(91,22,163,.16)!important}
 body.light-mode .pc-card-premium{background:linear-gradient(165deg,#e8c84a,#d4a820)!important;box-shadow:0 8px 24px rgba(180,83,9,.18)!important}
 body.light-mode .pc-card-pro{background:linear-gradient(165deg,#e8a0c0,#d8809a)!important;box-shadow:0 8px 24px rgba(157,23,77,.18)!important}
-body.light-mode .pc-name{color:#1e1b4b!important}
-body.light-mode .pc-sub{color:#374151!important}
+body.light-mode .pc-name{color:#000000!important}
+body.light-mode .pc-sub{color:#000000!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.10)!important}
-body.light-mode .pc-tab{color:#374151!important}
-body.light-mode .pc-tab:hover{color:#1e1b4b!important}
-body.light-mode .pc-feat-title{color:#1e1b4b!important}
-body.light-mode .pc-feat-desc{color:#374151!important}
-body.light-mode .pc-trust-tx strong{color:#1e1b4b!important}
-body.light-mode .pc-trust-tx span{color:#374151!important}
+body.light-mode .pc-tab{color:#000000!important}
+body.light-mode .pc-tab:hover{color:#000000!important}
+body.light-mode .pc-feat-title{color:#000000!important}
+body.light-mode .pc-feat-desc{color:#000000!important}
+body.light-mode .pc-trust-tx strong{color:#000000!important}
+body.light-mode .pc-trust-tx span{color:#000000!important}
 
 /* ══ REVIEWS ══ */
-body.light-mode .rv-title h2{color:#1e1b4b!important}
-body.light-mode .rv-sub{color:#374151!important}
-body.light-mode .rv-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#4c1d95!important}
-body.light-mode .rv-trust{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.28)!important;color:#3b0764!important}
+body.light-mode .rv-title h2{color:#000000!important}
+body.light-mode .rv-sub{color:#000000!important}
+body.light-mode .rv-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
+body.light-mode .rv-trust{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.28)!important;color:#000000!important}
 body.light-mode .rv-summary{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.2)!important}
-body.light-mode .rv-summary-score{color:#1e1b4b!important}
-body.light-mode .rv-summary-count{color:#374151!important}
+body.light-mode .rv-summary-score{color:#000000!important}
+body.light-mode .rv-summary-count{color:#000000!important}
 body.light-mode .rv-card{background:#c5bde6!important;border-color:rgba(91,22,163,.28)!important;box-shadow:0 4px 16px rgba(91,22,163,.12)!important}
 body.light-mode .rv-qbox{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.22)!important}
 body.light-mode .rv-qbox svg{fill:#4c1d95!important}
-body.light-mode .rv-name{color:#1e1b4b!important}
-body.light-mode .rv-loc{color:#374151!important}
-body.light-mode .rv-date{color:#4b5563!important}
-body.light-mode .rv-text{color:#1e1b4b!important}
-body.light-mode .rv-text strong{color:#3b0764!important}
-body.light-mode .rv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.25)!important;color:#3b0764!important}
-body.light-mode .rv-feat-label{color:#374151!important}
+body.light-mode .rv-name{color:#000000!important}
+body.light-mode .rv-loc{color:#000000!important}
+body.light-mode .rv-date{color:#000000!important}
+body.light-mode .rv-text{color:#000000!important}
+body.light-mode .rv-text strong{color:#000000!important}
+body.light-mode .rv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.25)!important;color:#000000!important}
+body.light-mode .rv-feat-label{color:#000000!important}
 body.light-mode .rv-feat-icon{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.2)!important}
 body.light-mode .rv-feat-icon svg{fill:#4c1d95!important}
 body.light-mode .rv-verified{color:#166534!important;background:rgba(74,222,128,.18)!important;border-color:rgba(34,197,94,.4)!important}
 
 /* ══ FAQ ══ */
-body.light-mode .faq2-title{color:#1e1b4b!important}
-body.light-mode .faq2-sub{color:#374151!important}
-body.light-mode .faq2-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#4c1d95!important}
+body.light-mode .faq2-title{color:#000000!important}
+body.light-mode .faq2-sub{color:#000000!important}
+body.light-mode .faq2-badge{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
 body.light-mode .faq2-item{background:#c5bde6!important;border-color:rgba(91,22,163,.25)!important}
 body.light-mode .faq2-item:hover{border-color:rgba(91,22,163,.50)!important}
 body.light-mode .faq2-item.faq2-active{background:#bcb3de!important;box-shadow:inset 4px 0 0 rgba(91,22,163,.85),0 4px 20px rgba(91,22,163,.14)!important}
-body.light-mode .faq2-q-text{color:#1e1b4b!important}
-body.light-mode .faq2-answer{color:#1e1b4b!important}
+body.light-mode .faq2-q-text{color:#000000!important}
+body.light-mode .faq2-answer{color:#000000!important}
 body.light-mode .faq2-icon-box svg{fill:#4c1d95!important}
 body.light-mode .faq2-toggle{background:rgba(139,92,246,.16)!important}
 body.light-mode .faq2-toggle svg{fill:#4c1d95!important}
 body.light-mode .faq2-item.faq2-active .faq2-toggle{background:rgba(91,22,163,.28)!important}
 body.light-mode .faq2-features{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.2)!important}
-body.light-mode .faq2-feat span{color:#1e1b4b!important}
+body.light-mode .faq2-feat span{color:#000000!important}
 body.light-mode .faq2-feat svg{fill:#4c1d95!important}
 body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(37,99,235,.10))!important;border-color:rgba(91,22,163,.25)!important}
-body.light-mode .faq2-cta-title{color:#1e1b4b!important}
-body.light-mode .faq2-cta-sub{color:#374151!important}
+body.light-mode .faq2-cta-title{color:#000000!important}
+body.light-mode .faq2-cta-sub{color:#000000!important}
 body.light-mode .faq2-stats{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.2)!important}
-body.light-mode .faq2-stat-title{color:#1e1b4b!important}
-body.light-mode .faq2-stat-sub{color:#374151!important}
+body.light-mode .faq2-stat-title{color:#000000!important}
+body.light-mode .faq2-stat-sub{color:#000000!important}
 body.light-mode .faq2-stat-icon svg{fill:#4c1d95!important}
 
 /* ══ FOOTER ══ */
-body.light-mode footer{background:rgba(220,215,240,.97)!important;background-image:none!important;color:#1e1b4b!important}
+body.light-mode footer{background:rgba(220,215,240,.97)!important;background-image:none!important;color:#000000!important}
 body.light-mode footer::before{display:none!important}
-body.light-mode footer h3,body.light-mode footer h4,body.light-mode footer p,body.light-mode footer span,body.light-mode footer li{color:#1e1b4b!important;text-shadow:none!important}
-body.light-mode footer a{color:#4c1d95!important}
-body.light-mode footer a:hover{color:#3b0764!important}
+body.light-mode footer h3,body.light-mode footer h4,body.light-mode footer p,body.light-mode footer span,body.light-mode footer li{color:#000000!important;text-shadow:none!important}
+body.light-mode footer a{color:#000000!important}
+body.light-mode footer a:hover{color:#000000!important}
 body.light-mode footer .border-t,body.light-mode footer .border-white\/20,body.light-mode footer [class*="border"]{border-color:rgba(91,22,163,.2)!important}
 body.light-mode .footer-particles,.footer-particles .particle{display:none!important}
 body.light-mode .footer-logo{filter:drop-shadow(0 0 12px rgba(91,22,163,.3))!important}
 
 /* Footer uppercase title (Global Coverage heading) */
-body.light-mode footer .uppercase{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode footer .uppercase{color:#000000!important;text-shadow:none!important}
 body.light-mode footer .uppercase::before{display:none!important}
 
 /* Footer bottom copyright bar */
 body.light-mode .footer-bottom{background:rgba(212,207,234,.99)!important;border-top:1px solid rgba(91,22,163,.2)!important}
-body.light-mode .copyright-text{color:#3b0764!important;text-shadow:none!important}
+body.light-mode .copyright-text{color:#000000!important;text-shadow:none!important}
 
 /* Country grid buttons */
-body.light-mode .ft-country-grid a{background:linear-gradient(180deg,rgba(139,92,246,.18),rgba(91,22,163,.28))!important;border-color:rgba(91,22,163,.35)!important;color:#1e1b4b!important;text-shadow:none!important;box-shadow:0 2px 8px rgba(91,22,163,.10)!important}
-body.light-mode .ft-country-grid a:hover{background:linear-gradient(180deg,rgba(139,92,246,.28),rgba(91,22,163,.40))!important;border-color:rgba(91,22,163,.55)!important;color:#1e1b4b!important;box-shadow:0 4px 14px rgba(91,22,163,.18)!important}
+body.light-mode .ft-country-grid a{background:linear-gradient(180deg,rgba(139,92,246,.18),rgba(91,22,163,.28))!important;border-color:rgba(91,22,163,.35)!important;color:#000000!important;text-shadow:none!important;box-shadow:0 2px 8px rgba(91,22,163,.10)!important}
+body.light-mode .ft-country-grid a:hover{background:linear-gradient(180deg,rgba(139,92,246,.28),rgba(91,22,163,.40))!important;border-color:rgba(91,22,163,.55)!important;color:#000000!important;box-shadow:0 4px 14px rgba(91,22,163,.18)!important}
 
 /* Country pills (legacy flex links) */
-body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg-white\/10{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.28)!important;color:#1e1b4b!important;box-shadow:none!important}
-body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.25)!important;border-color:rgba(91,22,163,.45)!important;color:#3b0764!important}
+body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg-white\/10{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.28)!important;color:#000000!important;box-shadow:none!important}
+body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.25)!important;border-color:rgba(91,22,163,.45)!important;color:#000000!important}
 
 /* ══ GLOBAL COVERAGE section ══ */
 body.light-mode .global-coverage{background:rgba(220,215,240,.97)!important}
-body.light-mode .global-coverage .gc-title{color:#1e1b4b!important;text-shadow:none!important}
-body.light-mode .global-coverage p,body.light-mode .global-coverage h2,body.light-mode .global-coverage h3{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode .global-coverage .gc-title{color:#000000!important;text-shadow:none!important}
+body.light-mode .global-coverage p,body.light-mode .global-coverage h2,body.light-mode .global-coverage h3{color:#000000!important;text-shadow:none!important}
 
 /* ══ IPTV SEARCHES section ══ */
 body.light-mode .iptv-searches-section{background:rgba(212,207,234,.99)!important}
 body.light-mode .iptv-searches-section::before{display:none!important}
-body.light-mode .iptv-searches-title{color:#3b0764!important;text-shadow:none!important}
+body.light-mode .iptv-searches-title{color:#000000!important;text-shadow:none!important}
 body.light-mode .iptv-searches-title::before,body.light-mode .iptv-searches-title::after{background:linear-gradient(90deg,transparent,rgba(91,22,163,.6))!important}
 body.light-mode .iptv-searches-title::after{background:linear-gradient(90deg,rgba(91,22,163,.6),transparent)!important}
-body.light-mode .iptv-searches-subtitle{color:#374151!important}
-body.light-mode .iptv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.4)!important;color:#1e1b4b!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-body.light-mode .iptv-tag:hover{background:rgba(139,92,246,.26)!important;border-color:rgba(91,22,163,.65)!important;color:#3b0764!important;box-shadow:0 2px 12px rgba(91,22,163,.18)!important}
+body.light-mode .iptv-searches-subtitle{color:#000000!important}
+body.light-mode .iptv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.4)!important;color:#000000!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.light-mode .iptv-tag:hover{background:rgba(139,92,246,.26)!important;border-color:rgba(91,22,163,.65)!important;color:#000000!important;box-shadow:0 2px 12px rgba(91,22,163,.18)!important}
