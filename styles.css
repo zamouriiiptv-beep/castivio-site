@@ -1181,6 +1181,9 @@ body.light-mode .hdr-subscribe-btn{background:linear-gradient(135deg,rgba(91,22,
 body.light-mode #language-bar{background:linear-gradient(to right,#cac4e6,#d2cded)!important}
 body.light-mode #current-lang{color:#000000!important}
 body.light-mode .lang-wrapper{border-color:rgba(91,22,163,.35)!important;background:rgba(139,92,246,.10)!important}
+body.light-mode .lang-dropdown{background:rgba(232,228,252,.98)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;border:1px solid rgba(91,22,163,.22)!important;box-shadow:0 8px 32px rgba(91,22,163,.14)!important}
+body.light-mode .lang-option{color:#1a0a3b!important}
+body.light-mode .lang-option:hover{background:rgba(139,92,246,.15)!important;color:#3b0764!important}
 
 /* ══ SIDE MENU ══ */
 body.light-mode .side-menu{background:rgba(232,228,252,.98)!important;border-color:rgba(139,92,246,.22)!important}
