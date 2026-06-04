@@ -1124,3 +1124,107 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 /* Section titles (Why Prime IPTV, etc.) — unified across all languages */
 .section-title-unified .title-line-1{font-size:clamp(22px,5.5vw,36px) !important;font-weight:900 !important;line-height:1.25 !important}
 .section-title-unified .title-line-2{font-size:clamp(26px,7vw,42px) !important;font-weight:900 !important;line-height:1.25 !important}
+
+/* ══════════════════════════════════════════════════════════════════
+   LIGHT MODE — html.light-mode / body.light-mode
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Toggle button ── */
+#theme-toggle{background:none;border:none;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s;padding:0;flex-shrink:0}
+#theme-toggle:hover{background:rgba(139,92,246,.18)}
+#theme-toggle svg{width:22px;height:22px;display:block}
+.icon-sun{display:none;fill:#f59e0b}
+.icon-moon{display:block;fill:#c4b5fd}
+body.light-mode .icon-sun{display:block}
+body.light-mode .icon-moon{display:none}
+
+/* ── Smooth base transition ── */
+html,body{transition:background .3s ease}
+.rv-card,.faq2-item,.wu-card,.gd-tile,.side-menu{transition:background .3s ease,border-color .25s,box-shadow .25s,transform .22s!important}
+
+/* ── Base ── */
+html.light-mode{background:#f4f2ff!important}
+body.light-mode{background:#f4f2ff!important}
+
+/* ── Hamburger → dark ── */
+body.light-mode #menu-btn svg{stroke:#4c1d95!important}
+
+/* ── Side menu ── */
+body.light-mode .side-menu{background:rgba(255,255,255,.97)!important;border-color:rgba(139,92,246,.2)!important}
+body.light-mode .side-menu a{color:#1e1b4b!important}
+
+/* ── Hero ── */
+body.light-mode .hp-hero{--hp-bg:linear-gradient(135deg,#ede9fe 0%,#dbeafe 100%)}
+body.light-mode .hp-vignette{display:none!important}
+body.light-mode .hp-glow{opacity:.07!important}
+body.light-mode .hp-beam{opacity:.04!important}
+body.light-mode .hp-particle{background:rgba(122,60,235,.25)!important;box-shadow:none!important}
+body.light-mode .hp-title{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode .hp-title-sub{color:#3730a3!important}
+body.light-mode .hp-badge{background:rgba(139,92,246,.12)!important;color:#4c1d95!important}
+
+/* ── Why-Us ── */
+body.light-mode .wu-title{color:#1e1b4b!important}
+body.light-mode .wu-sub{color:#4b5563!important}
+body.light-mode .wu-badge{background:rgba(139,92,246,.10)!important;color:#5b21b6!important}
+body.light-mode .wu-card{background:#ffffff!important;border-color:rgba(139,92,246,.22)!important;box-shadow:0 4px 18px rgba(91,22,163,.07)!important}
+body.light-mode .wu-card:hover{background:#faf8ff!important}
+body.light-mode .wu-card-title{color:#1e1b4b!important}
+body.light-mode .wu-card-desc{color:#4b5563!important}
+
+/* ── Guides ── */
+body.light-mode .gd-tile{background:#ffffff!important;box-shadow:0 4px 18px rgba(91,22,163,.08)!important}
+body.light-mode .gd-tile h3{color:#1e1b4b!important}
+body.light-mode .gd-desc{color:#4b5563!important}
+body.light-mode .gd-link{color:#5b21b6!important}
+
+/* ── Pricing ── */
+body.light-mode #pricing .ps-title{color:#1e1b4b!important}
+body.light-mode #pricing .ps-sub{color:#4b5563!important}
+body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.10)!important;color:#5b21b6!important}
+body.light-mode .pc-card-basic{background:linear-gradient(165deg,#f5f0ff,#ede9fe)!important;box-shadow:0 8px 24px rgba(91,22,163,.12)!important}
+body.light-mode .pc-card-premium{background:linear-gradient(165deg,#fffbeb,#fef3c7)!important;box-shadow:0 8px 24px rgba(180,83,9,.10)!important}
+body.light-mode .pc-card-pro{background:linear-gradient(165deg,#fdf2f8,#fce7f3)!important;box-shadow:0 8px 24px rgba(157,23,77,.10)!important}
+body.light-mode .pc-name{color:#1e1b4b!important}
+body.light-mode .pc-price{color:#1e1b4b!important}
+body.light-mode .pc-sub{color:#4b5563!important}
+body.light-mode .pc-feat-desc{color:#374151!important}
+
+/* ── Reviews ── */
+body.light-mode .rv-title h2{color:#1e1b4b!important}
+body.light-mode .rv-sub{color:#4b5563!important}
+body.light-mode .rv-badge{background:rgba(139,92,246,.10)!important;border-color:rgba(139,92,246,.3)!important;color:#5b21b6!important}
+body.light-mode .rv-trust{background:rgba(139,92,246,.08)!important;border-color:rgba(139,92,246,.25)!important;color:#4c1d95!important}
+body.light-mode .rv-card{background:#ffffff!important;border-color:rgba(139,92,246,.18)!important;box-shadow:0 4px 16px rgba(91,22,163,.07)!important}
+body.light-mode .rv-name{color:#1e1b4b!important}
+body.light-mode .rv-loc{color:#6b7280!important}
+body.light-mode .rv-text{color:#374151!important}
+body.light-mode .rv-text strong{color:#1e1b4b!important}
+body.light-mode .rv-summary-score{color:#1e1b4b!important}
+body.light-mode .rv-summary-count{color:#6b7280!important}
+body.light-mode .rv-tag{background:rgba(139,92,246,.08)!important;border-color:rgba(139,92,246,.2)!important;color:#5b21b6!important}
+body.light-mode .rv-feat-label{color:#374151!important}
+
+/* ── FAQ ── */
+body.light-mode .faq2-title{color:#1e1b4b!important}
+body.light-mode .faq2-sub{color:#4b5563!important}
+body.light-mode .faq2-badge{background:rgba(139,92,246,.10)!important;color:#5b21b6!important}
+body.light-mode .faq2-item{background:#ffffff!important;border-color:rgba(139,92,246,.18)!important}
+body.light-mode .faq2-item:hover{border-color:rgba(139,92,246,.35)!important}
+body.light-mode .faq2-item.faq2-active{background:#f5f0ff!important;box-shadow:inset 4px 0 0 rgba(122,60,235,.8),0 4px 20px rgba(91,22,163,.10)!important}
+body.light-mode .faq2-q-text{color:#1e1b4b!important}
+body.light-mode .faq2-answer{color:#374151!important}
+body.light-mode .faq2-icon-box svg{fill:#7c3aed!important}
+body.light-mode .faq2-toggle{background:rgba(139,92,246,.12)!important}
+body.light-mode .faq2-toggle svg{fill:#7c3aed!important}
+body.light-mode .faq2-item.faq2-active .faq2-toggle{background:rgba(139,92,246,.25)!important}
+body.light-mode .faq2-features{background:rgba(139,92,246,.06)!important;border-color:rgba(139,92,246,.15)!important}
+body.light-mode .faq2-feat span{color:#1e1b4b!important}
+body.light-mode .faq2-feat svg{fill:#7c3aed!important}
+body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(59,130,246,.07))!important;border-color:rgba(139,92,246,.2)!important}
+body.light-mode .faq2-cta-title{color:#1e1b4b!important}
+body.light-mode .faq2-cta-sub{color:#4b5563!important}
+body.light-mode .faq2-stats{background:rgba(139,92,246,.06)!important;border-color:rgba(139,92,246,.15)!important}
+body.light-mode .faq2-stat-title{color:#1e1b4b!important}
+body.light-mode .faq2-stat-sub{color:#6b7280!important}
+body.light-mode .faq2-stat-icon svg{fill:#7c3aed!important}

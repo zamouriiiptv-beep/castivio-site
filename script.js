@@ -1,4 +1,23 @@
+/* ══════════════════════════════════════════════════════════════════
+   THEME TOGGLE — day / night mode
+   Runs immediately (before DOMContentLoaded) to avoid flash
+   ══════════════════════════════════════════════════════════════════ */
+(function () {
+  if (localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light-mode');
+    document.body.classList.add('light-mode');
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-mode');
+      document.documentElement.classList.toggle('light-mode', isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  }
 
   /* ========================================================= */
   /* ====================== شريط الأعلام ===================== */
