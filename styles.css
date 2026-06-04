@@ -1227,6 +1227,7 @@ body.light-mode .gd-banner-body h3{color:#000000!important;text-shadow:none!impo
 body.light-mode .gd-banner-body p{color:#000000!important}
 body.light-mode .gd-banner-tag i,body.light-mode .gd-banner-tag svg{color:#5b21b6!important}
 body.light-mode .gd-banner-body p{color:#000000!important}
+body.light-mode .gd-btn{background:linear-gradient(135deg,rgba(139,92,246,.45),rgba(109,40,217,.45))!important;color:#3b0764!important;box-shadow:0 4px 16px rgba(91,22,163,.15)!important}
 body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,163,.3)!important;background:rgba(139,92,246,.12)!important}
 
 /* ══ PRICING ══ */
