@@ -1146,6 +1146,12 @@ html,body{transition:background .3s ease}
 html.light-mode{background:#f4f2ff!important}
 body.light-mode{background:#f4f2ff!important}
 
+/* ── Header → light background ── */
+body.light-mode #header{background:rgba(255,255,255,.95)!important;border-bottom:1px solid rgba(139,92,246,.15)!important;box-shadow:0 2px 16px rgba(91,22,163,.08)!important}
+body.light-mode #header.hp-scrolled{background:rgba(255,255,255,.98)!important;box-shadow:0 4px 20px rgba(91,22,163,.12)!important}
+body.light-mode #header #logo-name span{color:#4c1d95!important}
+body.light-mode #language-bar{background:linear-gradient(to right,#eff6ff,#f5f3ff)!important}
+
 /* ── Hamburger → dark ── */
 body.light-mode #menu-btn svg{stroke:#4c1d95!important}
 
@@ -1155,13 +1161,17 @@ body.light-mode .side-menu a{color:#1e1b4b!important}
 
 /* ── Hero ── */
 body.light-mode .hp-hero{--hp-bg:linear-gradient(135deg,#ede9fe 0%,#dbeafe 100%)}
+body.light-mode .hp-bg::before{background:linear-gradient(180deg,#ede9fe 0%,#dbeafe 100%)!important}
 body.light-mode .hp-vignette{display:none!important}
 body.light-mode .hp-glow{opacity:.07!important}
 body.light-mode .hp-beam{opacity:.04!important}
 body.light-mode .hp-particle{background:rgba(122,60,235,.25)!important;box-shadow:none!important}
 body.light-mode .hp-title{color:#1e1b4b!important;text-shadow:none!important}
 body.light-mode .hp-title-sub{color:#3730a3!important}
+body.light-mode .hp-desc{color:#4b5563!important;opacity:1!important}
+body.light-mode .hp-chip{color:#4c1d95!important;background:rgba(139,92,246,.08)!important;border-color:rgba(139,92,246,.25)!important}
 body.light-mode .hp-badge{background:rgba(139,92,246,.12)!important;color:#4c1d95!important}
+body.light-mode .hp-btn--ghost{color:#4c1d95!important;border-color:rgba(91,22,163,.4)!important;background:rgba(139,92,246,.06)!important}
 
 /* ── Why-Us ── */
 body.light-mode .wu-title{color:#1e1b4b!important}
@@ -1169,8 +1179,8 @@ body.light-mode .wu-sub{color:#4b5563!important}
 body.light-mode .wu-badge{background:rgba(139,92,246,.10)!important;color:#5b21b6!important}
 body.light-mode .wu-card{background:#ffffff!important;border-color:rgba(139,92,246,.22)!important;box-shadow:0 4px 18px rgba(91,22,163,.07)!important}
 body.light-mode .wu-card:hover{background:#faf8ff!important}
-body.light-mode .wu-card-title{color:#1e1b4b!important}
-body.light-mode .wu-card-desc{color:#4b5563!important}
+body.light-mode .wu-card h3{color:#1e1b4b!important;text-shadow:none!important}
+body.light-mode .wu-card p{color:#4b5563!important}
 
 /* ── Guides ── */
 body.light-mode .gd-tile{background:#ffffff!important;box-shadow:0 4px 18px rgba(91,22,163,.08)!important}
@@ -1188,7 +1198,12 @@ body.light-mode .pc-card-pro{background:linear-gradient(165deg,#fdf2f8,#fce7f3)!
 body.light-mode .pc-name{color:#1e1b4b!important}
 body.light-mode .pc-price{color:#1e1b4b!important}
 body.light-mode .pc-sub{color:#4b5563!important}
+body.light-mode .pc-tab{color:#4b5563!important}
+body.light-mode .pc-tab:hover{color:#1e1b4b!important}
+body.light-mode .pc-feat-title{color:#1e1b4b!important}
 body.light-mode .pc-feat-desc{color:#374151!important}
+body.light-mode .pc-trust-tx strong{color:#1e1b4b!important}
+body.light-mode .pc-trust-tx span{color:#4b5563!important}
 
 /* ── Reviews ── */
 body.light-mode .rv-title h2{color:#1e1b4b!important}
