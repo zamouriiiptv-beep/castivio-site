@@ -1365,3 +1365,11 @@ html[lang="ar"] .faq2-q-text{
   font-weight:700!important
 }
 
+
+/* الأوصاف والنصوص العادية: Cairo بدل Tajawal */
+html[lang="ar"] p,
+html[lang="ar"] li,
+html[lang="ar"] small{
+  font-family:'Cairo',sans-serif!important;
+  font-weight:400!important
+}
