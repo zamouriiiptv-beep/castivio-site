@@ -649,8 +649,11 @@ document.addEventListener('click', function (e) {
     send_to: 'AW-18138909640/YOUR_CONVERSION_LABEL'
   });
 
-  /* ── Highlight IPTV / Prime IPTV in purple ── */
-  (function () {
+});
+
+/* ── Highlight IPTV / Prime IPTV in purple ── */
+(function () {
+  function runHighlight() {
     var re = /(Prime IPTV|IPTV)/gi;
     var SKIP_TAGS = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|INPUT|SVG|IMG|CANVAS|VIDEO|AUDIO|CODE|PRE|TITLE)$/;
     var SKIP_CLASS = /\b(hp-grad|rv-grad|faq2-grad|iptv-highlight)\b/;
@@ -687,5 +690,11 @@ document.addEventListener('click', function (e) {
     }
 
     walk(document.body);
-  })();
-});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runHighlight);
+  } else {
+    runHighlight();
+  }
+})();
