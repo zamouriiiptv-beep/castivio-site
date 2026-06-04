@@ -1171,6 +1171,7 @@ body.light-mode #header{background:rgba(220,215,240,.97)!important;border-bottom
 body.light-mode #header.hp-scrolled{background:rgba(212,207,234,.99)!important;box-shadow:0 4px 20px rgba(91,22,163,.14)!important}
 body.light-mode #header #logo-name span{color:#000000!important}
 body.light-mode #menu-btn svg{stroke:#4c1d95!important}
+body.light-mode .hdr-subscribe-btn{background:linear-gradient(135deg,rgba(91,22,163,.55),rgba(122,60,235,.55))!important;color:#ffffff!important;box-shadow:0 2px 12px rgba(91,22,163,.2)!important}
 
 /* ══ LANGUAGE BAR ══ */
 body.light-mode #language-bar{background:linear-gradient(to right,#cac4e6,#d2cded)!important}
@@ -1194,7 +1195,8 @@ body.light-mode .hp-desc{color:#000000!important;opacity:1!important}
 body.light-mode .hp-chip{color:#000000!important;background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important}
 body.light-mode .hp-chip i{color:#5b21b6!important}
 body.light-mode .hp-badge{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.3)!important;color:#000000!important}
-body.light-mode .hp-btn--ghost{color:#000000!important;border-color:rgba(91,22,163,.45)!important;background:rgba(139,92,246,.10)!important}
+body.light-mode .hp-btn--primary{background:linear-gradient(120deg,rgba(91,22,163,.55),rgba(122,60,235,.55))!important;color:#ffffff!important;box-shadow:0 4px 16px rgba(91,22,163,.2)!important}
+body.light-mode .hp-btn--ghost{color:#3b0764!important;border-color:rgba(91,22,163,.45)!important;background:rgba(139,92,246,.12)!important}
 body.light-mode .hp-scroll-mouse{border-color:rgba(91,22,163,.4)!important}
 
 /* ══ WHY-US ══ */
@@ -1239,9 +1241,13 @@ body.light-mode .pc-card-premium{background:linear-gradient(165deg,#e8c84a,#d4a8
 body.light-mode .pc-card-pro{background:linear-gradient(165deg,#e8a0c0,#d8809a)!important;box-shadow:0 8px 24px rgba(157,23,77,.18)!important}
 body.light-mode .pc-name{color:#000000!important}
 body.light-mode .pc-sub{color:#000000!important}
-body.light-mode .pc-tabs{background:rgba(0,0,0,.10)!important}
-body.light-mode .pc-tab{color:#000000!important}
-body.light-mode .pc-tab:hover{color:#000000!important}
+body.light-mode .pc-tabs{background:rgba(0,0,0,.08)!important}
+body.light-mode .pc-tab{color:#3b0764!important}
+body.light-mode .pc-tab:hover{color:#3b0764!important}
+body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important}
+body.light-mode .pc-card-premium .pc-tab-active{background:rgba(217,119,6,.6)!important;color:#ffffff!important}
+body.light-mode .pc-card-pro .pc-tab-active{background:rgba(219,39,119,.6)!important;color:#ffffff!important}
+body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important;box-shadow:0 4px 16px rgba(91,22,163,.2)!important}
 body.light-mode .pc-feat-title{color:#000000!important}
 body.light-mode .pc-feat-desc{color:#000000!important}
 body.light-mode .pc-trust-tx strong{color:#000000!important}
@@ -1288,6 +1294,8 @@ body.light-mode .faq2-feat svg{fill:#4c1d95!important}
 body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(37,99,235,.10))!important;border-color:rgba(91,22,163,.25)!important}
 body.light-mode .faq2-cta-title{color:#000000!important}
 body.light-mode .faq2-cta-sub{color:#000000!important}
+body.light-mode .faq2-btn{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important;box-shadow:0 2px 10px rgba(91,22,163,.15)!important}
+body.light-mode .faq2-toggle{background:rgba(139,92,246,.25)!important}
 body.light-mode .faq2-stats{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.2)!important}
 body.light-mode .faq2-stat-title{color:#000000!important}
 body.light-mode .faq2-stat-sub{color:#000000!important}
