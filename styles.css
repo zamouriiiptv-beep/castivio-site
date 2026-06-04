@@ -1270,7 +1270,8 @@ body.light-mode .rv-date{color:#000000!important}
 body.light-mode .rv-text{color:#000000!important}
 body.light-mode .rv-text strong{color:#000000!important}
 body.light-mode .rv-tag{background:rgba(139,92,246,.14)!important;border-color:rgba(91,22,163,.25)!important;color:#000000!important}
-body.light-mode .rv-feat-label{color:#000000!important}
+body.light-mode .rv-feat span{color:#000000!important}
+body.light-mode .rv-feat small{color:#000000!important}
 body.light-mode .rv-feat-icon{background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.2)!important}
 body.light-mode .rv-feat-icon svg{fill:#4c1d95!important}
 body.light-mode .rv-verified{color:#166534!important;background:rgba(74,222,128,.18)!important;border-color:rgba(34,197,94,.4)!important}
