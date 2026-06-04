@@ -1263,18 +1263,18 @@ body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,1
 body.light-mode #pricing .ps-title{color:#000000!important}
 body.light-mode #pricing .ps-sub{color:#000000!important}
 body.light-mode #pricing .ps-badge{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.45)!important;color:#1e1b4b!important}
-body.light-mode .pc-card-basic{background:linear-gradient(165deg,#ede9ff,#e2daff)!important;box-shadow:0 8px 28px rgba(91,22,163,.18)!important}
-body.light-mode .pc-card-premium{background:linear-gradient(165deg,#e8c84a,#d4a820)!important;box-shadow:0 8px 24px rgba(180,83,9,.18)!important}
-body.light-mode .pc-card-pro{background:linear-gradient(165deg,#e8a0c0,#d8809a)!important;box-shadow:0 8px 24px rgba(157,23,77,.18)!important}
+body.light-mode .pc-card-basic{background:linear-gradient(165deg,#ede9ff,#e2daff)!important;box-shadow:0 8px 28px rgba(91,22,163,.15)!important}
+body.light-mode .pc-card-premium{background:linear-gradient(165deg,#f5e9b0,#edd98a)!important;box-shadow:0 8px 28px rgba(180,83,9,.12)!important}
+body.light-mode .pc-card-pro{background:linear-gradient(165deg,#f5c8d8,#edafc4)!important;box-shadow:0 8px 28px rgba(157,23,77,.12)!important}
 body.light-mode .pc-name{color:#000000!important}
 body.light-mode .pc-sub{color:#000000!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.08)!important}
 body.light-mode .pc-tab{color:#3b0764!important}
 body.light-mode .pc-tab:hover{color:#3b0764!important}
-body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important}
-body.light-mode .pc-card-premium .pc-tab-active{background:rgba(217,119,6,.6)!important;color:#ffffff!important}
-body.light-mode .pc-card-pro .pc-tab-active{background:rgba(219,39,119,.6)!important;color:#ffffff!important}
-body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important;box-shadow:0 4px 16px rgba(91,22,163,.2)!important}
+body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,rgba(91,22,163,.55),rgba(122,60,235,.55))!important;color:#ffffff!important}
+body.light-mode .pc-card-premium .pc-tab-active{background:rgba(180,100,10,.50)!important;color:#ffffff!important}
+body.light-mode .pc-card-pro .pc-tab-active{background:rgba(190,50,100,.50)!important;color:#ffffff!important}
+body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important;color:#ffffff!important;box-shadow:0 6px 20px rgba(91,22,163,.35)!important}
 body.light-mode .pc-feat-title{color:#000000!important}
 body.light-mode .pc-feat-desc{color:#000000!important}
 body.light-mode .pc-trust-tx strong{color:#000000!important}
