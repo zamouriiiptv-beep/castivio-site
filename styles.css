@@ -1269,8 +1269,8 @@ body.light-mode .pc-card-pro{background:#ffffff!important;border:1.5px solid rgb
 body.light-mode .pc-name{color:#000000!important}
 body.light-mode .pc-sub{color:#000000!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.08)!important}
-body.light-mode .pc-tab{color:#3b0764!important}
-body.light-mode .pc-tab:hover{color:#3b0764!important}
+body.light-mode .pc-tab:not(.pc-tab-active){color:#3b0764!important}
+body.light-mode .pc-tab:not(.pc-tab-active):hover{color:#3b0764!important}
 body.light-mode .pc-card-basic .pc-tab-active{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important;color:#ffffff!important}
 body.light-mode .pc-card-premium .pc-tab-active{background:linear-gradient(135deg,#b45309,#d97706)!important;color:#ffffff!important}
 body.light-mode .pc-card-pro .pc-tab-active{background:linear-gradient(135deg,#9d174d,#db2777)!important;color:#ffffff!important}
@@ -1285,12 +1285,12 @@ body.light-mode .pc-sub{color:#4b5563!important}
 body.light-mode .pc-tabs{background:rgba(0,0,0,.06)!important}
 body.light-mode .pc-card-premium .pc-tabs{background:rgba(180,83,9,.07)!important}
 body.light-mode .pc-card-pro .pc-tabs{background:rgba(157,23,77,.07)!important}
-body.light-mode .pc-card-basic .pc-tab{color:#5b21b6!important}
-body.light-mode .pc-card-premium .pc-tab{color:#92400e!important}
-body.light-mode .pc-card-pro .pc-tab{color:#831843!important}
-body.light-mode .pc-card-basic .pc-tab:hover,body.light-mode .pc-card-basic .pc-tab{color:#5b21b6!important}
-body.light-mode .pc-card-premium .pc-tab:hover{color:#92400e!important}
-body.light-mode .pc-card-pro .pc-tab:hover{color:#831843!important}
+body.light-mode .pc-card-basic .pc-tab:not(.pc-tab-active){color:#5b21b6!important}
+body.light-mode .pc-card-premium .pc-tab:not(.pc-tab-active){color:#92400e!important}
+body.light-mode .pc-card-pro .pc-tab:not(.pc-tab-active){color:#831843!important}
+body.light-mode .pc-card-basic .pc-tab:not(.pc-tab-active):hover{color:#5b21b6!important}
+body.light-mode .pc-card-premium .pc-tab:not(.pc-tab-active):hover{color:#92400e!important}
+body.light-mode .pc-card-pro .pc-tab:not(.pc-tab-active):hover{color:#831843!important}
 /* Icon wraps: remove dark-mode glow, keep accent color */
 body.light-mode .pc-card-basic .pc-icon-wrap{background:rgba(91,22,163,.12)!important;border-color:rgba(91,22,163,.32)!important;color:#5b21b6!important;box-shadow:0 4px 14px rgba(91,22,163,.14)!important}
 body.light-mode .pc-card-premium .pc-icon-wrap{background:rgba(180,83,9,.12)!important;border-color:rgba(180,83,9,.32)!important;color:#b45309!important;box-shadow:0 4px 14px rgba(180,83,9,.14)!important}
