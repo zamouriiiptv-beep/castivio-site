@@ -1139,8 +1139,8 @@ body.light-mode .icon-sun{display:block}
 body.light-mode .icon-moon{display:none}
 
 /* ── IPTV word highlight — purple in both modes ── */
-.iptv-highlight{color:#a78bfa}
-body.light-mode .iptv-highlight{color:#5b21b6}
+.iptv-highlight{color:#a78bfa!important}
+body.light-mode .iptv-highlight{color:#5b21b6!important}
 
 /* ── Smooth transitions ── */
 html,body{transition:background .3s ease}
