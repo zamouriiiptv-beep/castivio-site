@@ -1138,6 +1138,10 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 body.light-mode .icon-sun{display:block}
 body.light-mode .icon-moon{display:none}
 
+/* ── IPTV word highlight — purple in both modes ── */
+.iptv-highlight{color:#a78bfa}
+body.light-mode .iptv-highlight{color:#5b21b6}
+
 /* ── Smooth transitions ── */
 html,body{transition:background .3s ease}
 .rv-card,.faq2-item,.wu-card,.gd-tile,.side-menu{transition:background .3s ease,border-color .25s,box-shadow .25s,transform .22s!important}

@@ -648,4 +648,44 @@ document.addEventListener('click', function (e) {
   gtag('event', 'conversion', {
     send_to: 'AW-18138909640/YOUR_CONVERSION_LABEL'
   });
+
+  /* ── Highlight IPTV / Prime IPTV in purple ── */
+  (function () {
+    var re = /(Prime IPTV|IPTV)/gi;
+    var SKIP_TAGS = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|INPUT|SVG|IMG|CANVAS|VIDEO|AUDIO|CODE|PRE|TITLE)$/;
+    var SKIP_CLASS = /\b(hp-grad|rv-grad|faq2-grad|iptv-highlight)\b/;
+    var SKIP_ID    = /^(logo-name)$/;
+
+    function skip(el) {
+      if (!el) return false;
+      if (SKIP_TAGS.test(el.tagName || '')) return true;
+      if (SKIP_CLASS.test(el.className || '')) return true;
+      if (SKIP_ID.test(el.id || '')) return true;
+      return false;
+    }
+
+    function walk(node) {
+      if (node.nodeType === 3) {
+        var val = node.nodeValue;
+        if (!re.test(val)) { re.lastIndex = 0; return; }
+        re.lastIndex = 0;
+        var frag = document.createDocumentFragment(), last = 0, m;
+        while ((m = re.exec(val)) !== null) {
+          if (m.index > last) frag.appendChild(document.createTextNode(val.slice(last, m.index)));
+          var s = document.createElement('span');
+          s.className = 'iptv-highlight';
+          s.textContent = m[0];
+          frag.appendChild(s);
+          last = m.index + m[0].length;
+        }
+        if (last < val.length) frag.appendChild(document.createTextNode(val.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+        return;
+      }
+      if (node.nodeType !== 1 || skip(node)) return;
+      Array.from(node.childNodes).forEach(walk);
+    }
+
+    walk(document.body);
+  })();
 });
