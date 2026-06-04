@@ -1051,7 +1051,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 .faq2-item.faq2-active .faq2-toggle{background:rgba(122,60,235,.5)}
 .faq2-item.faq2-active .faq2-toggle svg{transform:rotate(180deg)}
 /* Answer — smooth accordion */
-.faq2-answer{max-height:0;overflow:hidden;padding:0 16px;color:#b8a8e0;font-family:"Tajawal",sans-serif;font-size:13.5px;line-height:1.7;direction:rtl;transition:max-height .38s ease,padding .28s ease}
+.faq2-answer{max-height:0;overflow:hidden;padding:0 16px;color:#ddd5f5;font-family:"Tajawal",sans-serif;font-size:13.5px;line-height:1.7;direction:rtl;transition:max-height .38s ease,padding .28s ease}
 .faq2-item.faq2-active .faq2-answer{max-height:600px;padding:0 16px 14px}
 /* Features — single horizontal row with dividers, compact */
 .faq2-features{display:flex;margin-top:12px;border:1px solid rgba(196,181,253,.12);border-radius:10px;background:rgba(91,22,163,.12);overflow:hidden}
