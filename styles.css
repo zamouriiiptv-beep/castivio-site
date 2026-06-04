@@ -1152,7 +1152,7 @@ body.light-mode{background:#d8d2ee!important}
 
 /* ── Global text catch-all ── */
 body.light-mode h1,body.light-mode h2,body.light-mode h3,body.light-mode h4,body.light-mode h5,body.light-mode h6{color:#000000!important;text-shadow:none!important}
-body.light-mode p,body.light-mode span:not([class*="grad"]):not([class*="badge"]):not([class*="chip"]):not([class*="tag"]):not([class*="verified"]):not([class*="trust"]){color:#000000!important}
+body.light-mode p,body.light-mode span:not([class*="grad"]):not([class*="badge"]):not([class*="chip"]):not([class*="tag"]):not([class*="verified"]):not([class*="trust"]):not(.iptv-highlight){color:#000000!important}
 body.light-mode li,body.light-mode label{color:#000000!important}
 
 /* ── Gradient text: ONE uniform gradient for all section title highlights ── */
