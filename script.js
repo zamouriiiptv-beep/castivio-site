@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const isLight = document.body.classList.toggle('light-mode');
       document.documentElement.classList.toggle('light-mode', isLight);
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      /* Update copyright bar inline styles on theme toggle */
+      const copyBar = document.querySelector('[data-ft-copy]');
+      if (copyBar) {
+        const p = copyBar.querySelector('p');
+        if (isLight) {
+          copyBar.style.cssText = 'width:100%;background:rgba(212,207,234,.99);padding:22px 16px;text-align:center;border-top:1px solid rgba(91,22,163,.2);';
+          if (p) p.style.cssText = 'margin:0;color:#3b0764;font-size:14px;font-weight:500;letter-spacing:.5px;';
+        } else {
+          copyBar.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
+          if (p) p.style.cssText = 'margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);';
+        }
+      }
     });
   }
 

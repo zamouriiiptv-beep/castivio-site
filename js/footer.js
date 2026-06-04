@@ -261,10 +261,17 @@
   });
 
   /* 2. Insert a fresh one after footer */
+  var isLight = document.body.classList.contains('light-mode') || document.documentElement.classList.contains('light-mode');
   var copyDiv = document.createElement('div');
   copyDiv.dataset.ftCopy = '1';
-  copyDiv.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
-  copyDiv.innerHTML = '<p style="margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);">' + t.copy + '</p>';
+  copyDiv.className = 'ft-copy-bar';
+  if (isLight) {
+    copyDiv.style.cssText = 'width:100%;background:rgba(212,207,234,.99);padding:22px 16px;text-align:center;border-top:1px solid rgba(91,22,163,.2);';
+    copyDiv.innerHTML = '<p style="margin:0;color:#3b0764;font-size:14px;font-weight:500;letter-spacing:.5px;">' + t.copy + '</p>';
+  } else {
+    copyDiv.style.cssText = 'width:100%;background:#04010c;padding:22px 16px;text-align:center;border-top:1px solid rgba(168,85,247,.10);';
+    copyDiv.innerHTML = '<p style="margin:0;color:#d8d2ff;font-size:14px;font-weight:500;letter-spacing:.5px;text-shadow:0 0 10px rgba(168,85,247,.18);">' + t.copy + '</p>';
+  }
   footer.insertAdjacentElement('afterend', copyDiv);
 
   /* ── Seed rising particles ── */
