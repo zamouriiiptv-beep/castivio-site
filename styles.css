@@ -1092,7 +1092,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 }
 
 /* ── Navbar: absolute centering — logo always at exact 50% ── */
-#header>.container{display:flex !important;position:relative !important}
+#header>.container{display:flex !important;position:relative !important;padding-left:4px!important;padding-right:4px!important}
 #header #logo-name{position:absolute !important;left:50% !important;top:50% !important;transform:translate(-50%,-50%) !important;margin:0 !important;justify-self:unset !important;align-self:unset !important}
 
 /* ══════════════════════════════════════════════════════════════
