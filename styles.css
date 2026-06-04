@@ -1196,6 +1196,15 @@ body.light-mode .hp-particle{background:rgba(109,40,217,.2)!important;box-shadow
 body.light-mode .hp-title{color:#000000!important;text-shadow:none!important}
 body.light-mode .hp-title-sub{color:#000000!important}
 body.light-mode .hp-desc{color:#000000!important;opacity:1!important}
+/* ── 4 chips: each a distinct colour (dark mode) ── */
+.hp-chips .hp-chip:nth-child(1){background:rgba(251,191,36,.12)!important;border-color:rgba(245,158,11,.40)!important}
+.hp-chips .hp-chip:nth-child(1) i{color:#fbbf24!important}
+.hp-chips .hp-chip:nth-child(2){background:rgba(244,63,94,.12)!important;border-color:rgba(244,63,94,.40)!important}
+.hp-chips .hp-chip:nth-child(2) i{color:#fb7185!important}
+.hp-chips .hp-chip:nth-child(3){background:rgba(6,182,212,.12)!important;border-color:rgba(6,182,212,.40)!important}
+.hp-chips .hp-chip:nth-child(3) i{color:#22d3ee!important}
+.hp-chips .hp-chip:nth-child(4){background:rgba(16,185,129,.12)!important;border-color:rgba(16,185,129,.40)!important}
+.hp-chips .hp-chip:nth-child(4) i{color:#34d399!important}
 body.light-mode .hp-chip{color:#000000!important;background:rgba(139,92,246,.12)!important;border-color:rgba(91,22,163,.3)!important}
 body.light-mode .hp-chip i{color:#5b21b6!important}
 /* ── 4 chips: each a distinct pastel colour ── */
