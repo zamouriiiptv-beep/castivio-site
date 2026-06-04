@@ -1302,6 +1302,12 @@ body.light-mode .faq2-stat-title{color:#000000!important}
 body.light-mode .faq2-stat-sub{color:#000000!important}
 body.light-mode .faq2-stat-icon svg{fill:#4c1d95!important}
 
+/* ══ WHATSAPP BUTTONS — all green ══ */
+body.light-mode a[href*="wa.me"]:not(.whatsapp-float),
+body.light-mode .faq2-cta-wa{background:linear-gradient(135deg,#1ebe57,#25D366)!important;color:#ffffff!important;box-shadow:0 4px 16px rgba(37,211,102,.35)!important;border-color:transparent!important}
+body.light-mode a[href*="wa.me"]:not(.whatsapp-float):hover,
+body.light-mode .faq2-cta-wa:hover{background:linear-gradient(135deg,#17a84a,#1ebe57)!important;box-shadow:0 6px 22px rgba(37,211,102,.50)!important}
+
 /* ══ FOOTER ══ */
 body.light-mode footer{background:rgba(220,215,240,.97)!important;background-image:none!important;color:#000000!important}
 body.light-mode footer::before{display:none!important}
