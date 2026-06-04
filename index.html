@@ -327,26 +327,12 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
   <div class="container mx-auto px-4 flex items-center justify-between h-auto py-2">
 
-    <!-- زر الاشتراك يمين (أول عنصر = يمين في RTL) -->
-    <a href="#home" class="hdr-subscribe-btn" aria-label="منصة عالمية">منصة عالمية</a>
-
-    <!-- الشعار في الوسط -->
-    <div id="logo-name" class="flex items-center space-x-3">
-      <img id="logo-img" src="images/logo.webp" alt="شعار Prime IPTV"
-           class="block h-16 w-16 md:h-20 md:w-20 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
-      <span class="text-xl md:text-2xl font-bold text-purple-700 m-0 leading-none">
-        Prime IPTV
-      </span>
-    </div>
-
-    <!-- أزرار يسار: تبديل الوضع + الهمبرغر -->
-    <div class="flex items-center gap-2">
+    <!-- يمين: زر تبديل الوضع + زر الاشتراك -->
+    <div class="flex items-center gap-3">
       <button id="theme-toggle" aria-label="تبديل وضع الليل والنهار">
-        <!-- شمس = وضع نهار (يظهر في الوضع الليلي للتبديل) -->
         <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-        <!-- قمر = وضع ليلي (يظهر في الوضع النهاري للتبديل) -->
         <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
@@ -359,13 +345,25 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <button id="menu-btn" class="text-gray-700 focus:outline-none" aria-label="زر القائمة">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <a href="#home" class="hdr-subscribe-btn" aria-label="منصة عالمية">منصة عالمية</a>
     </div>
+
+    <!-- الشعار في الوسط -->
+    <div id="logo-name" class="flex items-center space-x-3">
+      <img id="logo-img" src="images/logo.webp" alt="شعار Prime IPTV"
+           class="block h-16 w-16 md:h-20 md:w-20 rounded-full object-cover" loading="eager" decoding="async" width="80" height="80" fetchpriority="high">
+      <span class="text-xl md:text-2xl font-bold text-purple-700 m-0 leading-none">
+        Prime IPTV
+      </span>
+    </div>
+
+    <!-- يسار: الهمبرغر فقط -->
+    <button id="menu-btn" class="text-gray-700 focus:outline-none" aria-label="زر القائمة">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
   </div>
 
