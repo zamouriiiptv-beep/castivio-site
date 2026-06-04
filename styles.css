@@ -1291,6 +1291,19 @@ body.light-mode .pc-card-pro .pc-tab:not(.pc-tab-active){color:#831843!important
 body.light-mode .pc-card-basic .pc-tab:not(.pc-tab-active):hover{color:#5b21b6!important}
 body.light-mode .pc-card-premium .pc-tab:not(.pc-tab-active):hover{color:#92400e!important}
 body.light-mode .pc-card-pro .pc-tab:not(.pc-tab-active):hover{color:#831843!important}
+/* Fix: span text inside "3 أشهر"/"6 أشهر" tabs overridden by global span color rule — use #pricing ID for higher specificity */
+body.light-mode #pricing .pc-card-basic .pc-tab .tab-ltr,
+body.light-mode #pricing .pc-card-basic .pc-tab .tab-ltr span{color:#5b21b6!important}
+body.light-mode #pricing .pc-card-premium .pc-tab .tab-ltr,
+body.light-mode #pricing .pc-card-premium .pc-tab .tab-ltr span{color:#92400e!important}
+body.light-mode #pricing .pc-card-pro .pc-tab .tab-ltr,
+body.light-mode #pricing .pc-card-pro .pc-tab .tab-ltr span{color:#831843!important}
+body.light-mode #pricing .pc-card-basic .pc-tab.pc-tab-active .tab-ltr,
+body.light-mode #pricing .pc-card-basic .pc-tab.pc-tab-active .tab-ltr span{color:#ffffff!important}
+body.light-mode #pricing .pc-card-premium .pc-tab.pc-tab-active .tab-ltr,
+body.light-mode #pricing .pc-card-premium .pc-tab.pc-tab-active .tab-ltr span{color:#ffffff!important}
+body.light-mode #pricing .pc-card-pro .pc-tab.pc-tab-active .tab-ltr,
+body.light-mode #pricing .pc-card-pro .pc-tab.pc-tab-active .tab-ltr span{color:#ffffff!important}
 /* Icon wraps: remove dark-mode glow, keep accent color */
 body.light-mode .pc-card-basic .pc-icon-wrap{background:rgba(91,22,163,.12)!important;border-color:rgba(91,22,163,.32)!important;color:#5b21b6!important;box-shadow:0 4px 14px rgba(91,22,163,.14)!important}
 body.light-mode .pc-card-premium .pc-icon-wrap{background:rgba(180,83,9,.12)!important;border-color:rgba(180,83,9,.32)!important;color:#b45309!important;box-shadow:0 4px 14px rgba(180,83,9,.14)!important}
