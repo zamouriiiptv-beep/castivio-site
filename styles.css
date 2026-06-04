@@ -1294,7 +1294,7 @@ body.light-mode .faq2-feat svg{fill:#4c1d95!important}
 body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(37,99,235,.10))!important;border-color:rgba(91,22,163,.25)!important}
 body.light-mode .faq2-cta-title{color:#000000!important}
 body.light-mode .faq2-cta-sub{color:#000000!important}
-body.light-mode .faq2-btn{background:linear-gradient(135deg,rgba(91,22,163,.5),rgba(122,60,235,.5))!important;color:#ffffff!important;box-shadow:0 2px 10px rgba(91,22,163,.15)!important}
+body.light-mode .faq2-btn{background:none!important;color:#000000!important;box-shadow:none!important}
 body.light-mode .faq2-toggle{background:rgba(139,92,246,.25)!important}
 body.light-mode .faq2-stats{background:rgba(139,92,246,.10)!important;border-color:rgba(91,22,163,.2)!important}
 body.light-mode .faq2-stat-title{color:#000000!important}
