@@ -24,7 +24,7 @@
 
 <style>html{background:#050014}</style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=125">
+<link rel="stylesheet" href="/styles.css?v=126">
 <script src="/script.js" defer></script>
 
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -55,51 +55,56 @@
   .hero-section img { height: 233px; width: 100%; object-fit: contain; }
   @media (min-width: 768px) { .hero-section img { max-height: 260px; } }
   main { padding-top: 0 !important; }
-  /* Gulf content section */
-  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch}
+  /* Gulf map/service content (kept) */
   #guides-section .gs-badge{padding:5px 16px;font-size:.78rem}
   .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
   .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
   .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
   .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
-  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  /* ── SaaS-style channel cards (flat, no inner capsules) ── */
-  .gulf-channel-card{position:relative;display:flex;flex-direction:column;gap:9px;background:#fff!important;border:1px solid #eadcff;border-radius:16px;padding:15px;text-align:right;text-decoration:none;box-shadow:0 1px 3px rgba(16,12,40,.06)!important;transition:transform .16s,border-color .16s,box-shadow .16s;cursor:pointer}
-  .gulf-channel-card:hover{transform:translateY(-2px);border-color:#c9b6ff;box-shadow:0 10px 26px rgba(91,22,163,.12)!important}
-  .gulf-channel-card>*,.gulf-card-head,.gulf-card-info,.gulf-name-row,.gulf-card-name,.gulf-card-desc{background:transparent!important;box-shadow:none!important;border-radius:0;border:0}
-  .gulf-card-head{display:flex!important;align-items:center;gap:11px;padding:0!important}
-  .gulf-flag{flex-shrink:0;width:50px;height:50px;border-radius:11px;overflow:hidden;display:block;background:#f3eeff;box-shadow:0 1px 5px rgba(0,0,0,.14)!important}
-  .gulf-flag img{width:100%;height:100%;object-fit:cover;display:block}
-  .gulf-card-info{flex:1;min-width:0;display:flex!important;flex-direction:column;gap:3px;padding:0!important}
-  .gulf-name-row{display:flex!important;align-items:center;gap:7px;padding:0!important}
-  .gulf-card-name{font-weight:800;font-size:.97rem;line-height:1.25;color:#15093a!important;margin:0!important;padding:0!important}
-  .gulf-abbr{flex-shrink:0;display:inline-flex;align-items:center;padding:1px 7px;border-radius:5px;font-size:.52rem;font-weight:900;letter-spacing:.4px;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.18)!important}
-  .gulf-card-desc{font-size:.75rem;line-height:1.45;color:#5a5470!important;margin:0!important;padding:0!important}
-  .gulf-tags{display:flex!important;flex-wrap:wrap;gap:6px;border-top:1px solid #f1ecfb;padding:9px 0 0!important;box-shadow:none!important;background:transparent!important;border-radius:0}
-  .gulf-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:.62rem;font-weight:700;color:#5b16a3;background:#f4eeff;border:1px solid #e6daff;box-shadow:none!important}
-  .gulf-tag i{font-size:.55rem}
-  .gulf-tag-count{color:#fff;background:linear-gradient(135deg,#7b2fff,#5b16a3);border-color:transparent;font-weight:800}
-  .gulf-grid-title{color:#ffffff}
+
+  /* ===== أبرز المحتويات الخليجية — Premium SaaS (scoped, theme-proof) ===== */
+  .kh-wrap{background:#f8f7fc;border-radius:28px;padding:42px 20px 36px;margin:34px 0 0}
+  .kh-head{text-align:center;max-width:600px;margin:0 auto 30px;padding:0 6px}
+  .kh-title{font-size:1.7rem;font-weight:800;color:#1a0b35;margin:0 0 12px;line-height:1.3}
+  .kh-sub{font-size:.95rem;line-height:1.7;color:#6b6285;margin:0}
+  .kh-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:900px;margin:0 auto}
+  .kh-tile{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #efe9fb;border-radius:28px;padding:26px 22px 18px;overflow:hidden;text-decoration:none;box-shadow:0 6px 24px rgba(26,11,53,.06);transition:transform .25s ease,box-shadow .25s ease}
+  .kh-tile:hover{transform:translateY(-6px);box-shadow:0 20px 46px rgba(124,58,237,.16)}
+  .kh-flag{position:absolute;top:0;left:0;width:84px;height:84px;clip-path:polygon(0 0,100% 0,0 100%);filter:drop-shadow(2px 2px 5px rgba(0,0,0,.14))}
+  .kh-flag img{width:100%;height:100%;object-fit:cover;display:block}
+  .kh-logo{align-self:flex-start;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(124,58,237,.16);box-shadow:0 4px 14px rgba(26,11,53,.1);font-weight:900;font-size:.84rem;letter-spacing:.5px;color:var(--c);margin-bottom:16px}
+  .kh-name{font-size:1.16rem;font-weight:800;color:#1a0b35;margin:0 0 6px;text-align:right}
+  .kh-desc{font-size:.85rem;line-height:1.55;color:#6b6285;margin:0 0 15px;text-align:right}
+  .kh-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
+  .kh-pill{display:inline-flex;align-items:center;padding:4px 13px;border-radius:999px;font-size:.7rem;font-weight:700;color:var(--c);background:#f4eeff;background:color-mix(in srgb,var(--c) 13%,#fff);border:1px solid #e6daff;border-color:color-mix(in srgb,var(--c) 26%,#fff)}
+  .kh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid #f1ecfb}
+  .kh-count{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;font-weight:800;color:#1a0b35}
+  .kh-count i{color:var(--c);font-size:.8rem}
+  .kh-go{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--c);color:#fff;font-size:.95rem;box-shadow:0 8px 18px rgba(124,58,237,.3);transition:transform .25s ease}
+  .kh-tile:hover .kh-go{transform:translateX(-4px) scale(1.08)}
+  .kh-cta{display:flex;align-items:center;gap:18px;max-width:900px;margin:26px auto 0;padding:22px 26px;border-radius:26px;background:linear-gradient(120deg,#efe7ff 0%,#e9defc 100%);border:1px solid #e4d8ff;box-shadow:0 10px 30px rgba(124,58,237,.1)}
+  .kh-cta-txt{flex:1;text-align:center}
+  .kh-cta-title{font-size:1.06rem;font-weight:800;color:#1a0b35;margin:0 0 5px}
+  .kh-cta-desc{font-size:.83rem;line-height:1.6;color:#6b6285;margin:0}
+  .kh-crown,.kh-shield{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:16px;font-size:1.25rem;background:linear-gradient(135deg,#7b2fff,#5b16a3);box-shadow:0 8px 18px rgba(123,47,255,.32)}
+  .kh-crown{color:#f5c518}
+  .kh-shield{color:#fff}
+  @media(min-width:600px){
+    .kh-grid{grid-template-columns:repeat(2,1fr)}
+    .kh-title{font-size:2rem}
+  }
   @media(max-width:600px){
-    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:9px}
-    .gulf-channel-card{padding:11px;gap:8px;border-radius:13px}
-    .gulf-card-head{gap:8px}
-    .gulf-flag{width:40px;height:40px;border-radius:10px}
-    .gulf-card-name{font-size:.82rem}
-    .gulf-abbr{font-size:.48rem;padding:1px 5px}
-    .gulf-card-desc{font-size:.67rem;line-height:1.35}
-    .gulf-tags{gap:4px;padding-top:7px}
-    .gulf-tag{font-size:.55rem;padding:2px 7px}
     .gulf-features-grid{grid-template-columns:1fr}
-    .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:right}
     .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
     .gulf-service-box h3{font-size:.92rem!important}
     .gulf-service-box li{font-size:.78rem!important}
     .gulf-map-wrap svg{max-width:205px!important}
-    .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
-    .gulf-banner{padding:16px!important}
-    .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
-    .gulf-banner .gulf-banner-sub{font-size:.8rem!important}
+    .kh-wrap{padding:30px 14px 26px;border-radius:22px}
+    .kh-title{font-size:1.4rem}
+    .kh-sub{font-size:.86rem}
+    .kh-tile{padding:22px 18px 16px;border-radius:24px}
+    .kh-cta{flex-direction:column;text-align:center;padding:22px 18px;gap:14px}
+    .kh-crown,.kh-shield{width:48px;height:48px;font-size:1.1rem}
   }
 </style>
 
@@ -524,124 +529,90 @@
 
     </div>
 
-    <!-- عنوان شبكة القنوات -->
-    <h3 class="gulf-grid-title" style="font-size:1.35rem;font-weight:800;text-align:center;margin:36px 0 6px"><i class="fas fa-crown" style="color:#f5c518;font-size:.9em;margin-inline-end:8px"></i>أبرز المحتويات الخليجية</h3>
-    <p class="gulf-grid-sub" style="text-align:center;font-size:.86rem;color:#7c6ba0;max-width:560px;margin:0 auto 22px;line-height:1.6">استمتع بأقوى القنوات الخليجية بجودة عالية وترفيه متنوّع يناسب جميع أفراد العائلة</p>
+    <!-- ===== أبرز المحتويات الخليجية — Premium ===== -->
+    <div class="kh-wrap">
+      <div class="kh-head">
+        <h3 class="kh-title">أبرز المحتويات الخليجية</h3>
+        <p class="kh-sub">استمتع بأقوى القنوات الخليجية بجودة عالية وبرامج متنوعة تناسب جميع أفراد العائلة</p>
+      </div>
 
-    <!-- شبكة القنوات -->
-    <div class="gulf-content-grid">
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/sa.svg" width="52" height="52" alt="علم السعودية" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">التلفزيون السعودي</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#166534,#14532d)">KSA</span>
-            </div>
-            <p class="gulf-card-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</p>
+      <div class="kh-grid">
+        <a href="#pricing" class="kh-tile" style="--c:#7c3aed">
+          <span class="kh-flag"><img src="/images/flags/ae.svg" width="84" height="84" alt="علم الإمارات" loading="lazy"></span>
+          <span class="kh-logo">AD</span>
+          <h4 class="kh-name">أبوظبي TV</h4>
+          <p class="kh-desc">القناة الرسمية لإمارة أبوظبي ببرامج وإنتاجات متميزة</p>
+          <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 98 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 125 قناة</span>
-          <span class="gulf-tag">رياضة</span>
-          <span class="gulf-tag">ترفيه</span>
-        </div>
-      </a>
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/ae.svg" width="52" height="52" alt="علم الإمارات" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">أبوظبي TV</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#dc2626,#991b1b)">AD</span>
-            </div>
-            <p class="gulf-card-desc">البرامج والإنتاجات الإماراتية المتميزة</p>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#16a34a">
+          <span class="kh-flag"><img src="/images/flags/sa.svg" width="84" height="84" alt="علم السعودية" loading="lazy"></span>
+          <span class="kh-logo">KSA</span>
+          <h4 class="kh-name">التلفزيون السعودي</h4>
+          <p class="kh-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</p>
+          <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 125 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 98 قناة</span>
-          <span class="gulf-tag">ترفيه</span>
-          <span class="gulf-tag">أفلام</span>
-        </div>
-      </a>
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/qa.svg" width="52" height="52" alt="علم قطر" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">تلفزيون قطر</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#7c1c3e,#5b0d2e)">QTV</span>
-            </div>
-            <p class="gulf-card-desc">القناة الوطنية الرسمية لدولة قطر</p>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#a21caf">
+          <span class="kh-flag"><img src="/images/flags/qa.svg" width="84" height="84" alt="علم قطر" loading="lazy"></span>
+          <span class="kh-logo">QTV</span>
+          <h4 class="kh-name">تلفزيون قطر</h4>
+          <p class="kh-desc">القناة الوطنية الرسمية لدولة قطر</p>
+          <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 85 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 85 قناة</span>
-          <span class="gulf-tag">أخبار</span>
-          <span class="gulf-tag">رياضة</span>
-        </div>
-      </a>
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/kw.svg" width="52" height="52" alt="علم الكويت" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">تلفزيون الكويت</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#16a34a,#15803d)">KTV</span>
-            </div>
-            <p class="gulf-card-desc">البث الوطني الكويتي والبرامج الرسمية</p>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#10b981">
+          <span class="kh-flag"><img src="/images/flags/kw.svg" width="84" height="84" alt="علم الكويت" loading="lazy"></span>
+          <span class="kh-logo">KTV</span>
+          <h4 class="kh-name">تلفزيون الكويت</h4>
+          <p class="kh-desc">القناة الوطنية الكويتية الرسمية</p>
+          <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 76 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 76 قناة</span>
-          <span class="gulf-tag">ترفيه</span>
-          <span class="gulf-tag">أفلام</span>
-        </div>
-      </a>
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/om.svg" width="52" height="52" alt="علم عُمان" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">تلفزيون عُمان</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#dc2626,#991b1b)">OTV</span>
-            </div>
-            <p class="gulf-card-desc">الإذاعة والتلفزيون العُماني الرسمي</p>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#ef4444">
+          <span class="kh-flag"><img src="/images/flags/om.svg" width="84" height="84" alt="علم عُمان" loading="lazy"></span>
+          <span class="kh-logo">OTV</span>
+          <h4 class="kh-name">تلفزيون عُمان</h4>
+          <p class="kh-desc">الإذاعة والتلفزيون العُماني الرسمي</p>
+          <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">ترفيه</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 70 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 70 قناة</span>
-          <span class="gulf-tag">أخبار</span>
-          <span class="gulf-tag">ترفيه</span>
-        </div>
-      </a>
-      <a href="#pricing" class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <span class="gulf-flag"><img src="/images/flags/bh.svg" width="52" height="52" alt="علم البحرين" loading="lazy"></span>
-          <div class="gulf-card-info">
-            <div class="gulf-name-row">
-              <h4 class="gulf-card-name">تلفزيون البحرين</h4>
-              <span class="gulf-abbr" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)">BTV</span>
-            </div>
-            <p class="gulf-card-desc">القناة الوطنية الرسمية لمملكة البحرين</p>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#3b82f6">
+          <span class="kh-flag"><img src="/images/flags/bh.svg" width="84" height="84" alt="علم البحرين" loading="lazy"></span>
+          <span class="kh-logo">BTV</span>
+          <h4 class="kh-name">تلفزيون البحرين</h4>
+          <p class="kh-desc">القناة الوطنية الرسمية لمملكة البحرين</p>
+          <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
+          <div class="kh-foot">
+            <span class="kh-count"><i class="fas fa-tv"></i> 64 قناة</span>
+            <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
-        </div>
-        <div class="gulf-tags">
-          <span class="gulf-tag gulf-tag-count"><i class="fas fa-tv"></i> 64 قناة</span>
-          <span class="gulf-tag">مباشر</span>
-          <span class="gulf-tag">أخبار</span>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
 
-    <!-- بانر الختام -->
-    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px;justify-content:flex-start;gap:14px">
-      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
-        <i class="fas fa-crown" style="color:#f5c518;font-size:.9rem"></i>
-      </span>
-      <div style="text-align:right">
-        <div class="gulf-banner-txt" style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">محتوى متنوّع يناسب جميع أفراد العائلة</div>
-        <div class="gulf-banner-sub" style="font-size:.88rem;color:rgba(255,255,255,.65)">اشتراك واحد يفتح لك كل المحتوى الخليجي والعربي</div>
+      <!-- CTA -->
+      <div class="kh-cta">
+        <span class="kh-crown"><i class="fas fa-crown"></i></span>
+        <div class="kh-cta-txt">
+          <div class="kh-cta-title">محتوى متنوع يناسب جميع أفراد العائلة</div>
+          <div class="kh-cta-desc">اشتراك واحد يفتح لك عالم المحتوى الخليجي والعربي بجودة فائقة ودعم فني على مدار الساعة</div>
+        </div>
+        <span class="kh-shield"><i class="fas fa-shield-halved"></i></span>
       </div>
     </div>
 
