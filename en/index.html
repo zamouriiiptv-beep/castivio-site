@@ -1100,117 +1100,198 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
      – Accordion (فتح/إغلاق الأسئلة)
      – خاضع لنظام section-spacing لتوحيد المسافات -->
 <!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨 -->
-<section id="faq" class="section-spacing bg-white" aria-label="Frequently Asked Questions (FAQ)">
+<section id="faq" aria-label="FAQ">
+  <div class="faq2-inner">
 
-  <!-- ⭐ عنوان القسم (موحّد) -->
-  <h2 class="section-title-unified">
-  <span class="title-line-1">Frequently asked questions about</span>
-  <span class="title-line-2">
-    IPTV
-    <img src="/images/Logo/icon9.webp" class="title-icon" alt="IPTV FAQ icon" loading="lazy" decoding="async" fetchpriority="high">
-  </span>
-</h2>
-
-  <!-- FAQ Content -->
-  <div class="grid md:grid-cols-2 gap-8">
-
-    <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
-        <span class="font-bold text-indigo-700" id="faq1-label">What is an IPTV Subscription and how does it work?</span>
-        <span class="faq-icon text-2xl font-bold text-indigo-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq1-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq1-label">
-        An IPTV Subscription gives you instant access to thousands of digital streams worldwide via the internet — no satellite or antenna required. With Prime IPTV you get HD, FHD, 4K and 8K quality on all your devices, anywhere, anytime.
-      </div>
+    <div class="faq2-head">
+      <span class="faq2-badge"><i class="fas fa-circle-question" style="color:#f5c518;"></i><i class="fas fa-comments" style="color:#f5c518;"></i>FAQ</span>
+      <h2 class="faq2-title">Frequently Asked <span class="faq2-grad">Questions</span></h2>
+      <p class="faq2-sub">Quick and clear answers to the most common questions about IPTV</p>
     </div>
 
-    <div class="bg-purple-50 border border-purple-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
-        <span class="font-bold text-purple-700" id="faq2-label">How do I find the Best IPTV Provider?</span>
-        <span class="faq-icon text-2xl font-bold text-purple-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq2-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq2-label">
-        The Best IPTV Provider combines server uptime above 99%, diverse digital content, round-the-clock technical support, and competitive pricing. Prime IPTV meets all these criteria with years of experience and thousands of satisfied customers globally.
+    <div class="faq2-list">
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 4L12 4l3.5 5L21 5l-2 11H5zm0 3h14v2H5v-2z"/></svg></span>
+          <span class="faq2-q-text">What is an IPTV Subscription and how does it work?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">An IPTV Subscription gives you instant access to thousands of digital streams worldwide via the internet — no satellite or antenna required. With Prime IPTV you get HD, FHD, 4K and 8K quality on all your devices, anywhere, anytime.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
       </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+          <span class="faq2-q-text">How do I find the Best IPTV Provider?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">The Best IPTV Provider combines server uptime above 99%, diverse digital content, round-the-clock technical support, and competitive pricing. Prime IPTV meets all these criteria with years of experience and thousands of satisfied customers globally.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></span>
+          <span class="faq2-q-text">Does 4K IPTV require a very fast internet connection?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">For smooth 4K IPTV streaming you need at least 25 Mbps — HD requires only 10 Mbps. Prime IPTV uses advanced compression technology so your stream stays sharp even on average connections.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>HD · 10 Mbps</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>FHD · 15 Mbps</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>4K · 25 Mbps</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>8K · 50 Mbps</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1L9 9H1l6.5 5-2.5 8L12 17l7 5-2.5-8L23 9h-8z"/></svg></span>
+          <span class="faq2-q-text">What makes Premium IPTV different from free services?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">Premium IPTV delivers 99%+ uptime, 4K/8K quality, dedicated servers, daily content updates, and 24/7 support — free services suffer from constant buffering, intrusive ads, and zero technical help.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="faq2-q-text">How does IPTV Streaming work technically?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">IPTV Streaming sends digital content directly to your device over the internet using HLS or MPEG-TS protocols. Prime IPTV's globally distributed server network ensures the fastest response and lowest latency possible.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></span>
+          <span class="faq2-q-text">What is the Best IPTV service available today?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">Best IPTV combines a massive digital content library, 4K/8K quality, stable servers, fast support, and fair pricing. Prime IPTV ranks among the top providers worldwide with thousands of positive reviews from real users.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span>
+          <span class="faq2-q-text">What is an IPTV Service and what does it offer?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">An IPTV Service is a digital television platform delivered over the internet instead of satellite or cable, letting you watch what you want, when you want, on any device. Prime IPTV's service covers live streams, on-demand content, and replay functionality.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 6H5v-4h14v4zm1-17H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 6H5V4h14v4zM7 5h2v2H7zm0 9h2v2H7z"/></svg></span>
+          <span class="faq2-q-text">What should I look for in a reliable IPTV Provider?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">A reliable IPTV Provider guarantees 99%+ server uptime, 24/7 WhatsApp support, regular content updates, transparent pricing with no hidden fees, and thousands of verified positive reviews. Prime IPTV checks every box.
+          <div class="faq2-features">
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.2 14.2L7.6 12l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6z"/></svg><span>99%+ Uptime</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg><span>HD · FHD · 4K · 8K</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/></svg><span>24/7 Support</span></div>
+            <div class="faq2-feat"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Digital Content</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></span>
+          <span class="faq2-q-text">Can I watch IPTV Online without downloading an app?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">Yes, some IPTV Online players work directly in your browser — though dedicated apps like IPTV Smarters or TiviMate deliver a far better experience with smoother playback and a full EPG guide.
+        </div>
+      </div>
+
+      <div class="faq2-item">
+        <button class="faq2-btn" type="button" aria-expanded="false">
+          <span class="faq2-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></span>
+          <span class="faq2-q-text">What is XTREAM IPTV and how does it differ from M3U?</span>
+          <span class="faq2-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+        </button>
+        <div class="faq2-answer">XTREAM IPTV uses an API-based login (server URL + username + password) offering more stability and extra features compared to a plain M3U link. Prime IPTV supports both formats for maximum device compatibility.
+        </div>
+      </div>
+
     </div>
 
-    <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
-        <span class="font-bold text-blue-700" id="faq3-label">Does 4K IPTV require a very fast internet connection?</span>
-        <span class="faq-icon text-2xl font-bold text-blue-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq3-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq3-label">
-        For smooth 4K IPTV streaming you need at least 25 Mbps — HD requires only 10 Mbps. Prime IPTV uses advanced compression technology so your stream stays sharp even on average connections.
+    <div class="faq2-cta">
+      <div class="faq2-cta-text">
+        <p class="faq2-cta-title">Didn't find your answer?</p>
+        <p class="faq2-cta-sub">Our support team is available via WhatsApp</p>
       </div>
+      <a href="https://wa.me/212666686732" target="_blank" rel="noopener noreferrer" class="faq2-cta-btn faq2-cta-wa">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.003 1.5C6.197 1.5 1.5 6.197 1.5 12.003c0 1.922.517 3.72 1.416 5.271L1.5 22.5l5.35-1.402A10.494 10.494 0 0 0 12.003 22.5c5.806 0 10.5-4.697 10.5-10.497C22.503 6.197 17.809 1.5 12.003 1.5zm0 19.183a8.66 8.66 0 0 1-4.41-1.207l-.316-.188-3.276.859.875-3.193-.206-.328a8.638 8.638 0 0 1-1.324-4.606c.002-4.781 3.892-8.67 8.675-8.67a8.62 8.62 0 0 1 6.131 2.541 8.61 8.61 0 0 1 2.538 6.135c-.002 4.782-3.892 8.671-8.673 8.671z"/></svg>
+        Contact via WhatsApp
+      </a>
     </div>
 
-    <div class="bg-pink-50 border border-pink-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq4-content" id="faq4-btn">
-        <span class="font-bold text-pink-700" id="faq4-label">What makes Premium IPTV different from free services?</span>
-        <span class="faq-icon text-2xl font-bold text-pink-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq4-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq4-label">
-        Premium IPTV delivers 99%+ uptime, 4K/8K quality, dedicated servers, daily content updates, and 24/7 support — free services suffer from constant buffering, intrusive ads, and zero technical help.
+    <div class="faq2-stats">
+      <div class="faq2-stat">
+        <div class="faq2-stat-icon"><svg viewBox="0 0 24 24"><path d="<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>"/></svg></div>
+        <span class="faq2-stat-title">Trusted</span>
+        <span class="faq2-stat-sub">Thousands of users</span>
       </div>
-    </div>
-
-    <div class="bg-green-50 border border-green-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq5-content" id="faq5-btn">
-        <span class="font-bold text-green-700" id="faq5-label">How does IPTV Streaming work technically?</span>
-        <span class="faq-icon text-2xl font-bold text-green-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq5-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq5-label">
-        IPTV Streaming sends digital content directly to your device over the internet using HLS or MPEG-TS protocols. Prime IPTV's globally distributed server network ensures the fastest response and lowest latency possible.
+      <div class="faq2-stat">
+        <div class="faq2-stat-icon"><svg viewBox="0 0 24 24"><path d="<path d="M7 2v11h3v9l7-12h-4l4-8z"/>"/></svg></div>
+        <span class="faq2-stat-title">Stability</span>
+        <span class="faq2-stat-sub">High quality</span>
       </div>
-    </div>
-
-    <div class="bg-orange-50 border border-orange-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq6-content" id="faq6-btn">
-        <span class="font-bold text-orange-700" id="faq6-label">What is the Best IPTV service available today?</span>
-        <span class="faq-icon text-2xl font-bold text-orange-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq6-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq6-label">
-        Best IPTV combines a massive digital content library, 4K/8K quality, stable servers, fast support, and fair pricing. Prime IPTV ranks among the top providers worldwide with thousands of positive reviews from real users.
+      <div class="faq2-stat">
+        <div class="faq2-stat-icon"><svg viewBox="0 0 24 24"><path d="<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>"/></svg></div>
+        <span class="faq2-stat-title">24/7 Support</span>
+        <span class="faq2-stat-sub">Fast service</span>
       </div>
-    </div>
-
-    <div class="bg-teal-50 border border-teal-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq7-content" id="faq7-btn">
-        <span class="font-bold text-teal-700" id="faq7-label">What is an IPTV Service and what does it offer?</span>
-        <span class="faq-icon text-2xl font-bold text-teal-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq7-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq7-label">
-        An IPTV Service is a digital television platform delivered over the internet instead of satellite or cable, letting you watch what you want, when you want, on any device. Prime IPTV's service covers live streams, on-demand content, and replay functionality.
-      </div>
-    </div>
-
-    <div class="bg-violet-50 border border-violet-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq8-content" id="faq8-btn">
-        <span class="font-bold text-violet-700" id="faq8-label">What should I look for in a reliable IPTV Provider?</span>
-        <span class="faq-icon text-2xl font-bold text-violet-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq8-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq8-label">
-        A reliable IPTV Provider guarantees 99%+ server uptime, 24/7 WhatsApp support, regular content updates, transparent pricing with no hidden fees, and thousands of verified positive reviews. Prime IPTV checks every box.
-      </div>
-    </div>
-
-    <div class="bg-sky-50 border border-sky-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq9-content" id="faq9-btn">
-        <span class="font-bold text-sky-700" id="faq9-label">Can I watch IPTV Online without downloading an app?</span>
-        <span class="faq-icon text-2xl font-bold text-sky-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq9-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq9-label">
-        Yes, some IPTV Online players work directly in your browser — though dedicated apps like IPTV Smarters or TiviMate deliver a far better experience with smoother playback and a full EPG guide.
-      </div>
-    </div>
-
-    <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl shadow-lg">
-      <button class="faq-btn w-full flex justify-between items-center" type="button" aria-expanded="false" aria-controls="faq10-content" id="faq10-btn">
-        <span class="font-bold text-rose-700" id="faq10-label">What is XTREAM IPTV and how does it differ from M3U?</span>
-        <span class="faq-icon text-2xl font-bold text-rose-700" aria-hidden="true">+</span>
-      </button>
-      <div id="faq10-content" class="faq-content hidden mt-4 text-gray-700 leading-relaxed" role="region" aria-labelledby="faq10-label">
-        XTREAM IPTV uses an API-based login (server URL + username + password) offering more stability and extra features compared to a plain M3U link. Prime IPTV supports both formats for maximum device compatibility.
+      <div class="faq2-stat">
+        <div class="faq2-stat-icon"><svg viewBox="0 0 24 24"><path d="<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>"/></svg></div>
+        <span class="faq2-stat-title">Guaranteed</span>
+        <span class="faq2-stat-sub">Satisfaction assured</span>
       </div>
     </div>
 
