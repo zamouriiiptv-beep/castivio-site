@@ -24,7 +24,7 @@
 
 <style>html{background:#050014}</style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=126">
+<link rel="stylesheet" href="/styles.css?v=127">
 <script src="/script.js" defer></script>
 
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -62,36 +62,54 @@
   .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
   .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
 
-  /* ===== أبرز المحتويات الخليجية — Premium SaaS (scoped, theme-proof) ===== */
-  .kh-wrap{background:#f8f7fc;border-radius:28px;padding:42px 20px 36px;margin:34px 0 0}
-  .kh-head{text-align:center;max-width:600px;margin:0 auto 30px;padding:0 6px}
-  .kh-title{font-size:1.7rem;font-weight:800;color:#1a0b35;margin:0 0 12px;line-height:1.3}
-  .kh-sub{font-size:.95rem;line-height:1.7;color:#6b6285;margin:0}
-  .kh-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:900px;margin:0 auto}
-  .kh-tile{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #efe9fb;border-radius:28px;padding:26px 22px 18px;overflow:hidden;text-decoration:none;box-shadow:0 6px 24px rgba(26,11,53,.06);transition:transform .25s ease,box-shadow .25s ease}
-  .kh-tile:hover{transform:translateY(-6px);box-shadow:0 20px 46px rgba(124,58,237,.16)}
-  .kh-flag{position:absolute;top:0;left:0;width:84px;height:84px;clip-path:polygon(0 0,100% 0,0 100%);filter:drop-shadow(2px 2px 5px rgba(0,0,0,.14))}
+  /* ===== أبرز المحتويات الخليجية — Premium SaaS (scoped, theme-proof, mobile-first) ===== */
+  .kh-wrap{background:#f8f7fc;border-radius:20px;padding:28px 13px 24px;margin:30px 0 0}
+  .kh-head{text-align:center;max-width:600px;margin:0 auto 24px;padding:0 6px}
+  .kh-title{font-size:1.5rem;font-weight:800;color:#1a0b35;margin:0 0 9px;line-height:1.3}
+  .kh-sub{font-size:.86rem;line-height:1.65;color:#6b6285;margin:0}
+  .kh-grid{display:grid;grid-template-columns:1fr;gap:15px;max-width:900px;margin:0 auto}
+  .kh-tile{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #efe9fb;border-radius:22px;padding:15px 16px 13px;overflow:hidden;text-decoration:none;box-shadow:0 4px 18px rgba(26,11,53,.06);transition:transform .25s ease,box-shadow .25s ease}
+  .kh-tile:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(124,58,237,.15)}
+  .kh-flag{position:absolute;top:0;left:0;width:58px;height:58px;clip-path:polygon(0 0,100% 0,0 100%);filter:drop-shadow(1px 1px 4px rgba(0,0,0,.14))}
   .kh-flag img{width:100%;height:100%;object-fit:cover;display:block}
-  .kh-logo{align-self:flex-start;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(124,58,237,.16);box-shadow:0 4px 14px rgba(26,11,53,.1);font-weight:900;font-size:.84rem;letter-spacing:.5px;color:var(--c);margin-bottom:16px}
-  .kh-name{font-size:1.16rem;font-weight:800;color:#1a0b35;margin:0 0 6px;text-align:right}
-  .kh-desc{font-size:.85rem;line-height:1.55;color:#6b6285;margin:0 0 15px;text-align:right}
-  .kh-pills{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}
-  .kh-pill{display:inline-flex;align-items:center;padding:4px 13px;border-radius:999px;font-size:.7rem;font-weight:700;color:var(--c);background:#f4eeff;background:color-mix(in srgb,var(--c) 13%,#fff);border:1px solid #e6daff;border-color:color-mix(in srgb,var(--c) 26%,#fff)}
-  .kh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid #f1ecfb}
-  .kh-count{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;font-weight:800;color:#1a0b35}
-  .kh-count i{color:var(--c);font-size:.8rem}
-  .kh-go{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--c);color:#fff;font-size:.95rem;box-shadow:0 8px 18px rgba(124,58,237,.3);transition:transform .25s ease}
-  .kh-tile:hover .kh-go{transform:translateX(-4px) scale(1.08)}
-  .kh-cta{display:flex;align-items:center;gap:18px;max-width:900px;margin:26px auto 0;padding:22px 26px;border-radius:26px;background:linear-gradient(120deg,#efe7ff 0%,#e9defc 100%);border:1px solid #e4d8ff;box-shadow:0 10px 30px rgba(124,58,237,.1)}
+  .kh-top{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+  .kh-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(124,58,237,.18);box-shadow:0 2px 8px rgba(26,11,53,.1);font-weight:900;font-size:.66rem;letter-spacing:.4px;color:var(--c)}
+  .kh-name{flex:1;min-width:0;font-size:1.04rem;font-weight:800;color:#1a0b35;margin:0;text-align:right}
+  .kh-desc{font-size:.8rem;line-height:1.45;color:#6b6285;margin:0 0 10px;text-align:right}
+  .kh-pills{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 11px}
+  .kh-pill{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;font-size:.64rem;font-weight:700;color:var(--c);background:#f4eeff;background:color-mix(in srgb,var(--c) 12%,#fff);border:1px solid #e6daff;border-color:color-mix(in srgb,var(--c) 24%,#fff)}
+  .kh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:11px;border-top:1px solid #f1ecfb}
+  .kh-count{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:800;color:#1a0b35}
+  .kh-count i{color:var(--c);font-size:.78rem}
+  .kh-go{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--c);color:#fff;font-size:.82rem;box-shadow:0 4px 12px rgba(124,58,237,.26);transition:transform .25s ease}
+  .kh-tile:hover .kh-go{transform:translateX(-3px) scale(1.06)}
+  .kh-cta{display:flex;align-items:center;gap:14px;max-width:900px;margin:20px auto 0;padding:18px;border-radius:22px;background:linear-gradient(120deg,#efe7ff 0%,#e9defc 100%);border:1px solid #e4d8ff;box-shadow:0 8px 26px rgba(124,58,237,.1)}
   .kh-cta-txt{flex:1;text-align:center}
-  .kh-cta-title{font-size:1.06rem;font-weight:800;color:#1a0b35;margin:0 0 5px}
-  .kh-cta-desc{font-size:.83rem;line-height:1.6;color:#6b6285;margin:0}
-  .kh-crown,.kh-shield{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:16px;font-size:1.25rem;background:linear-gradient(135deg,#7b2fff,#5b16a3);box-shadow:0 8px 18px rgba(123,47,255,.32)}
+  .kh-cta-title{font-size:1rem;font-weight:800;color:#1a0b35;margin:0 0 4px}
+  .kh-cta-desc{font-size:.8rem;line-height:1.55;color:#6b6285;margin:0}
+  .kh-crown,.kh-shield{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;font-size:1.05rem;background:linear-gradient(135deg,#7b2fff,#5b16a3);box-shadow:0 6px 16px rgba(123,47,255,.3)}
   .kh-crown{color:#f5c518}
   .kh-shield{color:#fff}
   @media(min-width:600px){
-    .kh-grid{grid-template-columns:repeat(2,1fr)}
-    .kh-title{font-size:2rem}
+    .kh-wrap{padding:42px 22px 36px;border-radius:28px}
+    .kh-head{margin-bottom:30px}
+    .kh-title{font-size:2rem;margin-bottom:12px}
+    .kh-sub{font-size:.95rem;line-height:1.7}
+    .kh-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+    .kh-tile{padding:20px 20px 16px;border-radius:26px}
+    .kh-flag{width:70px;height:70px}
+    .kh-logo{width:44px;height:44px;border-radius:13px;font-size:.74rem}
+    .kh-top{gap:11px;margin-bottom:9px}
+    .kh-name{font-size:1.16rem}
+    .kh-desc{font-size:.85rem;margin-bottom:14px}
+    .kh-pills{gap:7px;margin-bottom:16px}
+    .kh-pill{font-size:.68rem;padding:3px 12px}
+    .kh-foot{padding-top:14px}
+    .kh-go{width:46px;height:46px;font-size:.92rem}
+    .kh-cta{gap:18px;margin-top:26px;padding:22px 26px;border-radius:26px}
+    .kh-cta-title{font-size:1.06rem}
+    .kh-cta-desc{font-size:.83rem}
+    .kh-crown,.kh-shield{width:54px;height:54px;border-radius:16px;font-size:1.25rem}
   }
   @media(max-width:600px){
     .gulf-features-grid{grid-template-columns:1fr}
@@ -99,12 +117,7 @@
     .gulf-service-box h3{font-size:.92rem!important}
     .gulf-service-box li{font-size:.78rem!important}
     .gulf-map-wrap svg{max-width:205px!important}
-    .kh-wrap{padding:30px 14px 26px;border-radius:22px}
-    .kh-title{font-size:1.4rem}
-    .kh-sub{font-size:.86rem}
-    .kh-tile{padding:22px 18px 16px;border-radius:24px}
-    .kh-cta{flex-direction:column;text-align:center;padding:22px 18px;gap:14px}
-    .kh-crown,.kh-shield{width:48px;height:48px;font-size:1.1rem}
+    .kh-cta{flex-direction:column;text-align:center}
   }
 </style>
 
@@ -539,8 +552,7 @@
       <div class="kh-grid">
         <a href="#pricing" class="kh-tile" style="--c:#7c3aed">
           <span class="kh-flag"><img src="/images/flags/ae.svg" width="84" height="84" alt="علم الإمارات" loading="lazy"></span>
-          <span class="kh-logo">AD</span>
-          <h4 class="kh-name">أبوظبي TV</h4>
+          <div class="kh-top"><span class="kh-logo">AD</span><h4 class="kh-name">أبوظبي TV</h4></div>
           <p class="kh-desc">القناة الرسمية لإمارة أبوظبي ببرامج وإنتاجات متميزة</p>
           <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
@@ -550,8 +562,7 @@
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#16a34a">
           <span class="kh-flag"><img src="/images/flags/sa.svg" width="84" height="84" alt="علم السعودية" loading="lazy"></span>
-          <span class="kh-logo">KSA</span>
-          <h4 class="kh-name">التلفزيون السعودي</h4>
+          <div class="kh-top"><span class="kh-logo">KSA</span><h4 class="kh-name">التلفزيون السعودي</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
@@ -561,8 +572,7 @@
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#a21caf">
           <span class="kh-flag"><img src="/images/flags/qa.svg" width="84" height="84" alt="علم قطر" loading="lazy"></span>
-          <span class="kh-logo">QTV</span>
-          <h4 class="kh-name">تلفزيون قطر</h4>
+          <div class="kh-top"><span class="kh-logo">QTV</span><h4 class="kh-name">تلفزيون قطر</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية لدولة قطر</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
@@ -572,8 +582,7 @@
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#10b981">
           <span class="kh-flag"><img src="/images/flags/kw.svg" width="84" height="84" alt="علم الكويت" loading="lazy"></span>
-          <span class="kh-logo">KTV</span>
-          <h4 class="kh-name">تلفزيون الكويت</h4>
+          <div class="kh-top"><span class="kh-logo">KTV</span><h4 class="kh-name">تلفزيون الكويت</h4></div>
           <p class="kh-desc">القناة الوطنية الكويتية الرسمية</p>
           <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
@@ -583,8 +592,7 @@
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#ef4444">
           <span class="kh-flag"><img src="/images/flags/om.svg" width="84" height="84" alt="علم عُمان" loading="lazy"></span>
-          <span class="kh-logo">OTV</span>
-          <h4 class="kh-name">تلفزيون عُمان</h4>
+          <div class="kh-top"><span class="kh-logo">OTV</span><h4 class="kh-name">تلفزيون عُمان</h4></div>
           <p class="kh-desc">الإذاعة والتلفزيون العُماني الرسمي</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">ترفيه</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
@@ -594,8 +602,7 @@
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#3b82f6">
           <span class="kh-flag"><img src="/images/flags/bh.svg" width="84" height="84" alt="علم البحرين" loading="lazy"></span>
-          <span class="kh-logo">BTV</span>
-          <h4 class="kh-name">تلفزيون البحرين</h4>
+          <div class="kh-top"><span class="kh-logo">BTV</span><h4 class="kh-name">تلفزيون البحرين</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية لمملكة البحرين</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
           <div class="kh-foot">
