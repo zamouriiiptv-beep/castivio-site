@@ -24,7 +24,7 @@
 
 <style>html{background:#050014}</style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=118">
+<link rel="stylesheet" href="/styles.css?v=119">
 <script src="/script.js" defer></script>
 
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -65,22 +65,20 @@
   .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .gulf-content-grid{align-items:stretch}
   /* ── Premium channel cards ── */
-  .gulf-channel-card{display:flex;flex-direction:column;gap:14px;background:#FFFFFF;border:1px solid #E5D7FF;border-radius:16px;padding:20px 20px 22px;text-align:right;box-shadow:0 8px 24px rgba(0,0,0,.08);transition:transform .25s,border-color .25s,box-shadow .25s}
-  .gulf-channel-card:hover{transform:translateY(-3px);border-color:#C4B5FD;box-shadow:0 14px 36px rgba(91,22,163,.13)}
-  .gulf-card-head{display:flex;align-items:center;gap:12px}
-  .gulf-logo{flex-shrink:0;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.65rem;letter-spacing:.3px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
-  .gulf-card-name{flex:1;min-width:0;font-weight:800;font-size:.97rem;line-height:1.3;color:#111111;margin:0;padding:0}
-  .gulf-card-desc{font-size:.79rem;line-height:1.5;color:#444444;margin:0;padding:0}
+  .gulf-channel-card{display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #E5D7FF;border-radius:16px;padding:22px 18px 24px;text-align:right;box-shadow:0 4px 18px rgba(0,0,0,.06);transition:transform .22s,border-color .22s,box-shadow .22s}
+  .gulf-channel-card:hover{transform:translateY(-3px);border-color:#C4B5FD;box-shadow:0 10px 28px rgba(91,22,163,.09)}
+  .gulf-logo{align-self:flex-end;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.68rem;letter-spacing:.3px;box-shadow:0 2px 8px rgba(0,0,0,.14);margin-bottom:6px}
+  .gulf-card-name{font-weight:800;font-size:1rem;line-height:1.35;color:#111111;margin:0;padding:0}
+  .gulf-card-desc{font-size:.8rem;line-height:1.55;color:#555555;margin:0;padding:0}
   .gulf-grid-title{color:#ffffff}
   @media(max-width:600px){
     .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .gulf-channel-card{padding:16px 14px 18px;gap:10px;min-height:116px}
-    .gulf-card-head{gap:8px}
-    .gulf-logo{width:26px;height:26px;border-radius:7px;font-size:.58rem}
+    .gulf-channel-card{padding:18px 14px 20px;gap:6px;min-height:120px}
+    .gulf-logo{width:30px;height:30px;border-radius:8px;font-size:.6rem;margin-bottom:4px}
     .gulf-features-grid{grid-template-columns:1fr}
     .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:right}
-    .gulf-card-name{font-size:.87rem}
-    .gulf-card-desc{font-size:.74rem;line-height:1.4}
+    .gulf-card-name{font-size:.88rem}
+    .gulf-card-desc{font-size:.75rem;line-height:1.4}
     .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
     .gulf-service-box h3{font-size:.92rem!important}
     .gulf-service-box li{font-size:.78rem!important}
@@ -519,46 +517,34 @@
     <!-- شبكة القنوات -->
     <div class="gulf-content-grid">
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#166534,#14532d)"><i class="fas fa-tv"></i></div>
-          <div class="gulf-card-name">التلفزيون<br>السعودي</div>
-        </div>
-        <div class="gulf-card-desc">القناة الوطنية الرسمية<br>للمملكة العربية السعودية</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#166534,#14532d)"><i class="fas fa-tv"></i></div>
+        <div class="gulf-card-name">التلفزيون السعودي</div>
+        <div class="gulf-card-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</div>
       </div>
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#0369a1,#075985)">AD</div>
-          <div class="gulf-card-name">أبوظبي<br>TV</div>
-        </div>
-        <div class="gulf-card-desc">البرامج والإنتاجات<br>الإماراتية المتميزة</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#0369a1,#075985)">AD</div>
+        <div class="gulf-card-name">أبوظبي TV</div>
+        <div class="gulf-card-desc">البرامج والإنتاجات الإماراتية المتميزة</div>
       </div>
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#7c1c3e,#5b0d2e)"><i class="fas fa-tv"></i></div>
-          <div class="gulf-card-name">تلفزيون<br>قطر</div>
-        </div>
-        <div class="gulf-card-desc">القناة الوطنية الرسمية<br>لدولة قطر</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#7c1c3e,#5b0d2e)"><i class="fas fa-tv"></i></div>
+        <div class="gulf-card-name">تلفزيون قطر</div>
+        <div class="gulf-card-desc">القناة الوطنية الرسمية لدولة قطر</div>
       </div>
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)">KTV</div>
-          <div class="gulf-card-name">تلفزيون<br>الكويت</div>
-        </div>
-        <div class="gulf-card-desc">البث الوطني الكويتي<br>والبرامج الرسمية</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)">KTV</div>
+        <div class="gulf-card-name">تلفزيون الكويت</div>
+        <div class="gulf-card-desc">البث الوطني الكويتي والبرامج الرسمية</div>
       </div>
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)">BTV</div>
-          <div class="gulf-card-name">تلفزيون<br>البحرين</div>
-        </div>
-        <div class="gulf-card-desc">القناة الوطنية الرسمية<br>لمملكة البحرين</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)">BTV</div>
+        <div class="gulf-card-name">تلفزيون البحرين</div>
+        <div class="gulf-card-desc">القناة الوطنية الرسمية لمملكة البحرين</div>
       </div>
       <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#dc2626,#991b1b)">OTV</div>
-          <div class="gulf-card-name">تلفزيون<br>عُمان</div>
-        </div>
-        <div class="gulf-card-desc">الإذاعة والتلفزيون<br>العماني الرسمي</div>
+        <div class="gulf-logo" style="background:linear-gradient(135deg,#dc2626,#991b1b)">OTV</div>
+        <div class="gulf-card-name">تلفزيون عُمان</div>
+        <div class="gulf-card-desc">الإذاعة والتلفزيون العماني الرسمي</div>
       </div>
     </div>
 
