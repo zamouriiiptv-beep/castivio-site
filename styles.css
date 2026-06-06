@@ -1262,6 +1262,9 @@ body.light-mode .gd-banner-tag i,body.light-mode .gd-banner-tag svg{color:#5b21b
 body.light-mode .gd-banner-body p{color:#000000!important}
 body.light-mode .gd-btn{background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(109,40,217,.18))!important;color:#3b0764!important;box-shadow:0 4px 16px rgba(91,22,163,.08)!important}
 body.light-mode .gd-banner-tag{color:#000000!important;border-color:rgba(91,22,163,.3)!important;background:rgba(139,92,246,.12)!important}
+body.light-mode .gulf-service-box{background:linear-gradient(135deg,rgba(123,47,255,0.07),rgba(139,92,246,0.12))!important;border-color:rgba(91,22,163,.30)!important}
+body.light-mode .gulf-service-box h3{color:#1a0b35!important}
+body.light-mode .gulf-service-box li{color:#2d1b6e!important}
 
 /* ══ PRICING ══ */
 body.light-mode #pricing .ps-title{color:#000000!important}
