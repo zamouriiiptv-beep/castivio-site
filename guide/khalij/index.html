@@ -24,7 +24,7 @@
 
 <style>html{background:#050014}</style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=150">
+<link rel="stylesheet" href="/styles.css?v=151">
 <script src="/script.js" defer></script>
 
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -80,9 +80,9 @@
   .kh-pills{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 9px}
   .kh-pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;font-size:.54rem;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 10%,#fff);border:1px solid color-mix(in srgb,var(--c) 22%,#fff);transition:background .16s,transform .16s}
   .kh-pill:active{background:color-mix(in srgb,var(--c) 20%,#fff);transform:scale(1.06)}
-  .kh-feat{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 8%,#fff);border:1px solid color-mix(in srgb,var(--c) 16%,#fff);border-radius:8px;padding:4px 9px;margin:0 0 9px}
-  .kh-feat i{font-size:.58rem}
-  .kh-foot{display:flex;align-items:center;justify-content:flex-end;margin-top:auto;padding-top:8px;border-top:1px solid rgba(0,0,0,.05)}
+  .kh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid rgba(0,0,0,.05)}
+  .kh-feat{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:700;color:var(--c)}
+  .kh-feat i{font-size:.56rem}
   .kh-go{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;font-size:.64rem;box-shadow:0 3px 8px color-mix(in srgb,var(--c) 38%,transparent);transition:transform .2s ease,box-shadow .2s ease}
   .kh-tile:hover .kh-go{transform:translateX(-3px) scale(1.08)}
   .kh-go:active{transform:scale(.9)!important}
@@ -558,8 +558,7 @@
           </div>
           <p class="kh-desc">القناة الرسمية لإمارة أبوظبي ببرامج وإنتاجات متميزة</p>
           <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-gem"></i> جودة 4K / 8K</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-gem"></i> جودة 4K / 8K</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#16a34a">
           <div class="kh-top">
@@ -568,8 +567,7 @@
           </div>
           <p class="kh-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-circle-check"></i> استقرار 99.9%</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-circle-check"></i> استقرار 99.9%</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#a21caf">
           <div class="kh-top">
@@ -578,8 +576,7 @@
           </div>
           <p class="kh-desc">القناة الوطنية الرسمية لدولة قطر</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-satellite-dish"></i> بث مباشر</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-satellite-dish"></i> بث مباشر</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#10b981">
           <div class="kh-top">
@@ -588,8 +585,7 @@
           </div>
           <p class="kh-desc">القناة الوطنية الكويتية الرسمية</p>
           <div class="kh-pills"><span class="kh-pill">ترفيه</span><span class="kh-pill">برامج</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-bolt"></i> سيرفرات سريعة</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-bolt"></i> سيرفرات سريعة</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#ef4444">
           <div class="kh-top">
@@ -598,8 +594,7 @@
           </div>
           <p class="kh-desc">الإذاعة والتلفزيون العُماني الرسمي</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">ترفيه</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-bullseye"></i> بدون تقطيع</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-bullseye"></i> بدون تقطيع</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
         <a href="#pricing" class="kh-tile" style="--c:#3b82f6">
           <div class="kh-top">
@@ -608,8 +603,7 @@
           </div>
           <p class="kh-desc">القناة الوطنية الرسمية لمملكة البحرين</p>
           <div class="kh-pills"><span class="kh-pill">أخبار</span><span class="kh-pill">رياضة</span><span class="kh-pill">مباشر</span></div>
-          <div class="kh-feat"><i class="fas fa-arrows-rotate"></i> تحديث يومي</div>
-          <div class="kh-foot"><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-arrows-rotate"></i> تحديث يومي</span><span class="kh-go"><i class="fas fa-arrow-left"></i></span></div>
         </a>
       </div>
 
