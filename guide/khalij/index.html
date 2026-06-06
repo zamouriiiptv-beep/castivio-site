@@ -24,7 +24,7 @@
 
 <style>html{background:#050014}</style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=136">
+<link rel="stylesheet" href="/styles.css?v=137">
 <script src="/script.js" defer></script>
 
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -68,11 +68,10 @@
   .kh-title{font-size:1.5rem;font-weight:800;color:#1a0b35;margin:0 0 9px;line-height:1.3}
   .kh-sub{font-size:.86rem;line-height:1.65;color:#6b6285;margin:0}
   .kh-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:900px;margin:0 auto}
-  .kh-tile{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #efe9fb;border-radius:18px;padding:12px 12px 11px;overflow:hidden;text-decoration:none;box-shadow:0 3px 14px rgba(26,11,53,.06);transition:transform .25s ease,box-shadow .25s ease}
-  .kh-tile:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(124,58,237,.14)}
-  .kh-flag{position:absolute;top:0;left:0;width:28px;height:28px;border-radius:50%;overflow:hidden;box-shadow:0 2px 7px rgba(0,0,0,.22);border:2px solid rgba(255,255,255,.9)}
-  .kh-flag img{width:100%;height:100%;object-fit:cover;display:block}
-  .kh-top{display:flex;align-items:center;gap:7px;margin-bottom:6px;margin-top:18px}
+  .kh-tile{position:relative;display:flex;flex-direction:column;background:linear-gradient(rgba(255,255,255,0.82),rgba(255,255,255,0.82)),var(--flag,none) center/cover no-repeat;border:1px solid #efe9fb;border-radius:18px;padding:12px 12px 11px;overflow:hidden;text-decoration:none;box-shadow:0 3px 14px rgba(26,11,53,.06);transition:transform .25s ease,box-shadow .25s ease}
+  .kh-tile:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(124,58,237,.14);background:linear-gradient(rgba(255,255,255,0.72),rgba(255,255,255,0.72)),var(--flag,none) center/cover no-repeat}
+  .kh-flag{display:none}
+  .kh-top{display:flex;align-items:center;gap:7px;margin-bottom:6px}
   .kh-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:29px;height:29px;border-radius:9px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(124,58,237,.18);box-shadow:0 2px 6px rgba(26,11,53,.1);font-weight:900;font-size:.52rem;letter-spacing:.3px;color:var(--c)}
   .kh-name{flex:1;min-width:0;font-size:.85rem;font-weight:800;color:#1a0b35;margin:0;text-align:right;line-height:1.25}
   .kh-desc{font-size:.69rem;line-height:1.4;color:#6b6285;margin:0 0 8px;text-align:right}
@@ -97,7 +96,6 @@
     .kh-sub{font-size:.95rem;line-height:1.7}
     .kh-grid{grid-template-columns:repeat(2,1fr);gap:18px}
     .kh-tile{padding:20px 20px 16px;border-radius:26px}
-    .kh-flag{top:0;left:0;width:36px;height:36px;border-radius:50%}
     .kh-logo{width:44px;height:44px;border-radius:13px;font-size:.74rem}
     .kh-top{gap:11px;margin-bottom:9px}
     .kh-name{font-size:1.16rem}
@@ -550,7 +548,7 @@
       </div>
 
       <div class="kh-grid">
-        <a href="#pricing" class="kh-tile" style="--c:#7c3aed">
+        <a href="#pricing" class="kh-tile" style="--c:#7c3aed;--flag:url('/images/flags/ae.svg')">
           <span class="kh-flag"><img src="/images/flags/ae.svg" width="84" height="84" alt="علم الإمارات" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">AD</span><h4 class="kh-name">أبوظبي TV</h4></div>
           <p class="kh-desc">القناة الرسمية لإمارة أبوظبي ببرامج وإنتاجات متميزة</p>
@@ -560,7 +558,7 @@
             <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
         </a>
-        <a href="#pricing" class="kh-tile" style="--c:#16a34a">
+        <a href="#pricing" class="kh-tile" style="--c:#16a34a;--flag:url('/images/flags/sa.svg')">
           <span class="kh-flag"><img src="/images/flags/sa.svg" width="84" height="84" alt="علم السعودية" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">KSA</span><h4 class="kh-name">التلفزيون السعودي</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية للمملكة العربية السعودية</p>
@@ -570,7 +568,7 @@
             <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
         </a>
-        <a href="#pricing" class="kh-tile" style="--c:#a21caf">
+        <a href="#pricing" class="kh-tile" style="--c:#a21caf;--flag:url('/images/flags/qa.svg')">
           <span class="kh-flag"><img src="/images/flags/qa.svg" width="84" height="84" alt="علم قطر" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">QTV</span><h4 class="kh-name">تلفزيون قطر</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية لدولة قطر</p>
@@ -580,7 +578,7 @@
             <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
         </a>
-        <a href="#pricing" class="kh-tile" style="--c:#10b981">
+        <a href="#pricing" class="kh-tile" style="--c:#10b981;--flag:url('/images/flags/kw.svg')">
           <span class="kh-flag"><img src="/images/flags/kw.svg" width="84" height="84" alt="علم الكويت" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">KTV</span><h4 class="kh-name">تلفزيون الكويت</h4></div>
           <p class="kh-desc">القناة الوطنية الكويتية الرسمية</p>
@@ -590,7 +588,7 @@
             <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
         </a>
-        <a href="#pricing" class="kh-tile" style="--c:#ef4444">
+        <a href="#pricing" class="kh-tile" style="--c:#ef4444;--flag:url('/images/flags/om.svg')">
           <span class="kh-flag"><img src="/images/flags/om.svg" width="84" height="84" alt="علم عُمان" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">OTV</span><h4 class="kh-name">تلفزيون عُمان</h4></div>
           <p class="kh-desc">الإذاعة والتلفزيون العُماني الرسمي</p>
@@ -600,7 +598,7 @@
             <span class="kh-go"><i class="fas fa-arrow-left"></i></span>
           </div>
         </a>
-        <a href="#pricing" class="kh-tile" style="--c:#3b82f6">
+        <a href="#pricing" class="kh-tile" style="--c:#3b82f6;--flag:url('/images/flags/bh.svg')">
           <span class="kh-flag"><img src="/images/flags/bh.svg" width="84" height="84" alt="علم البحرين" loading="lazy"></span>
           <div class="kh-top"><span class="kh-logo">BTV</span><h4 class="kh-name">تلفزيون البحرين</h4></div>
           <p class="kh-desc">القناة الوطنية الرسمية لمملكة البحرين</p>
