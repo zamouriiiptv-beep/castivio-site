@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#4a044e"/>
+  <rect x="8" y="8" width="84" height="84" rx="13" fill="#701a75"/>
+  <text x="50" y="40" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#f0abfc" text-anchor="middle" dominant-baseline="middle">تلفزيون</text>
+  <text x="50" y="62" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">قطر</text>
+  <rect x="30" y="72" width="40" height="3" rx="1.5" fill="#a21caf"/>
+</svg>
