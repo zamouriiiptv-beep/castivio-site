@@ -1266,6 +1266,31 @@ body.light-mode .gulf-service-box{background:linear-gradient(135deg,rgba(123,47,
 body.light-mode .gulf-service-box h3{color:#1a0b35!important}
 body.light-mode .gulf-service-box li{color:#2d1b6e!important}
 
+/* ══ KH SECTION — Dark mode (default) ══ */
+.kh-wrap{background:linear-gradient(180deg,rgba(30,12,60,.7) 0%,rgba(18,6,40,.8) 100%)!important}
+.kh-title{color:#f3f0ff!important}
+.kh-sub{color:#c4b5fd!important}
+.kh-tile{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.1)!important}
+.kh-tile:hover{box-shadow:0 14px 32px rgba(124,58,237,.28)!important;border-color:rgba(139,92,246,.45)!important}
+.kh-name{color:#ffffff!important}
+.kh-desc{color:#a78bfa!important}
+.kh-foot{border-top-color:rgba(255,255,255,.08)!important}
+.kh-cta{background:linear-gradient(120deg,rgba(91,22,163,.22) 0%,rgba(109,40,217,.18) 100%)!important;border-color:rgba(124,58,237,.3)!important}
+.kh-cta-title{color:#f3f0ff!important}
+.kh-cta-desc{color:#c4b5fd!important}
+/* ══ KH SECTION — Light mode overrides ══ */
+body.light-mode .kh-wrap{background:linear-gradient(180deg,#fafaff 0%,#f3f0ff 100%)!important}
+body.light-mode .kh-title{color:#1a0b35!important}
+body.light-mode .kh-sub{color:#6b6285!important}
+body.light-mode .kh-tile{background:rgba(255,255,255,.96)!important;border-color:rgba(0,0,0,.06)!important}
+body.light-mode .kh-tile:hover{box-shadow:0 14px 32px rgba(124,58,237,.13)!important;border-color:rgba(124,58,237,.2)!important}
+body.light-mode .kh-name{color:#1a0b35!important}
+body.light-mode .kh-desc{color:#6b6285!important}
+body.light-mode .kh-foot{border-top-color:rgba(0,0,0,.05)!important}
+body.light-mode .kh-cta{background:linear-gradient(120deg,#efe7ff 0%,#e9defc 100%)!important;border-color:rgba(124,58,237,.15)!important}
+body.light-mode .kh-cta-title{color:#1a0b35!important}
+body.light-mode .kh-cta-desc{color:#6b6285!important}
+
 /* ══ PRICING ══ */
 body.light-mode #pricing .ps-title{color:#000000!important}
 body.light-mode #pricing .ps-sub{color:#000000!important}
