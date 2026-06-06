@@ -1273,7 +1273,7 @@ body.light-mode .gulf-service-box li{color:#2d1b6e!important}
 .kh-tile{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.1)!important}
 .kh-tile:hover{box-shadow:0 14px 32px rgba(124,58,237,.28)!important;border-color:rgba(139,92,246,.45)!important}
 .kh-name{color:#ffffff!important}
-.kh-desc{color:#a78bfa!important}
+.kh-desc{color:rgba(255,255,255,.80)!important}
 .kh-foot{border-top-color:rgba(255,255,255,.08)!important}
 .kh-cta{background:linear-gradient(120deg,rgba(91,22,163,.22) 0%,rgba(109,40,217,.18) 100%)!important;border-color:rgba(124,58,237,.3)!important}
 .kh-cta-title{color:#f3f0ff!important}
