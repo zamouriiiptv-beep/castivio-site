@@ -1281,7 +1281,7 @@ body.light-mode .gulf-service-box li{color:#2d1b6e!important}
 .kh-pill{color:rgba(255,255,255,.90)!important;background:color-mix(in srgb,var(--ac,var(--c)) 14%,transparent)!important;border-color:color-mix(in srgb,var(--ac,var(--c)) 40%,transparent)!important}
 .kh-feat{color:rgba(255,255,255,.90)!important;background:color-mix(in srgb,var(--ac,var(--c)) 14%,transparent)!important;border-color:color-mix(in srgb,var(--ac,var(--c)) 40%,transparent)!important}
 /* ══ KH SECTION — Light mode overrides ══ */
-body.light-mode .kh-wrap{background:linear-gradient(180deg,#fafaff 0%,#f3f0ff 100%)!important}
+body.light-mode .kh-wrap{background:transparent!important}
 body.light-mode .kh-title{color:#1a0b35!important}
 body.light-mode .kh-sub{color:#6b6285!important}
 body.light-mode .kh-tile{background:rgba(255,255,255,.96)!important;border-color:rgba(0,0,0,.06)!important}
