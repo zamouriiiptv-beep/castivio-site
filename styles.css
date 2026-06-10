@@ -1402,7 +1402,7 @@ body.light-mode .faq2-features{background:rgba(139,92,246,.07)!important;border-
 body.light-mode .faq2-feat span{color:#000000!important}
 body.light-mode .faq2-feat svg{fill:#4c1d95!important}
 body.light-mode .faq2-step{background:rgba(139,92,246,.07)!important;border-color:rgba(91,22,163,.25)!important}
-body.light-mode .faq2-step-num{background:linear-gradient(135deg,#5b21b6,#7c3aed)!important}
+body.light-mode .faq2-step-num{background:linear-gradient(135deg,#c4b5fd,#ddd6fe)!important;color:#5b21b6!important}
 body.light-mode .faq2-step-txt{color:#3b0764!important}
 body.light-mode .faq2-cta{background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(37,99,235,.07))!important;border-color:rgba(91,22,163,.42)!important}
 body.light-mode .faq2-cta-title{color:#000000!important}
