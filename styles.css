@@ -1451,7 +1451,13 @@ body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg
 body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.18)!important;border-color:rgba(91,22,163,.60)!important;color:#1e1b4b!important}
 
 #seo-text .netflix-card-light{padding:16px 18px 16px!important;min-height:unset!important;justify-content:flex-start!important}#seo-text .netflix-card-light h3{min-height:unset!important;margin-bottom:6px!important;font-size:16px!important}#seo-text .netflix-card-light p{line-height:1.55!important;margin-bottom:0!important;font-size:14px!important}
-a.seo-card-link{display:flex;flex-direction:column;text-decoration:none!important;cursor:pointer}a.seo-card-link h3,a.seo-card-link p{color:inherit!important;-webkit-text-fill-color:inherit!important}a.seo-card-link::after{content:"← اقرأ الدليل";position:absolute;bottom:12px;right:16px;font-size:12px;font-weight:700;color:#7A3CEB;font-family:'Tajawal',sans-serif;opacity:0;transition:opacity 0.2s ease}a.seo-card-link:hover::after{opacity:1}a.seo-card-link:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(91,22,163,.18)!important;border-color:rgba(91,22,163,.4)!important}
+.seo-card-cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;font-size:12.5px;font-weight:700;color:#fff!important;border-radius:999px;text-decoration:none;transition:opacity .2s,transform .2s;font-family:'Tajawal',sans-serif;-webkit-text-fill-color:#fff!important}.seo-card-cta:hover{opacity:.85;transform:translateX(-3px)}
+.seo-cta-1,.seo-cta-7,.seo-cta-13{background:#f59e0b}
+.seo-cta-2,.seo-cta-8,.seo-cta-14{background:#f43f5e}
+.seo-cta-3,.seo-cta-9,.seo-cta-15{background:#06b6d4}
+.seo-cta-4,.seo-cta-10,.seo-cta-16{background:#10b981}
+.seo-cta-5,.seo-cta-11,.seo-cta-17{background:#7c3aed}
+.seo-cta-6,.seo-cta-12{background:#f97316}
 
 /* ══ GLOBAL COVERAGE section ══ */
 body.light-mode .global-coverage{background:#F5F2FF!important}
