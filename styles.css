@@ -1452,12 +1452,12 @@ body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode foot
 
 #seo-text .netflix-card-light{padding:16px 18px 16px!important;min-height:unset!important;justify-content:flex-start!important}#seo-text .netflix-card-light h3{min-height:unset!important;margin-bottom:6px!important;font-size:16px!important}#seo-text .netflix-card-light p{line-height:1.55!important;margin-bottom:0!important;font-size:14px!important}
 .seo-card-cta{display:inline-flex!important;align-items:center;gap:6px;margin-top:12px;padding:5px 10px;width:fit-content;font-size:12.5px;font-weight:700;color:#fff!important;-webkit-text-fill-color:#fff!important;border-radius:999px;text-decoration:none!important;transition:opacity .2s,transform .2s;font-family:'Tajawal',sans-serif}.seo-card-cta:hover{opacity:.85;transform:translateX(-3px)}
-body .seo-cta-1,body .seo-cta-7,body .seo-cta-13{background:#f59e0b!important}
-body .seo-cta-2,body .seo-cta-8,body .seo-cta-14{background:#f43f5e!important}
-body .seo-cta-3,body .seo-cta-9,body .seo-cta-15{background:#06b6d4!important}
-body .seo-cta-4,body .seo-cta-10,body .seo-cta-16{background:#10b981!important}
-body .seo-cta-5,body .seo-cta-11,body .seo-cta-17{background:#7c3aed!important}
-body .seo-cta-6,body .seo-cta-12{background:#f97316!important}
+body .seo-cta-1,body .seo-cta-7,body .seo-cta-13{background:#fcd34d!important;color:#78350f!important;-webkit-text-fill-color:#78350f!important}
+body .seo-cta-2,body .seo-cta-8,body .seo-cta-14{background:#f9a8d4!important;color:#831843!important;-webkit-text-fill-color:#831843!important}
+body .seo-cta-3,body .seo-cta-9,body .seo-cta-15{background:#67e8f9!important;color:#164e63!important;-webkit-text-fill-color:#164e63!important}
+body .seo-cta-4,body .seo-cta-10,body .seo-cta-16{background:#6ee7b7!important;color:#064e3b!important;-webkit-text-fill-color:#064e3b!important}
+body .seo-cta-5,body .seo-cta-11,body .seo-cta-17{background:#c4b5fd!important;color:#3b0764!important;-webkit-text-fill-color:#3b0764!important}
+body .seo-cta-6,body .seo-cta-12{background:#fdba74!important;color:#7c2d12!important;-webkit-text-fill-color:#7c2d12!important}
 
 /* ══ GLOBAL COVERAGE section ══ */
 body.light-mode .global-coverage{background:#F5F2FF!important}
