@@ -1425,7 +1425,7 @@ body.light-mode [class*="pc-cta"]{background:linear-gradient(135deg,#5b21b6,#7c3
 body.light-mode [class*="pc-cta"]:hover{background:linear-gradient(135deg,#4c1d95,#6d28d9)!important;box-shadow:0 8px 26px rgba(91,22,163,.45)!important}
 
 /* ══ FOOTER ══ */
-body.light-mode footer{background:linear-gradient(to right,#eff6ff,#faf5ff)!important;background-image:none!important;color:#000000!important}
+body.light-mode footer{background-image:linear-gradient(to right,#eff6ff,#faf5ff)!important;background-color:#eff6ff!important;color:#000000!important}
 body.light-mode footer::before{display:none!important}
 body.light-mode footer h3,body.light-mode footer h4,body.light-mode footer p,body.light-mode footer span,body.light-mode footer li{color:#000000!important;text-shadow:none!important}
 body.light-mode footer a{color:#000000!important}
@@ -1451,7 +1451,7 @@ body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg
 body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.18)!important;border-color:rgba(91,22,163,.60)!important;color:#1e1b4b!important}
 
 /* ══ GLOBAL COVERAGE section ══ */
-body.light-mode .global-coverage{background:linear-gradient(to right,#eff6ff,#faf5ff)!important}
+body.light-mode .global-coverage{background:#F5F2FF!important}
 body.light-mode .global-coverage .gc-title{color:#000000!important;text-shadow:none!important}
 body.light-mode .global-coverage p,body.light-mode .global-coverage h2,body.light-mode .global-coverage h3{color:#000000!important;text-shadow:none!important}
 
