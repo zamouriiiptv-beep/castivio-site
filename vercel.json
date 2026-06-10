@@ -5,5 +5,27 @@
       "src": "**/*",
       "use": "@vercel/static"
     }
+  ],
+  "redirects": [
+    { "source": "/en",                    "destination": "/",                   "permanent": true },
+    { "source": "/en/",                   "destination": "/",                   "permanent": true },
+    { "source": "/en/usa",               "destination": "/usa/",               "permanent": true },
+    { "source": "/en/usa/",              "destination": "/usa/",               "permanent": true },
+    { "source": "/en/uk",                "destination": "/uk/",                "permanent": true },
+    { "source": "/en/uk/",               "destination": "/uk/",                "permanent": true },
+    { "source": "/en/canada",            "destination": "/canada/",            "permanent": true },
+    { "source": "/en/canada/",           "destination": "/canada/",            "permanent": true },
+    { "source": "/en/guide",             "destination": "/guide/",             "permanent": true },
+    { "source": "/en/guide/",            "destination": "/guide/",             "permanent": true },
+    { "source": "/en/privacy-policy",    "destination": "/privacy-policy/",    "permanent": true },
+    { "source": "/en/privacy-policy/",   "destination": "/privacy-policy/",    "permanent": true },
+    { "source": "/en/terms-of-service",  "destination": "/terms-of-service/",  "permanent": true },
+    { "source": "/en/terms-of-service/", "destination": "/terms-of-service/",  "permanent": true },
+    { "source": "/guide/khalij",         "destination": "/ar/guide/khalij/",   "permanent": true },
+    { "source": "/guide/khalij/",        "destination": "/ar/guide/khalij/",   "permanent": true },
+    { "source": "/guide/maghreb",        "destination": "/ar/guide/maghreb/",  "permanent": true },
+    { "source": "/guide/maghreb/",       "destination": "/ar/guide/maghreb/",  "permanent": true },
+    { "source": "/guide/mashriq",        "destination": "/ar/guide/mashriq/",  "permanent": true },
+    { "source": "/guide/mashriq/",       "destination": "/ar/guide/mashriq/",  "permanent": true }
   ]
 }

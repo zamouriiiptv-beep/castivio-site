@@ -158,9 +158,9 @@ const currentFlag = document.getElementById("current-flag");
 /* ===================== */
 (() => {
   const path = window.location.pathname;
-  let lang = "ar";
+  let lang = "en";
 
-  if      (path.startsWith("/en/")) lang = "en";
+  if      (path.startsWith("/ar/")) lang = "ar";
   else if (path.startsWith("/fr/")) lang = "fr";
   else if (path.startsWith("/es/")) lang = "es";
   else if (path.startsWith("/pt/")) lang = "pt";
@@ -168,7 +168,7 @@ const currentFlag = document.getElementById("current-flag");
   else if (path.startsWith("/tr/")) lang = "tr";
   else if (path.startsWith("/it/")) lang = "it";
   else if (path.startsWith("/nl/")) lang = "nl";
-  else lang = "ar";
+  else lang = "en";
 
   document.documentElement.lang = lang;
   localStorage.setItem("site_lang", lang);
@@ -207,30 +207,31 @@ document.querySelectorAll(".lang-option").forEach(option => {
     const path = window.location.pathname;
 
     const langMap = {
-      // الإنجليزية
-      "en/usa":      { ar: "/ar/mashriq/", en: "/en/usa/",     fr: "/fr/france/",   es: "/es/espana/" },
-      "en/uk":       { ar: "/ar/mashriq/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-      "en/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+      // الإنجليزية (الجذر)
+      "usa":         { ar: "/ar/",         en: "/usa/",        fr: "/fr/france/",   es: "/es/espana/" },
+      "uk":          { ar: "/ar/",         en: "/uk/",         fr: "/fr/belgique/", es: "/es/espana/" },
+      "canada":      { ar: "/ar/",         en: "/canada/",     fr: "/fr/canada/",   es: "/es/canada/" },
 
       // الفرنسية
-      "fr/france":   { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/france/",   es: "/es/espana/" },
-      "fr/belgique": { ar: "/ar/maghreb/", en: "/en/uk/",      fr: "/fr/belgique/", es: "/es/espana/" },
-      "fr/canada":   { ar: "/",            en: "/en/canada/",  fr: "/fr/canada/",   es: "/es/canada/" },
+      "fr/france":   { ar: "/ar/",         en: "/uk/",         fr: "/fr/france/",   es: "/es/espana/" },
+      "fr/belgique": { ar: "/ar/",         en: "/uk/",         fr: "/fr/belgique/", es: "/es/espana/" },
+      "fr/canada":   { ar: "/ar/",         en: "/canada/",     fr: "/fr/canada/",   es: "/es/canada/" },
 
       // العربية
-      "ar/khalij":   { ar: "/ar/khalij/",  en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "ar/maghreb":  { ar: "/ar/maghreb/", en: "/en/",         fr: "/fr/france/",   es: "/es/" },
-      "ar/mashriq":  { ar: "/ar/mashriq/", en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "ar/guide/khalij":  { ar: "/ar/guide/khalij/", en: "/",  fr: "/fr/",         es: "/es/" },
+      "ar/guide/maghreb": { ar: "/ar/guide/maghreb/",en: "/",  fr: "/fr/france/",  es: "/es/" },
+      "ar/guide/mashriq": { ar: "/ar/guide/mashriq/",en: "/",  fr: "/fr/",         es: "/es/" },
+      "ar/guide":    { ar: "/ar/guide/",   en: "/guide/",      fr: "/fr/guide/",    es: "/es/guide/" },
+      "ar":          { ar: "/ar/",         en: "/",            fr: "/fr/",          es: "/es/" },
 
       // الأدلة
-      "en/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-      "fr/guide":    { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
-      "guide":       { ar: "/guide/",      en: "/en/guide/",   fr: "/fr/guide/",    es: "/es/guide/" },
+      "guide":       { ar: "/ar/guide/",   en: "/guide/",      fr: "/fr/guide/",    es: "/es/guide/" },
+      "fr/guide":    { ar: "/ar/guide/",   en: "/guide/",      fr: "/fr/guide/",    es: "/es/guide/" },
+      "es/guide":    { ar: "/ar/guide/",   en: "/guide/",      fr: "/fr/guide/",    es: "/es/guide/" },
 
       // الرئيسية
-      "en":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "fr":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
-      "es":          { ar: "/",            en: "/en/",         fr: "/fr/",          es: "/es/" },
+      "fr":          { ar: "/ar/",         en: "/",            fr: "/fr/",          es: "/es/" },
+      "es":          { ar: "/ar/",         en: "/",            fr: "/fr/",          es: "/es/" },
     };
 
     let target = null;
@@ -243,8 +244,8 @@ document.querySelectorAll(".lang-option").forEach(option => {
     }
 
     if (!target) {
-      if (selectedLang === "ar") target = "/";
-      else if (selectedLang === "en") target = "/en/";
+      if (selectedLang === "ar") target = "/ar/";
+      else if (selectedLang === "en") target = "/";
       else if (selectedLang === "fr") target = "/fr/";
       else if (selectedLang === "es") target = "/es/";
     }
