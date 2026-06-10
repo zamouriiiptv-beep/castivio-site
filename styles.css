@@ -1489,3 +1489,36 @@ html[lang="ar"] small{
   font-family:'Cairo',sans-serif!important;
   font-weight:400!important
 }
+
+/* ══ GUIDE ARTICLE PAGES — Light Mode ══ */
+/* Smooth transitions for guide article components */
+.guide-toc,.info-box,.device-card,.speed-table td,details.faq-item{transition:background .3s ease,border-color .25s}
+
+/* Preserve article heading colors in light mode (override global black catch-all) */
+body.light-mode main article h2{color:#6B21A8!important}
+body.light-mode main article h3{color:#1E40AF!important}
+
+/* Guide TOC box */
+body.light-mode .guide-toc{background:linear-gradient(135deg,#f5f3ff,#eff6ff)!important;border-color:#d8d0ff!important}
+body.light-mode .guide-toc h2,body.light-mode .guide-toc h3{color:#6B21A8!important}
+body.light-mode .guide-toc a{color:#4f46e5!important}
+body.light-mode .toc-toggle{color:#4f46e5!important}
+
+/* Info / warning / tip boxes */
+body.light-mode .info-box{background:#f0fdf4!important;border-color:#86efac!important}
+body.light-mode .info-box.warning{background:#fff7ed!important;border-color:#fed7aa!important}
+body.light-mode .info-box.tip{background:#eff6ff!important;border-color:#93c5fd!important}
+
+/* Speed / comparison tables */
+body.light-mode .speed-table{box-shadow:0 2px 12px rgba(91,22,163,.10)!important}
+body.light-mode .speed-table td{border-bottom-color:#e5e7eb!important}
+body.light-mode .speed-table tr:nth-child(even) td{background:#f9f7ff!important}
+
+/* Device cards */
+body.light-mode .device-card{background:#ffffff!important;border-color:#e5e7eb!important;box-shadow:0 2px 8px rgba(0,0,0,.05)!important}
+
+/* Guide FAQ items (details/summary accordion style) */
+body.light-mode details.faq-item{border-color:#e5e7eb!important}
+body.light-mode .faq-item summary{background:#f9f7ff!important;color:#6B21A8!important}
+body.light-mode .faq-item[open] summary{background:#ede9fe!important}
+body.light-mode .faq-item p{background:#ffffff!important}
