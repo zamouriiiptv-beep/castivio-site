@@ -1450,6 +1450,7 @@ body.light-mode .ft-country-grid a:hover{background:linear-gradient(180deg,rgba(
 body.light-mode footer a.flex:not(.ft-country-grid a),body.light-mode footer .bg-white\/10{background:rgba(139,92,246,.09)!important;border-color:rgba(91,22,163,.42)!important;color:#1e1b4b!important;box-shadow:none!important}
 body.light-mode footer a.flex:not(.ft-country-grid a):hover,body.light-mode footer .bg-white\/10:hover{background:rgba(139,92,246,.18)!important;border-color:rgba(91,22,163,.60)!important;color:#1e1b4b!important}
 
+#seo-text .netflix-card-light{padding:16px 18px 16px!important;min-height:unset!important;justify-content:flex-start!important}#seo-text .netflix-card-light h3{min-height:unset!important;margin-bottom:6px!important;font-size:16px!important}#seo-text .netflix-card-light p{line-height:1.55!important;margin-bottom:0!important;font-size:14px!important}
 .seo-card-cta{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13.5px;font-weight:700;color:#7A3CEB;text-decoration:none;transition:gap 0.2s ease,color 0.2s ease;font-family:'Tajawal',sans-serif}.seo-card-cta:hover{color:#5B16A3;gap:10px}body.light-mode .seo-card-cta{color:#5B16A3}
 
 /* ══ GLOBAL COVERAGE section ══ */
