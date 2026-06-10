@@ -252,6 +252,9 @@ footer .border-gray-400 {
 /* mobile: show single heading, hide per-col headings */
 .ft-links-col-h4 { display: none; }
 
+/* mobile: uniform gap between stacked columns = same as space-y-3 */
+.ft-links-col + .ft-links-col { margin-top: 0.75rem; }
+
 /* ═══════════════════════════════════════════════════════════════
    Tablet (641px+) — 2-col links grid + logo 25% larger
    ═══════════════════════════════════════════════════════════════ */

@@ -16,6 +16,8 @@
       pricing : 'خطط الأسعار',
       faq     : 'الأسئلة الشائعة',
       whyUs   : 'لماذا تختار IPTV؟',
+      guides  : 'الأدلة',
+      seoText : 'مقالات IPTV',
       payment : 'طرق الدفع',
       reviews : 'آراء عملائنا',
       contactLink: 'تواصل معنا',
@@ -34,6 +36,8 @@
       pricing : 'Subscription Plans',
       faq     : 'FAQ',
       whyUs   : 'Why Choose IPTV?',
+      guides  : 'Guides',
+      seoText : 'IPTV Articles',
       payment : 'Payment Methods',
       reviews : 'Customer Reviews',
       contactLink: 'Contact Us',
@@ -52,6 +56,8 @@
       pricing : "Plans d'abonnement",
       faq     : 'FAQ',
       whyUs   : 'Pourquoi choisir IPTV ?',
+      guides  : 'Guides',
+      seoText : 'Articles IPTV',
       payment : 'Moyens de paiement',
       reviews : 'Avis clients',
       contactLink: 'Contactez-nous',
@@ -70,6 +76,8 @@
       pricing : 'Planes de suscripción',
       faq     : 'Preguntas frecuentes',
       whyUs   : '¿Por qué elegir IPTV?',
+      guides  : 'Guías',
+      seoText : 'Artículos IPTV',
       payment : 'Métodos de pago',
       reviews : 'Opiniones de clientes',
       contactLink: 'Contáctanos',
@@ -88,6 +96,8 @@
       pricing : 'Abonnement-Pakete',
       faq     : 'FAQ',
       whyUs   : 'Warum IPTV wählen?',
+      guides  : 'Anleitungen',
+      seoText : 'IPTV-Artikel',
       payment : 'Zahlungsmethoden',
       reviews : 'Kundenbewertungen',
       contactLink: 'Kontakt',
@@ -106,6 +116,8 @@
       pricing : 'Piani di abbonamento',
       faq     : 'Domande frequenti',
       whyUs   : 'Perché scegliere IPTV?',
+      guides  : 'Guide',
+      seoText : 'Articoli IPTV',
       payment : 'Metodi di pagamento',
       reviews : 'Recensioni clienti',
       contactLink: 'Contattaci',
@@ -124,6 +136,8 @@
       pricing : 'Abonnementsplannen',
       faq     : 'Veelgestelde vragen',
       whyUs   : 'Waarom IPTV kiezen?',
+      guides  : 'Handleidingen',
+      seoText : 'IPTV-artikelen',
       payment : 'Betaalmethoden',
       reviews : 'Klantbeoordelingen',
       contactLink: 'Contact',
@@ -142,6 +156,8 @@
       pricing : 'Planos de assinatura',
       faq     : 'Perguntas frequentes',
       whyUs   : 'Por que escolher IPTV?',
+      guides  : 'Guias',
+      seoText : 'Artigos IPTV',
       payment : 'Métodos de pagamento',
       reviews : 'Avaliações de clientes',
       contactLink: 'Contate-nos',
@@ -160,6 +176,8 @@
       pricing : 'Abonelik planları',
       faq     : 'Sık Sorulan Sorular',
       whyUs   : 'Neden IPTV seçilir?',
+      guides  : 'Kılavuzlar',
+      seoText : 'IPTV Makaleleri',
       payment : 'Ödeme Yöntemleri',
       reviews : 'Müşteri Yorumları',
       contactLink: 'İletişim',
@@ -191,17 +209,18 @@
       '<div class="ft-links-col">' +
         '<h4 class="ft-links-col-h4 font-semibold mb-4 text-lg">' + t.links + '</h4>' +
         '<ul class="space-y-3 text-gray-200">' +
-          li(t.base + '#home',    t.home)    +
-          li(t.base + '#pricing', t.pricing) +
-          li(t.base + '#faq',     t.faq)     +
+          li(t.base + '#home',           t.home)    +
+          li(t.base + '#why-us',         t.whyUs)   +
+          li(t.base + '#guides-section', t.guides)  +
+          li(t.base + '#pricing',        t.pricing) +
         '</ul>' +
       '</div>' +
       '<div class="ft-links-col">' +
         '<h4 class="ft-links-col-h4 font-semibold mb-4 text-lg">' + t.links2 + '</h4>' +
         '<ul class="space-y-3 text-gray-200">' +
-          li(t.base + '#why-us',          t.whyUs)  +
-          li(t.base + '#payment-methods', t.payment) +
-          li(t.base + '#testimonials',    t.reviews) +
+          li(t.base + '#testimonials', t.reviews) +
+          li(t.base + '#faq',          t.faq)     +
+          li(t.base + '#seo-text',     t.seoText) +
         '</ul>' +
       '</div>' +
     '</div>';
