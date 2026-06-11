@@ -917,6 +917,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
   box-shadow:0 6px 20px rgba(4,2,14,0.50);
   transition:transform .22s,border-color .18s;
   will-change:transform}
+body:not(.light-mode) .rv-card{background:rgb(18,8,42)!important}
 .rv-card:hover{
   transform:translateY(-3px);border-color:rgba(140,100,240,0.55)}
 @media(max-width:699px){.rv-card--lg{display:none}}
