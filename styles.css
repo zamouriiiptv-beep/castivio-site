@@ -945,6 +945,7 @@ body:not(.light-mode) .rv-card{background:rgb(18,8,42)!important}
 .rv-flag{
   width:32px;height:21px;border-radius:3px;object-fit:cover;flex-shrink:0;
   box-shadow:0 1px 4px rgba(0,0,0,0.40)}
+body:not(.light-mode) .rv-flag{filter:brightness(0.78) contrast(0.95)}
 
 /* ── Person: avatar (L) + name/loc (R) ── */
 .rv-person{display:flex;direction:ltr;align-items:center;gap:12px;margin-bottom:12px}
