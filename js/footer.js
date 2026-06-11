@@ -241,8 +241,8 @@
 
         /* Content column */
         '<div class="flex flex-col gap-7">' +
-          '<div class="flex items-center">' +
-            '<img src="/images/logo.webp" alt="Prime Wave" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">' +
+          '<div class="flex items-center gap-3">' +
+            '<img src="/images/logo.webp" alt="Prime Wave" class="h-14 w-14 rounded-full shadow-lg" loading="lazy" decoding="async">' +
             '<h3 class="text-2xl font-bold tracking-wide">Prime Wave</h3>' +
           '</div>' +
           '<div>' + ulHTML + '</div>' +
