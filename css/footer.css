@@ -640,14 +640,15 @@ footer .uppercase::before {
     padding-top: 0.6rem !important;
     padding-bottom: 0.8rem !important;
   }
-  footer .grid          { gap: 0 !important; grid-template-columns: 1fr !important; }
+  footer .grid          { gap: 0.5rem !important; }
   footer p:first-of-type { display: none !important; }
   footer h3             { font-size: 0.95rem !important; margin-bottom: 0.3rem !important; }
   footer h4             { font-size: 0.85rem !important; margin-bottom: 0.3rem !important; }
   footer ul             { margin-bottom: 0.5rem !important; }
   footer ul li          { margin-bottom: 0.2rem !important; font-size: 0.82rem !important; }
   .ft-links-col + .ft-links-col { margin-top: 0.5rem !important; }
-  .ft-player-logo-wrap  { display: none !important; }
+  .ft-player-logo-wrap  { align-self: auto !important; min-height: auto !important; padding-inline-start: 8px !important; }
+  .footer-logo          { max-width: 110px !important; filter: drop-shadow(0 0 14px rgba(168,85,247,0.50)) !important; }
   footer a[href*="wa.me"] { padding: 0.3rem 0.8rem !important; font-size: 0.72rem !important; line-height: 1.4 !important; white-space: nowrap !important; }
   footer .fab           { font-size: 1rem !important; }
   footer .flex.justify-center.mt-10 { margin-top: 0.5rem !important; }
