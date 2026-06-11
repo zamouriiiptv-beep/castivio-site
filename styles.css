@@ -911,7 +911,7 @@ section.py-16{padding-top:var(--section-gap-mobile)!important;padding-bottom:var
 
 /* ── Card ── */
 .rv-card{
-  background:rgba(18,8,42,0.96);
+  background:rgb(18,8,42);
   border:1px solid rgba(120,80,220,0.36);border-radius:20px;
   padding:20px 20px 18px;
   box-shadow:0 6px 20px rgba(4,2,14,0.50);
