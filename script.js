@@ -9,6 +9,18 @@
   }
 })();
 
+/* Strip #hash from the URL after anchor navigation so a refresh
+   always reloads at the top of the page instead of the section */
+(function () {
+  function stripHash() {
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
+  window.addEventListener('load', stripHash);
+  window.addEventListener('hashchange', stripHash);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) {
