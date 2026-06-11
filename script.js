@@ -1,6 +1,3 @@
-if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-window.scrollTo(0, 0);
-
 /* ══════════════════════════════════════════════════════════════════
    THEME TOGGLE — day / night mode
    Runs immediately (before DOMContentLoaded) to avoid flash
