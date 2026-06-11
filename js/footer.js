@@ -1,4 +1,4 @@
-/* footer.js — Prime IPTV Unified Footer v15 */
+/* footer.js — Prime Wave Unified Footer v15 */
 (function () {
   'use strict';
 
@@ -26,7 +26,7 @@
       waAria  : 'دعم واتساب 24 ساعة',
       privacy : 'سياسة الخصوصية', privacyHref: '/ar/privacy-policy/',
       terms   : 'شروط الاستخدام',  termsHref : '/ar/terms-of-service/',
-      copy    : '© جميع حقوق الطبع والنشر محفوظة – Prime IPTV',
+      copy    : '© جميع حقوق الطبع والنشر محفوظة – Prime Wave',
       base    : '/ar/',
     },
     en: {
@@ -46,7 +46,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacy Policy',     privacyHref: '/privacy-policy/',
       terms   : 'Terms of Service',   termsHref  : '/terms-of-service/',
-      copy    : '© All Rights Reserved – Prime IPTV',
+      copy    : '© All Rights Reserved – Prime Wave',
       base    : '/',
     },
     fr: {
@@ -66,7 +66,7 @@
       waAria  : 'Support WhatsApp 24/7',
       privacy : 'Politique de confidentialité', privacyHref: '/fr/privacy-policy/',
       terms   : "Conditions d'utilisation",     termsHref  : '/fr/terms-of-service/',
-      copy    : '© Tous droits réservés – Prime IPTV',
+      copy    : '© Tous droits réservés – Prime Wave',
       base    : '/fr/',
     },
     es: {
@@ -86,7 +86,7 @@
       waAria  : 'Soporte WhatsApp 24/7',
       privacy : 'Política de privacidad', privacyHref: '/es/privacy-policy/',
       terms   : 'Términos de servicio',   termsHref  : '/es/terms-of-service/',
-      copy    : '© Todos los derechos reservados – Prime IPTV',
+      copy    : '© Todos los derechos reservados – Prime Wave',
       base    : '/es/',
     },
     de: {
@@ -106,7 +106,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Datenschutzerklärung', privacyHref: '/privacy-policy/',
       terms   : 'Nutzungsbedingungen',  termsHref  : '/terms-of-service/',
-      copy    : '© Alle Rechte vorbehalten – Prime IPTV',
+      copy    : '© Alle Rechte vorbehalten – Prime Wave',
       base    : '/de/',
     },
     it: {
@@ -126,7 +126,7 @@
       waAria  : 'Supporto WhatsApp 24/7',
       privacy : 'Privacy Policy',      privacyHref: '/privacy-policy/',
       terms   : 'Termini di servizio', termsHref  : '/terms-of-service/',
-      copy    : '© Tutti i diritti riservati – Prime IPTV',
+      copy    : '© Tutti i diritti riservati – Prime Wave',
       base    : '/it/',
     },
     nl: {
@@ -146,7 +146,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacybeleid',       privacyHref: '/privacy-policy/',
       terms   : 'Servicevoorwaarden',  termsHref  : '/terms-of-service/',
-      copy    : '© Alle rechten voorbehouden – Prime IPTV',
+      copy    : '© Alle rechten voorbehouden – Prime Wave',
       base    : '/nl/',
     },
     pt: {
@@ -166,7 +166,7 @@
       waAria  : 'Suporte WhatsApp 24/7',
       privacy : 'Política de privacidade', privacyHref: '/privacy-policy/',
       terms   : 'Termos de serviço',       termsHref  : '/terms-of-service/',
-      copy    : '© Todos os direitos reservados – Prime IPTV',
+      copy    : '© Todos os direitos reservados – Prime Wave',
       base    : '/pt/',
     },
     tr: {
@@ -186,7 +186,7 @@
       waAria  : 'WhatsApp Destek 24/7',
       privacy : 'Gizlilik Politikası',  privacyHref: '/privacy-policy/',
       terms   : 'Kullanım Şartları',    termsHref  : '/terms-of-service/',
-      copy    : '© Tüm hakları saklıdır – Prime IPTV',
+      copy    : '© Tüm hakları saklıdır – Prime Wave',
       base    : '/tr/',
     },
   };
@@ -242,8 +242,8 @@
         /* Content column */
         '<div class="flex flex-col gap-7">' +
           '<div class="flex items-center">' +
-            '<img src="/images/logo.webp" alt="Prime IPTV" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">' +
-            '<h3 class="text-2xl font-bold tracking-wide">Prime IPTV</h3>' +
+            '<img src="/images/logo.webp" alt="Prime Wave" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">' +
+            '<h3 class="text-2xl font-bold tracking-wide">Prime Wave</h3>' +
           '</div>' +
           '<div>' + ulHTML + '</div>' +
           '<div>' +
