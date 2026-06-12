@@ -1545,4 +1545,4 @@ body.light-mode .faq-item p{background:#ffffff!important}
 html[dir="ltr"] .netflix-card-light{text-align:left}
 html[dir="ltr"] .netflix-card-light p{margin-left:0;margin-right:auto}
 
-#seo-text .title-line-1{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+#seo-text .title-line-1{white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important;font-size:clamp(14px,4.2vw,36px)!important}
