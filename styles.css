@@ -1542,3 +1542,5 @@ body.light-mode details.faq-item{border-color:#e5e7eb!important}
 body.light-mode .faq-item summary{background:#f9f7ff!important;color:#6B21A8!important}
 body.light-mode .faq-item[open] summary{background:#ede9fe!important}
 body.light-mode .faq-item p{background:#ffffff!important}
+html[dir="ltr"] .netflix-card-light{text-align:left}
+html[dir="ltr"] .netflix-card-light p{margin-left:0;margin-right:auto}
