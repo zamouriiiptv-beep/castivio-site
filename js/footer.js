@@ -1,4 +1,4 @@
-/* footer.js — Prime Wave Unified Footer v15 */
+/* footer.js — Castivio Unified Footer v15 */
 (function () {
   'use strict';
 
@@ -26,7 +26,7 @@
       waAria  : 'دعم واتساب 24 ساعة',
       privacy : 'سياسة الخصوصية', privacyHref: '/ar/privacy-policy/',
       terms   : 'شروط الاستخدام',  termsHref : '/ar/terms-of-service/',
-      copy    : '© جميع حقوق الطبع والنشر محفوظة – Prime Wave',
+      copy    : '© جميع حقوق الطبع والنشر محفوظة – Castivio',
       base    : '/ar/',
     },
     en: {
@@ -46,7 +46,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacy Policy',     privacyHref: '/privacy-policy/',
       terms   : 'Terms of Service',   termsHref  : '/terms-of-service/',
-      copy    : '© All Rights Reserved – Prime Wave',
+      copy    : '© All Rights Reserved – Castivio',
       base    : '/',
     },
     fr: {
@@ -66,7 +66,7 @@
       waAria  : 'Support WhatsApp 24/7',
       privacy : 'Politique de confidentialité', privacyHref: '/fr/privacy-policy/',
       terms   : "Conditions d'utilisation",     termsHref  : '/fr/terms-of-service/',
-      copy    : '© Tous droits réservés – Prime Wave',
+      copy    : '© Tous droits réservés – Castivio',
       base    : '/fr/',
     },
     es: {
@@ -86,7 +86,7 @@
       waAria  : 'Soporte WhatsApp 24/7',
       privacy : 'Política de privacidad', privacyHref: '/es/privacy-policy/',
       terms   : 'Términos de servicio',   termsHref  : '/es/terms-of-service/',
-      copy    : '© Todos los derechos reservados – Prime Wave',
+      copy    : '© Todos los derechos reservados – Castivio',
       base    : '/es/',
     },
     de: {
@@ -106,7 +106,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Datenschutzerklärung', privacyHref: '/de/privacy-policy/',
       terms   : 'Nutzungsbedingungen',  termsHref  : '/de/terms-of-service/',
-      copy    : '© Alle Rechte vorbehalten – Prime Wave',
+      copy    : '© Alle Rechte vorbehalten – Castivio',
       base    : '/de/',
     },
     it: {
@@ -126,7 +126,7 @@
       waAria  : 'Supporto WhatsApp 24/7',
       privacy : 'Privacy Policy',      privacyHref: '/it/privacy-policy/',
       terms   : 'Termini di servizio', termsHref  : '/it/terms-of-service/',
-      copy    : '© Tutti i diritti riservati – Prime Wave',
+      copy    : '© Tutti i diritti riservati – Castivio',
       base    : '/it/',
     },
     nl: {
@@ -146,7 +146,7 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacybeleid',       privacyHref: '/nl/privacy-policy/',
       terms   : 'Servicevoorwaarden',  termsHref  : '/nl/terms-of-service/',
-      copy    : '© Alle rechten voorbehouden – Prime Wave',
+      copy    : '© Alle rechten voorbehouden – Castivio',
       base    : '/nl/',
     },
     pt: {
@@ -166,7 +166,7 @@
       waAria  : 'Suporte WhatsApp 24/7',
       privacy : 'Política de privacidade', privacyHref: '/pt/privacy-policy/',
       terms   : 'Termos de serviço',       termsHref  : '/pt/terms-of-service/',
-      copy    : '© Todos os direitos reservados – Prime Wave',
+      copy    : '© Todos os direitos reservados – Castivio',
       base    : '/pt/',
     },
     tr: {
@@ -186,7 +186,7 @@
       waAria  : 'WhatsApp Destek 24/7',
       privacy : 'Gizlilik Politikası',  privacyHref: '/tr/privacy-policy/',
       terms   : 'Kullanım Şartları',    termsHref  : '/tr/terms-of-service/',
-      copy    : '© Tüm hakları saklıdır – Prime Wave',
+      copy    : '© Tüm hakları saklıdır – Castivio',
       base    : '/tr/',
     },
   };
@@ -242,8 +242,8 @@
         /* Content column */
         '<div class="flex flex-col gap-7">' +
           '<div class="flex items-center gap-3">' +
-            '<img src="/images/logo.webp" alt="Prime Wave" class="h-14 w-14 rounded-full shadow-lg" loading="lazy" decoding="async">' +
-            '<h3 class="text-2xl font-bold tracking-wide">Prime Wave</h3>' +
+            '<img src="/images/logo.webp" alt="Castivio" class="h-14 w-14 rounded-full shadow-lg" loading="lazy" decoding="async">' +
+            '<h3 class="text-2xl font-bold tracking-wide">Castivio</h3>' +
           '</div>' +
           '<div>' + ulHTML + '</div>' +
           '<div>' +
