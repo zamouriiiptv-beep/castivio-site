@@ -252,6 +252,49 @@
   body.light-mode .rg-maghreb .rg-link{color:#c2410c}
   body.light-mode .rg-mashriq .rg-link{color:#4f46e5}
 
+  /* ── Dark mode: article content ── */
+  body:not(.light-mode) .prose p,
+  body:not(.light-mode) .prose li,
+  body:not(.light-mode) .prose td,
+  body:not(.light-mode) .prose th { color:rgba(255,255,255,0.88)!important }
+  body:not(.light-mode) .prose h1,
+  body:not(.light-mode) .prose h2,
+  body:not(.light-mode) .prose h3 { color:#e9d5ff!important }
+  body:not(.light-mode) .prose strong { color:#c4b5fd!important }
+  body:not(.light-mode) .prose a { color:#a78bfa!important }
+  /* kw-lead intro box */
+  body:not(.light-mode) .kw-lead{background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.3);color:rgba(255,255,255,.88)}
+  body:not(.light-mode) .kw-lead strong{color:#e9d5ff}
+  /* guide-toc */
+  body:not(.light-mode) .guide-toc{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.25);color:rgba(255,255,255,.88)}
+  body:not(.light-mode) .guide-toc a{color:#a78bfa}
+  body:not(.light-mode) .toc-toggle{color:#a78bfa}
+  /* info boxes */
+  body:not(.light-mode) .info-box{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
+  body:not(.light-mode) .info-box.tip{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)}
+  body:not(.light-mode) .info-box strong{color:#e9d5ff}
+  /* numbered steps */
+  body:not(.light-mode) .steps li{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.88)}
+  body:not(.light-mode) .steps li strong{color:#c4b5fd}
+  /* speed/comparison tables */
+  body:not(.light-mode) .speed-table td{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.08);background:transparent!important}
+  body:not(.light-mode) .speed-table tr:nth-child(even) td{background:rgba(255,255,255,.04)!important}
+  /* device cards */
+  body:not(.light-mode) .device-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+  body:not(.light-mode) .device-card .name{color:rgba(255,255,255,.9)}
+  body:not(.light-mode) .device-card .desc{color:rgba(255,255,255,.6)}
+  /* app cards */
+  body:not(.light-mode) .app-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+  body:not(.light-mode) .app-card h3{color:#93c5fd}
+  body:not(.light-mode) .app-card p{color:rgba(255,255,255,.75)}
+  body:not(.light-mode) .app-card .app-os{color:#a78bfa}
+  /* tags & chips */
+  body:not(.light-mode) .tag{background:rgba(124,58,237,.18);color:#e9d5ff;border-color:rgba(124,58,237,.35)}
+  /* faq items */
+  body:not(.light-mode) .faq-item summary{background:rgba(124,58,237,.18);color:#e9d5ff}
+  body:not(.light-mode) .faq-item[open] summary{background:rgba(124,58,237,.3)}
+  body:not(.light-mode) .faq-item p{background:rgba(255,255,255,.05);color:rgba(255,255,255,.85)}
+
   article { margin-top: 0 !important; padding-top: 0 !important; }
 </style>
 
