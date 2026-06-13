@@ -209,13 +209,15 @@
 
   /* ── Regional guide cards (compact) ── */
   .rg-wrap{max-width:1080px;margin:0 auto;padding:0 4px}
+  /* section bg: dark by default, overridden in light mode */
+  .rg-section{background:linear-gradient(180deg,#0e0626 0%,#050014 100%);padding:48px 16px}
   .rg-head{text-align:center;margin-bottom:24px}
-  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,4vw,2rem);color:#6B21A8;margin:0 0 8px;border:none!important;padding:0!important}
+  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,4vw,2rem);color:#e9d5ff;margin:0 0 8px;border:none!important;padding:0!important}
   .rg-head .rg-ac{background:linear-gradient(90deg,#7c3aed,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .rg-head p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
+  .rg-head p{color:rgba(255,255,255,0.62);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
   .rg-grid{display:grid;grid-template-columns:1fr;gap:13px}
   @media(min-width:760px){.rg-grid{grid-template-columns:repeat(3,1fr)}}
-  /* card background + text: copied from homepage gd-tile (adapts to dark/light) */
+  /* glass card — dark mode default */
   .rg-card{display:flex;gap:13px;align-items:flex-start;border-radius:16px;padding:14px 16px;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;background:linear-gradient(160deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025));border:1px solid rgba(139,92,246,0.45);box-shadow:0 4px 16px rgba(0,0,0,.18)}
   .rg-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(124,58,237,.25)}
   .rg-ico{width:50px;height:50px;flex-shrink:0;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;box-shadow:0 5px 14px rgba(0,0,0,.18)}
@@ -226,15 +228,18 @@
   .rg-link{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-family:'Cairo',sans-serif;font-size:.82rem;transition:gap .2s ease}
   .rg-card:hover .rg-link{gap:11px}
   .rg-link i{font-size:.72rem}
-  /* icon gradients (both modes) */
+  /* icon gradients */
   .rg-khalij  .rg-ico{background:linear-gradient(135deg,#047857,#10b981)}
   .rg-maghreb .rg-ico{background:linear-gradient(135deg,#b91c1c,#f97316)}
   .rg-mashriq .rg-ico{background:linear-gradient(135deg,#1d4ed8,#7c3aed)}
-  /* link accents — dark mode (lighter, readable on glass) */
+  /* link accents — dark mode */
   .rg-khalij  .rg-link{color:#34d399}
   .rg-maghreb .rg-link{color:#fb923c}
   .rg-mashriq .rg-link{color:#a78bfa}
-  /* light mode overrides: white card + dark text (copied from gd-tile light) */
+  /* light mode overrides */
+  body.light-mode .rg-section{background:linear-gradient(180deg,#f9fafb 0%,#ffffff 100%)}
+  body.light-mode .rg-head h2{color:#6B21A8}
+  body.light-mode .rg-head p{color:#6b7280}
   body.light-mode .rg-card{background:#ffffff;border-color:rgba(91,22,163,.42);box-shadow:0 4px 20px rgba(91,22,163,.13)}
   body.light-mode .rg-card:hover{background:#faf8ff;border-color:rgba(91,22,163,.65);box-shadow:0 6px 26px rgba(91,22,163,.18)}
   body.light-mode .rg-name{color:#000000}
@@ -701,7 +706,7 @@
 <!-- ══════════════════════════════════════════ -->
 <!--  Regional Guides — Cards Section           -->
 <!-- ══════════════════════════════════════════ -->
-<section class="bg-gradient-to-b from-gray-50 to-white py-12 px-4">
+<section class="rg-section">
   <div class="rg-wrap">
 
     <div class="rg-head">
