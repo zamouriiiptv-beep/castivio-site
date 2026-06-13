@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+<script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Castivio المشرق العربي — أفضل اشتراك IPTV لمصر ولبنان والعراق وسوريا والأردن. شاهد أكثر من 30,000 قناة مشرقية وعربية وعالمية بجودة 4K بدون تقطيع. اشترك الآن.">
@@ -126,6 +126,7 @@
 </head>
 
 <body class="bg-gray-50 relative hp-home">
+<script>try{if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');}}catch(e){}</script>
 
 <div id="language-bar" dir="rtl">
   <div id="flags-container"><div id="flags-scroll"></div></div>

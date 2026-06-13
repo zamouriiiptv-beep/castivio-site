@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+<script>if('scrollRestoration'in history){history.scrollRestoration='manual';}window.scrollTo(0,0);try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, follow">
@@ -49,6 +49,7 @@
 </script>
 </head>
 <body class="bg-gray-50 text-gray-800 hp-home">
+<script>try{if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');}}catch(e){}</script>
 
 <!-- Header — نفس الموقع الرئيسي -->
 <header class="fixed w-full bg-gradient-to-r from-blue-50 to-purple-50 shadow-md z-50">
