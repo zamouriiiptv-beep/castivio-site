@@ -207,32 +207,27 @@
   .steps li::before{counter-increment:st;content:counter(st);position:absolute;right:14px;top:14px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,#7c3aed,#3b82f6);font-family:'Cairo',sans-serif}
   .steps li strong{color:#6B21A8}
 
-  /* ── Regional guide cards (redesigned) ── */
-  .rg-wrap{max-width:1120px;margin:0 auto;padding:0 4px}
-  .rg-head{text-align:center;margin-bottom:36px}
-  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.6rem,4.4vw,2.2rem);color:#6B21A8;margin:0 0 10px;border:none!important;padding:0!important}
+  /* ── Regional guide cards (compact) ── */
+  .rg-wrap{max-width:1080px;margin:0 auto;padding:0 4px}
+  .rg-head{text-align:center;margin-bottom:24px}
+  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,4vw,2rem);color:#6B21A8;margin:0 0 8px;border:none!important;padding:0!important}
   .rg-head .rg-ac{background:linear-gradient(90deg,#7c3aed,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .rg-head p{color:#6b7280;max-width:580px;margin:0 auto;font-size:1rem;line-height:1.85}
-  .rg-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  .rg-head p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
+  .rg-grid{display:grid;grid-template-columns:1fr;gap:13px}
   @media(min-width:760px){.rg-grid{grid-template-columns:repeat(3,1fr)}}
-  .rg-card{position:relative;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(17,12,59,.09);border:1px solid #efeafe;transition:transform .3s ease,box-shadow .3s ease;display:flex;flex-direction:column;text-decoration:none}
-  .rg-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(124,58,237,.22)}
-  .rg-top{position:relative;padding:30px 20px 24px;text-align:center;overflow:hidden}
-  .rg-top::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.32),transparent 62%);pointer-events:none}
-  .rg-ico{position:relative;z-index:1;width:76px;height:76px;margin:0 auto 12px;border-radius:20px;background:rgba(255,255,255,.20);display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 6px 18px rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.4)}
-  .rg-name{position:relative;z-index:1;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0;text-shadow:0 2px 10px rgba(0,0,0,.20)}
-  .rg-flags{position:relative;z-index:1;margin-top:9px;font-size:1.05rem;letter-spacing:3px}
-  .rg-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
-  .rg-body p{color:#4b5563;line-height:1.95;font-size:.95rem;margin:0 0 18px;flex:1}
-  .rg-link{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;font-weight:800;font-family:'Cairo',sans-serif;padding:10px 20px;border-radius:9999px;color:#fff!important;font-size:.9rem;box-shadow:0 6px 16px rgba(124,58,237,.22);transition:gap .25s ease,transform .25s ease}
-  .rg-card:hover .rg-link{gap:15px}
-  .rg-link i{font-size:.8rem}
-  .rg-khalij  .rg-top{background:linear-gradient(135deg,#047857 0%,#10b981 58%,#f59e0b 100%)}
-  .rg-khalij  .rg-link{background:linear-gradient(135deg,#047857,#10b981)}
-  .rg-maghreb .rg-top{background:linear-gradient(135deg,#b91c1c 0%,#f97316 58%,#f59e0b 100%)}
-  .rg-maghreb .rg-link{background:linear-gradient(135deg,#b91c1c,#f97316)}
-  .rg-mashriq .rg-top{background:linear-gradient(135deg,#1d4ed8 0%,#6366f1 55%,#7c3aed 100%)}
-  .rg-mashriq .rg-link{background:linear-gradient(135deg,#1d4ed8,#7c3aed)}
+  .rg-card{display:flex;gap:13px;align-items:flex-start;background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 5px 16px rgba(17,12,59,.07);border:1px solid #efeafe;transition:transform .25s ease,box-shadow .25s ease;text-decoration:none}
+  .rg-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(124,58,237,.17)}
+  .rg-ico{width:50px;height:50px;flex-shrink:0;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;box-shadow:0 5px 14px rgba(0,0,0,.13)}
+  .rg-info{flex:1;min-width:0}
+  .rg-name{font-family:'Cairo',sans-serif;font-weight:800;font-size:1.08rem;color:#1a0b35;margin:0 0 3px!important}
+  .rg-flags{font-size:.82rem;letter-spacing:1px;margin-bottom:5px}
+  .rg-desc{font-size:.78rem;color:#6b7280;line-height:1.6;margin:0 0 7px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .rg-link{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-family:'Cairo',sans-serif;font-size:.82rem;transition:gap .2s ease}
+  .rg-card:hover .rg-link{gap:11px}
+  .rg-link i{font-size:.72rem}
+  .rg-khalij  .rg-ico{background:linear-gradient(135deg,#047857,#10b981)} .rg-khalij  .rg-link{color:#047857}
+  .rg-maghreb .rg-ico{background:linear-gradient(135deg,#b91c1c,#f97316)} .rg-maghreb .rg-link{color:#c2410c}
+  .rg-mashriq .rg-ico{background:linear-gradient(135deg,#1d4ed8,#7c3aed)} .rg-mashriq .rg-link{color:#4f46e5}
 
   article { margin-top: 0 !important; padding-top: 0 !important; }
 </style>
@@ -692,51 +687,42 @@
 <!-- ══════════════════════════════════════════ -->
 <!--  Regional Guides — Cards Section           -->
 <!-- ══════════════════════════════════════════ -->
-<section class="bg-gradient-to-b from-gray-50 to-white py-16 px-4">
+<section class="bg-gradient-to-b from-gray-50 to-white py-12 px-4">
   <div class="rg-wrap">
 
     <div class="rg-head">
       <h2>📍 اختر <span class="rg-ac">دليلك</span> حسب المنطقة</h2>
-      <p>أدلة إعداد تطبيقات IPTV مخصّصة لكل منطقة عربية — شرح التثبيت والضبط خطوة بخطوة.</p>
+      <p>أدلة إعداد تطبيقات IPTV مخصّصة لكل منطقة عربية — التثبيت والضبط خطوة بخطوة.</p>
     </div>
 
     <div class="rg-grid">
 
-      <!-- الخليج -->
       <a href="/ar/guide/khalij/" class="rg-card rg-khalij">
-        <div class="rg-top">
-          <div class="rg-ico">🕌</div>
+        <div class="rg-ico">🕌</div>
+        <div class="rg-info">
           <h3 class="rg-name">دول الخليج</h3>
           <div class="rg-flags">🇸🇦 🇦🇪 🇰🇼 🇶🇦 🇧🇭 🇴🇲</div>
-        </div>
-        <div class="rg-body">
-          <p>دليل إعداد تطبيقات IPTV للسعودية، الإمارات، الكويت، قطر، البحرين وعُمان — التثبيت والضبط خطوة بخطوة.</p>
+          <p class="rg-desc">دليل إعداد تطبيقات IPTV للسعودية، الإمارات، الكويت، قطر، البحرين وعُمان.</p>
           <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
 
-      <!-- المغرب العربي -->
       <a href="/ar/guide/maghreb/" class="rg-card rg-maghreb">
-        <div class="rg-top">
-          <div class="rg-ico">🌍</div>
+        <div class="rg-ico">🌍</div>
+        <div class="rg-info">
           <h3 class="rg-name">المغرب العربي</h3>
           <div class="rg-flags">🇲🇦 🇩🇿 🇹🇳 🇱🇾 🇲🇷</div>
-        </div>
-        <div class="rg-body">
-          <p>دليل إعداد تطبيقات IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا — التثبيت والضبط خطوة بخطوة.</p>
+          <p class="rg-desc">دليل إعداد تطبيقات IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا.</p>
           <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
 
-      <!-- المشرق العربي -->
       <a href="/ar/guide/mashriq/" class="rg-card rg-mashriq">
-        <div class="rg-top">
-          <div class="rg-ico">🌅</div>
+        <div class="rg-ico">🌅</div>
+        <div class="rg-info">
           <h3 class="rg-name">المشرق العربي</h3>
           <div class="rg-flags">🇪🇬 🇸🇾 🇱🇧 🇯🇴 🇵🇸 🇮🇶</div>
-        </div>
-        <div class="rg-body">
-          <p>دليل إعداد تطبيقات IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق — التثبيت والضبط خطوة بخطوة.</p>
+          <p class="rg-desc">دليل إعداد تطبيقات IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق.</p>
           <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
