@@ -15,8 +15,6 @@
     { "source": "/en/uk/",               "destination": "/uk/",                "permanent": true },
     { "source": "/en/canada",            "destination": "/canada/",            "permanent": true },
     { "source": "/en/canada/",           "destination": "/canada/",            "permanent": true },
-    { "source": "/en/guide",             "destination": "/guide/",             "permanent": true },
-    { "source": "/en/guide/",            "destination": "/guide/",             "permanent": true },
     { "source": "/en/privacy-policy",    "destination": "/privacy-policy/",    "permanent": true },
     { "source": "/en/privacy-policy/",   "destination": "/privacy-policy/",    "permanent": true },
     { "source": "/en/terms-of-service",  "destination": "/terms-of-service/",  "permanent": true },
