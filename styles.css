@@ -1174,7 +1174,7 @@ body.light-mode p,body.light-mode span:not([class*="grad"]):not([class*="badge"]
 body.light-mode li,body.light-mode label{color:#000000!important}
 
 /* ── Gradient text: ONE uniform gradient for all section title highlights ── */
-body.light-mode .hp-grad,
+body.light-mode .hp-grad{background:linear-gradient(110deg,#9333ea 0%,#ec4899 55%,#7c3aed 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;filter:none!important}
 body.light-mode .rv-grad,
 body.light-mode .faq2-grad,
 body.light-mode .wu-title span,
