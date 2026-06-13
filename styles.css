@@ -1052,6 +1052,8 @@ body:not(.light-mode) .rv-flag{filter:brightness(0.78) contrast(0.95)}
 /* LTR pages: flip direction so ? stays at end and icon order is correct */
 html[dir="ltr"] .faq2-btn{direction:ltr;text-align:left}
 html[dir="ltr"] .faq2-q-text{text-align:left}
+html[dir="ltr"] .faq2-cta{direction:ltr}
+html[dir="ltr"] .faq2-cta-text{text-align:left}
 /* Purple glowing square icon box */
 .faq2-icon-box{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center}
 .faq2-icon-box svg{width:18px;height:18px;fill:#c4b5fd}
