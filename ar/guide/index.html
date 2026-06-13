@@ -207,6 +207,33 @@
   .steps li::before{counter-increment:st;content:counter(st);position:absolute;right:14px;top:14px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,#7c3aed,#3b82f6);font-family:'Cairo',sans-serif}
   .steps li strong{color:#6B21A8}
 
+  /* ── Regional guide cards (redesigned) ── */
+  .rg-wrap{max-width:1120px;margin:0 auto;padding:0 4px}
+  .rg-head{text-align:center;margin-bottom:36px}
+  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.6rem,4.4vw,2.2rem);color:#6B21A8;margin:0 0 10px;border:none!important;padding:0!important}
+  .rg-head .rg-ac{background:linear-gradient(90deg,#7c3aed,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .rg-head p{color:#6b7280;max-width:580px;margin:0 auto;font-size:1rem;line-height:1.85}
+  .rg-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:760px){.rg-grid{grid-template-columns:repeat(3,1fr)}}
+  .rg-card{position:relative;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(17,12,59,.09);border:1px solid #efeafe;transition:transform .3s ease,box-shadow .3s ease;display:flex;flex-direction:column;text-decoration:none}
+  .rg-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(124,58,237,.22)}
+  .rg-top{position:relative;padding:30px 20px 24px;text-align:center;overflow:hidden}
+  .rg-top::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.32),transparent 62%);pointer-events:none}
+  .rg-ico{position:relative;z-index:1;width:76px;height:76px;margin:0 auto 12px;border-radius:20px;background:rgba(255,255,255,.20);display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 6px 18px rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.4)}
+  .rg-name{position:relative;z-index:1;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0;text-shadow:0 2px 10px rgba(0,0,0,.20)}
+  .rg-flags{position:relative;z-index:1;margin-top:9px;font-size:1.05rem;letter-spacing:3px}
+  .rg-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .rg-body p{color:#4b5563;line-height:1.95;font-size:.95rem;margin:0 0 18px;flex:1}
+  .rg-link{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;font-weight:800;font-family:'Cairo',sans-serif;padding:10px 20px;border-radius:9999px;color:#fff!important;font-size:.9rem;box-shadow:0 6px 16px rgba(124,58,237,.22);transition:gap .25s ease,transform .25s ease}
+  .rg-card:hover .rg-link{gap:15px}
+  .rg-link i{font-size:.8rem}
+  .rg-khalij  .rg-top{background:linear-gradient(135deg,#047857 0%,#10b981 58%,#f59e0b 100%)}
+  .rg-khalij  .rg-link{background:linear-gradient(135deg,#047857,#10b981)}
+  .rg-maghreb .rg-top{background:linear-gradient(135deg,#b91c1c 0%,#f97316 58%,#f59e0b 100%)}
+  .rg-maghreb .rg-link{background:linear-gradient(135deg,#b91c1c,#f97316)}
+  .rg-mashriq .rg-top{background:linear-gradient(135deg,#1d4ed8 0%,#6366f1 55%,#7c3aed 100%)}
+  .rg-mashriq .rg-link{background:linear-gradient(135deg,#1d4ed8,#7c3aed)}
+
   article { margin-top: 0 !important; padding-top: 0 !important; }
 </style>
 
@@ -666,75 +693,55 @@
 <!--  Regional Guides — Cards Section           -->
 <!-- ══════════════════════════════════════════ -->
 <section class="bg-gradient-to-b from-gray-50 to-white py-16 px-4">
-  <div class="container mx-auto max-w-6xl">
+  <div class="rg-wrap">
 
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-black text-purple-800 mb-4" style="font-family:'Cairo',sans-serif;">
-        📍 اختر دليلك حسب المنطقة
-      </h2>
-      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-        دليل إعداد تطبيقات IPTV مخصّص لكل منطقة عربية — شرح التثبيت والضبط خطوة بخطوة
-      </p>
+    <div class="rg-head">
+      <h2>📍 اختر <span class="rg-ac">دليلك</span> حسب المنطقة</h2>
+      <p>أدلة إعداد تطبيقات IPTV مخصّصة لكل منطقة عربية — شرح التثبيت والضبط خطوة بخطوة.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="rg-grid">
 
       <!-- الخليج -->
-      <a href="/guide/khalij/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-green-600 via-emerald-500 to-yellow-500 p-8 text-center">
-          <div class="text-6xl mb-3">🕌</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">دول الخليج</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇸🇦 🇦🇪 🇰🇼 🇶🇦 🇧🇭 🇴🇲</p>
+      <a href="/ar/guide/khalij/" class="rg-card rg-khalij">
+        <div class="rg-top">
+          <div class="rg-ico">🕌</div>
+          <h3 class="rg-name">دول الخليج</h3>
+          <div class="rg-flags">🇸🇦 🇦🇪 🇰🇼 🇶🇦 🇧🇭 🇴🇲</div>
         </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل إعداد تطبيقات IPTV للسعودية، الإمارات، الكويت، قطر، البحرين وعُمان — التثبيت والضبط خطوة بخطوة.
-          </p>
-          <div class="flex items-center text-green-600 font-bold group-hover:text-green-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
+        <div class="rg-body">
+          <p>دليل إعداد تطبيقات IPTV للسعودية، الإمارات، الكويت، قطر، البحرين وعُمان — التثبيت والضبط خطوة بخطوة.</p>
+          <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
 
       <!-- المغرب العربي -->
-      <a href="/guide/maghreb/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 p-8 text-center">
-          <div class="text-6xl mb-3">🌍</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المغرب العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇲🇦 🇩🇿 🇹🇳 🇱🇾 🇲🇷</p>
+      <a href="/ar/guide/maghreb/" class="rg-card rg-maghreb">
+        <div class="rg-top">
+          <div class="rg-ico">🌍</div>
+          <h3 class="rg-name">المغرب العربي</h3>
+          <div class="rg-flags">🇲🇦 🇩🇿 🇹🇳 🇱🇾 🇲🇷</div>
         </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل إعداد تطبيقات IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا — التثبيت والضبط خطوة بخطوة.
-          </p>
-          <div class="flex items-center text-red-600 font-bold group-hover:text-red-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
+        <div class="rg-body">
+          <p>دليل إعداد تطبيقات IPTV للمغرب، الجزائر، تونس، ليبيا وموريتانيا — التثبيت والضبط خطوة بخطوة.</p>
+          <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
 
       <!-- المشرق العربي -->
-      <a href="/guide/mashriq/" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-        <div class="bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-600 p-8 text-center">
-          <div class="text-6xl mb-3">🌅</div>
-          <h3 class="text-2xl font-black text-white" style="font-family:'Cairo',sans-serif;">المشرق العربي</h3>
-          <p class="text-white text-opacity-90 text-sm mt-2">🇪🇬 🇸🇾 🇱🇧 🇯🇴 🇵🇸 🇮🇶</p>
+      <a href="/ar/guide/mashriq/" class="rg-card rg-mashriq">
+        <div class="rg-top">
+          <div class="rg-ico">🌅</div>
+          <h3 class="rg-name">المشرق العربي</h3>
+          <div class="rg-flags">🇪🇬 🇸🇾 🇱🇧 🇯🇴 🇵🇸 🇮🇶</div>
         </div>
-        <div class="p-6">
-          <p class="text-gray-700 mb-4 leading-relaxed">
-            دليل إعداد تطبيقات IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق — التثبيت والضبط خطوة بخطوة.
-          </p>
-          <div class="flex items-center text-blue-600 font-bold group-hover:text-blue-700">
-            <span>اقرأ الدليل</span>
-            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-          </div>
+        <div class="rg-body">
+          <p>دليل إعداد تطبيقات IPTV لمصر، سوريا، لبنان، الأردن، فلسطين والعراق — التثبيت والضبط خطوة بخطوة.</p>
+          <span class="rg-link">اقرأ الدليل <i class="fas fa-arrow-left"></i></span>
         </div>
       </a>
 
     </div>
-
   </div>
 </section>
 
