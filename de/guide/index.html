@@ -115,19 +115,28 @@
   .info-box strong { color: #111827; }
   .info-box.tip { background: #eff6ff; border-color: #93c5fd; }
 
+  .speed-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin: 20px 0;
+  }
   .speed-table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    margin: 20px 0;
+    box-shadow: none;
+    margin: 0;
   }
   .speed-table th {
     background: linear-gradient(135deg, #7c3aed, #3b82f6);
     color: #fff;
     padding: 12px 16px;
     text-align: left;
+    word-break: break-word;
+    min-width: 80px;
   }
   .speed-table td {
     padding: 10px 16px;
@@ -135,6 +144,8 @@
     font-size: 0.9rem;
     text-align: left;
     color: #374151;
+    word-break: break-word;
+    min-width: 80px;
   }
   .speed-table tr:nth-child(even) td { background: #f9f7ff; }
 
@@ -270,6 +281,7 @@
   html:not(.light-mode) .steps li{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.88)}
   html:not(.light-mode) .steps li strong{color:#c4b5fd}
   /* speed/comparison tables */
+  html:not(.light-mode) .speed-table-wrap{box-shadow:0 2px 12px rgba(0,0,0,0.3)}
   html:not(.light-mode) .speed-table td{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.08);background:transparent!important}
   html:not(.light-mode) .speed-table tr:nth-child(even) td{background:rgba(255,255,255,.04)!important}
   /* device cards */
@@ -528,7 +540,7 @@
 </p>
 
 <div class="guide-toc">
-  <h2>📋 Inhaltsverzeichnis</h2>
+  <h3>📋 Inhaltsverzeichnis</h3>
   <ol>
     <li><a href="#subscription">Was ist ein IPTV-Abo?</a></li>
     <li><a href="#subscriptions">M3U oder Xtream Codes: Was ist der Unterschied?</a></li>
@@ -570,7 +582,7 @@
   Wenn du ein IPTV-Abo abschließt, bekommst du die Zugangsdaten in einem von zwei Formaten. Das Verständnis des Unterschieds spart dir Zeit bei der Einrichtung:
 </p>
 
-<table class="speed-table">
+<div class="speed-table-wrap"><table class="speed-table">
   <thead>
     <tr>
       <th>Format</th>
@@ -583,7 +595,7 @@
     <tr><td>Xtream Codes</td><td>Server-URL + Benutzername + Passwort getrennt</td><td>Bessere Senderorganisation und automatische Updates</td></tr>
     <tr><td>MAC-Adresse</td><td>Gerätecode z. B. 00:1A:79:XX:XX:XX</td><td>Smart-TV-Apps wie Smart IPTV und Smart IPTV Pro</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="info-box tip">
   <strong>💡 Tipp:</strong> Wenn dein Anbieter sowohl M3U als auch Xtream Codes anbietet, wähle <strong>Xtream Codes</strong>. Die Sender werden in übersichtliche Kategorien sortiert, und die Senderliste aktualisiert sich automatisch — ohne manuellen Eingriff.
@@ -706,7 +718,7 @@
   Nicht jede <strong>IPTV App</strong> eignet sich für jedes Gerät gleich gut. Diese Tabelle hilft dir, die beste Wahl für deinen Anwendungsfall zu treffen — ohne langes Ausprobieren:
 </p>
 
-<table class="speed-table">
+<div class="speed-table-wrap"><table class="speed-table">
   <thead>
     <tr>
       <th>Gerät</th>
@@ -721,7 +733,7 @@
     <tr><td>Android-Smartphone</td><td>IPTV Smarters Pro</td><td>IPTV Smarters</td></tr>
     <tr><td>Samsung / LG Smart TV</td><td>Smart IPTV Pro</td><td>Smart IPTV</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="info-box">
   <strong>📲 Grundprinzip:</strong> Jede <strong>IPTV App</strong> ist nur eine Wiedergabeoberfläche. Der Ablauf ist bei allen nahezu identisch: App öffnen → M3U oder Xtream Codes hinzufügen → Senderliste laden → los geht's.
