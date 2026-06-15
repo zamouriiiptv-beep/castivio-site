@@ -8,37 +8,77 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
 
 .sport-name{color:#012169}
 .vs-table th{background:linear-gradient(135deg,#012169,#F5F5F5,#C8102E)}
-  /* Region content section */
-  .gulf-content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  /* Gulf map/service content (kept) */
   #guides-section .gs-badge{padding:5px 16px;font-size:.78rem}
   .gulf-features-grid{display:grid;grid-template-columns:1fr;gap:10px}
   .gulf-service-box{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
   .gulf-map-wrap{display:flex;align-items:center;justify-content:center}
   .gulf-map-wrap svg{width:100%;max-width:240px;height:auto;filter:drop-shadow(0 0 18px rgba(123,47,255,.35))}
-  .gulf-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .gulf-channel-card{display:flex;flex-direction:column;justify-content:flex-start;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:16px 16px 20px;text-align:left;transition:transform .25s,border-color .25s,box-shadow .25s}
-  .gulf-channel-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.55);box-shadow:0 12px 30px rgba(123,47,255,.18)}
-  .gulf-card-head{display:flex;align-items:flex-start;gap:10px;min-height:48px}
-  .gulf-logo{flex-shrink:0;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.9rem;letter-spacing:.3px;box-shadow:0 4px 10px rgba(0,0,0,.22)}
-  .gulf-card-name{flex:1;min-width:0;min-height:2.6em;font-weight:800;font-size:1.02rem;line-height:1.3;color:#fff;margin:0;background:none;padding:0;border:0;box-shadow:none}
-  .gulf-card-desc{min-height:2.9em;font-size:.8rem;line-height:1.45;color:rgba(255,255,255,.6);margin:0;margin-inline-start:54px;background:none;padding:0;border:0;box-shadow:none}
+
+  /* ===== أبرز المحتويات الخليجية — Premium SaaS ===== */
+  .kh-wrap{background:linear-gradient(180deg,#fafaff 0%,#f3f0ff 100%);border-radius:22px;padding:26px 12px 22px;margin:30px 0 0;scroll-margin-top:80px}
+  .kh-head{text-align:center;max-width:600px;margin:0 auto 20px;padding:0 6px}
+  .kh-title{font-size:1.5rem;font-weight:800;color:#1a0b35;margin:0 0 8px;line-height:1.3}
+  .kh-title .kh-ac{background:linear-gradient(90deg,#5b21b6 0%,#2563eb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .kh-sub{font-size:.86rem;line-height:1.65;color:#6b6285;margin:0}
+  .kh-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-width:900px;margin:0 auto;align-items:start}
+  .kh-grid .kh-tile:last-child:nth-child(odd){grid-column:1/-1;max-width:calc((100% - 9px)/2);margin-inline:auto}
+  .kh-tile{min-width:0;position:relative;display:flex;flex-direction:column;background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px 11px 10px;overflow:hidden;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.06);transition:transform .22s ease,border-color .22s ease;will-change:transform}
+  .kh-tile:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(124,58,237,.13);border-color:rgba(124,58,237,.2)}
+  .kh-tile:active{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+  .kh-top{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .kh-flag{flex-shrink:0;width:48px;height:32px;border-radius:5px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.07);transition:transform .2s ease}
+  .kh-flag img{width:100%;height:100%;object-fit:cover;display:block}
+  .kh-tile:hover .kh-flag{transform:scale(1.06);box-shadow:0 4px 16px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.08)}
+  .kh-name{flex:1;min-width:0;font-size:.82rem;font-weight:800;color:#1a0b35;margin:0;line-height:1.3;min-height:calc(1.3em * 2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .kh-desc{font-size:.75rem;line-height:1.4;color:#6b6285;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;min-height:calc(1.4em * 2)}
+  .kh-pills{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 9px}
+  .kh-pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;font-size:.54rem;font-weight:700;color:var(--ac,var(--c));background:color-mix(in srgb,var(--ac,var(--c)) 10%,#fff);border:1px solid color-mix(in srgb,var(--ac,var(--c)) 22%,#fff);transition:background .16s,transform .16s}
+  .kh-pill:active{background:color-mix(in srgb,var(--ac,var(--c)) 20%,#fff);transform:scale(1.06)}
+  .kh-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid rgba(0,0,0,.05)}
+  .kh-feat{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:600;color:var(--ac,var(--c));background:color-mix(in srgb,var(--ac,var(--c)) 9%,#fff);border:1px solid color-mix(in srgb,var(--ac,var(--c)) 20%,#fff);border-radius:999px;padding:3px 9px;transition:transform .22s ease,box-shadow .22s ease;white-space:nowrap}
+  .kh-feat:hover{transform:translateY(-2px);box-shadow:0 3px 8px color-mix(in srgb,var(--ac,var(--c)) 20%,transparent)}
+  .kh-feat:active{transform:scale(.95)}
+  .kh-feat i{font-size:.55rem}
+  .kh-go{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--ac,var(--c));color:#fff;font-size:.64rem;box-shadow:0 3px 8px color-mix(in srgb,var(--ac,var(--c)) 38%,transparent);transition:transform .2s ease}
+  .kh-tile:hover .kh-go{transform:translateX(-3px) scale(1.08)}
+  .kh-go:active{transform:scale(.9)!important}
+  .kh-cta{display:flex;align-items:center;gap:14px;max-width:900px;margin:32px auto 0;padding:16px 18px;border-radius:20px;background:linear-gradient(120deg,#efe7ff 0%,#e9defc 100%);border:1px solid rgba(124,58,237,.15);box-shadow:0 6px 20px rgba(124,58,237,.09)}
+  .kh-cta-txt{flex:1;text-align:center}
+  .kh-cta-title{font-size:1rem;font-weight:800;color:#1a0b35;margin:0 0 4px}
+  .kh-cta-desc{font-size:.8rem;line-height:1.55;color:#6b6285;margin:0}
+  .kh-crown,.kh-shield{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:13px;font-size:1rem}
+  .kh-crown{background:linear-gradient(135deg,#fcd34d,#fbbf24);box-shadow:0 5px 14px rgba(251,191,36,.45);color:#92400e}
+  .kh-shield{background:linear-gradient(135deg,#38bdf8,#22d3ee);box-shadow:0 5px 14px rgba(34,211,238,.40);color:#0c4a6e}
+  @media(min-width:600px){
+    .kh-wrap{padding:40px 22px 34px;border-radius:28px}
+    .kh-head{margin-bottom:28px}
+    .kh-title{font-size:2rem;margin-bottom:12px}
+    .kh-sub{font-size:.95rem;line-height:1.7}
+    .kh-grid{gap:16px}
+    .kh-grid .kh-tile:last-child:nth-child(odd){max-width:calc((100% - 16px)/2)}
+    .kh-tile{padding:18px 18px 14px;border-radius:22px}
+    .kh-top{gap:12px;margin-bottom:10px}
+    .kh-flag{width:62px;height:41px;border-radius:6px}
+    .kh-name{font-size:1.05rem}
+    .kh-desc{font-size:.82rem;margin-bottom:12px}
+    .kh-pills{gap:6px;margin-bottom:14px}
+    .kh-pill{font-size:.66rem;padding:3px 11px}
+    .kh-foot{padding-top:12px}
+    .kh-go{width:34px;height:34px;font-size:.78rem}
+    .kh-cta{gap:18px;margin-top:22px;padding:20px 24px;border-radius:24px}
+    .kh-crown,.kh-shield{width:50px;height:50px;border-radius:15px;font-size:1.15rem}
+  }
   @media(max-width:600px){
-    .gulf-content-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .gulf-channel-card{padding:13px 13px 16px;gap:10px}
-    .gulf-card-head{gap:8px;min-height:44px}
-    .gulf-logo{width:40px;height:40px;border-radius:10px;font-size:.82rem}
     .gulf-features-grid{grid-template-columns:1fr}
-    .gulf-banner{flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;text-align:left}
-    .gulf-card-name{font-size:.9rem;min-height:2.6em}
-    .gulf-card-desc{font-size:.74rem;line-height:1.4;margin-inline-start:0;min-height:2.8em}
     .gulf-service-box{padding:16px!important;margin-top:22px!important;grid-template-columns:1.1fr 1fr!important;gap:8px!important}
     .gulf-service-box h3{font-size:.92rem!important}
     .gulf-service-box li{font-size:.78rem!important}
     .gulf-map-wrap svg{max-width:205px!important}
-    .gulf-grid-title{font-size:1.05rem!important;margin:24px 0 14px!important}
-    .gulf-banner{padding:16px!important}
-    .gulf-banner .gulf-banner-txt{font-size:.92rem!important}
-    .gulf-banner .gulf-banner-sub{font-size:.8rem!important}
+    .kh-cta{gap:8px;padding:12px 10px}
+    .kh-crown,.kh-shield{width:32px;height:32px;border-radius:9px;font-size:.75rem;flex-shrink:0}
+    .kh-cta-title{font-size:.78rem}
+    .kh-cta-desc{font-size:.68rem;line-height:1.45}
   }
 </style>
 <meta charset="UTF-8">
@@ -574,60 +614,78 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Cairo',
       </div>
     </div>
 
-    <h3 class="gulf-grid-title" style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin:36px 0 20px">The most-watched channels in the United Kingdom</h3>
+    <!-- ===== Featured public channels — Premium ===== -->
+    <div class="kh-wrap">
+      <div class="kh-head">
+        <h3 class="kh-title">The most-watched channels in the United <span class="kh-ac">Kingdom</span></h3>
+        <p class="kh-sub">National public channels in high quality with news, culture and family programming</p>
+      </div>
 
-    <div class="gulf-content-grid">
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#e11d2a,#9b1c1c)">BBC</div>
-          <div class="gulf-card-name">BBC One<br>&amp; BBC Two</div>
-        </div>
-        <div class="gulf-card-desc">The UK's national public broadcaster<br>trusted by millions every day</div>
+      <div class="kh-grid">
+        <a href="#pricing" class="kh-tile" style="--c:#CE1126;--ac:#a855f7">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">BBC One</h4>
+          </div>
+          <p class="kh-desc">National public flagship channel</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-circle-check"></i> Stable stream</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#006C35;--ac:#22c55e">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">BBC Two</h4>
+          </div>
+          <p class="kh-desc">Public service television</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-satellite-dish"></i> Live 24/7</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#8B1D42;--ac:#ec4899">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">BBC News</h4>
+          </div>
+          <p class="kh-desc">Public news around the clock</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-bolt"></i> Instant play</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#007A3D;--ac:#06b6d4">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">BBC Four</h4>
+          </div>
+          <p class="kh-desc">Public culture and documentaries</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-bullseye"></i> No buffering</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#C8102E;--ac:#f97316">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">CBeebies</h4>
+          </div>
+          <p class="kh-desc">Public children's and family channel</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-arrows-rotate"></i> Daily updates</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
+        <a href="#pricing" class="kh-tile" style="--c:#D21034;--ac:#3b82f6">
+          <div class="kh-top">
+            <span class="kh-flag"><img src="/images/flags/gb.svg" width="62" height="41" alt="National flag" loading="lazy"></span>
+            <h4 class="kh-name">BBC Parliament</h4>
+          </div>
+          <p class="kh-desc">Public educational programming</p>
+          <div class="kh-pills"><span class="kh-pill">News</span><span class="kh-pill">Culture</span><span class="kh-pill">Live</span></div>
+          <div class="kh-foot"><span class="kh-feat"><i class="fas fa-gem"></i> HD & 4K</span><span class="kh-go"><i class="fas fa-arrow-right"></i></span></div>
+        </a>
       </div>
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#f59e0b,#b45309)">ITV</div>
-          <div class="gulf-card-name">ITV<br>&amp; ITVX</div>
-        </div>
-        <div class="gulf-card-desc">Independent television for England<br>Wales and the whole of Britain</div>
-      </div>
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#16a34a,#15803d)">CH4</div>
-          <div class="gulf-card-name">Channel 4<br>Live</div>
-        </div>
-        <div class="gulf-card-desc">Award-winning public service<br>broadcaster since 1982</div>
-      </div>
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#2563eb,#1e3a8a)">CH5</div>
-          <div class="gulf-card-name">Channel 5<br>Live</div>
-        </div>
-        <div class="gulf-card-desc">Free-to-air entertainment<br>for every British household</div>
-      </div>
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#0f172a,#1e293b)"><i class="fas fa-newspaper"></i></div>
-          <div class="gulf-card-name">BBC News<br>&amp; ITV News</div>
-        </div>
-        <div class="gulf-card-desc">24-hour national and world<br>news from British broadcasters</div>
-      </div>
-      <div class="gulf-channel-card">
-        <div class="gulf-card-head">
-          <div class="gulf-logo" style="background:linear-gradient(135deg,#7b2fff,#4f46e5)"><i class="fas fa-film"></i></div>
-          <div class="gulf-card-name">British<br>Drama</div>
-        </div>
-        <div class="gulf-card-desc">BAFTA award-winning series<br>and classic British productions</div>
-      </div>
-    </div>
 
-    <div class="gulf-banner" style="background:linear-gradient(135deg,rgba(123,47,255,0.18),rgba(79,70,229,0.12));border:1px solid rgba(123,47,255,0.3);border-radius:16px;padding:20px 24px;margin-top:28px;justify-content:flex-start;gap:14px">
-      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7b2fff,#4f46e5);flex-shrink:0">
-        <i class="fas fa-crown" style="color:#f5c518;font-size:.9rem"></i>
-      </span>
-      <div>
-        <div class="gulf-banner-txt" style="font-weight:800;font-size:1.02rem;color:#fff;margin-bottom:3px">Complete entertainment for the whole family</div>
-        <div class="gulf-banner-sub" style="font-size:.88rem;color:rgba(255,255,255,.65)">One subscription to access all British content</div>
+      <!-- CTA -->
+      <div class="kh-cta">
+        <span class="kh-crown"><i class="fas fa-crown"></i></span>
+        <div class="kh-cta-txt">
+          <div class="kh-cta-title">Complete entertainment for the whole family</div>
+          <div class="kh-cta-desc">One subscription to access all British content</div>
+        </div>
+        <span class="kh-shield"><i class="fas fa-shield-halved"></i></span>
       </div>
     </div>
 
