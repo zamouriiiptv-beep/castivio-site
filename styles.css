@@ -956,7 +956,7 @@ body:not(.light-mode) .rv-flag{filter:brightness(0.78) contrast(0.95)}
   border:1px solid rgba(100,60,200,0.25);
   box-shadow:0 0 10px rgba(80,20,160,0.15)}
 .rv-avatar svg{width:22px;height:22px;fill:#9b80e8;opacity:0.85}
-.rv-person-info{text-align:right;direction:rtl}
+.rv-person-info{text-align:left;direction:ltr}
 .rv-name{font-family:'Cairo',sans-serif;font-weight:800;color:#f0eaff;font-size:16px;margin:0;line-height:1.25;display:flex;align-items:center;gap:6px;flex-wrap:wrap;direction:ltr}
 .rv-verified{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.10);border:1px solid rgba(74,222,128,0.28);border-radius:20px;padding:1px 8px;white-space:nowrap;letter-spacing:0.3px;line-height:1.6}
 .rv-loc{font-family:'Tajawal',sans-serif;color:#7c6eaa;font-size:12.5px;margin:2px 0 0}
@@ -964,7 +964,7 @@ body:not(.light-mode) .rv-flag{filter:brightness(0.78) contrast(0.95)}
 /* ── Body text ── */
 .rv-text{
   font-family:'Tajawal',sans-serif;color:#c0b5e0;font-size:14px;
-  line-height:1.75;margin:0 0 16px;text-align:right;direction:rtl}
+  line-height:1.75;margin:0 0 16px;text-align:left;direction:ltr}
 .rv-text strong{color:#ddd4f8;font-weight:700}
 
 /* ── Badges (centered) ── */
@@ -1514,6 +1514,19 @@ html[lang="ar"] small{
   font-family:'Cairo',sans-serif!important;
   font-weight:400!important
 }
+
+/* Testimonials: RTL direction for Arabic pages */
+html[lang="ar"] .rv-text{text-align:right;direction:rtl}
+html[lang="ar"] .rv-person-info{text-align:right;direction:rtl}
+
+/* Testimonials: Poppins font for all non-Arabic pages */
+html:not([lang="ar"]) .rv-text,
+html:not([lang="ar"]) .rv-name,
+html:not([lang="ar"]) .rv-loc,
+html:not([lang="ar"]) .rv-tag,
+html:not([lang="ar"]) .rv-date,
+html:not([lang="ar"]) .rv-summary-score,
+html:not([lang="ar"]) .rv-summary-count{font-family:'Poppins',sans-serif!important}
 
 /* ══ GUIDE ARTICLE PAGES — Light Mode ══ */
 /* Smooth transitions for guide article components */
