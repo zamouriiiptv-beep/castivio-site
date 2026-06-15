@@ -485,7 +485,7 @@ window.updatePlanData = function(value, planType) {
         const planNames = window.customPlanNames || { basic: 'الأساسية', premium: 'المميزة', pro: 'الاحترافية' };
         const planName = planNames[planType] || planNames.basic;
         const buildMsg = window.customWhatsAppMessage ||
-            ((n, d) => `مرحباً، أريد الاشتراك في الخطة ${n} لمدة (${d}) - Prime IPTV`);
+            ((n, d) => `مرحباً، أريد الاشتراك في الخطة ${n} لمدة (${d}) - Castivio`);
         waLink.href = `https://wa.me/212666686732?text=${encodeURIComponent(buildMsg(planName, selected.text))}`;
     }
 
