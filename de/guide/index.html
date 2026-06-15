@@ -52,8 +52,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 <style>html:not(.light-mode){background:#050014}html.light-mode,html.light-mode body{background:#f9fafb!important}</style>
@@ -63,8 +63,8 @@
 <script src="/script.js" defer></script>
 
 <style>
-  body { font-family: 'Inter', 'Cairo', sans-serif !important; }
-  h1,h2,h3,h4,h5,h6 { font-family: 'Cairo', sans-serif !important; font-weight: 800; }
+  body { font-family: 'Poppins', sans-serif !important; }
+  h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 800; }
 
   main article h2 {
     margin-top: 2em !important;
@@ -196,7 +196,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item[open] summary { background: #ede9fe; }
@@ -230,7 +230,7 @@
   /* numbered tutorial steps */
   .steps{counter-reset:st;list-style:none;padding:0;margin:18px 0}
   .steps li{position:relative;padding:14px 16px 14px 58px;margin-bottom:11px;background:#fff;border:1px solid #ece8ff;border-radius:13px;box-shadow:0 2px 8px rgba(124,58,237,.05);color:#374151;line-height:1.85;font-size:.95rem}
-  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,#7c3aed,#3b82f6);font-family:'Cairo',sans-serif}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,#7c3aed,#3b82f6);font-family:'Poppins',sans-serif}
   .steps li strong{color:#6B21A8}
 
   /* ── Regional guide cards (compact) ── */
@@ -238,7 +238,7 @@
   /* section bg: dark by default, overridden in light mode */
   .rg-section{background:linear-gradient(180deg,#0e0626 0%,#050014 100%);padding:48px 16px}
   .rg-head{text-align:center;margin-bottom:24px}
-  .rg-head h2{font-family:'Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,4vw,2rem);color:#e9d5ff;margin:0 0 8px;border:none!important;padding:0!important}
+  .rg-head h2{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(1.4rem,4vw,2rem);color:#e9d5ff;margin:0 0 8px;border:none!important;padding:0!important}
   .rg-head .rg-ac{background:linear-gradient(90deg,#7c3aed,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .rg-head p{color:rgba(255,255,255,0.62);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
   .rg-grid{display:grid;grid-template-columns:1fr;gap:13px}
@@ -248,10 +248,10 @@
   .rg-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(124,58,237,.25)}
   .rg-ico{width:50px;height:50px;flex-shrink:0;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;box-shadow:0 5px 14px rgba(0,0,0,.18)}
   .rg-info{flex:1;min-width:0}
-  .rg-name{font-family:'Cairo',sans-serif;font-weight:800;font-size:1.08rem;color:#fff;margin:0 0 3px!important}
+  .rg-name{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.08rem;color:#fff;margin:0 0 3px!important}
   .rg-flags{font-size:.82rem;letter-spacing:1px;margin-bottom:5px}
   .rg-desc{font-size:.78rem;color:rgba(255,255,255,0.74);line-height:1.6;margin:0 0 7px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .rg-link{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-family:'Cairo',sans-serif;font-size:.82rem;transition:gap .2s ease}
+  .rg-link{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-family:'Poppins',sans-serif;font-size:.82rem;transition:gap .2s ease}
   .rg-card:hover .rg-link{gap:11px}
   .rg-link i{font-size:.72rem}
 
