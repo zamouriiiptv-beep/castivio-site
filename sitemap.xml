@@ -177,6 +177,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://primeiptvplus.com/tr/almanya/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ===== صفحات الدول - إيطالي ===== -->
   <url>
     <loc>https://primeiptvplus.com/it/italia/</loc>
@@ -199,6 +206,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://primeiptvplus.com/it/germania/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ===== صفحات الدول - هولندي ===== -->
   <url>
     <loc>https://primeiptvplus.com/nl/nederland/</loc>
@@ -216,6 +230,13 @@
 
   <url>
     <loc>https://primeiptvplus.com/nl/suriname/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://primeiptvplus.com/nl/duitsland/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
