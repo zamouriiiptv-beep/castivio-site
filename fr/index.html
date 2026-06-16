@@ -77,6 +77,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
   <!-- ============================
        5) تحسين السرعة (Speed)
        ============================ -->
+  <link rel="preload" href="/images/logo.webp" as="image" fetchpriority="high">
   <link rel="preload" href="/styles.css?v=176" as="style">
   <link rel="stylesheet" href="/styles.css?v=176">
   <script>try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
@@ -1477,7 +1478,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
 
         <!-- En-tête -->
         <div class="flex items-center">
-          <img src="/images/logo.webp" alt="Logo Castivio" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/logo.webp" alt="Logo Castivio" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">
           <h3 class="text-2xl font-bold tracking-wide"><span class="faq2-grad">Castivio</span></h3>
         </div>
 
@@ -1518,7 +1519,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
           src="/images/Prime-Player.webp"
           alt="Logo Prime Player"
           class="footer-logo"
-          loading="lazy" decoding="async" fetchpriority="high">
+          loading="lazy" decoding="async">
       </div>
 
     </div>

@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
   <!-- ============================
        5) تحسين السرعة (Speed)
        ============================ -->
+  <link rel="preload" href="/images/logo.webp" as="image" fetchpriority="high">
   <link rel="preload" href="/styles.css?v=176" as="style">
   <link rel="stylesheet" href="/styles.css?v=176">
   <script>try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
@@ -315,62 +316,62 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
 
       <div class="lang-option" data-lang="en" data-flag="/images/flags/gb.svg">
         <a href="/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/gb.svg" class="flag-icon" width="20" height="15" alt="English Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/gb.svg" class="flag-icon" width="20" height="15" alt="English Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">English (EN)</span>
         </a>
       </div>
       <div class="lang-option" data-lang="ar" data-flag="/images/flags/sa.svg">
         <a href="/ar/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/sa.svg" class="flag-icon" width="20" height="15" alt="Arabic Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/sa.svg" class="flag-icon" width="20" height="15" alt="Arabic Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">العربية (AR)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="fr" data-flag="/images/flags/fr.svg">
         <a href="/fr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/fr.svg" class="flag-icon" width="20" height="15" alt="French Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/fr.svg" class="flag-icon" width="20" height="15" alt="French Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Français (FR)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="es" data-flag="/images/flags/es.svg">
         <a href="/es/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/es.svg" class="flag-icon" width="20" height="15" alt="Spanish Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/es.svg" class="flag-icon" width="20" height="15" alt="Spanish Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Español (ES)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="pt" data-flag="/images/flags/pt.svg">
         <a href="/pt/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/pt.svg" class="flag-icon" width="20" height="15" alt="Portuguese Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/pt.svg" class="flag-icon" width="20" height="15" alt="Portuguese Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Português (PT)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="de" data-flag="/images/flags/de.svg">
         <a href="/de/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/de.svg" class="flag-icon" width="20" height="15" alt="German Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/de.svg" class="flag-icon" width="20" height="15" alt="German Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Deutsch (DE)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="tr" data-flag="/images/flags/tr.svg">
         <a href="/tr/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/tr.svg" class="flag-icon" width="20" height="15" alt="Turkish Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/tr.svg" class="flag-icon" width="20" height="15" alt="Turkish Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Türkçe (TR)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="it" data-flag="/images/flags/it.svg">
         <a href="/it/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/it.svg" class="flag-icon" width="20" height="15" alt="Italian Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/it.svg" class="flag-icon" width="20" height="15" alt="Italian Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Italiano (IT)</span>
         </a>
       </div>
 
       <div class="lang-option" data-lang="nl" data-flag="/images/flags/nl.svg">
         <a href="/nl/" style="display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit;">
-          <img src="/images/flags/nl.svg" class="flag-icon" width="20" height="15" alt="Dutch Flag" loading="lazy" decoding="async" fetchpriority="high">
+          <img src="/images/flags/nl.svg" class="flag-icon" width="20" height="15" alt="Dutch Flag" loading="lazy" decoding="async">
           <span style="margin-right: 8px;">Nederlands (NL)</span>
         </a>
       </div>
@@ -1486,7 +1487,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
         <!-- معلومات عامة -->
         <div class="flex flex-col items-start">
           <div class="flex items-center mb-4">
-            <img src="/images/logo.webp" alt="Castivio Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async" fetchpriority="high">
+            <img src="/images/logo.webp" alt="Castivio Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">
             <h3 class="text-2xl font-bold tracking-wide"><span class="faq2-grad">Castivio</span></h3>
           </div>
 
@@ -1528,7 +1529,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
 
       <!-- العمود الثاني: شعار Prime Player -->
       <div class="ft-player-logo-wrap">
-        <img src="/images/Prime-Player.webp" alt="Castivio Player logo" class="footer-logo" loading="lazy" decoding="async" fetchpriority="high">
+        <img src="/images/Prime-Player.webp" alt="Castivio Player logo" class="footer-logo" loading="lazy" decoding="async">
       </div>
 
     </div>
