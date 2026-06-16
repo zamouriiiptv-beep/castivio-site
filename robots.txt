@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://primeiptvplus.com/sitemap.xml
+Sitemap: https://castivio.com/sitemap.xml

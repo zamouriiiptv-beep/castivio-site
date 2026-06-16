@@ -3,7 +3,7 @@
 
   <!-- ===== الصفحة الرئيسية (إنجليزية) ===== -->
   <url>
-    <loc>https://primeiptvplus.com/</loc>
+    <loc>https://castivio.com/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -11,21 +11,21 @@
 
   <!-- ===== صفحات الدول - إنجليزي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/usa/</loc>
+    <loc>https://castivio.com/usa/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/uk/</loc>
+    <loc>https://castivio.com/uk/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/canada/</loc>
+    <loc>https://castivio.com/canada/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -33,7 +33,7 @@
 
   <!-- ===== الصفحة العربية ===== -->
   <url>
-    <loc>https://primeiptvplus.com/ar/</loc>
+    <loc>https://castivio.com/ar/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -41,49 +41,49 @@
 
   <!-- ===== الصفحات الرئيسية بكل لغة ===== -->
   <url>
-    <loc>https://primeiptvplus.com/fr/</loc>
+    <loc>https://castivio.com/fr/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/es/</loc>
+    <loc>https://castivio.com/es/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/pt/</loc>
+    <loc>https://castivio.com/pt/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/de/</loc>
+    <loc>https://castivio.com/de/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/tr/</loc>
+    <loc>https://castivio.com/tr/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/it/</loc>
+    <loc>https://castivio.com/it/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/nl/</loc>
+    <loc>https://castivio.com/nl/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -91,21 +91,21 @@
 
   <!-- ===== صفحات الدول - فرنسي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/fr/france/</loc>
+    <loc>https://castivio.com/fr/france/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/fr/belgique/</loc>
+    <loc>https://castivio.com/fr/belgique/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/fr/canada/</loc>
+    <loc>https://castivio.com/fr/canada/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -113,21 +113,21 @@
 
   <!-- ===== صفحات الدول - برتغالي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/pt/brasil/</loc>
+    <loc>https://castivio.com/pt/brasil/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/pt/portugal/</loc>
+    <loc>https://castivio.com/pt/portugal/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/pt/angola/</loc>
+    <loc>https://castivio.com/pt/angola/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -135,21 +135,21 @@
 
   <!-- ===== صفحات الدول - ألماني ===== -->
   <url>
-    <loc>https://primeiptvplus.com/de/deutschland/</loc>
+    <loc>https://castivio.com/de/deutschland/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/de/oesterreich/</loc>
+    <loc>https://castivio.com/de/oesterreich/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/de/schweiz/</loc>
+    <loc>https://castivio.com/de/schweiz/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -157,28 +157,28 @@
 
   <!-- ===== صفحات الدول - تركي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/tr/turkiye/</loc>
+    <loc>https://castivio.com/tr/turkiye/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/tr/azerbaycan/</loc>
+    <loc>https://castivio.com/tr/azerbaycan/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/tr/kibris/</loc>
+    <loc>https://castivio.com/tr/kibris/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/tr/almanya/</loc>
+    <loc>https://castivio.com/tr/almanya/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -186,28 +186,28 @@
 
   <!-- ===== صفحات الدول - إيطالي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/it/italia/</loc>
+    <loc>https://castivio.com/it/italia/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/it/svizzera/</loc>
+    <loc>https://castivio.com/it/svizzera/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/it/san-marino/</loc>
+    <loc>https://castivio.com/it/san-marino/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/it/germania/</loc>
+    <loc>https://castivio.com/it/germania/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -215,28 +215,28 @@
 
   <!-- ===== صفحات الدول - هولندي ===== -->
   <url>
-    <loc>https://primeiptvplus.com/nl/nederland/</loc>
+    <loc>https://castivio.com/nl/nederland/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/nl/belgie/</loc>
+    <loc>https://castivio.com/nl/belgie/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/nl/suriname/</loc>
+    <loc>https://castivio.com/nl/suriname/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/nl/duitsland/</loc>
+    <loc>https://castivio.com/nl/duitsland/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -244,21 +244,21 @@
 
   <!-- ===== صفحات الدول - إسباني ===== -->
   <url>
-    <loc>https://primeiptvplus.com/es/espana/</loc>
+    <loc>https://castivio.com/es/espana/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/es/mexico/</loc>
+    <loc>https://castivio.com/es/mexico/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/es/argentina/</loc>
+    <loc>https://castivio.com/es/argentina/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -266,63 +266,63 @@
 
   <!-- ===== أدلة الاستخدام ===== -->
   <url>
-    <loc>https://primeiptvplus.com/guide/</loc>
+    <loc>https://castivio.com/guide/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/ar/guide/</loc>
+    <loc>https://castivio.com/ar/guide/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/fr/guide/</loc>
+    <loc>https://castivio.com/fr/guide/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/es/guide/</loc>
+    <loc>https://castivio.com/es/guide/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/pt/guide/</loc>
+    <loc>https://castivio.com/pt/guide/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/de/guide/</loc>
+    <loc>https://castivio.com/de/guide/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/tr/guide/</loc>
+    <loc>https://castivio.com/tr/guide/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/it/guide/</loc>
+    <loc>https://castivio.com/it/guide/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/nl/guide/</loc>
+    <loc>https://castivio.com/nl/guide/</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -330,21 +330,21 @@
 
   <!-- ===== أدلة عربية متخصصة ===== -->
   <url>
-    <loc>https://primeiptvplus.com/ar/guide/maghreb/</loc>
+    <loc>https://castivio.com/ar/guide/maghreb/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/ar/guide/mashriq/</loc>
+    <loc>https://castivio.com/ar/guide/mashriq/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://primeiptvplus.com/ar/guide/khalij/</loc>
+    <loc>https://castivio.com/ar/guide/khalij/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
