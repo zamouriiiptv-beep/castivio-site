@@ -64,10 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function fillFlags() {
     if (!flagsScroll || !flagsContainer) return;
-    flagsScroll.innerHTML = '';
-    while (flagsScroll.scrollWidth < flagsContainer.clientWidth * 2) {
-      flagsScroll.innerHTML += flagsHTML;
-    }
+    // 2 copies = minimum for seamless infinite loop; avoids excess DOM nodes
+    flagsScroll.innerHTML = flagsHTML + flagsHTML;
   }
 
   fillFlags();
