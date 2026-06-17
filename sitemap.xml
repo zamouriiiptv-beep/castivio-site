@@ -11,21 +11,21 @@
 
   <!-- ===== صفحات الدول - إنجليزي ===== -->
   <url>
-    <loc>https://castivio.com/usa/</loc>
+    <loc>https://castivio.com/guide/usa/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://castivio.com/uk/</loc>
+    <loc>https://castivio.com/guide/uk/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://castivio.com/canada/</loc>
+    <loc>https://castivio.com/guide/canada/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
