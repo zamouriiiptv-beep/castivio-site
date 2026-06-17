@@ -217,14 +217,14 @@ document.querySelectorAll(".lang-option").forEach(option => {
 
     const langMap = {
       // الإنجليزية (الجذر)
-      "usa":         { ar: "/ar/",         en: "/usa/",        fr: "/fr/france/",   es: "/es/espana/" },
-      "uk":          { ar: "/ar/",         en: "/uk/",         fr: "/fr/belgique/", es: "/es/espana/" },
-      "canada":      { ar: "/ar/",         en: "/canada/",     fr: "/fr/canada/",   es: "/es/canada/" },
+      "guide/usa":   { ar: "/ar/",         en: "/guide/usa/",  fr: "/fr/france/",   es: "/es/espana/" },
+      "guide/uk":    { ar: "/ar/",         en: "/guide/uk/",   fr: "/fr/belgique/", es: "/es/espana/" },
+      "guide/canada":{ ar: "/ar/",         en: "/guide/canada/",fr: "/fr/canada/",  es: "/es/canada/" },
 
       // الفرنسية
-      "fr/france":   { ar: "/ar/",         en: "/uk/",         fr: "/fr/france/",   es: "/es/espana/" },
-      "fr/belgique": { ar: "/ar/",         en: "/uk/",         fr: "/fr/belgique/", es: "/es/espana/" },
-      "fr/canada":   { ar: "/ar/",         en: "/canada/",     fr: "/fr/canada/",   es: "/es/canada/" },
+      "fr/france":   { ar: "/ar/",         en: "/guide/uk/",   fr: "/fr/france/",   es: "/es/espana/" },
+      "fr/belgique": { ar: "/ar/",         en: "/guide/uk/",   fr: "/fr/belgique/", es: "/es/espana/" },
+      "fr/canada":   { ar: "/ar/",         en: "/guide/canada/",fr: "/fr/canada/",  es: "/es/canada/" },
 
       // العربية
       "ar/guide/khalij":  { ar: "/ar/guide/khalij/", en: "/",  fr: "/fr/",         es: "/es/" },
