@@ -70,11 +70,9 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
      ============================ -->
 
 <!-- Pré-conexão com recursos externos -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
 <!-- DNS prefetch -->
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
   <!-- ============================
@@ -90,8 +88,9 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
   <!-- ============================
        6) Fontes do site
        ============================ -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"></noscript>
+    <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/poppins.css">
 
   <!-- ============================
        7) CSS e JS externos
