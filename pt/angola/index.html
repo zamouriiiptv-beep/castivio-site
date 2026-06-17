@@ -611,7 +611,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif !important; font-wei
           <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Basic plan duration" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
         </div>
 
         <div class="pc-price pc-price-basic">
@@ -680,7 +680,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif !important; font-wei
           <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Premium plan duration" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
         </div>
 
         <div class="pc-price pc-price-premium">
@@ -749,7 +749,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif !important; font-wei
           <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Pro plan duration" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
         </div>
 
         <div class="pc-price pc-price-pro">
@@ -1337,7 +1337,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif !important; font-wei
 <div class="container mx-auto px-4">
     <div class="grid grid-cols-2 gap-4 md:gap-12">
       <div class="flex flex-col gap-7">
-        <div class="flex items-center mb-4"><img src="/images/logo.webp" alt="Castivio" class="h-14 w-14 rounded-full mr-3" loading="lazy"><h3 class="text-2xl font-bold"><span class="faq2-grad">Castivio</span></h3></div><p class="text-gray-200">O melhor <strong>serviço Castivio em Angola</strong> — veja futebol angolano, streams africanos e +30.000 streams em 4K.</p>
+        <div class="flex items-center mb-4"><img width="56" height="56" src="/images/logo.webp" alt="Castivio" class="h-14 w-14 rounded-full mr-3" loading="lazy"><h3 class="text-2xl font-bold"><span class="faq2-grad">Castivio</span></h3></div><p class="text-gray-200">O melhor <strong>serviço Castivio em Angola</strong> — veja futebol angolano, streams africanos e +30.000 streams em 4K.</p>
 <h4 class="font-semibold mb-4 text-lg">Links Rápidos</h4><ul class="space-y-3 text-gray-200" style="list-style:none;padding:0;"><li style="display:block!important"><a href="/pt/angola/#precos" class="hover:text-white">💰 Planos e Preços</a></li><li style="display:block!important"><a href="/pt/brasil/" class="hover:text-white">🇧🇷 Guia Brasil</a></li><li style="display:block!important"><a href="/pt/portugal/" class="hover:text-white">🇵🇹 Guia Portugal</a></li><li style="display:block!important"><a href="/pt/" class="hover:text-white">🌍 <span class="faq2-grad">Castivio</span> Global PT</a></li></ul>
 <h4 class="font-semibold mb-4 text-lg">Contacte-nos</h4><p class="text-gray-200 mb-3">Suporte 24/7 para clientes angolanos:</p><a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20sou%20de%20Angola%20e%20preciso%20de%20ajuda%20com%20o%20Castivio." target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition hover:scale-105"><i class="fab fa-whatsapp mr-2"></i>WhatsApp 24/7</a><div class="mt-4 space-y-2 text-gray-200 text-sm"><p>🇦🇴 Todo o território angolano</p><p>⚡ Ativação instantânea</p><p>💰 Garantia de reembolso 10 dias</p></div>
       </div>
@@ -1347,7 +1347,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif !important; font-wei
 </footer>
 
 <a href="https://wa.me/212666686732?text=Ol%C3%A1%2C%20sou%20de%20Angola%20e%20tenho%20interesse%20no%20Castivio." class="whatsapp-float fixed bottom-6 left-6 z-50" target="_blank" rel="noopener noreferrer" aria-label="Suporte WhatsApp">
-  <img src="/images/whatsapp.webp" alt="WhatsApp" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy">
+  <img width="64" height="64" src="/images/whatsapp.webp" alt="WhatsApp" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy">
 </a>
 
 <!-- [SYNC-PERF-FOOT-START] -->

@@ -630,7 +630,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
           <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 ay</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">yıl</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">2 yıl</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Basic plan duration" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
         </div>
 
         <div class="pc-price pc-price-basic">
@@ -699,7 +699,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
           <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 ay</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">yıl</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">2 yıl</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Premium plan duration" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
         </div>
 
         <div class="pc-price pc-price-premium">
@@ -768,7 +768,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
           <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 ay</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">yıl</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">2 yıl</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Pro plan duration" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
         </div>
 
         <div class="pc-price pc-price-pro">
@@ -1323,7 +1323,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
 <div class="container mx-auto px-4">
     <div class="grid grid-cols-2 gap-4 md:gap-12">
       <div class="flex flex-col gap-7">
-        <div class="flex items-center mb-4"><img src="/images/logo.webp" alt="Castivio" class="h-14 w-14 rounded-full mr-3" loading="lazy"><h3 class="text-2xl font-bold"><span class="faq2-grad">Castivio</span></h3></div><p class="text-gray-200">Türkiye'nin en iyi <strong>Castivio hizmeti</strong> — TRT, ATV, Kanal D ve +30.000 ulusal yayın 4K'da €30/yıldan.</p>
+        <div class="flex items-center mb-4"><img width="56" height="56" src="/images/logo.webp" alt="Castivio" class="h-14 w-14 rounded-full mr-3" loading="lazy"><h3 class="text-2xl font-bold"><span class="faq2-grad">Castivio</span></h3></div><p class="text-gray-200">Türkiye'nin en iyi <strong>Castivio hizmeti</strong> — TRT, ATV, Kanal D ve +30.000 ulusal yayın 4K'da €30/yıldan.</p>
 <h4 class="font-semibold mb-4 text-lg">Hızlı Bağlantılar</h4><ul class="space-y-3 text-gray-200" style="list-style:none;padding:0;"><li style="display:block!important"><a href="/tr/turkiye/#fiyatlar" class="hover:text-white">💰 Paketler & Fiyatlar</a></li><li style="display:block!important"><a href="/tr/azerbaycan/" class="hover:text-white">🇦🇿 Azerbaycan Rehberi</a></li><li style="display:block!important"><a href="/tr/kibris/" class="hover:text-white">🇨🇾 Kıbrıs Rehberi</a></li></ul>
 <h4 class="font-semibold mb-4 text-lg">İletişim</h4><p class="text-gray-200 mb-3">Türk müşteriler için 7/24 destek:</p><a href="https://wa.me/212666686732?text=Merhaba%2C%20T%C3%BCrkiye%27deyim%20ve%20Castivio%20hakk%C4%B1nda%20yard%C4%B1m%20istiyorum." target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-green-500 hover:bg-green-600 px-5 py-2 rounded-full shadow-lg transition hover:scale-105"><i class="fab fa-whatsapp mr-2"></i>WhatsApp 7/24</a><div class="mt-4 space-y-2 text-gray-200 text-sm"><p>🇹🇷 Tüm Türkiye illeri</p><p>⚡ Anında aktivasyon</p><p>💰 10 günlük para iade garantisi</p></div>
       </div>
@@ -1331,7 +1331,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
     </div>
   </div>
 </footer>
-<a href="https://wa.me/212666686732?text=Merhaba%2C%20T%C3%BCrkiye%27deyim%20ve%20Castivio%20ile%20ilgileniyorum." class="whatsapp-float fixed bottom-6 left-6 z-50" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Destek"><img src="/images/whatsapp.webp" alt="WhatsApp" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy"></a>
+<a href="https://wa.me/212666686732?text=Merhaba%2C%20T%C3%BCrkiye%27deyim%20ve%20Castivio%20ile%20ilgileniyorum." class="whatsapp-float fixed bottom-6 left-6 z-50" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Destek"><img width="64" height="64" src="/images/whatsapp.webp" alt="WhatsApp" class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition" loading="lazy"></a>
 <!-- [SYNC-PERF-FOOT-START] -->
 <link rel="preload" href="/css/footer.css?v=35" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/footer.css?v=35"></noscript>
 <script src="/js/footer.js?v=20" defer></script>

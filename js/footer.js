@@ -259,7 +259,7 @@
 
         /* Logo column */
         '<div class="ft-player-logo-wrap">' +
-          '<img src="/images/Castivio.webp" alt="Castivio" class="footer-logo" loading="lazy" decoding="async" fetchpriority="high">' +
+          '<img src="/images/Castivio.webp" alt="Castivio" class="footer-logo" loading="lazy" decoding="async" fetchpriority="high" width="200" height="200">' +
         '</div>' +
 
       '</div>' +

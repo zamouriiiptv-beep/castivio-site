@@ -744,7 +744,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
           <button class="pc-tab" type="button" onclick="moveSlider(2,'basic')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'basic')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'basic')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Basic plan duration" id="basic-plan-slider" oninput="updatePlanData(this.value,'basic')">
         </div>
 
         <div class="pc-price pc-price-basic">
@@ -813,7 +813,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
           <button class="pc-tab" type="button" onclick="moveSlider(2,'premium')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'premium')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'premium')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Premium plan duration" id="premium-plan-slider" oninput="updatePlanData(this.value,'premium')">
         </div>
 
         <div class="pc-price pc-price-premium">
@@ -882,7 +882,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
           <button class="pc-tab" type="button" onclick="moveSlider(2,'pro')">6 meses</button>
           <button class="pc-tab pc-tab-active" type="button" onclick="moveSlider(3,'pro')">ano</button>
           <button class="pc-tab" type="button" onclick="moveSlider(4,'pro')">2 anos</button>
-          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
+          <input type="range" min="0" max="4" value="3" step="1" class="custom-slider sr-only" aria-label="Pro plan duration" id="pro-plan-slider" oninput="updatePlanData(this.value,'pro')">
         </div>
 
         <div class="pc-price pc-price-pro">
@@ -1487,7 +1487,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
         <!-- Informações gerais -->
         <div class="flex flex-col items-start">
           <div class="flex items-center mb-4">
-            <img src="/images/logo.webp" alt="Castivio Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">
+            <img width="56" height="56" src="/images/logo.webp" alt="Castivio Logo" class="h-14 w-14 rounded-full mr-3 shadow-lg" loading="lazy" decoding="async">
             <h3 class="text-2xl font-bold tracking-wide"><span class="faq2-grad">Castivio</span></h3>
           </div>
 
@@ -1551,7 +1551,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
    target="_blank"
    rel="noopener noreferrer"
    aria-label="Suporte WhatsApp">
-  <img src="/images/whatsapp.webp"
+  <img width="64" height="64" src="/images/whatsapp.webp"
        alt="Ícone WhatsApp"
        class="h-16 w-16 rounded-full shadow-xl hover:scale-110 transition"
        loading="lazy"

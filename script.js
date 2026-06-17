@@ -127,27 +127,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById("overlay");
   const closeMenu = document.getElementById("close-menu");
 
+  const openMenu = () => {
+    sideMenu.classList.add("open");
+    sideMenu.setAttribute("aria-hidden", "false");
+    overlay.classList.add("active");
+    menuBtn.setAttribute("aria-expanded", "true");
+  };
+  const closeMenuFn = () => {
+    sideMenu.classList.remove("open");
+    sideMenu.setAttribute("aria-hidden", "true");
+    overlay.classList.remove("active");
+    menuBtn.setAttribute("aria-expanded", "false");
+  };
+
   if (menuBtn && sideMenu && overlay && closeMenu) {
-    menuBtn.addEventListener("click", () => {
-      sideMenu.classList.add("open");
-      overlay.classList.add("active");
-    });
-
-    closeMenu.addEventListener("click", () => {
-      sideMenu.classList.remove("open");
-      overlay.classList.remove("active");
-    });
-
-    overlay.addEventListener("click", () => {
-      sideMenu.classList.remove("open");
-      overlay.classList.remove("active");
-    });
+    menuBtn.addEventListener("click", openMenu);
+    closeMenu.addEventListener("click", closeMenuFn);
+    overlay.addEventListener("click", closeMenuFn);
 
     document.querySelectorAll('#side-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        sideMenu.classList.remove("open");
-        overlay.classList.remove("active");
-      });
+      link.addEventListener('click', closeMenuFn);
     });
   }
 
