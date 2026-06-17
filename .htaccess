@@ -3,12 +3,15 @@ RewriteEngine On
 
 # ── 301 Redirects ──────────────────────────────────────────
 RewriteRule ^en/?$                      /                       [R=301,L]
-RewriteRule ^en/usa/?$                  /usa/                   [R=301,L]
-RewriteRule ^en/uk/?$                   /uk/                    [R=301,L]
-RewriteRule ^en/canada/?$               /canada/                [R=301,L]
+RewriteRule ^en/usa/?$                  /guide/usa/             [R=301,L]
+RewriteRule ^en/uk/?$                   /guide/uk/              [R=301,L]
+RewriteRule ^en/canada/?$               /guide/canada/          [R=301,L]
 RewriteRule ^en/guide/?$                /guide/                 [R=301,L]
 RewriteRule ^en/privacy-policy/?$       /privacy-policy/        [R=301,L]
 RewriteRule ^en/terms-of-service/?$     /terms-of-service/      [R=301,L]
+RewriteRule ^usa/?$                     /guide/usa/             [R=301,L]
+RewriteRule ^uk/?$                      /guide/uk/              [R=301,L]
+RewriteRule ^canada/?$                  /guide/canada/          [R=301,L]
 RewriteRule ^guide/khalij/?$            /ar/guide/khalij/       [R=301,L]
 RewriteRule ^guide/maghreb/?$           /ar/guide/maghreb/      [R=301,L]
 RewriteRule ^guide/mashriq/?$           /ar/guide/mashriq/      [R=301,L]
