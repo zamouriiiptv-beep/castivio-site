@@ -279,14 +279,20 @@ h1, h2, h3, h4, h5, h6, .section-title, .title, .heading { font-family: 'Poppins
   <meta name="twitter:description" content="Hoge snelheid + sportkanalen + on-demand content in 4K.">
   <meta name="twitter:image" content="https://castivio.com/images/Castivio.webp">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18138909640"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "AW-18138909640");
-  gtag("config", "G-MYZJREE8MD");
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var s=document.createElement('script');
+    s.src='https://www.googletagmanager.com/gtag/js?id=AW-18138909640';
+    s.async=true;document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config','AW-18138909640');
+    gtag('config','G-MYZJREE8MD');
+  },3000);
+});
 </script>
 </head>
 

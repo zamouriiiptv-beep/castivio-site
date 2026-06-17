@@ -132,9 +132,21 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif !important; font-weight: 
       pro:     [{price:9,period:"/ ay",text:"1 Ay"},{price:22,period:"/ 3 ay",text:"3 Ay"},{price:35,period:"/ 6 ay",text:"6 Ay"},{price:50,period:"/ yıl",text:"1 Yıl"},{price:90,period:"/ 2 yıl",text:"2 Yıl"}]
     };
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18138909640"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","AW-18138909640");
-  gtag("config", "G-MYZJREE8MD");</script>
+  <script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var s=document.createElement('script');
+    s.src='https://www.googletagmanager.com/gtag/js?id=AW-18138909640';
+    s.async=true;document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config','AW-18138909640');
+    gtag('config','G-MYZJREE8MD');
+  },3000);
+});
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
