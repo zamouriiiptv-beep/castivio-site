@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | 1 | Castivio Review: A 4K Streaming Platform That Actually Works for the Whole Family | EN | / ، /guide/ ، es/espana ، de/deutschland ، it/italia ، nl/nederland ، tr/turkiye | ✅ منشور 2026-07-04 — https://medium.com/@zamouriiiptv/castivio-review-a-4k-streaming-platform-that-actually-works-for-the-whole-family-ac4af98a3f0b |
 | 2 | Cutting the Cord in the US, UK, and Canada | EN | guide/usa ، guide/uk ، guide/canada | ✅ منشور 2026-07-12 — https://medium.com/@zamouriiiptv/cutting-the-cord-in-the-us-uk-and-canada-my-honest-castivio-experience-40bbeba26610 |
-| 3 | الجمهور العربي | AR | ar/ ، ar/guide/ ، ar/guide/khalij ، ar/guide/maghreb ، ar/guide/mashriq | ⬜ يُكتب عند الطلب |
+| 3 | الجمهور العربي | AR | ar/ ، ar/guide/ ، ar/guide/khalij ، ar/guide/maghreb ، ar/guide/mashriq | ⬜ النص جاهز أدناه — يُنشر الأسبوع القادم (~18-19 يوليو) |
 | 4 | الجمهور الفرنسي | FR | fr/ ، fr/france ، fr/belgique ، fr/canada ، fr/guide | ⬜ |
 | 5 | إسبانيا وأمريكا اللاتينية | ES | es/ ، es/mexico ، es/argentina ، es/guide | ⬜ |
 | 6 | البرتغالية | PT | pt/ ، pt/portugal ، pt/brasil ، pt/angola ، pt/guide | ⬜ |
@@ -58,6 +58,48 @@ The verdict
 
 Across all three countries, the experience was consistent: fast activation, stable 4K streams, responsive WhatsApp support, and yearly plans from just €30. If you're paying for cable in 2026, you owe it to your wallet to compare. Start with the monthly plan and see the difference for yourself.
 ```
+
+## نص المقال 3 (جاهز — للنشر الأسبوع القادم)
+
+**العنوان:**
+
+```
+Castivio للجمهور العربي: منصة بث واحدة من المحيط إلى الخليج — تجربتي الكاملة
+```
+
+**الغلاف:** لقطة مقصوصة من castivio.com/ar/ — **التعليق:** Castivio — منصة البث العربية الأولى
+
+**النص:**
+
+```
+يبحث المشاهد العربي دائماً عن منصة بث تجمع كل ما يحتاجه: محتوى عربي وعالمي، جودة عالية، وسعر معقول. بعد أشهر من استخدام منصة Castivio، أشارككم اليوم تجربتي الكاملة، ولماذا أصبحت خياري الأول للبث الرقمي، سواء كنت في المغرب أو مصر أو السعودية.
+
+ما هي Castivio؟
+
+Castivio منصة بث رقمية عالمية تقدم محتوى ترفيهياً ورياضياً وإخبارياً متنوعاً بجودة تصل إلى 4K و8K، وتعمل على جميع الأجهزة: الشاشات الذكية، الهواتف، أجهزة Android Box وFirestick. أكثر ما يميزها للمستخدم العربي: واجهة عربية كاملة، دعم فني بالعربية عبر واتساب على مدار الساعة، وتقنية Anti-Freeze التي تمنع التقطيع في أوقات الذروة. التفاصيل الكاملة على الصفحة العربية الرسمية: https://castivio.com/ar/
+
+دليل مخصص لكل منطقة عربية
+
+النقطة التي أعجبتني فعلاً: المنصة لا تتعامل مع العالم العربي ككتلة واحدة، بل تقدم دليلاً مفصلاً لكل منطقة بمحتواها واحتياجاتها:
+
+لسكان الخليج — السعودية والإمارات وقطر والكويت والبحرين وعُمان، مع تغطية خاصة للمحتوى الخليجي: https://castivio.com/ar/guide/khalij/
+
+لسكان المغرب العربي — المغرب والجزائر وتونس وليبيا، مع دعم يناسب سرعات الإنترنت المحلية: https://castivio.com/ar/guide/maghreb/
+
+لسكان المشرق — مصر ولبنان والأردن والعراق وسوريا وفلسطين: https://castivio.com/ar/guide/mashriq/
+
+كيف تبدأ في 10 دقائق؟
+
+اختر باقتك (تبدأ من 30€ سنوياً فقط)، أتمم الطلب، وستصلك بيانات التفعيل خلال دقائق مع شرح التثبيت خطوة بخطوة. وإن احترت في اختيار التطبيق المناسب لجهازك، ستجد دليل التثبيت الشامل بالعربية يغطي كل الأجهزة والتطبيقات: https://castivio.com/ar/guide/
+
+الخلاصة
+
+بعد أشهر من الاستخدام اليومي: بث مستقر بلا تقطيع، جودة صورة ممتازة، دعم عربي حقيقي يرد خلال دقائق، وسعر لا يقارن بأي بديل تقليدي. إن كنت متردداً، جرب الباقة الشهرية أولاً — وستفهم لماذا يقيّمها المستخدمون بـ4.8 من 5.
+```
+
+**الوسوم:** Streaming · Iptv · Entertainment · Technology · Arabic
+**Bold للعناوين:** ما هي Castivio؟ · دليل مخصص لكل منطقة عربية · كيف تبدأ في 10 دقائق؟ · الخلاصة
+**بعد النشر:** طلب فهرسة الروابط الأربعة غير المفهرسة في Search Console (ar/guide + الأدلة الثلاثة)
 
 ## ملاحظات
 
