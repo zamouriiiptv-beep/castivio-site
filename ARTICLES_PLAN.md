@@ -9,7 +9,7 @@
 | # | المقال | اللغة | الروابط المستهدفة | الحالة |
 |---|---|---|---|---|
 | 1 | Castivio Review: A 4K Streaming Platform That Actually Works for the Whole Family | EN | / ، /guide/ ، es/espana ، de/deutschland ، it/italia ، nl/nederland ، tr/turkiye | ✅ منشور 2026-07-04 — https://medium.com/@zamouriiiptv/castivio-review-a-4k-streaming-platform-that-actually-works-for-the-whole-family-ac4af98a3f0b |
-| 2 | Cutting the Cord in the US, UK, and Canada | EN | guide/usa ، guide/uk ، guide/canada | ⬜ جاهز للنشر (النص أدناه) |
+| 2 | Cutting the Cord in the US, UK, and Canada | EN | guide/usa ، guide/uk ، guide/canada | ✅ منشور 2026-07-12 — https://medium.com/@zamouriiiptv/cutting-the-cord-in-the-us-uk-and-canada-my-honest-castivio-experience-40bbeba26610 |
 | 3 | الجمهور العربي | AR | ar/ ، ar/guide/ ، ar/guide/khalij ، ar/guide/maghreb ، ar/guide/mashriq | ⬜ يُكتب عند الطلب |
 | 4 | الجمهور الفرنسي | FR | fr/ ، fr/france ، fr/belgique ، fr/canada ، fr/guide | ⬜ |
 | 5 | إسبانيا وأمريكا اللاتينية | ES | es/ ، es/mexico ، es/argentina ، es/guide | ⬜ |
@@ -31,7 +31,7 @@
 8. طلب فهرسة الصفحات المستهدفة في Google Search Console
 9. مشاركة رابط المقال في حساب تواصل واحد على الأقل
 
-## نص المقال 2 (جاهز)
+## نص المقال 2 (نُشر — محفوظ للمرجعية)
 
 ```
 Cutting the Cord in the US, UK, and Canada: My Honest Castivio Experience
