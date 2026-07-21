@@ -329,5 +329,51 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- ===== الصفحات القانونية الجديدة (About / Contact / Refund / DMCA) × 9 لغات ===== -->
+
+  <url><loc>https://castivio.com/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/ar/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/ar/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/ar/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/ar/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/fr/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/fr/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/fr/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/fr/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/es/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/es/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/es/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/es/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/de/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/de/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/de/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/de/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/it/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/it/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/it/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/it/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/nl/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/nl/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/nl/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/nl/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/pt/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/pt/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/pt/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/pt/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://castivio.com/tr/about/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/tr/contact/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://castivio.com/tr/refund/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://castivio.com/tr/dmca/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
 </urlset>

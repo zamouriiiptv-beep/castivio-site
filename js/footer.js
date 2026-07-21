@@ -1,4 +1,4 @@
-/* footer.js — Castivio Unified Footer v15 */
+/* footer.js — Castivio Unified Footer v16 (6 legal links × 9 langs) */
 (function () {
   'use strict';
 
@@ -26,6 +26,10 @@
       waAria  : 'دعم واتساب 24 ساعة',
       privacy : 'سياسة الخصوصية', privacyHref: '/ar/privacy-policy/',
       terms   : 'شروط الاستخدام',  termsHref : '/ar/terms-of-service/',
+      aboutL  : 'من نحن',           aboutHref  : '/ar/about/',
+      contactL: 'اتصل بنا',         contactHref: '/ar/contact/',
+      refund  : 'سياسة الاسترداد',  refundHref : '/ar/refund/',
+      dmca    : 'DMCA',             dmcaHref   : '/ar/dmca/',
       copy    : '© جميع حقوق الطبع والنشر محفوظة – Castivio',
       base    : '/ar/',
     },
@@ -46,6 +50,10 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacy Policy',     privacyHref: '/privacy-policy/',
       terms   : 'Terms of Service',   termsHref  : '/terms-of-service/',
+      aboutL  : 'About Us',           aboutHref  : '/about/',
+      contactL: 'Contact',            contactHref: '/contact/',
+      refund  : 'Refund Policy',      refundHref : '/refund/',
+      dmca    : 'DMCA',               dmcaHref   : '/dmca/',
       copy    : '© All Rights Reserved – Castivio',
       base    : '/',
     },
@@ -66,6 +74,10 @@
       waAria  : 'Support WhatsApp 24/7',
       privacy : 'Politique de confidentialité', privacyHref: '/fr/privacy-policy/',
       terms   : "Conditions d'utilisation",     termsHref  : '/fr/terms-of-service/',
+      aboutL  : 'À propos',                     aboutHref  : '/fr/about/',
+      contactL: 'Contact',                      contactHref: '/fr/contact/',
+      refund  : 'Politique de remboursement',   refundHref : '/fr/refund/',
+      dmca    : 'DMCA',                         dmcaHref   : '/fr/dmca/',
       copy    : '© Tous droits réservés – Castivio',
       base    : '/fr/',
     },
@@ -86,6 +98,10 @@
       waAria  : 'Soporte WhatsApp 24/7',
       privacy : 'Política de privacidad', privacyHref: '/es/privacy-policy/',
       terms   : 'Términos de servicio',   termsHref  : '/es/terms-of-service/',
+      aboutL  : 'Sobre nosotros',         aboutHref  : '/es/about/',
+      contactL: 'Contacto',               contactHref: '/es/contact/',
+      refund  : 'Política de reembolso',  refundHref : '/es/refund/',
+      dmca    : 'DMCA',                   dmcaHref   : '/es/dmca/',
       copy    : '© Todos los derechos reservados – Castivio',
       base    : '/es/',
     },
@@ -106,6 +122,10 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Datenschutzerklärung', privacyHref: '/de/privacy-policy/',
       terms   : 'Nutzungsbedingungen',  termsHref  : '/de/terms-of-service/',
+      aboutL  : 'Über uns',             aboutHref  : '/de/about/',
+      contactL: 'Kontakt',              contactHref: '/de/contact/',
+      refund  : 'Rückerstattungsrichtlinie', refundHref : '/de/refund/',
+      dmca    : 'DMCA',                 dmcaHref   : '/de/dmca/',
       copy    : '© Alle Rechte vorbehalten – Castivio',
       base    : '/de/',
     },
@@ -126,6 +146,10 @@
       waAria  : 'Supporto WhatsApp 24/7',
       privacy : 'Privacy Policy',      privacyHref: '/it/privacy-policy/',
       terms   : 'Termini di servizio', termsHref  : '/it/terms-of-service/',
+      aboutL  : 'Chi siamo',           aboutHref  : '/it/about/',
+      contactL: 'Contatti',            contactHref: '/it/contact/',
+      refund  : 'Politica di rimborso',refundHref : '/it/refund/',
+      dmca    : 'DMCA',                dmcaHref   : '/it/dmca/',
       copy    : '© Tutti i diritti riservati – Castivio',
       base    : '/it/',
     },
@@ -146,6 +170,10 @@
       waAria  : 'WhatsApp Support 24/7',
       privacy : 'Privacybeleid',       privacyHref: '/nl/privacy-policy/',
       terms   : 'Servicevoorwaarden',  termsHref  : '/nl/terms-of-service/',
+      aboutL  : 'Over ons',            aboutHref  : '/nl/about/',
+      contactL: 'Contact',             contactHref: '/nl/contact/',
+      refund  : 'Terugbetalingsbeleid',refundHref : '/nl/refund/',
+      dmca    : 'DMCA',                dmcaHref   : '/nl/dmca/',
       copy    : '© Alle rechten voorbehouden – Castivio',
       base    : '/nl/',
     },
@@ -166,6 +194,10 @@
       waAria  : 'Suporte WhatsApp 24/7',
       privacy : 'Política de privacidade', privacyHref: '/pt/privacy-policy/',
       terms   : 'Termos de serviço',       termsHref  : '/pt/terms-of-service/',
+      aboutL  : 'Sobre nós',               aboutHref  : '/pt/about/',
+      contactL: 'Contato',                 contactHref: '/pt/contact/',
+      refund  : 'Política de reembolso',   refundHref : '/pt/refund/',
+      dmca    : 'DMCA',                    dmcaHref   : '/pt/dmca/',
       copy    : '© Todos os direitos reservados – Castivio',
       base    : '/pt/',
     },
@@ -186,6 +218,10 @@
       waAria  : 'WhatsApp Destek 24/7',
       privacy : 'Gizlilik Politikası',  privacyHref: '/tr/privacy-policy/',
       terms   : 'Kullanım Şartları',    termsHref  : '/tr/terms-of-service/',
+      aboutL  : 'Hakkımızda',           aboutHref  : '/tr/about/',
+      contactL: 'İletişim',             contactHref: '/tr/contact/',
+      refund  : 'İade Politikası',      refundHref : '/tr/refund/',
+      dmca    : 'DMCA',                 dmcaHref   : '/tr/dmca/',
       copy    : '© Tüm hakları saklıdır – Castivio',
       base    : '/tr/',
     },
@@ -265,10 +301,18 @@
       '</div>' +
 
       /* Legal links */
-      '<div class="flex justify-center gap-6 mt-10">' +
+      '<div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mt-10">' +
+        '<a href="' + t.aboutHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.aboutL + '</a>' +
+        '<span class="text-gray-500">|</span>' +
+        '<a href="' + t.contactHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.contactL + '</a>' +
+        '<span class="text-gray-500">|</span>' +
         '<a href="' + t.privacyHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.privacy + '</a>' +
         '<span class="text-gray-500">|</span>' +
         '<a href="' + t.termsHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.terms + '</a>' +
+        '<span class="text-gray-500">|</span>' +
+        '<a href="' + t.refundHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.refund + '</a>' +
+        '<span class="text-gray-500">|</span>' +
+        '<a href="' + t.dmcaHref + '" class="text-gray-300 hover:text-white text-sm transition">' + t.dmca + '</a>' +
       '</div>' +
 
     '</div>';
