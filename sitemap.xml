@@ -4,7 +4,7 @@
   <!-- ===== الصفحة الرئيسية (إنجليزية) ===== -->
   <url>
     <loc>https://castivio.com/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,21 +12,21 @@
   <!-- ===== صفحات الدول - إنجليزي ===== -->
   <url>
     <loc>https://castivio.com/guide/usa/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/guide/uk/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/guide/canada/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -92,14 +92,14 @@
   <!-- ===== صفحات الدول - فرنسي ===== -->
   <url>
     <loc>https://castivio.com/fr/france/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/fr/belgique/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -114,14 +114,14 @@
   <!-- ===== صفحات الدول - برتغالي ===== -->
   <url>
     <loc>https://castivio.com/pt/brasil/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/pt/portugal/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -143,14 +143,14 @@
 
   <url>
     <loc>https://castivio.com/de/oesterreich/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/de/schweiz/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -158,7 +158,7 @@
   <!-- ===== صفحات الدول - تركي ===== -->
   <url>
     <loc>https://castivio.com/tr/turkiye/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -180,14 +180,14 @@
   <!-- ===== صفحات الدول - إيطالي ===== -->
   <url>
     <loc>https://castivio.com/it/italia/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/it/svizzera/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -202,14 +202,14 @@
   <!-- ===== صفحات الدول - هولندي ===== -->
   <url>
     <loc>https://castivio.com/nl/nederland/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/nl/belgie/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -224,21 +224,21 @@
   <!-- ===== صفحات الدول - إسباني ===== -->
   <url>
     <loc>https://castivio.com/es/espana/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/es/mexico/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://castivio.com/es/argentina/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -310,7 +310,7 @@
   <!-- ===== أدلة عربية متخصصة ===== -->
   <url>
     <loc>https://castivio.com/ar/guide/maghreb/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
